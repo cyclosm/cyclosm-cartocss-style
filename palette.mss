@@ -87,6 +87,9 @@
 @pedestrian_case:   @land;
 
 
+@cycle_lane_case:   #0000ff;
+@cycle_track_case:  #0000ff;
+@cycle_busway_case: #0000ff;
 
 @cycle_line:        @standard_line;
 @cycle_fill:        #0000ff;

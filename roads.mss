@@ -97,6 +97,48 @@ come in as well.
     line-color: @secondary_case;
     [bridge=1] { line-color: @secondary_case * 0.8; }
   }
+  [cycleway='lane'],
+  [cycleway='opposite_lane'] {
+    line-color: @cycle_lane_case;
+  }
+  [cycleway='track'],
+  [cycleway='opposite_track'] {
+    line-color: @cycle_track_case;
+    line-dasharray: 3,3;
+    line-cap: butt;
+  }
+  [cycleway='share_busway'],
+  [cycleway='opposite_share_busway'] {
+    line-color: @cycle_busway_case;
+  }
+  /*[cycleway_left='lane'],
+  [cycleway_left='opposite_lane'] {
+    line-color: @cycle_lane_case;
+    line-dasharray: 3,3;
+  }
+  [cycleway_left='track'],
+  [cycleway_left='opposite_track'] {
+    line-color: @cycle_track_case;
+  }
+  [cycleway_left='share_busway'],
+  [cycleway_left='opposite_share_busway'] {
+    line-color: @cycle_busway_case;
+    line-dasharray: 3,3;
+  }
+  [cycleway_right='lane'],
+  [cycleway_right='opposite_lane'] {
+    line-color: @cycle_lane_case;
+    line-dasharray: 3,3;
+  }
+  [cycleway_right='track'],
+  [cycleway_right='opposite_track'] {
+    line-color: @cycle_track_case;
+  }
+  [cycleway_right='share_busway'],
+  [cycleway_right='opposite_share_busway'] {
+    line-color: @cycle_busway_case;
+    line-dasharray: 3,3;
+  }*/
   [stylegroup='railway'] {
     line-color: fadeout(@land,50%);
     [bridge=1] { line-color: @secondary_case * 0.8; }
