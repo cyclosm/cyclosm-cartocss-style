@@ -83,7 +83,8 @@
 @standard_case:     #f6f6f6;
 
 @pedestrian_line:   @standard_line;
-@pedestrian_fill:   #f6f6f6;
+@pedestrian_area_fill:   #f6f6f6;
+@pedestrian_fill:   #ff0000;
 @pedestrian_case:   @land;
 
 

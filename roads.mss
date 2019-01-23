@@ -259,7 +259,10 @@ come in as well.
     line-color: @cycle_fill;
     line-width: 0;
   }
-  [stylegroup='pedestrian'],
+  [stylegroup='pedestrian'] {
+    line-color: @pedestrian_fill;
+    line-width: 0;
+  }
   [stylegroup='service'],
   [stylegroup='minorroad'] {
     line-width: 0;
