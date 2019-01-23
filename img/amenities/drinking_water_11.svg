@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg874"
+   version="1.1"
+   width="17"
+   height="17"
+   viewBox="0 0 17 17">
+  <metadata
+     id="metadata880">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>bicycle-share-11.svg</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs878" />
+  <title
+     id="title866">bicycle-share-11.svg</title>
+  <rect
+     id="rect868"
+     height="17"
+     width="17"
+     y="0"
+     x="0"
+     fill="none" />
+  <path
+     style="fill:#444444;fill-opacity:1;stroke-width:0.0316041"
+     d="M 5.2163931,8.4386538 V 6.698485 A 1.9630072,1.5264639 0 0 1 7.08125,5.4773145 h 1.3086706 a 0.49075181,0.45793919 0 0 1 0.4907516,-0.45794 V 3.7982031 H 7.5720016 a 0.39260145,0.36635136 0 0 1 0,-0.7327026 h 3.4352624 a 0.39260145,0.36635136 0 0 1 0,0.7327026 H 9.6985924 v 1.2211714 a 0.49075181,0.45793919 0 0 1 0.4907516,0.45794 h 1.799423 V 4.4087898 a 0.22901751,0.21370496 0 0 1 0.229019,-0.2137062 h 0.49075 v 3.6635132 h -0.49075 A 0.22901751,0.21370496 0 0 1 11.988767,7.6448927 V 6.576368 H 10.189344 A 0.49075181,0.45793919 0 0 1 9.6985924,7.0343071 H 8.8806722 A 0.49075181,0.45793919 0 0 1 8.3899206,6.576368 H 7.08125 A 0.58890215,0.54952701 0 0 0 6.4923464,7.1258942 V 8.4386538 Z M 3.7441371,9.4461201 4.3003222,13.994982 H 7.2775504 L 7.8337355,9.4461201 Z M 4.2021725,9.843 H 7.3757 L 7.277552,10.758878 H 4.3330407 Z"
+     id="path976" />
+</svg>
