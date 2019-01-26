@@ -1,10 +1,15 @@
 CyclOSM
 =======
 
-This is a [CartoCSS](https://carto.com/developers/styling/cartocss/) style 
+This is a [CartoCSS](https://carto.com/developers/styling/cartocss/) style
 designed with cycling in mind.
 
 **Note:** This is currently a Work In Progress.
+
+## Demonstration
+
+A demonstration of this style for Paris area (between zoom levels 12 and 17)
+is available at [https://tiles.phyks.me/](https://tiles.phyks.me/).
 
 ## Getting started
 
