@@ -45,12 +45,20 @@ fonts](https://github.com/Phyks/cyclosm-cartocss-style/blob/master/INSTALL.md#fo
 Then, you can [install Kosmtik](https://github.com/kosmtik/kosmtik#install-or-update) as well as the `fetch-remote` plugin:
 
 ```
+npm -g install kosmtik
 kosmtik plugins --install kosmtik-fetch-remote
 ```
 
-_Note_: You can use a
-[`localconfig.json`](https://github.com/Phyks/cyclosm-cartocss-style/blob/master/INSTALL.md#kosmtik)
-file at the root of this repository to use custom PostgreSQL credentials.
+Kosmtik requires Node not above version 8. On Ubuntu/Debian, you can follow
+the instructions for Node.js v8.x
+[here](https://github.com/nodesource/distributions#debinstall) to install it.
+
+_Note:_ Make sure you have Python installed as well as Mapnik library. On
+Ubuntu/Debian, you can use
+
+```
+sudo apt-get install python python-dev libmapnik-dev libmapnik3.0-dev
+```
 
 You can finally run
 
@@ -60,6 +68,11 @@ kosmtik serve project.mml
 
 to have a live render at `http://localhost:6789` with auto-reload when you
 edit this style.
+
+_Note_: You can use a
+[`localconfig.json`](https://github.com/Phyks/cyclosm-cartocss-style/blob/master/INSTALL.md#kosmtik)
+file at the root of this repository to use custom PostgreSQL credentials.
+
 
 ### CartoCSS
 
