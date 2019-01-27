@@ -15,6 +15,11 @@ is available at [https://tiles.phyks.me/](https://tiles.phyks.me/).
 
 Getting started instructions are available in [`INSTALL.md`](INSTALL.md) file.
 
+## Contributing
+
+Some getting started information for contributing is available in
+[`CONTRIBUTING.md`](CONTRIBUTING.md) file.
+
 
 ## Licenses
 

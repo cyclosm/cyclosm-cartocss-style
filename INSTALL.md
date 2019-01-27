@@ -4,6 +4,20 @@ Getting started
 This document describes how to manually configure your system for running
 CyclOSM.
 
+## Requirements
+
+You will need, to use this style:
+
+* PostgreSQL
+* PostGIS
+* osm2pgsql
+
+On Ubuntu/Debian, these can be installed with
+
+```
+sudo apt-get install postgresql-9.6 postgis osm2pgsql
+```
+
 ## OpenStreetMap data
 
 You need OpenStreetMap data loaded into a PostGIS database. These stylesheets
