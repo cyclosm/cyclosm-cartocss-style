@@ -141,6 +141,16 @@ you can use
 }
 ```
 
+You can also generate a Mapnik XML configuration file using Kosmtik and the
+`localconfig.json` file with:
+
+```
+kosmtik export path/to/cyclosm-cartocss-style/project.mml --output path/to/cyclosm-cartocss-style/mapnik.xml
+```
+
+which you can then use in [Tirex](https://github.com/openstreetmap/tirex) or
+any other tile queue manager.
+
 ## Notes
 
 This guide is based on the

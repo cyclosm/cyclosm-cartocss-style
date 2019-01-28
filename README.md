@@ -8,8 +8,8 @@ designed with cycling in mind.
 
 ## Demonstration
 
-A demonstration of this style for Paris area (between zoom levels 12 and 17)
-is available at [https://tiles.phyks.me/](https://tiles.phyks.me/).
+A demonstration of this style for Paris area (up to zoom level 18) is
+available at [https://tiles.phyks.me/](https://tiles.phyks.me/).
 
 ## Getting started
 
