@@ -645,8 +645,19 @@ come in as well.
 /* BICYCLE ROUTES
 /* ================================================================== */
 #bicycle_routes {
-  line-width: 10;
-  line-opacity: 0.4;
+
+  [zoom=10]{ line-width:0.2; }
+  [zoom=11]{ line-width:0.2; }
+  [zoom=12]{ line-width:0.2; }
+  [zoom=13]{ line-width:1; }
+  [zoom=14]{ line-width:1.5; }
+  [zoom=15]{ line-width:2; }
+  [zoom=16]{ line-width:3; }
+  [zoom=17]{ line-width:4; }
+  [zoom>17]{ line-width:5; }
+
+  //line-width: 5;
+  line-opacity: 0.2;
 
   [type='icn'] {
     line-color: @icn_overlay;
