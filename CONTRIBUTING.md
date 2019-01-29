@@ -29,6 +29,19 @@ features to be rendered with the style) as well as an example OSM object (to
 help checking the render is correctly added).
 
 
+## Pull requests
+
+The preferred way of contributing code and styles to this CartoCSS style is by
+[forking and opening a Pull Request on
+Github](https://help.github.com/articles/fork-a-repo/). If this is difficult
+to do for you for any reasons, please feel free to get in touch otherwise
+(email for instance) to contribute changes.
+
+When opening a Pull Request, please include one or more screenshots
+illustrating the changes made, for easier and faster review. Please include
+the location where the screenshots were taken for easier reproducibility.
+
+
 ## Rendering locally / developping the style
 
 ### Kosmtik
