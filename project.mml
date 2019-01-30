@@ -538,7 +538,7 @@ Layer:
           END ASC, length(name) DESC, name
       ) AS placenames_small
   properties:
-    minzoom: 12
+    minzoom: 14
 - id: area_label
   <<: *extents
   Datasource:
