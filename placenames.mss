@@ -297,7 +297,7 @@
 }
 
 #placenames-small::suburb {
-  [place = 'suburb'][zoom >= 12][zoom < 17] {
+  [place = 'suburb'][zoom >= 14][zoom < 17] {
     text-name: "[name]";
     text-size: 11;
     text-fill: @placenames;
