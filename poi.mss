@@ -41,7 +41,7 @@
   }
 }
 
-#amenities[zoom>=15][zoom<=20] {
+#amenities[zoom>=16][zoom<=20] {
   [amenity = 'bicycle_parking'] {
     marker-line-color: @bicycle_parking_line;
     marker-fill: @bicycle_parking_fill;

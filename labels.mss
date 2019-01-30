@@ -133,7 +133,7 @@
 
 /* ---- Towns ------------------------------------------------------- */
 
-#place::town[type='town'][zoom>=9][zoom<=17] {
+#place::town[type='town'][zoom>=11][zoom<=17] {
   text-name:'[name]';
   text-face-name:@sans;
   text-placement:point;
@@ -180,7 +180,7 @@
 
 /* ---- Other small places ------------------------------------------ */
 
-#place::small[type='village'][zoom>=13],
+#place::small[type='village'][zoom>=12],
 #place::small[type='suburb'][zoom>=13],
 #place::small[type='hamlet'][zoom>=13],
 #place::small[type='neighbourhood'][zoom>=13] {

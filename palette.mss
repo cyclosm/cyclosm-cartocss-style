@@ -128,12 +128,12 @@
 @town_text:         #222;
 @town_halo:         @place_halo;
 
-@poi_text:          #888;
+@poi_text:          #666;
 
 @road_text:         #222;
 @road_halo:         #fff;
 
-@other_text:        #888;
+@other_text:        #666;
 @other_halo:        @place_halo;
 
 @locality_text:     #aaa;
@@ -156,7 +156,7 @@
 /* ================================================================== */
 /* BICYCLE ROUTES COLORS
 /* ================================================================== */
-@icn_overlay: #00ff00;
+@icn_overlay: #0b910b;
 @ncn_overlay: #ff0000;
 @rcn_overlay: #b42dff;
 @lcn_overlay: #0000ff;
