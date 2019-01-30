@@ -16,6 +16,24 @@ minzoom: 0
 maxzoom: 20
 srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
 
+# Various parts to be included later on
+_parts:
+  # Extents are used for tilemill, and don't actually make it to the generated XML
+  extents: &extents
+    extent: *world
+    srs-name: "900913"
+    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+  extents84: &extents84
+    extent: *world
+    srs-name: "WGS84"
+    srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+  osm2pgsql: &osm2pgsql
+    type: "postgis"
+    dbname: "osm"
+    key_field: ""
+    geometry_field: "way"
+    extent: "-20037508,-20037508,20037508,20037508"
+
 Stylesheet:
 - palette.mss
 - fonts.mss
@@ -23,6 +41,7 @@ Stylesheet:
 - roads.mss
 - poi.mss
 - labels.mss
+- placenames.mss
 
 Layer:
 - id: land-low
@@ -555,29 +574,146 @@ Layer:
   name: bicycle_routes
   srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
   srs-name: '900913'
-- id: place
-  Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: place
-    key_field: ''
-    project: foss4g-2011
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-    table: |-
-      (
-        SELECT way, place AS type, name, z_order, population
-        FROM planet_osm_point
-        WHERE place in ('country', 'state', 'city', 'town', 'village', 'hamlet', 'suburb', 'neighbourhood', 'locality')
-        ORDER BY population DESC NULLS LAST
-      ) AS data
-    type: postgis
-  class: ''
+- id: country-names
+  class: country
   geometry: point
-  name: place
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+          name
+        FROM planet_osm_polygon
+        WHERE boundary = 'administrative'
+          AND admin_level = '2'
+          AND name IS NOT NULL
+          AND way_area > 100*!pixel_width!::real*!pixel_height!::real
+        ORDER BY way_area DESC
+      ) AS country_names
+  properties:
+    minzoom: 2
+- id: capital-names
+  geometry: point
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          name,
+          CASE
+            WHEN (tags->'population' ~ '^[0-9]{1,8}$') THEN (tags->'population')::INTEGER ELSE 0
+          END as population,
+          round(ascii(md5(osm_id::text)) / 55) AS dir -- base direction factor on geometry to be consistent across metatiles
+        FROM planet_osm_point
+        WHERE place IN ('city', 'town', 'village', 'hamlet')
+          AND name IS NOT NULL
+          AND tags @> 'capital=>yes'
+        ORDER BY population DESC
+      ) AS capital_names
+  properties:
+    minzoom: 3
+    maxzoom: 15
+- id: state-names
+  class: state
+  geometry: point
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels,
+          name,
+          ref
+        FROM planet_osm_polygon
+        WHERE boundary = 'administrative'
+          AND admin_level = '4'
+          AND name IS NOT NULL
+          AND way_area > 100*!pixel_width!::real*!pixel_height!::real
+        ORDER BY way_area DESC
+      ) AS state_names
+  properties:
+    minzoom: 4
+- id: placenames-medium
+  geometry: point
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          name,
+          score,
+          CASE
+            WHEN (place = 'city') THEN 1
+            ELSE 2
+          END as category,
+          round(ascii(md5(osm_id::text)) / 55) AS dir -- base direction factor on geometry to be consistent across metatiles
+        FROM
+          (SELECT
+              osm_id,
+              way,
+              place,
+              name,
+              (
+                (CASE
+                  WHEN (tags->'population' ~ '^[0-9]{1,8}$') THEN (tags->'population')::INTEGER
+                  WHEN (place = 'city') THEN 100000
+                  WHEN (place = 'town') THEN 1000
+                  ELSE 1
+                END)
+                *
+                (CASE
+                  WHEN (tags @> 'capital=>4') THEN 2
+                  ELSE 1
+                END)
+              ) AS score
+            FROM planet_osm_point
+            WHERE place IN ('city', 'town')
+              AND name IS NOT NULL
+              AND NOT (tags @> 'capital=>yes')
+          ) as p
+        ORDER BY score DESC, length(name) DESC, name
+      ) AS placenames_medium
+  properties:
+    minzoom: 4
+    maxzoom: 15
+- id: placenames-small
+  geometry: point
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          place,
+          leisure,
+          name
+        FROM planet_osm_point
+        WHERE place IN ('village', 'hamlet')
+           AND name IS NOT NULL
+           AND NOT tags @> 'capital=>yes'
+           OR (place IN ('suburb', 'quarter', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
+               OR (place IN ('square')
+                   AND (leisure is NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
+           ) AND name IS NOT NULL
+        ORDER BY CASE
+            WHEN place = 'suburb' THEN 3
+            WHEN place = 'village' THEN 4
+            WHEN place = 'hamlet' THEN 5
+            WHEN place = 'quarter' THEN 6
+            WHEN place = 'neighbourhood' THEN 7
+            WHEN place = 'locality' THEN 8
+            WHEN place = 'isolated_dwelling' THEN 9
+            WHEN place = 'farm' THEN 10
+            WHEN place = 'square' THEN 11
+          END ASC, length(name) DESC, name
+      ) AS placenames_small
+  properties:
+    minzoom: 12
 - id: area_label
   Datasource:
     dbname: osm

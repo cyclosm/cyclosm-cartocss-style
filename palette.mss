@@ -143,6 +143,10 @@
 @village_text:      #555;
 @village_halo:      @place_halo;
 
+@placenames: #222;
+@placenames-light: #777777;
+@standard-halo-radius: 1;
+
 
 /* ================================================================== */
 /* AMENITIES COLORS

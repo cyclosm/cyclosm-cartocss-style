@@ -35,6 +35,6 @@ The icons in `img/amenities` are taken from the [OSM Bright GL
 style](https://github.com/openmaptiles/osm-bright-gl-style/tree/327e1b41987893b958e3aae06abc2cc7363dc5aa/icons)
 and are licensed under Creative Commons BY 4.0.
 
-The icons in `img/barriers` are taken from the
+The icons in `img/barriers` and `img/place` are taken from the
 [OpenStreetMap-carto](https://github.com/gravitystorm/openstreetmap-carto)
 style and are licensed under CC0 public domain.
