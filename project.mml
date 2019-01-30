@@ -45,37 +45,22 @@ Stylesheet:
 
 Layer:
 - id: land-low
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
     file: http://data.openstreetmapdata.com/simplified-land-polygons-complete-3857.zip
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
     type: shape
   class: shp
   geometry: polygon
-  name: land-low
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: land-high
   Datasource:
     file: http://data.openstreetmapdata.com/land-polygons-split-3857.zip
     type: shape
   class: shp
   geometry: polygon
-  name: land-high
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: landuse_gen0
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: landuse_gen0
-    key_field: ''
-    project: osm-bright-imposm
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity, tourism) AS type
@@ -83,22 +68,11 @@ Layer:
         WHERE way_area > 100000
         ORDER BY way_area DESC
       ) AS data
-    type: postgis
-  class: ''
   geometry: multipolygon
-  name: landuse_gen0
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: landuse_gen1
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: landuse_gen1
-    key_field: ''
-    project: osm-bright-imposm
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity, tourism) AS type
@@ -106,102 +80,55 @@ Layer:
         WHERE way_area > 10000
         ORDER BY way_area DESC
       ) AS data
-    type: postgis
-  class: ''
   geometry: multipolygon
-  name: landuse_gen1
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: landuse
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: landuse
-    key_field: ''
-    project: osm-bright-imposm
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity, tourism) AS type
         FROM planet_osm_polygon
         ORDER BY way_area DESC
       ) AS data
-    type: postgis
-  class: ''
   geometry: polygon
-  name: landuse
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: waterway_low
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: waterway
-    key_field: ''
-    project: foss4g-2011
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, waterway AS type
         FROM planet_osm_line
         WHERE waterway IN ('river', 'canal')
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: waterway_low
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: waterway_med
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    key_field: ''
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, waterway AS type
         FROM planet_osm_line
         WHERE waterway IN ('river', 'canal', 'stream')
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: waterway_med
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
 - id: waterway_high
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    key_field: ''
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, waterway AS type
         FROM planet_osm_line
         WHERE waterway IN ('river', 'canal', 'stream', 'ditch', 'drain')
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: waterway_high
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
 - id: water_gen0
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: water_gen0
-    key_field: ''
-    project: foss4g-2011
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, "natural" AS type, way_area AS area
@@ -210,22 +137,11 @@ Layer:
           OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream'))
           AND way_area > 10000
       ) AS data
-    type: postgis
-  class: ''
   geometry: polygon
-  name: water_gen0
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: water_gen1
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: water_gen1
-    key_field: ''
-    project: foss4g-2011
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, "natural" AS type, way_area AS area
@@ -234,22 +150,11 @@ Layer:
           OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream'))
           AND way_area > 1000
       ) AS data
-    type: postgis
-  class: ''
   geometry: polygon
-  name: water_gen1
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: water
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: water
-    key_field: ''
-    project: foss4g-2011
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, way_area AS area
@@ -257,22 +162,11 @@ Layer:
         WHERE "natural" IN ('water', 'pond')
           OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
       ) AS data
-    type: postgis
-  class: ''
   geometry: polygon
-  name: water
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: landuse_overlays
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: landuse_overlays
-    key_field: ''
-    project: osm-bright-imposm
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, way_area AS area, COALESCE(leisure) AS type
@@ -280,20 +174,11 @@ Layer:
         WHERE leisure = 'nature_reserve'
         ORDER BY way_area DESC
       ) AS data
-    type: postgis
-  class: ''
   geometry: polygon
-  name: landuse_overlays
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
 - id: admin
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: admin
-    key_field: ''
-    project: osm-bright-imposm
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, admin_level
@@ -301,18 +186,11 @@ Layer:
         WHERE boundary = 'administrative'
           AND admin_level IN ('2','3','4')
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: admin
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
 - id: buildings
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    key_field: ''
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, "building" AS type
@@ -320,43 +198,22 @@ Layer:
         WHERE building NOT IN ('', '0','false', 'no')
         ORDER BY ST_YMin(ST_Envelope(way)) DESC
       ) AS data
-    type: postgis
-  class: ''
   geometry: polygon
-  name: buildings
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
 - id: aeroway
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: aeroway
-    key_field: ''
-    project: foss4g-2011
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, aeroway AS type
         FROM planet_osm_line
         WHERE aeroway IN ('apron', 'runway', 'taxiway')
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: aeroway
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: tunnel
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: tunnel
-    key_field: ''
-    project: osm-bright-master
-    srs: 
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, COALESCE(highway, railway) AS type, 0 AS bridge, access, render, layer, 1 as tunnel,
@@ -381,42 +238,22 @@ Layer:
         ) AS tunnels
         ORDER BY layer ASC, render ASC
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: tunnel
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
 - id: turning_circle_case
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: turning_circle_case
-    key_field: ''
-    project: osm-bright-master
-    srs: 
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way
         FROM planet_osm_point
         WHERE highway = 'turning_circle'
       ) AS data
-    type: postgis
-  class: ''
   geometry: point
-  name: turning_circle_case
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
 - id: roads_high
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: roads_high
-    key_field: ''
-    project: osm-bright-master
-    srs: 
+    <<: *osm2pgsql
     table: |-
       ( 
         SELECT way, COALESCE(highway, railway) AS type, 0 AS tunnel, 0 AS bridge, access, 'fill' AS render,
@@ -442,76 +279,44 @@ Layer:
           AND (bridge IS NULL OR bridge = 'no')
         ORDER BY z_order
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: roads_high
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
 - id: roads_med
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    key_field: ''
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, highway AS type
         FROM planet_osm_roads
         WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'motorway_link', 'trunk_link')
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: roads_med
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
 - id: roads_low
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    key_field: ''
+    <<: *osm2pgsql
     table: |-
       (
           SELECT way, highway AS type, bridge, tunnel
           FROM planet_osm_roads
           WHERE highway IN ('motorway', 'trunk')
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: roads_low
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: turning_circle_fill
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    key_field: ''
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way
         FROM planet_osm_point
         WHERE highway = 'turning_circle'
       ) AS data
-    type: postgis
-  class: ''
   geometry: point
-  name: turning_circle_fill
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
 - id: bridge
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: bridge
-    key_field: ''
-    project: osm-bright-master
-    srs: 
+    <<: *osm2pgsql
     table: |-
       ( 
         SELECT way, COALESCE(highway, railway) AS type, 1 AS bridge, access, render, layer, 0 as tunnel,
@@ -539,22 +344,11 @@ Layer:
         ) AS bridges
         ORDER BY layer ASC, render ASC
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: bridge
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: bicycle_routes
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: bicycle_routes
-    key_field: ''
-    project: osm-bright-master
-    srs: 
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, tags->'network' AS type, tags->'state' AS state,
@@ -568,12 +362,7 @@ Layer:
         WHERE route='bicycle'
         ORDER BY z_order
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: bicycle_routes
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
 - id: country-names
   class: country
   geometry: point
@@ -715,14 +504,9 @@ Layer:
   properties:
     minzoom: 12
 - id: area_label
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: landuse_label
-    key_field: ''
-    project: foss4g-2011
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         (
@@ -747,44 +531,22 @@ Layer:
           WHERE shop='bicycle' AND name IS NOT NULL AND way && !bbox! AND ST_IsValid(way)
         )
       ) AS data
-    type: postgis
-  class: ''
   geometry: point
-  name: area_label
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: motorway_label
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: motorway_label
-    key_field: ''
-    project: foss4g-2011
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, highway AS type, name, ref, oneway, NULL AS oneway_bicycle, CHAR_LENGTH(ref) AS reflen
         FROM planet_osm_line
         WHERE highway IN ('motorway', 'trunk') AND (name IS NOT NULL OR ref IS NOT NULL)
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: motorway_label
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: mainroad_label
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: mainroad_label
-    key_field: ''
-    project: foss4g-2011
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, highway AS type, name, oneway,
@@ -799,22 +561,11 @@ Layer:
         WHERE (name IS NOT NULL OR oneway IN ('yes', 'true', '1', '-1'))
           AND highway IN ('primary', 'secondary', 'tertiary')
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: mainroad_label
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: minorroad_label
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: minorroad_label
-    key_field: ''
-    project: foss4g-2011
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, highway AS type, name, oneway,
@@ -829,38 +580,22 @@ Layer:
         WHERE (name IS NOT NULL OR oneway IN ('yes', 'true', '1', '-1'))
           AND highway IN ('residential', 'unclassified', 'road', 'living_street', 'unknown')
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: minorroad_label
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: waterway_label
+  <<: *extents
   Datasource:
-    dbname: osm
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    geometry_field: way
-    id: waterway_label
-    key_field: ''
-    project: foss4g-2011
-    srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, waterway AS type, name
         FROM planet_osm_line
         WHERE waterway IN ('canal', 'river', 'stream') AND name IS NOT NULL
       ) AS data
-    type: postgis
-  class: ''
   geometry: linestring
-  name: waterway_label
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  srs-name: '900913'
-  status: 'on'
 - id: train_stations
+  <<: *extents
   Datasource:
-    type: postgis
+    <<: *osm2pgsql
     table: |-
       (
         SELECT way, railway AS type, name, z_order
@@ -868,24 +603,11 @@ Layer:
         WHERE railway = 'station'
         ORDER BY z_order NULLS LAST
       ) AS DATA
-    key_field: ''
-    geometry_field: way
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    dbname: osm
   geometry: point
-  extent:
-  - -122.85990918289764
-  - 47.38001179491598
-  - -121.86970418303555
-  - 47.842970094896586
-  class: ''
-  srs-name: '900913'
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  advanced: {}
-  name: train_stations
 - id: barriers
+  <<: *extents
   Datasource:
-    type: postgis
+    <<: *osm2pgsql
     table: |-
       (
         SELECT barrier, way, z_order
@@ -893,24 +615,11 @@ Layer:
         WHERE barrier IN ('block', 'bollard', 'cattle_grid', 'chain', 'cycle_barrier', 'gate', 'kissing_gate', 'lift_gate', 'stile', 'swing_gate', 'turnstile')
         ORDER BY z_order NULLS LAST
       ) AS data
-    key_field: ''
-    geometry_field: way
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    dbname: osm
   geometry: point
-  extent:
-  - -122.85990918289764
-  - 47.38001179491598
-  - -121.86970418303555
-  - 47.842970094896586
-  class: ''
-  srs-name: '900913'
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  advanced: {}
-  name: barriers
 - id: amenities
+  <<: *extents
   Datasource:
-    type: postgis
+    <<: *osm2pgsql
     table: |-
       (
         (
@@ -986,18 +695,4 @@ Layer:
           ORDER BY z_order NULLS LAST
         )
       ) AS DATA
-    key_field: ''
-    geometry_field: way
-    extent: "-20037508.34 -20037508.34 20037508.34 20037508.34"
-    dbname: osm
   geometry: point
-  extent:
-  - -122.85990918289764
-  - 47.38001179491598
-  - -121.86970418303555
-  - 47.842970094896586
-  class: ''
-  srs-name: '900913'
-  srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-  advanced: {}
-  name: amenities
