@@ -154,16 +154,3 @@ Map { background-color: @water; }
     [zoom>19]{ line-width: 1.5; }
   }
 }
-
-/* ================================================================== */
-/* ADMINISTRATIVE BOUNDARIES
-/* ================================================================== */
-
-
-#admin[admin_level='2'][zoom>1] {
-  line-color:@admin_2;
-  line-width:0.5;
-  [zoom=2] { line-opacity: 0.25; }
-  [zoom=3] { line-opacity: 0.3; }
-  [zoom=4] { line-opacity: 0.4; }
-}

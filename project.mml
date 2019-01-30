@@ -51,12 +51,16 @@ Layer:
     type: shape
   class: shp
   geometry: polygon
+  properties:
+    maxzoom: 9
 - id: land-high
   Datasource:
     file: http://data.openstreetmapdata.com/land-polygons-split-3857.zip
     type: shape
   class: shp
   geometry: polygon
+  properties:
+    minzoom: 10
 - id: landuse_gen0
   <<: *extents
   Datasource:
@@ -69,6 +73,9 @@ Layer:
         ORDER BY way_area DESC
       ) AS data
   geometry: multipolygon
+  properties:
+    minzoom: 4
+    maxzoom: 9
 - id: landuse_gen1
   <<: *extents
   Datasource:
@@ -81,6 +88,9 @@ Layer:
         ORDER BY way_area DESC
       ) AS data
   geometry: multipolygon
+  properties:
+    minzoom: 10
+    maxzoom: 12
 - id: landuse
   <<: *extents
   Datasource:
@@ -92,6 +102,8 @@ Layer:
         ORDER BY way_area DESC
       ) AS data
   geometry: polygon
+  properties:
+    minzoom: 13
 - id: waterway_low
   <<: *extents
   Datasource:
@@ -103,6 +115,9 @@ Layer:
         WHERE waterway IN ('river', 'canal')
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 8
+    maxzoom: 12
 - id: waterway_med
   <<: *extents
   Datasource:
@@ -114,6 +129,9 @@ Layer:
         WHERE waterway IN ('river', 'canal', 'stream')
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 13
+    maxzoom: 14
 - id: waterway_high
   <<: *extents
   Datasource:
@@ -125,6 +143,8 @@ Layer:
         WHERE waterway IN ('river', 'canal', 'stream', 'ditch', 'drain')
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 15
 - id: water_gen0
   <<: *extents
   Datasource:
@@ -138,6 +158,9 @@ Layer:
           AND way_area > 10000
       ) AS data
   geometry: polygon
+  properties:
+    minzoom: 4
+    maxzoom: 9
 - id: water_gen1
   <<: *extents
   Datasource:
@@ -151,6 +174,9 @@ Layer:
           AND way_area > 1000
       ) AS data
   geometry: polygon
+  properties:
+    minzoom: 10
+    maxzoom: 12
 - id: water
   <<: *extents
   Datasource:
@@ -163,6 +189,8 @@ Layer:
           OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
       ) AS data
   geometry: polygon
+  properties:
+    minzoom: 13
 - id: landuse_overlays
   <<: *extents
   Datasource:
@@ -175,18 +203,6 @@ Layer:
         ORDER BY way_area DESC
       ) AS data
   geometry: polygon
-- id: admin
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    table: |-
-      (
-        SELECT way, admin_level
-        FROM planet_osm_line
-        WHERE boundary = 'administrative'
-          AND admin_level IN ('2','3','4')
-      ) AS data
-  geometry: linestring
 - id: buildings
   <<: *extents
   Datasource:
@@ -199,6 +215,8 @@ Layer:
         ORDER BY ST_YMin(ST_Envelope(way)) DESC
       ) AS data
   geometry: polygon
+  properties:
+    minzoom: 12
 - id: aeroway
   <<: *extents
   Datasource:
@@ -210,6 +228,8 @@ Layer:
         WHERE aeroway IN ('apron', 'runway', 'taxiway')
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 10
 - id: tunnel
   <<: *extents
   Datasource:
@@ -239,6 +259,8 @@ Layer:
         ORDER BY layer ASC, render ASC
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 11
 - id: turning_circle_case
   <<: *extents
   Datasource:
@@ -250,6 +272,8 @@ Layer:
         WHERE highway = 'turning_circle'
       ) AS data
   geometry: point
+  properties:
+    minzoom: 14
 - id: roads_high
   <<: *extents
   Datasource:
@@ -280,6 +304,8 @@ Layer:
         ORDER BY z_order
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 11
 - id: roads_med
   <<: *extents
   Datasource:
@@ -291,6 +317,9 @@ Layer:
         WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'motorway_link', 'trunk_link')
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 9
+    maxzoom: 10
 - id: roads_low
   <<: *extents
   Datasource:
@@ -302,6 +331,9 @@ Layer:
           WHERE highway IN ('motorway', 'trunk')
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 5
+    maxzoom: 8
 - id: turning_circle_fill
   <<: *extents
   Datasource:
@@ -313,6 +345,8 @@ Layer:
         WHERE highway = 'turning_circle'
       ) AS data
   geometry: point
+  properties:
+    minzoom: 14
 - id: bridge
   <<: *extents
   Datasource:
@@ -345,6 +379,8 @@ Layer:
         ORDER BY layer ASC, render ASC
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 11
 - id: bicycle_routes
   <<: *extents
   Datasource:
@@ -532,6 +568,8 @@ Layer:
         )
       ) AS data
   geometry: point
+  properties:
+    minzoom: 10
 - id: motorway_label
   <<: *extents
   Datasource:
@@ -543,6 +581,8 @@ Layer:
         WHERE highway IN ('motorway', 'trunk') AND (name IS NOT NULL OR ref IS NOT NULL)
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 11
 - id: mainroad_label
   <<: *extents
   Datasource:
@@ -562,6 +602,8 @@ Layer:
           AND highway IN ('primary', 'secondary', 'tertiary')
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 13
 - id: minorroad_label
   <<: *extents
   Datasource:
@@ -581,6 +623,8 @@ Layer:
           AND highway IN ('residential', 'unclassified', 'road', 'living_street', 'unknown')
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 15
 - id: waterway_label
   <<: *extents
   Datasource:
@@ -592,6 +636,8 @@ Layer:
         WHERE waterway IN ('canal', 'river', 'stream') AND name IS NOT NULL
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 13
 - id: train_stations
   <<: *extents
   Datasource:
@@ -604,6 +650,8 @@ Layer:
         ORDER BY z_order NULLS LAST
       ) AS DATA
   geometry: point
+  properties:
+    minzoom: 16
 - id: barriers
   <<: *extents
   Datasource:
@@ -616,6 +664,8 @@ Layer:
         ORDER BY z_order NULLS LAST
       ) AS data
   geometry: point
+  properties:
+    minzoom: 17
 - id: amenities
   <<: *extents
   Datasource:
@@ -696,3 +746,5 @@ Layer:
         )
       ) AS DATA
   geometry: point
+  properties:
+    minzoom: 14
