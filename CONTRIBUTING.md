@@ -92,3 +92,30 @@ file at the root of this repository to use custom PostgreSQL credentials.
 The style is written in CartoCSS. You can find some documentation on CartoCSS
 [here](https://cartocss.readthedocs.io/en/latest/) or
 [here](https://tilemill-project.github.io/tilemill/docs/manual/carto/).
+
+
+## FAQ
+
+### What is the difference between `minzoom` / `maxzoom` in `project.mml` and `zoom` filter in `mss` files?
+
+Styles files handle how the map will be rendered. `[zoom > 10]` means the
+targetted item will only be drawn for zooms 11 and beyond.
+
+The `minzoom` / `maxzoom` properties in the `project.mml` file control at
+which zoom levels the targetted layer will be available.
+
+Typically, having
+
+```
+properties:
+  minzoom: 12
+```
+
+in the `project.mml` means that no data will be available for this layer for
+zooms below 12 (no matter what the styling instructions might be).
+
+In summary, to control when a given feature will be displayed on the map, you
+should edit style files. The `minzoom` / `maxzoom` properties in the
+`project.mml` file are there to avoid fetching useless data when we are sure
+it will not be displayed. Beware to update these properties to ensure data
+will be available if you edit the style.

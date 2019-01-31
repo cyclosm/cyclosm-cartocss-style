@@ -279,7 +279,7 @@ Layer:
   Datasource:
     <<: *osm2pgsql
     table: |-
-      ( 
+      (
         SELECT way, COALESCE(highway, railway) AS type, 0 AS tunnel, 0 AS bridge, access, 'fill' AS render,
         CASE
           WHEN highway IN ('motorway', 'trunk') THEN 'motorway'
@@ -352,7 +352,7 @@ Layer:
   Datasource:
     <<: *osm2pgsql
     table: |-
-      ( 
+      (
         SELECT way, COALESCE(highway, railway) AS type, 1 AS bridge, access, render, layer, 0 as tunnel,
         CASE
           WHEN highway IN ('motorway', 'trunk') THEN 'motorway'
@@ -396,6 +396,7 @@ Layer:
         ELSE z_order END AS z_order
         FROM planet_osm_line
         WHERE route='bicycle'
+          AND tags->'network' IN ('lcn', 'rcn', 'ncn', 'icn')
         ORDER BY z_order
       ) AS data
   geometry: linestring
@@ -429,13 +430,13 @@ Layer:
           way,
           name,
           CASE
-            WHEN (tags->'population' ~ '^[0-9]{1,8}$') THEN (tags->'population')::INTEGER ELSE 0
+            WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER ELSE 0
           END as population,
           round(ascii(md5(osm_id::text)) / 55) AS dir -- base direction factor on geometry to be consistent across metatiles
         FROM planet_osm_point
         WHERE place IN ('city', 'town', 'village', 'hamlet')
           AND name IS NOT NULL
-          AND tags @> 'capital=>yes'
+          AND capital='yes'
         ORDER BY population DESC
       ) AS capital_names
   properties:
@@ -485,21 +486,21 @@ Layer:
               name,
               (
                 (CASE
-                  WHEN (tags->'population' ~ '^[0-9]{1,8}$') THEN (tags->'population')::INTEGER
+                  WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER
                   WHEN (place = 'city') THEN 100000
                   WHEN (place = 'town') THEN 1000
                   ELSE 1
                 END)
                 *
                 (CASE
-                  WHEN (tags @> 'capital=>4') THEN 2
+                  WHEN (capital='4') THEN 2
                   ELSE 1
                 END)
               ) AS score
             FROM planet_osm_point
             WHERE place IN ('city', 'town')
               AND name IS NOT NULL
-              AND NOT (tags @> 'capital=>yes')
+              AND NOT (capital IS NOT NULL AND capital='yes')
           ) as p
         ORDER BY score DESC, length(name) DESC, name
       ) AS placenames_medium
@@ -520,7 +521,7 @@ Layer:
         FROM planet_osm_point
         WHERE place IN ('village', 'hamlet')
            AND name IS NOT NULL
-           AND NOT tags @> 'capital=>yes'
+           AND NOT (capital IS NOT NULL AND capital='yes')
            OR (place IN ('suburb', 'quarter', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
                OR (place IN ('square')
                    AND (leisure is NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
@@ -548,7 +549,7 @@ Layer:
         (
           SELECT COALESCE(landuse, leisure, "natural", highway, amenity, tourism) AS type, name, way_area AS area, ST_PointOnSurface(way) AS way
           FROM planet_osm_polygon
-          WHERE COALESCE(landuse, leisure, "natural", highway, amenity, tourism) IS NOT NULL AND name IS NOT NULL
+          WHERE COALESCE(landuse, leisure, "natural", highway, amenity, tourism) IS NOT NULL AND landuse != 'residential' AND name IS NOT NULL
             AND way && !bbox!
             AND ST_IsValid(way)
         )
@@ -700,7 +701,7 @@ Layer:
             AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated')
           ORDER BY z_order NULLS LAST
         )
-        UNION ALL 
+        UNION ALL
         (
           SELECT amenity, ST_Centroid(way), z_order
           FROM planet_osm_line
@@ -709,7 +710,7 @@ Layer:
         )
         UNION ALL
         (
-          SELECT amenity, ST_Centroid(way), z_order 
+          SELECT amenity, ST_Centroid(way), z_order
           FROM planet_osm_line
           WHERE amenity='bicycle_parking'
           ORDER BY z_order NULLS LAST
