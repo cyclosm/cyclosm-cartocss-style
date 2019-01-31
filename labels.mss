@@ -201,17 +201,17 @@
 #motorway_label[zoom>=15],
 #mainroad_label[zoom>=15],
 #minorroad_label[zoom>=15] {
-  [oneway = 'yes'],
-  [oneway='-1'] {
+  [oneway = 'yes'][oneway_bicycle = 'yes'],
+  [oneway='-1'][oneway_bicycle = 'yes'] {
      marker-placement:line;
      marker-max-error: 0.5;
      marker-spacing: 100;
-     marker-fill: #202020;
+     marker-fill: #252525;
      marker-file: url(img/icon/oneway.svg);
      [oneway='-1'] { marker-file: url(img/icon/oneway-reverse.svg); }
      [zoom=15] {
         marker-transform: "scale(0.75)";
-        bike/marker-spacing: 70;
+        bike/marker-spacing: 80;
      }
   }
   [oneway = 'yes'][oneway_bicycle = 'no'],
@@ -219,12 +219,12 @@
      bike/marker-placement:line;
      bike/marker-max-error: 0.5;
      bike/marker-spacing: 100;
-     bike/marker-fill: #0000ff;
-     bike/marker-file: url(img/icon/oneway-reverse.svg);
-     [oneway='-1'] { bike/marker-file: url(img/icon/oneway.svg); }
+     /*bike/marker-fill: #0000ff;*/
+     bike/marker-file: url(img/icon/oneway-cycle.svg);
+     [oneway='-1'] { bike/marker-file: url(img/icon/oneway-cycle-reverse.svg); }
      [zoom=15] {
         bike/marker-transform: "scale(0.75)";
-        bike/marker-spacing: 70;
+        bike/marker-spacing: 80;
      }
   }
 }
