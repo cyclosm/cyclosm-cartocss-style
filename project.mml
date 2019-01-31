@@ -279,7 +279,7 @@ Layer:
   Datasource:
     <<: *osm2pgsql
     table: |-
-      ( 
+      (
         SELECT way, COALESCE(highway, railway) AS type, 0 AS tunnel, 0 AS bridge, access, 'fill' AS render,
         CASE
           WHEN highway IN ('motorway', 'trunk') THEN 'motorway'
@@ -352,7 +352,7 @@ Layer:
   Datasource:
     <<: *osm2pgsql
     table: |-
-      ( 
+      (
         SELECT way, COALESCE(highway, railway) AS type, 1 AS bridge, access, render, layer, 0 as tunnel,
         CASE
           WHEN highway IN ('motorway', 'trunk') THEN 'motorway'
@@ -396,6 +396,7 @@ Layer:
         ELSE z_order END AS z_order
         FROM planet_osm_line
         WHERE route='bicycle'
+          AND tags->'network' IN ('lcn', 'rcn', 'ncn', 'icn')
         ORDER BY z_order
       ) AS data
   geometry: linestring
@@ -700,7 +701,7 @@ Layer:
             AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated')
           ORDER BY z_order NULLS LAST
         )
-        UNION ALL 
+        UNION ALL
         (
           SELECT amenity, ST_Centroid(way), z_order
           FROM planet_osm_line
@@ -709,7 +710,7 @@ Layer:
         )
         UNION ALL
         (
-          SELECT amenity, ST_Centroid(way), z_order 
+          SELECT amenity, ST_Centroid(way), z_order
           FROM planet_osm_line
           WHERE amenity='bicycle_parking'
           ORDER BY z_order NULLS LAST
