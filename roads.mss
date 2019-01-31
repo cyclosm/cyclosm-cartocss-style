@@ -49,7 +49,7 @@ as well. */
   }
 }
 
-/* At higher levels the roads become more complex. We're now showing 
+/* At higher levels the roads become more complex. We're now showing
 more than just automobile routes - railways, footways, and cycleways
 come in as well.
 
@@ -118,7 +118,7 @@ come in as well.
     line-color: fadeout(@land,50%);
     [bridge=1] { line-color: @secondary_case * 0.8; }
   }
-  [tunnel=1] { line-dasharray: 3,3; }        
+  [tunnel=1] { line-dasharray: 3,3; }
   /* -- widths -- */
   [zoom=11] {
     [stylegroup='motorway'] { line-width: @rdz11_maj + 2; }
@@ -442,7 +442,7 @@ come in as well.
     line-color: @rail_line;
     line-dasharray: 1,1;
     [type='subway'] { line-opacity: 0.67; }
-    [zoom>15] { line-dasharray: 1,2; } 
+    [zoom>15] { line-dasharray: 1,2; }
   }
   [stylegroup='cycle'] {
     line-color: @cycle_fill;
@@ -644,7 +644,9 @@ come in as well.
 /* ================================================================== */
 /* BICYCLE ROUTES
 /* ================================================================== */
-#bicycle_routes {
+#bicycle_routes[zoom >= 2] {
+  [type='ncn'][zoom < 4],
+  [type='rcn'][zoom < 6],
   [type='lcn'][zoom < 8] {
     line-width: 0;
   }
