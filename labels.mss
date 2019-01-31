@@ -183,7 +183,7 @@
   text-size:11;
 }
 
-#minorroad_label[zoom>14] {
+#minorroad_label[zoom>=16] {
   text-name:'[name]';
   text-face-name:@sans;
   text-placement:line;
@@ -204,27 +204,27 @@
   [oneway = 'yes'],
   [oneway='-1'] {
      marker-placement:line;
-     marker-max-error: 10;
+     marker-max-error: 0.5;
      marker-spacing: 100;
      marker-fill: #202020;
      marker-file: url(img/icon/oneway.svg);
      [oneway='-1'] { marker-file: url(img/icon/oneway-reverse.svg); }
      [zoom=15] {
         marker-transform: "scale(0.75)";
-        bike/marker-spacing: 50;
+        bike/marker-spacing: 70;
      }
   }
   [oneway = 'yes'][oneway_bicycle = 'no'],
   [oneway='-1'][oneway_bicycle = 'no'] {
      bike/marker-placement:line;
-     bike/marker-max-error: 10;
+     bike/marker-max-error: 0.5;
      bike/marker-spacing: 100;
      bike/marker-fill: #0000ff;
      bike/marker-file: url(img/icon/oneway-reverse.svg);
      [oneway='-1'] { bike/marker-file: url(img/icon/oneway.svg); }
      [zoom=15] {
         bike/marker-transform: "scale(0.75)";
-        bike/marker-spacing: 50;
+        bike/marker-spacing: 70;
      }
   }
 }
