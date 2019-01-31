@@ -548,7 +548,7 @@ Layer:
         (
           SELECT COALESCE(landuse, leisure, "natural", highway, amenity, tourism) AS type, name, way_area AS area, ST_PointOnSurface(way) AS way
           FROM planet_osm_polygon
-          WHERE COALESCE(landuse, leisure, "natural", highway, amenity, tourism) IS NOT NULL AND name IS NOT NULL
+          WHERE COALESCE(landuse, leisure, "natural", highway, amenity, tourism) IS NOT NULL AND landuse != 'residential' AND name IS NOT NULL
             AND way && !bbox!
             AND ST_IsValid(way)
         )
