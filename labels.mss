@@ -198,29 +198,34 @@
 /* ================================================================== */
 /* ONE-WAY ARROWS
 /* ================================================================== */
-#motorway_label[zoom>=16],
-#mainroad_label[zoom>=16],
-#minorroad_label[zoom>=16] {
+#motorway_label[zoom>=15],
+#mainroad_label[zoom>=15],
+#minorroad_label[zoom>=15] {
   [oneway = 'yes'],
   [oneway='-1'] {
      marker-placement:line;
-     marker-max-error: 0.5;
-     marker-spacing: 200;
+     marker-max-error: 10;
+     marker-spacing: 100;
+     marker-fill: #202020;
      marker-file: url(img/icon/oneway.svg);
      [oneway='-1'] { marker-file: url(img/icon/oneway-reverse.svg); }
-     [zoom=16] { marker-transform: "scale(0.5)"; }
-     [zoom=17] { marker-transform: "scale(0.75)"; }
+     [zoom=15] {
+        marker-transform: "scale(0.75)";
+        bike/marker-spacing: 50;
+     }
   }
   [oneway = 'yes'][oneway_bicycle = 'no'],
   [oneway='-1'][oneway_bicycle = 'no'] {
      bike/marker-placement:line;
-     bike/marker-max-error: 0.5;
-     bike/marker-spacing: 200;
+     bike/marker-max-error: 10;
+     bike/marker-spacing: 100;
      bike/marker-fill: #0000ff;
      bike/marker-file: url(img/icon/oneway-reverse.svg);
      [oneway='-1'] { bike/marker-file: url(img/icon/oneway.svg); }
-     [zoom=16] { bike/marker-transform: "scale(0.5)"; }
-     [zoom=17] { bike/marker-transform: "scale(0.75)"; }
+     [zoom=15] {
+        bike/marker-transform: "scale(0.75)";
+        bike/marker-spacing: 50;
+     }
   }
 }
 
