@@ -211,7 +211,7 @@
      [oneway='-1'] { marker-file: url(symbols/oneway-reverse.svg); }
      [zoom=15] {
         marker-transform: "scale(0.75)";
-        bike/marker-spacing: 80;
+        marker-spacing: 80;
      }
   }
   [oneway = 'yes'][oneway_bicycle = 'no'],
@@ -219,7 +219,6 @@
      bike/marker-placement:line;
      bike/marker-max-error: 0.5;
      bike/marker-spacing: 100;
-     /*bike/marker-fill: #0000ff;*/
      bike/marker-file: url(symbols/oneway-cycle.svg);
      [oneway='-1'] { bike/marker-file: url(symbols/oneway-cycle-reverse.svg); }
      [zoom=15] {
