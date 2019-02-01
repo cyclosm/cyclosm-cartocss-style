@@ -96,6 +96,9 @@
 @cycle_fill:        #0000ff;
 @cycle_case:        @land;
 
+@steps_fill:        #9a2a00;
+@steps_case:        @standard_case;
+
 @rail_line:         #999;
 @rail_fill:         #fff;
 @rail_case:         @land;
