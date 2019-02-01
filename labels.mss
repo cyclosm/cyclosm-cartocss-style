@@ -1,6 +1,6 @@
 /* LABELS.MSS CONTENTS:
  * - area labels
- * - waterway labels 
+ * - waterway labels
  */
 
 /* Font sets are defined in palette.mss */
@@ -91,7 +91,7 @@
     text-wrap-width: 180;
   }
 }
-   
+
 
 /* ================================================================== */
 /* WATERWAY LABELS
@@ -128,26 +128,26 @@
   shield-size: 9;
   shield-face-name: @sans_bold;
   shield-fill: #fff;
-  shield-file: url(img/shield-motorway-1.png);
+  shield-file: url(symbols/shields/shield-motorway-1.png);
   [type='motorway'] {
-    [reflen=1] { shield-file: url(img/shield-motorway-1.png); }
-    [reflen=2] { shield-file: url(img/shield-motorway-2.png); }
-    [reflen=3] { shield-file: url(img/shield-motorway-3.png); }
-    [reflen=4] { shield-file: url(img/shield-motorway-4.png); }
-    [reflen=5] { shield-file: url(img/shield-motorway-5.png); }
-    [reflen=6] { shield-file: url(img/shield-motorway-6.png); }
-    [reflen=7] { shield-file: url(img/shield-motorway-7.png); }
-    [reflen=8] { shield-file: url(img/shield-motorway-8.png); }
+    [reflen=1] { shield-file: url(symbols/shields/shield-motorway-1.png); }
+    [reflen=2] { shield-file: url(symbols/shields/shield-motorway-2.png); }
+    [reflen=3] { shield-file: url(symbols/shields/shield-motorway-3.png); }
+    [reflen=4] { shield-file: url(symbols/shields/shield-motorway-4.png); }
+    [reflen=5] { shield-file: url(symbols/shields/shield-motorway-5.png); }
+    [reflen=6] { shield-file: url(symbols/shields/shield-motorway-6.png); }
+    [reflen=7] { shield-file: url(symbols/shields/shield-motorway-7.png); }
+    [reflen=8] { shield-file: url(symbols/shields/shield-motorway-8.png); }
   }
   [type='trunk'] {
-    [reflen=1] { shield-file: url(img/shield-trunk-1.png); }
-    [reflen=2] { shield-file: url(img/shield-trunk-2.png); }
-    [reflen=3] { shield-file: url(img/shield-trunk-3.png); }
-    [reflen=4] { shield-file: url(img/shield-trunk-4.png); }
-    [reflen=5] { shield-file: url(img/shield-trunk-5.png); }
-    [reflen=6] { shield-file: url(img/shield-trunk-6.png); }
-    [reflen=7] { shield-file: url(img/shield-trunk-7.png); }
-    [reflen=8] { shield-file: url(img/shield-trunk-8.png); }
+    [reflen=1] { shield-file: url(symbols/shields/shield-trunk-1.png); }
+    [reflen=2] { shield-file: url(symbols/shields/shield-trunk-2.png); }
+    [reflen=3] { shield-file: url(symbols/shields/shield-trunk-3.png); }
+    [reflen=4] { shield-file: url(symbols/shields/shield-trunk-4.png); }
+    [reflen=5] { shield-file: url(symbols/shields/shield-trunk-5.png); }
+    [reflen=6] { shield-file: url(symbols/shields/shield-trunk-6.png); }
+    [reflen=7] { shield-file: url(symbols/shields/shield-trunk-7.png); }
+    [reflen=8] { shield-file: url(symbols/shields/shield-trunk-8.png); }
   }
   [zoom=11] { shield-min-distance: 60; } //50
   [zoom=12] { shield-min-distance: 80; } //60
@@ -207,8 +207,8 @@
      marker-max-error: 0.5;
      marker-spacing: 100;
      marker-fill: #252525;
-     marker-file: url(img/icon/oneway.svg);
-     [oneway='-1'] { marker-file: url(img/icon/oneway-reverse.svg); }
+     marker-file: url(symbols/oneway.svg);
+     [oneway='-1'] { marker-file: url(symbols/oneway-reverse.svg); }
      [zoom=15] {
         marker-transform: "scale(0.75)";
         bike/marker-spacing: 80;
@@ -220,8 +220,8 @@
      bike/marker-max-error: 0.5;
      bike/marker-spacing: 100;
      /*bike/marker-fill: #0000ff;*/
-     bike/marker-file: url(img/icon/oneway-cycle.svg);
-     [oneway='-1'] { bike/marker-file: url(img/icon/oneway-cycle-reverse.svg); }
+     bike/marker-file: url(symbols/oneway-cycle.svg);
+     [oneway='-1'] { bike/marker-file: url(symbols/oneway-cycle-reverse.svg); }
      [zoom=15] {
         bike/marker-transform: "scale(0.75)";
         bike/marker-spacing: 80;
@@ -235,8 +235,8 @@
 /* ================================================================== */
 
 #train_stations[zoom>15]{
-  point-file:url('img/icon/rail-12.png');
-  [zoom>=17] { point-file:url('img/icon/rail-18.png'); }
+  point-file:url('symbols/rail-12.png');
+  [zoom>=17] { point-file:url('symbols/rail-18.png'); }
 }
 
 /* ****************************************************************** */

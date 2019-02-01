@@ -31,10 +31,10 @@ The colors used in the `palette.mss` file are based on the
 [Hydda](https://github.com/karlwettin/tilemill-style-hydda/tree/bb27f0a9cad1920e19ae8febd39f6f9328369e6f)
 style, licensed under Apache License 2.0.
 
-The icons in `img/amenities` are taken from the [OSM Bright GL
+The icons in `symbols/osm-bright-gl-style` are taken from the [OSM Bright GL
 style](https://github.com/openmaptiles/osm-bright-gl-style/tree/327e1b41987893b958e3aae06abc2cc7363dc5aa/icons)
 and are licensed under Creative Commons BY 4.0.
 
-The icons in `img/barriers` and `img/place` are taken from the
+The icons in `symbols/openstreetmap-carto` are taken from the
 [OpenStreetMap-carto](https://github.com/gravitystorm/openstreetmap-carto)
 style and are licensed under CC0 public domain.

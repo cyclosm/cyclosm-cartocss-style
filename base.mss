@@ -53,11 +53,11 @@
   [zoom=11] { line-width: 1.5; }
   [zoom>=12] { line-width: 2.0; }
 }
- 
+
 #landuse_overlays[type='wetland'][zoom>11] {
-  [zoom>11][zoom<=14] { polygon-pattern-file:url(img/marsh-16.png); }
-  [zoom>14] { polygon-pattern-file:url(img/marsh-32.png);}
-  }
+  [zoom>11][zoom<=14] { polygon-pattern-file:url(symbols/landuse/marsh-16.png); }
+  [zoom>14] { polygon-pattern-file:url(symbols/landuse/marsh-32.png);}
+}
 
 /* ---- BUILDINGS ---- */
 #buildings[zoom>=12][zoom<=16] {
@@ -123,7 +123,7 @@ Map { background-color: @water; }
     [zoom=14]{ line-width: 0.4; }
   }
 }
-  
+
 #waterway_high[zoom>=15] {
   line-color: @water;
   [type='river'],

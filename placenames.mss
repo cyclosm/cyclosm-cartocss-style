@@ -69,7 +69,7 @@
 #capital-names {
   [zoom >= 4][zoom < 8][population > 600000],
   [zoom >= 5][zoom < 8] {
-    shield-file: url('img/place/place-capital-6.svg');
+    shield-file: url('symbols/openstreetmap-carto/place/place-capital-6.svg');
     shield-text-dx: 6;
     shield-text-dy: 6;
     shield-name: '[name]';
@@ -99,7 +99,7 @@
       shield-margin: 8.4; // 0.7 em
     }
     [zoom >= 7] {
-      shield-file: url('img/place/place-capital-8.svg');
+      shield-file: url('symbols/openstreetmap-carto/place/place-capital-8.svg');
       shield-text-dx: 7;
       shield-text-dy: 7;
     }
@@ -134,7 +134,7 @@
   [category = 1][zoom < 14] {
     [zoom >= 4][zoom < 5][score >= 3000000],
     [zoom >= 5][zoom < 8][score >= 400000] {
-      shield-file: url('img/place/place-4.svg');
+      shield-file: url('symbols/openstreetmap-carto/place/place-4.svg');
       shield-text-dx: 4;
       shield-text-dy: 4;
       shield-name: '[name]';
@@ -163,12 +163,12 @@
         shield-line-spacing: -0.6; // -0.05 em
         shield-margin: 8.4; // 0.7 em
 
-        shield-file: url('img/place/place-6.svg');
+        shield-file: url('symbols/openstreetmap-carto/place/place-6.svg');
         shield-text-dx: 5;
         shield-text-dy: 5;
       }
       [zoom >= 7] {
-        shield-file: url('img/place/place-6-z7.svg');
+        shield-file: url('symbols/openstreetmap-carto/place/place-6-z7.svg');
       }
     }
     [zoom >= 8][score >= 400000] {
@@ -202,7 +202,7 @@
   [category = 1][score < 400000][zoom < 15] {
     [zoom >= 6][zoom < 8][score >= 70000],
     [zoom >= 7][zoom < 8] {
-      shield-file: url('img/place/place-4.svg');
+      shield-file: url('symbols/openstreetmap-carto/place/place-4.svg');
       shield-text-dx: 4;
       shield-text-dy: 4;
       shield-name: "[name]";
@@ -221,7 +221,7 @@
       }
       shield-unlock-image: true;
       [zoom >= 7] {
-        shield-file: url('img/place/place-4-z7.svg');
+        shield-file: url('symbols/openstreetmap-carto/place/place-4-z7.svg');
       }
     }
     [zoom >= 8] {
