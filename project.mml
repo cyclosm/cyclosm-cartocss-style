@@ -417,7 +417,7 @@ Layer:
           AND name IS NOT NULL
           AND way_area > 100*!pixel_width!::real*!pixel_height!::real
         ORDER BY way_area DESC
-      ) AS country_names
+      ) AS data
   properties:
     minzoom: 2
 - id: capital-names
@@ -438,7 +438,7 @@ Layer:
           AND name IS NOT NULL
           AND capital='yes'
         ORDER BY population DESC
-      ) AS capital_names
+      ) AS data
   properties:
     minzoom: 3
     maxzoom: 15
@@ -460,7 +460,7 @@ Layer:
           AND name IS NOT NULL
           AND way_area > 100*!pixel_width!::real*!pixel_height!::real
         ORDER BY way_area DESC
-      ) AS state_names
+      ) AS data
   properties:
     minzoom: 4
 - id: placenames-medium
@@ -503,7 +503,7 @@ Layer:
               AND NOT (capital IS NOT NULL AND capital='yes')
           ) as p
         ORDER BY score DESC, length(name) DESC, name
-      ) AS placenames_medium
+      ) AS data
   properties:
     minzoom: 4
     maxzoom: 15
@@ -537,7 +537,7 @@ Layer:
             WHEN place = 'farm' THEN 10
             WHEN place = 'square' THEN 11
           END ASC, length(name) DESC, name
-      ) AS placenames_small
+      ) AS data
   properties:
     minzoom: 12
 - id: area_label
@@ -649,7 +649,7 @@ Layer:
         FROM planet_osm_point
         WHERE railway = 'station'
         ORDER BY z_order NULLS LAST
-      ) AS DATA
+      ) AS data
   geometry: point
   properties:
     minzoom: 16
@@ -745,7 +745,7 @@ Layer:
             AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated')
           ORDER BY z_order NULLS LAST
         )
-      ) AS DATA
+      ) AS data
   geometry: point
   properties:
     minzoom: 14
