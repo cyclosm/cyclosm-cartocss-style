@@ -559,27 +559,11 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        (
-          SELECT COALESCE(landuse, leisure, "natural", highway, amenity, tourism) AS type, name, way_area AS area, ST_PointOnSurface(way) AS way
-          FROM planet_osm_polygon
-          WHERE COALESCE(landuse, leisure, "natural", highway, amenity, tourism) IS NOT NULL AND landuse != 'residential' AND name IS NOT NULL
-            AND way && !bbox!
-            AND ST_IsValid(way)
-        )
-        UNION ALL
-        (
-          SELECT amenity AS type, name, 0 as area, ST_PointOnSurface(way) AS way
-          FROM planet_osm_point
-          WHERE amenity IN ('bicycle_rental', 'cafe', 'hospital', 'post_office', 'pub') AND name IS NOT NULL
-            AND way && !bbox!
-            AND ST_IsValid(way)
-        )
-        UNION ALL
-        (
-          SELECT 'bicycle_shop' AS type, name, 0 as area, ST_PointOnSurface(way) AS way
-          FROM planet_osm_point
-          WHERE shop='bicycle' AND name IS NOT NULL AND way && !bbox! AND ST_IsValid(way)
-        )
+        SELECT COALESCE(landuse, leisure, "natural", highway, amenity, tourism) AS type, name, way_area AS area, ST_PointOnSurface(way) AS way
+        FROM planet_osm_polygon
+        WHERE COALESCE(landuse, leisure, "natural", highway, amenity, tourism) IS NOT NULL AND landuse != 'residential' AND name IS NOT NULL
+          AND way && !bbox!
+          AND ST_IsValid(way)
       ) AS data
   geometry: point
   properties:
@@ -680,49 +664,35 @@ Layer:
   geometry: point
   properties:
     minzoom: 17
-- id: naturals
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    table: |-
-      (
-        SELECT "natural", way, z_order
-        FROM planet_osm_point
-        WHERE "natural" IN ('peak')
-        ORDER BY z_order NULLS LAST
-      ) AS data
-  geometry: point
-  properties:
-    minzoom: 12
-- id: amenities
+- id: pois-points
   <<: *extents
   Datasource:
     <<: *osm2pgsql
     table: |-
       (
         (
-          SELECT amenity, way, z_order
+          SELECT amenity AS type, way, z_order
           FROM planet_osm_point
           WHERE amenity IN ('bicycle_rental', 'cafe', 'drinking_water', 'hospital', 'post_office', 'post_box', 'pub', 'shelter', 'toilets')
           ORDER BY z_order NULLS LAST
         )
         UNION ALL
         (
-          SELECT 'bicycle_shop' AS amenity, way, z_order
+          SELECT 'bicycle_shop' AS type, way, z_order
           FROM planet_osm_point
           WHERE shop='bicycle'
           ORDER BY z_order NULLS LAST
         )
         UNION ALL
         (
-          SELECT amenity, way, z_order
+          SELECT amenity AS type, way, z_order
           FROM planet_osm_point
           WHERE amenity='bicycle_parking'
           ORDER BY z_order NULLS LAST
         )
         UNION ALL
         (
-          SELECT amenity, way, z_order
+          SELECT amenity AS type, way, z_order
           FROM planet_osm_point
           WHERE amenity='motorcycle_parking'
             AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated')
@@ -730,21 +700,21 @@ Layer:
         )
         UNION ALL
         (
-          SELECT amenity, ST_Centroid(way), z_order
+          SELECT amenity AS type, ST_Centroid(way), z_order
           FROM planet_osm_line
           WHERE amenity IN ('bicycle_rental', 'cafe', 'drinking_water', 'hospital', 'post_office', 'post_box', 'pub', 'shelter', 'toilets')
           ORDER BY z_order NULLS LAST
         )
         UNION ALL
         (
-          SELECT amenity, ST_Centroid(way), z_order
+          SELECT amenity AS type, ST_Centroid(way), z_order
           FROM planet_osm_line
           WHERE amenity='bicycle_parking'
           ORDER BY z_order NULLS LAST
         )
         UNION ALL
         (
-          SELECT amenity, ST_Centroid(way), z_order
+          SELECT amenity AS type, ST_Centroid(way), z_order
           FROM planet_osm_line
           WHERE amenity='motorcycle_parking'
             AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated')
@@ -752,27 +722,63 @@ Layer:
         )
         UNION ALL
         (
-          SELECT amenity, ST_Centroid(way), z_order
+          SELECT amenity AS type, ST_Centroid(way), z_order
           FROM planet_osm_polygon
           WHERE amenity IN ('bicycle_rental', 'cafe', 'drinking_water', 'hospital', 'post_office', 'post_box', 'pub', 'shelter', 'toilets')
           ORDER BY z_order NULLS LAST
         )
         UNION ALL
         (
-          SELECT amenity, ST_Centroid(way), z_order
+          SELECT amenity AS type, ST_Centroid(way), z_order
           FROM planet_osm_polygon
           WHERE amenity='bicycle_parking'
           ORDER BY z_order NULLS LAST
         )
         UNION ALL
         (
-          SELECT amenity, ST_Centroid(way), z_order
+          SELECT amenity AS type, ST_Centroid(way), z_order
           FROM planet_osm_polygon
           WHERE amenity='motorcycle_parking'
             AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated')
+          ORDER BY z_order NULLS LAST
+        )
+        UNION ALL
+        (
+          SELECT "natural" AS type, way, z_order
+          FROM planet_osm_point
+          WHERE "natural" in ('cave_entrance', 'peak', 'saddle', 'volcano')
           ORDER BY z_order NULLS LAST
         )
       ) AS data
   geometry: point
   properties:
-    minzoom: 14
+    minzoom: 11
+- id: pois-points-text
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        (
+          SELECT amenity AS type, name, 0 as area, ST_PointOnSurface(way) AS way
+          FROM planet_osm_point
+          WHERE amenity IN ('bicycle_rental', 'cafe', 'hospital', 'post_office', 'pub') AND name IS NOT NULL
+            AND way && !bbox!
+            AND ST_IsValid(way)
+        )
+        UNION ALL
+        (
+          SELECT 'bicycle_shop' AS type, name, 0 as area, ST_PointOnSurface(way) AS way
+          FROM planet_osm_point
+          WHERE shop='bicycle' AND name IS NOT NULL AND way && !bbox! AND ST_IsValid(way)
+        )
+        UNION ALL
+        (
+          SELECT "natural" AS type, name, 0 as area, ST_PointOnSurface(way) AS way
+          FROM planet_osm_point
+          WHERE "natural" in ('cave_entrance', 'peak', 'saddle', 'volcano')
+        )
+      ) AS data
+  geometry: point
+  properties:
+    minzoom: 10
