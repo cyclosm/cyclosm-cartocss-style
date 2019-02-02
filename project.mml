@@ -680,6 +680,20 @@ Layer:
   geometry: point
   properties:
     minzoom: 17
+- id: naturals
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT "natural", way, z_order
+        FROM planet_osm_point
+        WHERE "natural" IN ('peak')
+        ORDER BY z_order NULLS LAST
+      ) AS data
+  geometry: point
+  properties:
+    minzoom: 12
 - id: amenities
   <<: *extents
   Datasource:

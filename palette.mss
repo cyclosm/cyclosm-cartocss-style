@@ -153,6 +153,8 @@
 @motorcycle_parking_line:  #fff;
 @motorcycle_parking_fill:  #ff0000;
 
+@natural_peak: #984500;
+@natural_volcano: #980000;
 
 /* ================================================================== */
 /* BICYCLE ROUTES COLORS

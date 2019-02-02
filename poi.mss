@@ -35,13 +35,13 @@
   }
 }
 
-#amenities[zoom>=14][zoom<=20] {
+#amenities[zoom>=14] {
   [amenity = 'bicycle_shop'] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_11.svg');
   }
 }
 
-#amenities[zoom>=16][zoom<=20] {
+#amenities[zoom>=16] {
   [amenity = 'bicycle_parking'] {
     marker-line-color: @bicycle_parking_line;
     marker-fill: @bicycle_parking_fill;
@@ -56,7 +56,7 @@
   }
 }
 
-#amenities[zoom>=16][zoom<=20] {
+#amenities[zoom>=16] {
   [amenity = 'bicycle_rental'] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_rental_11.svg');
   }
@@ -85,3 +85,36 @@
     marker-file: url('symbols/osm-bright-gl-style/amenities/toilets_11.svg');
   }
 }
+
+#naturals[zoom>=11] {
+  [natural = 'peak'] {
+    marker-fill: @natural_peak;
+    marker-file: url('symbols/openstreetmap-carto/natural/peak.svg');
+  }
+  [natural = 'volcano'] {
+    marker-fill: @natural_volcano;
+    marker-file: url('symbols/openstreetmap-carto/natural/peak.svg');
+  }
+  [natural = 'saddle'] {
+    marker-fill: @natural_peak;
+    marker-file: url('symbols/openstreetmap-carto/natural/saddle.svg');
+  }
+  [natural = 'cave_entrance'] {
+    marker-fill: @natural_peak;
+    marker-file: url('symbols/openstreetmap-carto/natural/cave.svg');
+  }
+}
+/*
+#naturals[zoom>=13] {
+  [natural = 'peak'] {
+    text-name: "[name]";
+
+    text-halo-radius: 1.5;
+    text-face-name:@sans;
+    text-size: 11;
+    text-wrap-width:30;
+    text-fill: #888;
+    text-halo-fill: @other_halo;
+    text-placement: interior;
+  }
+}*/
