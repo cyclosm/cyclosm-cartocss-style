@@ -39,7 +39,7 @@ Stylesheet:
 - fonts.mss
 - base.mss
 - roads.mss
-- poi.mss
+- amenities.mss
 - labels.mss
 - placenames.mss
 
@@ -664,120 +664,196 @@ Layer:
   geometry: point
   properties:
     minzoom: 17
-- id: pois-points
+- id: amenities-points
   <<: *extents
   Datasource:
     <<: *osm2pgsql
+    # Update the layer with the text below as well when editing this query.
     table: |-
       (
-        (
-          SELECT amenity AS type, way, z_order
-          FROM planet_osm_point
-          WHERE amenity IN ('bicycle_rental', 'cafe', 'drinking_water', 'hospital', 'post_office', 'post_box', 'pub', 'shelter', 'toilets')
-          ORDER BY z_order NULLS LAST
-        )
-        UNION ALL
-        (
-          SELECT 'bicycle_shop' AS type, way, z_order
-          FROM planet_osm_point
-          WHERE shop='bicycle'
-          ORDER BY z_order NULLS LAST
-        )
-        UNION ALL
-        (
-          SELECT amenity AS type, way, z_order
-          FROM planet_osm_point
-          WHERE amenity='bicycle_parking'
-          ORDER BY z_order NULLS LAST
-        )
-        UNION ALL
-        (
-          SELECT amenity AS type, way, z_order
-          FROM planet_osm_point
-          WHERE amenity='motorcycle_parking'
-            AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated')
-          ORDER BY z_order NULLS LAST
-        )
-        UNION ALL
-        (
-          SELECT amenity AS type, ST_Centroid(way), z_order
-          FROM planet_osm_line
-          WHERE amenity IN ('bicycle_rental', 'cafe', 'drinking_water', 'hospital', 'post_office', 'post_box', 'pub', 'shelter', 'toilets')
-          ORDER BY z_order NULLS LAST
-        )
-        UNION ALL
-        (
-          SELECT amenity AS type, ST_Centroid(way), z_order
-          FROM planet_osm_line
-          WHERE amenity='bicycle_parking'
-          ORDER BY z_order NULLS LAST
-        )
-        UNION ALL
-        (
-          SELECT amenity AS type, ST_Centroid(way), z_order
-          FROM planet_osm_line
-          WHERE amenity='motorcycle_parking'
-            AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated')
-          ORDER BY z_order NULLS LAST
-        )
-        UNION ALL
-        (
-          SELECT amenity AS type, ST_Centroid(way), z_order
-          FROM planet_osm_polygon
-          WHERE amenity IN ('bicycle_rental', 'cafe', 'drinking_water', 'hospital', 'post_office', 'post_box', 'pub', 'shelter', 'toilets')
-          ORDER BY z_order NULLS LAST
-        )
-        UNION ALL
-        (
-          SELECT amenity AS type, ST_Centroid(way), z_order
-          FROM planet_osm_polygon
-          WHERE amenity='bicycle_parking'
-          ORDER BY z_order NULLS LAST
-        )
-        UNION ALL
-        (
-          SELECT amenity AS type, ST_Centroid(way), z_order
-          FROM planet_osm_polygon
-          WHERE amenity='motorcycle_parking'
-            AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated')
-          ORDER BY z_order NULLS LAST
-        )
-        UNION ALL
-        (
-          SELECT "natural" AS type, way, z_order
-          FROM planet_osm_point
-          WHERE "natural" in ('cave_entrance', 'peak', 'saddle', 'volcano')
-          ORDER BY z_order NULLS LAST
-        )
+        SELECT
+          access,
+          way,
+          name,
+          COALESCE(
+            'aeroway_' || aeroway,
+            'tourism_' || tourism,
+            'amenity_' || amenity,
+            -- 'emergency_' || tags->'emergency',
+            'leisure_' || leisure,
+            'man_made_' || man_made,
+            'natural_' || "natural",
+            'waterway_' || waterway,
+            'historic_' || historic,
+            'military_'|| military,
+            'highway_'|| highway,
+            'power_' || power,
+            'tourism_' || tourism
+          ) AS feature,
+          tags->'location' AS location,
+          tags->'memorial' AS memorial,
+          tags->'castle_type' AS castle_type,
+          tags->'information' AS information,
+          tags->'artwork_type' as artwork_type,
+          tags->'icao' as icao,
+          tags->'iata' as iata,
+          tags->'generator:source' as "generator:source",
+          CASE
+            WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
+              CASE
+                WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
+                ELSE NULL
+              END
+            WHEN "waterway" IN ('waterfall') THEN
+              CASE
+                WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
+              ELSE NULL
+              END
+            ELSE NULL
+          END AS score,
+          CASE
+            WHEN "natural" IN ('peak', 'volcano', 'saddle')
+              OR tourism = 'alpine_hut' OR (tourism = 'information' AND tags->'information' = 'guidepost')
+              OR amenity = 'shelter'
+              THEN
+              CASE
+                WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
+                ELSE NULL
+              END
+            ELSE NULL
+          END AS elevation,
+          CASE
+            WHEN (man_made IN ('mast', 'tower', 'chimney', 'crane') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) OR waterway IN ('waterfall') THEN
+              CASE
+                WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
+              ELSE NULL
+            END
+            ELSE NULL
+          END AS height
+        FROM planet_osm_point
+        WHERE aeroway IN ('helipad', 'aerodrome')
+          OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
+              'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
+          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
+          OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
+          OR shop IN ('bicycle')
+          OR leisure='picnic_table'
+          OR (
+            man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
+            AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)
+          )
+          OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
+          OR waterway IN ('waterfall')
+          OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
+          OR military IN ('bunker')
+          OR tags->'emergency'='phone'
+          OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
+          OR (power = 'generator' AND tags->'generator:source'='wind')
+        ORDER BY score DESC NULLS LAST
       ) AS data
   geometry: point
   properties:
     minzoom: 11
-- id: pois-points-text
+- id: amenities-points-text
   <<: *extents
   Datasource:
     <<: *osm2pgsql
     table: |-
       (
+        SELECT
+          way,
+          feature,
+          access,
+          CONCAT(
+              name,
+              CASE WHEN name IS NOT NULL AND (elevation IS NOT NULL OR height IS NOT NULL) THEN E'\n' ELSE NULL END,
+              CASE WHEN elevation IS NOT NULL THEN CONCAT(REPLACE(ROUND(elevation)::TEXT, '-', U&'\2212'), U&'\00A0', 'm') ELSE NULL END,
+              CASE WHEN height IS NOT NULL THEN CONCAT(ROUND(height)::TEXT, U&'\00A0', 'm') ELSE NULL END
+          ) AS name,
+          score,
+          height
+        FROM
         (
-          SELECT amenity AS type, name, 0 as area, ST_PointOnSurface(way) AS way
+          SELECT
+            access,
+            way,
+            name,
+            COALESCE(
+              'aeroway_' || aeroway,
+              'tourism_' || tourism,
+              'amenity_' || amenity,
+              -- 'emergency_' || tags->'emergency',
+              'leisure_' || leisure,
+              'man_made_' || man_made,
+              'natural_' || "natural",
+              'waterway_' || waterway,
+              'historic_' || historic,
+              'military_'|| military,
+              'highway_'|| highway,
+              'power_' || power,
+              'tourism_' || tourism
+            ) AS feature,
+            tags->'location' AS location,
+            tags->'memorial' AS memorial,
+            tags->'castle_type' AS castle_type,
+            tags->'information' AS information,
+            tags->'artwork_type' as artwork_type,
+            tags->'icao' as icao,
+            tags->'iata' as iata,
+            tags->'generator:source' as "generator:source",
+            CASE
+              WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
+                CASE
+                  WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
+                  ELSE NULL
+                END
+              WHEN "waterway" IN ('waterfall') THEN
+                CASE
+                  WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
+                ELSE NULL
+                END
+              ELSE NULL
+            END AS score,
+            CASE
+              WHEN "natural" IN ('peak', 'volcano', 'saddle')
+                OR tourism = 'alpine_hut' OR (tourism = 'information' AND tags->'information' = 'guidepost')
+                OR amenity = 'shelter'
+                THEN
+                CASE
+                  WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
+                  ELSE NULL
+                END
+              ELSE NULL
+            END AS elevation,
+            CASE
+              WHEN (man_made IN ('mast', 'tower', 'chimney', 'crane') AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)) OR waterway IN ('waterfall') THEN
+                CASE
+                  WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
+                ELSE NULL
+              END
+              ELSE NULL
+            END AS height
           FROM planet_osm_point
-          WHERE amenity IN ('bicycle_rental', 'cafe', 'hospital', 'post_office', 'pub') AND name IS NOT NULL
-            AND way && !bbox!
-            AND ST_IsValid(way)
-        )
-        UNION ALL
-        (
-          SELECT 'bicycle_shop' AS type, name, 0 as area, ST_PointOnSurface(way) AS way
-          FROM planet_osm_point
-          WHERE shop='bicycle' AND name IS NOT NULL AND way && !bbox! AND ST_IsValid(way)
-        )
-        UNION ALL
-        (
-          SELECT "natural" AS type, name, 0 as area, ST_PointOnSurface(way) AS way
-          FROM planet_osm_point
-          WHERE "natural" in ('cave_entrance', 'peak', 'saddle', 'volcano')
-        )
+          WHERE aeroway IN ('helipad', 'aerodrome')
+            OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
+                'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
+            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
+            OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
+            OR shop IN ('bicycle')
+            OR leisure='picnic_table'
+            OR (
+              man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
+              AND (tags->'location' NOT IN ('roof', 'rooftop') OR (tags->'location') IS NULL)
+            )
+            OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
+            OR waterway IN ('waterfall')
+            OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
+            OR military IN ('bunker')
+            OR tags->'emergency'='phone'
+            OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
+            OR (power = 'generator' AND tags->'generator:source'='wind')
+          ORDER BY score DESC NULLS LAST
+        ) AS p
       ) AS data
   geometry: point
   properties:

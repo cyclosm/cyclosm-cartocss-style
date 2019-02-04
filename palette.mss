@@ -156,6 +156,22 @@
 @natural_peak: #984500;
 @natural_volcano: #980000;
 
+@marina-text: #576ddf;
+@transportation-icon: #0092da;
+@man-made-icon: #666666;
+@accommodation-icon: @transportation-icon;
+@gastronomy-icon: #C77400;
+@amenity-brown: #734a08;
+@memorials: @amenity-brown;
+@man-made-icon: #666666;
+@culture: @amenity-brown;
+@health-color: #BF0000;
+@religious-icon: #000000;
+@public-service: @amenity-brown;
+@leisure-green: darken(@park, 60%);
+@airtransport: #8461C4;
+@landform-color: #d08f55;
+
 /* ================================================================== */
 /* BICYCLE ROUTES COLORS
 /* ================================================================== */
