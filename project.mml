@@ -701,7 +701,7 @@ Layer:
           CASE
             WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
               CASE
-                WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
+                WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
                 ELSE NULL
               END
             WHEN "waterway" IN ('waterfall') THEN
@@ -717,7 +717,7 @@ Layer:
               OR amenity = 'shelter'
               THEN
               CASE
-                WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
+                WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
                 ELSE NULL
               END
             ELSE NULL
@@ -804,7 +804,7 @@ Layer:
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
                 CASE
-                  WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
+                  WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
                   ELSE NULL
                 END
               WHEN "waterway" IN ('waterfall') THEN
@@ -820,7 +820,7 @@ Layer:
                 OR amenity = 'shelter'
                 THEN
                 CASE
-                  WHEN tags->'ele' ~ '^-?\d{1,4}(\.\d+)?$' THEN (tags->'ele')::NUMERIC
+                  WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
                   ELSE NULL
                 END
               ELSE NULL
