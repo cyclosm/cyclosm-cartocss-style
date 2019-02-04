@@ -413,6 +413,19 @@ Layer:
         ORDER BY z_order
       ) AS data
   geometry: linestring
+- id: bicycle_routes_labels
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT way, tags->'network'AS type, ref, 1 as height, char_length(ref) AS width
+        FROM planet_osm_line
+        WHERE route='bicycle' AND ref IS NOT NULL
+      ) AS data
+  geometry: linestring
+  properties:
+    minzoom: 8
 - id: country-names
   class: country
   geometry: point

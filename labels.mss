@@ -238,4 +238,40 @@
   [zoom>=17] { point-file:url('symbols/rail-18.png'); }
 }
 
+
+/* ================================================================== */
+/* BICYCLE ROUTES
+/* ================================================================== */
+
+#bicycle_routes_labels[type='icn'][zoom >= 8][width <= 8],
+#bicycle_routes_labels[type='ncn'][zoom >= 9][width <= 8],
+#bicycle_routes_labels[type='rcn'][zoom >= 11][width <= 8],
+#bicycle_routes_labels[type='lcn'][zoom >= 12][width <= 8] {
+  shield-name: "[ref]";
+  shield-size: 10;
+  shield-line-spacing: -1.5;
+  shield-placement: line;
+  shield-spacing: 760;
+  shield-repeat-distance: 400;
+  shield-margin: 40;
+  shield-face-name: @sans;
+  shield-clip: false;
+  [type='icn'] {
+    shield-fill: #620728;
+    shield-file: url("symbols/openstreetmap-carto/shields/primary_[width]x[height].svg");
+  }
+  [type='ncn'] {
+    shield-fill: #620728;
+    shield-file: url("symbols/openstreetmap-carto/shields/primary_[width]x[height].svg");
+  }
+  [type='rcn'] {
+    shield-fill: #620728;
+    shield-file: url("symbols/openstreetmap-carto/shields/primary_[width]x[height].svg");
+  }
+  [type='lcn'] {
+    shield-fill: #620728;
+    shield-file: url("symbols/openstreetmap-carto/shields/primary_[width]x[height].svg");
+  }
+}
+
 /* ****************************************************************** */
