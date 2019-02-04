@@ -142,7 +142,13 @@
 
 @placenames: #222;
 @placenames-light: #777777;
+
+@standard-font: @sans;
 @standard-halo-radius: 1;
+@standard-halo-fill: @other_halo;
+@standard-font-size: 10;
+@standard-wrap-width: 30;
+@standard-line-spacing-size: -1.5;
 
 
 /* ================================================================== */

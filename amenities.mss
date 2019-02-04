@@ -582,38 +582,34 @@
     marker-clip: false;
   }
 
-  [feature = 'bicycle_parking'][zoom >= 16] {
+  [feature = 'amenity_bicycle_parking'][zoom >= 16] {
     marker-line-color: @bicycle_parking_line;
     marker-fill: @bicycle_parking_fill;
     marker-width: 7;
     marker-line-width: 1;
   }
 
-  [feature = 'motorcycle_parking'][zoom >= 16] {
+  [feature = 'amenity_motorcycle_parking'][zoom >= 16] {
     marker-line-color: @motorcycle_parking_line;
     marker-fill: @motorcycle_parking_fill;
     marker-width: 7;
     marker-line-width: 1;
   }
 
-  [feature = 'hospital'][zoom >= 16] {
+  [feature = 'amenity_hospital'][zoom >= 16] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/hospital_11.svg');
   }
 
-  [feature = 'drinking_water'][zoom >= 16] {
+  [feature = 'amenity_drinking_water'][zoom >= 16] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/drinking_water_11.svg');
   }
-  [feature = 'toilets'][zoom >= 16] {
+  [feature = 'amenity_toilets'][zoom >= 16] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/toilets_11.svg');
   }
 }
 
 #amenities-points-text {
   [feature = 'shop_bicycle'][zoom >= 14],
-  [feature = 'peak'][zoom >= 11],
-  [feature = 'volcano'][zoom >= 11],
-  [feature = 'saddle'][zoom >= 15],
-  [feature = 'cave_entrance'][zoom >= 15],
   [zoom >= 17] {
     text-name: "[name]";
     text-halo-radius: 1.5;
@@ -627,4 +623,55 @@
     text-dy: 12;
     text-dx: 12;
   }
+
+	[feature = 'natural_peak'][zoom >= 13],
+  [feature = 'natural_volcano'][zoom >= 13],
+  [feature = 'natural_saddle'][zoom >= 15],
+	[feature = 'tourism_viewpoint'][zoom >= 16] {
+		text-name: "[name]";
+		text-size: @standard-font-size;
+		text-wrap-width: @standard-wrap-width;
+		text-line-spacing: @standard-line-spacing-size;
+		text-fill: darken(@landform-color, 30%);
+		[feature = 'natural_volcano'] { text-fill: #d40000; }
+		text-dy: 7;
+		[feature = 'tourism_viewpoint'] { text-dy: 11; }
+		text-face-name: @standard-font;
+		text-halo-radius: @standard-halo-radius;
+		text-halo-fill: @standard-halo-fill;
+		text-placement: interior;
+	}
+
+	[feature = 'tourism_information'][zoom >= 19],
+	[feature = 'tourism_information']["information"='office'][zoom >= 17] {
+		text-name: "[name]";
+		text-size: @standard-font-size;
+		text-wrap-width: @standard-wrap-width;
+		text-line-spacing: @standard-line-spacing-size;
+		text-fill: darken(black, 30%);
+		[information = 'office'] { text-fill: @amenity-brown; }
+		text-face-name: @standard-font;
+		text-halo-radius: @standard-halo-radius;
+		text-halo-fill: @standard-halo-fill;
+		text-placement: interior;
+		text-dy: 11;
+	}
+
+	[feature = 'waterway_waterfall'] {
+    [zoom >= 13][height > 20],
+    [zoom >= 14][height > 10],
+    [zoom >= 15][name != null],
+    [zoom >= 16] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: @water * 0.6;
+      text-dy: 10;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+		}
+	}
 }
