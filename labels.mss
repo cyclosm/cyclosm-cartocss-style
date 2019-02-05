@@ -575,8 +575,8 @@
 /* BICYCLE ROUTES
 /* ================================================================== */
 
-#bicycle_routes_labels[type='icn'][zoom >= 8][width <= 8],
-#bicycle_routes_labels[type='ncn'][zoom >= 9][width <= 8],
+#bicycle_routes_labels[type='icn'][zoom >= 9][width <= 8],
+#bicycle_routes_labels[type='ncn'][zoom >= 10][width <= 8],
 #bicycle_routes_labels[type='rcn'][zoom >= 11][width <= 8],
 #bicycle_routes_labels[type='lcn'][zoom >= 12][width <= 8] {
   shield-name: "[ref]";
