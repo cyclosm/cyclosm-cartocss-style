@@ -528,7 +528,7 @@
 
   [feature = 'natural_saddle'][zoom >= 15] {
     marker-file: url('symbols/openstreetmap-carto/natural/saddle.svg');
-    marker-fill: @natural_peak;
+    marker-fill: @landform-color;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -624,40 +624,40 @@
     text-dx: 12;
   }
 
-	[feature = 'natural_peak'][zoom >= 13],
+  [feature = 'natural_peak'][zoom >= 13],
   [feature = 'natural_volcano'][zoom >= 13],
   [feature = 'natural_saddle'][zoom >= 15],
-	[feature = 'tourism_viewpoint'][zoom >= 16] {
-		text-name: "[name]";
-		text-size: @standard-font-size;
-		text-wrap-width: @standard-wrap-width;
-		text-line-spacing: @standard-line-spacing-size;
-		text-fill: darken(@landform-color, 30%);
-		[feature = 'natural_volcano'] { text-fill: #d40000; }
-		text-dy: 7;
-		[feature = 'tourism_viewpoint'] { text-dy: 11; }
-		text-face-name: @standard-font;
-		text-halo-radius: @standard-halo-radius;
-		text-halo-fill: @standard-halo-fill;
-		text-placement: interior;
-	}
+  [feature = 'tourism_viewpoint'][zoom >= 16] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: darken(@landform-color, 30%);
+    [feature = 'natural_volcano'] { text-fill: #d40000; }
+    text-dy: 7;
+    [feature = 'tourism_viewpoint'] { text-dy: 11; }
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
 
-	[feature = 'tourism_information'][zoom >= 19],
-	[feature = 'tourism_information']["information"='office'][zoom >= 17] {
-		text-name: "[name]";
-		text-size: @standard-font-size;
-		text-wrap-width: @standard-wrap-width;
-		text-line-spacing: @standard-line-spacing-size;
-		text-fill: darken(black, 30%);
-		[information = 'office'] { text-fill: @amenity-brown; }
-		text-face-name: @standard-font;
-		text-halo-radius: @standard-halo-radius;
-		text-halo-fill: @standard-halo-fill;
-		text-placement: interior;
-		text-dy: 11;
-	}
+  [feature = 'tourism_information'][zoom >= 19],
+  [feature = 'tourism_information']["information"='office'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: darken(black, 30%);
+    [information = 'office'] { text-fill: @amenity-brown; }
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+    text-dy: 11;
+  }
 
-	[feature = 'waterway_waterfall'] {
+  [feature = 'waterway_waterfall'] {
     [zoom >= 13][height > 20],
     [zoom >= 14][height > 10],
     [zoom >= 15][name != null],
@@ -672,6 +672,6 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @standard-halo-fill;
       text-placement: interior;
-		}
-	}
+    }
+  }
 }
