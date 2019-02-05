@@ -1,0 +1,91 @@
+# This is the input for scripts/generate_road_colours.py
+
+# Colours for output into the MSS file
+mss:
+  # For each class of road there are three color variables:
+  # - line: for lower zoomlevels when the road is represented by a
+  #         single solid line.
+  # - case: for higher zoomlevels, this color is for the road's
+  #         casing (outline).
+  # - fill: for higher zoomlevels, this color is for the road's
+  #         inner fill (inline).
+  motorway:
+    line: '#f6f6f6'
+    fill: '#c0ccc4'
+    case: '#f6f6f6'
+    shield-fill: '#620728'
+  trunk:
+    line: '#f6f6f6'
+    fill: '#c0ccc4'
+    case: '#f6f6f6'
+    shield-fill: '#5d1b0b'
+  primary:
+    line: '#c0ccc4'
+    fill: '#f6f6f6'
+    case: '#c0ccc4'
+    shield-fill: '#4c2e00'
+  secondary:
+    line: '#c0ccc4'
+    fill: '#f6f6f6'
+    case: '#c0ccc4'
+    shield-fill: '#323b00'
+  tertiary:
+    shield-fill: '#3b3b3b'
+  standard:
+    line: '#f6f6f6'
+    fill: '#f6f6f6'
+    case: '#f6f6f6'
+  pedestrian:
+    line: '@standard_line'
+    fill: '#ff0000'
+    case: '@land'
+  cycle:
+    line: '@standard_line'
+    fill: '#0000ff'
+    case: '@land'
+  steps:
+    fill: '#9a2a00'
+    case: '@land'
+  rail:
+    line: '#999999'
+  icn:
+    overlay: '#0b910b'
+    shield-fill: '#f6f6f6'
+  ncn:
+    overlay: '#ff0000'
+    shield-fill: '#f6f6f6'
+  rcn:
+    overlay: '#b42dff'
+    shield-fill: '#f6f6f6'
+  lcn:
+    overlay: '#0000ff'
+    shield-fill: '#f6f6f6'
+# Colours used by the road shields script
+shield:
+  motorway:
+    fill: '#e65c5cff'
+    stroke_fill: '#e65c5cff'
+  trunk:
+    fill: '#e68a5cff'
+    stroke_fill: '#e68a5cff'
+  primary:
+    fill: '#ffc859ff'
+    stroke_fill: '#ffc859ff'
+  secondary:
+    fill: '#ffe873ff'
+    stroke_fill: '#ffe873ff'
+  tertiary:
+    fill: '#f1f1f1'
+    stroke_fill: '#c6c6c6'
+  icn:
+    fill: '#0b910b'
+    stroke_fill: '#0b910b'
+  ncn:
+    fill: '#ff0000'
+    stroke_fill: '#ff0000'
+  rcn:
+    fill: '#b42dff'
+    stroke_fill: '#b42dff'
+  lcn:
+    fill: '#0000ff'
+    stroke_fill: '#0000ff'

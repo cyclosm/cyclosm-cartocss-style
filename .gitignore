@@ -1,3 +1,4 @@
 data
 localconfig.json
 mapnik.xml
+*.pyc

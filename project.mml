@@ -36,6 +36,7 @@ _parts:
 
 Stylesheet:
 - palette.mss
+- road-colors-generated.mss
 - fonts.mss
 - base.mss
 - roads.mss
@@ -581,59 +582,196 @@ Layer:
   geometry: point
   properties:
     minzoom: 10
-- id: motorway_label
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    table: |-
-      (
-        SELECT way, highway AS type, name, ref, oneway, NULL AS oneway_bicycle, CHAR_LENGTH(ref) AS reflen
-        FROM planet_osm_line
-        WHERE highway IN ('motorway', 'trunk') AND (name IS NOT NULL OR ref IS NOT NULL)
-      ) AS data
+- id: roads-text-ref-low-zoom
   geometry: linestring
-  properties:
-    minzoom: 11
-- id: mainroad_label
   <<: *extents
   Datasource:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, highway AS type, name, oneway,
+        SELECT
+          way,
+          highway,
+          height,
+          width,
+          refs
+        FROM (
+          SELECT
+            way,
+            osm_id,
+            highway,
+            array_length(refs,1) AS height,
+            (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width,
+            array_to_string(refs, E'\n') AS refs
+          FROM (
+            SELECT
+              way,
+              osm_id,
+              highway,
+              string_to_array(ref, ';') AS refs
+            FROM planet_osm_roads
+            WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary')
+              AND ref IS NOT NULL
+          ) AS p
+        ) AS q
+        WHERE height <= 4 AND width <= 11
+        ORDER BY
         CASE
-          WHEN tags->'oneway:bicycle'='no' THEN 'no'
-          WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
-            OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
-            OR tags->'cycleway:right' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
-            THEN 'no'
-          ELSE 'yes' END AS oneway_bicycle
-        FROM planet_osm_line
-        WHERE (name IS NOT NULL OR oneway IN ('yes', 'true', '1', '-1'))
-          AND highway IN ('primary', 'secondary', 'tertiary')
+          WHEN highway = 'motorway' THEN 38
+          WHEN highway = 'trunk' THEN 37
+          WHEN highway = 'primary' THEN 36
+          WHEN highway = 'secondary' THEN 35
+          WHEN highway = 'tertiary' THEN 34
+          WHEN highway = 'unclassified' THEN 33
+          WHEN highway = 'residential' THEN 32
+          WHEN highway = 'runway' THEN 6
+          WHEN highway = 'taxiway' THEN 5
+          ELSE NULL
+        END DESC NULLS LAST,
+        height DESC,
+        width DESC,
+        refs,
+        osm_id
       ) AS data
+  properties:
+    minzoom: 10
+    maxzoom: 12
+- id: roads-text-ref
   geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          highway,
+          height,
+          width,
+          refs
+        FROM (
+          SELECT
+            osm_id,
+            way,
+            highway,
+            array_length(refs,1) AS height,
+            (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width,
+            array_to_string(refs, E'\n') AS refs
+          FROM (
+            SELECT
+              osm_id,
+              way,
+              COALESCE(
+                CASE WHEN highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential', 'track') THEN highway ELSE NULL END,
+                CASE WHEN aeroway IN ('runway', 'taxiway') THEN aeroway ELSE NULL END
+              ) AS highway,
+              string_to_array(ref, ';') AS refs
+            FROM planet_osm_line
+            WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential', 'track') OR aeroway IN ('runway', 'taxiway'))
+              AND ref IS NOT NULL
+        ) AS p
+      ) AS q
+      WHERE height <= 4 AND width <= 11
+      ORDER BY
+        CASE
+          WHEN highway = 'motorway' THEN 38
+          WHEN highway = 'trunk' THEN 37
+          WHEN highway = 'primary' THEN 36
+          WHEN highway = 'secondary' THEN 35
+          WHEN highway = 'tertiary' THEN 34
+          WHEN highway = 'unclassified' THEN 33
+          WHEN highway = 'residential' THEN 32
+          WHEN highway = 'track' THEN 30
+          WHEN highway = 'runway' THEN 6
+          WHEN highway = 'taxiway' THEN 5
+          ELSE NULL
+        END DESC NULLS LAST,
+        height DESC,
+        width DESC,
+        refs,
+        osm_id
+      ) AS data
   properties:
     minzoom: 13
-- id: minorroad_label
+- id: roads-text-name
+  geometry: linestring
   <<: *extents
   Datasource:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, highway AS type, name, oneway,
-        CASE
-          WHEN tags->'oneway:bicycle'='no' THEN 'no'
-          WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
-            OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
-            OR tags->'cycleway:right' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway') THEN 'no'
+        SELECT
+          way,
+          CASE WHEN substr(highway, length(highway)-4, 5) = '_link' THEN substr(highway, 0, length(highway)-4) ELSE highway END,
+          CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
+          construction,
+          name,
+          CASE
+            WHEN oneway IN ('yes', '-1') THEN oneway
+            WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
+            ELSE NULL
+          END AS oneway,
+          CASE
+            WHEN tags->'oneway:bicycle'='no' THEN 'no'
+            WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
+              OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
+              OR tags->'cycleway:right' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
+            THEN 'no'
             ELSE 'yes'
-        END AS oneway_bicycle
-        FROM planet_osm_line
-        WHERE (name IS NOT NULL OR oneway IN ('yes', 'true', '1', '-1'))
-          AND highway IN ('residential', 'unclassified', 'road', 'living_street', 'unknown')
+          END AS oneway_bicycle,
+          horse, bicycle
+        FROM planet_osm_line l
+        JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
+          ('motorway', 380),
+          ('trunk', 370),
+          ('primary', 360),
+          ('secondary', 350),
+          ('tertiary', 340),
+          ('residential', 330),
+          ('unclassified', 330),
+          ('road', 330),
+          ('living_street', 320),
+          ('pedestrian', 310),
+          ('raceway', 300),
+          ('motorway_link', 240),
+          ('trunk_link', 230),
+          ('primary_link', 220),
+          ('secondary_link', 210),
+          ('tertiary_link', 200),
+          ('service', 150),
+          ('construction', 10)
+        ) AS ordertable (highway, prio)
+        USING (highway)
+        WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary',
+          'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction')
+          AND (name IS NOT NULL
+          OR oneway IN ('yes', '-1')
+          OR junction IN ('roundabout'))
+        ORDER BY
+          z_order DESC, -- put important roads first
+          COALESCE(layer::integer, 0), -- put top layered roads first
+          length(name) DESC, -- Try to fit big labels in first
+          name DESC, -- Force a consistent ordering between differently named streets
+          l.osm_id DESC -- Force an ordering for streets of the same name, e.g. dualized roads
       ) AS data
+  properties:
+    minzoom: 13
+- id: paths-text-name
   geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          highway,
+          construction,
+          name
+        FROM planet_osm_line
+        WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps', 'construction')
+          AND name IS NOT NULL
+      ) AS data
   properties:
     minzoom: 15
 - id: waterway_label
@@ -784,7 +922,8 @@ Layer:
               CASE WHEN height IS NOT NULL THEN CONCAT(ROUND(height)::TEXT, U&'\00A0', 'm') ELSE NULL END
           ) AS name,
           score,
-          height
+          height,
+          information
         FROM
         (
           SELECT

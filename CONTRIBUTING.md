@@ -119,3 +119,34 @@ should edit style files. The `minzoom` / `maxzoom` properties in the
 `project.mml` file are there to avoid fetching useless data when we are sure
 it will not be displayed. Beware to update these properties to ensure data
 will be available if you edit the style.
+
+### How do I edit road colors or road shields?
+
+Road colors and shields are generated from `road-colors.yml` file using the
+`scripts/generate_road_colors.py` and `scripts/generate_shields.py` scripts.
+
+To be able to use these scripts, you should install the dependencies listed in
+`requirements.txt`. This can be done with `pip install -r
+scripts/requirements.txt`, ideally in a [virtual
+environment](https://docs.python-guide.org/dev/virtualenvs/).
+
+To edit road colors, you should edit them in the `road-colors.yml` file. Then,
+you can run
+
+```
+python scripts/generate_road_colors.py | tee road-colors-generated.mss
+```
+
+to regenerate the style file.
+
+
+To edit the shields colors, you should edit them in the `road-colors.yml`
+file. Then, you can run
+
+```
+python scripts/generate_road_colors.py | tee road-colors-generated.mss
+python scripts/generate_shields.py
+```
+
+to regenerate the shields files and corresponding style sheets.
+

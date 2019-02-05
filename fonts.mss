@@ -184,3 +184,5 @@ For a considerable number of labels this style will make no difference to the re
 @sans_italic: "Noto Sans Italic";
 
 @sans_bold_italic: "Noto Sans Bold Italic";
+
+@standard-font: @sans;
