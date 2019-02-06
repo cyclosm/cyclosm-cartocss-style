@@ -20,14 +20,14 @@ mss:
     case: '#f6f6f6'
     shield-fill: '#5d1b0b'
   primary:
-    line: '#c0ccc4'
-    fill: '#f6f6f6'
-    case: '#c0ccc4'
+    line: '#fcd6a4'
+    fill: '#fcd6a4'
+    case: '#a06b00'
     shield-fill: '#4c2e00'
   secondary:
-    line: '#c0ccc4'
-    fill: '#f6f6f6'
-    case: '#c0ccc4'
+    line: '#f7fabf'
+    fill: '#f7fabf'
+    case: '#707d05'
     shield-fill: '#323b00'
   tertiary:
     shield-fill: '#3b3b3b'
@@ -89,3 +89,5 @@ shield:
   lcn:
     fill: '#0000ff'
     stroke_fill: '#0000ff'
+
+#@standard-case: #8f8f8f;
