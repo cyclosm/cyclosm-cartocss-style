@@ -287,7 +287,7 @@ come in as well.
     [bridge=1] { line-color: @secondary-case * 0.8; }
   }
   [stylegroup='pedestrian'] {
-    opacity: 0;
+    line-opacity: 0;
   }
   [tunnel=1] { line-dasharray: 3,3; }
   /* -- widths -- */
