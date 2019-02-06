@@ -109,8 +109,8 @@ come in as well.
 /* -- Zoom 13 -- */
 @rdz13_motorway: 3;
 @rdz13_mainroad: 1.5;
-@rdz13_tertiary: 1;
 @rdz13_minorroad: 0.6;
+@rdz13_tertiary: 1;
 @rdz13_service: @rdz13_minorroad / 3;
 @rdz13_pedestrian: 0.20;
 @rdz13_steps: @rdz13_pedestrian;
@@ -119,8 +119,8 @@ come in as well.
 /* Border width (one side of the road only) */
 @rdz13_motorway_outline: 1;
 @rdz13_mainroad_outline: 1;
-@rdz13_tertiary_outline: 1;
 @rdz13_minorroad_outline: 0.6;
+@rdz13_tertiary_outline: 1;
 @rdz13_service_outline: 0;
 @rdz13_pedestrian_outline: 0;
 @rdz13_steps_outline: 0;
@@ -316,8 +316,8 @@ come in as well.
   [zoom=13] {
     [stylegroup='motorway']     { line-width: @rdz13_motorway + (2 * @rdz13_motorway_outline); }
     [stylegroup='mainroad']     { line-width: @rdz13_mainroad + (2 * @rdz13_mainroad_outline); }
-    [stylegroup='minorroad'] [type='tertiary']   { line-width: @rdz13_tertiary + (2 * @rdz13_tertiary_outline); }
     [stylegroup='minorroad']    { line-width: @rdz13_minorroad + (2 * @rdz13_minorroad_outline); }
+    [stylegroup='minorroad'] [type='tertiary']   { line-width: @rdz13_tertiary + (2 * @rdz13_tertiary_outline); }
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz13_service + (2 * @rdz13_service_outline); }
     [stylegroup='pedestrian']   { line-width: @rdz13_pedestrian + (2 * @rdz13_pedestrian_outline); }
@@ -443,8 +443,8 @@ come in as well.
   [zoom=13] {
     [stylegroup='motorway']     { line-width: @rdz13_motorway + @rdz13_motorway_outline; line-offset: @rdz13_motorway_outline; }
     [stylegroup='mainroad']     { line-width: @rdz13_mainroad + @rdz13_mainroad_outline; line-offset: @rdz13_mainroad_outline; }
-    [stylegroup='minorroad'][type='tertiary']   { line-width: @rdz13_tertiary + @rdz13_tertiary_outline; line-offset: @rdz13_tertiary_outline; }
     [stylegroup='minorroad']    { line-width: @rdz13_minorroad + @rdz13_minorroad_outline; line-offset: @rdz13_minorroad_outline; }
+    [stylegroup='minorroad'][type='tertiary']   { line-width: @rdz13_tertiary + @rdz13_tertiary_outline; line-offset: @rdz13_tertiary_outline; }
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz13_service + @rdz13_service_outline; line-offset: @rdz13_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz13_pedestrian + @rdz13_pedestrian_outline; line-offset: @rdz13_pedestrian_outline; }
@@ -564,8 +564,8 @@ come in as well.
   [zoom=13] {
     [stylegroup='motorway']     { line-width: @rdz13_motorway + @rdz13_motorway_outline; line-offset: -1 * @rdz13_motorway_outline; }
     [stylegroup='mainroad']     { line-width: @rdz13_mainroad + @rdz13_mainroad_outline; line-offset: -1 * @rdz13_mainroad_outline; }
-    [stylegroup='minorroad'][type='tertiary']   { line-width: @rdz13_tertiary+ @rdz13_tertiary_outline; line-offset: -1 * @rdz13_tertiary_outline; }
     [stylegroup='minorroad']    { line-width: @rdz13_minorroad + @rdz13_minorroad_outline; line-offset: -1 * @rdz13_minorroad_outline; }
+    [stylegroup='minorroad'][type='tertiary']   { line-width: @rdz13_tertiary+ @rdz13_tertiary_outline; line-offset: -1 * @rdz13_tertiary_outline; }
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz13_service + @rdz13_service_outline; line-offset: -1 * @rdz13_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz13_pedestrian + @rdz13_pedestrian_outline; line-offset: -1 * @rdz13_pedestrian_outline; }
@@ -699,8 +699,8 @@ come in as well.
   [zoom=13] {
     [stylegroup='motorway']     { line-width: @rdz13_motorway; }
     [stylegroup='mainroad']     { line-width: @rdz13_mainroad; }
-    [stylegroup='minorroad'][type='tertiary']   { line-width: @rdz13_tertiary }
     [stylegroup='minorroad']    { line-width: @rdz13_minorroad; }
+    [stylegroup='minorroad'][type='tertiary']   { line-width: @rdz13_tertiary }
     [stylegroup='service']      { line-width: @rdz13_service; }
     [stylegroup='pedestrian']   { line-width: @rdz13_pedestrian; line-dasharray: 1,1; }
     [stylegroup='steps']        { line-width: @rdz13_steps;      line-dasharray: 0.5,0.5; }
