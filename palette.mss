@@ -150,6 +150,7 @@
 @culture: @amenity-brown;
 @health-color: #BF0000;
 @religious-icon: #000000;
+@shop-icon: #ac39ac;
 @public-service: @amenity-brown;
 @leisure-green: darken(@park, 60%);
 @airtransport: #8461C4;

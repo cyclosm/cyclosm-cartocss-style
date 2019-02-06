@@ -582,6 +582,32 @@
     marker-clip: false;
   }
 
+  [feature = 'shop_bakery'][zoom >= 18],
+  [feature = 'shop_convenience'][zoom >= 18],
+  [feature = 'shop_greengrocer'][zoom >= 18],
+  [feature = 'shop_supermarket'][zoom >= 16],
+  [feature = 'shop_pastry'][zoom >= 18],
+  {
+    [feature = 'shop_bakery'] {
+      marker-file: url('symbols/openstreetmap-carto/shop/bakery.svg');
+    }
+    [feature = 'shop_convenience'] {
+      marker-file: url('symbols/openstreetmap-carto/shop/convenience.svg');
+    }
+    [feature = 'shop_greengrocer'] {
+      marker-file: url('symbols/openstreetmap-carto/shop/greengrocer.svg');
+    }
+    [feature = 'shop_supermarket'] {
+      marker-file: url('symbols/openstreetmap-carto/shop/supermarket.svg');
+    }
+    [feature = 'shop_pastry'] {
+      marker-file: url('symbols/openstreetmap-carto/shop/confectionery.svg');
+    }
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'amenity_bicycle_parking'][zoom >= 16] {
     marker-line-color: @bicycle_parking_line;
     marker-fill: @bicycle_parking_fill;
