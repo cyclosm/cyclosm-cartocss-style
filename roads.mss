@@ -159,7 +159,7 @@ come in as well.
 @rdz15_mainroad_outline: 1;
 @rdz15_minorroad_outline: 1;
 @rdz15_service_outline: 1;
-@rdz15_pedestrian_outline: 1;
+@rdz15_pedestrian_outline: 0;
 @rdz15_steps_outline: 1;
 @rdz15_cycle_outline: 0;
 @rdz15_railway_outline: 1;
@@ -169,7 +169,7 @@ come in as well.
 @rdz16_mainroad: 8;
 @rdz16_minorroad: 4;
 @rdz16_service: @rdz16_minorroad / 3;
-@rdz16_pedestrian: 1;
+@rdz16_pedestrian: 0.75;
 @rdz16_steps: @rdz16_pedestrian;
 @rdz16_cycle: 2;
 @rdz16_railway: 2;
@@ -178,7 +178,7 @@ come in as well.
 @rdz16_mainroad_outline: 1.25;
 @rdz16_minorroad_outline: 1;
 @rdz16_service_outline: 1;
-@rdz16_pedestrian_outline: 1;
+@rdz16_pedestrian_outline: 0;
 @rdz16_steps_outline: 1;
 @rdz16_cycle_outline: 0;
 @rdz16_railway_outline: 1;
@@ -188,7 +188,7 @@ come in as well.
 @rdz17_mainroad: 15;
 @rdz17_minorroad: 10;
 @rdz17_service: @rdz17_minorroad / 3;
-@rdz17_pedestrian: 3;
+@rdz17_pedestrian: 1;
 @rdz17_steps: @rdz17_pedestrian;
 @rdz17_cycle: 3;
 @rdz17_railway: 3;
@@ -197,7 +197,7 @@ come in as well.
 @rdz17_mainroad_outline: 1.25;
 @rdz17_minorroad_outline: 1;
 @rdz17_service_outline: 1;
-@rdz17_pedestrian_outline: 1;
+@rdz17_pedestrian_outline: 0;
 @rdz17_steps_outline: 1;
 @rdz17_cycle_outline: 0;
 @rdz17_railway_outline: 2;
@@ -207,8 +207,8 @@ come in as well.
 @rdz18_mainroad: 20;
 @rdz18_minorroad: 14;
 @rdz18_service: @rdz18_minorroad / 2;
-@rdz18_pedestrian: 3;
-@rdz18_steps: @rdz18_pedestrian;
+@rdz18_pedestrian: 1.5;
+@rdz18_steps: 2;
 @rdz18_cycle: 4;
 @rdz18_railway: 4;
 /* Border width (one side of the road only) */
@@ -216,7 +216,7 @@ come in as well.
 @rdz18_mainroad_outline: 2;
 @rdz18_minorroad_outline: 1.75;
 @rdz18_service_outline: 1.75;
-@rdz18_pedestrian_outline: 1;
+@rdz18_pedestrian_outline: 0;
 @rdz18_steps_outline: 1;
 @rdz18_cycle_outline: 0;
 @rdz18_railway_outline: 3;
@@ -283,6 +283,9 @@ come in as well.
   [stylegroup='railway'] {
     line-color: fadeout(@land,50%);
     [bridge=1] { line-color: @secondary-case * 0.8; }
+  }
+  [stylegroup='pedestrian'] {
+    opacity: 0;
   }
   [tunnel=1] { line-dasharray: 3,3; }
   /* -- widths -- */
