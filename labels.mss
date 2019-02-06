@@ -48,8 +48,6 @@
       text-dy: 12;
       text-dx: 12;
     }
-    [type='college'][zoom>=10],
-    [type='school'][zoom>=10],
     [type='university'][zoom>=10] {
       text-fill: @school * 0.6;
       text-halo-fill: lighten(@school, 10%);
