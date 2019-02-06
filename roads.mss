@@ -879,16 +879,19 @@ come in as well.
     line-width: 0;
   }
 
-  line-opacity: 0.2;
+  line-opacity: 0.4;
   line-width: 1;
 
+  [zoom <= 12] { line-opacity: 0.6; }
+
+  [zoom=9]   { line-width: 2; }
   [zoom>=10] { line-width: 3; }
-  [zoom=14] { line-width: 2; }
-  [zoom=15] { line-width: 2; }
-  [zoom=16] { line-width: 3; }
-  [zoom=17] { line-width: 4; }
-  [zoom>17] { line-width: 5; }
-  [zoom <= 12] { line-opacity: 1.0; }
+  [zoom=13]  { line-width: 4; }
+  [zoom=14]  { line-width: 5; }
+  [zoom=15]  { line-width: 6; }
+  [zoom=16]  { line-width: 7; }
+  [zoom=17]  { line-width: 8; }
+  [zoom>=18] { line-width: 9; }
 
   [type='icn'] {
     line-color: @icn-overlay;
