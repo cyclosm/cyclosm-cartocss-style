@@ -530,7 +530,7 @@
 /* ================================================================== */
 /* ONE-WAY ARROWS
 /* ================================================================== */
-#roads-text-name[zoom>=15] {
+#roads-text-name[highway != 'construction'][zoom>=15] {
   [oneway = 'yes'][oneway_bicycle = 'yes'],
   [oneway='-1'][oneway_bicycle = 'yes'] {
      marker-placement:line;
