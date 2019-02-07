@@ -635,7 +635,7 @@
 }
 
 #amenities-points-text {
-  [feature = 'shop_bicycle'][zoom >= 14],
+  [feature = 'shop_bicycle'][zoom >= 16],
   [zoom >= 17] {
     text-name: "[name]";
     text-halo-radius: 1.5;
