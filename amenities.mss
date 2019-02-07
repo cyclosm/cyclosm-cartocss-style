@@ -55,75 +55,6 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_bar'][zoom >= 16],
-  [feature = 'amenity_biergarten'][zoom >= 16],
-  [feature = 'amenity_cafe'][zoom >= 16],
-  [feature = 'amenity_fast_food'][zoom >= 16],
-  [feature = 'amenity_food_court'][zoom >= 16],
-  [feature = 'amenity_ice_cream'][zoom >= 16],
-  [feature = 'amenity_pub'][zoom >= 16],
-  [feature = 'amenity_restaurant'][zoom >= 16] {
-    marker-placement: interior;
-    marker-clip: false;
-    marker-fill: @gastronomy-icon;
-    [feature != 'amenity_food_court'][zoom = 16] {
-      marker-width: 4;
-      marker-line-width: 0;
-    }
-    [feature = 'amenity_bar'][zoom >= 16] {
-      marker-file: url('symbols/openstreetmap-carto/amenity/bar.svg');
-    }
-    [feature = 'amenity_biergarten'][zoom >= 16] {
-      marker-file: url('symbols/openstreetmap-carto/amenity/biergarten.svg');
-    }
-    [feature = 'amenity_cafe'][zoom >= 16] {
-      marker-file: url('symbols/osm-bright-gl-style/amenities/cafe_11.svg');
-    }
-    [feature = 'amenity_fast_food'][zoom >= 16] {
-      marker-file: url('symbols/openstreetmap-carto/amenity/fast_food.svg');
-    }
-    [feature = 'amenity_food_court'][zoom >= 16],
-    [feature = 'amenity_restaurant'][zoom >= 16] {
-      marker-file: url('symbols/openstreetmap-carto/amenity/restaurant.svg');
-    }
-    [feature = 'amenity_ice_cream'][zoom >= 16] {
-      marker-file: url('symbols/openstreetmap-carto/shop/ice_cream.svg');
-    }
-    [feature = 'amenity_pub'][zoom >= 16] {
-      marker-file: url('symbols/osm-bright-gl-style/amenities/pub_11.svg');
-    }
-  }
-
-  [feature = 'amenity_internet_cafe'][zoom >= 17] {
-    marker-file: url('symbols/openstreetmap-carto/amenity/internet_cafe.svg');
-    marker-fill: @amenity-brown;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
-  [feature = 'amenity_bicycle_rental'][zoom >= 16] {
-    marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_rental_11.svg');
-    marker-fill: @transportation-icon;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
-  [feature = 'highway_elevator'][zoom >= 18] {
-    [access = null],
-    [access = 'yes'] {
-      marker-file: url('symbols/openstreetmap-carto/highway/elevator.12.svg');
-      marker-fill: @transportation-icon;
-      marker-placement: interior;
-    }
-  }
-
-  [feature = 'highway_traffic_signals'][zoom >= 17] {
-    marker-file: url('symbols/openstreetmap-carto/highway/traffic_light.13.svg');
-    marker-fill: #545454;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
   [feature = 'tourism_artwork'][zoom >= 17] {
     [artwork_type != 'statue'] {
       marker-file: url('symbols/openstreetmap-carto/tourism/artwork.svg');
@@ -319,13 +250,6 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_pharmacy'][zoom >= 17] {
-    marker-file: url('symbols/openstreetmap-carto/amenity/pharmacy.svg');
-    marker-fill: @health-color;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
   [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 17] {
     marker-file: url('symbols/openstreetmap-carto/man_made/cross.svg');
@@ -359,13 +283,6 @@
   [feature = 'amenity_post_box'][zoom >= 17] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/post_box_11.svg');
     marker-fill: @amenity-brown;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
-  [feature = 'amenity_post_office'][zoom >= 16] {
-    marker-file: url('symbols/osm-bright-gl-style/amenities/post_office_11.svg');
-    marker-fill: @public-service;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -583,30 +500,121 @@
     marker-clip: false;
   }
 
-  [feature = 'shop_bakery'][zoom >= 18],
-  [feature = 'shop_convenience'][zoom >= 18],
-  [feature = 'shop_greengrocer'][zoom >= 18],
-  [feature = 'shop_supermarket'][zoom >= 16],
-  [feature = 'shop_pastry'][zoom >= 18],
-  {
-    [feature = 'shop_bakery'] {
-      marker-file: url('symbols/openstreetmap-carto/shop/bakery.svg');
-    }
-    [feature = 'shop_convenience'] {
-      marker-file: url('symbols/openstreetmap-carto/shop/convenience.svg');
-    }
-    [feature = 'shop_greengrocer'] {
-      marker-file: url('symbols/openstreetmap-carto/shop/greengrocer.svg');
-    }
-    [feature = 'shop_supermarket'] {
-      marker-file: url('symbols/openstreetmap-carto/shop/supermarket.svg');
-    }
-    [feature = 'shop_pastry'] {
-      marker-file: url('symbols/openstreetmap-carto/shop/confectionery.svg');
-    }
+  [feature = 'amenity_drinking_water'][zoom >= 16] {
+    marker-file: url('symbols/osm-bright-gl-style/amenities/drinking_water_11.svg');
+  }
+  [feature = 'amenity_toilets'][zoom >= 16] {
+    marker-file: url('symbols/osm-bright-gl-style/amenities/toilets_11.svg');
+  }
+
+  [feature = 'shop_supermarket'][zoom >= 16] {
     marker-placement: interior;
     marker-clip: false;
-    marker-fill: @shop-icon;
+		marker-fill: @shop-icon;
+		marker-file: url('symbols/openstreetmap-carto/shop/supermarket.svg');
+	}
+
+  [feature = 'amenity_bar'][zoom >= 16],
+  [feature = 'amenity_biergarten'][zoom >= 16],
+  [feature = 'amenity_cafe'][zoom >= 16],
+  [feature = 'amenity_fast_food'][zoom >= 16],
+  [feature = 'amenity_food_court'][zoom >= 16],
+  [feature = 'amenity_ice_cream'][zoom >= 16],
+  [feature = 'amenity_pub'][zoom >= 16],
+  [feature = 'amenity_restaurant'][zoom >= 16],
+  [feature = 'shop_bakery'][zoom >= 16],
+  [feature = 'shop_convenience'][zoom >= 16],
+  [feature = 'shop_greengrocer'][zoom >= 16],
+  [feature = 'shop_pastry'][zoom >= 16],
+  {
+    marker-placement: interior;
+    marker-clip: false;
+
+		[feature = 'amenity_bar'],
+		[feature = 'amenity_biergarten'],
+		[feature = 'amenity_cafe'],
+		[feature = 'amenity_fast_food'],
+		[feature = 'amenity_food_court'],
+		[feature = 'amenity_ice_cream'],
+		[feature = 'amenity_pub'],
+		[feature = 'amenity_restaurant'] {
+			marker-fill: @gastronomy-icon;
+		}
+		[feature = 'shop_bakery'],
+		[feature = 'shop_convenience'],
+		[feature = 'shop_greengrocer'],
+		[feature = 'shop_pastry'] {
+			marker-fill: @shop-icon;
+		}
+
+    [feature != 'amenity_food_court'][zoom = 16] {
+      marker-width: 4;
+      marker-line-width: 0;
+    }
+    [feature = 'amenity_bar'][zoom >= 16] {
+      marker-file: url('symbols/openstreetmap-carto/amenity/bar.svg');
+    }
+    [feature = 'amenity_biergarten'][zoom >= 16] {
+      marker-file: url('symbols/openstreetmap-carto/amenity/biergarten.svg');
+    }
+    [feature = 'amenity_cafe'][zoom >= 16] {
+      marker-file: url('symbols/osm-bright-gl-style/amenities/cafe_11.svg');
+    }
+    [feature = 'amenity_fast_food'][zoom >= 16] {
+      marker-file: url('symbols/openstreetmap-carto/amenity/fast_food.svg');
+    }
+    [feature = 'amenity_food_court'][zoom >= 16],
+    [feature = 'amenity_restaurant'][zoom >= 16] {
+      marker-file: url('symbols/openstreetmap-carto/amenity/restaurant.svg');
+    }
+    [feature = 'amenity_ice_cream'][zoom >= 16] {
+      marker-file: url('symbols/openstreetmap-carto/shop/ice_cream.svg');
+    }
+    [feature = 'amenity_pub'][zoom >= 16] {
+      marker-file: url('symbols/osm-bright-gl-style/amenities/pub_11.svg');
+    }
+    [feature = 'shop_bakery'][zoom >= 16] {
+      marker-file: url('symbols/openstreetmap-carto/shop/bakery.svg');
+    }
+    [feature = 'shop_convenience'][zoom >= 16] {
+      marker-file: url('symbols/openstreetmap-carto/shop/convenience.svg');
+    }
+    [feature = 'shop_greengrocer'][zoom >= 16] {
+      marker-file: url('symbols/openstreetmap-carto/shop/greengrocer.svg');
+    }
+    [feature = 'shop_pastry'][zoom >= 16] {
+      marker-file: url('symbols/openstreetmap-carto/shop/confectionery.svg');
+    }
+  }
+
+  [feature = 'amenity_internet_cafe'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/internet_cafe.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_bicycle_rental'][zoom >= 16] {
+    marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_rental_11.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'highway_elevator'][zoom >= 18] {
+    [access = null],
+    [access = 'yes'] {
+      marker-file: url('symbols/openstreetmap-carto/highway/elevator.12.svg');
+      marker-fill: @transportation-icon;
+      marker-placement: interior;
+    }
+  }
+
+  [feature = 'highway_traffic_signals'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/highway/traffic_light.13.svg');
+    marker-fill: #545454;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_bicycle_parking'][zoom >= 16] {
@@ -623,17 +631,24 @@
     marker-line-width: 1;
   }
 
+  [feature = 'amenity_post_office'][zoom >= 16] {
+    marker-file: url('symbols/osm-bright-gl-style/amenities/post_office_11.svg');
+    marker-fill: @public-service;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_pharmacy'][zoom >= 16] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/pharmacy.svg');
+    marker-fill: @health-color;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_hospital'][zoom >= 15],
   [feature = 'healthcare_clinic'][zoom >= 15],
   [feature = 'healthcare_hospital'][zoom >= 15] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/hospital_11.svg');
-  }
-
-  [feature = 'amenity_drinking_water'][zoom >= 16] {
-    marker-file: url('symbols/osm-bright-gl-style/amenities/drinking_water_11.svg');
-  }
-  [feature = 'amenity_toilets'][zoom >= 16] {
-    marker-file: url('symbols/osm-bright-gl-style/amenities/toilets_11.svg');
   }
 }
 
@@ -643,7 +658,40 @@
   [feature = 'amenity_hospital'][zoom >= 16],
   [feature = 'healthcare_clinic'][zoom >= 16],
   [feature = 'healthcare_hospital'][zoom >= 16],
-  [zoom >= 17] {
+  [feature = 'tourism_artwork'][zoom >= 17],
+  [feature = 'tourism_camp_site'][zoom >= 17],
+  [feature = 'tourism_caravan_site'][zoom >= 17],
+  [feature = 'tourism_chalet'][zoom >= 17],
+  [feature = 'tourism_guest_house'][zoom >= 17],
+  [feature = 'tourism_gallery'][zoom >= 17],
+  [feature = 'tourism_motel'][zoom >= 17],
+  [feature = 'tourism_hostel'][zoom >= 17],
+  [feature = 'tourism_hotel'][zoom >= 17],
+  [feature = 'historic_city_gate'][zoom >= 17],
+  [feature = 'tourism_museum'][zoom >= 17],
+  [feature = 'man_made_cross'][zoom >= 18],
+  [feature = 'historic_wayside_cross'][zoom >= 18],
+  [feature = 'historic_monument'][zoom >= 17],
+  [feature = 'man_made_lighthouse'][zoom >= 17],
+  [feature = 'aeroway_aerodrome'][zoom >= 16],
+  [feature = 'amenity_pharmacy'][zoom >= 18],
+  [feature = 'amenity_internet_cafe'][zoom >= 18],
+  [feature = 'amenity_bar'][zoom >= 18],
+  [feature = 'amenity_biergarten'][zoom >= 18],
+  [feature = 'amenity_cafe'][zoom >= 18],
+  [feature = 'amenity_fast_food'][zoom >= 18],
+  [feature = 'amenity_food_court'][zoom >= 18],
+  [feature = 'amenity_ice_cream'][zoom >= 18],
+  [feature = 'amenity_pub'][zoom >= 18],
+  [feature = 'amenity_restaurant'][zoom >= 18],
+  [feature = 'amenity_bicycle_rental'][zoom >= 18],
+  [feature = 'amenity_police'][zoom >= 15],
+  [feature = 'amenity_post_office'][zoom >= 16],
+  [feature = 'shop_bakery'][zoom >= 18],
+  [feature = 'shop_convenience'][zoom >= 18],
+  [feature = 'shop_greengrocer'][zoom >= 18],
+  [feature = 'shop_supermarket'][zoom >= 17],
+  [feature = 'shop_pastry'][zoom >= 18] {
     text-name: "[name]";
     text-halo-radius: 1.5;
     text-face-name:@sans;
