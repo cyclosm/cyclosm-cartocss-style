@@ -37,6 +37,8 @@
 @cemetery:          #D6DED2;
 @wooded:            #C3D9AD;
 @agriculture:       #F2E8B6;
+@heath:             #E0E8B2;
+@meadow:            @grass;
 
 @building:          #cfcfcf;
 @hospital:          #e0e0e0;
