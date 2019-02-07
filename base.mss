@@ -31,11 +31,29 @@
   [type='park']          { polygon-fill: @park; }
   [type='parking']       { polygon-fill: @parking; }
   [type='pedestrian']    { polygon-fill: @pedestrian_area_fill; }
-  [type='pitch']         { polygon-fill: @sports; }
+  [type='pitch']         {
+    polygon-fill: @sports;
+    [zoom >= 13] {
+      polygon-fill: @pitch;
+      line-width: 0.5;
+      line-color: @pitch * 0.95;
+    }
+
+  }
   [type='residential']   { polygon-fill: @residential; }
   [type='school']        { polygon-fill: @school; }
-  [type='sports_center'] { polygon-fill: @sports; }
-  [type='stadium']       { polygon-fill: @sports; }
+  [type='sports_center'] {
+    polygon-fill: @sports;
+    [zoom >= 14] {
+      polygon-fill: @stadium;
+    }
+  }
+  [type='stadium']       { polygon-fill: @stadium; }
+  [type = 'track'][zoom >= 13] {
+    polygon-fill: @track;
+    line-width: 0.5;
+    line-color: @track * 0.95;
+  }
   [type='university']    { polygon-fill: @school; }
   [type='wood']          { polygon-fill: @wooded; }
 }

@@ -42,7 +42,9 @@
 @hospital:          #e0e0e0;
 @school:            #e0e0e0;
 @sports:            #e0e0e0;
-
+@stadium:           @land * 0.97;
+@pitch:             @park * 0.97;
+@track:             @park * 0.96;
 
 @residential:       @land * 0.98;
 @commercial:        @land * 0.97;

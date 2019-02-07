@@ -101,7 +101,7 @@ Layer:
         SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity) AS type
         FROM planet_osm_polygon
         WHERE landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'residential')
-          OR leisure IN ('common', 'golf_course', 'park', 'pitch', 'sports_centre', 'stadium')
+          OR leisure IN ('common', 'golf_course', 'park', 'pitch', 'sports_centre', 'stadium', 'track')
           OR "natural"='wood'
           OR highway IN ('pedestrian')
           OR amenity IN ('college', 'hospital', 'parking', 'school', 'university')
