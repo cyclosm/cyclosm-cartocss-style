@@ -35,7 +35,8 @@
   }
 }
 
-#amenities-points {
+#amenities-points,
+#amenities-poly {
   [feature = 'tourism_alpine_hut'][zoom >= 13],
   [feature = 'tourism_wilderness_hut'][zoom >= 13],
   [feature = 'amenity_shelter'][zoom >= 16] {
@@ -348,7 +349,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_police'][zoom >= 16] {
+  [feature = 'amenity_police'][zoom >= 15] {
     marker-file: url('symbols/openstreetmap-carto/amenity/police.svg');
     marker-fill: @public-service;
     marker-placement: interior;
@@ -622,7 +623,9 @@
     marker-line-width: 1;
   }
 
-  [feature = 'amenity_hospital'][zoom >= 16] {
+  [feature = 'amenity_hospital'][zoom >= 15],
+  [feature = 'healthcare_clinic'][zoom >= 15],
+  [feature = 'healthcare_hospital'][zoom >= 15] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/hospital_11.svg');
   }
 
@@ -634,8 +637,12 @@
   }
 }
 
-#amenities-points-text {
+#amenities-points-text,
+#amenities-poly-text {
   [feature = 'shop_bicycle'][zoom >= 16],
+  [feature = 'amenity_hospital'][zoom >= 16],
+  [feature = 'healthcare_clinic'][zoom >= 16],
+  [feature = 'healthcare_hospital'][zoom >= 16],
   [zoom >= 17] {
     text-name: "[name]";
     text-halo-radius: 1.5;

@@ -40,14 +40,6 @@
       text-fill: @cemetery * 0.6;
       text-halo-fill: lighten(@cemetery, 10%);
     }
-    [type='hospital'][zoom>=10] {
-      text-fill: @hospital * 0.6;
-      text-halo-fill: lighten(@hospital, 10%);
-      text-placement-type: simple;
-      text-placements: "S,N,E,W,NE,SE,NW,SW,16,14,12";
-      text-dy: 12;
-      text-dx: 12;
-    }
     [type='university'][zoom>=10] {
       text-fill: @school * 0.6;
       text-halo-fill: lighten(@school, 10%);
