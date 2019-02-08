@@ -280,7 +280,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_post_box'][zoom >= 17] {
+  [feature = 'amenity_post_box'][zoom >= 18] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/post_box_11.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -655,10 +655,123 @@
 #amenities-points-text,
 #amenities-poly-text {
   [feature = 'shop_bicycle'][zoom >= 16],
+  [feature = 'shop_bakery'][zoom >= 18],
+  [feature = 'shop_convenience'][zoom >= 18],
+  [feature = 'shop_greengrocer'][zoom >= 18],
+  [feature = 'shop_pastry'][zoom >= 18] {
+		[way_pixels > 3000][zoom >= 17],
+    [zoom >= 18] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-dy: 12;
+      text-fill: @shop-text;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: rgba(255, 255, 255, 0.6);
+      text-placement: interior;
+		}
+	}
+
+	[feature = 'shop_supermarket'] {
+		[zoom >= 16] {
+			text-name: "[name]";
+			text-size: @standard-font-size;
+			text-wrap-width: @standard-wrap-width;
+			text-line-spacing: @standard-line-spacing-size;
+			text-dy: 12;
+			text-fill: @shop-text;
+			text-face-name: @standard-font;
+			text-halo-radius: @standard-halo-radius;
+			text-halo-fill: rgba(255, 255, 255, 0.6);
+			text-placement: interior;
+		}
+	}
+
+  [feature = 'amenity_pharmacy'] {
+		[zoom >= 17] {
+			text-name: "[name]";
+			text-size: @standard-font-size;
+			text-wrap-width: @standard-wrap-width;
+			text-line-spacing: @standard-line-spacing-size;
+			text-dy: 12;
+			text-fill: @health-color;
+			text-face-name: @standard-font;
+			text-halo-radius: @standard-halo-radius;
+			text-halo-fill: @standard-halo-fill;
+			text-placement: interior;
+		}
+	}
+
+  [feature = 'amenity_internet_cafe'][zoom >= 18],
+  [feature = 'amenity_bar'][zoom >= 18],
+  [feature = 'amenity_biergarten'][zoom >= 18],
+  [feature = 'amenity_cafe'][zoom >= 18],
+  [feature = 'amenity_fast_food'][zoom >= 18],
+  [feature = 'amenity_food_court'][zoom >= 17],
+  [feature = 'amenity_ice_cream'][zoom >= 18],
+  [feature = 'amenity_pub'][zoom >= 18],
+  [feature = 'amenity_restaurant'][zoom >= 18] {
+		text-name: "[name]";
+		text-fill: @gastronomy-text;
+		text-size: @standard-font-size;
+		text-wrap-width: @standard-wrap-width;
+		text-line-spacing: @standard-line-spacing-size;
+		text-dy: 11;
+		text-face-name: @standard-font;
+		text-halo-radius: @standard-halo-radius;
+		text-halo-fill: @standard-halo-fill;
+		text-placement: interior;
+		[feature = 'amenity_bar'] {
+			text-dy: 13;
+		}
+	}
+
+  [feature = 'amenity_bicycle_rental'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @transportation-text;
+    text-dy: 10;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+		text-placement: interior;
+	}
+
+  [feature = 'amenity_police'][zoom >= 17],
+  [feature = 'amenity_post_office'][zoom >= 17] {
+		text-name: "[name]";
+		text-size: @standard-font-size;
+		text-wrap-width: @standard-wrap-width;
+		text-line-spacing: @standard-line-spacing-size;
+		text-fill: @public-service;
+		text-dy: 11;
+		text-face-name: @standard-font;
+		text-halo-radius: @standard-halo-radius;
+		text-halo-fill: @standard-halo-fill;
+		text-placement: interior;
+	}
+
   [feature = 'amenity_hospital'][zoom >= 16],
   [feature = 'healthcare_clinic'][zoom >= 16],
-  [feature = 'healthcare_hospital'][zoom >= 16],
-  [feature = 'tourism_artwork'][zoom >= 17],
+  [feature = 'healthcare_hospital'][zoom >= 16] {
+    text-name: "[name]";
+    text-halo-radius: 1.5;
+    text-face-name:@sans;
+    text-size: 11;
+    text-wrap-width:30;
+    text-fill: #888;
+    text-halo-fill: #fff;
+    text-placement-type: simple;
+    text-placements: "S,N,E,W,NE,SE,NW,SW,16,14,12";
+    text-dy: 12;
+    text-dx: 12;
+  }
+
+  [feature = 'tourism_artwork'][zoom >= 19],
   [feature = 'tourism_camp_site'][zoom >= 17],
   [feature = 'tourism_caravan_site'][zoom >= 17],
   [feature = 'tourism_chalet'][zoom >= 17],
@@ -672,38 +785,31 @@
   [feature = 'man_made_cross'][zoom >= 18],
   [feature = 'historic_wayside_cross'][zoom >= 18],
   [feature = 'historic_monument'][zoom >= 17],
-  [feature = 'man_made_lighthouse'][zoom >= 17],
-  [feature = 'aeroway_aerodrome'][zoom >= 16],
-  [feature = 'amenity_pharmacy'][zoom >= 18],
-  [feature = 'amenity_internet_cafe'][zoom >= 18],
-  [feature = 'amenity_bar'][zoom >= 18],
-  [feature = 'amenity_biergarten'][zoom >= 18],
-  [feature = 'amenity_cafe'][zoom >= 18],
-  [feature = 'amenity_fast_food'][zoom >= 18],
-  [feature = 'amenity_food_court'][zoom >= 18],
-  [feature = 'amenity_ice_cream'][zoom >= 18],
-  [feature = 'amenity_pub'][zoom >= 18],
-  [feature = 'amenity_restaurant'][zoom >= 18],
-  [feature = 'amenity_bicycle_rental'][zoom >= 18],
-  [feature = 'amenity_police'][zoom >= 15],
-  [feature = 'amenity_post_office'][zoom >= 16],
-  [feature = 'shop_bakery'][zoom >= 18],
-  [feature = 'shop_convenience'][zoom >= 18],
-  [feature = 'shop_greengrocer'][zoom >= 18],
-  [feature = 'shop_supermarket'][zoom >= 17],
-  [feature = 'shop_pastry'][zoom >= 18] {
-    text-name: "[name]";
-    text-halo-radius: 1.5;
-    text-face-name:@sans;
-    text-size: 11;
-    text-wrap-width:30;
-    text-fill: #888;
-    text-halo-fill: #fff;
-    text-placement-type: simple;
-    text-placements: "S,N,E,W,NE,SE,NW,SW,16,14,12";
-    text-dy: 12;
-    text-dx: 12;
-  }
+  [feature = 'man_made_lighthouse'][zoom >= 17] {
+		text-name: "[name]";
+		text-size: @standard-font-size;
+		text-wrap-width: @standard-wrap-width;
+		text-line-spacing: @standard-line-spacing-size;
+		text-fill: @memorials;
+		text-dy: 11;
+		text-face-name: @standard-font;
+		text-halo-radius: @standard-halo-radius;
+		text-halo-fill: @standard-halo-fill;
+		text-placement: interior;
+	}
+
+  [feature = 'aeroway_aerodrome'][zoom >= 16] {
+		text-name: "[name]";
+		text-size: @standard-font-size;
+		text-wrap-width: @standard-wrap-width;
+		text-line-spacing: @standard-line-spacing-size;
+		text-fill: darken(@airtransport, 15%);
+		text-dy: 10;
+		text-face-name: @sans_italic;
+		text-halo-radius: @standard-halo-radius;
+		text-halo-fill: @standard-halo-fill;
+		text-placement: interior;
+	}
 
   [feature = 'natural_peak'][zoom >= 13],
   [feature = 'natural_volcano'][zoom >= 13],

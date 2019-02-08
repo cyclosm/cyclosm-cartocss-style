@@ -875,7 +875,8 @@ Layer:
               ELSE NULL
             END
             ELSE NULL
-          END AS height
+          END AS height,
+          way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
         FROM planet_osm_polygon
         WHERE aeroway IN ('helipad', 'aerodrome')
           OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
@@ -968,7 +969,8 @@ Layer:
               ELSE NULL
             END
             ELSE NULL
-          END AS height
+          END AS height,
+          NULL AS way_pixels
         FROM planet_osm_point
         WHERE aeroway IN ('helipad', 'aerodrome')
           OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
@@ -1011,7 +1013,8 @@ Layer:
           ) AS name,
           score,
           height,
-          information
+          information,
+          way_pixels
         FROM
         (
           SELECT
@@ -1060,7 +1063,8 @@ Layer:
                 ELSE NULL
               END
               ELSE NULL
-            END AS height
+            END AS height,
+            way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
           FROM planet_osm_polygon
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
@@ -1105,7 +1109,8 @@ Layer:
           ) AS name,
           score,
           height,
-          information
+          information,
+          way_pixels
         FROM
         (
           SELECT
@@ -1168,7 +1173,8 @@ Layer:
                 ELSE NULL
               END
               ELSE NULL
-            END AS height
+            END AS height,
+            NULL AS way_pixels
           FROM planet_osm_point
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',

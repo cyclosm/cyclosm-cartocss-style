@@ -145,9 +145,12 @@
 
 @marina-text: #576ddf;
 @transportation-icon: #0092da;
+@transportation-text: #0066ff;
 @man-made-icon: #666666;
 @accommodation-icon: @transportation-icon;
 @gastronomy-icon: #C77400;
+@gastronomy-text: darken(@gastronomy-icon, 5%);
+@shop-text: #939;
 @amenity-brown: #734a08;
 @memorials: @amenity-brown;
 @man-made-icon: #666666;
