@@ -38,3 +38,6 @@ and are licensed under Creative Commons BY 4.0.
 The icons in `symbols/openstreetmap-carto` are taken from the
 [OpenStreetMap-carto](https://github.com/gravitystorm/openstreetmap-carto)
 style and are licensed under CC0 public domain.
+
+The icons in `symbols/osmandapp` are taken from the
+[OsmAnd app resources](https://github.com/osmandapp/OsmAnd-resources).

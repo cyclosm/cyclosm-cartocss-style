@@ -138,8 +138,18 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_bicycle_repair_station'][zoom >= 19] {
+  [feature = 'amenity_bicycle_repair_station'][zoom >= 18] {
     marker-file: url('symbols/openstreetmap-carto/amenity/bicycle_repair_station.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
+  }
+
+  [feature = 'amenity_compressed_air'][zoom >= 18] {
+    marker-file: url('symbols/osmandapp/amenity/compressed_air.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;

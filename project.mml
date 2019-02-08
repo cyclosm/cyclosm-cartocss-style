@@ -882,7 +882,7 @@ Layer:
         WHERE aeroway IN ('helipad', 'aerodrome')
           OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
               'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
+          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
           OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'convenience', 'greengrocer', 'supermarket', 'pastry')
@@ -977,7 +977,7 @@ Layer:
         WHERE aeroway IN ('helipad', 'aerodrome')
           OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
               'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
+          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
           OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'convenience', 'greengrocer', 'supermarket', 'pastry')
@@ -1072,7 +1072,7 @@ Layer:
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
                 'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
+            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
             OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
             OR shop IN ('bicycle', 'bakery', 'convenience', 'greengrocer', 'supermarket', 'pastry')
             OR tags->'healthcare' IN ('clinic', 'hospital')
@@ -1183,7 +1183,7 @@ Layer:
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
                 'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
+            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
             OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
             OR shop IN ('bicycle', 'bakery', 'convenience', 'greengrocer', 'supermarket', 'pastry')
             OR tags->'healthcare' IN ('clinic', 'hospital')
