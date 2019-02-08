@@ -832,6 +832,8 @@ Layer:
         SELECT
           access,
           bicycle,
+          covered,
+          tags->'shelter' AS shelter,
           way,
           name,
           COALESCE(
@@ -896,7 +898,8 @@ Layer:
           OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
           OR military IN ('bunker')
           OR tags->'emergency'='phone'
-          OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
+          OR highway IN ('elevator', 'traffic_signals')
+          OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND tags->'generator:source'='wind')
         ORDER BY score DESC NULLS LAST
       ) AS data
@@ -913,6 +916,8 @@ Layer:
         SELECT
           access,
           bicycle,
+          covered,
+          tags->'shelter' AS shelter,
           way,
           name,
           COALESCE(
@@ -991,7 +996,8 @@ Layer:
           OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
           OR military IN ('bunker')
           OR tags->'emergency'='phone'
-          OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
+          OR highway IN ('elevator', 'traffic_signals')
+          OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND tags->'generator:source'='wind')
         ORDER BY score DESC NULLS LAST
       ) AS data
@@ -1022,6 +1028,8 @@ Layer:
           SELECT
             access,
             bicycle,
+            covered,
+            tags->'shelter' AS shelter,
             way,
             name,
             COALESCE(
@@ -1086,7 +1094,8 @@ Layer:
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
             OR military IN ('bunker')
             OR tags->'emergency'='phone'
-            OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
+            OR highway IN ('elevator', 'traffic_signals')
+            OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
             OR (power = 'generator' AND tags->'generator:source'='wind')
           ORDER BY score DESC NULLS LAST
         ) AS p
@@ -1119,6 +1128,8 @@ Layer:
           SELECT
             access,
             bicycle,
+            covered,
+            tags->'shelter' AS shelter,
             way,
             name,
             COALESCE(
@@ -1197,7 +1208,8 @@ Layer:
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
             OR military IN ('bunker')
             OR tags->'emergency'='phone'
-            OR highway IN ('bus_stop', 'elevator', 'traffic_signals')
+            OR highway IN ('elevator', 'traffic_signals')
+            OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
             OR (power = 'generator' AND tags->'generator:source'='wind')
           ORDER BY score DESC NULLS LAST
         ) AS p

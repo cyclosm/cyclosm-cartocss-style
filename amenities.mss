@@ -41,16 +41,18 @@
   [feature = 'tourism_wilderness_hut'][zoom >= 13],
   [feature = 'amenity_shelter'][zoom >= 16] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/shelter_11.svg');
-    [feature = 'tourism_wilderness_hut'] {
-      marker-file: url('symbols/osm-bright-gl-style/amenities/shelter_11.svg');
-    }
-    [feature = 'tourism_alpine_hut'] {
-      marker-file: url('symbols/osm-bright-gl-style/amenities/shelter_11.svg');
-    }
+    marker-fill: @accommodation-icon;
     [feature = 'amenity_shelter'] {
       marker-fill: @man-made-icon;
     }
-    marker-fill: @accommodation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'highway_bus_stop'][shelter = 'yes'][zoom >= 17],
+  [feature = 'highway_bus_stop'][covered = 'yes'][zoom >= 17] {
+    marker-file: url('symbols/osm-bright-gl-style/amenities/shelter_11.svg');
+    marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
   }
