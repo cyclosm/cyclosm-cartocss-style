@@ -144,6 +144,7 @@
 @natural_volcano: #980000;
 
 @marina-text: #576ddf;
+@nobike-transportation-icon: #444444;
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
 @man-made-icon: #666666;

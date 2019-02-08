@@ -831,6 +831,7 @@ Layer:
       (
         SELECT
           access,
+          bicycle,
           way,
           name,
           COALESCE(
@@ -911,6 +912,7 @@ Layer:
       (
         SELECT
           access,
+          bicycle,
           way,
           name,
           COALESCE(
@@ -1019,6 +1021,7 @@ Layer:
         (
           SELECT
             access,
+            bicycle,
             way,
             name,
             COALESCE(
@@ -1115,6 +1118,7 @@ Layer:
         (
           SELECT
             access,
+            bicycle,
             way,
             name,
             COALESCE(

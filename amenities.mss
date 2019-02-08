@@ -605,7 +605,11 @@
     [access = null],
     [access = 'yes'] {
       marker-file: url('symbols/openstreetmap-carto/highway/elevator.12.svg');
-      marker-fill: @transportation-icon;
+			marker-fill: @transportation-icon;
+      [bicycle = null],
+			[bicycle = 'no'] {
+				marker-fill: @nobike-transportation-icon;
+			}
       marker-placement: interior;
     }
   }
