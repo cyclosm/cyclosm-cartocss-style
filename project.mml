@@ -102,7 +102,7 @@ Layer:
         FROM planet_osm_polygon
         WHERE landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'residential')
           OR leisure IN ('common', 'golf_course', 'park', 'pitch', 'sports_centre', 'stadium', 'track')
-          OR "natural" IN ('heath', 'wood')
+          OR "natural" IN ('grassland', 'heath', 'wood')
           OR highway IN ('pedestrian')
           OR amenity IN ('college', 'hospital', 'parking', 'school', 'university')
         ORDER BY way_area DESC

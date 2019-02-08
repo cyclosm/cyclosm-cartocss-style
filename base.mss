@@ -26,6 +26,7 @@
   [type='forest']        { polygon-fill: @wooded; }
   [type='golf_course']   { polygon-fill: @grass; }
   [type='grass']         { polygon-fill: @grass; }
+  [type='grassland']     { polygon-fill: @grass; }
   [type='heath']         { polygon-fill: @heath; }
   [type='hospital']      { polygon-fill: @hospital; }
   [type='industrial']    { polygon-fill: @industrial; }
