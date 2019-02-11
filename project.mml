@@ -905,7 +905,7 @@ Layer:
       ) AS data
   geometry: polygon
   properties:
-    minzoom: 11
+    minzoom: 10
 - id: amenities-points
   <<: *extents
   Datasource:
@@ -1003,7 +1003,7 @@ Layer:
       ) AS data
   geometry: point
   properties:
-    minzoom: 11
+    minzoom: 10
 - id: amenities-poly-text
   <<: *extents
   Datasource:
@@ -1102,7 +1102,7 @@ Layer:
       ) AS data
   geometry: polygon
   properties:
-    minzoom: 10
+    minzoom: 13
 - id: amenities-points-text
   <<: *extents
   Datasource:
@@ -1216,4 +1216,4 @@ Layer:
       ) AS data
   geometry: point
   properties:
-    minzoom: 10
+    minzoom: 13
