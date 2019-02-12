@@ -935,7 +935,8 @@ Layer:
             'military_'|| military,
             'highway_'|| highway,
             'power_' || power,
-            'tourism_' || tourism
+            'tourism_' || tourism,
+            'traffic_calming_' || CASE WHEN tags->'traffic_calming' IS NOT NULL THEN tags->'traffic_calming' ELSE NULL END
           ) AS feature,
           tags->'location' AS location,
           tags->'memorial' AS memorial,
@@ -999,6 +1000,7 @@ Layer:
           OR highway IN ('elevator', 'traffic_signals')
           OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND tags->'generator:source'='wind')
+          OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip')
         ORDER BY score DESC NULLS LAST
       ) AS data
   geometry: point
@@ -1147,7 +1149,8 @@ Layer:
               'military_'|| military,
               'highway_'|| highway,
               'power_' || power,
-              'tourism_' || tourism
+              'tourism_' || tourism,
+              'traffic_calming_' || CASE WHEN tags->'traffic_calming' IS NOT NULL THEN tags->'traffic_calming' ELSE NULL END
             ) AS feature,
             tags->'location' AS location,
             tags->'memorial' AS memorial,
@@ -1211,6 +1214,7 @@ Layer:
             OR highway IN ('elevator', 'traffic_signals')
             OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
             OR (power = 'generator' AND tags->'generator:source'='wind')
+            OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip')
           ORDER BY score DESC NULLS LAST
         ) AS p
       ) AS data

@@ -37,6 +37,19 @@
 
 #amenities-points,
 #amenities-poly {
+  [feature = 'traffic_calming_yes'][zoom >= 17],
+  [feature = 'traffic_calming_bump'][zoom >= 17],
+  [feature = 'traffic_calming_dip'][zoom >= 17],
+  [feature = 'traffic_calming_choker'][zoom >= 17],
+  [feature = 'traffic_calming_cushion'][zoom >= 17],
+  [feature = 'traffic_calming_hump'][zoom >= 17],
+  [feature = 'traffic_calming_rumble_strip'][zoom >= 17] {
+    marker-file: url('symbols/amenity/traffic_calming.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_alpine_hut'][zoom >= 13],
   [feature = 'tourism_wilderness_hut'][zoom >= 13],
   [feature = 'amenity_shelter'][zoom >= 16] {
