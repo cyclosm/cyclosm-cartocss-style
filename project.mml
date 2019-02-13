@@ -578,11 +578,11 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT COALESCE(landuse, leisure, "natural", highway, amenity, tourism) AS type, name, way_area AS area, ST_PointOnSurface(way) AS way
+        SELECT COALESCE(landuse, leisure, "natural", amenity, tourism) AS type, name, way_area AS area, ST_PointOnSurface(way) AS way
         FROM planet_osm_polygon
         WHERE name IS NOT NULL AND
           (landuse IN ('basin', 'cemetery', 'commercial', 'forest', 'grass', 'industrial')
-            OR COALESCE(highway, leisure, "natural", tourism) IS NOT NULL
+            OR COALESCE(leisure, "natural", tourism) IS NOT NULL
             OR amenity IN ('embassy', 'library', 'townhall', 'university'))
           AND way && !bbox! AND ST_IsValid(way)
       ) AS data
@@ -888,6 +888,7 @@ Layer:
           OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'convenience', 'greengrocer', 'supermarket', 'pastry')
+          OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
           OR leisure='picnic_table'
           OR (
             man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
@@ -987,6 +988,7 @@ Layer:
           OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'convenience', 'greengrocer', 'supermarket', 'pastry')
+          OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
           OR leisure='picnic_table'
           OR (
             man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
@@ -1085,6 +1087,7 @@ Layer:
             OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
             OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
             OR shop IN ('bicycle', 'bakery', 'convenience', 'greengrocer', 'supermarket', 'pastry')
+            OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
             OR (
@@ -1200,6 +1203,7 @@ Layer:
             OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
             OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
             OR shop IN ('bicycle', 'bakery', 'convenience', 'greengrocer', 'supermarket', 'pastry')
+            OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
             OR (
@@ -1221,3 +1225,17 @@ Layer:
   geometry: point
   properties:
     minzoom: 13
+- id: highway_area_label
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT highway AS type, name, way_area AS area, ST_PointOnSurface(way) AS way
+        FROM planet_osm_polygon
+        WHERE name IS NOT NULL AND highway IS NOT NULL
+          AND way && !bbox! AND ST_IsValid(way)
+      ) AS data
+  geometry: point
+  properties:
+    minzoom: 10

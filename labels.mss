@@ -9,6 +9,7 @@
 // AREA LABELS
 // =====================================================================
 
+#highway_area_label,
 #area_label {
   // Bring in labels gradually as one zooms in, bases on polygon area
   [zoom>=10][area>102400000],
