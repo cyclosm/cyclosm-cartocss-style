@@ -578,21 +578,22 @@
   shield-margin: @shield-margin;
   shield-face-name: @sans;
   shield-clip: @shield-clip;
-  [type='icn'] {
+  shield-file: url("symbols/shields/[type]_[width]x[height].svg");
+  [route='bicycle'][type='icn'] {
     shield-fill: @icn-shield-fill;
-    shield-file: url("symbols/shields/[type]_[width]x[height].svg");
   }
-  [type='ncn'] {
+  [route='bicycle'][type='ncn'] {
     shield-fill: @ncn-shield-fill;
-    shield-file: url("symbols/shields/[type]_[width]x[height].svg");
   }
-  [type='rcn'] {
+  [route='bicycle'][type='rcn'] {
     shield-fill: @rcn-shield-fill;
-    shield-file: url("symbols/shields/[type]_[width]x[height].svg");
   }
-  [type='lcn'] {
+  [route='bicycle'][type='lcn'] {
     shield-fill: @lcn-shield-fill;
-    shield-file: url("symbols/shields/[type]_[width]x[height].svg");
+  }
+  [route='mtb'] {
+    shield-fill: @mtb-shield-fill;
+    shield-file: url("symbols/shields/mtb_[width]x[height].svg");
   }
 }
 

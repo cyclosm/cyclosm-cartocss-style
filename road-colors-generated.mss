@@ -15,6 +15,8 @@
 @motorway-fill: #c0ccc4;
 @motorway-line: #f6f6f6;
 @motorway-shield-fill: #620728;
+@mtb-overlay: #ff6200;
+@mtb-shield-fill: #f6f6f6;
 @ncn-overlay: #ff0000;
 @ncn-shield-fill: #f6f6f6;
 @pedestrian-case: @land;

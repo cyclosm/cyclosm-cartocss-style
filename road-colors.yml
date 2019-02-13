@@ -60,6 +60,9 @@ mss:
   lcn:
     overlay: '#0000ff'
     shield-fill: '#f6f6f6'
+  mtb:
+    overlay: '#ff6200'
+    shield-fill: '#f6f6f6'
 # Colours used by the road shields script
 shield:
   motorway:
@@ -89,3 +92,6 @@ shield:
   lcn:
     fill: '#0000ff'
     stroke_fill: '#0000ff'
+  mtb:
+    fill: '#ff6200'
+    stroke_fill: '#ff6200'

@@ -1135,13 +1135,10 @@ come in as well.
 /* ================================================================== */
 /* BICYCLE ROUTES
 /* ================================================================== */
-#bicycle_routes[zoom >= 2] {
-  [type='ncn'][zoom < 4],
-  [type='rcn'][zoom < 6],
-  [type='lcn'][zoom < 8] {
-    line-width: 0;
-  }
-
+#bicycle_routes[type='icn'][zoom >= 2],
+#bicycle_routes[type='ncn'][zoom >= 5],
+#bicycle_routes[type='rcn'][zoom >= 7],
+#bicycle_routes[type='lcn'][zoom >= 9] {
   line-opacity: 0.4;
   line-width: 1;
 
@@ -1156,17 +1153,20 @@ come in as well.
   [zoom=17]  { line-width: 8; }
   [zoom>=18] { line-width: 9; }
 
-  [type='icn'] {
+  [route='bicycle'][type='icn'] {
     line-color: @icn-overlay;
   }
-  [type='ncn'] {
+  [route='bicycle'][type='ncn'] {
     line-color: @ncn-overlay;
   }
-  [type='rcn'] {
+  [route='bicycle'][type='rcn'] {
     line-color: @rcn-overlay;
   }
-  [type='lcn'] {
+  [route='bicycle'][type='lcn'] {
     line-color: @lcn-overlay;
+  }
+  [route='mtb'] {
+    line-color: @mtb-overlay;
   }
 
   [state='proposed'] {
