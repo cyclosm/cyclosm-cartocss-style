@@ -1000,7 +1000,7 @@ Layer:
           OR highway IN ('elevator', 'traffic_signals')
           OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND tags->'generator:source'='wind')
-          OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip')
+          OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip', 'table')
         ORDER BY score DESC NULLS LAST
       ) AS data
   geometry: point
@@ -1214,7 +1214,7 @@ Layer:
             OR highway IN ('elevator', 'traffic_signals')
             OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
             OR (power = 'generator' AND tags->'generator:source'='wind')
-            OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip')
+            OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip', 'table')
           ORDER BY score DESC NULLS LAST
         ) AS p
       ) AS data

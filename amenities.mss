@@ -43,7 +43,8 @@
   [feature = 'traffic_calming_choker'][zoom >= 17],
   [feature = 'traffic_calming_cushion'][zoom >= 17],
   [feature = 'traffic_calming_hump'][zoom >= 17],
-  [feature = 'traffic_calming_rumble_strip'][zoom >= 17] {
+  [feature = 'traffic_calming_rumble_strip'][zoom >= 17],
+  [feature = 'traffic_calming_table'][zoom >= 17] {
     marker-file: url('symbols/amenity/traffic_calming.svg');
     marker-fill: @man-made-icon;
     marker-placement: interior;
