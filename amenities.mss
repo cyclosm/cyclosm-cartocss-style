@@ -809,9 +809,6 @@
   [feature = 'tourism_chalet'][zoom >= 17],
   [feature = 'tourism_guest_house'][zoom >= 17],
   [feature = 'tourism_gallery'][zoom >= 17],
-  [feature = 'tourism_motel'][zoom >= 17],
-  [feature = 'tourism_hostel'][zoom >= 17],
-  [feature = 'tourism_hotel'][zoom >= 17],
   [feature = 'historic_city_gate'][zoom >= 17],
   [feature = 'tourism_museum'][zoom >= 17],
   [feature = 'man_made_cross'][zoom >= 18],
@@ -829,6 +826,21 @@
 		text-halo-fill: @standard-halo-fill;
 		text-placement: interior;
 	}
+
+  [feature = 'tourism_motel'][zoom >= 17],
+  [feature = 'tourism_hostel'][zoom >= 17],
+  [feature = 'tourism_hotel'][zoom >= 17] {
+		text-name: "[name]";
+		text-size: @standard-font-size;
+		text-wrap-width: @standard-wrap-width;
+		text-line-spacing: @standard-line-spacing-size;
+		text-fill: @accommodation-text;
+		text-dy: 11;
+		text-face-name: @standard-font;
+		text-halo-radius: @standard-halo-radius;
+		text-halo-fill: @standard-halo-fill;
+		text-placement: interior;
+  }
 
   [feature = 'aeroway_aerodrome'][zoom >= 16] {
 		text-name: "[name]";

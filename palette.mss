@@ -39,6 +39,7 @@
 @agriculture:       #F2E8B6;
 @heath:             #E0E8B2;
 @meadow:            @grass;
+@farmland:          #D8DBC9;
 
 @building:          #cfcfcf;
 @hospital:          #e0e0e0;
@@ -149,6 +150,7 @@
 @transportation-text: #0066ff;
 @man-made-icon: #666666;
 @accommodation-icon: @transportation-icon;
+@accommodation-text: @accommodation-icon;
 @gastronomy-icon: #C77400;
 @gastronomy-text: darken(@gastronomy-icon, 5%);
 @shop-text: #939;

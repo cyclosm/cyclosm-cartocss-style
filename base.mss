@@ -31,6 +31,7 @@
   [type='hospital']      { polygon-fill: @hospital; }
   [type='industrial']    { polygon-fill: @industrial; }
   [type='meadow']        { polygon-fill: @meadow; }
+  [type='farmland']      { polygon-fill: @farmland; }
   [type='park']          { polygon-fill: @park; }
   [type='parking']       { polygon-fill: @parking; }
   [type='pedestrian']    { polygon-fill: @pedestrian_area_fill; }

@@ -68,7 +68,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity, tourism) AS type
+        SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity) AS type
         FROM planet_osm_polygon
         WHERE way_area > 100000
         ORDER BY way_area DESC
@@ -83,7 +83,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity, tourism) AS type
+        SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity) AS type
         FROM planet_osm_polygon
         WHERE way_area > 10000
         ORDER BY way_area DESC
@@ -100,7 +100,7 @@ Layer:
       (
         SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity) AS type
         FROM planet_osm_polygon
-        WHERE landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'residential')
+        WHERE landuse IN ('cemetery', 'commercial', 'farmland', 'forest', 'grass', 'industrial', 'meadow', 'residential')
           OR leisure IN ('common', 'golf_course', 'park', 'pitch', 'sports_centre', 'stadium', 'track')
           OR "natural" IN ('grassland', 'heath', 'wood')
           OR highway IN ('pedestrian')
@@ -578,11 +578,11 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT COALESCE(landuse, leisure, "natural", amenity, tourism) AS type, name, way_area AS area, ST_PointOnSurface(way) AS way
+        SELECT COALESCE(landuse, leisure, "natural", amenity) AS type, name, way_area AS area, ST_PointOnSurface(way) AS way
         FROM planet_osm_polygon
         WHERE name IS NOT NULL AND
           (landuse IN ('basin', 'cemetery', 'commercial', 'forest', 'grass', 'industrial')
-            OR COALESCE(leisure, "natural", tourism) IS NOT NULL
+            OR COALESCE(leisure, "natural") IS NOT NULL
             OR amenity IN ('embassy', 'library', 'townhall', 'university'))
           AND way && !bbox! AND ST_IsValid(way)
       ) AS data
