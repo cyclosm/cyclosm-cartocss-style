@@ -150,3 +150,13 @@ python scripts/generate_shields.py
 
 to regenerate the shields files and corresponding style sheets.
 
+### What is the order in which info is drawn on the map?
+
+Information on the order in which info is drawn on the map can be found in the
+[TileMill documentation](https://tilemill-project.github.io/tilemill/docs/guides/symbol-drawing-order/).
+
+For layers, defined in the `project.mml` file, they are added onto the map in
+the order in which they are listed in the `project.mml` file. The first layers
+appearing in this file are rendered first, meaning that in case of conflicting
+items in two layers, the layer appearing first in `project.mml` file will be
+rendered.
