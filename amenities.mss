@@ -804,10 +804,6 @@
   }
 
   [feature = 'tourism_artwork'][zoom >= 19],
-  [feature = 'tourism_camp_site'][zoom >= 17],
-  [feature = 'tourism_caravan_site'][zoom >= 17],
-  [feature = 'tourism_chalet'][zoom >= 17],
-  [feature = 'tourism_guest_house'][zoom >= 17],
   [feature = 'tourism_gallery'][zoom >= 17],
   [feature = 'historic_city_gate'][zoom >= 17],
   [feature = 'tourism_museum'][zoom >= 17],
@@ -827,6 +823,10 @@
 		text-placement: interior;
 	}
 
+  [feature = 'tourism_camp_site'][zoom >= 17],
+  [feature = 'tourism_caravan_site'][zoom >= 17],
+  [feature = 'tourism_chalet'][zoom >= 17],
+  [feature = 'tourism_guest_house'][zoom >= 17],
   [feature = 'tourism_motel'][zoom >= 17],
   [feature = 'tourism_hostel'][zoom >= 17],
   [feature = 'tourism_hotel'][zoom >= 17] {
