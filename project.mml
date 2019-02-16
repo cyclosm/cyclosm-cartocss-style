@@ -710,7 +710,18 @@ Layer:
           OR highway IN ('elevator', 'traffic_signals')
           OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND tags->'generator:source'='wind')
-        ORDER BY score DESC NULLS LAST
+        ORDER BY
+            CASE
+                -- Emergency first
+                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 0
+                -- Other emergency-related amenities
+                WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets') THEN 10
+                -- Bike amenities
+                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental', 'bicycle_parking') THEN 30
+                -- Everything else
+                ELSE NULL
+            END ASC NULLS LAST,
+            score DESC NULLS LAST
       ) AS data
   geometry: polygon
   properties:
@@ -811,7 +822,18 @@ Layer:
           OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND tags->'generator:source'='wind')
           OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip', 'table')
-        ORDER BY score DESC NULLS LAST
+        ORDER BY
+            CASE
+                -- Emergency first
+                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 0
+                -- Other emergency-related amenities
+                WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets') THEN 10
+                -- Bike amenities
+                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental', 'bicycle_parking') THEN 30
+                -- Everything else
+                ELSE NULL
+            END ASC NULLS LAST,
+            score DESC NULLS LAST
       ) AS data
   geometry: point
   properties:
@@ -910,7 +932,18 @@ Layer:
             OR highway IN ('elevator', 'traffic_signals')
             OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
             OR (power = 'generator' AND tags->'generator:source'='wind')
-          ORDER BY score DESC NULLS LAST
+          ORDER BY
+            CASE
+                -- Emergency first
+                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 0
+                -- Other emergency-related amenities
+                WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets') THEN 10
+                -- Bike amenities
+                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental', 'bicycle_parking') THEN 30
+                -- Everything else
+                ELSE NULL
+            END ASC NULLS LAST,
+            score DESC NULLS LAST
         ) AS p
       ) AS data
   geometry: polygon
@@ -1027,7 +1060,18 @@ Layer:
             OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
             OR (power = 'generator' AND tags->'generator:source'='wind')
             OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip', 'table')
-          ORDER BY score DESC NULLS LAST
+          ORDER BY
+            CASE
+                -- Emergency first
+                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 0
+                -- Other emergency-related amenities
+                WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets') THEN 10
+                -- Bike amenities
+                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental', 'bicycle_parking') THEN 30
+                -- Everything else
+                ELSE NULL
+            END ASC NULLS LAST,
+            score DESC NULLS LAST
         ) AS p
       ) AS data
   geometry: point
