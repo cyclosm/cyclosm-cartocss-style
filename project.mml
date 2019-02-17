@@ -703,10 +703,17 @@ Layer:
                 -- Other emergency-related amenities
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets') THEN 10
                 -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental', 'bicycle_parking') THEN 30
+                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
+                -- Supermarkets
+                WHEN shop='supermarket' THEN 40
+                -- Convenience
+                WHEN shop='convenience' THEN 50
+                -- Food
+                WHEN shop IS NOT NULL OR amenity IN ('bar', 'biergarten', 'cafe', 'fast_food', 'food_court', 'pub', 'restaurant') THEN 60
                 -- Everything else
                 ELSE NULL
             END ASC NULLS LAST,
+            feature,
             score DESC NULLS LAST
       ) AS data
   geometry: polygon
@@ -815,10 +822,17 @@ Layer:
                 -- Other emergency-related amenities
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets') THEN 10
                 -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental', 'bicycle_parking') THEN 30
+                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
+                -- Supermarkets
+                WHEN shop='supermarket' THEN 40
+                -- Convenience
+                WHEN shop='convenience' THEN 50
+                -- Food
+                WHEN shop IS NOT NULL OR amenity IN ('bar', 'biergarten', 'cafe', 'fast_food', 'food_court', 'pub', 'restaurant') THEN 60
                 -- Everything else
                 ELSE NULL
             END ASC NULLS LAST,
+            feature,
             score DESC NULLS LAST
       ) AS data
   geometry: point
@@ -939,10 +953,17 @@ Layer:
                 -- Other emergency-related amenities
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets') THEN 10
                 -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental', 'bicycle_parking') THEN 30
+                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
+                -- Supermarkets
+                WHEN shop='supermarket' THEN 40
+                -- Convenience
+                WHEN shop='convenience' THEN 50
+                -- Food
+                WHEN shop IS NOT NULL OR amenity IN ('bar', 'biergarten', 'cafe', 'fast_food', 'food_court', 'pub', 'restaurant') THEN 60
                 -- Everything else
                 ELSE NULL
             END ASC NULLS LAST,
+            feature,
             score DESC NULLS LAST
         ) AS p
       ) AS data
@@ -1067,10 +1088,17 @@ Layer:
                 -- Other emergency-related amenities
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets') THEN 10
                 -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental', 'bicycle_parking') THEN 30
+                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
+                -- Supermarkets
+                WHEN shop='supermarket' THEN 40
+                -- Convenience
+                WHEN shop='convenience' THEN 50
+                -- Food
+                WHEN shop IS NOT NULL OR amenity IN ('bar', 'biergarten', 'cafe', 'fast_food', 'food_court', 'pub', 'restaurant') THEN 60
                 -- Everything else
                 ELSE NULL
             END ASC NULLS LAST,
+            feature,
             score DESC NULLS LAST
         ) AS p
       ) AS data
