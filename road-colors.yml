@@ -20,16 +20,19 @@ mss:
     case: '#f6f6f6'
     shield-fill: '#5d1b0b'
   primary:
-    line: '#fcd6a4'
-    fill: '#fcd6a4'
-    case: '#a06b00'
+    line: '#f4dfc3'
+    fill: '#f4dfc3'
+    case: '#d8b267'
     shield-fill: '#4c2e00'
   secondary:
-    line: '#f7fabf'
-    fill: '#f7fabf'
-    case: '#707d05'
+    line: '#f6f8d2'
+    fill: '#f6f8d2'
+    case: '#b1bb5d'
     shield-fill: '#323b00'
   tertiary:
+    line: '#f6f6f6'
+    fill: '#f6f6f6'
+    case: '#7b8b84'
     shield-fill: '#3b3b3b'
   standard:
     line: '#f6f6f6'

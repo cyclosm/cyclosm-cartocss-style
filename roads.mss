@@ -90,7 +90,7 @@ come in as well.
 /* -- Zoom 12 -- */
 @rdz12_motorway: 2.5;
 @rdz12_mainroad: 1.2;
-@rdz12_minorroad: 0.5;
+@rdz12_minorroad: 1;
 @rdz12_service: 0;
 @rdz12_pedestrian: 0;
 @rdz12_steps: @rdz12_pedestrian;
@@ -99,7 +99,7 @@ come in as well.
 /* Border width (one side of the road only) */
 @rdz12_motorway_outline: 1;
 @rdz12_mainroad_outline: 1;
-@rdz12_minorroad_outline: 0.25;
+@rdz12_minorroad_outline: 0.75;
 @rdz12_service_outline: 0;
 @rdz12_pedestrian_outline: 0;
 @rdz12_steps_outline: 0;
@@ -250,6 +250,11 @@ come in as well.
   [type='secondary'],
   [type='secondary_link'] {
     line-color: @secondary-case;
+  }
+  [type='tertiary'],
+  [type='tertiary_link'],
+  [type='unclassified'] {
+    line-color: @tertiary-case;
   }
   [cycleway='lane'],
   [cycleway='opposite_lane'] {
@@ -1218,19 +1223,19 @@ come in as well.
 #bicycle_routes[type='ncn'][zoom >= 5],
 #bicycle_routes[type='rcn'][zoom >= 7],
 #bicycle_routes[type='lcn'][zoom >= 9] {
-  line-opacity: 0.4;
+  line-opacity: 0.3;
   line-width: 1;
 
   [zoom <= 12] { line-opacity: 0.6; }
 
   [zoom=9]   { line-width: 2; }
   [zoom>=10] { line-width: 3; }
-  [zoom=13]  { line-width: 4; }
+  [zoom=13]  { line-width: 4; line-opacity: 0.45; }
   [zoom=14]  { line-width: 5; }
   [zoom=15]  { line-width: 6; }
   [zoom=16]  { line-width: 7; }
-  [zoom=17]  { line-width: 8; }
-  [zoom>=18] { line-width: 9; }
+  [zoom=17]  { line-width: 10; }
+  [zoom>=18] { line-width: 14; }
 
   [route='bicycle'][type='icn'] {
     line-color: @icn-overlay;
