@@ -37,6 +37,17 @@
 
 #amenities-points,
 #amenities-poly {
+  [feature = 'amenity_compressed_air'][zoom >= 18],
+	[compressed_air = 'yes'][zoom >= 18] {
+    marker-file: url('symbols/osmandapp/amenity/compressed_air.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
+  }
+
   [feature = 'traffic_calming_yes'][zoom >= 17],
   [feature = 'traffic_calming_bump'][zoom >= 17],
   [feature = 'traffic_calming_dip'][zoom >= 17],
@@ -156,16 +167,6 @@
 
   [feature = 'amenity_bicycle_repair_station'][zoom >= 18] {
     marker-file: url('symbols/openstreetmap-carto/amenity/bicycle_repair_station.svg');
-    marker-fill: @amenity-brown;
-    marker-placement: interior;
-    marker-clip: false;
-    [access != ''][access != 'permissive'][access != 'yes'] {
-      marker-opacity: 0.33;
-    }
-  }
-
-  [feature = 'amenity_compressed_air'][zoom >= 18] {
-    marker-file: url('symbols/osmandapp/amenity/compressed_air.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
     marker-clip: false;
