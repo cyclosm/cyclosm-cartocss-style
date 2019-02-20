@@ -242,7 +242,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(highway, railway) AS type, 0 AS bridge, access, render, layer, 1 as tunnel,
+        SELECT way, COALESCE(highway, railway) AS type, 0 AS bridge, access, layer, 1 as tunnel,
         CASE
           WHEN highway IN ('motorway', 'trunk') THEN 'motorway'
           WHEN highway IN ('primary', 'secondary') THEN 'mainroad'
@@ -257,17 +257,9 @@ Layer:
         tags->'ramp:stroller' AS ramp_stroller,
         tags->'ramp:bicycle' AS ramp_cycle,
         tags->'ramp:wheelchair' AS ramp_wheelchair
-        FROM (
-          SELECT *, '1_outline' AS render FROM planet_osm_line
-            WHERE tunnel NOT IN ('', '0', 'no')
-          UNION ALL
-          SELECT *, '2_line' AS render FROM planet_osm_line
-            WHERE tunnel NOT IN ('', '0', 'no')
-          UNION ALL
-          SELECT *, '3_inline' AS render FROM planet_osm_line
-            WHERE tunnel NOT IN ('', '0', 'no')
-        ) AS tunnels
-        ORDER BY layer ASC, render ASC
+        FROM planet_osm_line
+        WHERE tunnel NOT IN ('', '0', 'no')
+        ORDER BY layer ASC
       ) AS data
   geometry: linestring
   properties:
