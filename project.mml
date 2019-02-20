@@ -630,10 +630,10 @@ Layer:
           tags->'shelter' AS shelter,
           way,
           name,
-          COALESCE(
+          COALESCE( -- order is important here
             'aeroway_' || aeroway,
             'tourism_' || tourism,
-            'amenity_' || amenity,
+            'amenity_' || CASE WHEN amenity != 'fuel' THEN amenity ELSE NULL END,
             'shop_' || shop,
             'emergency_' || CASE WHEN tags->'emergency' IS NOT NULL then tags->'emergency' ELSE NULL END,
             'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
@@ -683,7 +683,7 @@ Layer:
           OR tags->'compressed_air'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
-          OR shop IN ('bicycle', 'bakery', 'convenience', 'greengrocer', 'supermarket', 'pastry')
+          OR shop IN ('bicycle', 'bakery', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
           OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
           OR leisure='picnic_table'
           OR (
@@ -710,7 +710,7 @@ Layer:
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
-                WHEN shop='convenience' THEN 50
+                WHEN shop='convenience' OR shop='convenience;gas' THEN 50
                 -- Food
                 WHEN shop IS NOT NULL OR amenity IN ('bar', 'biergarten', 'cafe', 'fast_food', 'food_court', 'pub', 'restaurant') THEN 60
                 -- Everything else
@@ -736,10 +736,10 @@ Layer:
           tags->'shelter' AS shelter,
           way,
           name,
-          COALESCE(
+          COALESCE( -- order is important here
             'aeroway_' || aeroway,
             'tourism_' || tourism,
-            'amenity_' || amenity,
+            'amenity_' || CASE WHEN amenity != 'fuel' THEN amenity ELSE NULL END,
             'shop_' || shop,
             'emergency_' || CASE WHEN tags->'emergency' IS NOT NULL then tags->'emergency' ELSE NULL END,
             'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
@@ -804,7 +804,7 @@ Layer:
           OR tags->'compressed_air'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
-          OR shop IN ('bicycle', 'bakery', 'convenience', 'greengrocer', 'supermarket', 'pastry')
+          OR shop IN ('bicycle', 'bakery', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
           OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
           OR leisure='picnic_table'
           OR (
@@ -832,7 +832,7 @@ Layer:
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
-                WHEN shop='convenience' THEN 50
+                WHEN shop='convenience' OR shop='convenience;gas' THEN 50
                 -- Food
                 WHEN shop IS NOT NULL OR amenity IN ('bar', 'biergarten', 'cafe', 'fast_food', 'food_court', 'pub', 'restaurant') THEN 60
                 -- Everything else
@@ -886,10 +886,10 @@ Layer:
             tags->'shelter' AS shelter,
             way,
             name,
-            COALESCE(
+            COALESCE( -- order is important here
               'aeroway_' || aeroway,
               'tourism_' || tourism,
-              'amenity_' || amenity,
+              'amenity_' || CASE WHEN amenity != 'fuel' THEN amenity ELSE NULL END,
               'shop_' || shop,
               'emergency_' || CASE WHEN tags->'emergency' IS NOT NULL then tags->'emergency' ELSE NULL END,
               'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
@@ -938,7 +938,7 @@ Layer:
             OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
             OR tags->'compressed_air'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
-            OR shop IN ('bicycle', 'bakery', 'convenience', 'greengrocer', 'supermarket', 'pastry')
+            OR shop IN ('bicycle', 'bakery', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
             OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
@@ -966,7 +966,7 @@ Layer:
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
-                WHEN shop='convenience' THEN 50
+                WHEN shop='convenience' OR shop='convenience;gas' THEN 50
                 -- Food
                 WHEN shop IS NOT NULL OR amenity IN ('bar', 'biergarten', 'cafe', 'fast_food', 'food_court', 'pub', 'restaurant') THEN 60
                 -- Everything else
@@ -1008,10 +1008,10 @@ Layer:
             tags->'shelter' AS shelter,
             way,
             name,
-            COALESCE(
+            COALESCE( -- order is important here
               'aeroway_' || aeroway,
               'tourism_' || tourism,
-              'amenity_' || amenity,
+              'amenity_' || CASE WHEN amenity != 'fuel' THEN amenity ELSE NULL END,
               'shop_' || shop,
               'emergency_' || CASE WHEN tags->'emergency' IS NOT NULL then tags->'emergency' ELSE NULL END,
               'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
@@ -1075,7 +1075,7 @@ Layer:
             OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
             OR tags->'compressed_air'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
-            OR shop IN ('bicycle', 'bakery', 'convenience', 'greengrocer', 'supermarket', 'pastry')
+            OR shop IN ('bicycle', 'bakery', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
             OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
@@ -1104,7 +1104,7 @@ Layer:
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
-                WHEN shop='convenience' THEN 50
+                WHEN shop='convenience' OR shop='convenience;gas' THEN 50
                 -- Food
                 WHEN shop IS NOT NULL OR amenity IN ('bar', 'biergarten', 'cafe', 'fast_food', 'food_court', 'pub', 'restaurant') THEN 60
                 -- Everything else
