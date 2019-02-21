@@ -2,3 +2,6 @@ data
 localconfig.json
 mapnik.xml
 *.pyc
+package.json
+node_modules
+yarn.lock

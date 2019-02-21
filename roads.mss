@@ -277,7 +277,7 @@ come in as well.
   [stylegroup='railway'] {
     line-color: fadeout(@land,50%);
   }
-  [stylegroup='pedestrian'] {
+  [stylegroup='pedestrian'][bicycle='no'] {
     line-opacity: 0;
   }
 
@@ -290,7 +290,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz11_service + (2 * @rdz11_service_outline); }
     [stylegroup='pedestrian']   { line-width: @rdz11_pedestrian + (2 * @rdz11_pedestrian_outline); }
     [stylegroup='steps']        { line-width: @rdz11_steps + (2 * @rdz11_steps_outline); }
-    [stylegroup='cycle']        { line-width: @rdz11_cycle + (2 * @rdz11_cycle_outline); }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz11_cycle + (2 * @rdz11_cycle_outline);
+    }
     [stylegroup='railway']      { line-width: @rdz11_railway + (2 * @rdz11_railway_outline); }
   }
   [zoom=12] {
@@ -301,7 +305,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz12_service + (2 * @rdz12_service_outline); }
     [stylegroup='pedestrian']   { line-width: @rdz12_pedestrian + (2 * @rdz12_pedestrian_outline); }
     [stylegroup='steps']        { line-width: @rdz12_steps + (2 * @rdz12_steps_outline); }
-    [stylegroup='cycle']        { line-width: @rdz12_cycle + (2 * @rdz12_cycle_outline); }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz12_cycle + (2 * @rdz12_cycle_outline);
+    }
     [stylegroup='railway']      { line-width: @rdz12_railway + (2 * @rdz12_railway_outline); }
   }
   [zoom=13] {
@@ -313,7 +321,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz13_service + (2 * @rdz13_service_outline); }
     [stylegroup='pedestrian']   { line-width: @rdz13_pedestrian + (2 * @rdz13_pedestrian_outline); }
     [stylegroup='steps']        { line-width: @rdz13_steps + (2 * @rdz13_steps_outline); }
-    [stylegroup='cycle']        { line-width: @rdz13_cycle + (2 * @rdz13_cycle_outline); }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz13_cycle + (2 * @rdz13_cycle_outline);
+    }
     [stylegroup='railway']      { line-width: @rdz13_railway + (2 * @rdz13_railway_outline); }
   }
   [zoom=14] {
@@ -324,7 +336,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz14_service + (2 * @rdz14_service_outline); }
     [stylegroup='pedestrian']   { line-width: @rdz14_pedestrian + (2 * @rdz14_pedestrian_outline); }
     [stylegroup='steps']        { line-width: @rdz14_steps + (2 * @rdz14_steps_outline); }
-    [stylegroup='cycle']        { line-width: @rdz14_cycle + (2 * @rdz14_cycle_outline); }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz14_cycle + (2 * @rdz14_cycle_outline);
+    }
     [stylegroup='railway']      { line-width: @rdz14_railway + (2 * @rdz14_railway_outline); }
   }
   [zoom=15] {
@@ -334,7 +350,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz15_service + (2 * @rdz15_service_outline); }
     [stylegroup='pedestrian']   { line-width: @rdz15_pedestrian + (2 * @rdz15_pedestrian_outline); }
     [stylegroup='steps']        { line-width: @rdz15_steps + (2 * @rdz15_steps_outline); }
-    [stylegroup='cycle']        { line-width: @rdz15_cycle + (2 * @rdz15_cycle_outline); }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz15_cycle + (2 * @rdz15_cycle_outline);
+    }
     [stylegroup='railway']      { line-width: @rdz15_railway + (2 * @rdz15_railway_outline); }
   }
   [zoom=16] {
@@ -344,7 +364,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz16_service + (2 * @rdz16_service_outline); }
     [stylegroup='pedestrian']   { line-width: @rdz16_pedestrian + (2 * @rdz16_pedestrian_outline); }
     [stylegroup='steps']        { line-width: @rdz16_steps + (2 * @rdz16_steps_outline); }
-    [stylegroup='cycle']        { line-width: @rdz16_cycle + (2 * @rdz16_cycle_outline); }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz16_cycle + (2 * @rdz16_cycle_outline);
+    }
     [stylegroup='railway']      { line-width: @rdz16_railway + (2 * @rdz16_railway_outline); }
   }
   [zoom>=17] {
@@ -354,7 +378,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz17_service + (2 * @rdz17_service_outline); }
     [stylegroup='pedestrian']   { line-width: @rdz17_pedestrian + (2 * @rdz17_pedestrian_outline); }
     [stylegroup='steps']        { line-width: @rdz17_steps + (2 * @rdz17_steps_outline); }
-    [stylegroup='cycle']        { line-width: @rdz17_cycle + (2 * @rdz17_cycle_outline); }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz17_cycle + (2 * @rdz17_cycle_outline);
+    }
     [stylegroup='railway']      { line-width: @rdz17_railway + (2 * @rdz17_railway_outline); }
   }
   [zoom>=18] {
@@ -364,7 +392,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz18_service + (2 * @rdz18_service_outline); }
     [stylegroup='pedestrian']   { line-width: @rdz18_pedestrian + (2 * @rdz18_pedestrian_outline); }
     [stylegroup='steps']        { line-width: @rdz18_steps + (2 * @rdz18_steps_outline); }
-    [stylegroup='cycle']        { line-width: @rdz18_cycle + (2 * @rdz18_cycle_outline); }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz18_cycle + (2 * @rdz18_cycle_outline);
+    }
     [stylegroup='railway']      { line-width: @rdz18_railway + (2 * @rdz18_railway_outline); }
   }
 }
@@ -442,11 +474,13 @@ come in as well.
   [type='secondary_link'] {
     line-color: @secondary-fill;
   }
-  [stylegroup='cycle'] {
-    line-color: @cycle-fill;
-  }
   [stylegroup='pedestrian'] {
     line-color: @pedestrian-fill;
+  }
+  [stylegroup='cycle'],
+  [stylegroup='pedestrian'][bicycle='yes'],
+  [stylegroup='pedestrian'][bicycle='designated'] {
+    line-color: @cycle-fill;
   }
   [stylegroup='steps'] {
     line-color: @steps-fill;
@@ -460,7 +494,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz11_service + @rdz11_service_outline; line-offset: @rdz11_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz11_pedestrian + @rdz11_pedestrian_outline; line-offset: @rdz11_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz11_cycle + @rdz11_cycle_outline; line-offset: @rdz11_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz11_cycle + @rdz11_cycle_outline;
+      line-offset: @rdz11_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz11_railway + @rdz11_railway_outline; line-offset: @rdz11_railway_outline; }
   }
   [zoom=12] {
@@ -470,7 +509,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz12_service + @rdz12_service_outline; line-offset: @rdz12_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz12_pedestrian + @rdz12_pedestrian_outline; line-offset: @rdz12_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz12_cycle + @rdz12_cycle_outline; line-offset: @rdz12_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz12_cycle + @rdz12_cycle_outline;
+      line-offset: @rdz12_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz12_railway + @rdz12_railway_outline; line-offset: @rdz12_railway_outline; }
   }
   [zoom=13] {
@@ -481,7 +525,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz13_service + @rdz13_service_outline; line-offset: @rdz13_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz13_pedestrian + @rdz13_pedestrian_outline; line-offset: @rdz13_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz13_cycle + @rdz13_cycle_outline; line-offset: @rdz13_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz13_cycle + @rdz13_cycle_outline;
+      line-offset: @rdz13_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz13_railway + @rdz13_railway_outline; line-offset: @rdz13_railway_outline; }
   }
   [zoom=14] {
@@ -491,7 +540,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz14_service + @rdz14_service_outline; line-offset: @rdz14_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz14_pedestrian + @rdz14_pedestrian_outline; line-offset: @rdz14_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz14_cycle + @rdz14_cycle_outline; line-offset: @rdz14_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz14_cycle + @rdz14_cycle_outline;
+      line-offset: @rdz14_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz14_railway + @rdz14_railway_outline; line-offset: @rdz14_railway_outline; }
   }
   [zoom=15] {
@@ -500,7 +554,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz15_minorroad + @rdz15_minorroad_outline; line-offset: @rdz15_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz15_service + @rdz15_service_outline; line-offset: @rdz15_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz15_pedestrian + @rdz15_pedestrian_outline; line-offset: @rdz15_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz15_cycle + @rdz15_cycle_outline; line-offset: @rdz15_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz15_cycle + @rdz15_cycle_outline;
+      line-offset: @rdz15_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz15_railway + @rdz15_railway_outline; line-offset: @rdz15_railway_outline; }
   }
   [zoom=16] {
@@ -509,7 +568,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz16_minorroad + @rdz16_minorroad_outline; line-offset: @rdz16_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz16_service + @rdz16_service_outline; line-offset: @rdz16_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz16_pedestrian + @rdz16_pedestrian_outline; line-offset: @rdz16_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz16_cycle + @rdz16_cycle_outline; line-offset: @rdz16_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz16_cycle + @rdz16_cycle_outline;
+      line-offset: @rdz16_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz16_railway + @rdz16_railway_outline; line-offset: @rdz16_railway_outline; }
   }
   [zoom>=17] {
@@ -518,7 +582,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz17_minorroad + @rdz17_minorroad_outline; line-offset: @rdz17_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz17_service + @rdz17_service_outline; line-offset: @rdz17_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz17_pedestrian + @rdz17_pedestrian_outline; line-offset: @rdz17_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz17_cycle + @rdz17_cycle_outline; line-offset: @rdz17_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz17_cycle + @rdz17_cycle_outline;
+      line-offset: @rdz17_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz17_railway + @rdz17_railway_outline; line-offset: @rdz17_railway_outline; }
   }
   [zoom>=18] {
@@ -527,7 +596,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz18_minorroad + @rdz18_minorroad_outline; line-offset: @rdz18_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz18_service + @rdz18_service_outline; line-offset: @rdz18_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz18_pedestrian + @rdz18_pedestrian_outline; line-offset: @rdz18_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz18_cycle + @rdz18_cycle_outline; line-offset: @rdz18_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz18_cycle + @rdz18_cycle_outline;
+      line-offset: @rdz18_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz18_railway + @rdz18_railway_outline; line-offset: @rdz18_railway_outline; }
   }
 }
@@ -601,7 +675,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz11_service + @rdz11_service_outline; line-offset: @rdz11_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz11_pedestrian + @rdz11_pedestrian_outline; line-offset: @rdz11_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz11_cycle + @rdz11_cycle_outline; line-offset: @rdz11_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz11_cycle + @rdz11_cycle_outline;
+      line-offset: @rdz11_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz11_railway + @rdz11_railway_outline; line-offset: @rdz11_railway_outline; }
   }
   [zoom=12] {
@@ -611,7 +690,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz12_service + @rdz12_service_outline; line-offset: @rdz12_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz12_pedestrian + @rdz12_pedestrian_outline; line-offset: @rdz12_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz12_cycle + @rdz12_cycle_outline; line-offset: @rdz12_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz12_cycle + @rdz12_cycle_outline;
+      line-offset: @rdz12_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz12_railway + @rdz12_railway_outline; line-offset: @rdz12_railway_outline; }
   }
   [zoom=13] {
@@ -622,7 +706,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz13_service + @rdz13_service_outline; line-offset: @rdz13_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz13_pedestrian + @rdz13_pedestrian_outline; line-offset: @rdz13_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz13_cycle + @rdz13_cycle_outline; line-offset: @rdz13_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz13_cycle + @rdz13_cycle_outline;
+      line-offset: @rdz13_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz13_railway + @rdz13_railway_outline; line-offset: @rdz13_railway_outline; }
   }
   [zoom=14] {
@@ -632,7 +721,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz14_service + @rdz14_service_outline; line-offset: @rdz14_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz14_pedestrian + @rdz14_pedestrian_outline; line-offset: @rdz14_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz14_cycle + @rdz14_cycle_outline; line-offset: @rdz14_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz14_cycle + @rdz14_cycle_outline;
+      line-offset: @rdz14_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz14_railway + @rdz14_railway_outline; line-offset: @rdz14_railway_outline; }
   }
   [zoom=15] {
@@ -641,7 +735,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz15_minorroad + @rdz15_minorroad_outline; line-offset: @rdz15_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz15_service + @rdz15_service_outline; line-offset: @rdz15_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz15_pedestrian + @rdz15_pedestrian_outline; line-offset: @rdz15_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz15_cycle + @rdz15_cycle_outline; line-offset: @rdz15_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz15_cycle + @rdz15_cycle_outline;
+      line-offset: @rdz15_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz15_railway + @rdz15_railway_outline; line-offset: @rdz15_railway_outline; }
   }
   [zoom=16] {
@@ -650,7 +749,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz16_minorroad + @rdz16_minorroad_outline; line-offset: @rdz16_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz16_service + @rdz16_service_outline; line-offset: @rdz16_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz16_pedestrian + @rdz16_pedestrian_outline; line-offset: @rdz16_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz16_cycle + @rdz16_cycle_outline; line-offset: @rdz16_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz16_cycle + @rdz16_cycle_outline;
+      line-offset: @rdz16_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz16_railway + @rdz16_railway_outline; line-offset: @rdz16_railway_outline; }
   }
   [zoom>=17] {
@@ -659,7 +763,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz17_minorroad + @rdz17_minorroad_outline; line-offset: @rdz17_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz17_service + @rdz17_service_outline; line-offset: @rdz17_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz17_pedestrian + @rdz17_pedestrian_outline; line-offset: @rdz17_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz17_cycle + @rdz17_cycle_outline; line-offset: @rdz17_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz17_cycle + @rdz17_cycle_outline;
+      line-offset: @rdz17_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz17_railway + @rdz17_railway_outline; line-offset: @rdz17_railway_outline; }
   }
   [zoom>=18] {
@@ -668,7 +777,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz18_minorroad + @rdz18_minorroad_outline; line-offset: @rdz18_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz18_service + @rdz18_service_outline; line-offset: @rdz18_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz18_pedestrian + @rdz18_pedestrian_outline; line-offset: @rdz18_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz18_cycle + @rdz18_cycle_outline; line-offset: @rdz18_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz18_cycle + @rdz18_cycle_outline;
+      line-offset: @rdz18_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz18_railway + @rdz18_railway_outline; line-offset: @rdz18_railway_outline; }
   }
 }
@@ -713,14 +827,16 @@ come in as well.
   [type='secondary_link'] {
     line-color: @secondary-fill;
   }
-  [stylegroup='cycle'] {
-    line-color: @cycle-fill;
-  }
   [stylegroup='pedestrian'] {
     line-color: @pedestrian-fill;
   }
   [stylegroup='steps'] {
     line-color: @steps-fill;
+  }
+  [stylegroup='cycle'],
+  [stylegroup='pedestrian'][bicycle='yes'],
+  [stylegroup='pedestrian'][bicycle='designated'] {
+    line-color: @cycle-fill;
   }
 
   /* widths */
@@ -731,7 +847,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz11_service + @rdz11_service_outline; line-offset: -1 * @rdz11_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz11_pedestrian + @rdz11_pedestrian_outline; line-offset: -1 * @rdz11_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz11_cycle + @rdz11_cycle_outline; line-offset: -1 * @rdz11_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz11_cycle + @rdz11_cycle_outline;
+      line-offset: -1 * @rdz11_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz11_railway + @rdz11_railway_outline; line-offset: -1 * @rdz11_railway_outline; }
   }
   [zoom=12] {
@@ -741,7 +862,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz12_service + @rdz12_service_outline; line-offset: -1 * @rdz12_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz12_pedestrian + @rdz12_pedestrian_outline; line-offset: -1 * @rdz12_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz12_cycle + @rdz12_cycle_outline; line-offset: -1 * @rdz12_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz12_cycle + @rdz12_cycle_outline;
+      line-offset: -1 * @rdz12_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz12_railway + @rdz12_railway_outline; line-offset: -1 * @rdz12_railway_outline; }
   }
   [zoom=13] {
@@ -752,7 +878,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz13_service + @rdz13_service_outline; line-offset: -1 * @rdz13_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz13_pedestrian + @rdz13_pedestrian_outline; line-offset: -1 * @rdz13_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz13_cycle + @rdz13_cycle_outline; line-offset: -1 * @rdz13_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz13_cycle + @rdz13_cycle_outline;
+      line-offset: -1 * @rdz13_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz13_railway + @rdz13_railway_outline; line-offset: -1 * @rdz13_railway_outline; }
   }
   [zoom=14] {
@@ -762,7 +893,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz14_service + @rdz14_service_outline; line-offset: -1 * @rdz14_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz14_pedestrian + @rdz14_pedestrian_outline; line-offset: -1 * @rdz14_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz14_cycle + @rdz14_cycle_outline; line-offset: -1 * @rdz14_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz14_cycle + @rdz14_cycle_outline;
+      line-offset: -1 * @rdz14_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz14_railway + @rdz14_railway_outline; line-offset: -1 * @rdz14_railway_outline; }
   }
   [zoom=15] {
@@ -771,7 +907,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz15_minorroad + @rdz15_minorroad_outline; line-offset: -1 * @rdz15_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz15_service + @rdz15_service_outline; line-offset: -1 * @rdz15_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz15_pedestrian + @rdz15_pedestrian_outline; line-offset: -1 * @rdz15_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz15_cycle + @rdz15_cycle_outline; line-offset: -1 * @rdz15_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz15_cycle + @rdz15_cycle_outline;
+      line-offset: -1 * @rdz15_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz15_railway + @rdz15_railway_outline; line-offset: -1 * @rdz15_railway_outline; }
   }
   [zoom=16] {
@@ -780,7 +921,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz16_minorroad + @rdz16_minorroad_outline; line-offset: -1 * @rdz16_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz16_service + @rdz16_service_outline; line-offset: -1 * @rdz16_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz16_pedestrian + @rdz16_pedestrian_outline; line-offset: -1 * @rdz16_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz16_cycle + @rdz16_cycle_outline; line-offset: -1 * @rdz16_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz16_cycle + @rdz16_cycle_outline;
+      line-offset: -1 * @rdz16_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz16_railway + @rdz16_railway_outline; line-offset: -1 * @rdz16_railway_outline; }
   }
   [zoom>=17] {
@@ -789,7 +935,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz17_minorroad + @rdz17_minorroad_outline; line-offset: -1 * @rdz17_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz17_service + @rdz17_service_outline; line-offset: -1 * @rdz17_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz17_pedestrian + @rdz17_pedestrian_outline; line-offset: -1 * @rdz17_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz17_cycle + @rdz17_cycle_outline; line-offset: -1 * @rdz17_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz17_cycle + @rdz17_cycle_outline;
+      line-offset: -1 * @rdz17_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz17_railway + @rdz17_railway_outline; line-offset: -1 * @rdz17_railway_outline; }
   }
   [zoom>=18] {
@@ -798,7 +949,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz18_minorroad + @rdz18_minorroad_outline; line-offset: -1 * @rdz18_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz18_service + @rdz18_service_outline; line-offset: -1 * @rdz18_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz18_pedestrian + @rdz18_pedestrian_outline; line-offset: -1 * @rdz18_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz18_cycle + @rdz18_cycle_outline; line-offset: -1 * @rdz18_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz18_cycle + @rdz18_cycle_outline;
+      line-offset: -1 * @rdz18_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz18_railway + @rdz18_railway_outline; line-offset: -1 * @rdz18_railway_outline; }
   }
 }
@@ -875,7 +1031,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz11_service + @rdz11_service_outline; line-offset: -1 * @rdz11_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz11_pedestrian + @rdz11_pedestrian_outline; line-offset: -1 * @rdz11_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz11_cycle + @rdz11_cycle_outline; line-offset: -1 * @rdz11_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz11_cycle + @rdz11_cycle_outline;
+      line-offset: -1 * @rdz11_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz11_railway + @rdz11_railway_outline; line-offset: -1 * @rdz11_railway_outline; }
   }
   [zoom=12] {
@@ -885,7 +1046,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz12_service + @rdz12_service_outline; line-offset: -1 * @rdz12_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz12_pedestrian + @rdz12_pedestrian_outline; line-offset: -1 * @rdz12_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz12_cycle + @rdz12_cycle_outline; line-offset: -1 * @rdz12_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz12_cycle + @rdz12_cycle_outline;
+      line-offset: -1 * @rdz12_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz12_railway + @rdz12_railway_outline; line-offset: -1 * @rdz12_railway_outline; }
   }
   [zoom=13] {
@@ -896,7 +1062,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz13_service + @rdz13_service_outline; line-offset: -1 * @rdz13_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz13_pedestrian + @rdz13_pedestrian_outline; line-offset: -1 * @rdz13_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz13_cycle + @rdz13_cycle_outline; line-offset: -1 * @rdz13_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz13_cycle + @rdz13_cycle_outline;
+      line-offset: -1 * @rdz13_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz13_railway + @rdz13_railway_outline; line-offset: -1 * @rdz13_railway_outline; }
   }
   [zoom=14] {
@@ -906,7 +1077,12 @@ come in as well.
     /* No minor bridges yet */
     [stylegroup='service']      { line-width: @rdz14_service + @rdz14_service_outline; line-offset: -1 * @rdz14_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz14_pedestrian + @rdz14_pedestrian_outline; line-offset: -1 * @rdz14_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz14_cycle + @rdz14_cycle_outline; line-offset: -1 * @rdz14_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz14_cycle + @rdz14_cycle_outline;
+      line-offset: -1 * @rdz14_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz14_railway + @rdz14_railway_outline; line-offset: -1 * @rdz14_railway_outline; }
   }
   [zoom=15] {
@@ -915,7 +1091,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz15_minorroad + @rdz15_minorroad_outline; line-offset: -1 * @rdz15_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz15_service + @rdz15_service_outline; line-offset: -1 * @rdz15_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz15_pedestrian + @rdz15_pedestrian_outline; line-offset: -1 * @rdz15_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz15_cycle + @rdz15_cycle_outline; line-offset: -1 * @rdz15_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz15_cycle + @rdz15_cycle_outline;
+      line-offset: -1 * @rdz15_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz15_railway + @rdz15_railway_outline; line-offset: -1 * @rdz15_railway_outline; }
   }
   [zoom=16] {
@@ -924,7 +1105,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz16_minorroad + @rdz16_minorroad_outline; line-offset: -1 * @rdz16_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz16_service + @rdz16_service_outline; line-offset: -1 * @rdz16_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz16_pedestrian + @rdz16_pedestrian_outline; line-offset: -1 * @rdz16_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz16_cycle + @rdz16_cycle_outline; line-offset: -1 * @rdz16_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz16_cycle + @rdz16_cycle_outline;
+      line-offset: -1 * @rdz16_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz16_railway + @rdz16_railway_outline; line-offset: -1 * @rdz16_railway_outline; }
   }
   [zoom>=17] {
@@ -933,7 +1119,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz17_minorroad + @rdz17_minorroad_outline; line-offset: -1 * @rdz17_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz17_service + @rdz17_service_outline; line-offset: -1 * @rdz17_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz17_pedestrian + @rdz17_pedestrian_outline; line-offset: -1 * @rdz17_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz17_cycle + @rdz17_cycle_outline; line-offset: -1 * @rdz17_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz17_cycle + @rdz17_cycle_outline;
+      line-offset: -1 * @rdz17_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz17_railway + @rdz17_railway_outline; line-offset: -1 * @rdz17_railway_outline; }
   }
   [zoom>=18] {
@@ -942,7 +1133,12 @@ come in as well.
     [stylegroup='minorroad']    { line-width: @rdz18_minorroad + @rdz18_minorroad_outline; line-offset: -1 * @rdz18_minorroad_outline; }
     [stylegroup='service']      { line-width: @rdz18_service + @rdz18_service_outline; line-offset: -1 * @rdz18_service_outline; }
     [stylegroup='pedestrian']   { line-width: @rdz18_pedestrian + @rdz18_pedestrian_outline; line-offset: -1 * @rdz18_pedestrian_outline; }
-    [stylegroup='cycle']        { line-width: @rdz18_cycle + @rdz18_cycle_outline; line-offset: -1 * @rdz18_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz18_cycle + @rdz18_cycle_outline;
+      line-offset: -1 * @rdz18_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz18_railway + @rdz18_railway_outline; line-offset: -1 * @rdz18_railway_outline; }
   }
 }
@@ -961,7 +1157,9 @@ come in as well.
     line-width: 0;
     line-join: round;
   }
-  [stylegroup='cycle'] {
+  [stylegroup='cycle'],
+  [stylegroup='pedestrian'][bicycle='yes'],
+  [stylegroup='pedestrian'][bicycle='designated'] {
     line-color: @land;
     line-width: 0;
     line-join: round;
@@ -974,31 +1172,51 @@ come in as well.
   [zoom=14] {
     [stylegroup='pedestrian']   { line-width: @rdz14_pedestrian + @rdz14_pedestrian_outline; }
     [stylegroup='steps']        { line-width: @rdz14_steps + @rdz14_steps_outline; }
-    [stylegroup='cycle']        { line-width: @rdz14_cycle + @rdz14_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz14_cycle + @rdz14_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz14_railway + @rdz14_railway_outline; }
   }
   [zoom=15] {
     [stylegroup='pedestrian']   { line-width: @rdz15_pedestrian + @rdz15_pedestrian_outline; }
     [stylegroup='steps']        { line-width: @rdz15_steps + @rdz15_steps_outline; }
-    [stylegroup='cycle']        { line-width: @rdz15_cycle + @rdz15_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz15_cycle + @rdz15_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz15_railway + @rdz15_railway_outline; }
   }
   [zoom=16] {
     [stylegroup='pedestrian']   { line-width: @rdz16_pedestrian + @rdz16_pedestrian_outline; }
     [stylegroup='steps']        { line-width: @rdz16_steps + @rdz16_steps_outline; }
-    [stylegroup='cycle']        { line-width: @rdz16_cycle + @rdz16_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz16_cycle + @rdz16_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz16_railway + @rdz16_railway_outline; }
   }
   [zoom=17] {
     [stylegroup='pedestrian']   { line-width: @rdz17_pedestrian + @rdz17_pedestrian_outline; }
     [stylegroup='steps']        { line-width: @rdz17_steps + @rdz17_steps_outline; }
-    [stylegroup='cycle']        { line-width: @rdz17_cycle + @rdz17_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz17_cycle + @rdz17_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz17_railway + @rdz17_railway_outline; }
   }
   [zoom>=18] {
     [stylegroup='pedestrian']   { line-width: @rdz18_pedestrian + @rdz18_pedestrian_outline; }
     [stylegroup='steps']        { line-width: @rdz18_steps + @rdz18_steps_outline; }
-    [stylegroup='cycle']        { line-width: @rdz18_cycle + @rdz18_cycle_outline; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz18_cycle + @rdz18_cycle_outline;
+    }
     [stylegroup='railway']      { line-width: @rdz18_railway + @rdz18_railway_outline; }
   }
 }
@@ -1059,7 +1277,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz11_service; }
     [stylegroup='pedestrian']   { line-width: @rdz11_pedestrian; }
     [stylegroup='steps']        { line-width: @rdz11_steps; }
-    [stylegroup='cycle']        { line-width: @rdz11_cycle; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz11_cycle;
+    }
     [stylegroup='railway']      { line-width: @rdz11_railway; }
   }
   [zoom=12] {
@@ -1069,7 +1291,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz12_service; }
     [stylegroup='pedestrian']   { line-width: @rdz12_pedestrian; }
     [stylegroup='steps']        { line-width: @rdz12_steps; }
-    [stylegroup='cycle']        { line-width: @rdz12_cycle; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz12_cycle;
+    }
     [stylegroup='railway']      { line-width: @rdz12_railway; }
   }
   [zoom=13] {
@@ -1080,7 +1306,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz13_service; }
     [stylegroup='pedestrian']   { line-width: @rdz13_pedestrian; line-dasharray: 1,1; }
     [stylegroup='steps']        { line-width: @rdz13_steps;      line-dasharray: 0.5,0.5; }
-    [stylegroup='cycle']        { line-width: @rdz13_cycle; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz13_cycle;
+    }
     [stylegroup='railway']      { line-width: @rdz13_railway; }
   }
   [zoom=14] {
@@ -1090,7 +1320,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz14_service; }
     [stylegroup='pedestrian']   { line-width: @rdz14_pedestrian; line-dasharray: 1,1; }
     [stylegroup='steps']        { line-width: @rdz14_steps;      line-dasharray: 0.5,0.5; }
-    [stylegroup='cycle']        { line-width: @rdz14_cycle; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz14_cycle;
+    }
     [stylegroup='railway']      { line-width: @rdz14_railway; }
   }
   [zoom=15] {
@@ -1100,7 +1334,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz15_service; }
     [stylegroup='pedestrian']   { line-width: @rdz15_pedestrian; line-dasharray: 1,1; }
     [stylegroup='steps']        { line-width: @rdz15_steps;      line-dasharray: 0.5,0.5; }
-    [stylegroup='cycle']        { line-width: @rdz15_cycle; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz15_cycle;
+    }
     [stylegroup='railway']      { line-width: @rdz15_railway; }
   }
   [zoom=16] {
@@ -1110,7 +1348,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz16_service; }
     [stylegroup='pedestrian']   { line-width: @rdz16_pedestrian; line-dasharray: 2,1; }
     [stylegroup='steps']        { line-width: @rdz16_steps;      line-dasharray: 1.5,0.75; }
-    [stylegroup='cycle']        { line-width: @rdz16_cycle; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz16_cycle;
+    }
     [stylegroup='railway']      { line-width: @rdz16_railway; }
   }
   [zoom=17] {
@@ -1120,7 +1362,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz17_service; }
     [stylegroup='pedestrian']   { line-width: @rdz17_pedestrian; line-dasharray: 2,2; }
     [stylegroup='steps']        { line-width: @rdz17_steps;      line-dasharray: 2,1; }
-    [stylegroup='cycle']        { line-width: @rdz17_cycle; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz17_cycle;
+    }
     [stylegroup='railway']      { line-width: @rdz17_railway; }
   }
   [zoom>=18] {
@@ -1130,7 +1376,11 @@ come in as well.
     [stylegroup='service']      { line-width: @rdz18_service; }
     [stylegroup='pedestrian']   { line-width: @rdz18_pedestrian; line-dasharray: 3,3; }
     [stylegroup='steps']        { line-width: @rdz18_steps;      line-dasharray: 2,1; }
-    [stylegroup='cycle']        { line-width: @rdz18_cycle; }
+    [stylegroup='cycle'],
+    [stylegroup='pedestrian'][bicycle='yes'],
+    [stylegroup='pedestrian'][bicycle='designated'] {
+      line-width: @rdz18_cycle;
+    }
     [stylegroup='railway']      { line-width: @rdz18_railway; }
   }
 }

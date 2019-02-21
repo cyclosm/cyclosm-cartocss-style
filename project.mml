@@ -248,11 +248,13 @@ Layer:
           WHEN highway IN ('primary', 'secondary') THEN 'mainroad'
           WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'
           WHEN highway IN ('service', 'track') THEN 'service'
-          WHEN highway='cycleway' THEN 'bike'
+          WHEN highway='cycleway' THEN 'cycle'
           WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN 'pedestrian'
           WHEN highway IN ('steps') THEN 'steps'
           WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
-          ELSE 'other' END AS stylegroup,
+          ELSE 'other'
+        END AS stylegroup,
+        bicycle,
         tags->'cycleway' AS cycleway, tags->'cycleway:left' AS cycleway_left, tags->'cycleway:right' AS cycleway_right,
         tags->'ramp:stroller' AS ramp_stroller,
         tags->'ramp:bicycle' AS ramp_cycle,
@@ -290,10 +292,11 @@ Layer:
           WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'
           WHEN highway IN ('service', 'track') THEN 'service'
           WHEN highway='cycleway' THEN 'cycle'
-          WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN bicycle IN ('yes', 'designated') THEN 'cycle' ELSE 'pedestrian' END
+          WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN 'pedestrian'
           WHEN highway IN ('steps') THEN 'steps'
           WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
         ELSE 'other' END AS stylegroup,
+        bicycle,
         tags->'cycleway' AS cycleway,
         tags->'cycleway:left' AS cycleway_left,
         tags->'cycleway:right' AS cycleway_right,
@@ -301,8 +304,8 @@ Layer:
         tags->'ramp:bicycle' AS ramp_cycle,
         tags->'ramp:wheelchair' AS ramp_wheelchair,
         CASE
-          WHEN highway='cycleway' THEN 10*layer::integer+9
-          WHEN highway IN ('path', 'footway', 'pedestrian', 'steps', 'bridleway') AND bicycle IN ('yes', 'designated') THEN 10*layer::integer+9
+          WHEN stylegroup='cycle' THEN 10*layer::integer+9
+          WHEN stylegroup='pedestrian' THEN 10*layer::integer+8
         ELSE z_order END AS z_order
         FROM planet_osm_line
         WHERE (highway IS NOT NULL OR railway IS NOT NULL)
@@ -371,23 +374,16 @@ Layer:
           WHEN highway IN ('steps') THEN 'steps'
           WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
         ELSE 'other' END AS stylegroup,
+        bicycle,
         tags->'cycleway' AS cycleway,
         tags->'cycleway:left' AS cycleway_left,
         tags->'cycleway:right' AS cycleway_right,
         tags->'ramp:stroller' AS ramp_stroller,
         tags->'ramp:bicycle' AS ramp_cycle,
         tags->'ramp:wheelchair' AS ramp_wheelchair
-        FROM (
-          SELECT *, '1_outline' AS render FROM planet_osm_line
-            WHERE bridge NOT IN ('', '0', 'no')
-          UNION ALL
-          SELECT *, '2_line' AS render FROM planet_osm_line
-            WHERE bridge NOT IN ('', '0', 'no')
-          UNION ALL
-          SELECT *, '3_inline' AS render FROM planet_osm_line
-            WHERE bridge NOT IN ('', '0', 'no')
-        ) AS bridges
-        ORDER BY layer ASC, render ASC
+        FROM planet_osm_line
+        WHERE bridge NOT IN ('', '0', 'no')
+        ORDER BY layer ASC
       ) AS data
   geometry: linestring
   properties:
