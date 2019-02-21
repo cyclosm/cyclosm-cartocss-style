@@ -4,6 +4,8 @@ CyclOSM
 This is a [CartoCSS](https://carto.com/developers/styling/cartocss/) style
 designed with cycling in mind.
 
+[![Build Status](https://api.travis-ci.org/cyclosm/cyclosm-cartocss-style.svg?branch=master)](https://travis-ci.org/cyclosm/cyclosm-cartocss-style)
+
 **Note:** This is currently a Work In Progress.
 
 ## Demonstration
