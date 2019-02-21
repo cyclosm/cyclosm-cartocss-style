@@ -243,17 +243,6 @@ Layer:
     table: |-
       (
         SELECT way, COALESCE(highway, railway) AS type, 0 AS bridge, access, layer, 1 as tunnel,
-        CASE
-          WHEN highway IN ('motorway', 'trunk') THEN 'motorway'
-          WHEN highway IN ('primary', 'secondary') THEN 'mainroad'
-          WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'
-          WHEN highway IN ('service', 'track') THEN 'service'
-          WHEN highway='cycleway' THEN 'cycle'
-          WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN 'pedestrian'
-          WHEN highway IN ('steps') THEN 'steps'
-          WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
-          ELSE 'other'
-        END AS stylegroup,
         bicycle,
         tags->'cycleway' AS cycleway, tags->'cycleway:left' AS cycleway_left, tags->'cycleway:right' AS cycleway_right,
         tags->'ramp:stroller' AS ramp_stroller,
@@ -285,17 +274,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(highway, railway) AS type, 0 AS tunnel, 0 AS bridge, access, 'fill' AS render,
-        CASE
-          WHEN highway IN ('motorway', 'trunk') THEN 'motorway'
-          WHEN highway IN ('primary', 'secondary') THEN 'mainroad'
-          WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'
-          WHEN highway IN ('service', 'track') THEN 'service'
-          WHEN highway='cycleway' THEN 'cycle'
-          WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN 'pedestrian'
-          WHEN highway IN ('steps') THEN 'steps'
-          WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
-        ELSE 'other' END AS stylegroup,
+        SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other') AS type, 0 AS tunnel, 0 AS bridge, access, 'fill' AS render,
         bicycle,
         tags->'cycleway' AS cycleway,
         tags->'cycleway:left' AS cycleway_left,
@@ -304,8 +283,8 @@ Layer:
         tags->'ramp:bicycle' AS ramp_cycle,
         tags->'ramp:wheelchair' AS ramp_wheelchair,
         CASE
-          WHEN stylegroup='cycle' THEN 10*layer::integer+9
-          WHEN stylegroup='pedestrian' THEN 10*layer::integer+8
+          WHEN highway='cycleway' THEN 10*layer::integer+9
+          WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN 10*layer::integer+8
         ELSE z_order END AS z_order
         FROM planet_osm_line
         WHERE (highway IS NOT NULL OR railway IS NOT NULL)
@@ -364,16 +343,6 @@ Layer:
     table: |-
       (
         SELECT way, COALESCE(highway, railway) AS type, 1 AS bridge, access, render, layer, 0 as tunnel,
-        CASE
-          WHEN highway IN ('motorway', 'trunk') THEN 'motorway'
-          WHEN highway IN ('primary', 'secondary') THEN 'mainroad'
-          WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'
-          WHEN highway IN ('service', 'track') THEN 'service'
-          WHEN highway='cycleway' THEN 'cycle'
-          WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN 'pedestrian'
-          WHEN highway IN ('steps') THEN 'steps'
-          WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
-        ELSE 'other' END AS stylegroup,
         bicycle,
         tags->'cycleway' AS cycleway,
         tags->'cycleway:left' AS cycleway_left,
