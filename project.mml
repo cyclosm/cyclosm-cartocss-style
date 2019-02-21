@@ -283,8 +283,8 @@ Layer:
         tags->'ramp:bicycle' AS ramp_cycle,
         tags->'ramp:wheelchair' AS ramp_wheelchair,
         CASE
-          WHEN highway='cycleway' THEN 10*layer::integer+9
-          WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN 10*layer::integer+8
+          WHEN highway='cycleway' THEN CASE WHEN layer~E'^\\d+$' THEN 10*layer::integer+9 ELSE z_order END
+          WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 10*layer::integer+8 ELSE z_order END
         ELSE z_order END AS z_order
         FROM planet_osm_line
         WHERE (highway IS NOT NULL OR railway IS NOT NULL)
