@@ -242,7 +242,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(highway, railway) AS type, 0 AS bridge, access, layer, 1 as tunnel,
+        SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS bridge, access, layer, 1 as tunnel,
         bicycle,
         tags->'cycleway' AS cycleway, tags->'cycleway:left' AS cycleway_left, tags->'cycleway:right' AS cycleway_right,
         tags->'ramp:stroller' AS ramp_stroller,
@@ -274,7 +274,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other') AS type, 0 AS tunnel, 0 AS bridge, access, 'fill' AS render,
+        SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS tunnel, 0 AS bridge, access,
         bicycle,
         tags->'cycleway' AS cycleway,
         tags->'cycleway:left' AS cycleway_left,
@@ -342,7 +342,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(highway, railway) AS type, 1 AS bridge, access, render, layer, 0 as tunnel,
+        SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 1 AS bridge, access, layer, 0 as tunnel,
         bicycle,
         tags->'cycleway' AS cycleway,
         tags->'cycleway:left' AS cycleway_left,
