@@ -138,8 +138,10 @@
 /* POIs COLORS
 /* ================================================================== */
 @bicycle_parking_line: 	#fff;
+@secured_bicycle_parking_line: #edd502;
 @bicycle_parking_fill: 	#0000ff;
 @motorcycle_parking_line:  #fff;
+@secured_motorcycle_parking_line: @secured_bicycle_parking_line;
 @motorcycle_parking_fill:  #ff0000;
 
 @natural_volcano: #980000;

@@ -1,0 +1,4 @@
+language: node_js
+node_js: 11
+install: yarn add carto
+script: ./node_modules/.bin/carto -b project.mml > /dev/null

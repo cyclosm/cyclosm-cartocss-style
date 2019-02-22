@@ -242,17 +242,15 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(highway, railway) AS type, 0 AS bridge, access, layer, 1 as tunnel,
+        SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS bridge, access, layer, 1 as tunnel,
         CASE
-          WHEN highway IN ('motorway', 'trunk') THEN 'motorway'
-          WHEN highway IN ('primary', 'secondary') THEN 'mainroad'
-          WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'
-          WHEN highway IN ('service', 'track') THEN 'service'
-          WHEN highway='cycleway' THEN 'bike'
-          WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN 'pedestrian'
-          WHEN highway IN ('steps') THEN 'steps'
-          WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
-          ELSE 'other' END AS stylegroup,
+          WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
+          WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
+          WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
+          WHEN tags->'maxspeed'='walk' THEN 5
+          ELSE NULL
+        END AS maxspeed_kmh,
+        bicycle,
         tags->'cycleway' AS cycleway, tags->'cycleway:left' AS cycleway_left, tags->'cycleway:right' AS cycleway_right,
         tags->'ramp:stroller' AS ramp_stroller,
         tags->'ramp:bicycle' AS ramp_cycle,
@@ -283,17 +281,15 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(highway, railway) AS type, 0 AS tunnel, 0 AS bridge, access, 'fill' AS render,
+        SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS tunnel, 0 AS bridge, access,
         CASE
-          WHEN highway IN ('motorway', 'trunk') THEN 'motorway'
-          WHEN highway IN ('primary', 'secondary') THEN 'mainroad'
-          WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'
-          WHEN highway IN ('service', 'track') THEN 'service'
-          WHEN highway='cycleway' THEN 'cycle'
-          WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN bicycle IN ('yes', 'designated') THEN 'cycle' ELSE 'pedestrian' END
-          WHEN highway IN ('steps') THEN 'steps'
-          WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
-        ELSE 'other' END AS stylegroup,
+          WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
+          WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
+          WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
+          WHEN tags->'maxspeed'='walk' THEN 5
+          ELSE NULL
+        END AS maxspeed_kmh,
+        bicycle,
         tags->'cycleway' AS cycleway,
         tags->'cycleway:left' AS cycleway_left,
         tags->'cycleway:right' AS cycleway_right,
@@ -301,9 +297,9 @@ Layer:
         tags->'ramp:bicycle' AS ramp_cycle,
         tags->'ramp:wheelchair' AS ramp_wheelchair,
         CASE
-          WHEN highway='cycleway' THEN 10*layer::integer+9
-          WHEN highway IN ('path', 'footway', 'pedestrian', 'steps', 'bridleway') AND bicycle IN ('yes', 'designated') THEN 10*layer::integer+9
-        ELSE z_order END AS z_order
+          WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+39 ELSE 39 END
+          ELSE z_order
+        END AS z_order
         FROM planet_osm_line
         WHERE (highway IS NOT NULL OR railway IS NOT NULL)
           AND (tunnel IS NULL OR tunnel = 'no')
@@ -360,34 +356,24 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(highway, railway) AS type, 1 AS bridge, access, render, layer, 0 as tunnel,
+        SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 1 AS bridge, access, layer, 0 as tunnel,
         CASE
-          WHEN highway IN ('motorway', 'trunk') THEN 'motorway'
-          WHEN highway IN ('primary', 'secondary') THEN 'mainroad'
-          WHEN highway IN ('motorway_link', 'trunk_link', 'primary_link', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'living_street') THEN 'minorroad'
-          WHEN highway IN ('service', 'track') THEN 'service'
-          WHEN highway='cycleway' THEN 'cycle'
-          WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN 'pedestrian'
-          WHEN highway IN ('steps') THEN 'steps'
-          WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
-        ELSE 'other' END AS stylegroup,
+          WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
+          WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
+          WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
+          WHEN tags->'maxspeed'='walk' THEN 5
+          ELSE NULL
+        END AS maxspeed_kmh,
+        bicycle,
         tags->'cycleway' AS cycleway,
         tags->'cycleway:left' AS cycleway_left,
         tags->'cycleway:right' AS cycleway_right,
         tags->'ramp:stroller' AS ramp_stroller,
         tags->'ramp:bicycle' AS ramp_cycle,
         tags->'ramp:wheelchair' AS ramp_wheelchair
-        FROM (
-          SELECT *, '1_outline' AS render FROM planet_osm_line
-            WHERE bridge NOT IN ('', '0', 'no')
-          UNION ALL
-          SELECT *, '2_line' AS render FROM planet_osm_line
-            WHERE bridge NOT IN ('', '0', 'no')
-          UNION ALL
-          SELECT *, '3_inline' AS render FROM planet_osm_line
-            WHERE bridge NOT IN ('', '0', 'no')
-        ) AS bridges
-        ORDER BY layer ASC, render ASC
+        FROM planet_osm_line
+        WHERE bridge NOT IN ('', '0', 'no')
+        ORDER BY layer ASC
       ) AS data
   geometry: linestring
   properties:
@@ -639,7 +625,9 @@ Layer:
             'power_' || power,
             'tourism_' || tourism
           ) AS feature,
+          (tags->'capacity')::integer AS capacity,
           tags->'compressed_air' AS compressed_air,
+          tags->'drinking_water' AS drinking_water,
           tags->'location' AS location,
           tags->'memorial' AS memorial,
           tags->'castle_type' AS castle_type,
@@ -648,6 +636,8 @@ Layer:
           tags->'icao' as icao,
           tags->'iata' as iata,
           tags->'generator:source' as "generator:source",
+          tags->'supervised' as supervised,
+          tags->'bicycle_parking' as bicycle_parking,
           CASE
             WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN NULL
             WHEN "waterway" IN ('waterfall') THEN
@@ -655,6 +645,7 @@ Layer:
                 WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
               ELSE NULL
               END
+            WHEN tags->'capacity' IS NOT NULL THEN (tags->'capacity')::integer
             ELSE NULL
           END AS score,
           NULL AS elevation,
@@ -671,11 +662,11 @@ Layer:
         WHERE aeroway IN ('helipad', 'aerodrome')
           OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
               'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
+          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
           OR tags->'compressed_air'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
-          OR shop IN ('bicycle', 'bakery', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
+          OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
           OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
           OR leisure='picnic_table'
           OR (
@@ -695,7 +686,7 @@ Layer:
                 -- Emergency first
                 WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 0
                 -- Other emergency-related amenities
-                WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets') THEN 10
+                WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets', 'water_point') THEN 10
                 WHEN tags->'compressed_air'='yes' THEN 11
                 -- Bike amenities
                 WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
@@ -744,9 +735,12 @@ Layer:
             'highway_'|| highway,
             'power_' || power,
             'tourism_' || tourism,
-            'traffic_calming_' || CASE WHEN tags->'traffic_calming' IS NOT NULL THEN tags->'traffic_calming' ELSE NULL END
+            'traffic_calming_' || CASE WHEN tags->'traffic_calming' IS NOT NULL THEN tags->'traffic_calming' ELSE NULL END,
+            'cycleway_' || CASE WHEN tags->'cycleway' IS NOT NULL then tags->'cycleway' ELSE NULL END
           ) AS feature,
+          (tags->'capacity')::integer AS capacity,
           tags->'compressed_air' AS compressed_air,
+          tags->'drinking_water' AS drinking_water,
           tags->'location' AS location,
           tags->'memorial' AS memorial,
           tags->'castle_type' AS castle_type,
@@ -755,6 +749,8 @@ Layer:
           tags->'icao' as icao,
           tags->'iata' as iata,
           tags->'generator:source' as "generator:source",
+          tags->'supervised' as supervised,
+          tags->'bicycle_parking' as bicycle_parking,
           CASE
             WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
               CASE
@@ -766,6 +762,7 @@ Layer:
                 WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
               ELSE NULL
               END
+            WHEN tags->'capacity' IS NOT NULL THEN (tags->'capacity')::integer
             ELSE NULL
           END AS score,
           CASE
@@ -792,11 +789,11 @@ Layer:
         WHERE aeroway IN ('helipad', 'aerodrome')
           OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
               'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
+          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
           OR tags->'compressed_air'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
-          OR shop IN ('bicycle', 'bakery', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
+          OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
           OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
           OR leisure='picnic_table'
           OR (
@@ -812,12 +809,13 @@ Layer:
           OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND tags->'generator:source'='wind')
           OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip', 'table')
+          OR tags->'cycleway'='asl'
         ORDER BY
             CASE
                 -- Emergency first
                 WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 0
                 -- Other emergency-related amenities
-                WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets') THEN 10
+                WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets', 'water_point') THEN 10
                 WHEN tags->'compressed_air'='yes' THEN 11
                 -- Bike amenities
                 WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
@@ -860,6 +858,7 @@ Layer:
           way,
           feature,
           access,
+          capacity,
           CONCAT(
               name,
               CASE WHEN name IS NOT NULL AND (elevation IS NOT NULL OR height IS NOT NULL) THEN E'\n' ELSE NULL END,
@@ -895,7 +894,9 @@ Layer:
               'power_' || power,
               'tourism_' || tourism
             ) AS feature,
+            (tags->'capacity')::integer AS capacity,
             tags->'compressed_air' AS compressed_air,
+            tags->'drinking_water' AS drinking_water,
             tags->'location' AS location,
             tags->'memorial' AS memorial,
             tags->'castle_type' AS castle_type,
@@ -904,6 +905,8 @@ Layer:
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'generator:source' as "generator:source",
+            tags->'supervised' as supervised,
+            tags->'bicycle_parking' as bicycle_parking,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN NULL
               WHEN "waterway" IN ('waterfall') THEN
@@ -911,6 +914,7 @@ Layer:
                   WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
                 ELSE NULL
                 END
+              WHEN tags->'capacity' IS NOT NULL THEN (tags->'capacity')::integer
               ELSE NULL
             END AS score,
             NULL AS elevation,
@@ -927,10 +931,10 @@ Layer:
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
                 'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
+            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
             OR tags->'compressed_air'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
-            OR shop IN ('bicycle', 'bakery', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
+            OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
             OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
@@ -951,7 +955,7 @@ Layer:
                 -- Emergency first
                 WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 0
                 -- Other emergency-related amenities
-                WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets') THEN 10
+                WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets', 'water_point') THEN 10
                 WHEN tags->'compressed_air'='yes' THEN 11
                 -- Bike amenities
                 WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
@@ -981,6 +985,7 @@ Layer:
           way,
           feature,
           access,
+          capacity,
           CONCAT(
               name,
               CASE WHEN name IS NOT NULL AND (elevation IS NOT NULL OR height IS NOT NULL) THEN E'\n' ELSE NULL END,
@@ -1016,9 +1021,12 @@ Layer:
               'highway_'|| highway,
               'power_' || power,
               'tourism_' || tourism,
-              'traffic_calming_' || CASE WHEN tags->'traffic_calming' IS NOT NULL THEN tags->'traffic_calming' ELSE NULL END
+              'traffic_calming_' || CASE WHEN tags->'traffic_calming' IS NOT NULL THEN tags->'traffic_calming' ELSE NULL END,
+              'cycleway_' || CASE WHEN tags->'cycleway' IS NOT NULL then tags->'cycleway' ELSE NULL END
             ) AS feature,
+            (tags->'capacity')::integer AS capacity,
             tags->'compressed_air' AS compressed_air,
+            tags->'drinking_water' AS drinking_water,
             tags->'location' AS location,
             tags->'memorial' AS memorial,
             tags->'castle_type' AS castle_type,
@@ -1027,6 +1035,8 @@ Layer:
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'generator:source' as "generator:source",
+            tags->'supervised' as supervised,
+            tags->'bicycle_parking' as bicycle_parking,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
                 CASE
@@ -1038,6 +1048,7 @@ Layer:
                   WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
                 ELSE NULL
                 END
+              WHEN tags->'capacity' IS NOT NULL THEN (tags->'capacity')::integer
               ELSE NULL
             END AS score,
             CASE
@@ -1064,10 +1075,10 @@ Layer:
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
                 'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets')
+            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
             OR tags->'compressed_air'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
-            OR shop IN ('bicycle', 'bakery', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
+            OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
             OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
@@ -1084,12 +1095,13 @@ Layer:
             OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
             OR (power = 'generator' AND tags->'generator:source'='wind')
             OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip', 'table')
+            OR tags->'cycleway'='asl'
           ORDER BY
             CASE
                 -- Emergency first
                 WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 0
                 -- Other emergency-related amenities
-                WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets') THEN 10
+                WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets', 'water_point') THEN 10
                 WHEN tags->'compressed_air'='yes' THEN 11
                 -- Bike amenities
                 WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
@@ -1290,7 +1302,7 @@ Layer:
           OR junction IN ('roundabout'))
         ORDER BY
           z_order DESC, -- put important roads first
-          COALESCE(layer::integer, 0), -- put top layered roads first
+          CASE WHEN layer~E'^\\d+$' THEN layer::integer ELSE 0 END, -- put top layered roads first
           length(name) DESC, -- Try to fit big labels in first
           name DESC, -- Force a consistent ordering between differently named streets
           l.osm_id DESC -- Force an ordering for streets of the same name, e.g. dualized roads
