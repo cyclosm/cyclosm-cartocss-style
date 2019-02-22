@@ -625,6 +625,7 @@ Layer:
             'power_' || power,
             'tourism_' || tourism
           ) AS feature,
+          (tags->'capacity')::integer AS capacity,
           tags->'compressed_air' AS compressed_air,
           tags->'drinking_water' AS drinking_water,
           tags->'location' AS location,
@@ -635,6 +636,8 @@ Layer:
           tags->'icao' as icao,
           tags->'iata' as iata,
           tags->'generator:source' as "generator:source",
+          tags->'supervised' as supervised,
+          tags->'bicycle_parking' as bicycle_parking,
           CASE
             WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN NULL
             WHEN "waterway" IN ('waterfall') THEN
@@ -642,6 +645,7 @@ Layer:
                 WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
               ELSE NULL
               END
+            WHEN tags->'capacity' IS NOT NULL THEN (tags->'capacity')::integer
             ELSE NULL
           END AS score,
           NULL AS elevation,
@@ -734,6 +738,7 @@ Layer:
             'traffic_calming_' || CASE WHEN tags->'traffic_calming' IS NOT NULL THEN tags->'traffic_calming' ELSE NULL END,
             'cycleway_' || CASE WHEN tags->'cycleway' IS NOT NULL then tags->'cycleway' ELSE NULL END
           ) AS feature,
+          (tags->'capacity')::integer AS capacity,
           tags->'compressed_air' AS compressed_air,
           tags->'drinking_water' AS drinking_water,
           tags->'location' AS location,
@@ -744,6 +749,8 @@ Layer:
           tags->'icao' as icao,
           tags->'iata' as iata,
           tags->'generator:source' as "generator:source",
+          tags->'supervised' as supervised,
+          tags->'bicycle_parking' as bicycle_parking,
           CASE
             WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
               CASE
@@ -755,6 +762,7 @@ Layer:
                 WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
               ELSE NULL
               END
+            WHEN tags->'capacity' IS NOT NULL THEN (tags->'capacity')::integer
             ELSE NULL
           END AS score,
           CASE
@@ -850,6 +858,7 @@ Layer:
           way,
           feature,
           access,
+          capacity,
           CONCAT(
               name,
               CASE WHEN name IS NOT NULL AND (elevation IS NOT NULL OR height IS NOT NULL) THEN E'\n' ELSE NULL END,
@@ -885,6 +894,7 @@ Layer:
               'power_' || power,
               'tourism_' || tourism
             ) AS feature,
+            (tags->'capacity')::integer AS capacity,
             tags->'compressed_air' AS compressed_air,
             tags->'drinking_water' AS drinking_water,
             tags->'location' AS location,
@@ -895,6 +905,8 @@ Layer:
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'generator:source' as "generator:source",
+            tags->'supervised' as supervised,
+            tags->'bicycle_parking' as bicycle_parking,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN NULL
               WHEN "waterway" IN ('waterfall') THEN
@@ -902,6 +914,7 @@ Layer:
                   WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
                 ELSE NULL
                 END
+              WHEN tags->'capacity' IS NOT NULL THEN (tags->'capacity')::integer
               ELSE NULL
             END AS score,
             NULL AS elevation,
@@ -972,6 +985,7 @@ Layer:
           way,
           feature,
           access,
+          capacity,
           CONCAT(
               name,
               CASE WHEN name IS NOT NULL AND (elevation IS NOT NULL OR height IS NOT NULL) THEN E'\n' ELSE NULL END,
@@ -1010,6 +1024,7 @@ Layer:
               'traffic_calming_' || CASE WHEN tags->'traffic_calming' IS NOT NULL THEN tags->'traffic_calming' ELSE NULL END,
               'cycleway_' || CASE WHEN tags->'cycleway' IS NOT NULL then tags->'cycleway' ELSE NULL END
             ) AS feature,
+            (tags->'capacity')::integer AS capacity,
             tags->'compressed_air' AS compressed_air,
             tags->'drinking_water' AS drinking_water,
             tags->'location' AS location,
@@ -1020,6 +1035,8 @@ Layer:
             tags->'icao' as icao,
             tags->'iata' as iata,
             tags->'generator:source' as "generator:source",
+            tags->'supervised' as supervised,
+            tags->'bicycle_parking' as bicycle_parking,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
                 CASE
@@ -1031,6 +1048,7 @@ Layer:
                   WHEN tags->'height' ~ '^\d{1,3}(\.\d+)?( m)?$' THEN (SUBSTRING(tags->'height', '^(\d{1,3}(\.\d+)?)( m)?$'))::NUMERIC
                 ELSE NULL
                 END
+              WHEN tags->'capacity' IS NOT NULL THEN (tags->'capacity')::integer
               ELSE NULL
             END AS score,
             CASE

@@ -670,17 +670,37 @@
   }
 
   [feature = 'amenity_bicycle_parking'][zoom >= 16] {
+    marker-line-width: 1;
     marker-line-color: @bicycle_parking_line;
     marker-fill: @bicycle_parking_fill;
     marker-width: 7;
-    marker-line-width: 1;
+    [supervised = 'yes'],
+    [bicycle_parking = 'shed'],
+    [bicycle_parking = 'lockers'],
+    [bicycle_parking = 'building'] {
+      marker-fill: @secured_bicycle_parking_line;
+      marker-line-color: @bicycle_parking_fill;
+    }
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_motorcycle_parking'][zoom >= 16] {
+    marker-line-width: 1;
     marker-line-color: @motorcycle_parking_line;
     marker-fill: @motorcycle_parking_fill;
     marker-width: 7;
-    marker-line-width: 1;
+    [supervised = 'yes'],
+    [bicycle_parking = 'shed'],
+    [bicycle_parking = 'lockers'],
+    [bicycle_parking = 'building'] {
+      marker-fill: @secured_motorcycle_parking_line;
+      marker-line-color: @motorcycle_parking_fill;
+    }
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'amenity_post_office'][zoom >= 16] {
@@ -706,6 +726,30 @@
 
 #amenities-points-text,
 #amenities-poly-text {
+  [feature = 'amenity_bicycle_parking'],
+  [feature = 'amenity_motorcycle_parking'] {
+    [capacity >= 20][zoom >= 17],
+    [zoom >= 18] {
+      text-name: "[capacity]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: @bicycle_parking_fill;
+      [feature = 'amenity_motorcycle_parking'] {
+        text-fill: @motorcycle_parking_fill;
+      }
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: rgba(255, 255, 255, 0.6);
+      /*text-dy: 6;
+      text-placement: interior;*/
+      text-placement-type: simple;
+      text-placements: "S,N,E,W,NE,SE,NW,SW";
+      text-dy: 6;
+      text-dx: 6;
+    }
+  }
+
   [feature = 'shop_sports'][zoom >= 16],
   [feature = 'shop_bicycle'][zoom >= 16],
   [feature = 'shop_bakery'][zoom >= 18],
