@@ -31,15 +31,15 @@
 
 @land:              #e0e0e0;
 @water:             #3ebcef;
-@grass:             #E6F2C1;
+@grass:             #e7fadf;
 @beach:             #FFEEC7;
 @park:              #c2debd;
 @cemetery:          #D6DED2;
-@wooded:            #C3D9AD;
+@wooded:            #c1ecb6;
 @agriculture:       #F2E8B6;
 @heath:             #E0E8B2;
 @meadow:            @grass;
-@farmland:          #D8DBC9;
+@farmland:          #fcf0e3;
 
 @building:          #cfcfcf;
 @hospital:          #e0e0e0;
@@ -49,7 +49,7 @@
 @pitch:             @park * 0.97;
 @track:             @park * 0.96;
 
-@residential:       @land * 0.98;
+@residential:       @land * 1.05;
 @commercial:        @land * 0.97;
 @industrial:        @land * 0.96;
 @parking:           #EEE;
