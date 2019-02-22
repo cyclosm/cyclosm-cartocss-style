@@ -512,6 +512,14 @@ come in as well.
     line-dasharray: 6,10;
     line-cap: butt;
   }
+  [type='pedestrian'],
+  [type='bridleway'],
+  [type='footway'],
+  [type='path'],
+  [type='steps'] {
+    /* Transparent dasharray for these highways. */
+    line-opacity: 0;
+  }
   [type='steps']{
     line-color: @steps-case;
     [ramp_cycle='yes'],[ramp_wheelchair='yes'],[ramp_stroller='yes']{
@@ -2403,7 +2411,15 @@ come in as well.
     [type='subway'] { line-opacity: 0.67; }
     [zoom>15] { line-dasharray: 1,2; }
   }
-  [type='cycleway'] {
+  [type='cycleway'],
+  [type='path'][bicycle='yes'],
+  [type='path'][bicycle='designated'],
+  [type='footway'][bicycle='yes'],
+  [type='footway'][bicycle='designated'],
+  [type='bridleway'][bicycle='yes'],
+  [type='bridleway'][bicycle='designated'],
+  [type='pedestrian'][bicycle='yes'],
+  [type='pedestrian'][bicycle='designated'] {
     line-color: @cycle-fill;
   }
   [type='pedestrian'],

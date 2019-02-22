@@ -244,10 +244,10 @@ Layer:
       (
         SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS bridge, access, layer, 1 as tunnel,
         CASE
-          WHEN maxspeed~E'^\\d+$' THEN maxspeed::integer
-          WHEN maxspeed~E'^\\d+ mph$' THEN REPLACE(maxspeed, ' mph', '')::integer * 1.609344
-          WHEN maxspeed~E'^\\d+ knots$' THEN REPLACE(maxspeed, ' knots', '')::integer * 1.852
-          WHEN maxspeed='walk' THEN 5
+          WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
+          WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
+          WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
+          WHEN tags->'maxspeed'='walk' THEN 5
           ELSE NULL
         END AS maxspeed_kmh,
         bicycle,
@@ -283,10 +283,10 @@ Layer:
       (
         SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS tunnel, 0 AS bridge, access,
         CASE
-          WHEN maxspeed~E'^\\d+$' THEN maxspeed::integer
-          WHEN maxspeed~E'^\\d+ mph$' THEN REPLACE(maxspeed, ' mph', '')::integer * 1.609344
-          WHEN maxspeed~E'^\\d+ knots$' THEN REPLACE(maxspeed, ' knots', '')::integer * 1.852
-          WHEN maxspeed='walk' THEN 5
+          WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
+          WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
+          WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
+          WHEN tags->'maxspeed'='walk' THEN 5
           ELSE NULL
         END AS maxspeed_kmh,
         bicycle,
@@ -358,10 +358,10 @@ Layer:
       (
         SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 1 AS bridge, access, layer, 0 as tunnel,
         CASE
-          WHEN maxspeed~E'^\\d+$' THEN maxspeed::integer
-          WHEN maxspeed~E'^\\d+ mph$' THEN REPLACE(maxspeed, ' mph', '')::integer * 1.609344
-          WHEN maxspeed~E'^\\d+ knots$' THEN REPLACE(maxspeed, ' knots', '')::integer * 1.852
-          WHEN maxspeed='walk' THEN 5
+          WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
+          WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
+          WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
+          WHEN tags->'maxspeed'='walk' THEN 5
           ELSE NULL
         END AS maxspeed_kmh,
         bicycle,
