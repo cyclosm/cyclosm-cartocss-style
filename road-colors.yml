@@ -32,12 +32,12 @@ mss:
   tertiary:
     line: '#f6f6f6'
     fill: '#f6f6f6'
-    case: '#7b8b84'
+    case: '#686868'
     shield-fill: '#3b3b3b'
   standard:
     line: '#f6f6f6'
     fill: '#f6f6f6'
-    case: '#f6f6f6'
+    case: '#c8c8c8'
   pedestrian:
     line: '@standard_line'
     fill: '#ff0000'

@@ -177,7 +177,7 @@ come in as well.
 @rdz13_secondary_link: 0.6;
 @rdz13_tertiary: 1;
 @rdz13_tertiary_link: 0.6;
-@rdz13_residential: 0.6;
+@rdz13_residential: 0.7;
 @rdz13_unclassified: 0.6;
 @rdz13_road: 0.6;
 @rdz13_living_street: 0.6;
@@ -201,7 +201,7 @@ come in as well.
 @rdz13_secondary_link_outline: 0.6;
 @rdz13_tertiary_outline: 0.6;
 @rdz13_tertiary_link_outline: 0.6;
-@rdz13_residential_outline: 0.6;
+@rdz13_residential_outline: 0.5;
 @rdz13_unclassified_outline: 0.6;
 @rdz13_road_outline: 0.6;
 @rdz13_living_street_outline: 0.6;
@@ -227,7 +227,7 @@ come in as well.
 @rdz14_secondary_link: 1;
 @rdz14_tertiary: 1;
 @rdz14_tertiary_link: 1;
-@rdz14_residential: 1;
+@rdz14_residential: 2;
 @rdz14_unclassified: 1;
 @rdz14_road: 1;
 @rdz14_living_street: 1;
@@ -253,7 +253,7 @@ come in as well.
 @rdz14_secondary_link_outline: 1;
 @rdz14_tertiary_outline: 1;
 @rdz14_tertiary_link_outline: 1;
-@rdz14_residential_outline: 1;
+@rdz14_residential_outline: 0.5;
 @rdz14_unclassified_outline: 1;
 @rdz14_road_outline: 1;
 @rdz14_living_street_outline: 1;
@@ -278,7 +278,7 @@ come in as well.
 @rdz15_secondary_link: 1.5;
 @rdz15_tertiary: 1.5;
 @rdz15_tertiary_link: 1.5;
-@rdz15_residential: 1.5;
+@rdz15_residential: 2.5;
 @rdz15_unclassified: 1.5;
 @rdz15_road: 1.5;
 @rdz15_living_street: 1.5;
@@ -303,7 +303,7 @@ come in as well.
 @rdz15_secondary_link_outline: 1;
 @rdz15_tertiary_outline: 1;
 @rdz15_tertiary_link_outline: 1;
-@rdz15_residential_outline: 1;
+@rdz15_residential_outline: 0.5;
 @rdz15_unclassified_outline: 1;
 @rdz15_road_outline: 1;
 @rdz15_living_street_outline: 1;

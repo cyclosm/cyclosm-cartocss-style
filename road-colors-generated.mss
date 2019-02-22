@@ -33,12 +33,12 @@
 @secondary-fill: #f6f8d2;
 @secondary-line: #f6f8d2;
 @secondary-shield-fill: #323b00;
-@standard-case: #f6f6f6;
+@standard-case: #c8c8c8;
 @standard-fill: #f6f6f6;
 @standard-line: #f6f6f6;
 @steps-case: @land;
 @steps-fill: #9a2a00;
-@tertiary-case: #7b8b84;
+@tertiary-case: #686868;
 @tertiary-fill: #f6f6f6;
 @tertiary-line: #f6f6f6;
 @tertiary-shield-fill: #3b3b3b;
