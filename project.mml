@@ -1255,7 +1255,7 @@ Layer:
           OR junction IN ('roundabout'))
         ORDER BY
           z_order DESC, -- put important roads first
-          COALESCE(layer::integer, 0), -- put top layered roads first
+          CASE WHEN layer~E'^\\d+$' THEN layer::integer ELSE 0 END, -- put top layered roads first
           length(name) DESC, -- Try to fit big labels in first
           name DESC, -- Force a consistent ordering between differently named streets
           l.osm_id DESC -- Force an ordering for streets of the same name, e.g. dualized roads
