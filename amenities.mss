@@ -37,8 +37,8 @@
 
 #amenities-points,
 #amenities-poly {
-  [feature = 'amenity_compressed_air'][zoom >= 18],
-	[compressed_air = 'yes'][zoom >= 18] {
+  [feature = 'amenity_compressed_air'][zoom >= 16],
+	[compressed_air = 'yes'][zoom >= 16] {
     marker-file: url('symbols/osmandapp/amenity/compressed_air.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -165,7 +165,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_bicycle_repair_station'][zoom >= 18] {
+  [feature = 'amenity_bicycle_repair_station'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/amenity/bicycle_repair_station.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
