@@ -655,6 +655,14 @@
     marker-clip: false;
   }
 
+  [feature = 'cycleway_asl'][zoom >= 18] {
+    marker-width: 9;
+    marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_asl_11.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_bicycle_parking'][zoom >= 16] {
     marker-line-color: @bicycle_parking_line;
     marker-fill: @bicycle_parking_fill;

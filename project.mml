@@ -730,7 +730,8 @@ Layer:
             'highway_'|| highway,
             'power_' || power,
             'tourism_' || tourism,
-            'traffic_calming_' || CASE WHEN tags->'traffic_calming' IS NOT NULL THEN tags->'traffic_calming' ELSE NULL END
+            'traffic_calming_' || CASE WHEN tags->'traffic_calming' IS NOT NULL THEN tags->'traffic_calming' ELSE NULL END,
+            'cycleway_' || CASE WHEN tags->'cycleway' IS NOT NULL then tags->'cycleway' ELSE NULL END
           ) AS feature,
           tags->'compressed_air' AS compressed_air,
           tags->'location' AS location,
@@ -798,6 +799,7 @@ Layer:
           OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND tags->'generator:source'='wind')
           OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip', 'table')
+          OR tags->'cycleway'='asl'
         ORDER BY
             CASE
                 -- Emergency first
