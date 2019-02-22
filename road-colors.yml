@@ -38,6 +38,10 @@ mss:
     line: '#f6f6f6'
     fill: '#f6f6f6'
     case: '#c8c8c8'
+  speed32:
+    fill: '#b0ffff'
+  speed20:
+    fill: '#4bffff'
   pedestrian:
     line: '@standard_line'
     fill: '#ff0000'

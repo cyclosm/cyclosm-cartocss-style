@@ -2462,6 +2462,30 @@ come in as well.
   [type='path'] {
     line-join: round;
   }
+
+  /* low maxspeed roads are bike friendly */
+  [type='living_street'],
+  [type='service'],
+  [type='tertiary'],
+  [type='road'],
+  [type='unclassified'],
+  [type='residential'],
+  [type='tertiary_link'],
+  [type='secondary_link'],
+  [type='secondary'],
+  [type='primary_link'],
+  [type='primary'],
+  {
+    [maxspeed_kmh<33]
+    {
+      line-color: @speed32-fill;
+    }
+    [maxspeed_kmh<21]
+    {
+      line-color: @speed20-fill;
+    }
+  }
+
   /* -- widths -- */
   [zoom=11] {
     [type='motorway']     { line-width: @rdz11_motorway; }

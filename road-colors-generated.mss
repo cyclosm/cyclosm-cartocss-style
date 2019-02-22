@@ -33,6 +33,8 @@
 @secondary-fill: #f6f8d2;
 @secondary-line: #f6f8d2;
 @secondary-shield-fill: #323b00;
+@speed20-fill: #4bffff;
+@speed32-fill: #b0ffff;
 @standard-case: #c8c8c8;
 @standard-fill: #f6f6f6;
 @standard-line: #f6f6f6;
