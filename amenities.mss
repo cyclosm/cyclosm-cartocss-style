@@ -528,7 +528,8 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_drinking_water'][zoom >= 16] {
+  [feature = 'amenity_drinking_water'][zoom >= 16],
+  [feature = 'amenity_water_point']['drinking_water'='yes'][zoom >= 16] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/drinking_water_11.svg');
   }
   [feature = 'amenity_toilets'][zoom >= 16] {
@@ -555,6 +556,7 @@
   [feature = 'shop_convenience;gas'][zoom >= 16],
   [feature = 'shop_greengrocer'][zoom >= 16],
   [feature = 'shop_pastry'][zoom >= 16],
+  [feature = 'shop_beverages'][zoom >= 16]
   {
     marker-placement: interior;
     marker-clip: false;
@@ -573,7 +575,8 @@
 		[feature = 'shop_convenience'],
 		[feature = 'shop_convenience;gas'],
 		[feature = 'shop_greengrocer'],
-		[feature = 'shop_pastry'] {
+		[feature = 'shop_pastry'],
+		[feature = 'shop_beverages'] {
 			marker-fill: @shop-icon;
 		}
 
@@ -618,6 +621,9 @@
     }
     [feature = 'shop_pastry'][zoom >= 16] {
       marker-file: url('symbols/openstreetmap-carto/shop/confectionery.svg');
+    }
+    [feature = 'shop_beverages'][zoom >= 16] {
+      marker-file: url('symbols/openstreetmap-carto/shop/beverages.svg');
     }
   }
 
@@ -706,7 +712,8 @@
   [feature = 'shop_convenience'][zoom >= 18],
   [feature = 'shop_convenience;gas'][zoom >= 18],
   [feature = 'shop_greengrocer'][zoom >= 18],
-  [feature = 'shop_pastry'][zoom >= 18] {
+  [feature = 'shop_pastry'][zoom >= 18],
+  [feature = 'shop_beverages'][zoom >= 18] {
 		[way_pixels > 3000][zoom >= 17],
     [zoom >= 18] {
       text-name: "[name]";
