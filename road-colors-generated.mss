@@ -4,9 +4,11 @@
 /*                                                                       */
 /*   ./scripts/generate_road_colors.py | tee road-colors-generated.mss   */
 /*                                                                       */
+@bridleway-fill: #ff3f00;
 @cycle-case: @land;
 @cycle-fill: #0000ff;
 @cycle-line: @standard_line;
+@footway-fill: #007200;
 @icn-overlay: #0b910b;
 @icn-shield-fill: #f6f6f6;
 @lcn-overlay: #0000ff;
@@ -19,8 +21,9 @@
 @mtb-shield-fill: #f6f6f6;
 @ncn-overlay: #ff0000;
 @ncn-shield-fill: #f6f6f6;
+@path-fill: #873100;
 @pedestrian-case: @land;
-@pedestrian-fill: #ff0000;
+@pedestrian-fill: #007200;
 @pedestrian-line: @standard_line;
 @primary-case: #d8b267;
 @primary-fill: #f4dfc3;
@@ -39,7 +42,7 @@
 @standard-fill: #f6f6f6;
 @standard-line: #f6f6f6;
 @steps-case: @land;
-@steps-fill: #9a2a00;
+@steps-fill: #003e00;
 @tertiary-case: #686868;
 @tertiary-fill: #f6f6f6;
 @tertiary-line: #f6f6f6;

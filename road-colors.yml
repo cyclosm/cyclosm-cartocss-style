@@ -44,15 +44,21 @@ mss:
     fill: '#4bffff'
   pedestrian:
     line: '@standard_line'
-    fill: '#ff0000'
+    fill: '#007200'
     case: '@land'
   cycle:
     line: '@standard_line'
     fill: '#0000ff'
     case: '@land'
+  footway:
+    fill: '#007200'
   steps:
-    fill: '#9a2a00'
+    fill: '#003e00'
     case: '@land'
+  path:
+    fill: '#873100'
+  bridleway:
+    fill: '#ff1700'
   rail:
     line: '#999999'
   icn:
