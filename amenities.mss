@@ -37,8 +37,8 @@
 
 #amenities-points,
 #amenities-poly {
-  [feature = 'amenity_compressed_air'][zoom >= 18],
-	[compressed_air = 'yes'][zoom >= 18] {
+  [feature = 'amenity_compressed_air'][zoom >= 16],
+	[compressed_air = 'yes'][zoom >= 16] {
     marker-file: url('symbols/osmandapp/amenity/compressed_air.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -165,7 +165,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_bicycle_repair_station'][zoom >= 18] {
+  [feature = 'amenity_bicycle_repair_station'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/amenity/bicycle_repair_station.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -543,20 +543,20 @@
 		marker-file: url('symbols/openstreetmap-carto/shop/supermarket.svg');
 	}
 
-  [feature = 'amenity_bar'][zoom >= 16],
-  [feature = 'amenity_biergarten'][zoom >= 16],
-  [feature = 'amenity_cafe'][zoom >= 16],
-  [feature = 'amenity_fast_food'][zoom >= 16],
-  [feature = 'amenity_food_court'][zoom >= 16],
-  [feature = 'amenity_ice_cream'][zoom >= 16],
-  [feature = 'amenity_pub'][zoom >= 16],
-  [feature = 'amenity_restaurant'][zoom >= 16],
-  [feature = 'shop_bakery'][zoom >= 16],
-  [feature = 'shop_convenience'][zoom >= 16],
-  [feature = 'shop_convenience;gas'][zoom >= 16],
-  [feature = 'shop_greengrocer'][zoom >= 16],
+  [feature = 'amenity_bar'][zoom >= 17],
+  [feature = 'amenity_biergarten'][zoom >= 17],
+  [feature = 'amenity_cafe'][zoom >= 17],
+  [feature = 'amenity_fast_food'][zoom >= 17],
+  [feature = 'amenity_food_court'][zoom >= 17],
+  [feature = 'amenity_ice_cream'][zoom >= 17],
+  [feature = 'amenity_pub'][zoom >= 17],
+  [feature = 'amenity_restaurant'][zoom >= 17],
+  [feature = 'shop_bakery'][zoom >= 17],
+  [feature = 'shop_convenience'][zoom >= 17],
+  [feature = 'shop_convenience;gas'][zoom >= 17],
+  [feature = 'shop_greengrocer'][zoom >= 17],
   [feature = 'shop_pastry'][zoom >= 16],
-  [feature = 'shop_beverages'][zoom >= 16]
+  [feature = 'shop_beverages'][zoom >= 17]
   {
     marker-placement: interior;
     marker-clip: false;
@@ -580,10 +580,6 @@
 			marker-fill: @shop-icon;
 		}
 
-    [feature != 'amenity_food_court'][zoom = 16] {
-      marker-width: 4;
-      marker-line-width: 0;
-    }
     [feature = 'amenity_bar'][zoom >= 16] {
       marker-file: url('symbols/openstreetmap-carto/amenity/bar.svg');
     }
