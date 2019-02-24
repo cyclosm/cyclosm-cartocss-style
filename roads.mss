@@ -2870,14 +2870,14 @@ come in as well.
 #bicycle_routes[type='ncn'][zoom >= 5],
 #bicycle_routes[type='rcn'][zoom >= 7],
 #bicycle_routes[type='lcn'][zoom >= 9] {
-  line-opacity: 0.3;
+  line-opacity: 0.2;
   line-width: 1;
 
-  [zoom <= 12] { line-opacity: 0.6; }
+  [zoom <= 12] { line-opacity: 0.5; }
 
   [zoom=9]   { line-width: 2; }
   [zoom>=10] { line-width: 3; }
-  [zoom=13]  { line-width: 4; line-opacity: 0.45; }
+  [zoom=13]  { line-width: 4; line-opacity: 0.35; }
   [zoom=14]  { line-width: 5; }
   [zoom=15]  { line-width: 6; }
   [zoom=16]  { line-width: 7; }
@@ -2901,7 +2901,7 @@ come in as well.
   }
 
   [state='proposed'] {
-    line-dasharray: 6,3;
+    line-dasharray: 6,6;
   }
 }
 
