@@ -517,27 +517,11 @@ come in as well.
     line-dasharray: 6,10;
     line-cap: butt;
   }
-  [type='pedestrian'],
-  [type='bridleway'],
-  [type='footway'],
-  [type='path'],
-  [type='steps'] {
-    /* Transparent dasharray for these highways. */
-    line-opacity: 0;
-  }
-  [type='steps']{
-    line-color: @steps-case;
-    [ramp_cycle='yes'],[ramp_wheelchair='yes'],[ramp_stroller='yes']{
-      line-color: fadeout(@cycle_lane_case, 50%);
-    }
-  }
   [type='railway'] {
     line-color: fadeout(@land,50%);
   }
-  [type='path'][bicycle='no'],
-  [type='footway'][bicycle='no'],
-  [type='bridleway'][bicycle='no'],
-  [type='pedestrian'][bicycle='no'] {
+  [type='steps'],
+  [type='bridleway'][bicycle='no'] {
     line-opacity: 0;
   }
 
@@ -831,30 +815,6 @@ come in as well.
 #tunnel::outline[zoom>=11],
 #bridge::outline[zoom>=11] {
   line-cap: butt;
-}
-
-#bridge::outline[zoom>=11] {
-  line-color: @standard-case * 0.8;
-
-  [type='motorway'],
-  [type='motorway_link'] {
-    line-color: @motorway-case * 0.8;
-  }
-  [type='trunk'],
-  [type='trunk_link'] {
-    line-color: @trunk-case * 0.8;
-  }
-  [type='primary'],
-  [type='primary_link'] {
-    line-color: @primary-case * 0.8;
-  }
-  [type='secondary'],
-  [type='secondary_link'] {
-    line-color: @secondary-case * 0.8;
-  }
-  [type='railway'] {
-    line-color: @secondary-case * 0.8;
-  }
 }
 
 #tunnel::outline[zoom>=11] {
@@ -2400,6 +2360,49 @@ come in as well.
   }
 }
 
+#roads_high::steps_ramp_left[zoom >= 11],
+#tunnel::steps_ramp_left[zoom>=11],
+#bridge::steps_ramp_left[zoom>=11] {
+  [type='steps'] {
+    [ramp_cycle='yes'],
+    [ramp_wheelchair='yes'],
+    [ramp_stroller='yes'] {
+      line-color: @cycle-fill;
+      [zoom=11] {
+        line-width: @rdz11_steps_outline;
+        line-offset: @rdz11_steps + @rdz11_steps_outline;
+      }
+      [zoom=12] {
+        line-width: @rdz12_steps_outline;
+        line-offset: @rdz12_steps + @rdz12_steps_outline;
+      }
+      [zoom=13] {
+        line-width: @rdz13_steps_outline;
+        line-offset: @rdz13_steps + @rdz13_steps_outline;
+      }
+      [zoom=14] {
+        line-width: @rdz14_steps_outline;
+        line-offset: @rdz14_steps + @rdz14_steps_outline;
+      }
+      [zoom=15] {
+        line-width: @rdz15_steps_outline;
+        line-offset: @rdz15_steps + @rdz15_steps_outline;
+      }
+      [zoom=16] {
+        line-width: @rdz16_steps_outline;
+        line-offset: @rdz16_steps + @rdz16_steps_outline;
+      }
+      [zoom>=17] {
+        line-width: @rdz17_steps_outline;
+        line-offset: @rdz17_steps + @rdz17_steps_outline;
+      }
+      [zoom>=18] {
+        line-width: @rdz18_steps_outline;
+        line-offset: @rdz18_steps + @rdz18_steps_outline;
+      }
+    }
+  }
+}
 
 #roads_high[zoom>=11],
 #tunnel::inline[zoom>=11],
