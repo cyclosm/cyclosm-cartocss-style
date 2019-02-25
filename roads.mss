@@ -2507,6 +2507,10 @@ come in as well.
     }
   }
 
+  [surface='paved'] {
+    line-pattern-file: url(symbols/paved.svg);
+  }
+
   /* -- widths -- */
   [zoom=11] {
     [type='motorway']     { line-width: @rdz11_motorway; }
