@@ -44,25 +44,31 @@ mss:
     fill: '#4bffff'
   pedestrian:
     line: '@standard_line'
-    fill: '#ff0000'
+    fill: '#007200'
     case: '@land'
   cycle:
     line: '@standard_line'
     fill: '#0000ff'
     case: '@land'
+  footway:
+    fill: '#007200'
   steps:
-    fill: '#9a2a00'
+    fill: '#003e00'
     case: '@land'
+  path:
+    fill: '#873100'
+  bridleway:
+    fill: '#ff1700'
   rail:
     line: '#999999'
   icn:
-    overlay: '#0b910b'
+    overlay: '#ff00ff'
     shield-fill: '#f6f6f6'
   ncn:
-    overlay: '#ff0000'
+    overlay: '#aa00ff'
     shield-fill: '#f6f6f6'
   rcn:
-    overlay: '#b42dff'
+    overlay: '#5500ff'
     shield-fill: '#f6f6f6'
   lcn:
     overlay: '#0000ff'
@@ -88,14 +94,14 @@ shield:
     fill: '#f1f1f1'
     stroke_fill: '#c6c6c6'
   icn:
-    fill: '#0b910b'
-    stroke_fill: '#0b910b'
+    fill: '#ff00ff'
+    stroke_fill: '#ff00ff'
   ncn:
-    fill: '#ff0000'
-    stroke_fill: '#ff0000'
+    fill: '#aa00ff'
+    stroke_fill: '#aa00ff'
   rcn:
-    fill: '#b42dff'
-    stroke_fill: '#b42dff'
+    fill: '#5500ff'
+    stroke_fill: '#5500ff'
   lcn:
     fill: '#0000ff'
     stroke_fill: '#0000ff'
