@@ -124,11 +124,9 @@ kosmtik serve --renderer magnacarto project.mml
 
 _Note:_ There is currently [a
 bug](https://github.com/kosmtik/kosmtik/issues/296) in the Kosmtik Magnacarto
-renderer. The workaround is to remove [this
-line](https://github.com/kosmtik/kosmtik/blob/master/src/back/ProjectServer.js#L32)
-in Kosmtik code. Note that this prevents having auto-reload feature.
-Therefore, whenever you modify a stylesheet file, you should manually quit and
-restart the Kosmtik server.
+renderer. If not already merged, a slightly modified version of the plugin
+solving this issue is available
+[here](https://github.com/kosmtik/kosmtik-magnacarto/pull/3).
 
 
 ### CartoCSS
