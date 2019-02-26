@@ -8,6 +8,24 @@ designed with cycling in mind.
 
 **Note:** This is currently a Work In Progress.
 
+## Features
+Render:
+* Cycleways track, lanes, cycle-bus lanes
+* Motor oneway - two way for bicycle
+* Cycle routes (local, regional, national, international)
+* Parking for bicycle (or motorcycle parking open to bicycle)
+* Steps with bicycle friendly ramp
+* Bicycle shop and repair stations
+* First aid amenities : shelter, hostpital, pharmacy, police station, water, food store
+* Travel amenities : camping, hotel, train station, museum, picnic table, peaks...
+* Enphase low speed roads (<= 30km/h)
+* Trafic calming
+...
+
+TODO:
+* Elevation curves and shading
+* Smoothness of the road
+
 ## Demonstration
 
 A demonstration of this style for Paris area (up to zoom level 18) is
