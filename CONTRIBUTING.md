@@ -136,6 +136,21 @@ The style is written in CartoCSS. You can find some documentation on CartoCSS
 [here](https://tilemill-project.github.io/tilemill/docs/manual/carto/).
 
 
+## Generating SVG tiles
+
+You can generate SVG tiles using the `scripts/render_svg_tile.js` script. This
+can be useful to work on a specific feature without editing the code and
+rebuilding it at each modification.
+
+First, you need to install Mapnik and the Node Mapnik bindings. If you already
+have a working Kosmtik, this should be as easy as `cd scripts && npm install
+mapnik`.
+
+You can then build the Mapnik XML file for the project using `kosmtik export
+project.mml --output mapnik.xml` and then call the
+`scripts/render_svg_tile.js` script to render SVG tiles one by one.
+
+
 ## FAQ
 
 ### What is the difference between `minzoom` / `maxzoom` in `project.mml` and `zoom` filter in `mss` files?
