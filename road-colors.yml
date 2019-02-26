@@ -39,11 +39,13 @@ mss:
     fill: '#f6f6f6'
     case: '#c8c8c8'
   speed32:
-    fill: '#b0ffff'
+    fill: '#bbffff'
   speed20:
-    fill: '#4bffff'
+    fill: '#21ffcc'
+  speedWalk:
+    fill: '#41ffa0'
   pedestrian:
-    fill: '#007200'
+    fill: '#41ffa0'
     case: '@land'
   cycle:
     fill: '#0000ff'
