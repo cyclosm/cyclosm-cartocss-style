@@ -2860,7 +2860,7 @@ come in as well.
 
     line-width: 1;
     line-dasharray: 4,4;
-    line-color: #202020;
+    line-color: #505050;
   }
 
   // Bad surface ok for mountain bike (>40mm tyres).
