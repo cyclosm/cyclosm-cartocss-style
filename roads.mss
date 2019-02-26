@@ -2816,6 +2816,96 @@ come in as well.
   }
 }
 
+#roads_high::surface[zoom>=14],
+#tunnel::surface[zoom>=14],
+#bridge::surface[zoom>=14] {
+  // Don't draw something for good surface, ok for racing bikes (<=28mm tyres).
+
+  // Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm).
+  [surface='concrete:lanes'],
+  [surface='concrete:plates'],
+  [surface='paving_stones'],
+  [surface='sett'],
+  [surface='unhewn_cobblestone'],
+  [surface='cobblestone'],
+  [surface='wood'],
+  [surface='compacted'],
+  [surface='fine_gravel'],
+  [surface='woodchips'],
+  [tracktype='grade2'],
+  [tracktype='grade3'] {
+    /* -- colors & styles -- */
+  /*  line-color: @standard-case;
+    [type='motorway'],
+    [type='motorway_link'] {
+      line-color: @motorway-case;
+    }
+    [type='trunk'],
+    [type='trunk_link'] {
+      line-color: @trunk-case;
+    }
+    [type='primary'],
+    [type='primary_link'] {
+      line-color: @primary-case;
+    }
+    [type='secondary'],
+    [type='secondary_link'] {
+      line-color: @secondary-case;
+    }
+    [type='tertiary'],
+    [type='tertiary_link'],
+    [type='unclassified'] {
+      line-color: @tertiary-case;
+    }*/
+
+    line-width: 1;
+    line-dasharray: 4,4;
+    line-color: #202020;
+  }
+
+  // Bad surface ok for mountain bike (>40mm tyres).
+  [surface='unpaved'],
+  [surface='gravel'],
+  [surface='pebblestone'],
+  [surface='dirt'],
+  [surface='earth'],
+  [surface='grass'],
+  [surface='grass_paver'],
+  [surface='gravel_turf'],
+  [surface='ground'],
+  [surface='mud'],
+  [surface='sand'],
+  [tracktype='grade4'],
+  [tracktype='grade5'] {
+    /* -- colors & styles -- */
+/*    line-color: @standard-case;
+    [type='motorway'],
+    [type='motorway_link'] {
+      line-color: @motorway-case;
+    }
+    [type='trunk'],
+    [type='trunk_link'] {
+      line-color: @trunk-case;
+    }
+    [type='primary'],
+    [type='primary_link'] {
+      line-color: @primary-case;
+    }
+    [type='secondary'],
+    [type='secondary_link'] {
+      line-color: @secondary-case;
+    }
+    [type='tertiary'],
+    [type='tertiary_link'],
+    [type='unclassified'] {
+      line-color: @tertiary-case;
+    }*/
+
+    line-width: 1;
+    line-dasharray: 4,5,2,5;
+    line-color: #505050;
+  }
+}
 
 /* ---- Turning Circles --------------------------------------------- */
 #turning_circle_case[zoom>=14] {

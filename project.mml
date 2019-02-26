@@ -244,18 +244,19 @@ Layer:
     table: |-
       (
         SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS bridge, access, layer, 1 as tunnel,
-        CASE
-          WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
-          WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
-          WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
-          WHEN tags->'maxspeed'='walk' THEN 5
-          ELSE NULL
-        END AS maxspeed_kmh,
-        bicycle,
-        tags->'cycleway' AS cycleway, tags->'cycleway:left' AS cycleway_left, tags->'cycleway:right' AS cycleway_right,
-        tags->'ramp:stroller' AS ramp_stroller,
-        tags->'ramp:bicycle' AS ramp_cycle,
-        tags->'ramp:wheelchair' AS ramp_wheelchair
+          CASE
+            WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
+            WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
+            WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
+            WHEN tags->'maxspeed'='walk' THEN 5
+            ELSE NULL
+          END AS maxspeed_kmh,
+          bicycle,
+          tags->'cycleway' AS cycleway, tags->'cycleway:left' AS cycleway_left, tags->'cycleway:right' AS cycleway_right,
+          tags->'ramp:stroller' AS ramp_stroller,
+          tags->'ramp:bicycle' AS ramp_cycle,
+          tags->'ramp:wheelchair' AS ramp_wheelchair,
+          surface, tracktype
         FROM planet_osm_line
         WHERE tunnel NOT IN ('', '0', 'no')
         ORDER BY layer ASC
@@ -283,24 +284,25 @@ Layer:
     table: |-
       (
         SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS tunnel, 0 AS bridge, access,
-        CASE
-          WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
-          WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
-          WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
-          WHEN tags->'maxspeed'='walk' THEN 5
-          ELSE NULL
-        END AS maxspeed_kmh,
-        bicycle,
-        tags->'cycleway' AS cycleway,
-        tags->'cycleway:left' AS cycleway_left,
-        tags->'cycleway:right' AS cycleway_right,
-        tags->'ramp:stroller' AS ramp_stroller,
-        tags->'ramp:bicycle' AS ramp_cycle,
-        tags->'ramp:wheelchair' AS ramp_wheelchair,
-        CASE
-          WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+39 ELSE 39 END
-          ELSE z_order
-        END AS z_order
+          CASE
+            WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
+            WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
+            WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
+            WHEN tags->'maxspeed'='walk' THEN 5
+            ELSE NULL
+          END AS maxspeed_kmh,
+          bicycle,
+          tags->'cycleway' AS cycleway,
+          tags->'cycleway:left' AS cycleway_left,
+          tags->'cycleway:right' AS cycleway_right,
+          tags->'ramp:stroller' AS ramp_stroller,
+          tags->'ramp:bicycle' AS ramp_cycle,
+          tags->'ramp:wheelchair' AS ramp_wheelchair,
+          surface, tracktype,
+          CASE
+            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+39 ELSE 39 END
+            ELSE z_order
+          END AS z_order
         FROM planet_osm_line
         WHERE (highway IS NOT NULL OR railway IS NOT NULL)
           AND (tunnel IS NULL OR tunnel = 'no')
@@ -358,20 +360,21 @@ Layer:
     table: |-
       (
         SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 1 AS bridge, access, layer, 0 as tunnel,
-        CASE
-          WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
-          WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
-          WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
-          WHEN tags->'maxspeed'='walk' THEN 5
-          ELSE NULL
-        END AS maxspeed_kmh,
-        bicycle,
-        tags->'cycleway' AS cycleway,
-        tags->'cycleway:left' AS cycleway_left,
-        tags->'cycleway:right' AS cycleway_right,
-        tags->'ramp:stroller' AS ramp_stroller,
-        tags->'ramp:bicycle' AS ramp_cycle,
-        tags->'ramp:wheelchair' AS ramp_wheelchair
+          CASE
+            WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
+            WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
+            WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
+            WHEN tags->'maxspeed'='walk' THEN 5
+            ELSE NULL
+          END AS maxspeed_kmh,
+          bicycle,
+          tags->'cycleway' AS cycleway,
+          tags->'cycleway:left' AS cycleway_left,
+          tags->'cycleway:right' AS cycleway_right,
+          tags->'ramp:stroller' AS ramp_stroller,
+          tags->'ramp:bicycle' AS ramp_cycle,
+          tags->'ramp:wheelchair' AS ramp_wheelchair,
+          surface, tracktype
         FROM planet_osm_line
         WHERE bridge NOT IN ('', '0', 'no')
         ORDER BY layer ASC
