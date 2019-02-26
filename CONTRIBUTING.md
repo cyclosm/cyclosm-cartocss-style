@@ -86,6 +86,42 @@ _Note_: You can use a
 [`localconfig.json`](https://github.com/Phyks/cyclosm-cartocss-style/blob/master/INSTALL.md#kosmtik)
 file at the root of this repository to use custom PostgreSQL credentials.
 
+#### Faster rebuild with Magnacarto
+
+The [default CartoCSS implementation](https://github.com/mapbox/carto) is
+written in JavaScript. A rewrite in Go exists,
+[Magnacarto](https://github.com/omniscale/magnacarto), and it is way faster
+(10s compilation time versus 1 min 30s with the JavaScript implementation for
+CyclOSM).
+
+Using it should be considered as experimental. You can use it to easily test
+and develop on CyclOSM, but please consider checking the final render with the
+default `carto` renderer (in JS) before submitting.
+
+First, [download and
+install](https://github.com/omniscale/magnacarto#installation) Magnacarto. You
+can fetch the binaries from their websites, extract the `tar.gz` archive and
+put the directory obtained in your `$PATH` for instance. You can also build
+from source.
+
+_Note :_ If you get an error about "invalid flag in #cgo CXXFLAGS" when
+running `make install`, this is due to [a recent security measure in
+Go](https://github.com/golang/go/wiki/InvalidFlag). A quick and dirty
+workaround is to use `CGO_CXXFLAGS_ALLOW=".*" make install`.
+
+Then, install the `magnacarto` plugin in Kosmtik:
+
+```
+kosmtik plugins --install kosmtik-magnacarto
+```
+
+You can now use Kosmtik with the Magnacarto renderer using the following serve
+command:
+
+```
+kosmtik serve --renderer magnacarto project.mml
+```
+
 
 ### CartoCSS
 
