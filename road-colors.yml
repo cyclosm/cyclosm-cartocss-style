@@ -43,11 +43,9 @@ mss:
   speed20:
     fill: '#4bffff'
   pedestrian:
-    line: '@standard_line'
     fill: '#007200'
     case: '@land'
   cycle:
-    line: '@standard_line'
     fill: '#0000ff'
     case: '@land'
   footway:

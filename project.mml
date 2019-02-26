@@ -55,6 +55,7 @@ Layer:
   properties:
     maxzoom: 9
 - id: land-high
+  <<: *extents
   Datasource:
     file: http://data.openstreetmapdata.com/land-polygons-split-3857.zip
     type: shape

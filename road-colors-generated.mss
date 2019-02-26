@@ -7,7 +7,6 @@
 @bridleway-fill: #ff1700;
 @cycle-case: @land;
 @cycle-fill: #0000ff;
-@cycle-line: @standard_line;
 @footway-fill: #007200;
 @icn-overlay: #ff00ff;
 @icn-shield-fill: #f6f6f6;
@@ -24,7 +23,6 @@
 @path-fill: #873100;
 @pedestrian-case: @land;
 @pedestrian-fill: #007200;
-@pedestrian-line: @standard_line;
 @primary-case: #d8b267;
 @primary-fill: #f4dfc3;
 @primary-line: #f4dfc3;
