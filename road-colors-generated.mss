@@ -22,7 +22,7 @@
 @ncn-shield-fill: #f6f6f6;
 @path-fill: #873100;
 @pedestrian-case: @land;
-@pedestrian-fill: #007200;
+@pedestrian-fill: #41ffa0;
 @primary-case: #d8b267;
 @primary-fill: #f4dfc3;
 @primary-line: #f4dfc3;
@@ -34,8 +34,9 @@
 @secondary-fill: #f6f8d2;
 @secondary-line: #f6f8d2;
 @secondary-shield-fill: #323b00;
-@speed20-fill: #4bffff;
-@speed32-fill: #b0ffff;
+@speed20-fill: #21ffcc;
+@speed32-fill: #bbffff;
+@speedWalk-fill: #41ffa0;
 @standard-case: #c8c8c8;
 @standard-fill: #f6f6f6;
 @standard-line: #f6f6f6;
