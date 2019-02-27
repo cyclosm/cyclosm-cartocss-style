@@ -68,6 +68,9 @@ When opening a Pull Request, please include one or more screenshots
 illustrating the changes made, for easier and faster review. Please include
 the location where the screenshots were taken for easier reproducibility.
 
+Please consider updating the `legend.html` file in the root of this repository
+to reflect your latest changes when submitting a pull request.
+
 
 ## Rendering locally / developping the style
 

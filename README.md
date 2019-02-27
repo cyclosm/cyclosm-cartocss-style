@@ -9,7 +9,9 @@ designed with cycling in mind.
 **Note:** This is currently a Work In Progress.
 
 ## Features
+
 Render:
+
 * Cycleways track, lanes, cycle-bus lanes
 * Motor oneway - two way for bicycle
 * Cycle routes (local, regional, national, international)
@@ -18,13 +20,14 @@ Render:
 * Bicycle shop and repair stations
 * First aid amenities : shelter, hostpital, pharmacy, police station, water, food store
 * Travel amenities : camping, hotel, train station, museum, picnic table, peaks...
-* Emphase low speed roads (<= 30km/h)
-* Traffic calming
-...
-
-TODO:
+* Emphasis on low speed roads (<= 30km/h)
 * Elevation curves and shading
-* Smoothness of the road
+* Smoothness of the roads
+* Traffic calming
+* …
+
+A full list of rendered features is available in [the
+legend](https://cyclosm.github.io/cyclosm-cartocss-style/legend.html).
 
 ## Demonstration
 
