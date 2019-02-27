@@ -18,8 +18,8 @@ Render:
 * Bicycle shop and repair stations
 * First aid amenities : shelter, hostpital, pharmacy, police station, water, food store
 * Travel amenities : camping, hotel, train station, museum, picnic table, peaks...
-* Enphase low speed roads (<= 30km/h)
-* Trafic calming
+* Emphase low speed roads (<= 30km/h)
+* Traffic calming
 ...
 
 TODO:
@@ -28,7 +28,7 @@ TODO:
 
 ## Demonstration
 
-A demonstration of this style for Paris area (up to zoom level 18) is
+A demonstration of this style for some French areas (Paris, Clermont-Ferrand and Lille, up to zoom level 18) is
 available at [https://tiles.phyks.me/](https://tiles.phyks.me/).
 
 ## Getting started
