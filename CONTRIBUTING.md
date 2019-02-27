@@ -94,9 +94,10 @@ written in JavaScript. A rewrite in Go exists,
 (10s compilation time versus 1 min 30s with the JavaScript implementation for
 CyclOSM).
 
-Using it should be considered as experimental. You can use it to easily test
-and develop on CyclOSM, but please consider checking the final render with the
-default `carto` renderer (in JS) before submitting.
+Using it should be considered as very **experimental**, many features are
+probably not supported in Magnacarto such as `line-offset` for example. You
+can use it to easily test and develop on CyclOSM, but please consider checking
+the final render with the default `carto` renderer (in JS) before submitting.
 
 First, [download and
 install](https://github.com/omniscale/magnacarto#installation) Magnacarto. You
