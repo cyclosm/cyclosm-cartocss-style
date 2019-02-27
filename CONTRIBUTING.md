@@ -1,6 +1,33 @@
 Contributing
 ============
 
+## Design contributions
+
+If you are able to help on specific points of the design and may not be
+familiar with CartoCSS or may not be able to reproduce the [development
+toolchain](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/INSTALL.md),
+you are still very much welcome to contribute and give feedback!
+
+We are currently lacking expertise on (among many subjects) icon designs and
+color choices to enhance the readability of the map.
+
+The project is using [Github's
+issues](https://github.com/cyclosm/cyclosm-cartocss-style/issues) to track
+known bugs and improvements. If you spot a specific bug or specific design
+decision requiring improvement, please feel free to open a new issue to raise
+awareness about it.
+
+We do have a script to render [SVG
+exports](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/scripts/render_svg_tile.js)
+of the current state of the map, so if working on an SVG file is easier for
+you, please get in touch and we can happily provide them.
+
+A realtime chat is available at
+[irc://irc.oftc.net/#cyclosm](https://webchat.oftc.net/?randomnick=1&channels=cyclosm&uio=d4).
+You can also contact any [team member](https://github.com/orgs/cyclosm/people)
+through emails.
+
+
 ## Issues
 
 [Issues](https://github.com/Phyks/cyclosm-cartocss-style/issues) centralize
