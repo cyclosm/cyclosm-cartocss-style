@@ -256,7 +256,7 @@ Layer:
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
-          surface, tracktype
+          surface, tracktype, tags->'smoothness' AS smoothness
         FROM planet_osm_line
         WHERE tunnel NOT IN ('', '0', 'no')
         ORDER BY layer ASC
@@ -298,7 +298,7 @@ Layer:
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
-          surface, tracktype,
+          surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
             WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+39 ELSE 39 END
             ELSE z_order
@@ -374,7 +374,7 @@ Layer:
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
-          surface, tracktype
+          surface, tracktype, tags->'smoothness' AS smoothness
         FROM planet_osm_line
         WHERE bridge NOT IN ('', '0', 'no')
         ORDER BY layer ASC
