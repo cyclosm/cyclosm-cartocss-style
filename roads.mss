@@ -107,8 +107,8 @@ come in as well.
 @rdz11_unclassified_outline: 0.15;
 @rdz11_road_outline: 0.15;
 @rdz11_living_street_outline: 0.15;
-@rdz11_service_outline: 0;
-@rdz11_track_outline: 0;
+@rdz11_service_outline: 0.2;
+@rdz11_track_outline: 0.2;
 @rdz11_pedestrian_outline: 0.15;
 @rdz11_bridleway_outline: 0;
 @rdz11_path_outline: 0;
@@ -156,8 +156,8 @@ come in as well.
 @rdz12_unclassified_outline: 0.25;
 @rdz12_road_outline: 0.25;
 @rdz12_living_street_outline: 0.25;
-@rdz12_service_outline: 0;
-@rdz12_track_outline: 0;
+@rdz12_service_outline: 0.25;
+@rdz12_track_outline: 0.25;
 @rdz12_pedestrian_outline: 0.25;
 @rdz12_bridleway_outline: 0;
 @rdz12_path_outline: 0;
@@ -182,7 +182,7 @@ come in as well.
 @rdz13_road: 0.6;
 @rdz13_living_street: 0.6;
 @rdz13_service: 0.3;
-@rdz13_track: 0.2;
+@rdz13_track: 0.3;
 @rdz13_pedestrian: 0.6;
 @rdz13_bridleway: 0.20;
 @rdz13_path: 0.65;
@@ -206,8 +206,8 @@ come in as well.
 @rdz13_road_outline: 0.6;
 @rdz13_living_street_outline: 0.6;
 @rdz13_tertiary_outline: 1;
-@rdz13_service_outline: 0;
-@rdz13_track_outline: 0;
+@rdz13_service_outline: 0.3;
+@rdz13_track_outline: 0.3;
 @rdz13_pedestrian_outline: 0.6;
 @rdz13_bridleway_outline: 0;
 @rdz13_path_outline: 0;
@@ -232,7 +232,7 @@ come in as well.
 @rdz14_road: 1;
 @rdz14_living_street: 1;
 @rdz14_service: 0.33;
-@rdz14_track: 0.5;
+@rdz14_track: 0.33;
 @rdz14_pedestrian: 1;
 @rdz14_bridleway: 0.25;
 @rdz14_path: 1;
@@ -257,8 +257,8 @@ come in as well.
 @rdz14_unclassified_outline: 1;
 @rdz14_road_outline: 1;
 @rdz14_living_street_outline: 1;
-@rdz14_service_outline: 0;
-@rdz14_track_outline: 0;
+@rdz14_service_outline: 0.5;
+@rdz14_track_outline: 0.5;
 @rdz14_pedestrian_outline: 1;
 @rdz14_bridleway_outline: 0;
 @rdz14_path_outline: 0;
@@ -283,7 +283,7 @@ come in as well.
 @rdz15_road: 1.5;
 @rdz15_living_street: 1.5;
 @rdz15_service: 0.5;
-@rdz15_track: 0.5;
+@rdz15_track: 2.5;
 @rdz15_pedestrian: 1.5;
 @rdz15_bridleway: 0.5;
 @rdz15_path: 1.25;
@@ -308,7 +308,7 @@ come in as well.
 @rdz15_road_outline: 1;
 @rdz15_living_street_outline: 1;
 @rdz15_service_outline: 1;
-@rdz15_track_outline: 1;
+@rdz15_track_outline: 0;
 @rdz15_pedestrian_outline: 1;
 @rdz15_bridleway_outline: 0;
 @rdz15_path_outline: 0;
@@ -499,6 +499,9 @@ come in as well.
   [type='tertiary_link'],
   [type='unclassified'] {
     line-color: @tertiary-case;
+  }
+  [type='track'] {
+    line-color: @track-case;
   }
   [cycleway='lane'],
   [cycleway='opposite_lane'] {
@@ -2301,6 +2304,9 @@ come in as well.
   [type='secondary'],
   [type='secondary_link'] {
     line-color: @secondary-fill;
+  }
+  [type='track'] {
+    line-color: @track-fill;
   }
   [type='railway'] {
     line-color: @rail-line;

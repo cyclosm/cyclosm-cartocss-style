@@ -32,21 +32,24 @@ mss:
   tertiary:
     line: '#f6f6f6'
     fill: '#f6f6f6'
-    case: '#686868'
+    case: '#949494'
     shield-fill: '#3b3b3b'
   standard:
     line: '#f6f6f6'
     fill: '#f6f6f6'
-    case: '#c8c8c8'
+    case: '#b0b0b0'
+  pedestrian:
+    fill: '#41ffa0'
+    case: '@land'
+  track:
+    fill: '#ded4cb'
+    case: '#cdae8c'
   speed32:
     fill: '#bbffff'
   speed20:
     fill: '#21ffcc'
   speedWalk:
     fill: '#41ffa0'
-  pedestrian:
-    fill: '#41ffa0'
-    case: '@land'
   cycle:
     fill: '#0000ff'
     case: '@land'
