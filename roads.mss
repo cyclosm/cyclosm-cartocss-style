@@ -2333,7 +2333,7 @@ come in as well.
   [type='bridleway'][bicycle='designated'] {
     line-color: @path-fill;
   }
-  [type='path'][access='no']
+  [type='path'][access='no'][bicycle=null],
   [type='path'][bicycle='no'] {
     line-color: @path-nobicycle;
   }
