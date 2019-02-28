@@ -4,7 +4,7 @@
 /*                                                                       */
 /*   ./scripts/generate_road_colors.py | tee road-colors-generated.mss   */
 /*                                                                       */
-@bridleway-fill: #ff1700;
+@bridleway-fill: #873100;
 @cycle-case: @land;
 @cycle-fill: #0000ff;
 @footway-fill: #007200;
@@ -20,7 +20,8 @@
 @mtb-shield-fill: #f6f6f6;
 @ncn-overlay: #aa00ff;
 @ncn-shield-fill: #f6f6f6;
-@path-fill: #873100;
+@path-fill: #00c5c5;
+@path-nobicycle: #ff1700;
 @pedestrian-case: @land;
 @pedestrian-fill: #41ffa0;
 @primary-case: #d8b267;

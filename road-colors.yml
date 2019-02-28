@@ -56,9 +56,10 @@ mss:
     fill: '#003e00'
     case: '@land'
   path:
-    fill: '#873100'
+    fill: '#00c5c5'
+    nobicycle: '#ff1700'
   bridleway:
-    fill: '#ff1700'
+    fill: '#873100'
   rail:
     line: '#999999'
   icn:
