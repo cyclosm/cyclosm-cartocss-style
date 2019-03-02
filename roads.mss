@@ -2597,9 +2597,9 @@ come in as well.
   }
 }
 
-#roads_high::surface[zoom>=16],
-#tunnel::surface[zoom>=16],
-#bridge::surface[zoom>=16] {
+#roads_high::surface[zoom>=15],
+#tunnel::surface[zoom>=15],
+#bridge::surface[zoom>=15] {
   /* Don't draw something for good surface, ok for racing bikes (<=28mm tyres). */
 
   /* Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm). */
@@ -2614,36 +2614,28 @@ come in as well.
 
     /* -- colors & styles -- */
     line-color: darken(@standard-fill,@surfaceLighterDarker1); /* Darken since it's white. */
-    /*[type='motorway'],
-    [type='motorway_link'] {
-      line-color: lighten(@motorway-fill,@surfaceLighterDarker1);
-    }
-    [type='trunk'],
-    [type='trunk_link'] {
-      line-color: lighten(@trunk-fill,@surfaceLighterDarker1);
-    }*/
     [type='primary'],
     [type='primary_link'] {
-      line-color: lighten(@primary-fill,@surfaceLighterDarker1);
+      line-color: lighten(@primary-fill, @surfaceLighterDarker1);
     }
     [type='secondary'],
     [type='secondary_link'] {
-      line-color: lighten(@secondary-fill,@surfaceLighterDarker1);
+      line-color: lighten(@secondary-fill, @surfaceLighterDarker1);
     }
     [type='track'] {
         line-color: lighten(@track-fill, @surfaceLighterDarker1);
     }
     [type='cycleway'] {
-      line-color: lighten(@cycle-fill,@surfaceLighterDarker1);
+      line-color: lighten(@cycle-fill, @surfaceLighterDarker1);
     }
-    [type='pedestrian'] {
-      line-color: lighten(@pedestrian-fill,@surfaceLighterDarker1);
-    }
+  //  [type='pedestrian'] { //Pedestrian lighter color doesn't look good, so just use grey default.
+  //    line-color: lighten(@pedestrian-fill, @surfaceLighterDarker1);
+  //  }
     [type='bridleway'] {
-      line-color: lighten(@bridleway-fill,@surfaceLighterDarker1);
+      line-color: lighten(@bridleway-fill, @surfaceLighterDarker1);
     }
     [type='footway'] {
-      line-color: lighten(@footway-fill,@surfaceLighterDarker1);
+      line-color: lighten(@footway-fill, @surfaceLighterDarker1);
     }
     [type='path'],
     [type='footway'][bicycle='yes'],
@@ -2684,7 +2676,7 @@ come in as well.
     }*/
 
     /* low maxspeed roads are bike friendly */
-  /*  [type='pedestrian'],
+/*    [type='pedestrian'],
     [type='living_street'],
     [type='service'],
     [type='tertiary'],
@@ -2719,11 +2711,9 @@ come in as well.
       [type='road']    { line-width: @rdz16_road; }
       [type='unclassified']    { line-width: @rdz16_unclassified; }
       [type='residential']    { line-width: @rdz16_residential; }
-    /*[type='tertiary_link']    { line-width: @rdz16_tertiary_link; }
+    [type='tertiary_link']    { line-width: @rdz16_tertiary_link; }
       [type='secondary_link']    { line-width: @rdz16_secondary_link; }
       [type='primary_link']    { line-width: @rdz16_primary_link; }
-      [type='trunk_link']    { line-width: @rdz16_trunk_link; }
-      [type='motorway_link']    { line-width: @rdz16_motorway_link; }*/
       [type='service']      { line-width: @rdz16_service; }
       [type='track']      { line-width: @rdz16_track; }
       [type='pedestrian']   { line-width: @rdz16_pedestrian; }
@@ -2746,11 +2736,9 @@ come in as well.
       [type='road']    { line-width: @rdz17_road; }
       [type='unclassified']    { line-width: @rdz17_unclassified; }
       [type='residential']    { line-width: @rdz17_residential; }
-    /*  [type='tertiary_link']    { line-width: @rdz17_tertiary_link; }
+      [type='tertiary_link']    { line-width: @rdz17_tertiary_link; }
       [type='secondary_link']    { line-width: @rdz17_secondary_link; }
       [type='primary_link']    { line-width: @rdz17_primary_link; }
-      [type='trunk_link']    { line-width: @rdz17_trunk_link; }
-      [type='motorway_link']    { line-width: @rdz17_motorway_link; }*/
       [type='service']      { line-width: @rdz17_service; }
       [type='track']      { line-width: @rdz17_track; }
       [type='pedestrian']   { line-width: @rdz17_pedestrian; }
@@ -2773,11 +2761,9 @@ come in as well.
       [type='road']    { line-width: @rdz18_road; }
       [type='unclassified']    { line-width: @rdz18_unclassified; }
       [type='residential']    { line-width: @rdz18_residential; }
-    /*  [type='tertiary_link']    { line-width: @rdz18_tertiary_link; }
+      [type='tertiary_link']    { line-width: @rdz18_tertiary_link; }
       [type='secondary_link']    { line-width: @rdz18_secondary_link; }
       [type='primary_link']    { line-width: @rdz18_primary_link; }
-      [type='trunk_link']    { line-width: @rdz18_trunk_link; }
-      [type='motorway_link']    { line-width: @rdz18_motorway_link; }*/
       [type='service']      { line-width: @rdz18_service; }
       [type='track']      { line-width: @rdz18_track; }
       [type='pedestrian']   { line-width: @rdz18_pedestrian; }
@@ -2808,14 +2794,6 @@ come in as well.
 
     /* -- colors & styles -- */
     line-color: darken(@standard-fill, @surfaceLighterDarker2); /* Darken since its white. */
-    [type='motorway'],
-    [type='motorway_link'] {
-      line-color: lighten(@motorway-fill, @surfaceLighterDarker2);
-    }
-    [type='trunk'],
-    [type='trunk_link'] {
-      line-color: lighten(@trunk-fill, @surfaceLighterDarker2);
-    }
     [type='primary'],
     [type='primary_link'] {
       line-color: lighten(@primary-fill, @surfaceLighterDarker2);
@@ -2878,7 +2856,7 @@ come in as well.
     }*/
 
     /* low maxspeed roads are bike friendly */
-/*    [type='pedestrian'],
+  /*  [type='pedestrian'],
     [type='living_street'],
     [type='service'],
     [type='tertiary'],
@@ -2913,11 +2891,9 @@ come in as well.
       [type='road']    { line-width: @rdz16_road; }
       [type='unclassified']    { line-width: @rdz16_unclassified; }
       [type='residential']    { line-width: @rdz16_residential; }
-  /*    [type='tertiary_link']    { line-width: @rdz16_tertiary_link; }
+      [type='tertiary_link']    { line-width: @rdz16_tertiary_link; }
       [type='secondary_link']    { line-width: @rdz16_secondary_link; }
       [type='primary_link']    { line-width: @rdz16_primary_link; }
-      [type='trunk_link']    { line-width: @rdz16_trunk_link; }
-      [type='motorway_link']    { line-width: @rdz16_motorway_link; }*/
       [type='service']      { line-width: @rdz16_service; }
       [type='track']      { line-width: @rdz16_track; }
       [type='pedestrian']   { line-width: @rdz16_pedestrian; }
@@ -2940,11 +2916,9 @@ come in as well.
       [type='road']    { line-width: @rdz17_road; }
       [type='unclassified']    { line-width: @rdz17_unclassified; }
       [type='residential']    { line-width: @rdz17_residential; }
-  /*    [type='tertiary_link']    { line-width: @rdz17_tertiary_link; }
+      [type='tertiary_link']    { line-width: @rdz17_tertiary_link; }
       [type='secondary_link']    { line-width: @rdz17_secondary_link; }
       [type='primary_link']    { line-width: @rdz17_primary_link; }
-      [type='trunk_link']    { line-width: @rdz17_trunk_link; }
-      [type='motorway_link']    { line-width: @rdz17_motorway_link; }*/
       [type='service']      { line-width: @rdz17_service; }
       [type='track']      { line-width: @rdz17_track; }
       [type='pedestrian']   { line-width: @rdz17_pedestrian; }
@@ -2967,11 +2941,9 @@ come in as well.
       [type='road']    { line-width: @rdz18_road; }
       [type='unclassified']    { line-width: @rdz18_unclassified; }
       [type='residential']    { line-width: @rdz18_residential; }
-    /*  [type='tertiary_link']    { line-width: @rdz18_tertiary_link; }
+      [type='tertiary_link']    { line-width: @rdz18_tertiary_link; }
       [type='secondary_link']    { line-width: @rdz18_secondary_link; }
       [type='primary_link']    { line-width: @rdz18_primary_link; }
-      [type='trunk_link']    { line-width: @rdz18_trunk_link; }
-      [type='motorway_link']    { line-width: @rdz18_motorway_link; }*/
       [type='service']      { line-width: @rdz18_service; }
       [type='track']      { line-width: @rdz18_track; }
       [type='pedestrian']   { line-width: @rdz18_pedestrian; }

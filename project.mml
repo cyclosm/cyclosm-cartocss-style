@@ -266,8 +266,12 @@ Layer:
           tags->'ramp:wheelchair' AS ramp_wheelchair,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
-            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips') OR tracktype IN ('grade2', 'grade3') OR smoothness IN ('intermediate') THEN 'cyclocross'
-            WHEN surface IN ('bad', 'gravel', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand') OR tracktype IN ('grade4', 'grade5') OR smoothness IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
+            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
+              OR tracktype IN ('grade2', 'grade3')
+              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
+            WHEN surface IN ('bad', 'gravel', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
+              OR tracktype IN ('grade4', 'grade5')
+              OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
             ELSE NULL
           END AS surface_type
         FROM planet_osm_line
@@ -321,8 +325,12 @@ Layer:
           tags->'ramp:wheelchair' AS ramp_wheelchair,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
-            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips') OR tracktype IN ('grade2', 'grade3') OR smoothness IN ('intermediate') THEN 'cyclocross'
-            WHEN surface IN ('bad', 'gravel', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand') OR tracktype IN ('grade4', 'grade5') OR smoothness IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
+            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
+              OR tracktype IN ('grade2', 'grade3')
+              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
+            WHEN surface IN ('bad', 'gravel', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
+              OR tracktype IN ('grade4', 'grade5')
+              OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
             ELSE NULL
           END AS surface_type,
           CASE
@@ -410,8 +418,12 @@ Layer:
           tags->'ramp:wheelchair' AS ramp_wheelchair,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
-            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips') OR tracktype IN ('grade2', 'grade3') OR smoothness IN ('intermediate') THEN 'cyclocross'
-            WHEN surface IN ('bad', 'gravel', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand') OR tracktype IN ('grade4', 'grade5') OR smoothness IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
+            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
+              OR tracktype IN ('grade2', 'grade3')
+              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
+            WHEN surface IN ('bad', 'gravel', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
+              OR tracktype IN ('grade4', 'grade5')
+              OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
             ELSE NULL
           END AS surface_type
         FROM planet_osm_line
