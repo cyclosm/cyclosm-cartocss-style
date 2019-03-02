@@ -812,24 +812,9 @@ come in as well.
  *
  * First hide the casing on this side of the road, then show cycleway.
  */
-#roads_high::reset_outline_right[zoom>=11][cycleway_right='lane'],
-#roads_high::reset_outline_right[zoom>=11][cycleway_right='opposite_lane'],
-#roads_high::reset_outline_right[zoom>=11][cycleway_right='track'],
-#roads_high::reset_outline_right[zoom>=11][cycleway_right='opposite_track'],
-#roads_high::reset_outline_right[zoom>=11][cycleway_right='share_busway'],
-#roads_high::reset_outline_right[zoom>=11][cycleway_right='opposite_share_busway'],
-#tunnel::reset_outline_right[zoom>=11][cycleway_right='lane'],
-#tunnel::reset_outline_right[zoom>=11][cycleway_right='opposite_lane'],
-#tunnel::reset_outline_right[zoom>=11][cycleway_right='track'],
-#tunnel::reset_outline_right[zoom>=11][cycleway_right='opposite_track'],
-#tunnel::reset_outline_right[zoom>=11][cycleway_right='share_busway'],
-#tunnel::reset_outline_right[zoom>=11][cycleway_right='opposite_share_busway'],
-#bridge::reset_outline_right[zoom>=11][cycleway_right='lane'],
-#bridge::reset_outline_right[zoom>=11][cycleway_right='opposite_lane'],
-#bridge::reset_outline_right[zoom>=11][cycleway_right='track'],
-#bridge::reset_outline_right[zoom>=11][cycleway_right='opposite_track'],
-#bridge::reset_outline_right[zoom>=11][cycleway_right='share_busway'],
-#bridge::reset_outline_right[zoom>=11][cycleway_right='opposite_share_busway'] {
+#roads_high::reset_outline_right[zoom>=11][has_right_cycleway=1],
+#tunnel::reset_outline_right[zoom>=11][has_right_cycleway=1],
+#bridge::reset_outline_right[zoom>=11][has_right_cycleway=1] {
   /* -- colors & styles -- */
   line-color: @standard-fill;
   [type='motorway'],
@@ -869,7 +854,7 @@ come in as well.
   [type='footway'][bicycle='designated'],
   [type='bridleway'][bicycle='yes'],
   [type='bridleway'][bicycle='designated'] {
-    line-color: @path-fill; //A footway or bridleway open to bicycle is a path.
+    line-color: @path-fill; A footway or bridleway open to bicycle is a path.
   }
   [type='cycleway'] {
     line-color: @cycle-fill;
@@ -1133,12 +1118,7 @@ come in as well.
   }
 }
 
-#tunnel::reset_outline_right[zoom>=11][cycleway_right='lane'],
-#tunnel::reset_outline_right[zoom>=11][cycleway_right='opposite_lane'],
-#tunnel::reset_outline_right[zoom>=11][cycleway_right='track'],
-#tunnel::reset_outline_right[zoom>=11][cycleway_right='opposite_track'],
-#tunnel::reset_outline_right[zoom>=11][cycleway_right='share_busway'],
-#tunnel::reset_outline_right[zoom>=11][cycleway_right='opposite_share_busway'] {
+#tunnel::reset_outline_right[zoom>=11][has_right_cycleway=1] {
   [type='motorway'],
   [type='motorway_link'] {
     line-color: lighten(@motorway-fill, 10%);
@@ -1157,24 +1137,9 @@ come in as well.
   }
 }
 
-#roads_high::outline_right[zoom>=11][cycleway_right='lane'],
-#roads_high::outline_right[zoom>=11][cycleway_right='opposite_lane'],
-#roads_high::outline_right[zoom>=11][cycleway_right='track'],
-#roads_high::outline_right[zoom>=11][cycleway_right='opposite_track'],
-#roads_high::outline_right[zoom>=11][cycleway_right='share_busway'],
-#roads_high::outline_right[zoom>=11][cycleway_right='opposite_share_busway'],
-#tunnel::outline_right[zoom>=11][cycleway_right='lane'],
-#tunnel::outline_right[zoom>=11][cycleway_right='opposite_lane'],
-#tunnel::outline_right[zoom>=11][cycleway_right='track'],
-#tunnel::outline_right[zoom>=11][cycleway_right='opposite_track'],
-#tunnel::outline_right[zoom>=11][cycleway_right='share_busway'],
-#tunnel::outline_right[zoom>=11][cycleway_right='opposite_share_busway'],
-#bridge::outline_right[zoom>=11][cycleway_right='lane'],
-#bridge::outline_right[zoom>=11][cycleway_right='opposite_lane'],
-#bridge::outline_right[zoom>=11][cycleway_right='track'],
-#bridge::outline_right[zoom>=11][cycleway_right='opposite_track'],
-#bridge::outline_right[zoom>=11][cycleway_right='share_busway'],
-#bridge::outline_right[zoom>=11][cycleway_right='opposite_share_busway'] {
+#roads_high::outline_right[zoom>=11][has_right_cycleway=1],
+#tunnel::outline_right[zoom>=11][has_right_cycleway=1],
+#bridge::outline_right[zoom>=11][has_right_cycleway=1] {
   /* -- colors & styles -- */
   [cycleway_right='lane'],
   [cycleway_right='opposite_lane'] {
@@ -1453,24 +1418,9 @@ come in as well.
  *
  * First hide the casing on this side of the road, then show cycleway.
  */
-#roads_high::reset_outline_left[zoom>=11][cycleway_left='lane'],
-#roads_high::reset_outline_left[zoom>=11][cycleway_left='opposite_lane'],
-#roads_high::reset_outline_left[zoom>=11][cycleway_left='track'],
-#roads_high::reset_outline_left[zoom>=11][cycleway_left='opposite_track'],
-#roads_high::reset_outline_left[zoom>=11][cycleway_left='share_busway'],
-#roads_high::reset_outline_left[zoom>=11][cycleway_left='opposite_share_busway'],
-#tunnel::reset_outline_left[zoom>=11][cycleway_left='lane'],
-#tunnel::reset_outline_left[zoom>=11][cycleway_left='opposite_lane'],
-#tunnel::reset_outline_left[zoom>=11][cycleway_left='track'],
-#tunnel::reset_outline_left[zoom>=11][cycleway_left='opposite_track'],
-#tunnel::reset_outline_left[zoom>=11][cycleway_left='share_busway'],
-#tunnel::reset_outline_left[zoom>=11][cycleway_left='opposite_share_busway'],
-#bridge::reset_outline_left[zoom>=11][cycleway_left='lane'],
-#bridge::reset_outline_left[zoom>=11][cycleway_left='opposite_lane'],
-#bridge::reset_outline_left[zoom>=11][cycleway_left='track'],
-#bridge::reset_outline_left[zoom>=11][cycleway_left='opposite_track'],
-#bridge::reset_outline_left[zoom>=11][cycleway_left='share_busway'],
-#bridge::reset_outline_left[zoom>=11][cycleway_left='opposite_share_busway'] {
+#roads_high::reset_outline_left[zoom>=11][has_left_cycleway=1],
+#tunnel::reset_outline_left[zoom>=11][has_left_cycleway=1],
+#bridge::reset_outline_left[zoom>=11][has_left_cycleway=1] {
   /* -- colors & styles -- */
   line-color: @standard-fill;
   [type='motorway'],
@@ -1785,12 +1735,7 @@ come in as well.
   }
 }
 
-#tunnel::reset_outline_left[zoom>=11][cycleway_left='lane'],
-#tunnel::reset_outline_left[zoom>=11][cycleway_left='opposite_lane'],
-#tunnel::reset_outline_left[zoom>=11][cycleway_left='track'],
-#tunnel::reset_outline_left[zoom>=11][cycleway_left='opposite_track'],
-#tunnel::reset_outline_left[zoom>=11][cycleway_left='share_busway'],
-#tunnel::reset_outline_left[zoom>=11][cycleway_left='opposite_share_busway'] {
+#tunnel::reset_outline_left[zoom>=11][has_left_cycleway=1] {
   [type='motorway'],
   [type='motorway_link'] {
     line-color: lighten(@motorway-fill, 10%);
@@ -1809,24 +1754,9 @@ come in as well.
   }
 }
 
-#roads_high::outline_left[zoom>=11][cycleway_left='lane'],
-#roads_high::outline_left[zoom>=11][cycleway_left='opposite_lane'],
-#roads_high::outline_left[zoom>=11][cycleway_left='track'],
-#roads_high::outline_left[zoom>=11][cycleway_left='opposite_track'],
-#roads_high::outline_left[zoom>=11][cycleway_left='share_busway'],
-#roads_high::outline_left[zoom>=11][cycleway_left='opposite_share_busway'],
-#tunnel::outline_left[zoom>=11][cycleway_left='lane'],
-#tunnel::outline_left[zoom>=11][cycleway_left='opposite_lane'],
-#tunnel::outline_left[zoom>=11][cycleway_left='track'],
-#tunnel::outline_left[zoom>=11][cycleway_left='opposite_track'],
-#tunnel::outline_left[zoom>=11][cycleway_left='share_busway'],
-#tunnel::outline_left[zoom>=11][cycleway_left='opposite_share_busway'],
-#bridge::outline_left[zoom>=11][cycleway_left='lane'],
-#bridge::outline_left[zoom>=11][cycleway_left='opposite_lane'],
-#bridge::outline_left[zoom>=11][cycleway_left='track'],
-#bridge::outline_left[zoom>=11][cycleway_left='opposite_track'],
-#bridge::outline_left[zoom>=11][cycleway_left='share_busway'],
-#bridge::outline_left[zoom>=11][cycleway_left='opposite_share_busway'] {
+#roads_high::outline_left[zoom>=11][has_left_cycleway=1],
+#tunnel::outline_left[zoom>=11][has_left_cycleway=1],
+#bridge::outline_left[zoom>=11][has_left_cycleway=1] {
   /* -- colors & styles -- */
   line-cap: round;
   line-join: round;
@@ -2667,31 +2597,15 @@ come in as well.
   }
 }
 
-#roads_high::surface[zoom>=16]//,
-//#tunnel::surface[zoom>=16],
-//#bridge::surface[zoom>=16]
-{
-  // Don't draw something for good surface, ok for racing bikes (<=28mm tyres).
+#roads_high::surface[zoom>=16],
+#tunnel::surface[zoom>=16],
+#bridge::surface[zoom>=16] {
+  /* Don't draw something for good surface, ok for racing bikes (<=28mm tyres). */
 
-  // Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm).
-  [surface='concrete:lanes'],
-  [surface='concrete:plates'],
-  [surface='paving_stones'],
-  [surface='sett'],
-  [surface='unhewn_cobblestone'],
-  [surface='cobblestone'],
-  [surface='wood'],
-  [surface='compacted'],
-  [surface='fine_gravel'],
-  [surface='woodchips'],
-  [tracktype='grade2'],
-  [tracktype='grade3'],
-  [smoothness='intermediate'],
-  [smoothness='bad'] {
-    [zoom=16] {
-      line-dasharray: 1,4;
-    }
-    [zoom=17] {
+  /* Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm). */
+  [surface_type='cyclocross'] {
+    line-dasharray: 1,4;
+    [zoom>=17] {
       line-dasharray: 2,8;
     }
     [zoom>=18] {
@@ -2699,7 +2613,7 @@ come in as well.
     }
 
     /* -- colors & styles -- */
-    line-color: darken(@standard-fill,@surfaceLighterDarker1);//Darken since it's white.
+    line-color: darken(@standard-fill,@surfaceLighterDarker1); /* Darken since it's white. */
     /*[type='motorway'],
     [type='motorway_link'] {
       line-color: lighten(@motorway-fill,@surfaceLighterDarker1);
@@ -2797,7 +2711,7 @@ come in as well.
       }
     }*/
 
-    [zoom=16] {
+    [zoom>=16] {
       [type='primary']     { line-width: @rdz16_primary; }
       [type='secondary']     { line-width: @rdz16_secondary; }
       [type='tertiary']    { line-width: @rdz16_tertiary; }
@@ -2824,7 +2738,7 @@ come in as well.
       }
       [type='cycleway'] { line-width: @rdz16_cycle; }
     }
-    [zoom=17] {
+    [zoom>=17] {
       [type='primary']     { line-width: @rdz17_primary; }
       [type='secondary']     { line-width: @rdz17_secondary; }
       [type='tertiary']    { line-width: @rdz17_tertiary; }
@@ -2880,28 +2794,12 @@ come in as well.
     }
   }
 
-  // Bad surface ok for mountain bike (>40mm tyres).
-  [surface='unpaved'],
-  [surface='gravel'],
-  [surface='pebblestone'],
-  [surface='dirt'],
-  [surface='earth'],
-  [surface='grass'],
-  [surface='grass_paver'],
-  [surface='gravel_turf'],
-  [surface='ground'],
-  [surface='mud'],
-  [surface='sand'],
-  [tracktype='grade4'],
-  [tracktype='grade5'],
-  [smoothness='very_bad'],
-  [smoothness='horrible'],
-  [smoothness='very_horrible'],
-  [smoothness='impassable'] {
-    [zoom=16] {
+  /* Bad surface ok for mountain bike (>40mm tyres). */
+  [surface_type='mtb'] {
+    [zoom>=16] {
       line-dasharray: 1,1,1,1.5;
     }
-    [zoom=17] {
+    [zoom>=17] {
       line-dasharray: 2,2,2,3;
     }
     [zoom>=18] {
@@ -2909,7 +2807,7 @@ come in as well.
     }
 
     /* -- colors & styles -- */
-    line-color: darken(@standard-fill, @surfaceLighterDarker2);//Darken since its white.
+    line-color: darken(@standard-fill, @surfaceLighterDarker2); /* Darken since its white. */
     [type='motorway'],
     [type='motorway_link'] {
       line-color: lighten(@motorway-fill, @surfaceLighterDarker2);
@@ -3007,7 +2905,7 @@ come in as well.
       }
     }*/
 
-    [zoom=16] {
+    [zoom>=16] {
       [type='primary']     { line-width: @rdz16_primary; }
       [type='secondary']     { line-width: @rdz16_secondary; }
       [type='tertiary']    { line-width: @rdz16_tertiary; }
@@ -3034,7 +2932,7 @@ come in as well.
       }
       [type='cycleway'] { line-width: @rdz16_cycle; }
     }
-    [zoom=17] {
+    [zoom>=17] {
       [type='primary']     { line-width: @rdz17_primary; }
       [type='secondary']     { line-width: @rdz17_secondary; }
       [type='tertiary']    { line-width: @rdz17_tertiary; }
