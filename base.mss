@@ -82,7 +82,7 @@
 }
 
 /* ---- BUILDINGS ---- */
-#buildings[zoom>=12] {
+#buildings[zoom>=14] {
   polygon-fill:@building;
 /*  [zoom>=14] {
     line-color:darken(@building,5%);
