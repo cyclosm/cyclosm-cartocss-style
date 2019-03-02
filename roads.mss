@@ -2597,9 +2597,9 @@ come in as well.
   }
 }
 
-#roads_high::surface[zoom>=15],
-#tunnel::surface[zoom>=15],
-#bridge::surface[zoom>=15] {
+#roads_high::surface[zoom>=16],
+#tunnel::surface[zoom>=16],
+#bridge::surface[zoom>=16] {
   /* Don't draw something for good surface, ok for racing bikes (<=28mm tyres). */
 
   /* Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm). */
@@ -2782,9 +2782,7 @@ come in as well.
 
   /* Bad surface ok for mountain bike (>40mm tyres). */
   [surface_type='mtb'] {
-    [zoom>=16] {
-      line-dasharray: 1,1,1,1.5;
-    }
+    line-dasharray: 1,1,1,1.5;
     [zoom>=17] {
       line-dasharray: 2,2,2,3;
     }
@@ -2803,7 +2801,7 @@ come in as well.
       line-color: lighten(@secondary-fill, @surfaceLighterDarker2);
     }
     [type='track'] {
-        line-color: lighten(@track-fill, @surfaceLighterDarker2);
+      line-color: lighten(@track-fill, @surfaceLighterDarker2);
     }
     [type='cycleway'] {
       line-color: lighten(@cycle-fill, @surfaceLighterDarker2);
