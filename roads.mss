@@ -69,8 +69,8 @@ come in as well.
 
 /* -- Zoom 11 -- */
 /* Width of ways */
-@rdz11_motorway: 1.6;
-@rdz11_trunk: 1.6;
+@rdz11_motorway: 1.2;
+@rdz11_trunk: 1.2;
 @rdz11_primary: 0.8;
 @rdz11_secondary: 0.8;
 @rdz11_motorway_link: 0;
@@ -91,7 +91,7 @@ come in as well.
 @rdz11_footway: 0;
 @rdz11_steps: @rdz11_pedestrian;
 @rdz11_cycle: 0.5;
-@rdz11_railway: 0.2;
+@rdz11_railway: 0.4;
 /* Border width (one side of the road only) */
 @rdz11_motorway_outline: 1;
 @rdz11_trunk_outline: 1;
@@ -118,8 +118,8 @@ come in as well.
 @rdz11_railway_outline: 0;
 
 /* -- Zoom 12 -- */
-@rdz12_motorway: 2.5;
-@rdz12_trunk: 2.5;
+@rdz12_motorway: 2;
+@rdz12_trunk: 2;
 @rdz12_primary: 1.2;
 @rdz12_secondary: 1.2;
 @rdz12_motorway_link: 0.5;
@@ -140,7 +140,7 @@ come in as well.
 @rdz12_footway: 0;
 @rdz12_steps: @rdz12_pedestrian;
 @rdz12_cycle: 1;
-@rdz12_railway: 0.4;
+@rdz12_railway: 0.6;
 /* Border width (one side of the road only) */
 @rdz12_motorway_outline: 1;
 @rdz12_trunk_outline: 1;
@@ -367,8 +367,8 @@ come in as well.
 @rdz16_railway_outline: 1;
 
 /* -- Zoom 17 -- */
-@rdz17_motorway: 17;
-@rdz17_trunk: 17;
+@rdz17_motorway: 16;
+@rdz17_trunk: 16;
 @rdz17_primary: 14;
 @rdz17_secondary: 14;
 @rdz17_motorway_link: 8;
@@ -2117,10 +2117,10 @@ come in as well.
     line-color: @rail-line;
     /* -- widths -- */
     [zoom=11] {
-       line-width: 0.2;
+       line-width: 0.3;
     }
     [zoom=12] {
-      line-width: 0.2;
+      line-width: 0.3;
     }
     [zoom=13] {
       line-width: 0.4;
