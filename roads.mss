@@ -79,8 +79,8 @@ come in as well.
 @rdz11_secondary_link: 0;
 @rdz11_tertiary: 0;
 @rdz11_tertiary_link: 0;
-@rdz11_residential: 0;
 @rdz11_unclassified: 0;
+@rdz11_residential: 0;
 @rdz11_road: 0;
 @rdz11_living_street: 0;
 @rdz11_service: 0;
@@ -101,15 +101,15 @@ come in as well.
 @rdz11_trunk_link_outline: 0.15;
 @rdz11_primary_link_outline: 0.15;
 @rdz11_secondary_link_outline: 0.15;
-@rdz11_tertiary_outline: 0.15;
+@rdz11_tertiary_outline: 0.6;
 @rdz11_tertiary_link_outline: 0.15;
-@rdz11_residential_outline: 0.15;
-@rdz11_unclassified_outline: 0.15;
-@rdz11_road_outline: 0.15;
-@rdz11_living_street_outline: 0.15;
-@rdz11_service_outline: 0.2;
+@rdz11_unclassified_outline: 0.6;
+@rdz11_residential_outline: 0.3;
+@rdz11_road_outline: 0.3;
+@rdz11_living_street_outline: 0.3;
+@rdz11_service_outline: 0.3;
 @rdz11_track_outline: 0;
-@rdz11_pedestrian_outline: 0.15;
+@rdz11_pedestrian_outline: 0.3;
 @rdz11_bridleway_outline: 0;
 @rdz11_path_outline: 0;
 @rdz11_footway_outline: 0;
@@ -126,10 +126,10 @@ come in as well.
 @rdz12_trunk_link: 0.5;
 @rdz12_primary_link: 0.5;
 @rdz12_secondary_link: 0.5;
-@rdz12_tertiary: 0.5;
+@rdz12_tertiary: 1;
 @rdz12_tertiary_link: 0.5;
+@rdz12_unclassified: 1;
 @rdz12_residential: 0.5;
-@rdz12_unclassified: 0.5;
 @rdz12_road: 0.5;
 @rdz12_living_street: 0.5;
 @rdz12_service: 0;
@@ -150,10 +150,10 @@ come in as well.
 @rdz12_trunk_link_outline: 0.25;
 @rdz12_primary_link_outline: 0.25;
 @rdz12_secondary_link_outline: 0.25;
-@rdz12_tertiary_outline: 0.25;
+@rdz12_tertiary_outline: 1;
 @rdz12_tertiary_link_outline: 0.25;
+@rdz12_unclassified_outline: 1;
 @rdz12_residential_outline: 0.25;
-@rdz12_unclassified_outline: 0.25;
 @rdz12_road_outline: 0.25;
 @rdz12_living_street_outline: 0.25;
 @rdz12_service_outline: 0.25;
@@ -169,19 +169,19 @@ come in as well.
 /* -- Zoom 13 -- */
 @rdz13_motorway: 3;
 @rdz13_trunk: 3;
-@rdz13_primary: 1.5;
-@rdz13_secondary: 1.5;
+@rdz13_primary: 2;
+@rdz13_secondary: 2;
 @rdz13_motorway_link: 0.6;
 @rdz13_trunk_link: 0.6;
 @rdz13_primary_link: 0.6;
 @rdz13_secondary_link: 0.6;
-@rdz13_tertiary: 1;
+@rdz13_tertiary: 2;
 @rdz13_tertiary_link: 0.6;
-@rdz13_residential: 0.7;
-@rdz13_unclassified: 0.6;
-@rdz13_road: 0.6;
+@rdz13_unclassified: 1.5;
+@rdz13_residential: 1;
+@rdz13_road: 1;
 @rdz13_living_street: 0.6;
-@rdz13_service: 0.3;
+@rdz13_service: 0.5;
 @rdz13_track: 1;
 @rdz13_pedestrian: 0.6;
 @rdz13_bridleway: 0.20;
@@ -199,13 +199,12 @@ come in as well.
 @rdz13_trunk_link_outline: 0.6;
 @rdz13_primary_link_outline: 0.6;
 @rdz13_secondary_link_outline: 0.6;
-@rdz13_tertiary_outline: 0.6;
+@rdz13_tertiary_outline: 1;
 @rdz13_tertiary_link_outline: 0.6;
+@rdz13_unclassified_outline: 0.8;
 @rdz13_residential_outline: 0.6;
-@rdz13_unclassified_outline: 0.6;
 @rdz13_road_outline: 0.6;
 @rdz13_living_street_outline: 0.6;
-@rdz13_tertiary_outline: 1;
 @rdz13_service_outline: 0.3;
 @rdz13_track_outline: 0;
 @rdz13_pedestrian_outline: 0.6;
@@ -225,10 +224,10 @@ come in as well.
 @rdz14_trunk_link: 1;
 @rdz14_primary_link: 1;
 @rdz14_secondary_link: 1;
-@rdz14_tertiary: 1;
+@rdz14_tertiary: 2;
 @rdz14_tertiary_link: 1;
+@rdz14_unclassified: 2;
 @rdz14_residential: 1;
-@rdz14_unclassified: 1;
 @rdz14_road: 1;
 @rdz14_living_street: 1;
 @rdz14_service: 0.5;
@@ -253,8 +252,8 @@ come in as well.
 @rdz14_secondary_link_outline: 1;
 @rdz14_tertiary_outline: 1;
 @rdz14_tertiary_link_outline: 1;
-@rdz14_residential_outline: 1;
 @rdz14_unclassified_outline: 1;
+@rdz14_residential_outline: 1;
 @rdz14_road_outline: 1;
 @rdz14_living_street_outline: 1;
 @rdz14_service_outline: 0.5;
@@ -276,13 +275,13 @@ come in as well.
 @rdz15_trunk_link: 1.5;
 @rdz15_primary_link: 1.5;
 @rdz15_secondary_link: 1.5;
-@rdz15_tertiary: 1.5;
+@rdz15_tertiary: 3;
 @rdz15_tertiary_link: 1.5;
-@rdz15_residential: 1.5;
-@rdz15_unclassified: 1.5;
-@rdz15_road: 1.5;
+@rdz15_unclassified: 3;
+@rdz15_residential: 2;
+@rdz15_road: 2;
 @rdz15_living_street: 1.5;
-@rdz15_service: 1;
+@rdz15_service: 1.5;
 @rdz15_track: 2.5;
 @rdz15_pedestrian: 1.5;
 @rdz15_bridleway: 0.5;
@@ -303,8 +302,8 @@ come in as well.
 @rdz15_secondary_link_outline: 1;
 @rdz15_tertiary_outline: 1;
 @rdz15_tertiary_link_outline: 1;
-@rdz15_residential_outline: 1;
 @rdz15_unclassified_outline: 1;
+@rdz15_residential_outline: 1;
 @rdz15_road_outline: 1;
 @rdz15_living_street_outline: 1;
 @rdz15_service_outline: 1;
@@ -326,10 +325,10 @@ come in as well.
 @rdz16_trunk_link: 4;
 @rdz16_primary_link: 4;
 @rdz16_secondary_link: 4;
-@rdz16_tertiary: 4;
+@rdz16_tertiary: 6;
 @rdz16_tertiary_link: 4;
+@rdz16_unclassified: 6;
 @rdz16_residential: 4;
-@rdz16_unclassified: 4;
 @rdz16_road: 4;
 @rdz16_living_street: 3;
 @rdz16_service: 2.5;
@@ -353,8 +352,8 @@ come in as well.
 @rdz16_secondary_link_outline: 1;
 @rdz16_tertiary_outline: 1;
 @rdz16_tertiary_link_outline: 1;
-@rdz16_residential_outline: 1;
 @rdz16_unclassified_outline: 1;
+@rdz16_residential_outline: 1;
 @rdz16_road_outline: 1;
 @rdz16_living_street_outline: 1.5;
 @rdz16_service_outline: 1;
@@ -370,17 +369,17 @@ come in as well.
 /* -- Zoom 17 -- */
 @rdz17_motorway: 17;
 @rdz17_trunk: 17;
-@rdz17_primary: 15;
-@rdz17_secondary: 15;
-@rdz17_motorway_link: 10;
-@rdz17_trunk_link: 10;
-@rdz17_primary_link: 10;
-@rdz17_secondary_link: 10;
+@rdz17_primary: 14;
+@rdz17_secondary: 14;
+@rdz17_motorway_link: 8;
+@rdz17_trunk_link: 8;
+@rdz17_primary_link: 8;
+@rdz17_secondary_link: 8;
 @rdz17_tertiary: 10;
-@rdz17_tertiary_link: 10;
-@rdz17_residential: 10;
+@rdz17_tertiary_link: 8;
 @rdz17_unclassified: 10;
-@rdz17_road: 10;
+@rdz17_residential: 8;
+@rdz17_road: 8;
 @rdz17_living_street: 7.5;
 @rdz17_service: 5;
 @rdz17_track: 4;
@@ -403,8 +402,8 @@ come in as well.
 @rdz17_secondary_link_outline: 1;
 @rdz17_tertiary_outline: 1;
 @rdz17_tertiary_link_outline: 1;
-@rdz17_residential_outline: 1;
 @rdz17_unclassified_outline: 1;
+@rdz17_residential_outline: 1;
 @rdz17_road_outline: 1;
 @rdz17_living_street_outline: 1.75;
 @rdz17_service_outline: 1;
@@ -426,10 +425,10 @@ come in as well.
 @rdz18_trunk_link: 14;
 @rdz18_primary_link: 14;
 @rdz18_secondary_link: 14;
-@rdz18_tertiary: 14;
+@rdz18_tertiary: 16;
 @rdz18_tertiary_link: 14;
+@rdz18_unclassified: 16;
 @rdz18_residential: 14;
-@rdz18_unclassified: 14;
 @rdz18_road: 14;
 @rdz18_living_street: 11;
 @rdz18_service: 9;
@@ -453,8 +452,8 @@ come in as well.
 @rdz18_secondary_link_outline: 1.75;
 @rdz18_tertiary_outline: 1.75;
 @rdz18_tertiary_link_outline: 1.75;
-@rdz18_residential_outline: 1.75;
 @rdz18_unclassified_outline: 1.75;
+@rdz18_residential_outline: 1.75;
 @rdz18_road_outline: 1.75;
 @rdz18_living_street_outline: 3;
 @rdz18_service_outline: 1.75;
@@ -2793,7 +2792,7 @@ come in as well.
       [type='secondary_link']    { line-width: @rdz16_secondary_link; }
       [type='primary_link']    { line-width: @rdz16_primary_link; }
       [type='service']      { line-width: @rdz16_service; }
-      [type='track']      { line-width: @rdz16_track; }
+      [type='track']      { line-width: @rdz15_track; } //Special effect.
       [type='pedestrian']   { line-width: @rdz16_pedestrian; }
       [type='bridleway']   { line-width: @rdz16_bridleway; }
       [type='footway']   { line-width: @rdz16_footway; }
@@ -2818,7 +2817,7 @@ come in as well.
       [type='secondary_link']    { line-width: @rdz17_secondary_link; }
       [type='primary_link']    { line-width: @rdz17_primary_link; }
       [type='service']      { line-width: @rdz17_service; }
-      [type='track']      { line-width: @rdz17_track; }
+      [type='track']      { line-width: @rdz16_track; } //Special effect.
       [type='pedestrian']   { line-width: @rdz17_pedestrian; }
       [type='bridleway']   { line-width: @rdz17_bridleway; }
       [type='footway']   { line-width: @rdz17_footway; }
@@ -2843,7 +2842,7 @@ come in as well.
       [type='secondary_link']    { line-width: @rdz18_secondary_link; }
       [type='primary_link']    { line-width: @rdz18_primary_link; }
       [type='service']      { line-width: @rdz18_service; }
-      [type='track']      { line-width: @rdz18_track; }
+      [type='track']      { line-width: @rdz17_track; }  //Special effect.
       [type='pedestrian']   { line-width: @rdz18_pedestrian; }
       [type='bridleway']   { line-width: @rdz18_bridleway; }
       [type='footway']   { line-width: @rdz18_footway; }
