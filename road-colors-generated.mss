@@ -48,7 +48,9 @@
 @tertiary-line: #f6f6f6;
 @tertiary-shield-fill: #3b3b3b;
 @track-case: #cdae8c;
-@track-fill: #ded4cb;
+@track-fill: #a99f95;
+@track-light1: lighten(@track-fill, 35%);
+@track-light2: lighten(@track-fill, 70);
 @trunk-case: #f6f6f6;
 @trunk-fill: #c0ccc4;
 @trunk-line: #f6f6f6;
