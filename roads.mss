@@ -1768,9 +1768,9 @@ come in as well.
     line-width: 0;
     [tunnel=0] {
       line-color: @rail-line;
-      line-dasharray: 1,1;
+      line-dasharray: 1,4;
       [type='subway'] { line-opacity: 0.67; }
-      [zoom>15] { line-dasharray: 1,2; }
+      [zoom>15] { line-dasharray: 1,8; }
     }
   }
   [type='cycleway'] {
@@ -2107,6 +2107,42 @@ come in as well.
     [type='railway'][tunnel=0] { line-width: @rdz18_railway; }
   }
 }
+
+
+
+#roads_high::rail_line[zoom>=11],
+//#tunnel::rail_line[zoom>=11],
+#bridge::rail_line[zoom>=11] {
+  [type='railway'] {
+    line-color: @rail-line;
+    /* -- widths -- */
+    [zoom=11] {
+       line-width: 0.2;
+    }
+    [zoom=12] {
+      line-width: 0.2;
+    }
+    [zoom=13] {
+      line-width: 0.4;
+    }
+    [zoom=14] {
+      line-width: 0.6;
+    }
+    [zoom=15] {
+      line-width: 0.8;
+    }
+    [zoom=16] {
+      line-width: 1;
+    }
+    [zoom=17] {
+      line-width: 1;
+    }
+    [zoom>=18] {
+      line-width: 1;
+    }
+  }
+}
+
 
 #tunnel::inline[zoom>=11] {
   line-cap: butt;
