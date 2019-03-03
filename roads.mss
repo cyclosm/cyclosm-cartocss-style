@@ -2625,7 +2625,10 @@ come in as well.
       line-color: lighten(@secondary-fill, @surfaceLighterDarker1);
     }
     [type='track'] {
+<<<<<<< HEAD
         //line-color: lighten(@track-fill, @surfaceLighterDarker1);
+=======
+>>>>>>> 17613167c6eba0a54a5bd3456ce4aeffd6034693
         line-color: @track-light1;
     }
     [type='cycleway'] {
@@ -2881,7 +2884,10 @@ come in as well.
       line-color: lighten(@secondary-fill, @surfaceLighterDarker2);
     }
     [type='track'] {
+<<<<<<< HEAD
       //line-color: lighten(@track-fill, @surfaceLighterDarker2);
+=======
+>>>>>>> 17613167c6eba0a54a5bd3456ce4aeffd6034693
       line-color: @track-light2;
     }
     [type='cycleway'] {
