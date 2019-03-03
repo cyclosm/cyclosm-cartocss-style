@@ -47,6 +47,9 @@ This style is based on the [Mapbox
 OSM-Bright](https://github.com/mapbox/osm-bright/commit/f1c8780cd7fe9d707fca693a82fdca38b7a98936)
 style, which is licensed under BSD-3-Clause license.
 
+The contours and elevation lines render is based on the very good work and
+code available from [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap).
+
 The colors used in the `palette.mss` file are based on the
 [Hydda](https://github.com/karlwettin/tilemill-style-hydda/tree/bb27f0a9cad1920e19ae8febd39f6f9328369e6f)
 style, licensed under Apache License 2.0.

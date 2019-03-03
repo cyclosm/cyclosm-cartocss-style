@@ -18,7 +18,8 @@
 
 #landuse_gen0[zoom>3][zoom<=9],
 #landuse_gen1[zoom>9][zoom<=12],
-#landuse[zoom>12] {
+#landuse[zoom>12],
+#landuse_over_hillshade[zoom>12] {
   [type='cemetery']      { polygon-fill: @cemetery; }
   [type='college']       { polygon-fill: @school; }
   [type='commercial']    { polygon-fill: @industrial; }
@@ -60,6 +61,23 @@
   }
   [type='university']    { polygon-fill: @school; }
   [type='wood']          { polygon-fill: @wooded; }
+}
+
+#landuse_over_hillshade {
+  polygon-comp-op: soft-light;
+  polygon-opacity: 0.5;
+}
+
+#hillshade5000, #hillshade1000, #hillshade500 {
+  raster-opacity: 0.9;
+  raster-scaling: bilinear;
+  raster-comp-op: grain-merge;
+}
+
+#hillshade90 {
+  raster-opacity: 0.83;
+  raster-scaling: bilinear;
+  raster-comp-op: grain-merge;
 }
 
 #landuse_overlays[type='nature_reserve'][zoom>6] {
@@ -174,5 +192,79 @@ Map { background-color: @water; }
     [zoom=18]{ line-width: 0.7; }
     [zoom=19]{ line-width: 1; }
     [zoom>19]{ line-width: 1.5; }
+  }
+}
+
+/* ================================================================== */
+/* Contours
+/* ================================================================== */
+.contours {
+  line-color: @contours-stroke;
+
+  /* 100 m */
+  #contours100 {
+    [zoom >= 11] { line-width: 0.2; }
+    [zoom >= 12] { line-width: 0.4; }
+    [zoom >= 13] { line-width: 0.5; }
+    [zoom >= 14] { line-width: 0.6; line-smooth: 0.5; }
+  }
+
+  /* 50 m */
+  #contours50 {
+    [zoom >= 11] { line-width: 0.2; }
+    [zoom >= 13] { line-width: 0.3; }
+    [zoom >= 14] { line-width: 0.4; line-smooth: 0.5; }
+
+    [zoom = 14] {
+      text-face-name: @standard-font;
+      text-size: @contours-font-size;
+      text-fill: @contours-fill;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @contours-halo-fill;
+      text-placement: line;
+      text-label-position-tolerance: @contours-position-tolerance;
+      text-spacing: @contours-small-spacing;
+      text-min-path-length: @contours-small-min-path-length;
+      text-max-char-angle-delta: @contours-max-char-angle-delta;
+      text-name: "[ele]";
+    }
+  }
+
+  /* 20 m */
+  #contours20[zoom >= 12] { line-width: 0.2; line-smooth: 0.5; }
+
+  /* 10m */
+  #contours10 {
+    [zoom >= 13] { line-width: 0.2; line-smooth: 0.5; }
+    [zoom >= 15] {
+      text-face-name: @standard-font;
+      text-size: @contours-font-size;
+      text-fill: @contours-fill;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @light-contours-halo-fill;
+      text-placement: line;
+      text-label-position-tolerance: @contours-position-tolerance;
+      text-spacing: @contours-spacing;
+      text-min-path-length: @contours-min-path-length;
+      text-max-char-angle-delta: @contours-max-char-angle-delta;
+      text-name: "[ele]";
+    }
+  }
+
+  /* All labels */
+  #contours100, #contours50, #contours10 {
+    [zoom >= 16] {
+      text-face-name: @standard-font;
+      text-size: @contours-larger-font-size;
+      text-fill: @contours-fill;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @light-contours-halo-fill;
+      text-placement: line;
+      text-label-position-tolerance: @contours-position-tolerance;
+      text-spacing: @contours-spacing;
+      text-min-path-length: @contours-min-path-length;
+      text-max-char-angle-delta: @contours-max-char-angle-delta;
+      text-name: "[ele]";
+    }
   }
 }

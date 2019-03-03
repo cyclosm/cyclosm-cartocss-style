@@ -78,9 +78,11 @@ probably using [Kosmtik](https://github.com/kosmtik/kosmtik).
 
 First, you should follow the [INSTALL.md](INSTALL.md) guide to set up a
 [PostgreSQL database with OSM
-data](https://github.com/Phyks/cyclosm-cartocss-style/blob/master/INSTALL.md#openstreetmap-data)
-and [install the required
-fonts](https://github.com/Phyks/cyclosm-cartocss-style/blob/master/INSTALL.md#fonts).
+data](https://github.com/Phyks/cyclosm-cartocss-style/blob/master/INSTALL.md#openstreetmap-data),
+[install the required
+fonts](https://github.com/Phyks/cyclosm-cartocss-style/blob/master/INSTALL.md#fonts) and
+[build the required
+elevation files](https://github.com/Phyks/cyclosm-cartocss-style/blob/master/INSTALL.md#elevation-data).
 
 Then, you can [install Kosmtik](https://github.com/kosmtik/kosmtik#install-or-update) as well as the `fetch-remote` plugin:
 

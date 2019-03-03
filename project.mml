@@ -111,6 +111,58 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 13
+- id: hillshade5000
+  <<: *extents
+  Datasource:
+    type: gdal
+    file: dem/hillshade-5000.tif
+    format: tiff
+  properties:
+    maxzoom: 4
+- id: hillshade1000
+  <<: *extents
+  Datasource:
+    type: gdal
+    file: dem/hillshade-1000.tif
+    format: tiff
+  properties:
+    minzoom: 5
+    maxzoom: 7
+- id: hillshade500
+  <<: *extents
+  Datasource:
+    type: gdal
+    file: dem/hillshade-500.tif
+    format: tiff
+  properties:
+    minzoom: 8
+    maxzoom: 8
+- id: hillshade90
+  <<: *extents
+  Datasource:
+    type: gdal
+    file: dem/hillshade-30m-jpeg.tif
+    format: tiff
+  properties:
+    minzoom: 9
+- id: landuse_over_hillshade
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity) AS type
+        FROM planet_osm_polygon
+        WHERE landuse IN ('cemetery', 'commercial', 'farmland', 'forest', 'grass', 'industrial', 'meadow', 'residential')
+          OR leisure IN ('common', 'golf_course', 'park', 'pitch', 'sports_centre', 'stadium', 'track')
+          OR "natural" IN ('grassland', 'heath', 'wood')
+          OR highway IN ('pedestrian')
+          OR amenity IN ('college', 'hospital', 'parking', 'school', 'university')
+        ORDER BY way_area DESC
+      ) AS data
+  geometry: polygon
+  properties:
+    minzoom: 13
 - id: waterway_low
   <<: *extents
   Datasource:
@@ -281,6 +333,70 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 11
+- id: contours100
+  class: contours
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    dbname: "contours"
+    table: |-
+      (
+        SELECT
+          way, ele
+        FROM planet_osm_line
+        WHERE ele IS NOT NULL AND ele % 100 = 0
+      ) AS data
+  geometry: line
+  properties:
+    minzoom: 11
+- id: contours50
+  class: contours
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    dbname: "contours"
+    table: |-
+      (
+        SELECT
+          way, ele
+        FROM planet_osm_line
+        WHERE ele IS NOT NULL AND ele % 100 != 0 AND ele % 50 = 0
+      ) AS data
+  geometry: line
+  properties:
+    minzoom: 11
+- id: contours20
+  class: contours
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    dbname: "contours"
+    table: |-
+      (
+        SELECT
+          way, ele
+        FROM planet_osm_line
+        WHERE ele IS NOT NULL AND ele % 100 != 0 AND ele % 20 = 0
+      ) AS data
+  geometry: line
+  properties:
+    minzoom: 12
+- id: contours10
+  class: contours
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    dbname: "contours"
+    table: |-
+      (
+        SELECT
+          way, ele
+        FROM planet_osm_line
+        WHERE ele IS NOT NULL AND ele % 50 != 0 AND ele % 10 = 0
+      ) AS data
+  geometry: line
+  properties:
+    minzoom: 13
 - id: turning_circle_case
   <<: *extents
   Datasource:
