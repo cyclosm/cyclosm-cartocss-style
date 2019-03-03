@@ -38,12 +38,12 @@
 @speed20-fill: #21ffcc;
 @speed32-fill: #bbffff;
 @speedWalk-fill: #41ffa0;
-@standard-case: #b0b0b0;
+@standard-case: #949494;
 @standard-fill: #f6f6f6;
 @standard-line: #f6f6f6;
 @steps-case: @land;
 @steps-fill: #003e00;
-@tertiary-case: #949494;
+@tertiary-case: #7e7e7e;
 @tertiary-fill: #f6f6f6;
 @tertiary-line: #f6f6f6;
 @tertiary-shield-fill: #3b3b3b;
