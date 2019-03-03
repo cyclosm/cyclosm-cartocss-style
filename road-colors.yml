@@ -42,7 +42,9 @@ mss:
     fill: '#41ffa0'
     case: '@land'
   track:
-    fill: '#ded4cb'
+    fill: '#a99f95'
+    light1: 'lighten(@track-fill, 35%)'
+    light2: 'lighten(@track-fill, 70)'
     case: '#cdae8c'
   speed32:
     fill: '#bbffff'
