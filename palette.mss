@@ -114,7 +114,7 @@
 @village_halo:      @place_halo;
 
 @placenames: #222;
-@placenames-light: #777777;
+@placenames-light: #555;
 
 @standard-halo-radius: 1;
 @standard-halo-fill: @other_halo;
