@@ -2310,7 +2310,8 @@ come in as well.
   [type='primary_link'],
   [type='primary'],
   {
-    [maxspeed_kmh<33]
+    [maxspeed_kmh<33],
+    [motor_vehicle!=null][bicycle!='no']
     {
       line-color: @speed32-fill;
     }
@@ -2318,7 +2319,9 @@ come in as well.
     {
       line-color: @speed20-fill;
     }
-    [maxspeed_kmh<10]
+    [maxspeed_kmh<10],
+    [access='no'][bicycle!='no'][bicycle!=null],
+    [motor_vehicle='no'][bicycle!='no']
     {
       line-color: @speedWalk-fill;
     }
