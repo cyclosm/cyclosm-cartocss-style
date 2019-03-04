@@ -184,7 +184,6 @@ Note the `gdalwarp` arguments:
 * `-t_srs "+proj=merc +ellps=sphere +R=6378137 +a=6378137 +units=m"`: convert into Mercator
 * `-r cubicspline`: interpolation for `tr < 90 m`, bilinear for `tr > 90 m`
 * `-tr 30 30`: desired resolution in meters
-```
 
 We can now create hillshades for different zoom levels:
 
