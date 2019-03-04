@@ -30,19 +30,19 @@ through emails.
 
 ## Issues
 
-[Issues](https://github.com/Phyks/cyclosm-cartocss-style/issues) centralize
+[Issues](https://github.com/cyclosm/cyclosm-cartocss-style/issues) centralize
 the different tasks to achieve for this style. They are labelled:
 
 * [good first
-    issue](https://github.com/Phyks/cyclosm-cartocss-style/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+    issue](https://github.com/cyclosm/cyclosm-cartocss-style/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
     for any issue which should be easy to solve. These are typically good
     issues to start contributing to this style.
 * [new
-    feature](https://github.com/Phyks/cyclosm-cartocss-style/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+feature%22)
+    feature](https://github.com/cyclosm/cyclosm-cartocss-style/issues?q=is%3Aissue+is%3Aopen+label%3A%22new+feature%22)
     for any new items to be rendered (not currently rendered).
-* [enhancement](https://github.com/Phyks/cyclosm-cartocss-style/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
+* [enhancement](https://github.com/cyclosm/cyclosm-cartocss-style/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancement)
     for already rendered items which should be reworked or improved.
-* [questions](https://github.com/Phyks/cyclosm-cartocss-style/issues?q=is%3Aissue+is%3Aopen+label%3Aquestion)
+* [questions](https://github.com/cyclosm/cyclosm-cartocss-style/issues?q=is%3Aissue+is%3Aopen+label%3Aquestion)
     for the design choices which are unclear and should be discussed. Feel free
     to take part in the discussion if you have some opinions about the
     subject.
@@ -78,9 +78,11 @@ probably using [Kosmtik](https://github.com/kosmtik/kosmtik).
 
 First, you should follow the [INSTALL.md](INSTALL.md) guide to set up a
 [PostgreSQL database with OSM
-data](https://github.com/Phyks/cyclosm-cartocss-style/blob/master/INSTALL.md#openstreetmap-data)
-and [install the required
-fonts](https://github.com/Phyks/cyclosm-cartocss-style/blob/master/INSTALL.md#fonts).
+data](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/INSTALL.md#openstreetmap-data),
+[install the required
+fonts](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/INSTALL.md#fonts) and
+[build the required
+elevation files](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/INSTALL.md#elevation-data).
 
 Then, you can [install Kosmtik](https://github.com/kosmtik/kosmtik#install-or-update) as well as the `fetch-remote` plugin:
 
@@ -110,7 +112,7 @@ to have a live render at `http://localhost:6789` with auto-reload when you
 edit this style.
 
 _Note_: You can use a
-[`localconfig.json`](https://github.com/Phyks/cyclosm-cartocss-style/blob/master/INSTALL.md#kosmtik)
+[`localconfig.json`](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/INSTALL.md#kosmtik)
 file at the root of this repository to use custom PostgreSQL credentials.
 
 #### Faster rebuild with Magnacarto

@@ -1838,10 +1838,8 @@ come in as well.
   [type='secondary_link'],
   [type='secondary'],
   [type='primary_link'],
-  [type='primary'],
-  {
-    [maxspeed_kmh<33],
-    [motor_vehicle!=null][bicycle!='no']
+  [type='primary'] {
+    [maxspeed_kmh<33]
     {
       line-color: @speed32-fill;
     }
@@ -1850,7 +1848,7 @@ come in as well.
       line-color: @speed20-fill;
     }
     [maxspeed_kmh<10],
-    [access='no'][bicycle!='no'][bicycle!=null],
+    [access='no'][bicycle!=null][bicycle!='no'],
     [motor_vehicle='no'][bicycle!='no']
     {
       line-color: @speedWalk-fill;
