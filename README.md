@@ -18,7 +18,7 @@ Render:
 * Parking for bicycle (or motorcycle parking open to bicycle)
 * Steps with bicycle friendly ramp
 * Bicycle shop and repair stations
-* First aid amenities : shelter, hostpital, pharmacy, police station, water, food store
+* First aid amenities : shelter, hospital, pharmacy, police station, water, food store
 * Travel amenities : camping, hotel, train station, museum, picnic table, peaks...
 * Emphasis on low speed roads (<= 30km/h)
 * Elevation curves and shading
