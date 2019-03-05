@@ -29,17 +29,17 @@
 /* LANDUSE & LANDCOVER COLORS
 /* ================================================================== */
 
-@land:              #e0e0e0;
+@land:              darken(#e0e0e0, 5%);
 @water:             #3ebcef;
-@grass:             #e7fadf;
-@beach:             #FFEEC7;
-@park:              #c2debd;
-@cemetery:          #D6DED2;
-@wooded:            #c1ecb6;
-@agriculture:       #F2E8B6;
-@heath:             #E0E8B2;
-@meadow:            @grass;
-@farmland:          #fcf0e3;
+@grass:             darken(#e7fadf, 5%);
+@beach:             darken(#FFEEC7, 5%);
+@park:              darken(#c2debd, 5%);
+@cemetery:          darken(#D6DED2, 5%);
+@wooded:            darken(#c1ecb6, 5%);
+@agriculture:       darken(#F2E8B6, 5%);
+@heath:             darken(#E0E8B2, 5%);
+@meadow:            darken(@grass, 5%);
+@farmland:          darken(#fcf0e3, 5%);
 
 @building:          #cfcfcf;
 @hospital:          #e0e0e0;
