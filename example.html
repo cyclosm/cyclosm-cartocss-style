@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+        <meta name=description content="CyclOSM is a cycle-oriented CartoCSS style for rendering maps based on OpenStreetMap data.">
+        <meta name=twitter:card content="summary">
+        <meta property=og:type content="website">
+        <meta property=og:title content="CyclOSM: OpenStreetMap bicycle map style">
+        <meta property=og:description content="CyclOSM is a cycle-oriented CartoCSS style for rendering maps based on OpenStreetMap data.">
+        <meta property=og:url content="https://github.com/cyclosm/cyclosm-cartocss-style/">
+        <title>CyclOSM: OpenStreetMap bicycle map style</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+            integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+            crossorigin="">
+        <link rel="stylesheet" href="https://rawgit.com/stefanocudini/leaflet-search/master/dist/leaflet-search.src.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://rawgit.com/robinparisi/tingle/master/dist/tingle.min.css">
+        <style type="text/css">
+            html {
+                min-height: 100%;
+                position: relative;
+            }
+
+            body {
+                margin: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            div#map {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+
+            .tingle-modal {
+                z-index: 2000;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="map"></div>
+
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+            crossorigin=""></script>
+        <script src="https://cdn.jsdelivr.net/gh/mlevans/leaflet-hash@master/leaflet-hash.js"></script>
+        <script src="https://rawgit.com/stefanocudini/leaflet-search/master/dist/leaflet-search.src.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
+        <script src="https://rawgit.com/robinparisi/tingle/master/dist/tingle.min.js"></script>
+        <script type="text/javascript">
+            var map = new L.Map('map', {zoomControl: true}).setView([48.8588, 2.3470], 12);;
+var hash = new L.Hash(map);
+
+var cyclosm = L.tileLayer('https://tiles.phyks.me/cyclosm/tiles/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                minZoom: 0,
+                maxZoom: 18,
+            });
+            cyclosm.addTo(map);
+            var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                minZoom: 0,
+                maxZoom: 18,
+            });
+            var ocm = L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                minZoom: 0,
+                maxZoom: 18,
+            });
+            var otm = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                minZoom: 0,
+                maxZoom: 18,
+            });
+            var baseMaps = {
+                "CyclOSM": cyclosm,
+                "OpenStreetMap.org": osm,
+                "OpenCycleMap": ocm,
+                "OpenTopoMap": otm,
+            };
+            var overlayMaps = {};
+            L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+            map.addControl(new L.Control.Search({
+                url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
+                jsonpParam: 'json_callback',
+                propertyName: 'display_name',
+                propertyLoc: ['lat','lon'],
+                marker: L.circleMarker([0,0], {radius: 10}),
+                autoCollapse: true,
+                autoType: false,
+                minLength: 2,
+            }));
+
+            L.easyButton('fa-info', function(btn, map) {
+                var modal = new tingle.modal({
+                    footer: false,
+                    closeMethods: ['overlay', 'button', 'escape'],
+                    closeLabel: "Close",
+                });
+                modal.setContent('<h1>About</h1><p>This is a demo of the <a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> CartoCSS style with tiles for <a href="#12/48.8588/2.3470">Paris</a>, <a href="#12/45.7237/3.2266">Clermont-Ferrand</a> and <a href="#12/50.6183/3.0452">Lille</a> areas. Zooms levels from 0 to 18 are available for these areas.</p><p><em>Note:</em> The OSM data used in this demo might not be the latest OSM data available due to limited computation power.</p><p>A full legend of the style is available <a href="https://cyclosm.github.io/cyclosm-cartocss-style/legend.html" target="_blank">here</a>.</p>');
+                modal.open();
+            }).addTo(map);
+        </script>
+    </body>
+</html>
