@@ -76,6 +76,7 @@
 
 #hillshade90 {
   raster-opacity: 0.83;
+//  raster-scaling: lanczos; //To be used for max quality.
   raster-scaling: bilinear;
   raster-comp-op: grain-merge;
 }
@@ -100,29 +101,23 @@
 }
 
 /* ---- BUILDINGS ---- */
-#buildings[zoom>=14] {
+#buildings[zoom>=15] {
   polygon-fill:@building;
-/*  [zoom>=14] {
-    line-color:darken(@building,5%);
-    line-width:0.2;
-  }
-  [zoom>=16] {
-    line-color:darken(@building,10%);
-    line-width:0.4;
-  }*/
+  opacity: 0.5;
 }
 // At the highest zoom levels, render buildings in fancy pseudo-3D.
 // Ordering polygons by their Y-position is necessary for this effect
 // so we use a separate layer that does this for us.
-/*#buildings[zoom>=17][type != 'hedge'] {
+// Not mandatory but brings a good visualization of the building's perimeter
+// that might be off due to hill shading.
+#buildings[zoom>=17][type != 'hedge'] {
   building-fill:@building;
   building-height:1.25;
 }
-
 #buildings[zoom>=17][type = 'hedge'] {
   building-fill:@wooded;
   building-height:1.25;
-}*/
+}
 
 /* ================================================================== */
 /* WATER AREAS
