@@ -529,7 +529,10 @@
      marker-placement:line;
      marker-max-error: 0.5;
      marker-spacing: 100;
-     marker-fill: #252525;
+     marker-fill: #777777;
+     [highway='cycleway'] {
+       marker-fill: #ddf;
+     }
      marker-file: url(symbols/oneway.svg);
      [oneway='-1'] { marker-file: url(symbols/oneway-reverse.svg); }
      [zoom=15] {
