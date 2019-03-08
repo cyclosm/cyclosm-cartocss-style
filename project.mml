@@ -144,7 +144,7 @@ Layer:
   <<: *extents
   Datasource:
     type: gdal
-    file: dem/hillshade-30m-jpeg.tif
+    file: dem/hillshade-90.tif
     format: tiff
   geometry: raster
   properties:

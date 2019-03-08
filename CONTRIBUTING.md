@@ -87,6 +87,10 @@ fonts](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/INSTALL.md#
 [build the required
 elevation files](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/INSTALL.md#elevation-data).
 
+_Note:_ If you are working with mainland France, you can use prebuilt
+hillshades and extracted elevation lines, ready to be imported in your
+database with `osm2pgsql` from https://pub.phyks.me/osm/cyclosm/.
+
 Then, you can [install Kosmtik](https://github.com/kosmtik/kosmtik#install-or-update) as well as the `fetch-remote` plugin:
 
 ```
