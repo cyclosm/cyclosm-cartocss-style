@@ -69,10 +69,10 @@
 }
 
 #hillshade90 {
-  raster-opacity: 0.3;
+  raster-opacity: 0.85;
 //  raster-scaling: lanczos; //To be used for max quality.
   raster-scaling: bilinear;
-  raster-comp-op: multiply;
+  raster-comp-op: grain-merge;
 }
 
 #landuse_overlays[type='nature_reserve'][zoom>6] {
