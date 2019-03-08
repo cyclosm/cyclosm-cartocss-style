@@ -117,6 +117,7 @@ Layer:
     type: gdal
     file: dem/hillshade-5000.tif
     format: tiff
+  geometry: raster
   properties:
     maxzoom: 4
 - id: hillshade1000
@@ -125,6 +126,7 @@ Layer:
     type: gdal
     file: dem/hillshade-1000.tif
     format: tiff
+  geometry: raster
   properties:
     minzoom: 5
     maxzoom: 7
@@ -134,6 +136,7 @@ Layer:
     type: gdal
     file: dem/hillshade-500.tif
     format: tiff
+  geometry: raster
   properties:
     minzoom: 8
     maxzoom: 8
@@ -141,28 +144,11 @@ Layer:
   <<: *extents
   Datasource:
     type: gdal
-    file: dem/hillshade-30m-jpeg.tif
+    file: dem/hillshade-90.tif
     format: tiff
+  geometry: raster
   properties:
     minzoom: 9
-#- id: landuse_over_hillshade
-#  <<: *extents
-#  Datasource:
-#    <<: *osm2pgsql
-#    table: |-
-#      (
-#        SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity) AS type
-#        FROM planet_osm_polygon
-#        WHERE landuse IN ('cemetery', 'commercial', 'farmland', 'forest', 'grass', 'industrial', 'meadow', 'residential')
-#          OR leisure IN ('common', 'golf_course', 'park', 'pitch', 'sports_centre', 'stadium', 'track')
-#          OR "natural" IN ('grassland', 'heath', 'wood')
-#          OR highway IN ('pedestrian')
-#          OR amenity IN ('college', 'hospital', 'parking', 'school', 'university')
-#        ORDER BY way_area DESC
-#      ) AS data
-#  geometry: polygon
-#  properties:
-#    minzoom: 13
 - id: waterway_low
   <<: *extents
   Datasource:

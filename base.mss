@@ -18,8 +18,7 @@
 
 #landuse_gen0[zoom>3][zoom<=9],
 #landuse_gen1[zoom>9][zoom<=12],
-#landuse[zoom>12],
-#landuse_over_hillshade[zoom>12] {
+#landuse[zoom>12] {
   [type='cemetery']      { polygon-fill: @cemetery; }
   [type='college']       { polygon-fill: @school; }
   [type='commercial']    { polygon-fill: @industrial; }
@@ -63,11 +62,6 @@
   [type='wood']          { polygon-fill: @wooded; }
 }
 
-#landuse_over_hillshade {
-  polygon-comp-op: soft-light;
-  polygon-opacity: 0.5;
-}
-
 #hillshade5000, #hillshade1000, #hillshade500 {
   raster-opacity: 0.9;
   raster-scaling: bilinear;
@@ -75,7 +69,7 @@
 }
 
 #hillshade90 {
-  raster-opacity: 0.83;
+  raster-opacity: 0.85;
 //  raster-scaling: lanczos; //To be used for max quality.
   raster-scaling: bilinear;
   raster-comp-op: grain-merge;

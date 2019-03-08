@@ -120,10 +120,11 @@ This part of the guide is heavily based on the very good documentation from
 This part will guide you through generating the required data and import
 elevation lines into a PostgreSQL database for the render.
 
-First, you should install `gdal`. On Ubuntu/Debian, this can be done using
+First, you should install `gdal` and `geotiff` tools. On Ubuntu/Debian, this
+can be done using
 
 ```
-sudo apt-get install gdal-bin python-gdal
+sudo apt-get install gdal-bin python-gdal geotiff-bin
 ```
 
 We will also need
@@ -159,8 +160,6 @@ Then, let us merge `.tif`s into one large `.tif`.
 
 ```
 gdal_merge.py -n 32767 -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -o raw.tif */*.hgt.tif
-# Delete all the extracted folders, no longer needed
-find . ! -path . -type d | xargs rm -r
 ```
 
 The `raw.tif` is the full resolution DEM. This data will be passed through
@@ -188,11 +187,27 @@ Note the `gdalwarp` arguments:
 We can now create hillshades for different zoom levels:
 
 ```
-gdaldem hillshade -z 7 -compute_edges -co COMPRESS=JPEG warp-5000.tif hillshade-5000.tif
-gdaldem hillshade -z 7 -compute_edges -co BIGTIFF=YES -co TILED=YES -co COMPRESS=JPEG warp-1000.tif hillshade-1000.tif
-gdaldem hillshade -z 5 -compute_edges -co BIGTIFF=YES -co TILED=YES -co COMPRESS=JPEG warp-500.tif hillshade-500.tif
-gdaldem hillshade -z 5 -compute_edges -co BIGTIFF=YES -co TILED=YES -co COMPRESS=JPEG warp-90.tif hillshade-30m-jpeg.tif
+gdaldem hillshade -z 7 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges warp-5000.tif hillshade-5000.tif
+gdaldem hillshade -z 7 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges warp-1000.tif hillshade-1000.tif
+gdaldem hillshade -z 4 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges warp-500.tif hillshade-500.tif
+gdaldem hillshade -z 2 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges warp-90.tif hillshade-90.tif
+# Recenter the hillshades black and white scale so that white is for flat ground
+for hillshadefile in hillshade-*.tif; do
+  listgeo $hillshadefile > meta.txt
+  # Default level is #DDD for flat terrain, fix this
+  convert $hillshadefile -level 42,100% $hillshadefile-whited
+  rm $hillshadefile
+  geotifcp -g meta.txt $hillshadefile-whited $hillshadefile
+  rm meta.txt
+  rm $hillshadefile-whited
+done
 ```
+
+_Note_: You might need to edit your ImageMagick policies to run the `convert`
+command above, as some hillshades might have larger width or height than the
+default limits. See [this
+post](http://www.imagemagick.org/discourse-server/viewtopic.php?p=156413&sid=0910ca35014b076f3c583849b9ccab67#p156413)
+for more details.
 
 _Note_: `gdaldem` and `gdalwarp` have problems compressing huge files while
 generation. You can compress those afterwards by using `gdal_translate -co
@@ -220,6 +235,8 @@ point, we no longer need the `warp-*.tif` files, you can remove them with
 
 ```
 rm warp-*.tif
+# Delete all the extracted folders, no longer needed
+find . ! -path . -type d | xargs rm -r
 ```
 
 We will load the contours into a database called `contours`.  If a `contours` database exists already, you will need to drop it and recreate it first.
