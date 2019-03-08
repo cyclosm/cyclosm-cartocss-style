@@ -2183,23 +2183,12 @@ come in as well.
 
     /* -- colors & styles -- */
     line-color: darken(@standard-fill,@surfaceLighterDarker1); /* Darken since it's white. */
-    [type='primary'],
-    [type='primary_link'] {
-      line-color: lighten(@primary-fill, @surfaceLighterDarker1);
-    }
-    [type='secondary'],
-    [type='secondary_link'] {
-      line-color: lighten(@secondary-fill, @surfaceLighterDarker1);
-    }
     [type='track'] {
         line-color: @track-light1;
     }
     [type='cycleway'] {
       line-color: lighten(@cycle-fill, @surfaceLighterDarker1);
     }
-  //  [type='pedestrian'] { //Pedestrian lighter color doesn't look good, so just use grey default.
-  //    line-color: lighten(@pedestrian-fill, @surfaceLighterDarker1);
-  //  }
     [type='bridleway'] {
       line-color: lighten(@bridleway-fill, @surfaceLighterDarker1);
     }
@@ -2217,60 +2206,7 @@ come in as well.
     [type='path'][bicycle='no'] {
       line-color: lighten(@path-nobicycle,@surfaceLighterDarker1);
     }
-  /*  [type='service'],
-    [type='track'],
-    [type='tertiary'],
-    [type='living_street'],
-    [type='road'],
-    [type='unclassified'],
-    [type='residential'],
-    [type='tertiary_link'],
-    [type='secondary_link'],
-    [type='primary_link'],
-    [type='trunk_link'],
-    [type='motorway_link'],
-    [type='primary'],
-    [type='secondary'],
-    [type='motorway'],
-    [type='trunk'] {
-      line-cap: round;
-      line-join: round;
-    }
-    [type='cycleway'],
-    [type='pedestrian'],
-    [type='bridleway'],
-    [type='footway'],
-    [type='path'] {
-      line-join: round;
-    }*/
 
-    /* low maxspeed roads are bike friendly */
-/*    [type='pedestrian'],
-    [type='living_street'],
-    [type='service'],
-    [type='tertiary'],
-    [type='road'],
-    [type='unclassified'],
-    [type='residential'],
-    [type='tertiary_link'],
-    [type='secondary_link'],
-    [type='secondary'],
-    [type='primary_link'],
-    [type='primary']
-    {
-      [maxspeed_kmh<33]
-      {
-        line-color: lighten(@speed32-fill,@surfaceLighterDarker1);
-      }
-      [maxspeed_kmh<21]
-      {
-        line-color: lighten(@speed20-fill,@surfaceLighterDarker1);
-      }
-      [maxspeed_kmh<10]
-      {
-        line-color: lighten(@speedWalk-fill,@surfaceLighterDarker1);
-      }
-    }*/
     [zoom>=13] {
       [type='primary']     { line-width: @rdz13_primary; }
       [type='secondary']     { line-width: @rdz13_secondary; }
@@ -2438,22 +2374,11 @@ come in as well.
 
     /* -- colors & styles -- */
     line-color: darken(@standard-fill, @surfaceLighterDarker2); /* Darken since its white. */
-    [type='primary'],
-    [type='primary_link'] {
-      line-color: lighten(@primary-fill, @surfaceLighterDarker2);
-    }
-    [type='secondary'],
-    [type='secondary_link'] {
-      line-color: lighten(@secondary-fill, @surfaceLighterDarker2);
-    }
     [type='track'] {
       line-color: @track-light2;
     }
     [type='cycleway'] {
       line-color: lighten(@cycle-fill, @surfaceLighterDarker2);
-    }
-    [type='pedestrian'] {
-      line-color: lighten(@pedestrian-fill, @surfaceLighterDarker2);
     }
     [type='bridleway'] {
       line-color: lighten(@bridleway-fill, @surfaceLighterDarker2);
@@ -2472,60 +2397,7 @@ come in as well.
     [type='path'][bicycle='no'] {
       line-color: lighten(@path-nobicycle,@surfaceLighterDarker2);
     }
-  /*  [type='service'],
-    [type='track'],
-    [type='tertiary'],
-    [type='living_street'],
-    [type='road'],
-    [type='unclassified'],
-    [type='residential'],
-    [type='tertiary_link'],
-    [type='secondary_link'],
-    [type='primary_link'],
-    [type='trunk_link'],
-    [type='motorway_link'],
-    [type='primary'],
-    [type='secondary'],
-    [type='motorway'],
-    [type='trunk'] {
-      line-cap: round;
-      line-join: round;
-    }
-    [type='cycleway'],
-    [type='pedestrian'],
-    [type='bridleway'],
-    [type='footway'],
-    [type='path'] {
-      line-join: round;
-    }*/
 
-    /* low maxspeed roads are bike friendly */
-  /*  [type='pedestrian'],
-    [type='living_street'],
-    [type='service'],
-    [type='tertiary'],
-    [type='road'],
-    [type='unclassified'],
-    [type='residential'],
-    [type='tertiary_link'],
-    [type='secondary_link'],
-    [type='secondary'],
-    [type='primary_link'],
-    [type='primary']
-    {
-      [maxspeed_kmh<33]
-      {
-        line-color: lighten(@speed32-fill, @surfaceLighterDarker2);
-      }
-      [maxspeed_kmh<21]
-      {
-        line-color: lighten(@speed20-fill, @surfaceLighterDarker2);
-      }
-      [maxspeed_kmh<10]
-      {
-        line-color: lighten(@speedWalk-fill, @surfaceLighterDarker2);
-      }
-    }*/
     [zoom>=13] {
       [type='primary']     { line-width: @rdz13_primary; }
       [type='secondary']     { line-width: @rdz13_secondary; }
