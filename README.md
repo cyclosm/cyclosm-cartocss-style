@@ -32,7 +32,7 @@ legend](https://cyclosm.github.io/cyclosm-cartocss-style/legend.html).
 ## Demonstration
 
 A demonstration of this style for some French areas (Paris, Clermont-Ferrand and Lille, up to zoom level 18) is
-available at [https://tiles.phyks.me/](https://tiles.phyks.me/).
+available at [https://cyclosm.github.io/cyclosm-cartocss-style/example.html](https://cyclosm.github.io/cyclosm-cartocss-style/example.html).
 
 ## Getting started
 
