@@ -524,17 +524,25 @@
 /* ONE-WAY ARROWS
 /* ================================================================== */
 #roads-text-name[highway != 'construction'][zoom>=15] {
+  [oneway = 'yes'][oneway_bicycle = null],
+  [oneway = '-1'][oneway_bicycle = null],
   [oneway = 'yes'][oneway_bicycle = 'yes'],
-  [oneway='-1'][oneway_bicycle = 'yes'] {
+  [oneway = '-1'][oneway_bicycle = 'yes'],
+  [oneway = 'no'][oneway_bicycle = 'yes'] {
      marker-placement:line;
      marker-max-error: 0.5;
      marker-spacing: 100;
      marker-fill: #777777;
+     [oneway_bicycle = 'yes'] {
+       marker-fill: #00f;
+     }
      [highway='cycleway'] {
        marker-fill: #ddf;
      }
      marker-file: url(symbols/oneway.svg);
-     [oneway='-1'] { marker-file: url(symbols/oneway-reverse.svg); }
+     [oneway='-1'] {
+       marker-file: url(symbols/oneway-reverse.svg);
+     }
      [zoom=15] {
         marker-transform: "scale(0.75)";
         marker-spacing: 80;

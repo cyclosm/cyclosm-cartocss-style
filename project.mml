@@ -1440,15 +1440,16 @@ Layer:
           CASE
             WHEN oneway IN ('yes', '-1') THEN oneway
             WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
-            ELSE NULL
+            ELSE 'no'
           END AS oneway,
           CASE
             WHEN tags->'oneway:bicycle'='no' THEN 'no'
+            WHEN tags->'oneway:bicycle'='yes' THEN 'yes'
             WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:right' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
             THEN 'no'
-            ELSE 'yes'
+            ELSE NULL
           END AS oneway_bicycle,
           horse, bicycle
         FROM planet_osm_line l
