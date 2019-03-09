@@ -261,7 +261,7 @@ Layer:
       ) AS data
   geometry: polygon
   properties:
-    minzoom: 15
+    minzoom: 16
 - id: aeroway
   <<: *extents
   Datasource:

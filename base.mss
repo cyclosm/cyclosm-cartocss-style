@@ -95,7 +95,7 @@
 }
 
 /* ---- BUILDINGS ---- */
-#buildings[zoom>=15] {
+#buildings[zoom>=16] {
   polygon-fill:@building;
   opacity: 0.5;
 }
@@ -196,6 +196,7 @@ Map { background-color: @water; }
     [zoom >= 12] { line-width: 0.4; }
     [zoom >= 13] { line-width: 0.5; }
     [zoom >= 14] { line-width: 0.6; line-smooth: 0.5; }
+    [zoom >= 16] { line-width: 1; }
   }
 
   /* 50 m */
@@ -203,6 +204,7 @@ Map { background-color: @water; }
     [zoom >= 11] { line-width: 0.2; }
     [zoom >= 13] { line-width: 0.3; }
     [zoom >= 14] { line-width: 0.4; line-smooth: 0.5; }
+    [zoom >= 16] { line-width: 0.8; line-smooth: 0.5; }
 
     [zoom = 14] {
       text-face-name: @standard-font;
@@ -220,7 +222,10 @@ Map { background-color: @water; }
   }
 
   /* 20 m */
-  #contours20[zoom >= 12] { line-width: 0.2; line-smooth: 0.5; }
+  #contours20 {
+    [zoom >= 12] { line-width: 0.2; line-smooth: 0.5; }
+    [zoom >= 16] { line-width: 0.4; }
+  }
 
   /* 10m */
   #contours10 {
@@ -238,6 +243,7 @@ Map { background-color: @water; }
       text-max-char-angle-delta: @contours-max-char-angle-delta;
       text-name: "[ele]";
     }
+    [zoom >= 16] { line-width: 0.4; }
   }
 
   /* All labels */
