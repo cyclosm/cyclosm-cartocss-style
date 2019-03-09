@@ -89,7 +89,7 @@ come in as well.
 @rdz11_bridleway: 0;
 @rdz11_path: 0.30;
 @rdz11_footway: 0;
-@rdz11_steps: @rdz11_pedestrian;
+@rdz11_steps: 0;
 @rdz11_cycle: 0.5;
 @rdz11_railway: 0.4;
 /* Border width (one side of the road only) */
@@ -138,7 +138,7 @@ come in as well.
 @rdz12_bridleway: 0;
 @rdz12_path: 0.5;
 @rdz12_footway: 0;
-@rdz12_steps: @rdz12_pedestrian;
+@rdz12_steps: 0;
 @rdz12_cycle: 1;
 @rdz12_railway: 0.6;
 /* Border width (one side of the road only) */
@@ -187,7 +187,7 @@ come in as well.
 @rdz13_bridleway: 0.20;
 @rdz13_path: 0.65;
 @rdz13_footway: 0.20;
-@rdz13_steps: @rdz13_pedestrian;
+@rdz13_steps: 0.3;
 @rdz13_cycle: 1;
 @rdz13_railway: 0.8;
 /* Border width (one side of the road only) */
@@ -236,7 +236,7 @@ come in as well.
 @rdz14_bridleway: 0.25;
 @rdz14_path: 1;
 @rdz14_footway: 0.25;
-@rdz14_steps: @rdz14_pedestrian;
+@rdz14_steps: 0.5;
 @rdz14_cycle: 2;
 @rdz14_railway: 1.0;
 @rdz14_turning_circle_marker: 1.1;
@@ -287,7 +287,7 @@ come in as well.
 @rdz15_bridleway: 0.5;
 @rdz15_path: 1.25;
 @rdz15_footway: 0.5;
-@rdz15_steps: @rdz15_pedestrian;
+@rdz15_steps: 0.8;
 @rdz15_cycle: 2;
 @rdz15_railway: 1.5;
 @rdz15_turning_circle_marker: 1.65;
@@ -337,7 +337,7 @@ come in as well.
 @rdz16_bridleway: 0.75;
 @rdz16_path: 1.25;
 @rdz16_footway: 0.75;
-@rdz16_steps: @rdz16_pedestrian;
+@rdz16_steps: 1.25;
 @rdz16_cycle: 2;
 @rdz16_railway: 2;
 @rdz16_turning_circle_marker: 6;
@@ -386,8 +386,8 @@ come in as well.
 @rdz17_pedestrian: 5;
 @rdz17_bridleway: 1;
 @rdz17_path: 2;
-@rdz17_footway: 1;
-@rdz17_steps: @rdz17_pedestrian;
+@rdz17_footway: 1.5;
+@rdz17_steps: 3;
 @rdz17_cycle: 3;
 @rdz17_railway: 3;
 @rdz17_turning_circle_marker: 15;
@@ -436,8 +436,8 @@ come in as well.
 @rdz18_pedestrian: 8;
 @rdz18_bridleway: 1.5;
 @rdz18_path: 2.5;
-@rdz18_footway: 1.5;
-@rdz18_steps: 2;
+@rdz18_footway: 2;
+@rdz18_steps: 3.5;
 @rdz18_cycle: 4;
 @rdz18_railway: 4;
 @rdz18_turning_circle_marker: 21;
@@ -1696,45 +1696,29 @@ come in as well.
   }
 }
 
-#roads_high::steps_ramp_left[zoom >= 11],
-#tunnel::steps_ramp_left[zoom>=11],
-#bridge::steps_ramp_left[zoom>=11] {
+#roads_high::steps_ramp_left[zoom >= 15],
+#tunnel::steps_ramp_left[zoom>=15],
+#bridge::steps_ramp_left[zoom>=15] {
   [type='steps'] {
     [ramp_cycle='yes'],
     [ramp_wheelchair='yes'],
     [ramp_stroller='yes'] {
       line-color: @cycle-fill;
-      [zoom=11] {
-        line-width: @rdz11_steps_outline;
-        line-offset: @rdz11_steps + @rdz11_steps_outline;
-      }
-      [zoom=12] {
-        line-width: @rdz12_steps_outline;
-        line-offset: @rdz12_steps + @rdz12_steps_outline;
-      }
-      [zoom=13] {
-        line-width: @rdz13_steps_outline;
-        line-offset: @rdz13_steps + @rdz13_steps_outline;
-      }
-      [zoom=14] {
-        line-width: @rdz14_steps_outline;
-        line-offset: @rdz14_steps + @rdz14_steps_outline;
-      }
       [zoom=15] {
-        line-width: @rdz15_steps_outline;
-        line-offset: @rdz15_steps + @rdz15_steps_outline;
+        line-width: @rdz15_steps_outline*2;
+        line-offset: @rdz15_steps/2 + @rdz15_steps_outline;
       }
       [zoom=16] {
-        line-width: @rdz16_steps_outline;
-        line-offset: @rdz16_steps + @rdz16_steps_outline;
+        line-width: @rdz16_steps_outline*2;
+        line-offset: @rdz16_steps/2 + @rdz16_steps_outline;
       }
-      [zoom>=17] {
-        line-width: @rdz17_steps_outline;
-        line-offset: @rdz17_steps + @rdz17_steps_outline;
+      [zoom=17] {
+        line-width: @rdz17_steps_outline*2;
+        line-offset: @rdz17_steps/2 + @rdz17_steps_outline;
       }
       [zoom>=18] {
-        line-width: @rdz18_steps_outline;
-        line-offset: @rdz18_steps + @rdz18_steps_outline;
+        line-width: @rdz18_steps_outline*2;
+        line-offset: @rdz18_steps/2 + @rdz18_steps_outline;
       }
     }
   }
