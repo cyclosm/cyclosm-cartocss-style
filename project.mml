@@ -290,6 +290,7 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           bicycle, tags->'motor_vehicle' AS motor_vehicle,
+          oneway,
           tags->'cycleway' AS cycleway, tags->'cycleway:left' AS cycleway_left, tags->'cycleway:right' AS cycleway_right,
           CASE
             WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
@@ -411,6 +412,7 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           bicycle, tags->'motor_vehicle' AS motor_vehicle,
+          oneway,
           tags->'cycleway' AS cycleway,
           tags->'cycleway:left' AS cycleway_left,
           CASE
@@ -504,6 +506,7 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           bicycle, tags->'motor_vehicle' AS motor_vehicle,
+          oneway,
           tags->'cycleway' AS cycleway,
           tags->'cycleway:left' AS cycleway_left,
           CASE
