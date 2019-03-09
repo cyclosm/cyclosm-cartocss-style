@@ -187,20 +187,10 @@ Note the `gdalwarp` arguments:
 We can now create hillshades for different zoom levels:
 
 ```
-gdaldem hillshade -z 7 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges warp-5000.tif hillshade-5000.tif
-gdaldem hillshade -z 7 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges warp-1000.tif hillshade-1000.tif
-gdaldem hillshade -z 4 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges warp-500.tif hillshade-500.tif
-gdaldem hillshade -z 2 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges warp-90.tif hillshade-90.tif
-# Recenter the hillshades black and white scale so that white is for flat ground
-for hillshadefile in hillshade-*.tif; do
-  listgeo $hillshadefile > meta.txt
-  # Default level is #DDD for flat terrain, fix this
-  convert $hillshadefile -level 42,100% $hillshadefile-whited
-  rm $hillshadefile
-  geotifcp -g meta.txt $hillshadefile-whited $hillshadefile
-  rm meta.txt
-  rm $hillshadefile-whited
-done
+gdaldem hillshade -z 7 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges -combined warp-5000.tif hillshade-5000.tif
+gdaldem hillshade -z 7 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges -combined warp-1000.tif hillshade-1000.tif
+gdaldem hillshade -z 4 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges -combined warp-500.tif hillshade-500.tif
+gdaldem hillshade -z 4 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges -combined warp-90.tif hillshade-90.tif
 ```
 
 _Note_: You might need to edit your ImageMagick policies to run the `convert`

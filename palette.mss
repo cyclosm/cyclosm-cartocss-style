@@ -30,16 +30,15 @@
 /* ================================================================== */
 
 /* The lighten() calls below compensate for the extra opacity from the hillshades. */
-@land:              lighten(#e0e0e0, 10%);
-@grass:             #91ab6c;
+@land:              #eee5dc;
+@grass:             #9dbc79;
 @meadow:            @grass;
-@beach:             lighten(#FFEEC7, 10%); // TODO
-@park:              lighten(#c2debd, 10%); // TODO
-@cemetery:          lighten(#D6DED2, 10%); // TODO
-@wooded:            #91ad86;
-@heath:             #dae793;
-@farmland:          #f9e1c8;
-@water:             #6fcaf0;
+@park:              #c2debd;
+@cemetery:          #D6DED2;
+@wooded:            #95bd84;
+@heath:             #b2c068;
+@farmland:          #edd9c2;
+@water:             #8ecbeb;
 
 @building:          #cfcfcf;
 @hospital:          #e0e0e0;

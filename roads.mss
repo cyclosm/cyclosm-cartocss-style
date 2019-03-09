@@ -2612,13 +2612,9 @@ come in as well.
 #bicycle_routes[type='ncn'][zoom >= 5],
 #bicycle_routes[type='rcn'][zoom >= 7],
 #bicycle_routes[type='lcn'][zoom >= 9] {
-  line-opacity: 0.2;
-  line-width: 1;
-
-  [zoom <= 12] { line-opacity: 0.5; }
-
-  [zoom=9]   { line-width: 2; }
-  [zoom>=10] { line-width: 3; }
+  [zoom <= 9] { line-width: 2; line-opacity: 0.75; }
+  [zoom=9]   { line-width: 2; line-opacity: 0.75; }
+  [zoom>=10] { line-width: 3; line-opacity: 0.75; }
   [zoom=13]  { line-width: 4; line-opacity: 0.35; }
   [zoom=14]  { line-width: 5; }
   [zoom=15]  { line-width: 6; }
@@ -2637,6 +2633,9 @@ come in as well.
   }
   [route='bicycle'][type='lcn'] {
     line-color: @lcn-overlay;
+    [zoom<=12] {
+      line-opacity: 0.5;
+    }
   }
   [route='mtb'] {
     line-color: @mtb-overlay;

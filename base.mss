@@ -65,14 +65,14 @@
 #hillshade5000, #hillshade1000, #hillshade500 {
   raster-opacity: 0.9;
   raster-scaling: bilinear;
-  raster-comp-op: grain-merge;
+  raster-comp-op: multiply;
 }
 
 #hillshade90 {
-  raster-opacity: 0.85;
+  raster-opacity: 0.75;
 //  raster-scaling: lanczos; //To be used for max quality.
   raster-scaling: bilinear;
-  raster-comp-op: grain-merge;
+  raster-comp-op: multiply;
 }
 
 #landuse_overlays[type='nature_reserve'][zoom>6] {
