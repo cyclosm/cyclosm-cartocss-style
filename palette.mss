@@ -139,7 +139,7 @@
 @contours-halo-fill: rgba(255, 255, 255, 0.8);
 @light-contours-halo-fill: rgba(255, 255, 255, 0.3);
 @contours-font-size: 7;
-@contours-larger-font-size: 8;
+@contours-larger-font-size: 9;
 @contours-position-tolerance: 100;
 @contours-small-spacing: 200;
 @contours-spacing: 800;
