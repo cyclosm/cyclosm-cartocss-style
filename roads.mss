@@ -2612,15 +2612,46 @@ come in as well.
 #bicycle_routes[type='ncn'][zoom >= 5],
 #bicycle_routes[type='rcn'][zoom >= 7],
 #bicycle_routes[type='lcn'][zoom >= 9] {
-  [zoom <= 9] { line-width: 2; line-opacity: 0.75; }
-  [zoom=9]   { line-width: 2; line-opacity: 0.75; }
-  [zoom>=10] { line-width: 3; line-opacity: 0.75; }
-  [zoom=13]  { line-width: 4; line-opacity: 0.35; }
-  [zoom=14]  { line-width: 5; }
-  [zoom=15]  { line-width: 6; }
-  [zoom=16]  { line-width: 7; }
-  [zoom=17]  { line-width: 10; }
-  [zoom>=18] { line-width: 14; }
+  line-opacity: 0.75;
+  line-width: 1;
+
+  [zoom >= 9] {
+    line-width: 2;
+    [type='lcn'] {
+      line-opacity: 0.5;
+    }
+  }
+  [zoom >= 10] {
+    line-width: 3;
+    line-opacity: 0.5;
+    [type='lcn'] {
+      line-opacity: 0.5;
+    }
+  }
+  [zoom >= 13] {
+    line-width: 4;
+    line-opacity: 0.35;
+  }
+  [zoom >= 14] {
+    line-width: 5;
+    line-opacity: 0.2;
+  }
+  [zoom >= 15] {
+    line-width: 6;
+    line-opacity: 0.2;
+  }
+  [zoom >= 16] {
+    line-width: 7;
+    line-opacity: 0.2;
+  }
+  [zoom >= 17] {
+    line-width: 10;
+    line-opacity: 0.2;
+  }
+  [zoom >= 18] {
+    line-width: 14;
+    line-opacity: 0.2;
+  }
 
   [route='bicycle'][type='icn'] {
     line-color: @icn-overlay;
@@ -2633,9 +2664,6 @@ come in as well.
   }
   [route='bicycle'][type='lcn'] {
     line-color: @lcn-overlay;
-    [zoom<=12] {
-      line-opacity: 0.5;
-    }
   }
   [route='mtb'] {
     line-color: @mtb-overlay;
