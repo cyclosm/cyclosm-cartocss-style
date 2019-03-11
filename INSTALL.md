@@ -193,15 +193,17 @@ gdaldem hillshade -z 4 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute
 gdaldem hillshade -z 4 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges -combined warp-90.tif hillshade-90.tif
 ```
 
-_Note_: You might need to edit your ImageMagick policies to run the `convert`
-command above, as some hillshades might have larger width or height than the
-default limits. See [this
-post](http://www.imagemagick.org/discourse-server/viewtopic.php?p=156413&sid=0910ca35014b076f3c583849b9ccab67#p156413)
-for more details.
-
 _Note_: `gdaldem` and `gdalwarp` have problems compressing huge files while
 generation. You can compress those afterwards by using `gdal_translate -co
 compress=…`
+
+Finally, we can clean the now useless files:
+
+```
+rm warp-*.tif
+# Delete all the extracted folders, no longer needed
+find . ! -path . -type d | xargs rm -r
+```
 
 
 ### Create the contour lines database
@@ -210,24 +212,19 @@ Run phyghtmap and generate contours (this step can take quite a few tens of
 minutes):
 
 ```
-phyghtmap -o contour --max-nodes-per-tile=0 -s 10 -0 --pbf warp-90.tif
+wget http://download.geofabrik.de/europe/france.poly
+phyghtmap --polygon=france.poly -j 2 -s 10 -0 --source=view3 --max-nodes-per-tile=0 --max-nodes-per-way=0 --pbf
+# Remove now useless files
+rm -r hgt
+rm france.poly
 ```
 
-_Note_: `phyghtmap` is using a lot of memory and only works on small extracts.
-It is better to run it on each unzipped folder separately and stitch together
-the resulting pbf files with `osmconvert` or `osmium` before running
-`osm2pgsql`.
+_Note_: You can use any other polygon from Geofabrik. The previous command
+will generate elevation lines for the whole France area.
 
 The output of this will be in a OpenStreetMap Protocolbuffer Binary Format
 called something like
-`contour_lon-126.00_-117.00lat38.00_50.00_local-source.osm.pbf`. At this
-point, we no longer need the `warp-*.tif` files, you can remove them with
-
-```
-rm warp-*.tif
-# Delete all the extracted folders, no longer needed
-find . ! -path . -type d | xargs rm -r
-```
+`lon-6.30_9.90lat41.26_51.33_view3.osm.pbf`.
 
 We will load the contours into a database called `contours`.  If a `contours` database exists already, you will need to drop it and recreate it first.
 
@@ -239,8 +236,8 @@ sudo -u postgres psql contours -c 'CREATE EXTENSION postgis;'
 Load the data into the contours database:
 
 ```
-sudo -u postgres osm2pgsql --slim -d contours --cache 5000 --style ./contours.style ./contour*.pbf
-rm ./contour*.pbf
+sudo -u postgres osm2pgsql --slim -d contours --cache 5000 --style ./contours.style ./*.osm.pbf
+rm ./*.osm.pbf
 ```
 
 
