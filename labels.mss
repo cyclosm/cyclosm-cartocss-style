@@ -533,7 +533,7 @@
      marker-max-error: 0.5;
      marker-spacing: 100;
      marker-fill: #777777;
-     [oneway_bicycle = 'yes'] {
+     [oneway != 'yes'][oneway_bicycle = 'yes'] {
        marker-fill: #00f;
      }
      [highway='cycleway'] {
