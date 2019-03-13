@@ -207,7 +207,7 @@ Map { background-color: @water; }
     [zoom >= 16] { line-width: 0.8; line-smooth: 0.5; }
 
     [zoom = 14] {
-      text-face-name: @standard-font;
+      text-face-name: @sans_bold;
       text-size: @contours-font-size;
       text-fill: @contours-fill;
       text-halo-radius: @standard-halo-radius;
@@ -235,7 +235,7 @@ Map { background-color: @water; }
       text-size: @contours-font-size;
       text-fill: @contours-fill;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @light-contours-halo-fill;
+      text-halo-fill: @contours-halo-fill;
       text-placement: line;
       text-label-position-tolerance: @contours-position-tolerance;
       text-spacing: @contours-spacing;
@@ -253,7 +253,7 @@ Map { background-color: @water; }
       text-size: @contours-larger-font-size;
       text-fill: @contours-fill;
       text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @light-contours-halo-fill;
+      text-halo-fill: @contours-halo-fill;
       text-placement: line;
       text-label-position-tolerance: @contours-position-tolerance;
       text-spacing: @contours-spacing;

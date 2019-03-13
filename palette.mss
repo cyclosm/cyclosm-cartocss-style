@@ -136,9 +136,8 @@
 @major-highway-text-repeat-distance: 50;
 @minor-highway-text-repeat-distance: 10;
 
-@contours-halo-fill: rgba(255, 255, 255, 0.8);
-@light-contours-halo-fill: rgba(255, 255, 255, 0.3);
-@contours-font-size: 7;
+@contours-halo-fill: rgba(0, 0, 0, 0.3);
+@contours-font-size: 8;
 @contours-larger-font-size: 9;
 @contours-position-tolerance: 100;
 @contours-small-spacing: 200;
@@ -146,7 +145,7 @@
 @contours-small-min-path-length: 200;
 @contours-min-path-length: 300;
 @contours-max-char-angle-delta: 10;
-@contours-fill: #bc7e55;
+@contours-fill: #ffa970;
 @contours-stroke: #c45700;
 
 /* ================================================================== */
