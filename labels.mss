@@ -28,24 +28,37 @@
     text-fill: #888;
     text-halo-fill: #fff;
     // Specific style overrides for different types of areas:
-    [type='park'][zoom>=10] {
+    [type='forest'],
+    [type='wood'] {
+      text-face-name: @sans_italic;
+      text-fill: @wooded * 0.6;
+      text-halo-fill: lighten(@wooded, 10%);
+    }
+    [type='grass'] {
+      text-face-name: @sans_italic;
+      text-fill: @grass * 0.6;
+      text-halo-fill: lighten(@grass, 10%);
+    }
+    [type='common'],
+    [type='park'] {
       text-face-name: @sans_italic;
       text-fill: @park * 0.6;
       text-halo-fill: lighten(@park, 10%);
     }
-    [type='golf_course'][zoom>=10] {
-      text-fill: @sports * 0.6;
-      text-halo-fill: lighten(@sports, 10%);
+    [type='golf_course'] {
+      text-fill: @grass * 0.6;
+      text-halo-fill: lighten(@grass, 10%);
     }
-    [type='cemetery'][zoom>=10] {
+    [type='cemetery'] {
       text-fill: @cemetery * 0.6;
       text-halo-fill: lighten(@cemetery, 10%);
     }
-    [type='university'][zoom>=10] {
+    [type='university'] {
       text-fill: @school * 0.6;
       text-halo-fill: lighten(@school, 10%);
     }
-    [type='water'][zoom>=10] {
+    [type='basin'],
+    [type='water'] {
       text-fill: @water * 0.6;
       text-halo-fill: lighten(@water, 10%);
     }
