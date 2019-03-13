@@ -2735,6 +2735,9 @@ come in as well.
   }
   [route='mtb'] {
     line-color: @mtb-overlay;
+    [zoom >= 14] {
+      line-opacity: 0.4;
+    }
   }
 
   [state='proposed'] {
