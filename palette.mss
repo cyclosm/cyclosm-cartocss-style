@@ -116,7 +116,7 @@
 @placenames-light: #555;
 
 @standard-halo-radius: 1;
-@standard-halo-fill: @other_halo;
+@standard-halo-fill: rgba(255,255,255,0.6);
 @standard-font-size: 10;
 @standard-wrap-width: 30;
 @standard-line-spacing-size: -1.5;

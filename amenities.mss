@@ -926,12 +926,12 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: darken(@landform-color, 30%);
-    [feature = 'natural_volcano'] { text-fill: #d40000; }
+    text-fill: #8a4508;
+    [feature = 'natural_volcano'] { text-fill: #b10000; }
     text-dy: 7;
     [feature = 'tourism_viewpoint'] { text-dy: 11; }
     text-face-name: @standard-font;
-    text-halo-radius: @standard-halo-radius;
+    text-halo-radius: 1.4;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
   }
