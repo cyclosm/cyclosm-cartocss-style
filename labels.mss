@@ -24,9 +24,9 @@
     text-halo-radius: 1.5;
     text-face-name:@sans;
     text-size: 11;
-    text-wrap-width:30;
+    text-wrap-width: 30;
     text-fill: #888;
-    text-halo-fill: #fff;
+    text-halo-fill: @standard-halo-fill;
     // Specific style overrides for different types of areas:
     [type='forest'],
     [type='wood'],
@@ -53,6 +53,10 @@
     [type='water'] {
       text-fill: @water * 0.6;
       text-halo-fill: lighten(@water, 10%);
+    }
+    [type='nature_reserve'] {
+      text-face-name: @sans_italic;
+      text-fill: @nature_reserve;
     }
   }
   [zoom=15][area>1600000],
