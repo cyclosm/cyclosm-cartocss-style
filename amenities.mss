@@ -854,12 +854,13 @@
   [feature = 'healthcare_clinic'][zoom >= 16],
   [feature = 'healthcare_hospital'][zoom >= 16] {
     text-name: "[name]";
-    text-halo-radius: 1.5;
-    text-face-name:@sans;
-    text-size: 11;
-    text-wrap-width:30;
-    text-fill: #888;
-    text-halo-fill: #fff;
+    text-halo-radius: @standard-halo-radius;
+    text-size: @standard-font-size + 1;
+    text-wrap-width: @standard-wrap-width;
+    text-halo-fill: @standard-halo-fill;
+    text-line-spacing: @standard-line-spacing-size;
+    text-face-name: @standard-font;
+    text-fill: @health-color;
     text-placement-type: simple;
     text-placements: "S,N,E,W,NE,SE,NW,SW,16,14,12";
     text-dy: 12;
