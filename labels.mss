@@ -29,16 +29,8 @@
     text-halo-fill: #fff;
     // Specific style overrides for different types of areas:
     [type='forest'],
-    [type='wood'] {
-      text-face-name: @sans_italic;
-      text-fill: @wooded * 0.6;
-      text-halo-fill: lighten(@wooded, 10%);
-    }
-    [type='grass'] {
-      text-face-name: @sans_italic;
-      text-fill: @grass * 0.6;
-      text-halo-fill: lighten(@grass, 10%);
-    }
+    [type='wood'],
+    [type='grass'],
     [type='common'],
     [type='park'] {
       text-face-name: @sans_italic;
