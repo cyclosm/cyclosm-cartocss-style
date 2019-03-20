@@ -1008,7 +1008,7 @@ Layer:
       (
         SELECT barrier, way, z_order
         FROM planet_osm_point
-        WHERE barrier IN ('block', 'bollard', 'cattle_grid', 'chain', 'cycle_barrier', 'gate', 'kissing_gate', 'lift_gate', 'stile', 'swing_gate', 'turnstile')
+        WHERE barrier IN ('block', 'bollard', 'cattle_grid', 'chain', 'cycle_barrier', 'gate', 'kissing_gate', 'lift_gate', 'log', 'stile', 'swing_gate', 'turnstile')
         ORDER BY z_order NULLS LAST
       ) AS data
   geometry: point

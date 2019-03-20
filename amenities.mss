@@ -1,6 +1,7 @@
 #barriers[zoom>=17][zoom<=20] {
   [barrier = 'block'],
-  [barrier = 'bollard'] {
+  [barrier = 'bollard'],
+  [barrier = 'log'] {
     marker-width: 3;
     marker-line-width: 0;
     marker-fill: #7d7c7c;
