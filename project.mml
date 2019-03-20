@@ -740,6 +740,19 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 13
+- id: cliffs
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT way, "natural", man_made
+        FROM planet_osm_line
+        WHERE "natural" = 'cliff' OR man_made = 'embankment'
+      ) AS data
+  geometry: linestring
+  properties:
+    minzoom: 13
 - id: train_stations
   <<: *extents
   Datasource:
