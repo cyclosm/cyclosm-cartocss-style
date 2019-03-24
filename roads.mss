@@ -2696,29 +2696,29 @@ come in as well.
       line-opacity: 0.5;
     }
   }
-  [zoom >= 13] {
+  [zoom >= 12] {
     line-width: 4;
-    line-opacity: 0.35;
+    line-opacity: 0.25;
   }
   [zoom >= 14] {
     line-width: 5;
-    line-opacity: 0.2;
+    line-opacity: 0.15;
   }
   [zoom >= 15] {
     line-width: 6;
-    line-opacity: 0.2;
+    line-opacity: 0.1;
   }
   [zoom >= 16] {
     line-width: 7;
-    line-opacity: 0.2;
+    line-opacity: 0.1;
   }
   [zoom >= 17] {
     line-width: 10;
-    line-opacity: 0.2;
+    line-opacity: 0.1;
   }
   [zoom >= 18] {
     line-width: 14;
-    line-opacity: 0.2;
+    line-opacity: 0.05;
   }
 
   [route='bicycle'][type='icn'] {
