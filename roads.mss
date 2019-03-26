@@ -1885,7 +1885,7 @@ come in as well.
       [type='secondary_link']    { line-width: @rdz18_secondary_link; }
       [type='primary_link']    { line-width: @rdz18_primary_link; }
       [type='service']      { line-width: @rdz18_service; }
-      [type='track']      { line-width: @rdz12_track; }  //Special effect.
+      [type='track']      { line-width: @rdz17_track; }  //Special effect.
 			[type='pedestrian']   { line-width: @rdz18_pedestrian; }
       [type='bridleway']   { line-width: @rdz18_bridleway; }
       [type='footway']   { line-width: @rdz18_footway; }
@@ -2106,7 +2106,7 @@ come in as well.
       [type='secondary_link']    { line-width: @rdz18_secondary_link; }
       [type='primary_link']    { line-width: @rdz18_primary_link; }
       [type='service']      { line-width: @rdz18_service; }
-      [type='track']      { line-width: @rdz12_track; } //Special effect.
+      [type='track']      { line-width: @rdz17_track; } //Special effect.
 			[type='pedestrian']   { line-width: @rdz18_pedestrian; }
       [type='bridleway']   { line-width: @rdz18_bridleway; }
       [type='footway']   { line-width: @rdz18_footway; }
