@@ -2159,27 +2159,24 @@ come in as well.
   }
   [zoom >= 12] {
     line-width: 4;
-    line-opacity: 0.25;
+    line-opacity: 0.3;
   }
   [zoom >= 14] {
     line-width: 5;
-    line-opacity: 0.15;
+    line-opacity: 0.2;
   }
   [zoom >= 15] {
     line-width: 6;
-    line-opacity: 0.1;
+    line-opacity: 0.2;
   }
   [zoom >= 16] {
     line-width: 7;
-    line-opacity: 0.1;
   }
   [zoom >= 17] {
     line-width: 10;
-    line-opacity: 0.1;
   }
   [zoom >= 18] {
     line-width: 14;
-    line-opacity: 0.05;
   }
 
   [route='bicycle'][type='icn'] {
@@ -2193,6 +2190,15 @@ come in as well.
   }
   [route='bicycle'][type='lcn'] {
     line-color: @lcn-overlay;
+    [zoom >= 14] {
+      line-opacity: 0.15;
+    }
+    [zoom >= 15] {
+      line-opacity: 0.1;
+    }
+    [zoom >= 18] {
+      line-opacity: 0.05;
+    }
   }
   [route='mtb'] {
     line-color: @mtb-overlay;
