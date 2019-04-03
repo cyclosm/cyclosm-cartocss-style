@@ -502,23 +502,6 @@ come in as well.
   [type='track'] {
     line-color: @track-case;
   }
-/*  [cycleway='lane'],
-  [cycleway='opposite_lane'] {
-    line-color: @cycle_lane_case;
-    line-dasharray: 6,3;
-    line-cap: butt;
-  }
-  [cycleway='track'],
-  [cycleway='opposite_track'] {
-    line-color: @cycle_track_case;
-    line-cap: butt;
-  }
-  [cycleway='share_busway'],
-  [cycleway='opposite_share_busway'] {
-    line-color: @cycle_busway_case;
-    line-dasharray: 6,10;
-    line-cap: butt;
-  }*/
   [type='railway'] {
     line-width: 0;
     [tunnel=0] {
@@ -698,389 +681,360 @@ come in as well.
 }
 
 /* Eventually overload right border for cycleways */
-#roads_high::outline_right[zoom>=11],
-#tunnel::outline_right[zoom>=11],
-#bridge::outline_right[zoom>=11]{
-  [has_right_cycleway=1],
-  [cycleway='track'],
-  [cycleway='opposite_track'],
-  [cycleway='lane'],
-  [cycleway='opposite_lane'],
-  [cycleway='share_busway'],
-  [cycleway='opposite_share_busway']
-  {
-    /* -- colors & styles -- */
-    [cycleway='track'],
-    [cycleway='opposite_track'],
-    [cycleway_right='track'],
-    [cycleway_right='opposite_track'] {
-      line-color: @cycle_track_case;
-      line-cap: butt;
-    }
-    [cycleway='lane'],
-    [cycleway='opposite_lane'],
-    [cycleway_right='lane'],
-    [cycleway_right='opposite_lane'] {
-      line-color: @cycle_lane_case;
-      line-dasharray: 6,3;
-      line-cap: butt;
-    }
-    [cycleway='share_busway'],
-    [cycleway='opposite_share_busway'],
-    [cycleway_right='share_busway'],
-    [cycleway_right='opposite_share_busway'] {
-      line-color: @cycle_busway_case;
-      line-dasharray: 6,10;
-      line-cap: butt;
-    }
+#roads_high::outline_right[zoom>=11][has_right_cycleway=1],
+#tunnel::outline_right[zoom>=11][has_right_cycleway=1],
+#bridge::outline_right[zoom>=11][has_right_cycleway=1] {
+  /* -- colors & styles -- */
+  [cycleway_right='track'],
+  [cycleway_right='opposite_track'] {
+    line-color: @cycle_track_case;
+    line-cap: butt;
+  }
+  [cycleway_right='lane'],
+  [cycleway_right='opposite_lane'] {
+    line-color: @cycle_lane_case;
+    line-dasharray: 6,3;
+    line-cap: butt;
+  }
+  [cycleway_right='share_busway'],
+  [cycleway_right='opposite_share_busway'] {
+    line-color: @cycle_busway_case;
+    line-dasharray: 6,10;
+    line-cap: butt;
+  }
 
-    /* widths */
-    [zoom=11] {
-      [type='motorway']     { line-width: @rdz11_motorway; line-offset: @rdz11_cycle; }
-      [type='trunk']     { line-width: @rdz11_trunk; line-offset: @rdz11_cycle; }
-      [type='primary']     { line-width: @rdz11_primary; line-offset: @rdz11_cycle; }
-      [type='secondary']     { line-width: @rdz11_secondary; line-offset: @rdz11_cycle; }
-      [type='tertiary']    { line-width: @rdz11_tertiary; line-offset: @rdz11_cycle; }
-      [type='living_street']    { line-width: @rdz11_living_street; line-offset: @rdz11_cycle; }
-      [type='road']    { line-width: @rdz11_road; line-offset: @rdz11_cycle; }
-      [type='unclassified']    { line-width: @rdz11_unclassified; line-offset: @rdz11_cycle; }
-      [type='residential']    { line-width: @rdz11_residential; line-offset: @rdz11_cycle; }
-      [type='tertiary_link']    { line-width: @rdz11_tertiary_link; line-offset: @rdz11_cycle; }
-      [type='secondary_link']    { line-width: @rdz11_secondary_link; line-offset: @rdz11_cycle; }
-      [type='primary_link']    { line-width: @rdz11_primary_link; line-offset: @rdz11_cycle; }
-      [type='trunk_link']    { line-width: @rdz11_trunk_link; line-offset: @rdz11_cycle; }
-      [type='motorway_link']    { line-width: @rdz11_motorway_link; line-offset: @rdz11_cycle; }
-      [type='service']      { line-width: @rdz11_service; line-offset: @rdz11_cycle; }
-      [type='track']      { line-width: @rdz11_track; line-offset: @rdz11_cycle; }
-      [type='pedestrian']   { line-width: @rdz11_pedestrian; line-offset: @rdz11_cycle; }
-    }
-    [zoom=12] {
-      [type='motorway']     { line-width: @rdz12_motorway; line-offset: @rdz12_cycle; }
-      [type='trunk']     { line-width: @rdz12_trunk; line-offset: @rdz12_cycle; }
-      [type='primary']     { line-width: @rdz12_primary; line-offset: @rdz12_cycle; }
-      [type='secondary']     { line-width: @rdz12_secondary; line-offset: @rdz12_cycle; }
-      [type='tertiary']    { line-width: @rdz12_tertiary; line-offset: @rdz12_cycle; }
-      [type='living_street']    { line-width: @rdz12_living_street; line-offset: @rdz12_cycle; }
-      [type='road']    { line-width: @rdz12_road; line-offset: @rdz12_cycle; }
-      [type='unclassified']    { line-width: @rdz12_unclassified; line-offset: @rdz12_cycle; }
-      [type='residential']    { line-width: @rdz12_residential; line-offset: @rdz12_cycle; }
-      [type='tertiary_link']    { line-width: @rdz12_tertiary_link; line-offset: @rdz12_cycle; }
-      [type='secondary_link']    { line-width: @rdz12_secondary_link; line-offset: @rdz12_cycle; }
-      [type='primary_link']    { line-width: @rdz12_primary_link; line-offset: @rdz12_cycle; }
-      [type='trunk_link']    { line-width: @rdz12_trunk_link; line-offset: @rdz12_cycle; }
-      [type='motorway_link']    { line-width: @rdz12_motorway_link; line-offset: @rdz12_cycle; }
-      [type='service']      { line-width: @rdz12_service; line-offset: @rdz12_cycle; }
-      [type='track']      { line-width: @rdz12_track; line-offset: @rdz12_cycle; }
-      [type='pedestrian']   { line-width: @rdz12_pedestrian; line-offset: @rdz12_cycle; }
-    }
-    [zoom=13] {
-      [type='motorway']     { line-width: @rdz13_motorway; line-offset: @rdz13_cycle; }
-      [type='trunk']     { line-width: @rdz13_trunk; line-offset: @rdz13_cycle; }
-      [type='primary']     { line-width: @rdz13_primary; line-offset: @rdz13_cycle; }
-      [type='secondary']     { line-width: @rdz13_secondary; line-offset: @rdz13_cycle; }
-      [type='tertiary']    { line-width: @rdz13_tertiary; line-offset: @rdz13_cycle; }
-      [type='living_street']    { line-width: @rdz13_living_street; line-offset: @rdz13_cycle; }
-      [type='road']    { line-width: @rdz13_road; line-offset: @rdz13_cycle; }
-      [type='unclassified']    { line-width: @rdz13_unclassified; line-offset: @rdz13_cycle; }
-      [type='residential']    { line-width: @rdz13_residential; line-offset: @rdz13_cycle; }
-      [type='tertiary_link']    { line-width: @rdz13_tertiary_link; line-offset: @rdz13_cycle; }
-      [type='secondary_link']    { line-width: @rdz13_secondary_link; line-offset: @rdz13_cycle; }
-      [type='primary_link']    { line-width: @rdz13_primary_link; line-offset: @rdz13_cycle; }
-      [type='trunk_link']    { line-width: @rdz13_trunk_link; line-offset: @rdz13_cycle; }
-      [type='motorway_link']    { line-width: @rdz13_motorway_link; line-offset: @rdz13_cycle; }
-      [type='service']      { line-width: @rdz13_service; line-offset: @rdz13_cycle; }
-      [type='track']      { line-width: @rdz13_track; line-offset: @rdz13_cycle; }
-      [type='pedestrian']   { line-width: @rdz13_pedestrian; line-offset: @rdz13_cycle; }
-    }
-    [zoom=14] {
-      [type='motorway']     { line-width: @rdz14_motorway; line-offset: @rdz14_cycle; }
-      [type='trunk']     { line-width: @rdz14_trunk; line-offset: @rdz14_cycle; }
-      [type='primary']     { line-width: @rdz14_primary; line-offset: @rdz14_cycle; }
-      [type='secondary']     { line-width: @rdz14_secondary; line-offset: @rdz14_cycle; }
-      [type='tertiary']    { line-width: @rdz14_tertiary; line-offset: @rdz14_cycle; }
-      [type='living_street']    { line-width: @rdz14_living_street; line-offset: @rdz14_cycle; }
-      [type='road']    { line-width: @rdz14_road; line-offset: @rdz14_cycle; }
-      [type='unclassified']    { line-width: @rdz14_unclassified; line-offset: @rdz14_cycle; }
-      [type='residential']    { line-width: @rdz14_residential; line-offset: @rdz14_cycle; }
-      [type='tertiary_link']    { line-width: @rdz14_tertiary_link; line-offset: @rdz14_cycle; }
-      [type='secondary_link']    { line-width: @rdz14_secondary_link; line-offset: @rdz14_cycle; }
-      [type='primary_link']    { line-width: @rdz14_primary_link; line-offset: @rdz14_cycle; }
-      [type='trunk_link']    { line-width: @rdz14_trunk_link; line-offset: @rdz14_cycle; }
-      [type='motorway_link']    { line-width: @rdz14_motorway_link; line-offset: @rdz14_cycle; }
-      [type='service']      { line-width: @rdz14_service; line-offset: @rdz14_cycle; }
-      [type='track']      { line-width: @rdz14_track; line-offset: @rdz14_cycle; }
-      [type='pedestrian']   { line-width: @rdz14_pedestrian; line-offset: @rdz14_cycle; }
-    }
-    [zoom=15] {
-      [type='motorway']     { line-width: @rdz15_motorway; line-offset: @rdz15_cycle; }
-      [type='trunk']     { line-width: @rdz15_trunk; line-offset: @rdz15_cycle; }
-      [type='primary']     { line-width: @rdz15_primary; line-offset: @rdz15_cycle; }
-      [type='secondary']     { line-width: @rdz15_secondary; line-offset: @rdz15_cycle; }
-      [type='tertiary']    { line-width: @rdz15_tertiary; line-offset: @rdz15_cycle; }
-      [type='living_street']    { line-width: @rdz15_living_street; line-offset: @rdz15_cycle; }
-      [type='road']    { line-width: @rdz15_road; line-offset: @rdz15_cycle; }
-      [type='unclassified']    { line-width: @rdz15_unclassified; line-offset: @rdz15_cycle; }
-      [type='residential']    { line-width: @rdz15_residential; line-offset: @rdz15_cycle; }
-      [type='tertiary_link']    { line-width: @rdz15_tertiary_link; line-offset: @rdz15_cycle; }
-      [type='secondary_link']    { line-width: @rdz15_secondary_link; line-offset: @rdz15_cycle; }
-      [type='primary_link']    { line-width: @rdz15_primary_link; line-offset: @rdz15_cycle; }
-      [type='trunk_link']    { line-width: @rdz15_trunk_link; line-offset: @rdz15_cycle; }
-      [type='motorway_link']    { line-width: @rdz15_motorway_link; line-offset: @rdz15_cycle; }
-      [type='service']      { line-width: @rdz15_service; line-offset: @rdz15_cycle; }
-      [type='track']      { line-width: @rdz15_track; line-offset: @rdz15_cycle; }
-      [type='pedestrian']   { line-width: @rdz15_pedestrian; line-offset: @rdz15_cycle; }
-    }
-    [zoom=16] {
-      [type='motorway']     { line-width: @rdz16_motorway; line-offset: @rdz16_cycle; }
-      [type='trunk']     { line-width: @rdz16_trunk; line-offset: @rdz16_cycle; }
-      [type='primary']     { line-width: @rdz16_primary; line-offset: @rdz16_cycle; }
-      [type='secondary']     { line-width: @rdz16_secondary; line-offset: @rdz16_cycle; }
-      [type='tertiary']    { line-width: @rdz16_tertiary; line-offset: @rdz16_cycle; }
-      [type='living_street']    { line-width: @rdz16_living_street; line-offset: @rdz16_cycle; }
-      [type='road']    { line-width: @rdz16_road; line-offset: @rdz16_cycle; }
-      [type='unclassified']    { line-width: @rdz16_unclassified; line-offset: @rdz16_cycle; }
-      [type='residential']    { line-width: @rdz16_residential; line-offset: @rdz16_cycle; }
-      [type='tertiary_link']    { line-width: @rdz16_tertiary_link; line-offset: @rdz16_cycle; }
-      [type='secondary_link']    { line-width: @rdz16_secondary_link; line-offset: @rdz16_cycle; }
-      [type='primary_link']    { line-width: @rdz16_primary_link; line-offset: @rdz16_cycle; }
-      [type='trunk_link']    { line-width: @rdz16_trunk_link; line-offset: @rdz16_cycle; }
-      [type='motorway_link']    { line-width: @rdz16_motorway_link; line-offset: @rdz16_cycle; }
-      [type='service']      { line-width: @rdz16_service; line-offset: @rdz16_cycle; }
-      [type='track']      { line-width: @rdz16_track; line-offset: @rdz16_cycle; }
-      [type='pedestrian']   { line-width: @rdz16_pedestrian; line-offset: @rdz16_cycle; }
-    }
-    [zoom>=17] {
-      [type='motorway']     { line-width: @rdz17_motorway; line-offset: @rdz17_cycle; }
-      [type='trunk']     { line-width: @rdz17_trunk; line-offset: @rdz17_cycle; }
-      [type='primary']     { line-width: @rdz17_primary; line-offset: @rdz17_cycle; }
-      [type='secondary']     { line-width: @rdz17_secondary; line-offset: @rdz17_cycle; }
-      [type='tertiary']    { line-width: @rdz17_tertiary; line-offset: @rdz17_cycle; }
-      [type='living_street']    { line-width: @rdz17_living_street; line-offset: @rdz17_cycle; }
-      [type='road']    { line-width: @rdz17_road; line-offset: @rdz17_cycle; }
-      [type='unclassified']    { line-width: @rdz17_unclassified; line-offset: @rdz17_cycle; }
-      [type='residential']    { line-width: @rdz17_residential; line-offset: @rdz17_cycle; }
-      [type='tertiary_link']    { line-width: @rdz17_tertiary_link; line-offset: @rdz17_cycle; }
-      [type='secondary_link']    { line-width: @rdz17_secondary_link; line-offset: @rdz17_cycle; }
-      [type='primary_link']    { line-width: @rdz17_primary_link; line-offset: @rdz17_cycle; }
-      [type='trunk_link']    { line-width: @rdz17_trunk_link; line-offset: @rdz17_cycle; }
-      [type='motorway_link']    { line-width: @rdz17_motorway_link; line-offset: @rdz17_cycle; }
-      [type='service']      { line-width: @rdz17_service; line-offset: @rdz17_cycle; }
-      [type='track']      { line-width: @rdz17_track; line-offset: @rdz17_cycle; }
-      [type='pedestrian']   { line-width: @rdz17_pedestrian; line-offset: @rdz17_cycle; }
-    }
-    [zoom>=18] {
-      [type='motorway']     { line-width: @rdz18_motorway; line-offset: @rdz18_cycle; }
-      [type='trunk']     { line-width: @rdz18_trunk; line-offset: @rdz18_cycle; }
-      [type='primary']     { line-width: @rdz18_primary; line-offset: @rdz18_cycle; }
-      [type='secondary']     { line-width: @rdz18_secondary; line-offset: @rdz18_cycle; }
-      [type='tertiary']    { line-width: @rdz18_tertiary; line-offset: @rdz18_cycle; }
-      [type='living_street']    { line-width: @rdz18_living_street; line-offset: @rdz18_cycle; }
-      [type='road']    { line-width: @rdz18_road; line-offset: @rdz18_cycle; }
-      [type='unclassified']    { line-width: @rdz18_unclassified; line-offset: @rdz18_cycle; }
-      [type='residential']    { line-width: @rdz18_residential; line-offset: @rdz18_cycle; }
-      [type='tertiary_link']    { line-width: @rdz18_tertiary_link; line-offset: @rdz18_cycle; }
-      [type='secondary_link']    { line-width: @rdz18_secondary_link; line-offset: @rdz18_cycle; }
-      [type='primary_link']    { line-width: @rdz18_primary_link; line-offset: @rdz18_cycle; }
-      [type='trunk_link']    { line-width: @rdz18_trunk_link; line-offset: @rdz18_cycle; }
-      [type='motorway_link']    { line-width: @rdz18_motorway_link; line-offset: @rdz18_cycle; }
-      [type='service']      { line-width: @rdz18_service; line-offset: @rdz18_cycle; }
-      [type='track']      { line-width: @rdz18_track; line-offset: @rdz18_cycle; }
-      [type='pedestrian']   { line-width: @rdz18_pedestrian; line-offset: @rdz18_cycle; }
-    }
+  /* widths */
+  [zoom=11] {
+    [type='motorway']     { line-width: @rdz11_motorway; line-offset: @rdz11_cycle; }
+    [type='trunk']     { line-width: @rdz11_trunk; line-offset: @rdz11_cycle; }
+    [type='primary']     { line-width: @rdz11_primary; line-offset: @rdz11_cycle; }
+    [type='secondary']     { line-width: @rdz11_secondary; line-offset: @rdz11_cycle; }
+    [type='tertiary']    { line-width: @rdz11_tertiary; line-offset: @rdz11_cycle; }
+    [type='living_street']    { line-width: @rdz11_living_street; line-offset: @rdz11_cycle; }
+    [type='road']    { line-width: @rdz11_road; line-offset: @rdz11_cycle; }
+    [type='unclassified']    { line-width: @rdz11_unclassified; line-offset: @rdz11_cycle; }
+    [type='residential']    { line-width: @rdz11_residential; line-offset: @rdz11_cycle; }
+    [type='tertiary_link']    { line-width: @rdz11_tertiary_link; line-offset: @rdz11_cycle; }
+    [type='secondary_link']    { line-width: @rdz11_secondary_link; line-offset: @rdz11_cycle; }
+    [type='primary_link']    { line-width: @rdz11_primary_link; line-offset: @rdz11_cycle; }
+    [type='trunk_link']    { line-width: @rdz11_trunk_link; line-offset: @rdz11_cycle; }
+    [type='motorway_link']    { line-width: @rdz11_motorway_link; line-offset: @rdz11_cycle; }
+    [type='service']      { line-width: @rdz11_service; line-offset: @rdz11_cycle; }
+    [type='track']      { line-width: @rdz11_track; line-offset: @rdz11_cycle; }
+    [type='pedestrian']   { line-width: @rdz11_pedestrian; line-offset: @rdz11_cycle; }
+  }
+  [zoom=12] {
+    [type='motorway']     { line-width: @rdz12_motorway; line-offset: @rdz12_cycle; }
+    [type='trunk']     { line-width: @rdz12_trunk; line-offset: @rdz12_cycle; }
+    [type='primary']     { line-width: @rdz12_primary; line-offset: @rdz12_cycle; }
+    [type='secondary']     { line-width: @rdz12_secondary; line-offset: @rdz12_cycle; }
+    [type='tertiary']    { line-width: @rdz12_tertiary; line-offset: @rdz12_cycle; }
+    [type='living_street']    { line-width: @rdz12_living_street; line-offset: @rdz12_cycle; }
+    [type='road']    { line-width: @rdz12_road; line-offset: @rdz12_cycle; }
+    [type='unclassified']    { line-width: @rdz12_unclassified; line-offset: @rdz12_cycle; }
+    [type='residential']    { line-width: @rdz12_residential; line-offset: @rdz12_cycle; }
+    [type='tertiary_link']    { line-width: @rdz12_tertiary_link; line-offset: @rdz12_cycle; }
+    [type='secondary_link']    { line-width: @rdz12_secondary_link; line-offset: @rdz12_cycle; }
+    [type='primary_link']    { line-width: @rdz12_primary_link; line-offset: @rdz12_cycle; }
+    [type='trunk_link']    { line-width: @rdz12_trunk_link; line-offset: @rdz12_cycle; }
+    [type='motorway_link']    { line-width: @rdz12_motorway_link; line-offset: @rdz12_cycle; }
+    [type='service']      { line-width: @rdz12_service; line-offset: @rdz12_cycle; }
+    [type='track']      { line-width: @rdz12_track; line-offset: @rdz12_cycle; }
+    [type='pedestrian']   { line-width: @rdz12_pedestrian; line-offset: @rdz12_cycle; }
+  }
+  [zoom=13] {
+    [type='motorway']     { line-width: @rdz13_motorway; line-offset: @rdz13_cycle; }
+    [type='trunk']     { line-width: @rdz13_trunk; line-offset: @rdz13_cycle; }
+    [type='primary']     { line-width: @rdz13_primary; line-offset: @rdz13_cycle; }
+    [type='secondary']     { line-width: @rdz13_secondary; line-offset: @rdz13_cycle; }
+    [type='tertiary']    { line-width: @rdz13_tertiary; line-offset: @rdz13_cycle; }
+    [type='living_street']    { line-width: @rdz13_living_street; line-offset: @rdz13_cycle; }
+    [type='road']    { line-width: @rdz13_road; line-offset: @rdz13_cycle; }
+    [type='unclassified']    { line-width: @rdz13_unclassified; line-offset: @rdz13_cycle; }
+    [type='residential']    { line-width: @rdz13_residential; line-offset: @rdz13_cycle; }
+    [type='tertiary_link']    { line-width: @rdz13_tertiary_link; line-offset: @rdz13_cycle; }
+    [type='secondary_link']    { line-width: @rdz13_secondary_link; line-offset: @rdz13_cycle; }
+    [type='primary_link']    { line-width: @rdz13_primary_link; line-offset: @rdz13_cycle; }
+    [type='trunk_link']    { line-width: @rdz13_trunk_link; line-offset: @rdz13_cycle; }
+    [type='motorway_link']    { line-width: @rdz13_motorway_link; line-offset: @rdz13_cycle; }
+    [type='service']      { line-width: @rdz13_service; line-offset: @rdz13_cycle; }
+    [type='track']      { line-width: @rdz13_track; line-offset: @rdz13_cycle; }
+    [type='pedestrian']   { line-width: @rdz13_pedestrian; line-offset: @rdz13_cycle; }
+  }
+  [zoom=14] {
+    [type='motorway']     { line-width: @rdz14_motorway; line-offset: @rdz14_cycle; }
+    [type='trunk']     { line-width: @rdz14_trunk; line-offset: @rdz14_cycle; }
+    [type='primary']     { line-width: @rdz14_primary; line-offset: @rdz14_cycle; }
+    [type='secondary']     { line-width: @rdz14_secondary; line-offset: @rdz14_cycle; }
+    [type='tertiary']    { line-width: @rdz14_tertiary; line-offset: @rdz14_cycle; }
+    [type='living_street']    { line-width: @rdz14_living_street; line-offset: @rdz14_cycle; }
+    [type='road']    { line-width: @rdz14_road; line-offset: @rdz14_cycle; }
+    [type='unclassified']    { line-width: @rdz14_unclassified; line-offset: @rdz14_cycle; }
+    [type='residential']    { line-width: @rdz14_residential; line-offset: @rdz14_cycle; }
+    [type='tertiary_link']    { line-width: @rdz14_tertiary_link; line-offset: @rdz14_cycle; }
+    [type='secondary_link']    { line-width: @rdz14_secondary_link; line-offset: @rdz14_cycle; }
+    [type='primary_link']    { line-width: @rdz14_primary_link; line-offset: @rdz14_cycle; }
+    [type='trunk_link']    { line-width: @rdz14_trunk_link; line-offset: @rdz14_cycle; }
+    [type='motorway_link']    { line-width: @rdz14_motorway_link; line-offset: @rdz14_cycle; }
+    [type='service']      { line-width: @rdz14_service; line-offset: @rdz14_cycle; }
+    [type='track']      { line-width: @rdz14_track; line-offset: @rdz14_cycle; }
+    [type='pedestrian']   { line-width: @rdz14_pedestrian; line-offset: @rdz14_cycle; }
+  }
+  [zoom=15] {
+    [type='motorway']     { line-width: @rdz15_motorway; line-offset: @rdz15_cycle; }
+    [type='trunk']     { line-width: @rdz15_trunk; line-offset: @rdz15_cycle; }
+    [type='primary']     { line-width: @rdz15_primary; line-offset: @rdz15_cycle; }
+    [type='secondary']     { line-width: @rdz15_secondary; line-offset: @rdz15_cycle; }
+    [type='tertiary']    { line-width: @rdz15_tertiary; line-offset: @rdz15_cycle; }
+    [type='living_street']    { line-width: @rdz15_living_street; line-offset: @rdz15_cycle; }
+    [type='road']    { line-width: @rdz15_road; line-offset: @rdz15_cycle; }
+    [type='unclassified']    { line-width: @rdz15_unclassified; line-offset: @rdz15_cycle; }
+    [type='residential']    { line-width: @rdz15_residential; line-offset: @rdz15_cycle; }
+    [type='tertiary_link']    { line-width: @rdz15_tertiary_link; line-offset: @rdz15_cycle; }
+    [type='secondary_link']    { line-width: @rdz15_secondary_link; line-offset: @rdz15_cycle; }
+    [type='primary_link']    { line-width: @rdz15_primary_link; line-offset: @rdz15_cycle; }
+    [type='trunk_link']    { line-width: @rdz15_trunk_link; line-offset: @rdz15_cycle; }
+    [type='motorway_link']    { line-width: @rdz15_motorway_link; line-offset: @rdz15_cycle; }
+    [type='service']      { line-width: @rdz15_service; line-offset: @rdz15_cycle; }
+    [type='track']      { line-width: @rdz15_track; line-offset: @rdz15_cycle; }
+    [type='pedestrian']   { line-width: @rdz15_pedestrian; line-offset: @rdz15_cycle; }
+  }
+  [zoom=16] {
+    [type='motorway']     { line-width: @rdz16_motorway; line-offset: @rdz16_cycle; }
+    [type='trunk']     { line-width: @rdz16_trunk; line-offset: @rdz16_cycle; }
+    [type='primary']     { line-width: @rdz16_primary; line-offset: @rdz16_cycle; }
+    [type='secondary']     { line-width: @rdz16_secondary; line-offset: @rdz16_cycle; }
+    [type='tertiary']    { line-width: @rdz16_tertiary; line-offset: @rdz16_cycle; }
+    [type='living_street']    { line-width: @rdz16_living_street; line-offset: @rdz16_cycle; }
+    [type='road']    { line-width: @rdz16_road; line-offset: @rdz16_cycle; }
+    [type='unclassified']    { line-width: @rdz16_unclassified; line-offset: @rdz16_cycle; }
+    [type='residential']    { line-width: @rdz16_residential; line-offset: @rdz16_cycle; }
+    [type='tertiary_link']    { line-width: @rdz16_tertiary_link; line-offset: @rdz16_cycle; }
+    [type='secondary_link']    { line-width: @rdz16_secondary_link; line-offset: @rdz16_cycle; }
+    [type='primary_link']    { line-width: @rdz16_primary_link; line-offset: @rdz16_cycle; }
+    [type='trunk_link']    { line-width: @rdz16_trunk_link; line-offset: @rdz16_cycle; }
+    [type='motorway_link']    { line-width: @rdz16_motorway_link; line-offset: @rdz16_cycle; }
+    [type='service']      { line-width: @rdz16_service; line-offset: @rdz16_cycle; }
+    [type='track']      { line-width: @rdz16_track; line-offset: @rdz16_cycle; }
+    [type='pedestrian']   { line-width: @rdz16_pedestrian; line-offset: @rdz16_cycle; }
+  }
+  [zoom>=17] {
+    [type='motorway']     { line-width: @rdz17_motorway; line-offset: @rdz17_cycle; }
+    [type='trunk']     { line-width: @rdz17_trunk; line-offset: @rdz17_cycle; }
+    [type='primary']     { line-width: @rdz17_primary; line-offset: @rdz17_cycle; }
+    [type='secondary']     { line-width: @rdz17_secondary; line-offset: @rdz17_cycle; }
+    [type='tertiary']    { line-width: @rdz17_tertiary; line-offset: @rdz17_cycle; }
+    [type='living_street']    { line-width: @rdz17_living_street; line-offset: @rdz17_cycle; }
+    [type='road']    { line-width: @rdz17_road; line-offset: @rdz17_cycle; }
+    [type='unclassified']    { line-width: @rdz17_unclassified; line-offset: @rdz17_cycle; }
+    [type='residential']    { line-width: @rdz17_residential; line-offset: @rdz17_cycle; }
+    [type='tertiary_link']    { line-width: @rdz17_tertiary_link; line-offset: @rdz17_cycle; }
+    [type='secondary_link']    { line-width: @rdz17_secondary_link; line-offset: @rdz17_cycle; }
+    [type='primary_link']    { line-width: @rdz17_primary_link; line-offset: @rdz17_cycle; }
+    [type='trunk_link']    { line-width: @rdz17_trunk_link; line-offset: @rdz17_cycle; }
+    [type='motorway_link']    { line-width: @rdz17_motorway_link; line-offset: @rdz17_cycle; }
+    [type='service']      { line-width: @rdz17_service; line-offset: @rdz17_cycle; }
+    [type='track']      { line-width: @rdz17_track; line-offset: @rdz17_cycle; }
+    [type='pedestrian']   { line-width: @rdz17_pedestrian; line-offset: @rdz17_cycle; }
+  }
+  [zoom>=18] {
+    [type='motorway']     { line-width: @rdz18_motorway; line-offset: @rdz18_cycle; }
+    [type='trunk']     { line-width: @rdz18_trunk; line-offset: @rdz18_cycle; }
+    [type='primary']     { line-width: @rdz18_primary; line-offset: @rdz18_cycle; }
+    [type='secondary']     { line-width: @rdz18_secondary; line-offset: @rdz18_cycle; }
+    [type='tertiary']    { line-width: @rdz18_tertiary; line-offset: @rdz18_cycle; }
+    [type='living_street']    { line-width: @rdz18_living_street; line-offset: @rdz18_cycle; }
+    [type='road']    { line-width: @rdz18_road; line-offset: @rdz18_cycle; }
+    [type='unclassified']    { line-width: @rdz18_unclassified; line-offset: @rdz18_cycle; }
+    [type='residential']    { line-width: @rdz18_residential; line-offset: @rdz18_cycle; }
+    [type='tertiary_link']    { line-width: @rdz18_tertiary_link; line-offset: @rdz18_cycle; }
+    [type='secondary_link']    { line-width: @rdz18_secondary_link; line-offset: @rdz18_cycle; }
+    [type='primary_link']    { line-width: @rdz18_primary_link; line-offset: @rdz18_cycle; }
+    [type='trunk_link']    { line-width: @rdz18_trunk_link; line-offset: @rdz18_cycle; }
+    [type='motorway_link']    { line-width: @rdz18_motorway_link; line-offset: @rdz18_cycle; }
+    [type='service']      { line-width: @rdz18_service; line-offset: @rdz18_cycle; }
+    [type='track']      { line-width: @rdz18_track; line-offset: @rdz18_cycle; }
+    [type='pedestrian']   { line-width: @rdz18_pedestrian; line-offset: @rdz18_cycle; }
   }
 }
 
-#roads_high::outline_left[zoom>=11],
-#tunnel::outline_left[zoom>=11],
-#bridge::outline_left[zoom>=11] {
-	[has_left_cycleway=1],
-	[cycleway='track'],
-  [cycleway='opposite_track'],
-  [cycleway='lane'],
-  [cycleway='opposite_lane'],
-  [cycleway='share_busway'],
-  [cycleway='opposite_share_busway'] {
-    /* -- colors & styles -- */
-    line-cap: round;
-    line-join: round;
+#roads_high::outline_left[zoom>=11][has_left_cycleway=1],
+#tunnel::outline_left[zoom>=11][has_left_cycleway=1],
+#bridge::outline_left[zoom>=11][has_left_cycleway=1] {
+  /* -- colors & styles -- */
+  line-cap: round;
+  line-join: round;
 
-    [cycleway='track'],
-    [cycleway='opposite_track'],
-    [cycleway_left='track'],
-    [cycleway_left='opposite_track'] {
-      line-color: @cycle_track_case;
-      line-cap: butt;
-    }
-    [cycleway='lane'],
-    [cycleway='opposite_lane'],
-    [cycleway_left='lane'],
-    [cycleway_left='opposite_lane'] {
-      line-color: @cycle_lane_case;
-      line-dasharray: 6,3;
-      line-cap: butt;
-    }
-    [cycleway='share_busway'],
-    [cycleway='opposite_share_busway'],
-    [cycleway_left='share_busway'],
-    [cycleway_left='opposite_share_busway'] {
-      line-color: @cycle_busway_case;
-      line-dasharray: 6,10;
-      line-cap: butt;
-    }
+  [cycleway_left='track'],
+  [cycleway_left='opposite_track'] {
+    line-color: @cycle_track_case;
+    line-cap: butt;
+  }
+  [cycleway_left='lane'],
+  [cycleway_left='opposite_lane'] {
+    line-color: @cycle_lane_case;
+    line-dasharray: 6,3;
+    line-cap: butt;
+  }
+  [cycleway_left='share_busway'],
+  [cycleway_left='opposite_share_busway'] {
+    line-color: @cycle_busway_case;
+    line-dasharray: 6,10;
+    line-cap: butt;
+  }
 
-    /* widths */
-    [zoom=11] {
-      [type='motorway']     { line-width: @rdz11_motorway; line-offset: -1 * @rdz11_cycle; }
-      [type='trunk']     { line-width: @rdz11_trunk; line-offset: -1 * @rdz11_cycle; }
-      [type='primary']     { line-width: @rdz11_primary; line-offset: -1 * @rdz11_cycle; }
-      [type='secondary']     { line-width: @rdz11_secondary; line-offset: -1 * @rdz11_cycle; }
-      [type='tertiary']    { line-width: @rdz11_tertiary; line-offset: -1 * @rdz11_cycle; }
-      [type='living_street']    { line-width: @rdz11_living_street; line-offset: -1 * @rdz11_cycle; }
-      [type='road']    { line-width: @rdz11_road; line-offset: -1 * @rdz11_cycle; }
-      [type='unclassified']    { line-width: @rdz11_unclassified; line-offset: -1 * @rdz11_cycle; }
-      [type='residential']    { line-width: @rdz11_residential; line-offset: -1 * @rdz11_cycle; }
-      [type='tertiary_link']    { line-width: @rdz11_tertiary_link; line-offset: -1 * @rdz11_cycle; }
-      [type='secondary_link']    { line-width: @rdz11_secondary_link; line-offset: -1 * @rdz11_cycle; }
-      [type='primary_link']    { line-width: @rdz11_primary_link; line-offset: -1 * @rdz11_cycle; }
-      [type='trunk_link']    { line-width: @rdz11_trunk_link; line-offset: -1 * @rdz11_cycle; }
-      [type='motorway_link']    { line-width: @rdz11_motorway_link; line-offset: -1 * @rdz11_cycle; }
-      [type='service']      { line-width: @rdz11_service; line-offset: -1 * @rdz11_cycle; }
-      [type='track']      { line-width: @rdz11_track; line-offset: -1 * @rdz11_cycle; }
-      [type='pedestrian']   { line-width: @rdz11_pedestrian; line-offset: -1 * @rdz11_cycle; }
-    }
-    [zoom=12] {
-      [type='motorway']     { line-width: @rdz12_motorway; line-offset: -1 * @rdz12_cycle; }
-      [type='trunk']     { line-width: @rdz12_trunk; line-offset: -1 * @rdz12_cycle; }
-      [type='primary']     { line-width: @rdz12_primary; line-offset: -1 * @rdz12_cycle; }
-      [type='secondary']     { line-width: @rdz12_secondary; line-offset: -1 * @rdz12_cycle; }
-      [type='tertiary']    { line-width: @rdz12_tertiary; line-offset: -1 * @rdz12_cycle; }
-      [type='living_street']    { line-width: @rdz12_living_street; line-offset: -1 * @rdz12_cycle; }
-      [type='road']    { line-width: @rdz12_road; line-offset: -1 * @rdz12_cycle; }
-      [type='unclassified']    { line-width: @rdz12_unclassified; line-offset: -1 * @rdz12_cycle; }
-      [type='residential']    { line-width: @rdz12_residential; line-offset: -1 * @rdz12_cycle; }
-      [type='tertiary_link']    { line-width: @rdz12_tertiary_link; line-offset: -1 * @rdz12_cycle; }
-      [type='secondary_link']    { line-width: @rdz12_secondary_link; line-offset: -1 * @rdz12_cycle; }
-      [type='primary_link']    { line-width: @rdz12_primary_link; line-offset: -1 * @rdz12_cycle; }
-      [type='trunk_link']    { line-width: @rdz12_trunk_link; line-offset: -1 * @rdz12_cycle; }
-      [type='motorway_link']    { line-width: @rdz12_motorway_link; line-offset: -1 * @rdz12_cycle; }
-      [type='service']      { line-width: @rdz12_service; line-offset: -1 * @rdz12_cycle; }
-      [type='track']      { line-width: @rdz12_track; line-offset: -1 * @rdz12_cycle; }
-      [type='pedestrian']   { line-width: @rdz12_pedestrian; line-offset: -1 * @rdz12_cycle; }
-    }
-    [zoom=13] {
-      [type='motorway']     { line-width: @rdz13_motorway; line-offset: -1 * @rdz13_cycle; }
-      [type='trunk']     { line-width: @rdz13_trunk; line-offset: -1 * @rdz13_cycle; }
-      [type='primary']     { line-width: @rdz13_primary; line-offset: -1 * @rdz13_cycle; }
-      [type='secondary']     { line-width: @rdz13_secondary; line-offset: -1 * @rdz13_cycle; }
-      [type='tertiary']    { line-width: @rdz13_tertiary; line-offset: -1 * @rdz13_cycle; }
-      [type='living_street']    { line-width: @rdz13_living_street; line-offset: -1 * @rdz13_cycle; }
-      [type='road']    { line-width: @rdz13_road; line-offset: -1 * @rdz13_cycle; }
-      [type='unclassified']    { line-width: @rdz13_unclassified; line-offset: -1 * @rdz13_cycle; }
-      [type='residential']    { line-width: @rdz13_residential; line-offset: -1 * @rdz13_cycle; }
-      [type='tertiary_link']    { line-width: @rdz13_tertiary_link; line-offset: -1 * @rdz13_cycle; }
-      [type='secondary_link']    { line-width: @rdz13_secondary_link; line-offset: -1 * @rdz13_cycle; }
-      [type='primary_link']    { line-width: @rdz13_primary_link; line-offset: -1 * @rdz13_cycle; }
-      [type='trunk_link']    { line-width: @rdz13_trunk_link; line-offset: -1 * @rdz13_cycle; }
-      [type='motorway_link']    { line-width: @rdz13_motorway_link; line-offset: -1 * @rdz13_cycle; }
-      [type='service']      { line-width: @rdz13_service; line-offset: -1 * @rdz13_cycle; }
-      [type='track']      { line-width: @rdz13_track; line-offset: -1 * @rdz13_cycle; }
-      [type='pedestrian']   { line-width: @rdz13_pedestrian; line-offset: -1 * @rdz13_cycle; }
-    }
-    [zoom=14] {
-      [type='motorway']     { line-width: @rdz14_motorway; line-offset: -1 * @rdz14_cycle; }
-      [type='trunk']     { line-width: @rdz14_trunk; line-offset: -1 * @rdz14_cycle; }
-      [type='primary']     { line-width: @rdz14_primary; line-offset: -1 * @rdz14_cycle; }
-      [type='secondary']     { line-width: @rdz14_secondary; line-offset: -1 * @rdz14_cycle; }
-      [type='tertiary']    { line-width: @rdz14_tertiary; line-offset: -1 * @rdz14_cycle; }
-      [type='living_street']    { line-width: @rdz14_living_street; line-offset: -1 * @rdz14_cycle; }
-      [type='road']    { line-width: @rdz14_road; line-offset: -1 * @rdz14_cycle; }
-      [type='unclassified']    { line-width: @rdz14_unclassified; line-offset: -1 * @rdz14_cycle; }
-      [type='residential']    { line-width: @rdz14_residential; line-offset: -1 * @rdz14_cycle; }
-      [type='tertiary_link']    { line-width: @rdz14_tertiary_link; line-offset: -1 * @rdz14_cycle; }
-      [type='secondary_link']    { line-width: @rdz14_secondary_link; line-offset: -1 * @rdz14_cycle; }
-      [type='primary_link']    { line-width: @rdz14_primary_link; line-offset: -1 * @rdz14_cycle; }
-      [type='trunk_link']    { line-width: @rdz14_trunk_link; line-offset: -1 * @rdz14_cycle; }
-      [type='motorway_link']    { line-width: @rdz14_motorway_link; line-offset: -1 * @rdz14_cycle; }
-      [type='service']      { line-width: @rdz14_service; line-offset: -1 * @rdz14_cycle; }
-      [type='track']      { line-width: @rdz14_track; line-offset: -1 * @rdz14_cycle; }
-      [type='pedestrian']   { line-width: @rdz14_pedestrian; line-offset: -1 * @rdz14_cycle; }
-    }
-    [zoom=15] {
-      [type='motorway']     { line-width: @rdz15_motorway; line-offset: -1 * @rdz15_cycle; }
-      [type='trunk']     { line-width: @rdz15_trunk; line-offset: -1 * @rdz15_cycle; }
-      [type='primary']     { line-width: @rdz15_primary; line-offset: -1 * @rdz15_cycle; }
-      [type='secondary']     { line-width: @rdz15_secondary; line-offset: -1 * @rdz15_cycle; }
-      [type='tertiary']    { line-width: @rdz15_tertiary; line-offset: -1 * @rdz15_cycle; }
-      [type='living_street']    { line-width: @rdz15_living_street; line-offset: -1 * @rdz15_cycle; }
-      [type='road']    { line-width: @rdz15_road; line-offset: -1 * @rdz15_cycle; }
-      [type='unclassified']    { line-width: @rdz15_unclassified; line-offset: -1 * @rdz15_cycle; }
-      [type='residential']    { line-width: @rdz15_residential; line-offset: -1 * @rdz15_cycle; }
-      [type='tertiary_link']    { line-width: @rdz15_tertiary_link; line-offset: -1 * @rdz15_cycle; }
-      [type='secondary_link']    { line-width: @rdz15_secondary_link; line-offset: -1 * @rdz15_cycle; }
-      [type='primary_link']    { line-width: @rdz15_primary_link; line-offset: -1 * @rdz15_cycle; }
-      [type='trunk_link']    { line-width: @rdz15_trunk_link; line-offset: -1 * @rdz15_cycle; }
-      [type='motorway_link']    { line-width: @rdz15_motorway_link; line-offset: -1 * @rdz15_cycle; }
-      [type='service']      { line-width: @rdz15_service; line-offset: -1 * @rdz15_cycle; }
-      [type='track']      { line-width: @rdz15_track; line-offset: -1 * @rdz15_cycle; }
-      [type='pedestrian']   { line-width: @rdz15_pedestrian; line-offset: -1 * @rdz15_cycle; }
-    }
-    [zoom=16] {
-      [type='motorway']     { line-width: @rdz16_motorway; line-offset: -1 * @rdz16_cycle; }
-      [type='trunk']     { line-width: @rdz16_trunk; line-offset: -1 * @rdz16_cycle; }
-      [type='primary']     { line-width: @rdz16_primary; line-offset: -1 * @rdz16_cycle; }
-      [type='secondary']     { line-width: @rdz16_secondary; line-offset: -1 * @rdz16_cycle; }
-      [type='tertiary']    { line-width: @rdz16_tertiary; line-offset: -1 * @rdz16_cycle; }
-      [type='living_street']    { line-width: @rdz16_living_street; line-offset: -1 * @rdz16_cycle; }
-      [type='road']    { line-width: @rdz16_road; line-offset: -1 * @rdz16_cycle; }
-      [type='unclassified']    { line-width: @rdz16_unclassified; line-offset: -1 * @rdz16_cycle; }
-      [type='residential']    { line-width: @rdz16_residential; line-offset: -1 * @rdz16_cycle; }
-      [type='tertiary_link']    { line-width: @rdz16_tertiary_link; line-offset: -1 * @rdz16_cycle; }
-      [type='secondary_link']    { line-width: @rdz16_secondary_link; line-offset: -1 * @rdz16_cycle; }
-      [type='primary_link']    { line-width: @rdz16_primary_link; line-offset: -1 * @rdz16_cycle; }
-      [type='trunk_link']    { line-width: @rdz16_trunk_link; line-offset: -1 * @rdz16_cycle; }
-      [type='motorway_link']    { line-width: @rdz16_motorway_link; line-offset: -1 * @rdz16_cycle; }
-      [type='service']      { line-width: @rdz16_service; line-offset: -1 * @rdz16_cycle; }
-      [type='track']      { line-width: @rdz16_track; line-offset: -1 * @rdz16_cycle; }
-      [type='pedestrian']   { line-width: @rdz16_pedestrian; line-offset: -1 * @rdz16_cycle; }
-    }
-    [zoom>=17] {
-      [type='motorway']     { line-width: @rdz17_motorway; line-offset: -1 * @rdz17_cycle; }
-      [type='trunk']     { line-width: @rdz17_trunk; line-offset: -1 * @rdz17_cycle; }
-      [type='primary']     { line-width: @rdz17_primary; line-offset: -1 * @rdz17_cycle; }
-      [type='secondary']     { line-width: @rdz17_secondary; line-offset: -1 * @rdz17_cycle; }
-      [type='tertiary']    { line-width: @rdz17_tertiary; line-offset: -1 * @rdz17_cycle; }
-      [type='living_street']    { line-width: @rdz17_living_street; line-offset: -1 * @rdz17_cycle; }
-      [type='road']    { line-width: @rdz17_road; line-offset: -1 * @rdz17_cycle; }
-      [type='unclassified']    { line-width: @rdz17_unclassified; line-offset: -1 * @rdz17_cycle; }
-      [type='residential']    { line-width: @rdz17_residential; line-offset: -1 * @rdz17_cycle; }
-      [type='tertiary_link']    { line-width: @rdz17_tertiary_link; line-offset: -1 * @rdz17_cycle; }
-      [type='secondary_link']    { line-width: @rdz17_secondary_link; line-offset: -1 * @rdz17_cycle; }
-      [type='primary_link']    { line-width: @rdz17_primary_link; line-offset: -1 * @rdz17_cycle; }
-      [type='trunk_link']    { line-width: @rdz17_trunk_link; line-offset: -1 * @rdz17_cycle; }
-      [type='motorway_link']    { line-width: @rdz17_motorway_link; line-offset: -1 * @rdz17_cycle; }
-      [type='service']      { line-width: @rdz17_service; line-offset: -1 * @rdz17_cycle; }
-      [type='track']      { line-width: @rdz17_track; line-offset: -1 * @rdz17_cycle; }
-      [type='pedestrian']   { line-width: @rdz17_pedestrian; line-offset: -1 * @rdz17_cycle; }
-    }
-    [zoom>=18] {
-      [type='motorway']     { line-width: @rdz18_motorway; line-offset: -1 * @rdz18_cycle; }
-      [type='trunk']     { line-width: @rdz18_trunk; line-offset: -1 * @rdz18_cycle; }
-      [type='primary']     { line-width: @rdz18_primary; line-offset: -1 * @rdz18_cycle; }
-      [type='secondary']     { line-width: @rdz18_secondary; line-offset: -1 * @rdz18_cycle; }
-      [type='tertiary']    { line-width: @rdz18_tertiary; line-offset: -1 * @rdz18_cycle; }
-      [type='living_street']    { line-width: @rdz18_living_street; line-offset: -1 * @rdz18_cycle; }
-      [type='road']    { line-width: @rdz18_road; line-offset: -1 * @rdz18_cycle; }
-      [type='unclassified']    { line-width: @rdz18_unclassified; line-offset: -1 * @rdz18_cycle; }
-      [type='residential']    { line-width: @rdz18_residential; line-offset: -1 * @rdz18_cycle; }
-      [type='tertiary_link']    { line-width: @rdz18_tertiary_link; line-offset: -1 * @rdz18_cycle; }
-      [type='secondary_link']    { line-width: @rdz18_secondary_link; line-offset: -1 * @rdz18_cycle; }
-      [type='primary_link']    { line-width: @rdz18_primary_link; line-offset: -1 * @rdz18_cycle; }
-      [type='trunk_link']    { line-width: @rdz18_trunk_link; line-offset: -1 * @rdz18_cycle; }
-      [type='motorway_link']    { line-width: @rdz18_motorway_link; line-offset: -1 * @rdz18_cycle; }
-      [type='service']      { line-width: @rdz18_service; line-offset: -1 * @rdz18_cycle; }
-      [type='track']      { line-width: @rdz18_track; line-offset: -1 * @rdz18_cycle; }
-      [type='pedestrian']   { line-width: @rdz18_pedestrian; line-offset: -1 * @rdz18_cycle; }
-    }
+  /* widths */
+  [zoom=11] {
+    [type='motorway']     { line-width: @rdz11_motorway; line-offset: -1 * @rdz11_cycle; }
+    [type='trunk']     { line-width: @rdz11_trunk; line-offset: -1 * @rdz11_cycle; }
+    [type='primary']     { line-width: @rdz11_primary; line-offset: -1 * @rdz11_cycle; }
+    [type='secondary']     { line-width: @rdz11_secondary; line-offset: -1 * @rdz11_cycle; }
+    [type='tertiary']    { line-width: @rdz11_tertiary; line-offset: -1 * @rdz11_cycle; }
+    [type='living_street']    { line-width: @rdz11_living_street; line-offset: -1 * @rdz11_cycle; }
+    [type='road']    { line-width: @rdz11_road; line-offset: -1 * @rdz11_cycle; }
+    [type='unclassified']    { line-width: @rdz11_unclassified; line-offset: -1 * @rdz11_cycle; }
+    [type='residential']    { line-width: @rdz11_residential; line-offset: -1 * @rdz11_cycle; }
+    [type='tertiary_link']    { line-width: @rdz11_tertiary_link; line-offset: -1 * @rdz11_cycle; }
+    [type='secondary_link']    { line-width: @rdz11_secondary_link; line-offset: -1 * @rdz11_cycle; }
+    [type='primary_link']    { line-width: @rdz11_primary_link; line-offset: -1 * @rdz11_cycle; }
+    [type='trunk_link']    { line-width: @rdz11_trunk_link; line-offset: -1 * @rdz11_cycle; }
+    [type='motorway_link']    { line-width: @rdz11_motorway_link; line-offset: -1 * @rdz11_cycle; }
+    [type='service']      { line-width: @rdz11_service; line-offset: -1 * @rdz11_cycle; }
+    [type='track']      { line-width: @rdz11_track; line-offset: -1 * @rdz11_cycle; }
+    [type='pedestrian']   { line-width: @rdz11_pedestrian; line-offset: -1 * @rdz11_cycle; }
+  }
+  [zoom=12] {
+    [type='motorway']     { line-width: @rdz12_motorway; line-offset: -1 * @rdz12_cycle; }
+    [type='trunk']     { line-width: @rdz12_trunk; line-offset: -1 * @rdz12_cycle; }
+    [type='primary']     { line-width: @rdz12_primary; line-offset: -1 * @rdz12_cycle; }
+    [type='secondary']     { line-width: @rdz12_secondary; line-offset: -1 * @rdz12_cycle; }
+    [type='tertiary']    { line-width: @rdz12_tertiary; line-offset: -1 * @rdz12_cycle; }
+    [type='living_street']    { line-width: @rdz12_living_street; line-offset: -1 * @rdz12_cycle; }
+    [type='road']    { line-width: @rdz12_road; line-offset: -1 * @rdz12_cycle; }
+    [type='unclassified']    { line-width: @rdz12_unclassified; line-offset: -1 * @rdz12_cycle; }
+    [type='residential']    { line-width: @rdz12_residential; line-offset: -1 * @rdz12_cycle; }
+    [type='tertiary_link']    { line-width: @rdz12_tertiary_link; line-offset: -1 * @rdz12_cycle; }
+    [type='secondary_link']    { line-width: @rdz12_secondary_link; line-offset: -1 * @rdz12_cycle; }
+    [type='primary_link']    { line-width: @rdz12_primary_link; line-offset: -1 * @rdz12_cycle; }
+    [type='trunk_link']    { line-width: @rdz12_trunk_link; line-offset: -1 * @rdz12_cycle; }
+    [type='motorway_link']    { line-width: @rdz12_motorway_link; line-offset: -1 * @rdz12_cycle; }
+    [type='service']      { line-width: @rdz12_service; line-offset: -1 * @rdz12_cycle; }
+    [type='track']      { line-width: @rdz12_track; line-offset: -1 * @rdz12_cycle; }
+    [type='pedestrian']   { line-width: @rdz12_pedestrian; line-offset: -1 * @rdz12_cycle; }
+  }
+  [zoom=13] {
+    [type='motorway']     { line-width: @rdz13_motorway; line-offset: -1 * @rdz13_cycle; }
+    [type='trunk']     { line-width: @rdz13_trunk; line-offset: -1 * @rdz13_cycle; }
+    [type='primary']     { line-width: @rdz13_primary; line-offset: -1 * @rdz13_cycle; }
+    [type='secondary']     { line-width: @rdz13_secondary; line-offset: -1 * @rdz13_cycle; }
+    [type='tertiary']    { line-width: @rdz13_tertiary; line-offset: -1 * @rdz13_cycle; }
+    [type='living_street']    { line-width: @rdz13_living_street; line-offset: -1 * @rdz13_cycle; }
+    [type='road']    { line-width: @rdz13_road; line-offset: -1 * @rdz13_cycle; }
+    [type='unclassified']    { line-width: @rdz13_unclassified; line-offset: -1 * @rdz13_cycle; }
+    [type='residential']    { line-width: @rdz13_residential; line-offset: -1 * @rdz13_cycle; }
+    [type='tertiary_link']    { line-width: @rdz13_tertiary_link; line-offset: -1 * @rdz13_cycle; }
+    [type='secondary_link']    { line-width: @rdz13_secondary_link; line-offset: -1 * @rdz13_cycle; }
+    [type='primary_link']    { line-width: @rdz13_primary_link; line-offset: -1 * @rdz13_cycle; }
+    [type='trunk_link']    { line-width: @rdz13_trunk_link; line-offset: -1 * @rdz13_cycle; }
+    [type='motorway_link']    { line-width: @rdz13_motorway_link; line-offset: -1 * @rdz13_cycle; }
+    [type='service']      { line-width: @rdz13_service; line-offset: -1 * @rdz13_cycle; }
+    [type='track']      { line-width: @rdz13_track; line-offset: -1 * @rdz13_cycle; }
+    [type='pedestrian']   { line-width: @rdz13_pedestrian; line-offset: -1 * @rdz13_cycle; }
+  }
+  [zoom=14] {
+    [type='motorway']     { line-width: @rdz14_motorway; line-offset: -1 * @rdz14_cycle; }
+    [type='trunk']     { line-width: @rdz14_trunk; line-offset: -1 * @rdz14_cycle; }
+    [type='primary']     { line-width: @rdz14_primary; line-offset: -1 * @rdz14_cycle; }
+    [type='secondary']     { line-width: @rdz14_secondary; line-offset: -1 * @rdz14_cycle; }
+    [type='tertiary']    { line-width: @rdz14_tertiary; line-offset: -1 * @rdz14_cycle; }
+    [type='living_street']    { line-width: @rdz14_living_street; line-offset: -1 * @rdz14_cycle; }
+    [type='road']    { line-width: @rdz14_road; line-offset: -1 * @rdz14_cycle; }
+    [type='unclassified']    { line-width: @rdz14_unclassified; line-offset: -1 * @rdz14_cycle; }
+    [type='residential']    { line-width: @rdz14_residential; line-offset: -1 * @rdz14_cycle; }
+    [type='tertiary_link']    { line-width: @rdz14_tertiary_link; line-offset: -1 * @rdz14_cycle; }
+    [type='secondary_link']    { line-width: @rdz14_secondary_link; line-offset: -1 * @rdz14_cycle; }
+    [type='primary_link']    { line-width: @rdz14_primary_link; line-offset: -1 * @rdz14_cycle; }
+    [type='trunk_link']    { line-width: @rdz14_trunk_link; line-offset: -1 * @rdz14_cycle; }
+    [type='motorway_link']    { line-width: @rdz14_motorway_link; line-offset: -1 * @rdz14_cycle; }
+    [type='service']      { line-width: @rdz14_service; line-offset: -1 * @rdz14_cycle; }
+    [type='track']      { line-width: @rdz14_track; line-offset: -1 * @rdz14_cycle; }
+    [type='pedestrian']   { line-width: @rdz14_pedestrian; line-offset: -1 * @rdz14_cycle; }
+  }
+  [zoom=15] {
+    [type='motorway']     { line-width: @rdz15_motorway; line-offset: -1 * @rdz15_cycle; }
+    [type='trunk']     { line-width: @rdz15_trunk; line-offset: -1 * @rdz15_cycle; }
+    [type='primary']     { line-width: @rdz15_primary; line-offset: -1 * @rdz15_cycle; }
+    [type='secondary']     { line-width: @rdz15_secondary; line-offset: -1 * @rdz15_cycle; }
+    [type='tertiary']    { line-width: @rdz15_tertiary; line-offset: -1 * @rdz15_cycle; }
+    [type='living_street']    { line-width: @rdz15_living_street; line-offset: -1 * @rdz15_cycle; }
+    [type='road']    { line-width: @rdz15_road; line-offset: -1 * @rdz15_cycle; }
+    [type='unclassified']    { line-width: @rdz15_unclassified; line-offset: -1 * @rdz15_cycle; }
+    [type='residential']    { line-width: @rdz15_residential; line-offset: -1 * @rdz15_cycle; }
+    [type='tertiary_link']    { line-width: @rdz15_tertiary_link; line-offset: -1 * @rdz15_cycle; }
+    [type='secondary_link']    { line-width: @rdz15_secondary_link; line-offset: -1 * @rdz15_cycle; }
+    [type='primary_link']    { line-width: @rdz15_primary_link; line-offset: -1 * @rdz15_cycle; }
+    [type='trunk_link']    { line-width: @rdz15_trunk_link; line-offset: -1 * @rdz15_cycle; }
+    [type='motorway_link']    { line-width: @rdz15_motorway_link; line-offset: -1 * @rdz15_cycle; }
+    [type='service']      { line-width: @rdz15_service; line-offset: -1 * @rdz15_cycle; }
+    [type='track']      { line-width: @rdz15_track; line-offset: -1 * @rdz15_cycle; }
+    [type='pedestrian']   { line-width: @rdz15_pedestrian; line-offset: -1 * @rdz15_cycle; }
+  }
+  [zoom=16] {
+    [type='motorway']     { line-width: @rdz16_motorway; line-offset: -1 * @rdz16_cycle; }
+    [type='trunk']     { line-width: @rdz16_trunk; line-offset: -1 * @rdz16_cycle; }
+    [type='primary']     { line-width: @rdz16_primary; line-offset: -1 * @rdz16_cycle; }
+    [type='secondary']     { line-width: @rdz16_secondary; line-offset: -1 * @rdz16_cycle; }
+    [type='tertiary']    { line-width: @rdz16_tertiary; line-offset: -1 * @rdz16_cycle; }
+    [type='living_street']    { line-width: @rdz16_living_street; line-offset: -1 * @rdz16_cycle; }
+    [type='road']    { line-width: @rdz16_road; line-offset: -1 * @rdz16_cycle; }
+    [type='unclassified']    { line-width: @rdz16_unclassified; line-offset: -1 * @rdz16_cycle; }
+    [type='residential']    { line-width: @rdz16_residential; line-offset: -1 * @rdz16_cycle; }
+    [type='tertiary_link']    { line-width: @rdz16_tertiary_link; line-offset: -1 * @rdz16_cycle; }
+    [type='secondary_link']    { line-width: @rdz16_secondary_link; line-offset: -1 * @rdz16_cycle; }
+    [type='primary_link']    { line-width: @rdz16_primary_link; line-offset: -1 * @rdz16_cycle; }
+    [type='trunk_link']    { line-width: @rdz16_trunk_link; line-offset: -1 * @rdz16_cycle; }
+    [type='motorway_link']    { line-width: @rdz16_motorway_link; line-offset: -1 * @rdz16_cycle; }
+    [type='service']      { line-width: @rdz16_service; line-offset: -1 * @rdz16_cycle; }
+    [type='track']      { line-width: @rdz16_track; line-offset: -1 * @rdz16_cycle; }
+    [type='pedestrian']   { line-width: @rdz16_pedestrian; line-offset: -1 * @rdz16_cycle; }
+  }
+  [zoom>=17] {
+    [type='motorway']     { line-width: @rdz17_motorway; line-offset: -1 * @rdz17_cycle; }
+    [type='trunk']     { line-width: @rdz17_trunk; line-offset: -1 * @rdz17_cycle; }
+    [type='primary']     { line-width: @rdz17_primary; line-offset: -1 * @rdz17_cycle; }
+    [type='secondary']     { line-width: @rdz17_secondary; line-offset: -1 * @rdz17_cycle; }
+    [type='tertiary']    { line-width: @rdz17_tertiary; line-offset: -1 * @rdz17_cycle; }
+    [type='living_street']    { line-width: @rdz17_living_street; line-offset: -1 * @rdz17_cycle; }
+    [type='road']    { line-width: @rdz17_road; line-offset: -1 * @rdz17_cycle; }
+    [type='unclassified']    { line-width: @rdz17_unclassified; line-offset: -1 * @rdz17_cycle; }
+    [type='residential']    { line-width: @rdz17_residential; line-offset: -1 * @rdz17_cycle; }
+    [type='tertiary_link']    { line-width: @rdz17_tertiary_link; line-offset: -1 * @rdz17_cycle; }
+    [type='secondary_link']    { line-width: @rdz17_secondary_link; line-offset: -1 * @rdz17_cycle; }
+    [type='primary_link']    { line-width: @rdz17_primary_link; line-offset: -1 * @rdz17_cycle; }
+    [type='trunk_link']    { line-width: @rdz17_trunk_link; line-offset: -1 * @rdz17_cycle; }
+    [type='motorway_link']    { line-width: @rdz17_motorway_link; line-offset: -1 * @rdz17_cycle; }
+    [type='service']      { line-width: @rdz17_service; line-offset: -1 * @rdz17_cycle; }
+    [type='track']      { line-width: @rdz17_track; line-offset: -1 * @rdz17_cycle; }
+    [type='pedestrian']   { line-width: @rdz17_pedestrian; line-offset: -1 * @rdz17_cycle; }
+  }
+  [zoom>=18] {
+    [type='motorway']     { line-width: @rdz18_motorway; line-offset: -1 * @rdz18_cycle; }
+    [type='trunk']     { line-width: @rdz18_trunk; line-offset: -1 * @rdz18_cycle; }
+    [type='primary']     { line-width: @rdz18_primary; line-offset: -1 * @rdz18_cycle; }
+    [type='secondary']     { line-width: @rdz18_secondary; line-offset: -1 * @rdz18_cycle; }
+    [type='tertiary']    { line-width: @rdz18_tertiary; line-offset: -1 * @rdz18_cycle; }
+    [type='living_street']    { line-width: @rdz18_living_street; line-offset: -1 * @rdz18_cycle; }
+    [type='road']    { line-width: @rdz18_road; line-offset: -1 * @rdz18_cycle; }
+    [type='unclassified']    { line-width: @rdz18_unclassified; line-offset: -1 * @rdz18_cycle; }
+    [type='residential']    { line-width: @rdz18_residential; line-offset: -1 * @rdz18_cycle; }
+    [type='tertiary_link']    { line-width: @rdz18_tertiary_link; line-offset: -1 * @rdz18_cycle; }
+    [type='secondary_link']    { line-width: @rdz18_secondary_link; line-offset: -1 * @rdz18_cycle; }
+    [type='primary_link']    { line-width: @rdz18_primary_link; line-offset: -1 * @rdz18_cycle; }
+    [type='trunk_link']    { line-width: @rdz18_trunk_link; line-offset: -1 * @rdz18_cycle; }
+    [type='motorway_link']    { line-width: @rdz18_motorway_link; line-offset: -1 * @rdz18_cycle; }
+    [type='service']      { line-width: @rdz18_service; line-offset: -1 * @rdz18_cycle; }
+    [type='track']      { line-width: @rdz18_track; line-offset: -1 * @rdz18_cycle; }
+    [type='pedestrian']   { line-width: @rdz18_pedestrian; line-offset: -1 * @rdz18_cycle; }
   }
 }
 
@@ -1625,7 +1579,6 @@ come in as well.
 
 
 #roads_high::rail_line[zoom>=11],
-//#tunnel::rail_line[zoom>=11],
 #bridge::rail_line[zoom>=11] {
   [type='railway'] {
     line-color: @rail-line;
