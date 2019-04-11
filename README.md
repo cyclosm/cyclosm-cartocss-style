@@ -4,9 +4,27 @@ CyclOSM
 This is a [CartoCSS](https://carto.com/developers/styling/cartocss/) style
 designed with cycling in mind.
 
+
 [![Build Status](https://api.travis-ci.org/cyclosm/cyclosm-cartocss-style.svg?branch=master)](https://travis-ci.org/cyclosm/cyclosm-cartocss-style)
 
 **Note:** This is currently a Work In Progress.
+
+
+## Philosophy
+
+CyclOSM is a new cycle-oriented render. Contrary to
+[OpenCycleMap](http://opencyclemap.org/), this render is free and aims at
+being more complete to take into account a wider diversity of cycle habits.
+
+In urban areas, it renders the main different types of cycle tracks and lanes,
+on each side of the road, for helping you draw your bike to work route. It also
+features essential POIs as well as bicycle parking spots or spots shared with
+motorbikes, specific infrastructure (elevators / ramps), road speeds or
+surfaces to avoid streets with pavings, bumpers and bike boxes, etc.
+
+The same render also lets you visualize main bicycle touring routes as well as
+essential POIs when touring (emergency services, shelters, tourism, shops).
+
 
 ## Features
 
