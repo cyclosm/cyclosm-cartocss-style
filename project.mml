@@ -739,7 +739,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT COALESCE(landuse, leisure, "natural", amenity) AS type, name, way_area AS area, ST_PointOnSurface(way) AS way
+        SELECT COALESCE(landuse, leisure, "natural", amenity) AS type, name, way_area AS area, way
         FROM planet_osm_polygon
         WHERE name IS NOT NULL AND
           (landuse IN ('basin', 'cemetery', 'commercial', 'forest', 'grass', 'industrial')
