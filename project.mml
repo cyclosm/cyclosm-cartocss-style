@@ -347,6 +347,7 @@ Layer:
       (
         SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS bridge, access, layer, 1 as tunnel,
           CASE
+            WHEN tags->'cyclestreet'='yes' THEN 20 -- render cyclestreets as maxspeed 20km/h
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
             WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
             WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
@@ -414,6 +415,7 @@ Layer:
       (
         SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS tunnel, 0 AS bridge, access,
           CASE
+            WHEN tags->'cyclestreet'='yes' THEN 20 -- render cyclestreets as maxspeed 20km/h
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
             WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
             WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
@@ -515,6 +517,7 @@ Layer:
       (
         SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 1 AS bridge, access, layer, 0 as tunnel,
           CASE
+            WHEN tags->'cyclestreet'='yes' THEN 20 -- render cyclestreets as maxspeed 20km/h
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
             WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
             WHEN tags->'maxspeed'~E'^\\d+ knots$' THEN REPLACE(tags->'maxspeed', ' knots', '')::integer * 1.852
