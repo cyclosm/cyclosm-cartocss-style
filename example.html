@@ -104,6 +104,9 @@ var cyclosm = L.tileLayer('https://tiles.phyks.me/cyclosm/tiles/{z}/{x}/{y}.png'
             geocoder.addTo(map);
 
             L.easyButton('fa-question', function(btn, map) {
+                window.open('https://cyclosm.github.io/cyclosm-cartocss-style/legend.html', '_blank');
+            }).addTo(map);
+            L.easyButton('fa-info', function(btn, map) {
                 var modal = new tingle.modal({
                     footer: false,
                     closeMethods: ['overlay', 'button', 'escape'],
