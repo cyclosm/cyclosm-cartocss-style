@@ -367,15 +367,15 @@ Layer:
             ELSE tags->'cycleway'
           END AS cycleway_right,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
+            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
             ELSE 0
           END AS has_left_cycleway,
           CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
+            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
             ELSE 0
           END AS has_right_cycleway,
           tags->'ramp:stroller' AS ramp_stroller,
@@ -439,15 +439,15 @@ Layer:
             ELSE tags->'cycleway'
           END AS cycleway_right,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
+            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
             ELSE 0
           END AS has_left_cycleway,
           CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
+            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
             ELSE 0
           END AS has_right_cycleway,
           tags->'ramp:stroller' AS ramp_stroller,
@@ -545,15 +545,15 @@ Layer:
             ELSE tags->'cycleway'
           END AS cycleway_right,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
+            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
             ELSE 0
           END AS has_left_cycleway,
           CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway') THEN 1
+            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
             ELSE 0
           END AS has_right_cycleway,
           tags->'ramp:stroller' AS ramp_stroller,

@@ -696,6 +696,7 @@ come in as well.
     line-dasharray: 6,3;
     line-cap: butt;
   }
+  [cycleway_right='shoulder'],
   [cycleway_right='share_busway'],
   [cycleway_right='opposite_share_busway'] {
     line-color: @cycle_busway_case;
@@ -876,6 +877,7 @@ come in as well.
     line-dasharray: 6,3;
     line-cap: butt;
   }
+  [cycleway_left='shoulder'],
   [cycleway_left='share_busway'],
   [cycleway_left='opposite_share_busway'] {
     line-color: @cycle_busway_case;
