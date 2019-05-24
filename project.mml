@@ -804,7 +804,7 @@ Layer:
       ) AS data
   geometry: point
   properties:
-    minzoom: 16
+    minzoom: 12
 - id: amenities-poly
   <<: *extents
   Datasource:

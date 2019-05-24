@@ -576,9 +576,28 @@
 /* TRAIN STATIONS
 /* ================================================================== */
 
-#train_stations[zoom>15]{
-  point-file:url('symbols/rail-12.png');
-  [zoom>=17] { point-file:url('symbols/rail-18.png'); }
+#train_stations[zoom >= 12]{
+  marker-file: url('symbols/openstreetmap-carto/square.svg');
+  marker-fill: @transportation-icon;
+  marker-placement: interior;
+  marker-clip: false;
+  marker-width: 6;
+  [zoom >= 14] {
+    text-name: "[name]";
+    text-size: 1.1 * @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: @transportation-text;
+    text-dy: 10;
+    text-face-name: @sans_bold;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
+  [zoom >= 15] {
+    marker-width: 9;
+    text-size: 1.3 * @standard-font-size;
+  }
 }
 
 
