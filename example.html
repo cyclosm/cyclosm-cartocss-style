@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
             integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
             crossorigin="">
-        <link rel="stylesheet" href="https://rawgit.com/stefanocudini/leaflet-search/master/dist/leaflet-search.src.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
         <link rel="stylesheet" href="https://rawgit.com/robinparisi/tingle/master/dist/tingle.min.css">
@@ -21,6 +21,7 @@
             html {
                 min-height: 100%;
                 position: relative;
+                font-family: sans-serif;
             }
 
             body {
@@ -49,7 +50,7 @@
             integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
             crossorigin=""></script>
         <script src="https://cdn.jsdelivr.net/gh/mlevans/leaflet-hash@master/leaflet-hash.js"></script>
-        <script src="https://rawgit.com/stefanocudini/leaflet-search/master/dist/leaflet-search.src.js"></script>
+        <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
         <script src="https://rawgit.com/robinparisi/tingle/master/dist/tingle.min.js"></script>
         <script type="text/javascript">
@@ -77,32 +78,38 @@ var cyclosm = L.tileLayer('https://tiles.phyks.me/cyclosm/tiles/{z}/{x}/{y}.png'
                 minZoom: 0,
                 maxZoom: 18,
             });
+            var waymarked_trails = L.tileLayer('https://tile.waymarkedtrails.org/cycling/{z}/{x}/{y}.png', {
+                attribution: '<a href="Trails">https://cycling.waymarkedtrails.org/</a>',
+                minZoom: 0,
+                maxZoom: 18,
+            });
             var baseMaps = {
                 "CyclOSM": cyclosm,
                 "OpenStreetMap.org": osm,
                 "OpenCycleMap": ocm,
                 "OpenTopoMap": otm,
             };
-            var overlayMaps = {};
+            var overlayMaps = {
+                "Waymarked Trails": waymarked_trails,
+            };
             L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
-            map.addControl(new L.Control.Search({
-                url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
-                jsonpParam: 'json_callback',
-                propertyName: 'display_name',
-                propertyLoc: ['lat','lon'],
-                marker: L.circleMarker([0,0], {radius: 10}),
-                autoCollapse: true,
-                autoType: false,
-                minLength: 2,
-            }));
 
-            L.easyButton('fa-info', function(btn, map) {
+            var geocoder = L.Control.geocoder({
+                defaultMarkGeocode: false,
+                position: 'topleft'
+            });
+            geocoder.on('markgeocode', function(e) {
+                map.fitBounds(e.geocode.bbox);
+            })
+            geocoder.addTo(map);
+
+            L.easyButton('fa-question', function(btn, map) {
                 var modal = new tingle.modal({
                     footer: false,
                     closeMethods: ['overlay', 'button', 'escape'],
                     closeLabel: "Close",
                 });
-                modal.setContent('<h1>About</h1><p>This is a demo of the <a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> CartoCSS style with tiles for <a href="#12/48.8588/2.3470">Paris</a>, <a href="#12/45.7237/3.2266">Clermont-Ferrand</a> and <a href="#12/50.6183/3.0452">Lille</a> areas. Zooms levels from 0 to 18 are available for these areas.</p><p><em>Note:</em> The OSM data used in this demo might not be the latest OSM data available due to limited computation power.</p><p>A full legend of the style is available <a href="https://cyclosm.github.io/cyclosm-cartocss-style/legend.html" target="_blank">here</a>.</p>');
+                modal.setContent('<h1>CyclOSM</h1><p>This is a demo of the <a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> render for <a href="https://www.openstreetmap.org/">OpenStreetMap</a> data. A full legend is available <a href="https://cyclosm.github.io/cyclosm-cartocss-style/legend.html" target="_blank">here</a>.</p><p>This demo has tiles for <a href="#12/48.8588/2.3470">Paris</a>, <a href="#12/45.7237/3.2266">Clermont-Ferrand</a> and <a href="#12/50.6183/3.0452">Lille</a> areas. Zooms levels from 0 to 18 are available for these areas.</p><p><em>Note:</em> The OSM data used in this demo might not be the latest OSM data available due to limited computation power.</p>');
                 modal.open();
             }).addTo(map);
         </script>
