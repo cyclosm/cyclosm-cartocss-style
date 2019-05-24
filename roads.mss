@@ -2137,49 +2137,47 @@ come in as well.
 /* ================================================================== */
 /* BICYCLE ROUTES
 /* ================================================================== */
+#bicycle_routes {
+  opacity: 0.75;
+
+  [zoom >= 10] {
+    opacity: 0.6;
+  }
+
+  [zoom >= 12] {
+    opacity: 0.3;
+  }
+}
+
 #bicycle_routes[type='icn'][zoom >= 2],
 #bicycle_routes[type='ncn'][zoom >= 5],
 #bicycle_routes[type='rcn'][zoom >= 7],
 #bicycle_routes[type='lcn'][zoom >= 9] {
-  line-opacity: 0.75;
   line-width: 1;
 
   [zoom >= 9] {
     line-width: 2;
-    [type='lcn'] {
-      line-opacity: 0.5;
-    }
   }
   [zoom >= 10] {
     line-width: 3;
-    line-opacity: 0.5;
-    [type='lcn'] {
-      line-opacity: 0.5;
-    }
   }
   [zoom >= 12] {
     line-width: 4;
-    line-opacity: 0.25;
   }
   [zoom >= 14] {
     line-width: 5;
-    line-opacity: 0.15;
   }
   [zoom >= 15] {
     line-width: 6;
-    line-opacity: 0.1;
   }
   [zoom >= 16] {
     line-width: 7;
-    line-opacity: 0.1;
   }
   [zoom >= 17] {
     line-width: 10;
-    line-opacity: 0.1;
   }
   [zoom >= 18] {
     line-width: 14;
-    line-opacity: 0.05;
   }
 
   [route='bicycle'][type='icn'] {
@@ -2196,9 +2194,6 @@ come in as well.
   }
   [route='mtb'] {
     line-color: @mtb-overlay;
-    [zoom >= 14] {
-      line-opacity: 0.4;
-    }
   }
 
   [state='proposed'] {
