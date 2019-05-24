@@ -1245,9 +1245,6 @@ come in as well.
   [type='steps'] {
     line-color: @steps-fill;
   }
-  [cyclestreet='yes'] {
-    line-color: @mixed-cycle-fill;
-  }
 
   [type='service'],
   [type='track'],
@@ -1303,6 +1300,10 @@ come in as well.
     {
       line-color: @speedWalk-fill;
     }
+  }
+
+  [cyclestreet='yes'] {
+    line-color: @mixed-cycle-fill;
   }
 
   /* -- widths -- */

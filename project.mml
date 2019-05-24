@@ -797,7 +797,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, railway AS type, name, z_order
+        SELECT way, railway AS type, name, tags->'station' AS station, z_order
         FROM planet_osm_point
         WHERE railway = 'station'
         ORDER BY z_order NULLS LAST
