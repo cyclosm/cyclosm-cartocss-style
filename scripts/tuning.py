@@ -77,10 +77,17 @@ for l in yml['Layer']:
             sql = sql.replace('!pixel_height!', str(pixel_width))
             sql = sql.replace('!scale_denominator!', str(scale))
             sql = "SELECT * FROM " + sql + " where way && "+bbox
+
+            print('Layer %s:' % l['id'])
+            print(''.join('=' for _ in 'Layer %s:' % l['id']))
+            print(sql)
+
             start = time.time()
             db.execute(sql)
             rows = db.fetchall()
-            table.add_row([int((time.time()-start)*1000), db.rowcount, l['id'], len(rows[0]) if rows else 0])
+            duration = int((time.time()-start)*1000)
+            print('Duration: %ss\n' % duration)
+            table.add_row([duration, db.rowcount, l['id'], len(rows[0]) if rows else 0])
             temps = temps + time.time()-start
             if time.time()-start > req_max:
                 req = sql
@@ -88,5 +95,6 @@ for l in yml['Layer']:
             objets = objets + db.rowcount
 table.sortby = table.field_names[0]
 table.reversesort = True
+print('Summary:\n========')
 print(table)
 print("TOTAL: %s layers in %sms with %s objets" % (layers, int(temps*1000), objets))
