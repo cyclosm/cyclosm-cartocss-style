@@ -354,6 +354,7 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           bicycle, tags->'motor_vehicle' AS motor_vehicle,
+          tags->'cyclestreet' AS cyclestreet,
           oneway,
           CASE
             WHEN tags->'cycleway:left' IS NOT NULL THEN tags->'cycleway:left'
@@ -425,6 +426,7 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           bicycle, tags->'motor_vehicle' AS motor_vehicle,
+          tags->'cyclestreet' AS cyclestreet,
           oneway,
           CASE
             WHEN tags->'cycleway:left' IS NOT NULL THEN tags->'cycleway:left'
@@ -530,6 +532,7 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           bicycle, tags->'motor_vehicle' AS motor_vehicle,
+          tags->'cyclestreet' AS cyclestreet,
           oneway,
           CASE
             WHEN tags->'cycleway:left' IS NOT NULL THEN tags->'cycleway:left'
