@@ -76,8 +76,10 @@
 
 @aeroway:           #ddd;
 
-@surfaceLighterDarker1: 10%;
-@surfaceLighterDarker2: 20%;
+@surfaceDarker1: 10%;
+@surfaceLighter1: 20%;
+@surfaceDarker2: 20%;
+@surfaceLighter2: 30%;
 
 /* ================================================================== */
 /* LABEL COLORS

@@ -1651,29 +1651,29 @@ come in as well.
     }
 
     /* -- colors & styles -- */
-    line-color: darken(@standard-fill,@surfaceLighterDarker1); /* Darken since it's white. */
+    line-color: darken(@standard-fill, @surfaceDarker1); /* Darken since it's white. */
     [type='track'] {
         line-color: @track-light1;
     }
     [type='cycleway'] {
-      line-color: lighten(@cycle-fill, @surfaceLighterDarker1);
+      line-color: lighten(@cycle-fill, @surfaceLighter1);
     }
     [type='bridleway'] {
-      line-color: lighten(@bridleway-fill, @surfaceLighterDarker1);
+      line-color: lighten(@bridleway-fill, @surfaceLighter1);
     }
     [type='footway'] {
-      line-color: lighten(@footway-fill, @surfaceLighterDarker1);
+      line-color: lighten(@footway-fill, @surfaceLighter1);
     }
     [type='path'],
     [type='footway'][bicycle='yes'],
     [type='footway'][bicycle='designated'],
     [type='bridleway'][bicycle='yes'],
     [type='bridleway'][bicycle='designated'] {
-      line-color: lighten(@path-fill,@surfaceLighterDarker1);
+      line-color: lighten(@path-fill,@surfaceLighter1);
     }
     [type='path'][access='no'][bicycle=null],
     [type='path'][bicycle='no'] {
-      line-color: lighten(@path-nobicycle,@surfaceLighterDarker1);
+      line-color: lighten(@path-nobicycle,@surfaceLighter1);
     }
 
     [zoom>=13] {
@@ -1872,29 +1872,29 @@ come in as well.
     }
 
     /* -- colors & styles -- */
-    line-color: darken(@standard-fill, @surfaceLighterDarker2); /* Darken since its white. */
+    line-color: darken(@standard-fill, @surfaceDarker2); /* Darken since its white. */
     [type='track'] {
       line-color: @track-light2;
     }
     [type='cycleway'] {
-      line-color: lighten(@cycle-fill, @surfaceLighterDarker2);
+      line-color: lighten(@cycle-fill, @surfaceLighter2);
     }
     [type='bridleway'] {
-      line-color: lighten(@bridleway-fill, @surfaceLighterDarker2);
+      line-color: lighten(@bridleway-fill, @surfaceLighter2);
     }
     [type='footway'] {
-      line-color: lighten(@footway-fill, @surfaceLighterDarker2);
+      line-color: lighten(@footway-fill, @surfaceLighter2);
     }
     [type='path'],
     [type='footway'][bicycle='yes'],
     [type='footway'][bicycle='designated'],
     [type='bridleway'][bicycle='yes'],
     [type='bridleway'][bicycle='designated'] {
-      line-color: lighten(@path-fill,@surfaceLighterDarker2);
+      line-color: lighten(@path-fill,@surfaceLighter2);
     }
     [type='path'][access='no'][bicycle=null],
     [type='path'][bicycle='no'] {
-      line-color: lighten(@path-nobicycle,@surfaceLighterDarker2);
+      line-color: lighten(@path-nobicycle,@surfaceLighter2);
     }
 
     [zoom>=13] {
