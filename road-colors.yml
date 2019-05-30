@@ -42,9 +42,9 @@ mss:
     fill: '#41ffa0'
     case: '@land'
   track:
-    fill: '#a99f95'
-    light1: 'lighten(@track-fill, 35%)'
-    light2: 'lighten(@track-fill, 70)'
+    fill: '#1e4374'
+    light1: 'lighten(@track-fill, 30%)'
+    light2: 'lighten(@track-fill, 50)'
     case: '#cdae8c'
   speed32:
     fill: '#bbffff'
@@ -63,8 +63,8 @@ mss:
     fill: '#003e00'
     case: '@land'
   path:
-    fill: '#00c5c5'
-    nobicycle: '#ff1700'
+    fill: '#00767c'
+    nobicycle: '#949400'
   bridleway:
     fill: '#873100'
   rail:
