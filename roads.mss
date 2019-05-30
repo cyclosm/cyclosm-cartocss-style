@@ -181,7 +181,7 @@ come in as well.
 @rdz13_residential: 1;
 @rdz13_road: 1;
 @rdz13_living_street: 0.6;
-@rdz13_service: 0.5;
+@rdz13_service: 1;
 @rdz13_track: 1;
 @rdz13_pedestrian: 0.6;
 @rdz13_bridleway: 0.20;
@@ -230,8 +230,8 @@ come in as well.
 @rdz14_residential: 1;
 @rdz14_road: 1;
 @rdz14_living_street: 1;
-@rdz14_service: 0.5;
-@rdz14_track: 1.33;
+@rdz14_service: 1;
+@rdz14_track: 1;
 @rdz14_pedestrian: 1;
 @rdz14_bridleway: 0.25;
 @rdz14_path: 1;
@@ -281,8 +281,8 @@ come in as well.
 @rdz15_residential: 2;
 @rdz15_road: 2;
 @rdz15_living_street: 1.5;
-@rdz15_service: 1.5;
-@rdz15_track: 2.5;
+@rdz15_service: 2;
+@rdz15_track: 2;
 @rdz15_pedestrian: 1.5;
 @rdz15_bridleway: 0.5;
 @rdz15_path: 1.25;
@@ -331,7 +331,7 @@ come in as well.
 @rdz16_residential: 4;
 @rdz16_road: 4;
 @rdz16_living_street: 3;
-@rdz16_service: 2.5;
+@rdz16_service: 3.5;
 @rdz16_track: 3;
 @rdz16_pedestrian: 2;
 @rdz16_bridleway: 0.75;
@@ -381,7 +381,7 @@ come in as well.
 @rdz17_residential: 8;
 @rdz17_road: 8;
 @rdz17_living_street: 7.5;
-@rdz17_service: 5;
+@rdz17_service: 6;
 @rdz17_track: 4;
 @rdz17_pedestrian: 5;
 @rdz17_bridleway: 1;
@@ -431,8 +431,8 @@ come in as well.
 @rdz18_residential: 14;
 @rdz18_road: 14;
 @rdz18_living_street: 11;
-@rdz18_service: 9;
-@rdz18_track: 8;
+@rdz18_service: 10;
+@rdz18_track: 7;
 @rdz18_pedestrian: 8;
 @rdz18_bridleway: 1.5;
 @rdz18_path: 2.5;
