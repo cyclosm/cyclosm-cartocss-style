@@ -36,6 +36,13 @@
   }
 }
 
+#highway_crossings[zoom >= 17] {
+  marker-ignore-placement: true;
+  marker-file: url('symbols/osmfr/crossing.svg');
+  marker-transform: 'rotate([angle]) scale(0.9)';
+  marker-fill: @transportation-icon;
+}
+
 #amenities-points,
 #amenities-poly {
   [feature = 'amenity_compressed_air'][zoom >= 16],

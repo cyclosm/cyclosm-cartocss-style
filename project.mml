@@ -831,6 +831,39 @@ Layer:
   geometry: point
   properties:
     minzoom: 11
+- id: highway_crossings
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          osm_id,
+          ST_GeometryN(st_union(way),1) as way, max(angle)-min(angle) as angle_diff,
+          avg(angle) as angle
+        FROM (
+          SELECT p.osm_id, p.way as way,
+            cast(90+degrees(ST_Azimuth(st_lineinterpolatepoint(way1,0),st_lineinterpolatepoint(way1,1))) as integer) % 180 as angle
+          FROM (
+            SELECT * FROM (
+              SELECT
+                p.osm_id, p.way, ST_LineMerge(ST_Intersection(st_buffer(p.way,0.1), h.way)) as way1
+              FROM planet_osm_point as p
+              JOIN planet_osm_line h
+                ON (st_intersects(p.way,h.way) and h.highway is not null and h.highway not in ('footway','cycleway','path','pedestrian','steps','service'))
+              WHERE
+                (p.highway='crossing' or p.tags ? 'crossing') AND
+                p.bicycle IN ('yes', 'designated') AND
+                p.way && !bbox!
+                AND h.way && !bbox!
+            ) AS p
+            WHERE ST_GeometryType(way1)='ST_LineString'
+          ) AS p
+        ) AS crossing
+        GROUP BY osm_id
+      ) AS data
+  properties:
+    minzoom: 17
 - id: amenities-poly
   <<: *extents
   Datasource:
