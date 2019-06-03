@@ -417,7 +417,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS tunnel, 0 AS bridge, access,
+        SELECT way, COALESCE(CASE WHEN highway != 'bus_guideway' THEN highway ELSE NULL END, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS tunnel, 0 AS bridge, access,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
             WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
@@ -523,7 +523,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 1 AS bridge, access, layer, 0 as tunnel,
+        SELECT way, COALESCE(CASE WHEN highway != 'bus_guideway' THEN highway ELSE NULL END, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 1 AS bridge, access, layer, 0 as tunnel,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
             WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
