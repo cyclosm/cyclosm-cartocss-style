@@ -345,7 +345,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(highway, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS bridge, access, layer, 1 as tunnel,
+        SELECT way, COALESCE(highway, 'other') AS type, 0 AS bridge, access, layer, 1 as tunnel,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
             WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
@@ -392,7 +392,7 @@ Layer:
             ELSE NULL
           END AS surface_type
         FROM planet_osm_line
-        WHERE tunnel NOT IN ('', '0', 'no')
+        WHERE tunnel NOT IN ('', '0', 'no') AND railway IS NULL
         ORDER BY layer ASC
       ) AS data
   geometry: linestring
