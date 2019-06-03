@@ -658,4 +658,27 @@
   }
 }
 
+#cycle-junction-nodes {
+  shield-name: "[ref]";
+  shield-size: @shield-size;
+  shield-face-name: @sans;
+  shield-file: url("symbols/shields/[network]-junction_1x1.svg");
+  [zoom >= 16] {
+    shield-size: @shield-size-z16;
+    shield-file: url("symbols/shields/[network]-junction_1x1_z16.svg");
+  }
+  [network='icn'] {
+    shield-fill: @icn-shield-fill;
+  }
+  [network='ncn'] {
+    shield-fill: @ncn-shield-fill;
+  }
+  [network='rcn'] {
+    shield-fill: @rcn-shield-fill;
+  }
+  [network='lcn'] {
+    shield-fill: @lcn-shield-fill;
+  }
+}
+
 /* ****************************************************************** */

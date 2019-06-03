@@ -12,6 +12,7 @@ Licensed under CC0 license.
 
 from __future__ import print_function
 import copy
+import itertools
 import lxml.etree
 import math
 import os
@@ -36,6 +37,12 @@ def main():
     config = {}
     config['base'] = {}
 
+    config['base']['min_width'] = 1
+    config['base']['min_height'] = 1
+    config['base']['max_width'] = 11
+    config['base']['max_height'] = 4
+    config['base']['additional_sizes'] = ['base', 'z16', 'z18']
+
     # font_height and font_width are determined by trial and error
     config['base']['rounded_corners'] = 2
     config['base']['font_height'] = 12.1
@@ -51,11 +58,7 @@ def main():
     config['global'] = {}
 
     config['global']['types'] = settings.get('shield', {}).keys()
-    config['global']['max_width'] = 11
-    config['global']['max_height'] = 4
     config['global']['output_dir'] = '../symbols/shields/' # specified relative to the script location
-
-    config['global']['additional_sizes'] = ['base', 'z16', 'z18']
 
     # changes for different size versions
     config['z16'] = {}
@@ -71,90 +74,96 @@ def main():
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    for height in range(1, config['global']['max_height'] + 1):
-        for width in range(1, config['global']['max_width'] + 1):
-            for shield_type in config['global']['types']:
-                # merge base config and specific styles
-                vars = copy.deepcopy(config['base'])
-                from_settings = settings.get('shield', {}).get(shield_type, {})
-                for option, value in from_settings.items():
-                    vars[option] = value
+    for shield_type in config['global']['types']:
+        # merge base config and specific styles
+        vars = copy.deepcopy(config['base'])
+        from_settings = settings.get('shield', {}).get(shield_type, {})
+        for option, value in from_settings.items():
+            vars[option] = value
 
-                for shield_size in config['global']['additional_sizes']:
-                    if shield_size != 'base':
-                        for option in config.get(shield_size, []):
-                            vars[option] = config[shield_size][option]
+        for height, width in itertools.product(
+                range(vars['min_height'], vars['max_height'] + 1),
+                range(vars['min_width'], vars['max_width'] + 1)
+        ):
+            for shield_size in vars['additional_sizes']:
+                specific_vars = copy.deepcopy(vars)
+                if shield_size != 'base':
+                    for option in config.get(shield_size, []):
+                        specific_vars[option] = config[shield_size][option]
+                    for option in vars.get(shield_size, []):
+                        specific_vars[option] = vars[shield_size][option]
 
-                    shield_width = (
-                        2 * vars['padding_x']
-                        + math.ceil(vars['font_width'] * width)
+                shield_width = specific_vars.get(
+                    'shield_width',
+                    (2 * specific_vars['padding_x']
+                     + math.ceil(specific_vars['font_width'] * width))
+                )
+                shield_height = specific_vars.get(
+                    'shield_height',
+                    (2 * specific_vars['padding_y']
+                     + math.ceil(specific_vars['font_height'] * height))
+                )
+
+                svg = lxml.etree.Element('svg', nsmap=svgnsmap)
+                svg.set('width', '100%')
+                svg.set('height', '100%')
+                svg.set(
+                    'viewBox',
+                    '0 0 %d %d' %
+                    (
+                        shield_width + specific_vars['stroke_width'],
+                        shield_height + specific_vars['stroke_width']
                     )
-                    shield_height = (
-                        2 * vars['padding_y']
-                        + math.ceil(vars['font_height'] * height)
+                )
+
+                offset_x = 0
+                offset_y = 0
+                if specific_vars['stroke_width'] > 0:
+                    offset_x = specific_vars['stroke_width'] / 2.0
+                    offset_y = specific_vars['stroke_width'] / 2.0
+
+                shield = lxml.etree.Element(svgns + 'rect')
+                shield.set('x', str(offset_x))
+                shield.set('y', str(offset_y))
+                shield.set('width', str(shield_width))
+                shield.set('height', str(shield_height))
+                if specific_vars['rounded_corners'] > 0:
+                    shield.set('rx', str(specific_vars['rounded_corners']))
+                    shield.set('ry', str(specific_vars['rounded_corners']))
+                shield.set('id', 'shield')
+
+                stroke = ''
+                if specific_vars['stroke_width'] > 0:
+                    stroke = 'stroke:' + specific_vars['stroke_fill'] + ';stroke-width:' + str(specific_vars['stroke_width']) + ';'
+
+                shield.set('style', 'fill:' + specific_vars['fill'] + ';' + stroke)
+
+                svg.append(shield)
+
+                filename = shield_type + '_' + str(width) + 'x' + str(height)
+                if shield_size != 'base':
+                    filename = filename + '_' + shield_size
+
+                filename = filename + '.svg'
+
+                # save file
+                try:
+                    path = os.path.join(
+                        output_dir,
+                        filename
                     )
-
-                    svg = lxml.etree.Element('svg', nsmap=svgnsmap)
-                    svg.set('width', '100%')
-                    svg.set('height', '100%')
-                    svg.set(
-                        'viewBox',
-                        '0 0 %d %d' %
-                        (
-                            shield_width + vars['stroke_width'],
-                            shield_height + vars['stroke_width']
-                        )
-                    )
-
-                    offset_x = 0
-                    offset_y = 0
-                    if vars['stroke_width'] > 0:
-                        offset_x = vars['stroke_width'] / 2.0
-                        offset_y = vars['stroke_width'] / 2.0
-
-                    shield = lxml.etree.Element(svgns + 'rect')
-                    shield.set('x', str(offset_x))
-                    shield.set('y', str(offset_y))
-                    shield.set('width', str(shield_width))
-                    shield.set('height', str(shield_height))
-                    if vars['rounded_corners'] > 0:
-                        shield.set('rx', str(vars['rounded_corners']))
-                        shield.set('ry', str(vars['rounded_corners']))
-                    shield.set('id', 'shield')
-
-                    stroke = ''
-                    if vars['stroke_width'] > 0:
-                        stroke = 'stroke:' + vars['stroke_fill'] + ';stroke-width:' + str(vars['stroke_width']) + ';'
-
-                    shield.set('style', 'fill:' + vars['fill'] + ';' + stroke)
-
-                    svg.append(shield)
-
-                    filename = shield_type + '_' + str(width) + 'x' + str(height)
-                    if shield_size != 'base':
-                        filename = filename + '_' + shield_size
-
-                    filename = filename + '.svg'
-
-                    # save file
-                    try:
-                        path = os.path.join(
-                            SCRIPT_DIR,
-                            os.path.join(config['global']['output_dir'],
-                                         filename)
-                        )
-                        with open(path, 'w') as shieldfile:
-                            shieldfile.write(
-                                lxml.etree.tostring(
-                                    svg,
-                                    encoding='utf-8',
-                                    xml_declaration=True,
-                                    pretty_print=True
-                                )
+                    with open(path, 'w') as shieldfile:
+                        shieldfile.write(
+                            lxml.etree.tostring(
+                                svg,
+                                encoding='utf-8',
+                                xml_declaration=True,
+                                pretty_print=True
                             )
-                    except IOError:
-                        print('Could not save file %s.' % filename)
-                        continue
+                        )
+                except IOError:
+                    print('Could not save file %s.' % filename)
+                    continue
 
 if __name__ == "__main__":
     main()
