@@ -900,6 +900,7 @@ Layer:
             ELSE NULL
           END AS capacity,
           tags->'compressed_air' AS compressed_air,
+          tags->'car_wash' as car_wash,
           tags->'drinking_water' AS drinking_water,
           tags->'location' AS location,
           tags->'memorial' AS memorial,
@@ -911,6 +912,7 @@ Layer:
           tags->'generator:source' as "generator:source",
           tags->'supervised' as supervised,
           tags->'bicycle_parking' as bicycle_parking,
+          tags->'automated' as automated,
           CASE
             WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN NULL
             WHEN "waterway" IN ('waterfall') THEN
@@ -935,8 +937,9 @@ Layer:
         WHERE aeroway IN ('helipad', 'aerodrome')
           OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
               'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
+            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
           OR tags->'compressed_air'='yes'
+          OR tags->'car_wash'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
@@ -1016,6 +1019,7 @@ Layer:
             ELSE NULL
           END AS capacity,
           tags->'compressed_air' AS compressed_air,
+          tags->'car_wash' as car_wash,
           tags->'drinking_water' AS drinking_water,
           tags->'location' AS location,
           tags->'memorial' AS memorial,
@@ -1027,6 +1031,7 @@ Layer:
           tags->'generator:source' as "generator:source",
           tags->'supervised' as supervised,
           tags->'bicycle_parking' as bicycle_parking,
+          tags->'automated' as automated,
           CASE
             WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
               CASE
@@ -1065,8 +1070,9 @@ Layer:
         WHERE aeroway IN ('helipad', 'aerodrome')
           OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
               'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
+          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
           OR tags->'compressed_air'='yes'
+          OR tags->'car_wash'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
@@ -1171,6 +1177,7 @@ Layer:
               ELSE NULL
             END AS capacity,
             tags->'compressed_air' AS compressed_air,
+            tags->'car_wash' as car_wash,
             tags->'drinking_water' AS drinking_water,
             tags->'location' AS location,
             tags->'memorial' AS memorial,
@@ -1182,6 +1189,7 @@ Layer:
             tags->'generator:source' as "generator:source",
             tags->'supervised' as supervised,
             tags->'bicycle_parking' as bicycle_parking,
+            tags->'automated' as automated,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN NULL
               WHEN "waterway" IN ('waterfall') THEN
@@ -1206,8 +1214,9 @@ Layer:
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
                 'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
+            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
             OR tags->'compressed_air'='yes'
+            OR tags->'car_wash'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
             OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
             OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
@@ -1303,6 +1312,7 @@ Layer:
               ELSE NULL
             END AS capacity,
             tags->'compressed_air' AS compressed_air,
+            tags->'car_wash' as car_wash,
             tags->'drinking_water' AS drinking_water,
             tags->'location' AS location,
             tags->'memorial' AS memorial,
@@ -1314,6 +1324,7 @@ Layer:
             tags->'generator:source' as "generator:source",
             tags->'supervised' as supervised,
             tags->'bicycle_parking' as bicycle_parking,
+            tags->'automated' as automated,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
                 CASE
@@ -1352,8 +1363,9 @@ Layer:
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
                 'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
+            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
             OR tags->'compressed_air'='yes'
+            OR tags->'car_wash'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
             OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
             OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))

@@ -183,6 +183,21 @@
     }
   }
 
+  [feature = 'amenity_car_wash'][zoom >= 16],
+	[compressed_air != 'yes'][car_wash = 'yes'][zoom >= 16] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/car_wash.svg');
+    marker-fill: @amenity-brown;
+    marker-placement: interior;
+    marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
+    [automated = 'no'],
+    [automated = '0'] {
+      marker-file: url('symbols/openstreetmap-carto/amenity/bike_wash.svg');
+    }
+  }
+
   [feature = 'tourism_gallery'][zoom >= 17] {
     marker-file: url('symbols/openstreetmap-carto/shop/art.svg');
     marker-placement: interior;
