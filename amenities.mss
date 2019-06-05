@@ -36,11 +36,30 @@
   }
 }
 
-#highway_crossings[zoom >= 17] {
-  marker-ignore-placement: true;
-  marker-file: url('symbols/osmfr/crossing.svg');
-  marker-transform: 'rotate([angle]) scale(0.9)';
-  marker-fill: @transportation-icon;
+#oriented-highway-amenities {
+  [feature='crossing'][zoom >= 17] {
+    marker-ignore-placement: true;
+    marker-file: url('symbols/osmfr/crossing.svg');
+    marker-transform: 'rotate([angle]) scale(0.9)';
+    marker-fill: @transportation-icon;
+  }
+
+  [feature = 'traffic_calming'][zoom >= 17] {
+    marker-file: url('symbols/amenity/traffic_calming.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+    marker-transform: 'rotate([angle])';
+  }
+
+  [feature = 'cycleway_asl'][zoom >= 18] {
+    marker-width: 9;
+    marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_asl_11.svg');
+    marker-fill: @transportation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+    marker-transform: 'rotate([angle])';
+  }
 }
 
 #amenities-points,
@@ -54,20 +73,6 @@
     [access != ''][access != 'permissive'][access != 'yes'] {
       marker-opacity: 0.33;
     }
-  }
-
-  [feature = 'traffic_calming_yes'][zoom >= 17],
-  [feature = 'traffic_calming_bump'][zoom >= 17],
-  [feature = 'traffic_calming_dip'][zoom >= 17],
-  [feature = 'traffic_calming_choker'][zoom >= 17],
-  [feature = 'traffic_calming_cushion'][zoom >= 17],
-  [feature = 'traffic_calming_hump'][zoom >= 17],
-  [feature = 'traffic_calming_rumble_strip'][zoom >= 17],
-  [feature = 'traffic_calming_table'][zoom >= 17] {
-    marker-file: url('symbols/amenity/traffic_calming.svg');
-    marker-fill: @man-made-icon;
-    marker-placement: interior;
-    marker-clip: false;
   }
 
   [feature = 'tourism_alpine_hut'][zoom >= 13],
@@ -676,14 +681,6 @@
   [feature = 'highway_traffic_signals'][zoom >= 17] {
     marker-file: url('symbols/openstreetmap-carto/highway/traffic_light.13.svg');
     marker-fill: #545454;
-    marker-placement: interior;
-    marker-clip: false;
-  }
-
-  [feature = 'cycleway_asl'][zoom >= 18] {
-    marker-width: 9;
-    marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_asl_11.svg');
-    marker-fill: @transportation-icon;
     marker-placement: interior;
     marker-clip: false;
   }

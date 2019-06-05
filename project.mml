@@ -831,7 +831,7 @@ Layer:
   geometry: point
   properties:
     minzoom: 11
-- id: highway_crossings
+- id: oriented-highway-amenities
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -839,28 +839,54 @@ Layer:
       (
         SELECT
           osm_id,
+          feature,
           ST_GeometryN(st_union(way),1) as way, max(angle)-min(angle) as angle_diff,
           avg(angle) as angle
         FROM (
-          SELECT p.osm_id, p.way as way,
-            cast(90+degrees(ST_Azimuth(st_lineinterpolatepoint(way1,0),st_lineinterpolatepoint(way1,1))) as integer) % 180 as angle
+          SELECT
+            p.osm_id,
+            p.way AS way,
+            p.feature AS feature,
+            CASE
+              WHEN p.feature = 'crossing' THEN cast(90+degrees(ST_Azimuth(st_lineinterpolatepoint(way1,0),st_lineinterpolatepoint(way1,1))) AS integer) % 180
+              WHEN p.feature = 'traffic_calming' THEN cast(90+degrees(ST_Azimuth(st_lineinterpolatepoint(way1,0),st_lineinterpolatepoint(way1,1))) AS integer) % 180
+              WHEN p.feature = 'cycleway_asl' THEN
+                CASE
+                  WHEN p.direction = 'backward' THEN cast(degrees(ST_Azimuth(st_lineinterpolatepoint(way1,0),st_lineinterpolatepoint(way1,1))) AS integer) + 180
+                  ELSE cast(degrees(ST_Azimuth(st_lineinterpolatepoint(way1,0),st_lineinterpolatepoint(way1,1))) AS integer)
+                END
+            END AS angle
           FROM (
             SELECT * FROM (
               SELECT
-                p.osm_id, p.way, ST_LineMerge(ST_Intersection(st_buffer(p.way,0.1), h.way)) as way1
+                p.osm_id,
+                p.way,
+                ST_LineMerge(ST_Intersection(st_buffer(p.way,0.1), h.way)) as way1,
+                CASE
+                  WHEN p.tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip', 'table') THEN 'traffic_calming'
+                  WHEN p.tags->'cycleway' = 'asl' THEN 'cycleway_asl'
+                  WHEN p.highway = 'crossing' OR p.tags ? 'crossing' THEN 'crossing'
+                END AS feature,
+                p.tags->'direction' AS direction
               FROM planet_osm_point as p
               JOIN planet_osm_line h
                 ON (st_intersects(p.way,h.way) and h.highway is not null and h.highway not in ('footway','cycleway','path','pedestrian','steps','service'))
               WHERE
-                (p.highway='crossing' or p.tags ? 'crossing') AND
-                p.bicycle IN ('yes', 'designated') AND
-                p.way && !bbox!
+                (
+                  (
+                    (p.highway='crossing' OR p.tags ? 'crossing')
+                    AND p.bicycle IN ('yes', 'designated')
+                  )
+                  OR p.tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip', 'table')
+                  OR p.tags->'cycleway' = 'asl'
+                )
+                AND p.way && !bbox!
                 AND h.way && !bbox!
             ) AS p
             WHERE ST_GeometryType(way1)='ST_LineString'
           ) AS p
-        ) AS crossing
-        GROUP BY osm_id
+        ) AS amenity
+        GROUP BY osm_id, feature
       ) AS data
   properties:
     minzoom: 17
@@ -1010,9 +1036,7 @@ Layer:
             'military_'|| military,
             'highway_'|| highway,
             'power_' || power,
-            'tourism_' || tourism,
-            'traffic_calming_' || CASE WHEN tags->'traffic_calming' IS NOT NULL THEN tags->'traffic_calming' ELSE NULL END,
-            'cycleway_' || CASE WHEN tags->'cycleway' IS NOT NULL then tags->'cycleway' ELSE NULL END
+            'tourism_' || tourism
           ) AS feature,
           CASE
             WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
@@ -1090,8 +1114,6 @@ Layer:
           OR highway IN ('elevator', 'traffic_signals')
           OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND tags->'generator:source'='wind')
-          OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip', 'table')
-          OR tags->'cycleway'='asl'
         ORDER BY
             CASE
                 -- Emergency first
@@ -1303,9 +1325,7 @@ Layer:
               'military_'|| military,
               'highway_'|| highway,
               'power_' || power,
-              'tourism_' || tourism,
-              'traffic_calming_' || CASE WHEN tags->'traffic_calming' IS NOT NULL THEN tags->'traffic_calming' ELSE NULL END,
-              'cycleway_' || CASE WHEN tags->'cycleway' IS NOT NULL then tags->'cycleway' ELSE NULL END
+              'tourism_' || tourism
             ) AS feature,
             CASE
               WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
@@ -1383,8 +1403,6 @@ Layer:
             OR highway IN ('elevator', 'traffic_signals')
             OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
             OR (power = 'generator' AND tags->'generator:source'='wind')
-            OR tags->'traffic_calming' IN ('yes', 'bump', 'dip', 'choker', 'cushion', 'hump', 'rumble_strip', 'table')
-            OR tags->'cycleway'='asl'
           ORDER BY
             CASE
                 -- Emergency first
