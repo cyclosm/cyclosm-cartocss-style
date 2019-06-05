@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 """
-Taken from https://github.com/cquest/osmfr-cartocss/blob/master/tuning/tuning.py
+Generate taginfo reporting for tags used.
+
+See https://wiki.openstreetmap.org/wiki/Taginfo/Projects.
 """
 import argparse
 import json
