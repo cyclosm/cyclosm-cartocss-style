@@ -41,6 +41,7 @@
   [type='parking']       { polygon-fill: @parking; }
   [type='pedestrian']    { polygon-fill: @pedestrian_area_fill; }
   [type='religious']     { polygon-fill: @religious; }
+  [type='military']      { polygon-fill: @military; }
   [type='pitch']         {
     polygon-fill: @sports;
     [zoom >= 13] {
