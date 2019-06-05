@@ -25,8 +25,13 @@
   [type='common']        { polygon-fill: @park; }
   [type='forest']        { polygon-fill: @wooded; }
   [type='golf_course']   { polygon-fill: @grass; }
-  [type='grass']         { polygon-fill: @grass; }
-  [type='grassland']     { polygon-fill: @grass; }
+
+  [type='garden'],
+  [type='grass'],
+  [type='grassland'] {
+    polygon-fill: @grass;
+  }
+
   [type='heath']         { polygon-fill: @heath; }
   [type='hospital']      { polygon-fill: @hospital; }
   [type='industrial']    { polygon-fill: @industrial; }
@@ -35,6 +40,7 @@
   [type='park']          { polygon-fill: @park; }
   [type='parking']       { polygon-fill: @parking; }
   [type='pedestrian']    { polygon-fill: @pedestrian_area_fill; }
+  [type='religious']     { polygon-fill: @religious; }
   [type='pitch']         {
     polygon-fill: @sports;
     [zoom >= 13] {

@@ -39,6 +39,7 @@
 @heath:             #b2c068;
 @farmland:          #edd9c2;
 @water:             #8ecbeb;
+@religious:         #ded4b2;
 
 @nature_reserve:    #05620e;
 
