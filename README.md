@@ -47,6 +47,9 @@ Render:
 A full list of rendered features is available in [the
 legend](https://cyclosm.github.io/cyclosm-cartocss-style/legend.html).
 
+A list of the tags considered by this render is available in [Taginfo JSON
+format](https://wiki.openstreetmap.org/wiki/Taginfo/Projects) in [`taginfo.json`](taginfo.json).
+
 ## Demonstration
 
 A demonstration of this style for some French areas (Paris, Clermont-Ferrand and Lille, up to zoom level 18) is

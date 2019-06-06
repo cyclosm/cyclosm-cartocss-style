@@ -71,6 +71,9 @@ the location where the screenshots were taken for easier reproducibility.
 Please consider updating the `legend.html` file in the root of this repository
 to reflect your latest changes when submitting a pull request.
 
+Please also run `scripts/generate_taginfo.py` and commit the resulting
+`taginfo.json` file before submitting a pull request.
+
 
 ## Rendering locally / developping the style
 
