@@ -2,7 +2,7 @@
     "project": {
         "contact_name": "Lucas Verney (Phyks)", 
         "contact_email": "phyks+cyclosm@phyks.me", 
-        "name": "Keys used in CyclOSM mapnik style", 
+        "name": "CyclOSM mapnik style (bike-oriented mapnik style)", 
         "project_url": "https://github.com/cyclosm/cyclosm-cartocss-style", 
         "description": "This files contains all keys used for rendering in CyclOSM carto style."
     }, 

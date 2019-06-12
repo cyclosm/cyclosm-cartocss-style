@@ -31,7 +31,7 @@ OSM2PGSQL_TAGS = [
 taginfo = {
     "data_format": 1,
     "project": {
-        "name": "Keys used in CyclOSM mapnik style",
+        "name": "CyclOSM mapnik style (bike-oriented mapnik style)",
         "description": "This files contains all keys used for rendering in CyclOSM carto style.",
         "project_url": "https://github.com/cyclosm/cyclosm-cartocss-style",
         "contact_name": "Lucas Verney (Phyks)",
