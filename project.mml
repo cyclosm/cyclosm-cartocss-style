@@ -609,6 +609,26 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 8
+- id: trees
+  geometry: polygon
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          "natural"
+        FROM planet_osm_point
+        WHERE "natural" = 'tree'
+        UNION ALL
+        SELECT
+          way,
+          "natural"
+        FROM planet_osm_line
+        WHERE "natural" = 'tree_row'
+      ) AS data
+  properties:
+    minzoom: 16
 - id: country-names
   class: country
   geometry: point
