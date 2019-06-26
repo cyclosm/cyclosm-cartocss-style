@@ -80,10 +80,7 @@ come in as well.
 @rdz11_service: 0;
 @rdz11_track: 0.25;
 @rdz11_pedestrian: 0;
-@rdz11_bridleway: 0;
 @rdz11_path: 0.30;
-@rdz11_footway: 0;
-@rdz11_steps: 0;
 @rdz11_cycle: 0.5;
 @rdz11_railway: 0.4;
 /* Border width (one side of the road only) */
@@ -103,10 +100,7 @@ come in as well.
 @rdz11_service_outline: 0.3;
 @rdz11_track_outline: 0;
 @rdz11_pedestrian_outline: 0.3;
-@rdz11_bridleway_outline: 0;
 @rdz11_path_outline: 0;
-@rdz11_footway_outline: 0;
-@rdz11_steps_outline: 0;
 @rdz11_cycle_outline: 0;
 @rdz11_railway_outline: 0;
 
@@ -127,10 +121,7 @@ come in as well.
 @rdz12_service: 0;
 @rdz12_track: 0.5;
 @rdz12_pedestrian: 0.5;
-@rdz12_bridleway: 0;
 @rdz12_path: 0.5;
-@rdz12_footway: 0;
-@rdz12_steps: 0;
 @rdz12_cycle: 1;
 @rdz12_railway: 0.6;
 /* Border width (one side of the road only) */
@@ -150,10 +141,7 @@ come in as well.
 @rdz12_service_outline: 0.25;
 @rdz12_track_outline: 0;
 @rdz12_pedestrian_outline: 0.25;
-@rdz12_bridleway_outline: 0;
 @rdz12_path_outline: 0;
-@rdz12_footway_outline: 0;
-@rdz12_steps_outline: 0;
 @rdz12_cycle_outline: 0;
 @rdz12_railway_outline: 0;
 
@@ -498,8 +486,7 @@ come in as well.
     [type='service']      { line-width: @rdz11_service + (2 * @rdz11_service_outline); }
     [type='track']      { line-width: @rdz11_track + (2 * @rdz11_track_outline); }
     [type='path']   { line-width: @rdz11_path + (2 * @rdz11_path_outline); }
-    [type='footway']   { line-width: @rdz11_footway + (2 * @rdz11_footway_outline); }
-    [type='bridleway']   { line-width: @rdz11_bridleway + (2 * @rdz11_bridleway_outline); }
+    // bridleway, footway are not shown at Z11
     [type='pedestrian']   { line-width: @rdz11_pedestrian + (2 * @rdz11_pedestrian_outline); }
   }
   [zoom=12] {
@@ -1254,14 +1241,12 @@ come in as well.
     [type='service']      { line-width: @rdz11_service; }
     [type='track']      { line-width: @rdz11_track; }
     [type='pedestrian']   { line-width: @rdz11_pedestrian; }
-    [type='bridleway']   { line-width: @rdz11_bridleway; }
-    [type='footway']   { line-width: @rdz11_footway; }
+    // bridleway, footway, steps are not shown at Z11
     [type='path'],
     [type='footway'][bicycle='yes'],
     [type='footway'][bicycle='designated'],
     [type='bridleway'][bicycle='yes'],
     [type='bridleway'][bicycle='designated']   { line-width: @rdz11_path; }
-    [type='steps']       { line-width: @rdz11_steps; }
     [type='cycleway'] {
       line-width: @rdz11_cycle;
       [oneway='no'] { line-width: @rdz11_cycle*1.5; }
@@ -1284,14 +1269,12 @@ come in as well.
     [type='service']      { line-width: @rdz12_service; }
     [type='track']      { line-width: @rdz12_track; }
     [type='pedestrian']   { line-width: @rdz12_pedestrian; }
-    [type='bridleway']   { line-width: @rdz12_bridleway; }
-    [type='footway']   { line-width: @rdz12_footway; }
+    // bridleway, footway, steps are not shown at Z12
     [type='path'],
     [type='footway'][bicycle='yes'],
     [type='footway'][bicycle='designated'],
     [type='bridleway'][bicycle='yes'],
     [type='bridleway'][bicycle='designated']   { line-width: @rdz12_path; }
-    [type='steps']        { line-width: @rdz12_steps; }
     [type='cycleway'] {
       line-width: @rdz12_cycle;
       [oneway='no'] { line-width: @rdz12_cycle*1.5; }
