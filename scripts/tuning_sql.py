@@ -86,7 +86,7 @@ for l in yml['Layer']:
             db.execute(sql)
             rows = db.fetchall()
             duration = int((time.time()-start)*1000)
-            print('Duration: %ss\n' % duration)
+            print('Duration: %sms\n' % duration)
             table.add_row([duration, db.rowcount, l['id'], len(rows[0]) if rows else 0])
             temps = temps + time.time()-start
             if time.time()-start > req_max:
