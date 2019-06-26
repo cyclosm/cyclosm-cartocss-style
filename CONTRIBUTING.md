@@ -265,6 +265,7 @@ python scripts/generate_shields.py
 
 to regenerate the shields files and corresponding style sheets.
 
+
 ### What is the order in which info is drawn on the map?
 
 Information on the order in which info is drawn on the map can be found in the
@@ -275,3 +276,20 @@ the order in which they are listed in the `project.mml` file. The first layers
 appearing in this file are rendered first, meaning that in case of conflicting
 items in two layers, the layer appearing first in `project.mml` file will be
 rendered.
+
+
+### How to prevent CartoCSS from emitting too much Mapnik rules?
+
+You can track the number of generated rules per layer in the exported Mapnik
+XML file using the `scripts/inspect_mapnik_xml.py` Python script. Here are a
+few tips to prevent CartoCSS from generating useless rules.
+
+1. If you have to test against multiple values, consider generating a single
+   output on the database side. Typically, when testing `bicycle=yes` and
+   `bicycle=designated`, CartoCSS will output two rules. This is multiplied by
+   all the other conditions (CartoCSS exports one rule per set of possible
+   values). If you have 10 zoom conditions beside, this makes 20 (2 possible
+   values for `bicycle` and 10 possible values for the zoom level) rules in
+   total, so this increases very rapidly. Consider generating a new field
+   `is_bicycle` which collapse both values (`yes` and `designated`) to a
+   single boolean and have a single value to test against in the style.
