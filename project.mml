@@ -939,8 +939,7 @@ Layer:
             'historic_' || historic,
             'military_'|| military,
             'highway_'|| highway,
-            'power_' || power,
-            'tourism_' || tourism
+            'power_' || power
           ) AS feature,
           CASE
             WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
@@ -1056,8 +1055,7 @@ Layer:
             'historic_' || historic,
             'military_'|| military,
             'highway_'|| highway,
-            'power_' || power,
-            'tourism_' || tourism
+            'power_' || power
           ) AS feature,
           CASE
             WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
@@ -1212,8 +1210,7 @@ Layer:
               'historic_' || historic,
               'military_'|| military,
               'highway_'|| highway,
-              'power_' || power,
-              'tourism_' || tourism
+              'power_' || power
             ) AS feature,
             CASE
               WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
@@ -1345,8 +1342,7 @@ Layer:
               'historic_' || historic,
               'military_'|| military,
               'highway_'|| highway,
-              'power_' || power,
-              'tourism_' || tourism
+              'power_' || power
             ) AS feature,
             CASE
               WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer

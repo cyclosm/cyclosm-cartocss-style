@@ -65,7 +65,8 @@
 #amenities-points,
 #amenities-poly {
   [feature = 'amenity_compressed_air'][zoom >= 16],
-	[compressed_air = 'yes'][zoom >= 16] {
+	[feature = 'amenity_fuel'][compressed_air = 'yes'][zoom >= 16],
+	[feature = 'shop_gas'][compressed_air = 'yes'][zoom >= 16] {
     marker-file: url('symbols/osmandapp/amenity/compressed_air.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
@@ -189,7 +190,9 @@
   }
 
   [feature = 'amenity_car_wash'][zoom >= 16],
-	[compressed_air != 'yes'][car_wash = 'yes'][zoom >= 16] {
+	[feature = 'amenity_fuel'][compressed_air != 'yes'][car_wash = 'yes'][zoom >= 16],
+	[feature = 'shop_gas'][compressed_air != 'yes'][car_wash = 'yes'][zoom >= 16],
+	[feature = 'shop_convenience;gas'][compressed_air != 'yes'][car_wash = 'yes'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/amenity/car_wash.svg');
     marker-fill: @amenity-brown;
     marker-placement: interior;
