@@ -25,10 +25,6 @@ parser.add_argument('--password', type=str, default='gis')
 parser.add_argument('--host', type=str, default='localhost')
 args = parser.parse_args()
 
-# Default value for filter db argument
-if not args.filter_db:
-    args.filter_db = ['osm']
-
 # Useful constants
 scale = int(559082264 / (2 ** args.zoom))
 # estimate bbox and pixel_width / height
@@ -68,7 +64,7 @@ for l in yml['Layer']:
         if (
                 'table' in l['Datasource']
                 and (args.layer is None or l['id'] == args.layer)
-                and (l['Datasource']['dbname'] in args.filter_db)
+                and (args.filter_db is None or l['Datasource']['dbname'] in args.filter_db)
         ):
             layers += 1
             sql = l['Datasource']['table']
@@ -85,19 +81,20 @@ for l in yml['Layer']:
             start = time.time()
             try:
                 db.execute(sql)
+                rows = db.fetchall()
+                duration = int((time.time()-start)*1000)
+                print('Duration: %sms\n' % duration)
+                table.add_row([duration, db.rowcount, l['id'], len(rows[0]) if rows else 0])
+                temps = temps + time.time()-start
+                if time.time()-start > req_max:
+                    req = sql
+                    req_max = time.time()-start
+                objets = objets + db.rowcount
             except Exception as e:
                 print(str(e))
                 pg.rollback()
+                table.add_row(['?', '?', l['id'], '?'])
                 continue
-            rows = db.fetchall()
-            duration = int((time.time()-start)*1000)
-            print('Duration: %sms\n' % duration)
-            table.add_row([duration, db.rowcount, l['id'], len(rows[0]) if rows else 0])
-            temps = temps + time.time()-start
-            if time.time()-start > req_max:
-                req = sql
-                req_max = time.time()-start
-            objets = objets + db.rowcount
 table.sortby = table.field_names[0]
 table.reversesort = True
 print('Summary:\n========')
