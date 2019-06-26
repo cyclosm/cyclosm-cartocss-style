@@ -162,6 +162,8 @@ Layer:
         ORDER BY way_area DESC
       ) AS data
   geometry: polygon
+  properties:
+    minzoom: 7
 - id: buildings
   <<: *extents
   Datasource:
@@ -596,6 +598,8 @@ Layer:
         ORDER BY z_order
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 2
 - id: bicycle_routes_labels
   <<: *extents
   Datasource:

@@ -83,7 +83,11 @@ for l in yml['Layer']:
             print(sql)
 
             start = time.time()
-            db.execute(sql)
+            try:
+                db.execute(sql)
+            except Exception as e:
+                print(str(e))
+                continue
             rows = db.fetchall()
             duration = int((time.time()-start)*1000)
             print('Duration: %sms\n' % duration)

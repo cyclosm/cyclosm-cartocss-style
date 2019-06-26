@@ -82,7 +82,7 @@
   raster-comp-op: multiply;
 }
 
-#landuse_overlays[type='nature_reserve'][zoom>6] {
+#landuse_overlays[type='nature_reserve'][zoom>=7] {
   line-color: darken(@wooded,25%);
   line-opacity:  0.3;
   line-dasharray: 1,1;
