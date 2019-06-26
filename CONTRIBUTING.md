@@ -74,6 +74,23 @@ to reflect your latest changes when submitting a pull request.
 Please also run `scripts/generate_taginfo.py` and commit the resulting
 `taginfo.json` file before submitting a pull request.
 
+### Useful scripts
+
+When submitting a pull request, please check that the size of the generated
+Mapnik XML file (generated with a `kosmtik export` command) does not increase
+too much. CartoCSS tends to generate rules for any combination of attributes
+when the filters in the `mss` files are too broad, which makes the generation
+of Mapnik XML take a lot of time and the resulting file size increase a lot.
+See https://github.com/cyclosm/cyclosm-cartocss-style/issues/121 for some
+extra details about it.
+
+You can use the `scripts/inspect_mapnik_xml.py` Python script to inspect the
+resulting Mapnik XML file and see how much rules are generated for each layer.
+
+If you edit the SQL queries, you can also use the `scripts/tuning_sql.py`
+Python script to check how much objects are fetched and the time spent
+querying the database.
+
 
 ## Rendering locally / developping the style
 
@@ -189,6 +206,7 @@ mapnik`.
 You can then build the Mapnik XML file for the project using `kosmtik export
 project.mml --output mapnik.xml` and then call the
 `scripts/render_svg_tile.js` script to render SVG tiles one by one.
+
 
 
 ## FAQ
