@@ -87,6 +87,7 @@ for l in yml['Layer']:
                 db.execute(sql)
             except Exception as e:
                 print(str(e))
+                pg.rollback()
                 continue
             rows = db.fetchall()
             duration = int((time.time()-start)*1000)
