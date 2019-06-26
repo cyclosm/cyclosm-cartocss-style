@@ -358,7 +358,10 @@ Layer:
           END AS maxspeed_kmh,
           bicycle, tags->'motor_vehicle' AS motor_vehicle,
           tags->'cyclestreet' AS cyclestreet,
-          oneway,
+          CASE
+            WHEN oneway IN ('yes', '-1') THEN oneway
+            ELSE 'no'
+          END AS oneway,
           CASE
             WHEN tags->'cycleway:left' IS NOT NULL THEN tags->'cycleway:left'
             WHEN tags->'cycleway:both' IS NOT NULL THEN tags->'cycleway:both'
@@ -381,6 +384,11 @@ Layer:
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
             ELSE 0
           END AS has_right_cycleway,
+          CASE
+            WHEN bicycle IN ('yes', 'designated') THEN 'yes'
+            WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
+            ELSE NULL
+          END AS can_bicycle,
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
@@ -430,7 +438,10 @@ Layer:
           END AS maxspeed_kmh,
           bicycle, tags->'motor_vehicle' AS motor_vehicle,
           tags->'cyclestreet' AS cyclestreet,
-          oneway,
+          CASE
+            WHEN oneway IN ('yes', '-1') THEN oneway
+            ELSE 'no'
+          END AS oneway,
           CASE
             WHEN tags->'cycleway:left' IS NOT NULL THEN tags->'cycleway:left'
             WHEN tags->'cycleway:both' IS NOT NULL THEN tags->'cycleway:both'
@@ -453,6 +464,11 @@ Layer:
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
             ELSE 0
           END AS has_right_cycleway,
+          CASE
+            WHEN bicycle IN ('yes', 'designated') THEN 'yes'
+            WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
+            ELSE NULL
+          END AS can_bicycle,
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
@@ -536,7 +552,10 @@ Layer:
           END AS maxspeed_kmh,
           bicycle, tags->'motor_vehicle' AS motor_vehicle,
           tags->'cyclestreet' AS cyclestreet,
-          oneway,
+          CASE
+            WHEN oneway IN ('yes', '-1') THEN oneway
+            ELSE 'no'
+          END AS oneway,
           CASE
             WHEN tags->'cycleway:left' IS NOT NULL THEN tags->'cycleway:left'
             WHEN tags->'cycleway:both' IS NOT NULL THEN tags->'cycleway:both'
@@ -559,6 +578,11 @@ Layer:
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
             ELSE 0
           END AS has_right_cycleway,
+          CASE
+            WHEN bicycle IN ('yes', 'designated') THEN 'yes'
+            WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
+            ELSE NULL
+          END AS can_bicycle,
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
