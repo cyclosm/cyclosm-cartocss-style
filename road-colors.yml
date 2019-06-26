@@ -81,10 +81,7 @@ mss:
     shield-fill: '#f6f6f6'
 # Colours used by the road shields script
 shield:
-  motorway:
-    fill: '#a7ccb3'
-    stroke_fill: '#f6f6f6'
-  trunk:
+  motorway-trunk:
     fill: '#a7ccb3'
     stroke_fill: '#f6f6f6'
   primary:
