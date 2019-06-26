@@ -13,10 +13,10 @@
 @lcn-overlay: #0000ff;
 @lcn-shield-fill: #f6f6f6;
 @mixed-cycle-fill: #0080ff;
-@motorway-case: #f6f6f6;
-@motorway-fill: #c0ccc4;
-@motorway-line: #f6f6f6;
-@motorway-shield-fill: #620728;
+@motorway-trunk-case: #f6f6f6;
+@motorway-trunk-fill: #c0ccc4;
+@motorway-trunk-line: #f6f6f6;
+@motorway-trunk-shield-fill: #620728;
 @mtb-overlay: #d15000;
 @mtb-shield-fill: #f6f6f6;
 @ncn-overlay: #aa00ff;
@@ -52,7 +52,3 @@
 @track-fill: #1e4374;
 @track-light1: lighten(@track-fill, 30%);
 @track-light2: lighten(@track-fill, 50);
-@trunk-case: #f6f6f6;
-@trunk-fill: #c0ccc4;
-@trunk-line: #f6f6f6;
-@trunk-shield-fill: #5d1b0b;

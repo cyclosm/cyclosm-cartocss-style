@@ -116,8 +116,7 @@
 /* ================================================================== */
 
 #roads-text-ref-low-zoom[zoom < 13] {
-  [highway = 'motorway'][zoom >= 10],
-  [highway = 'trunk'][zoom >= 11],
+  [highway = 'motorway_trunk'][zoom >= 10],
   [highway = 'primary'][zoom >= 11],
   [highway = 'secondary'][zoom >= 12] {
     shield-name: "[refs]";
@@ -130,14 +129,9 @@
     shield-face-name: @sans;
     shield-clip: @shield-clip;
 
-    [highway = 'motorway'] {
-      shield-fill: @motorway-shield-fill;
-      shield-file: url("symbols/shields/motorway_[width]x[height].svg");
-    }
-
-    [highway = 'trunk'] {
-      shield-fill: @trunk-shield-fill;
-      shield-file: url("symbols/shields/trunk_[width]x[height].svg");
+    [highway = 'motorway_trunk'] {
+      shield-fill: @motorway-trunk-shield-fill;
+      shield-file: url("symbols/shields/motorway-trunk_[width]x[height].svg");
     }
 
     [highway = 'primary'] {
@@ -153,8 +147,7 @@
 }
 
 #roads-text-ref {
-  [highway = 'motorway'],
-  [highway = 'trunk'],
+  [highway = 'motorway_trunk'],
   [highway = 'primary'],
   [highway = 'secondary'],
   [highway = 'tertiary'] {
@@ -179,26 +172,15 @@
       shield-face-name: @sans;
       shield-clip: @shield-clip;
 
-      [highway = 'motorway'] {
-        shield-fill: @motorway-shield-fill;
-        shield-file: url("symbols/shields/motorway_[width]x[height].svg");
+      [highway = 'motorway_trunk'] {
+        shield-fill: @motorway-trunk-shield-fill;
+        shield-file: url("symbols/shields/motorway-trunk_[width]x[height].svg");
 
         [zoom >= 16] {
-          shield-file: url("symbols/shields/motorway_[width]x[height]_z16.svg");
+          shield-file: url("symbols/shields/motorway-trunk_[width]x[height]_z16.svg");
         }
         [zoom >= 18] {
-          shield-file: url("symbols/shields/motorway_[width]x[height]_z18.svg");
-        }
-      }
-      [highway = 'trunk'] {
-        shield-fill: @trunk-shield-fill;
-        shield-file: url("symbols/shields/trunk_[width]x[height].svg");
-
-        [zoom >= 16] {
-          shield-file: url("symbols/shields/trunk_[width]x[height]_z16.svg");
-        }
-        [zoom >= 18] {
-          shield-file: url("symbols/shields/trunk_[width]x[height]_z18.svg");
+          shield-file: url("symbols/shields/motorway-trunk_[width]x[height]_z18.svg");
         }
       }
       [highway = 'primary'] {

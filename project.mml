@@ -348,7 +348,23 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(highway, 'other') AS type, 0 AS bridge, access, layer, 1 as tunnel,
+        SELECT
+          way,
+          COALESCE(
+            CASE
+              WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
+              WHEN highway != 'bus_guideway' THEN highway
+              ELSE NULL
+            END,
+            CASE
+              WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
+              ELSE 'other'
+            END
+          ) AS type,
+          0 AS bridge,
+          access,
+          layer,
+          1 as tunnel,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
             WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
@@ -428,7 +444,22 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(CASE WHEN highway != 'bus_guideway' THEN highway ELSE NULL END, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 0 AS tunnel, 0 AS bridge, access,
+        SELECT
+          way,
+          COALESCE(
+            CASE
+              WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
+              WHEN highway != 'bus_guideway' THEN highway
+              ELSE NULL
+            END,
+            CASE
+              WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
+              ELSE 'other'
+            END
+          ) AS type,
+          0 AS tunnel,
+          0 AS bridge,
+          access,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
             WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
@@ -501,7 +532,12 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, highway AS type
+        SELECT
+          way,
+          CASE
+            WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
+            ELSE highway
+          END AS type
         FROM planet_osm_roads
         WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'motorway_link', 'trunk_link')
       ) AS data
@@ -515,7 +551,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-          SELECT way, highway AS type, bridge, tunnel
+          SELECT way, 'motorway_trunk' AS type, bridge, tunnel
           FROM planet_osm_roads
           WHERE highway IN ('motorway', 'trunk')
       ) AS data
@@ -542,7 +578,23 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, COALESCE(CASE WHEN highway != 'bus_guideway' THEN highway ELSE NULL END, CASE WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway' ELSE 'other' END) AS type, 1 AS bridge, access, layer, 0 as tunnel,
+        SELECT
+          way,
+          COALESCE(
+            CASE
+              WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
+              WHEN highway != 'bus_guideway' THEN highway
+              ELSE NULL
+            END,
+            CASE
+              WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
+              ELSE 'other'
+            END
+          ) AS type,
+          1 AS bridge,
+          access,
+          layer,
+          0 as tunnel,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
             WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
@@ -1496,7 +1548,10 @@ Layer:
       (
         SELECT
           way,
-          highway,
+          CASE
+            WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
+            ELSE highway
+          END AS highway,
           height,
           width,
           refs
@@ -1550,7 +1605,10 @@ Layer:
       (
         SELECT
           way,
-          highway,
+          CASE
+            WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
+            ELSE highway
+          END AS highway,
           height,
           width,
           refs
@@ -1607,7 +1665,10 @@ Layer:
       (
         SELECT
           way,
-          CASE WHEN substr(highway, length(highway)-4, 5) = '_link' THEN substr(highway, 0, length(highway)-4) ELSE highway END AS highway,
+          CASE
+            WHEN substr(highway, length(highway)-4, 5) = '_link' THEN substr(highway, 0, length(highway)-4)
+            ELSE highway
+          END AS highway,
           CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
           construction,
           name,

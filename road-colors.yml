@@ -9,16 +9,11 @@ mss:
   #         casing (outline).
   # - fill: for higher zoomlevels, this color is for the road's
   #         inner fill (inline).
-  motorway:
+  motorway-trunk:
     line: '#f6f6f6'
     fill: '#c0ccc4'
     case: '#f6f6f6'
     shield-fill: '#620728'
-  trunk:
-    line: '#f6f6f6'
-    fill: '#c0ccc4'
-    case: '#f6f6f6'
-    shield-fill: '#5d1b0b'
   primary:
     line: '#f4dfc3'
     fill: '#f4dfc3'

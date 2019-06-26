@@ -24,7 +24,7 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 def load_settings():
     """Read the settings from YAML."""
     with open(os.path.join(SCRIPT_DIR, '../road-colors.yml'), 'r') as fh:
-        return yaml.load(fh)
+        return yaml.load(fh, Loader=yaml.FullLoader)
 
 
 def main():
