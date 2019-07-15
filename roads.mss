@@ -1931,11 +1931,11 @@ come in as well.
   }
   [type='primary'],
   [type='primary_link'] {
-    line-color: lighten(@primary-fill, 10%);
+    line-color: lighten(@primary-fill, 5%);
   }
   [type='secondary'],
   [type='secondary_link'] {
-    line-color: lighten(@secondary-fill, 10%);
+    line-color: lighten(@secondary-fill, 5%);
   }
 }
 
