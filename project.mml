@@ -49,7 +49,7 @@ Layer:
 - id: land-low
   <<: *extents
   Datasource:
-    file: https://osmdata.openstreetmap.de/download/simplified-land-polygons-complete-3857.zip
+    file: http://osmdata.openstreetmap.de/download/simplified-land-polygons-complete-3857.zip
     type: shape
   class: shp
   geometry: polygon
@@ -58,7 +58,7 @@ Layer:
 - id: land-high
   <<: *extents
   Datasource:
-    file: https://osmdata.openstreetmap.de/download/land-polygons-split-3857.zip
+    file: http://osmdata.openstreetmap.de/download/land-polygons-split-3857.zip
     type: shape
   class: shp
   geometry: polygon
