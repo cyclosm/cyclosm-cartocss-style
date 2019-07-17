@@ -44,6 +44,7 @@ Stylesheet:
 - labels.mss
 - placenames.mss
 - addressing.mss
+- gpx.mss
 
 Layer:
 - id: land-low
@@ -719,6 +720,15 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 2
+- id: route
+  <<: *extents84
+  Datasource:
+    file: '${gpxroute}'
+    type: ogr
+    layer: tracks
+  geometry: line
+  properties:
+    status: off
 - id: bicycle_routes_labels
   <<: *extents
   Datasource:
