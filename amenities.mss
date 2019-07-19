@@ -481,6 +481,13 @@
     marker-fill: @airtransport;
   }
 
+  [feature = 'amenity_ferry_terminal'][zoom >= 15] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/ferry.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    marker-fill: @airtransport;
+  }
+
   [feature = 'man_made_lighthouse'][zoom >= 15] {
     marker-file: url('symbols/openstreetmap-carto/man_made/lighthouse.svg');
     marker-placement: interior;
@@ -929,7 +936,8 @@
 		text-placement: interior;
   }
 
-  [feature = 'aeroway_aerodrome'][zoom >= 16] {
+  [feature = 'aeroway_aerodrome'][zoom >= 16],
+  [feature = 'amenity_ferry_terminal'][zoom >= 15] {
 		text-name: "[name]";
 		text-size: @standard-font-size;
 		text-wrap-width: @standard-wrap-width;
