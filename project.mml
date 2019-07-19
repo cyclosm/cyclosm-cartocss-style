@@ -71,7 +71,10 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity) AS type
+        SELECT
+          way,
+          way_area AS area,
+          COALESCE(landuse, leisure, "natural", highway, amenity) AS type
         FROM planet_osm_polygon
         WHERE way_area > 100000
         ORDER BY way_area DESC
@@ -86,7 +89,10 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity) AS type
+        SELECT
+          way,
+          way_area AS area,
+          COALESCE(landuse, leisure, "natural", highway, amenity) AS type
         FROM planet_osm_polygon
         WHERE way_area > 10000
         ORDER BY way_area DESC
@@ -101,7 +107,10 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, way_area AS area, COALESCE(landuse, leisure, "natural", highway, amenity) AS type
+        SELECT
+          way,
+          way_area AS area,
+          COALESCE(landuse, leisure, "natural", highway, amenity) AS type
         FROM planet_osm_polygon
         WHERE landuse IN ('cemetery', 'commercial', 'farmland', 'forest', 'grass', 'industrial', 'meadow', 'military', 'residential', 'religious')
           OR leisure IN ('common', 'garden', 'golf_course', 'park', 'pitch', 'sports_centre', 'stadium', 'track')
@@ -911,7 +920,7 @@ Layer:
         SELECT COALESCE(landuse, leisure, "natural", amenity) AS type, name, way_area AS area, way
         FROM planet_osm_polygon
         WHERE name IS NOT NULL AND
-          (landuse IN ('basin', 'cemetery', 'commercial', 'forest', 'grass', 'industrial')
+          (landuse IN ('basin', 'cemetery', 'commercial', 'forest', 'grass', 'industrial', 'military')
             OR COALESCE(leisure, "natural") IS NOT NULL
             OR amenity IN ('embassy', 'library', 'townhall', 'university'))
           AND way && !bbox! AND ST_IsValid(way)
@@ -1833,3 +1842,21 @@ Layer:
       ) AS addresses
   properties:
     minzoom: 18
+- id: landuse-overlay
+  geometry: polygon
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          landuse,
+          military,
+          way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
+        FROM planet_osm_polygon
+        WHERE
+          (landuse = 'military' OR military = 'danger_area')
+          AND building IS NULL
+      ) AS data
+  properties:
+    minzoom: 8

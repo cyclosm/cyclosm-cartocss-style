@@ -40,7 +40,7 @@
 @farmland:          #edd9c2;
 @water:             #8ecbeb;
 @religious:         #ded4b2;
-@military:          #deb2b2;
+@military:          #f55;
 
 @nature_reserve:    #05620e;
 
