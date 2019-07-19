@@ -54,9 +54,18 @@
       text-fill: @water * 0.6;
       text-halo-fill: lighten(@water, 10%);
     }
+    [type='marina'] {
+      text-fill: @water * 0.5;
+      text-halo-fill: lighten(@water, 10%);
+      text-face-name: @sans_italic;
+    }
     [type='nature_reserve'] {
       text-face-name: @sans_italic;
       text-fill: @nature_reserve;
+    }
+    [type='military'] {
+      text-fill: @military * 0.6;
+      text-face-name: @sans_italic;
     }
   }
   [zoom=15][area>1600000],
