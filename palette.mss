@@ -114,6 +114,9 @@
 @locality_text:     #aaa;
 @locality_halo:     @land;
 
+@ferry-route: #66f;
+@ferry-route-text: @ferry-route;
+
 /* Also used for other small places: hamlets, suburbs, localities */
 @village_text:      #555;
 @village_halo:      @place_halo;

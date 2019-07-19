@@ -44,6 +44,7 @@ Stylesheet:
 - labels.mss
 - placenames.mss
 - addressing.mss
+- ferry-routes.mss
 - gpx.mss
 
 Layer:
@@ -1018,6 +1019,36 @@ Layer:
         WHERE "natural" = 'cliff' OR man_made = 'embankment'
       ) AS data
   geometry: linestring
+  properties:
+    minzoom: 13
+- id: ferry-routes
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way
+        FROM planet_osm_line
+        WHERE route = 'ferry'
+          AND osm_id > 0
+      ) AS ferry_routes
+  properties:
+    minzoom: 8
+- id: ferry-routes-text
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          name
+        FROM planet_osm_line
+        WHERE route = 'ferry'
+          AND osm_id > 0
+          AND name IS NOT NULL
+      ) AS ferry_routes_text
   properties:
     minzoom: 13
 - id: train_stations
