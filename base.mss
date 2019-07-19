@@ -59,7 +59,7 @@
     }
   }
   [type='stadium']       { polygon-fill: @stadium; }
-  [type = 'track'][zoom >= 13] {
+  [type='track'][zoom >= 13] {
     polygon-fill: @track;
     line-width: 0.5;
     line-color: @track * 0.95;
@@ -98,6 +98,25 @@
 #landuse_overlays[type='wetland'][zoom>11] {
   [zoom>11][zoom<=14] { polygon-pattern-file:url(symbols/landuse/marsh-16.png); }
   [zoom>14] { polygon-pattern-file:url(symbols/landuse/marsh-32.png);}
+}
+
+#landuse_overlays[type = 'military'][zoom >= 8][way_pixels > 900],
+#landuse_overlays[type = 'military'][zoom >= 13],
+#landuse_overlays[type = 'danger_area'][zoom >= 9] {
+  polygon-pattern-file: url('symbols/openstreetmap-carto/military_red_hatch.png');
+  polygon-pattern-alignment: global;
+  line-color: @military;
+  line-opacity: 0.24;
+  line-width: 1.0;
+  line-offset: -0.5;
+  [zoom >= 15] {
+    [type = 'danger_area'] {
+      polygon-pattern-file: url('symbols/openstreetmap-carto/danger_red_hatch.png');
+      line-opacity: 0.2;
+    }
+    line-width: 2;
+    line-offset: -1.0;
+  }
 }
 
 /* ---- BUILDINGS ---- */
@@ -195,6 +214,35 @@ Map { background-color: @water; }
   }
 }
 
+#piers-poly, #piers-line {
+  [man_made = 'pier'][zoom >= 12] {
+    #piers-poly {
+      polygon-fill: @land;
+    }
+    #piers-line {
+      line-width: 0.5;
+      line-color: @land;
+      line-cap: square;
+      [zoom >= 13] { line-width: 1; }
+      [zoom >= 15] { line-width: 2; }
+      [zoom >= 17] { line-width: 4; }
+    }
+  }
+
+  [man_made = 'breakwater'][zoom >= 12],
+  [man_made = 'groyne'][zoom >= 12] {
+    #piers-poly {
+      polygon-fill: @land;
+    }
+    #piers-line {
+      line-width: 1;
+      line-color: @land;
+      [zoom >= 13] { line-width: 2; }
+      [zoom >= 16] { line-width: 4; }
+    }
+  }
+}
+
 /* ================================================================== */
 /* Contours
 /* ================================================================== */
@@ -271,27 +319,6 @@ Map { background-color: @water; }
       text-min-path-length: @contours-min-path-length;
       text-max-char-angle-delta: @contours-max-char-angle-delta;
       text-name: "[ele]";
-    }
-  }
-}
-
-#landuse-overlay {
-  [landuse = 'military'][zoom >= 8][way_pixels > 900],
-  [landuse = 'military'][zoom >= 13],
-  [military = 'danger_area'][zoom >= 9] {
-    polygon-pattern-file: url('symbols/openstreetmap-carto/military_red_hatch.png');
-    polygon-pattern-alignment: global;
-    line-color: @military;
-    line-opacity: 0.24;
-    line-width: 1.0;
-    line-offset: -0.5;
-    [zoom >= 15] {
-      [military = 'danger_area'] {
-        polygon-pattern-file: url('symbols/openstreetmap-carto/danger_red_hatch.png');
-        line-opacity: 0.2;
-      }
-      line-width: 2;
-      line-offset: -1.0;
     }
   }
 }

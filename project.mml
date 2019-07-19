@@ -182,20 +182,6 @@ Layer:
   geometry: raster
   properties:
     minzoom: 9
-- id: landuse_overlays
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    table: |-
-      (
-        SELECT way, way_area AS area, COALESCE(leisure) AS type
-        FROM planet_osm_polygon
-        WHERE leisure = 'nature_reserve'
-        ORDER BY way_area DESC
-      ) AS data
-  geometry: polygon
-  properties:
-    minzoom: 7
 - id: buildings
   <<: *extents
   Datasource:
@@ -382,6 +368,32 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 13
+- id: piers-poly
+  geometry: polygon
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way, man_made
+        FROM planet_osm_polygon
+        WHERE man_made IN ('pier', 'breakwater', 'groyne')
+      ) AS piers_poly
+  properties:
+    minzoom: 12
+- id: piers-line
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way, man_made
+        FROM planet_osm_line
+        WHERE man_made IN ('pier', 'breakwater', 'groyne')
+      ) AS piers_line
+  properties:
+    minzoom: 12
 - id: aeroway
   <<: *extents
   Datasource:
@@ -1896,21 +1908,22 @@ Layer:
       ) AS addresses
   properties:
     minzoom: 18
-- id: landuse-overlay
-  geometry: polygon
+- id: landuse_overlays
   <<: *extents
   Datasource:
     <<: *osm2pgsql
     table: |-
-      (SELECT
+      (
+        SELECT
           way,
-          landuse,
-          military,
-          way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
+          COALESCE(leisure, landuse, military) AS type,
+          way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
         FROM planet_osm_polygon
         WHERE
-          (landuse = 'military' OR military = 'danger_area')
-          AND building IS NULL
+          leisure = 'nature_reserve'
+          OR (landuse = 'military' OR military = 'danger_area')
+        ORDER BY way_area DESC
       ) AS data
+  geometry: polygon
   properties:
-    minzoom: 8
+    minzoom: 7
