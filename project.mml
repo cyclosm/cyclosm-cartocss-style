@@ -45,6 +45,7 @@ Stylesheet:
 - placenames.mss
 - addressing.mss
 - ferry-routes.mss
+- power.mss
 - gpx.mss
 
 Layer:
@@ -807,6 +808,33 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 8
+- id: power-minorline
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way
+        FROM planet_osm_line
+        WHERE power = 'minor_line'
+      ) AS power_minorline
+  properties:
+    minzoom: 16
+- id: power-line
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way
+        FROM planet_osm_line
+        WHERE power = 'line'
+          OR (power = 'cable' AND tags->'location' IN ('overground', 'overhead', 'surface', 'outdoor', 'platform'))
+      ) AS power_line
+  properties:
+    minzoom: 14
 - id: trees
   geometry: polygon
   <<: *extents
@@ -1684,6 +1712,26 @@ Layer:
   geometry: point
   properties:
     minzoom: 13
+- id: power-towers
+  geometry: point
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          power
+      FROM planet_osm_point
+      WHERE power IN ('tower', 'pole')
+      ORDER BY
+        CASE
+          WHEN power = 'tower' THEN 1
+          WHEN power = 'pole' THEN 2
+          ELSE NULL
+        END
+      ) AS power_towers
+  properties:
+    minzoom: 14
 - id: highway_area_label
   <<: *extents
   Datasource:
