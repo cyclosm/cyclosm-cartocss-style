@@ -128,7 +128,12 @@ Map { background-color: @water; }
 #water_gen0[zoom>3][zoom<=9],
 #water_gen1[zoom>9][zoom<=12],
 #water[zoom>12] {
-  polygon-fill: @water;
+  [intermittent = 'yes'] {
+    polygon-pattern-file: url('symbols/openstreetmap-carto/intermittent_water.png');
+  }
+  [intermittent = 'no'] {
+    polygon-fill: @water;
+  }
 }
 
 /* ================================================================== */

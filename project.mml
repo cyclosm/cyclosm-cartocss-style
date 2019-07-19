@@ -74,7 +74,14 @@ Layer:
         SELECT
           way,
           way_area AS area,
-          COALESCE(landuse, leisure, "natural", highway, amenity) AS type
+          COALESCE(
+            landuse,
+            leisure,
+            "natural",
+            highway,
+            amenity,
+            man_made
+          ) AS type
         FROM planet_osm_polygon
         WHERE way_area > 100000
         ORDER BY way_area DESC
@@ -92,7 +99,14 @@ Layer:
         SELECT
           way,
           way_area AS area,
-          COALESCE(landuse, leisure, "natural", highway, amenity) AS type
+          COALESCE(
+            landuse,
+            leisure,
+            "natural",
+            highway,
+            amenity,
+            man_made
+          ) AS type
         FROM planet_osm_polygon
         WHERE way_area > 10000
         ORDER BY way_area DESC
@@ -110,13 +124,21 @@ Layer:
         SELECT
           way,
           way_area AS area,
-          COALESCE(landuse, leisure, "natural", highway, amenity) AS type
+          COALESCE(
+            landuse,
+            leisure,
+            "natural",
+            highway,
+            amenity,
+            CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN 'industrial' ELSE NULL END
+          ) AS type
         FROM planet_osm_polygon
         WHERE landuse IN ('cemetery', 'commercial', 'farmland', 'forest', 'grass', 'industrial', 'meadow', 'military', 'residential', 'religious')
           OR leisure IN ('common', 'garden', 'golf_course', 'park', 'pitch', 'sports_centre', 'stadium', 'track')
           OR "natural" IN ('grassland', 'heath', 'wood')
           OR highway IN ('pedestrian')
           OR amenity IN ('college', 'hospital', 'parking', 'school', 'university')
+          OR man_made IN ('works', 'wastewater_plant', 'water_works')
         ORDER BY way_area DESC
       ) AS data
   geometry: polygon
@@ -299,10 +321,17 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, "natural" AS type, way_area AS area
+        SELECT
+          way,
+          way_area AS area,
+          CASE
+            WHEN tags->'intermittent' IN ('yes') OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season') OR tags->'basin' IN ('detention', 'infiltration') THEN 'yes'
+            ELSE 'no'
+          END AS intermittent
         FROM planet_osm_polygon
         WHERE ("natural" IN ('water', 'pond')
-          OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream'))
+          OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
+          OR landuse in ('basin', 'reservoir'))
           AND way_area > 10000
       ) AS data
   geometry: polygon
@@ -315,10 +344,17 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, "natural" AS type, way_area AS area
+        SELECT
+          way,
+          way_area AS area,
+          CASE
+            WHEN tags->'intermittent' IN ('yes') OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season') OR tags->'basin' IN ('detention', 'infiltration') THEN 'yes'
+            ELSE 'no'
+          END AS intermittent
         FROM planet_osm_polygon
         WHERE ("natural" IN ('water', 'pond')
-          OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream'))
+          OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
+          OR landuse in ('basin', 'reservoir'))
           AND way_area > 1000
       ) AS data
   geometry: polygon
@@ -331,10 +367,17 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, way_area AS area
+        SELECT
+            way,
+            way_area AS area,
+            CASE
+            WHEN tags->'intermittent' IN ('yes') OR tags->'seasonal' IN ('yes', 'spring', 'summer', 'autumn', 'winter', 'wet_season', 'dry_season') OR tags->'basin' IN ('detention', 'infiltration') THEN 'yes'
+              ELSE 'no'
+            END AS intermittent
         FROM planet_osm_polygon
         WHERE "natural" IN ('water', 'pond')
           OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
+          OR landuse in ('basin', 'reservoir')
       ) AS data
   geometry: polygon
   properties:
@@ -917,12 +960,23 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT COALESCE(landuse, leisure, "natural", amenity) AS type, name, way_area AS area, way
+        SELECT
+          COALESCE(
+            landuse,
+            leisure,
+            "natural",
+            amenity,
+            CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN 'industrial' ELSE NULL END
+          ) AS type,
+          name,
+          way_area AS area,
+          way
         FROM planet_osm_polygon
         WHERE name IS NOT NULL AND
           (landuse IN ('basin', 'cemetery', 'commercial', 'forest', 'grass', 'industrial', 'military')
             OR COALESCE(leisure, "natural") IS NOT NULL
-            OR amenity IN ('embassy', 'library', 'townhall', 'university'))
+            OR amenity IN ('embassy', 'library', 'townhall', 'university')
+            OR man_made IN ('works', 'wastewater_plant', 'water_works'))
           AND way && !bbox! AND ST_IsValid(way)
       ) AS data
   geometry: point
