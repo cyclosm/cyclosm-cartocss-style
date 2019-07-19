@@ -7,6 +7,10 @@ Here are an how-to guide to print your own maps with a CyclOSM render.
 styles. To print maps, nothing can beat a dedicated map style. However,
 CyclOSM can be used as a "good enough" approach to generate printed maps.
 
+For a quick and easy setup to print CyclOSM maps, you can use this
+[MapOSMatic](https://maposmatic.osm-baustelle.de/) instance, which supports
+CyclOSM render.
+
 The best approach is probably to use [Nik4](https://github.com/Zverik/Nik4)
 which supports a lot of options to easily handle paper format, resolution etc.
 They have a really nice [documentation](https://github.com/Zverik/Nik4/blob/master/README.md)
@@ -47,8 +51,4 @@ last command,
 * `--vars gpxRoute=/tmp/route.gpx` tells Mapnik to draw the `/tmp/route.gpx`
     GPX track on the map.
 
-You can also use [additional variables](gpx.mss) to customize the render of the track:
-
-* `gpxwidth` to change the width of the rendered GPX track,
-* `gpxcolor` to change the color of the rendered GPX track,
-* `gpxopacity` to change the opacity of the rendered GPX track.
+You can also edit the [gpx.mss](gpx.mss) file to customize the render of the track.

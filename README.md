@@ -57,7 +57,14 @@ available at [https://cyclosm.github.io/cyclosm-cartocss-style/example.html](htt
 
 ## Getting started
 
-Getting started instructions are available in [`INSTALL.md`](INSTALL.md) file.
+Getting started instructions are available in the [`INSTALL.md`](INSTALL.md) file.
+
+
+## Printing
+
+Instructions for printing maps with a CyclOSM render are available in
+the [`PRINT.md`](PRINT.md) file.
+
 
 ## Contributing
 
