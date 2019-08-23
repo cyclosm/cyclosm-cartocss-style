@@ -53,6 +53,7 @@ layers = 0
 
 table = prettytable.PrettyTable()
 table.field_names = ['Time (ms)', '#lines fetched from db', 'Layer', '#fields fetched']
+table_rows = []
 for l in yml['Layer']:
     if (
             ('status' not in l or l['status'])
@@ -84,7 +85,7 @@ for l in yml['Layer']:
                 rows = db.fetchall()
                 duration = int((time.time()-start)*1000)
                 print('Duration: %sms\n' % duration)
-                table.add_row([duration, db.rowcount, l['id'], len(rows[0]) if rows else 0])
+                table_rows.append([duration, db.rowcount, l['id'], len(rows[0]) if rows else 0])
                 temps = temps + time.time()-start
                 if time.time()-start > req_max:
                     req = sql
@@ -93,10 +94,13 @@ for l in yml['Layer']:
             except Exception as e:
                 print(str(e))
                 pg.rollback()
-                table.add_row(['?', '?', l['id'], '?'])
+                table_rows.append(['?', '?', l['id'], '?'])
                 continue
-table.sortby = table.field_names[0]
-table.reversesort = True
+
+table_rows = sorted(table_rows, key=lambda x: x[0] if x[0] != '?' else 0, reverse=True)
+for row in table_rows:
+    table.add_row(row)
+
 print('Summary:\n========')
 print(table)
 print("TOTAL: %s layers in %sms with %s objets" % (layers, int(temps*1000), objets))
