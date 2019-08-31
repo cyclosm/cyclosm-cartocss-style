@@ -146,44 +146,44 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 13
-- id: hillshade5000
-  <<: *extents
-  Datasource:
-    type: gdal
-    file: dem/hillshade-5000.tif
-    format: tiff
-  geometry: raster
-  properties:
-    maxzoom: 4
-- id: hillshade1000
-  <<: *extents
-  Datasource:
-    type: gdal
-    file: dem/hillshade-1000.tif
-    format: tiff
-  geometry: raster
-  properties:
-    minzoom: 5
-    maxzoom: 7
-- id: hillshade500
-  <<: *extents
-  Datasource:
-    type: gdal
-    file: dem/hillshade-500.tif
-    format: tiff
-  geometry: raster
-  properties:
-    minzoom: 8
-    maxzoom: 8
-- id: hillshade90
-  <<: *extents
-  Datasource:
-    type: gdal
-    file: dem/hillshade-90.tif
-    format: tiff
-  geometry: raster
-  properties:
-    minzoom: 9
+#- id: hillshade5000
+#  <<: *extents
+#  Datasource:
+#    type: gdal
+#    file: dem/hillshade-5000.tif
+#    format: tiff
+#  geometry: raster
+#  properties:
+#    maxzoom: 4
+#- id: hillshade1000
+#  <<: *extents
+#  Datasource:
+#    type: gdal
+#    file: dem/hillshade-1000.tif
+#    format: tiff
+#  geometry: raster
+#  properties:
+#    minzoom: 5
+#    maxzoom: 7
+#- id: hillshade500
+#  <<: *extents
+#  Datasource:
+#    type: gdal
+#    file: dem/hillshade-500.tif
+#    format: tiff
+#  geometry: raster
+#  properties:
+#    minzoom: 8
+#    maxzoom: 8
+#- id: hillshade90
+#  <<: *extents
+#  Datasource:
+#    type: gdal
+#    file: dem/hillshade-90.tif
+#    format: tiff
+#  geometry: raster
+#  properties:
+#    minzoom: 9
 - id: buildings
   <<: *extents
   Datasource:
@@ -198,70 +198,70 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 16
-- id: contours100
-  class: contours
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    dbname: "contours"
-    table: |-
-      (
-        SELECT
-          way, ele
-        FROM planet_osm_line
-        WHERE ele IS NOT NULL AND ele % 100 = 0
-      ) AS data
-  geometry: line
-  properties:
-    minzoom: 11
-- id: contours50
-  class: contours
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    dbname: "contours"
-    table: |-
-      (
-        SELECT
-          way, ele
-        FROM planet_osm_line
-        WHERE ele IS NOT NULL AND ele % 100 != 0 AND ele % 50 = 0
-      ) AS data
-  geometry: line
-  properties:
-    minzoom: 11
-- id: contours20
-  class: contours
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    dbname: "contours"
-    table: |-
-      (
-        SELECT
-          way, ele
-        FROM planet_osm_line
-        WHERE ele IS NOT NULL AND ele % 100 != 0 AND ele % 20 = 0
-      ) AS data
-  geometry: line
-  properties:
-    minzoom: 12
-- id: contours10
-  class: contours
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    dbname: "contours"
-    table: |-
-      (
-        SELECT
-          way, ele
-        FROM planet_osm_line
-        WHERE ele IS NOT NULL AND ele % 50 != 0 AND ele % 10 = 0
-      ) AS data
-  geometry: line
-  properties:
-    minzoom: 13
+#- id: contours100
+#  class: contours
+#  <<: *extents
+#  Datasource:
+#    <<: *osm2pgsql
+#    dbname: "contours"
+#    table: |-
+#      (
+#        SELECT
+#          way, ele
+#        FROM planet_osm_line
+#        WHERE ele IS NOT NULL AND ele % 100 = 0
+#      ) AS data
+#  geometry: line
+#  properties:
+#    minzoom: 11
+#- id: contours50
+#  class: contours
+#  <<: *extents
+#  Datasource:
+#    <<: *osm2pgsql
+#    dbname: "contours"
+#    table: |-
+#      (
+#        SELECT
+#          way, ele
+#        FROM planet_osm_line
+#        WHERE ele IS NOT NULL AND ele % 100 != 0 AND ele % 50 = 0
+#      ) AS data
+#  geometry: line
+#  properties:
+#    minzoom: 11
+#- id: contours20
+#  class: contours
+#  <<: *extents
+#  Datasource:
+#    <<: *osm2pgsql
+#    dbname: "contours"
+#    table: |-
+#      (
+#        SELECT
+#          way, ele
+#        FROM planet_osm_line
+#        WHERE ele IS NOT NULL AND ele % 100 != 0 AND ele % 20 = 0
+#      ) AS data
+#  geometry: line
+#  properties:
+#    minzoom: 12
+#- id: contours10
+#  class: contours
+#  <<: *extents
+#  Datasource:
+#    <<: *osm2pgsql
+#    dbname: "contours"
+#    table: |-
+#      (
+#        SELECT
+#          way, ele
+#        FROM planet_osm_line
+#        WHERE ele IS NOT NULL AND ele % 50 != 0 AND ele % 10 = 0
+#      ) AS data
+#  geometry: line
+#  properties:
+#    minzoom: 13
 - id: waterway_low
   <<: *extents
   Datasource:
@@ -765,27 +765,66 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 11
-- id: bicycle_routes
+- id: bicycle_routes_icn
   <<: *extents
   Datasource:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, route, tags->'network' AS type, tags->'state' AS state,
-        CASE
-          WHEN tags->'network'='lcn' THEN z_order+1
-          WHEN tags->'network'='rcn' THEN z_order+2
-          WHEN tags->'network'='ncn' THEN z_order+3
-          WHEN tags->'network'='icn' THEN z_order+4
-        ELSE z_order END AS z_order
+        SELECT way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
-          AND tags->'network' IN ('lcn', 'rcn', 'ncn', 'icn')
+          AND tags->'network'='icn'
         ORDER BY z_order
       ) AS data
   geometry: linestring
   properties:
     minzoom: 2
+- id: bicycle_routes_ncn
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT way, route, tags->'network' AS type, tags->'state' AS state
+        FROM planet_osm_line
+        WHERE (route='bicycle' OR route='mtb')
+          AND tags->'network'='ncn'
+        ORDER BY z_order
+      ) AS data
+  geometry: linestring
+  properties:
+    minzoom: 5
+- id: bicycle_routes_rcn
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT way, route, tags->'network' AS type, tags->'state' AS state
+        FROM planet_osm_line
+        WHERE (route='bicycle' OR route='mtb')
+          AND tags->'network'='rcn'
+        ORDER BY z_order
+      ) AS data
+  geometry: linestring
+  properties:
+    minzoom: 7
+- id: bicycle_routes_lcn
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT way, route, tags->'network' AS type, tags->'state' AS state
+        FROM planet_osm_line
+        WHERE (route='bicycle' OR route='mtb')
+          AND tags->'network'='lcn'
+        ORDER BY z_order
+      ) AS data
+  geometry: linestring
+  properties:
+    minzoom: 9
 - id: route
   <<: *extents84
   Datasource:
