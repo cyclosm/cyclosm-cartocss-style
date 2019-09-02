@@ -81,7 +81,7 @@
   raster-comp-op: multiply;
 }
 
-#landuse_overlays[type='nature_reserve'][zoom>=7] {
+#protected-areas[zoom >=7 ] {
   line-color: darken(@wooded,25%);
   line-opacity:  0.3;
   line-dasharray: 1,1;
@@ -95,14 +95,9 @@
   [zoom>=12] { line-width: 2.0; }
 }
 
-#landuse_overlays[type='wetland'][zoom>11] {
-  [zoom>11][zoom<=14] { polygon-pattern-file:url(symbols/landuse/marsh-16.png); }
-  [zoom>14] { polygon-pattern-file:url(symbols/landuse/marsh-32.png);}
-}
-
-#landuse_overlays[type = 'military'][zoom >= 8][way_pixels > 900],
-#landuse_overlays[type = 'military'][zoom >= 13],
-#landuse_overlays[type = 'danger_area'][zoom >= 9] {
+#landuse-overlay[type = 'military'][zoom >= 8][way_pixels > 900],
+#landuse-overlay[type = 'military'][zoom >= 13],
+#landuse-overlay[type = 'danger_area'][zoom >= 9] {
   polygon-pattern-file: url('symbols/openstreetmap-carto/military_red_hatch.png');
   polygon-pattern-alignment: global;
   line-color: @military;
