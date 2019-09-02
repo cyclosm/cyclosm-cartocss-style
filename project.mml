@@ -85,11 +85,12 @@ Layer:
             man_made
           ) AS type
         FROM planet_osm_polygon
-        WHERE way_area > 100000
+        WHERE way_area > 0.01*!pixel_width!::real*!pixel_height!::real
         ORDER BY way_area DESC
       ) AS data
-  geometry: multipolygon
+  geometry: polygon
   properties:
+    cache-features: true
     minzoom: 4
     maxzoom: 9
 - id: landuse_gen1
@@ -110,11 +111,12 @@ Layer:
             man_made
           ) AS type
         FROM planet_osm_polygon
-        WHERE way_area > 10000
+        WHERE way_area > 1*!pixel_width!::real*!pixel_height!::real
         ORDER BY way_area DESC
       ) AS data
-  geometry: multipolygon
+  geometry: polygon
   properties:
+    cache-features: true
     minzoom: 10
     maxzoom: 12
 - id: landuse
@@ -320,7 +322,7 @@ Layer:
         WHERE ("natural" IN ('water', 'pond')
           OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
           OR landuse in ('basin', 'reservoir'))
-          AND way_area > 10000
+          AND way_area > 0.01*!pixel_width!::real*!pixel_height!::real
       ) AS data
   geometry: polygon
   properties:
@@ -343,7 +345,7 @@ Layer:
         WHERE ("natural" IN ('water', 'pond')
           OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
           OR landuse in ('basin', 'reservoir'))
-          AND way_area > 1000
+          AND way_area > 1*!pixel_width!::real*!pixel_height!::real
       ) AS data
   geometry: polygon
   properties:
