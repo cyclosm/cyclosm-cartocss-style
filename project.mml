@@ -621,6 +621,7 @@ Layer:
       ) AS data
   geometry: linestring
   properties:
+    cache-features: true
     minzoom: 11
 - id: roads_med
   <<: *extents
@@ -915,6 +916,7 @@ Layer:
         WHERE "natural" = 'tree_row'
       ) AS data
   properties:
+    cache-features: true
     minzoom: 16
 - id: country-names
   class: country
@@ -1021,6 +1023,7 @@ Layer:
         ORDER BY score DESC, length(name) DESC, name
       ) AS data
   properties:
+    cache-features: true
     minzoom: 4
     maxzoom: 15
 - id: placenames-small
@@ -1055,6 +1058,7 @@ Layer:
           END ASC, length(name) DESC, name
       ) AS data
   properties:
+    cache-features: true
     minzoom: 12
 - id: area_label
   <<: *extents
@@ -1109,6 +1113,7 @@ Layer:
       ) AS data
   geometry: linestring
   properties:
+    cache-features: true
     minzoom: 13
 - id: ferry-routes
   geometry: linestring
@@ -1484,6 +1489,7 @@ Layer:
       ) AS data
   geometry: point
   properties:
+    cache-features: true
     minzoom: 10
 - id: barriers
   <<: *extents
@@ -1993,6 +1999,7 @@ Layer:
           l.osm_id DESC -- Force an ordering for streets of the same name, e.g. dualized roads
       ) AS data
   properties:
+    cache-features: true
     minzoom: 13
 - id: paths-text-name
   geometry: linestring
@@ -2047,6 +2054,7 @@ Layer:
         ORDER BY way_pixels DESC NULLS LAST
       ) AS addresses
   properties:
+    cache-features: true
     minzoom: 18
 - id: landuse-overlay
   <<: *extents
