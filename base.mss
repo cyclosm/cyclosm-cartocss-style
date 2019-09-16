@@ -18,30 +18,30 @@
 
 #landuse_gen0[zoom>3][zoom<=9],
 #landuse_gen1[zoom>9][zoom<=12],
-#landuse[zoom>12] {
-  [type='cemetery']      { polygon-fill: @cemetery; }
-  [type='college']       { polygon-fill: @school; }
-  [type='commercial']    { polygon-fill: @industrial; }
-  [type='common']        { polygon-fill: @park; }
-  [type='forest']        { polygon-fill: @wooded; }
-  [type='golf_course']   { polygon-fill: @grass; }
+#landuse[zoom>=13] {
+  [type='landuse_cemetery']      { polygon-fill: @cemetery; }
+  [type='amenity_college']       { polygon-fill: @school; }
+  [type='landuse_commercial']    { polygon-fill: @industrial; }
+  [type='leisure_common']        { polygon-fill: @park; }
+  [type='landuse_forest']        { polygon-fill: @wooded; }
+  [type='leisure_golf_course']   { polygon-fill: @grass; }
 
-  [type='garden'],
-  [type='grass'],
-  [type='grassland'] {
+  [type='leisure_garden'],
+  [type='landuse_grass'],
+  [type='natural_grassland'] {
     polygon-fill: @grass;
   }
 
-  [type='heath']         { polygon-fill: @heath; }
-  [type='hospital']      { polygon-fill: @hospital; }
-  [type='industrial']    { polygon-fill: @industrial; }
-  [type='meadow']        { polygon-fill: @meadow; }
-  [type='farmland']      { polygon-fill: @farmland; }
-  [type='park']          { polygon-fill: @park; }
-  [type='parking']       { polygon-fill: @parking; }
-  [type='pedestrian']    { polygon-fill: @pedestrian_area_fill; }
-  [type='religious']     { polygon-fill: @religious; }
-  [type='pitch']         {
+  [type='natural_heath']         { polygon-fill: @heath; }
+  [type='amenity_hospital']      { polygon-fill: @hospital; }
+  [type='landuse_industrial']    { polygon-fill: @industrial; }
+  [type='landuse_meadow']        { polygon-fill: @meadow; }
+  [type='landuse_farmland']      { polygon-fill: @farmland; }
+  [type='leisure_park']          { polygon-fill: @park; }
+  [type='amenity_parking']       { polygon-fill: @parking; }
+  [type='highway_pedestrian']    { polygon-fill: @pedestrian_area_fill; }
+  [type='landuse_religious']     { polygon-fill: @religious; }
+  [type='leisure_pitch']         {
     polygon-fill: @sports;
     [zoom >= 13] {
       polygon-fill: @pitch;
@@ -50,22 +50,22 @@
     }
 
   }
-  [type='residential']   { polygon-fill: @residential; }
-  [type='school']        { polygon-fill: @school; }
-  [type='sports_center'] {
+  [type='landuse_residential']   { polygon-fill: @residential; }
+  [type='amenity_school']        { polygon-fill: @school; }
+  [type='leisure_sports_center'] {
     polygon-fill: @sports;
     [zoom >= 14] {
       polygon-fill: @stadium;
     }
   }
-  [type='stadium']       { polygon-fill: @stadium; }
-  [type='track'][zoom >= 13] {
+  [type='leisure_stadium']       { polygon-fill: @stadium; }
+  [type='leisure_track'][zoom >= 13] {
     polygon-fill: @track;
     line-width: 0.5;
     line-color: @track * 0.95;
   }
-  [type='university']    { polygon-fill: @school; }
-  [type='wood']          { polygon-fill: @wooded; }
+  [type='amenity_university']    { polygon-fill: @school; }
+  [type='natural_wood']          { polygon-fill: @wooded; }
 }
 
 #hillshade5000, #hillshade1000, #hillshade500 {
