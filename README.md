@@ -52,8 +52,10 @@ format](https://wiki.openstreetmap.org/wiki/Taginfo/Projects) in [`taginfo.json`
 
 ## Demonstration
 
-A demonstration of this style for some French areas (Paris, Clermont-Ferrand and Lille, up to zoom level 18) is
-available at [https://cyclosm.github.io/cyclosm-cartocss-style/example.html](https://cyclosm.github.io/cyclosm-cartocss-style/example.html).
+A demonstration of this style is available at
+[https://cyclosm.github.io/cyclosm-cartocss-style/example.html](https://cyclosm.github.io/cyclosm-cartocss-style/example.html).
+The tile server is provided by
+[OpenStreetMap-France](https://www.openstreetmap.fr), many thanks to them!
 
 ## Getting started
 

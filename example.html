@@ -59,7 +59,7 @@
             var map = new L.Map('map', {zoomControl: true}).setView([48.8588, 2.3470], 12);;
 var hash = new L.Hash(map);
 
-var cyclosm = L.tileLayer('https://tiles.phyks.me/cyclosm/tiles/{z}/{x}/{y}.png', {
+var cyclosm = L.tileLayer('https://dev.{s}.tile.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
                 attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
                 minZoom: 0,
                 maxZoom: 18,
@@ -116,7 +116,7 @@ var cyclosm = L.tileLayer('https://tiles.phyks.me/cyclosm/tiles/{z}/{x}/{y}.png'
                     closeMethods: ['overlay', 'button', 'escape'],
                     closeLabel: "Close",
                 });
-                modal.setContent('<h1>CyclOSM</h1><p>This is a demo of the <a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> render for <a href="https://www.openstreetmap.org/">OpenStreetMap</a> data. A full legend is available <a href="https://cyclosm.github.io/cyclosm-cartocss-style/legend.html" target="_blank">here</a>.</p><p>This demo has tiles for <a href="#12/48.8588/2.3470">Paris</a>, <a href="#12/45.7237/3.2266">Clermont-Ferrand</a> and <a href="#12/50.6183/3.0452">Lille</a> areas. Zooms levels from 0 to 18 are available for these areas.</p><p><em>Note:</em> The OSM data used in this demo might not be the latest OSM data available due to limited computation power.</p>');
+                modal.setContent('<h1>CyclOSM</h1><p>This is a demo of the <a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> render for <a href="https://www.openstreetmap.org/">OpenStreetMap</a> data. A full legend is available <a href="https://cyclosm.github.io/cyclosm-cartocss-style/legend.html" target="_blank">here</a>. The tile server is provided by <a href="https://www.openstreetmap.fr">OpenStreetMap-France</a>, many thanks to them!</p>');
                 modal.open();
             }).addTo(map);
         </script>
