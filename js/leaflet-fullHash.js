@@ -1,3 +1,5 @@
+// Modified from the latest leaflet-fullHash code
+
 (function(window) {
 	var HAS_HASHCHANGE = (function() {
 		var doc_mode = window.documentMode;
@@ -22,14 +24,15 @@
 		}
 		var args = hash.split("/");
         if (args.length >= 3) {
-			var zoom = parseInt(args[0], 10),
-			lat = parseFloat(args[1]),
-			lon = parseFloat(args[2]),
+			var zoom = parseInt(args[0], 10);
+			var lat = parseFloat(args[1]);
+			var lon = parseFloat(args[2]);
+
+            var layers = null;
             if (args.length >= 4) {
                 layers = (args[3]).split("-");
-            } else {
-                layers = null;
             }
+
 			if (isNaN(zoom) || isNaN(lat) || isNaN(lon)) {
 				return false;
 			} else {
