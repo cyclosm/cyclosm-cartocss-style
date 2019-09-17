@@ -288,8 +288,37 @@ You can also generate a Mapnik XML configuration file using Kosmtik and the
 kosmtik export path/to/cyclosm-cartocss-style/project.mml --output path/to/cyclosm-cartocss-style/mapnik.xml
 ```
 
-which you can then use in [Tirex](https://github.com/openstreetmap/tirex) or
-any other tile queue manager.
+which you can then use in [Tirex](https://github.com/openstreetmap/tirex),
+[mod_tile](https://wiki.openstreetmap.org/wiki/Mod_tile) or any other tile
+queue manager.
+
+
+## Useful tweaks for production setup
+
+Here are a few useful tweaks for running CyclOSM in a production setup, such
+as on [https://cyclosm.org/](https://cyclosm.org/).
+
+### Database indexes
+
+A few databases indexes can help speed up the queries to the PostgreSQL
+database. On [https://cyclosm.org/](https://cyclosm.org/), we are currently
+using:
+
+* all the indexes defined in the [`osmfr-cartocss`
+    style](https://github.com/cquest/osmfr-cartocss/blob/master/additions.sql).
+
+* an additional index for the bicycle routes:
+
+```
+create index planet_osm_bicycle_routes on planet_osm_line using gist(way) where route='bicycle' OR route='mtb';
+```
+
+* an additional index for the ferry lines:
+
+```
+create index planet_osm_line_ferry on planet_osm_line using gist (way) where route = 'ferry';
+```
+
 
 ## Notes
 
