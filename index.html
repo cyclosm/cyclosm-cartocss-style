@@ -27,6 +27,12 @@
                 margin: 0;
                 width: 100%;
                 height: 100%;
+                text-align: justify;
+                font-size: 14px;
+            }
+
+            p {
+                text-indent: 2em;
             }
 
             div#map {
@@ -39,6 +45,14 @@
 
             .tingle-modal {
                 z-index: 2000;
+            }
+
+            .center {
+                text-align: center;
+            }
+
+            .footnote {
+                font-size: 0.9em;
             }
         </style>
     </head>
@@ -53,14 +67,41 @@
         <script src="js/leaflet.restoreview.js"></script>
         <script src="js/tingle.min.js"></script>
         <script type="text/javascript">
+            function storageAvailable(type) {
+                try {
+                    var storage = window[type],
+                        x = '__storage_test__';
+                    storage.setItem(x, x);
+                    storage.removeItem(x);
+                    return true;
+                }
+                catch(e) {
+                    console.warn("Your browser blocks access to " + type);
+                    return false;
+                }
+            }
+
+            function shouldShowModalOnStartup () {
+                if (!storageAvailable('localStorage')) {
+                    return false;
+                }
+                return !window.localStorage['wasModalShown'];
+            }
+
             document.addEventListener('DOMContentLoaded', function () {
                 var modal = new tingle.modal({
                     footer: false,
                     closeMethods: ['overlay', 'button', 'escape'],
                     closeLabel: "Close",
                 });
-                modal.setContent('<h1>CyclOSM</h1><p>This is a demo of the <a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> map style for <a href="https://www.openstreetmap.org/">OpenStreetMap</a> data. A full legend is available <a href="legend.html" target="_blank">here</a>. The tile server is provided by <a href="https://www.openstreetmap.fr">OpenStreetMap-France</a>, many thanks to them for their support!</p>'); // TODO: Edit text
-                modal.open();
+                modal.setContent('<h1 class="center">CyclOSM: OpenStreetMap-based bicycle map</h1><p><a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> is a bicycle-oriented map built on top of <a href="https://www.openstreetmap.org/">OpenStreetMap</a> data. It aims at providing a beautiful and practical map for cyclists, no matter their cycling habits or abilities.</p><p>In urban areas, it renders the main different types of cycle tracks and lanes, on each side of the road, for helping you draw your bike to work route. It also features essential POIs as well as bicycle parking spots or spots shared with motorbikes, specific infrastructure (elevators / ramps), road speeds or surfaces to avoid streets with pavings, bumpers and bike boxes, etc.</p><p>The same map also lets you visualize main bicycle touring routes as well as essential POIs when touring (emergency services, shelters, tourism, shops).</p><p>A detailed legend is available <a href="legend.html" target="_blank">here</a>.</p><h2 class="center">Let\'s start exploring the map!</h2><p class="footnote">CyclOSM is built on open-source and free software. The source code is available at <a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> and we welcome <a href="https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/CONTRIBUTING.md">contributions</a>!. The tile server hosting this demonstration is provided by <a href="https://www.openstreetmap.fr">OpenStreetMap-France</a>, many thanks to them for their support!</p><p class="footnote">Note that this information screen will only be shown once. In the future, you can show it again at anytime by clicking the information icon on the map.</p>');
+                if (shouldShowModalOnStartup()) {
+                    modal.open();
+
+                    if (storageAvailable('localStorage')) {
+                        window.localStorage['wasModalShown'] = true;
+                    }
+                }
 
                 // Available tiles definition
                 var cyclosm = L.tileLayer('https://dev.{s}.tile.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
