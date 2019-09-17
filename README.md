@@ -62,13 +62,13 @@ format](https://wiki.openstreetmap.org/wiki/Taginfo/Projects) in [`taginfo.json`
 
 ## Getting started
 
-Getting started instructions are available in the [`doc/INSTALL.md`](doc/INSTALL.md) file.
+Getting started instructions are available in the [`docs/INSTALL.md`](docs/INSTALL.md) file.
 
 
 ## Printing
 
 Instructions for printing maps with a CyclOSM render are available in
-the [`doc/PRINT.md`](doc/PRINT.md) file.
+the [`docs/PRINT.md`](docs/PRINT.md) file.
 
 
 ## Contributing
