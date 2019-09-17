@@ -28,6 +28,13 @@ You can also contact any [team member](https://github.com/orgs/cyclosm/people)
 through emails.
 
 
+## Demo website contribution
+
+The source code for the demo website living at
+[https://cyclosm.org/](https://cyclosm.org/) is available in the `gh-pages`
+branch.
+
+
 ## Issues
 
 [Issues](https://github.com/cyclosm/cyclosm-cartocss-style/issues) centralize
