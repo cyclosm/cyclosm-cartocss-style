@@ -3,13 +3,13 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
-        <meta name=description content="CyclOSM is a cycle-oriented CartoCSS style for rendering maps based on OpenStreetMap data.">
+        <meta name=description content="CyclOSM: a bicycle-oriented map for every cyclist, based on OpenStreetMap data.">
         <meta name=twitter:card content="summary">
         <meta property=og:type content="website">
-        <meta property=og:title content="CyclOSM: OpenStreetMap bicycle map style">
-        <meta property=og:description content="CyclOSM is a cycle-oriented CartoCSS style for rendering maps based on OpenStreetMap data.">
-        <meta property=og:url content="https://github.com/cyclosm/cyclosm-cartocss-style/">
-        <title>CyclOSM: OpenStreetMap bicycle map style</title>
+        <meta property=og:title content="CyclOSM: OpenStreetMap-based bicycle map">
+        <meta property=og:description content="CyclOSM: a bicycle-oriented map for every cyclist, based on OpenStreetMap data.">
+        <meta property=og:url content="https://cyclosm.org/">
+        <title>CyclOSM: OpenStreetMap-based bicycle map</title>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
             integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
             crossorigin="">
@@ -108,7 +108,7 @@ var cyclosm = L.tileLayer('https://dev.{s}.tile.openstreetmap.fr/cyclosm/{z}/{x}
             L.control.locate().addTo(map);
 
             L.easyButton('fa-question', function(btn, map) {
-                window.open('https://cyclosm.github.io/cyclosm-cartocss-style/legend.html', '_blank');
+                window.open('/legend.html', '_blank');
             }).addTo(map);
             L.easyButton('fa-info', function(btn, map) {
                 var modal = new tingle.modal({
