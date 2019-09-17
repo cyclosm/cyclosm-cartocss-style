@@ -49,7 +49,8 @@
         <script src="js/leaflet-fullHash.js"></script>
         <script src="js/Control.Geocoder.js"></script>
         <script src="js/easy-button.js"></script>
-        <script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/L.Control.Locate.js"></script>
+        <script src="js/leaflet.restoreview.js"></script>
         <script src="js/tingle.min.js"></script>
         <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function () {
@@ -89,7 +90,11 @@
                 });
                 var map = new L.Map('map', {
                     zoomControl: true, layers: [cyclosm]
-                }).setView([48.8588, 2.3470], 12);
+                });
+                if (!map.restoreView()) {
+                    // Default view on Amsterdam
+                    map.setView([52.3914, 4.9566], 12);
+                }
 
                 // Set up layers control
                 var baseMaps = {

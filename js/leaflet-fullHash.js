@@ -16,13 +16,20 @@
 	L.Hash.parseHash = function(hash) {
 		if(hash.indexOf('#map=') === 0) {
 			hash = hash.substr(5);
+		} else if(hash.indexOf('#') === 0) {
+            // Retro-compatibility
+			hash = hash.substr(1);
 		}
 		var args = hash.split("/");
-		if (args.length == 4) {
+        if (args.length >= 3) {
 			var zoom = parseInt(args[0], 10),
 			lat = parseFloat(args[1]),
 			lon = parseFloat(args[2]),
-			layers = (args[3]).split("-");
+            if (args.length >= 4) {
+                layers = (args[3]).split("-");
+            } else {
+                layers = null;
+            }
 			if (isNaN(zoom) || isNaN(lat) || isNaN(lon)) {
 				return false;
 			} else {
@@ -122,15 +129,17 @@
 				var layers = parsed.layers,
 					options = this.options,
 					that = this;
-				//Add/remove layers
-				this.map.eachLayer(function(layer) {
-					that.map.removeLayer(layer);
-				});
+                if (parsed.layers) {
+                    //Add/remove layers
+                    this.map.eachLayer(function(layer) {
+                        that.map.removeLayer(layer);
+                    });
 
-				layers.forEach(function(element, index, array) {
-					//console.log(options[element]);
-					that.map.addLayer(options[element]);
-				});
+                    layers.forEach(function(element, index, array) {
+                        //console.log(options[element]);
+                        that.map.addLayer(options[element]);
+                    });
+                }
 
 				this.movingMap = false;
 			} else {
