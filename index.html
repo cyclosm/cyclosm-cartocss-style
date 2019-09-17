@@ -10,14 +10,12 @@
         <meta property=og:description content="CyclOSM: a bicycle-oriented map for every cyclist, based on OpenStreetMap data.">
         <meta property=og:url content="https://cyclosm.org/">
         <title>CyclOSM: OpenStreetMap-based bicycle map</title>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-            integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-            crossorigin="">
-        <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://rawgit.com/robinparisi/tingle/master/dist/tingle.min.css">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/Control.Geocoder.css">
+        <link rel="stylesheet" href="css/easy-button.css">
+        <link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/fa-all.min.css">
+        <link rel="stylesheet" href="css/tingle.min.css">
         <style type="text/css">
             html {
                 min-height: 100%;
@@ -47,78 +45,95 @@
     <body>
         <div id="map"></div>
 
-        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-            integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-            crossorigin=""></script>
-        <script src="https://cdn.jsdelivr.net/gh/mlevans/leaflet-hash@master/leaflet-hash.js"></script>
-        <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2/src/easy-button.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
-        <script src="https://rawgit.com/robinparisi/tingle/master/dist/tingle.min.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet-fullHash.js"></script>
+        <script src="js/Control.Geocoder.js"></script>
+        <script src="js/easy-button.js"></script>
+        <script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/tingle.min.js"></script>
         <script type="text/javascript">
-            var map = new L.Map('map', {zoomControl: true}).setView([48.8588, 2.3470], 12);;
-var hash = new L.Hash(map);
-
-var cyclosm = L.tileLayer('https://dev.{s}.tile.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-                minZoom: 0,
-                maxZoom: 18,
-            });
-            cyclosm.addTo(map);
-            var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-                minZoom: 0,
-                maxZoom: 18,
-            });
-            var ocm = L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-                minZoom: 0,
-                maxZoom: 18,
-            });
-            var otm = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-                minZoom: 0,
-                maxZoom: 18,
-            });
-            var waymarked_trails = L.tileLayer('https://tile.waymarkedtrails.org/cycling/{z}/{x}/{y}.png', {
-                attribution: '<a href="Trails">https://cycling.waymarkedtrails.org/</a>',
-                minZoom: 0,
-                maxZoom: 18,
-            });
-            var baseMaps = {
-                "CyclOSM": cyclosm,
-                "OpenStreetMap.org": osm,
-                "OpenCycleMap": ocm,
-                "OpenTopoMap": otm,
-            };
-            var overlayMaps = {
-                "Waymarked Trails": waymarked_trails,
-            };
-            L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
-
-            var geocoder = L.Control.geocoder({
-                defaultMarkGeocode: false,
-                position: 'topleft'
-            });
-            geocoder.on('markgeocode', function(e) {
-                map.fitBounds(e.geocode.bbox);
-            })
-            geocoder.addTo(map);
-
-            L.control.locate().addTo(map);
-
-            L.easyButton('fa-question', function(btn, map) {
-                window.open('/legend.html', '_blank');
-            }).addTo(map);
-            L.easyButton('fa-info', function(btn, map) {
+            document.addEventListener('DOMContentLoaded', function () {
                 var modal = new tingle.modal({
                     footer: false,
                     closeMethods: ['overlay', 'button', 'escape'],
                     closeLabel: "Close",
                 });
-                modal.setContent('<h1>CyclOSM</h1><p>This is a demo of the <a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> render for <a href="https://www.openstreetmap.org/">OpenStreetMap</a> data. A full legend is available <a href="https://cyclosm.github.io/cyclosm-cartocss-style/legend.html" target="_blank">here</a>. The tile server is provided by <a href="https://www.openstreetmap.fr">OpenStreetMap-France</a>, many thanks to them!</p>');
+                modal.setContent('<h1>CyclOSM</h1><p>This is a demo of the <a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> map style for <a href="https://www.openstreetmap.org/">OpenStreetMap</a> data. A full legend is available <a href="legend.html" target="_blank">here</a>. The tile server is provided by <a href="https://www.openstreetmap.fr">OpenStreetMap-France</a>, many thanks to them for their support!</p>'); // TODO: Edit text
                 modal.open();
-            }).addTo(map);
+
+                // Available tiles definition
+                var cyclosm = L.tileLayer('https://dev.{s}.tile.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png', {
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                    minZoom: 0,
+                    maxZoom: 18,
+                });
+                var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                    minZoom: 0,
+                    maxZoom: 18,
+                });
+                var ocm = L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png', {
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                    minZoom: 0,
+                    maxZoom: 18,
+                });
+                var otm = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+                    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+                    minZoom: 0,
+                    maxZoom: 18,
+                });
+                var waymarked_trails = L.tileLayer('https://tile.waymarkedtrails.org/cycling/{z}/{x}/{y}.png', {
+                    attribution: '<a href="Trails">https://cycling.waymarkedtrails.org/</a>',
+                    minZoom: 0,
+                    maxZoom: 18,
+                });
+                var map = new L.Map('map', {
+                    zoomControl: true, layers: [cyclosm]
+                }).setView([48.8588, 2.3470], 12);
+
+                // Set up layers control
+                var baseMaps = {
+                    "CyclOSM": cyclosm,
+                    "OpenStreetMap.org": osm,
+                    "OpenCycleMap": ocm,
+                    "OpenTopoMap": otm,
+                };
+                var overlayMaps = {
+                    "Waymarked Trails": waymarked_trails,
+                };
+                L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+
+                // Set up hash plugin
+                var allMapLayers = {
+                    'cyclosm': cyclosm,
+                    'openstreetmap': osm,
+                    'opencyclemap': ocm,
+                    'opentopomap': otm,
+                    'waymarkedtrails': waymarked_trails,
+                };
+                L.hash(map, allMapLayers);
+
+                // Set up geocoder plugin
+                var geocoder = L.Control.geocoder({
+                    defaultMarkGeocode: false,
+                    position: 'topleft'
+                });
+                geocoder.on('markgeocode', function(e) {
+                    map.fitBounds(e.geocode.bbox);
+                })
+                geocoder.addTo(map);
+
+                // Set up geolocation plugin
+                L.control.locate().addTo(map);
+
+                // Set up help / legend buttons
+                L.easyButton('fa-question', function(btn, map) {
+                    window.open('legend.html', '_blank');
+                }).addTo(map);
+                L.easyButton('fa-info', function(btn, map) {
+                    modal.open();
+                }).addTo(map);
+            });
         </script>
     </body>
 </html>
