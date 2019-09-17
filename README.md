@@ -1,20 +1,29 @@
 CyclOSM
 =======
 
-This is a [CartoCSS](https://carto.com/developers/styling/cartocss/) style
-designed with cycling in mind.
-
+CyclOSM is a [CartoCSS](https://carto.com/developers/styling/cartocss/) map style
+designed with cycling in mind. It leverages
+[OpenStreetMap](https://www.openstreetmap.org/) data to create a beautiful and
+practical cycling map!
 
 [![Build Status](https://api.travis-ci.org/cyclosm/cyclosm-cartocss-style.svg?branch=master)](https://travis-ci.org/cyclosm/cyclosm-cartocss-style)
 
-**Note:** This is currently a Work In Progress.
+
+## Demonstration
+
+A demonstration of this style is available at [https://cyclosm.org](https://cyclosm.org).
+
+The tile server is provided by
+[OpenStreetMap-France](https://www.openstreetmap.fr), many thanks to them for
+the support!
 
 
 ## Philosophy
 
 CyclOSM is a new cycle-oriented render. Contrary to
-[OpenCycleMap](http://opencyclemap.org/), this render is free and aims at
-being more complete to take into account a wider diversity of cycle habits.
+[OpenCycleMap](http://opencyclemap.org/), this render is free and open-source
+software and aims at being more complete to take into account a wider
+diversity of cycling habits.
 
 In urban areas, it renders the main different types of cycle tracks and lanes,
 on each side of the road, for helping you draw your bike to work route. It also
@@ -45,17 +54,11 @@ Render:
 * …
 
 A full list of rendered features is available in [the
-legend](https://cyclosm.github.io/cyclosm-cartocss-style/legend.html).
+legend](https://www.cyclosm.org/legend.html).
 
 A list of the tags considered by this render is available in [Taginfo JSON
 format](https://wiki.openstreetmap.org/wiki/Taginfo/Projects) in [`taginfo.json`](taginfo.json).
 
-## Demonstration
-
-A demonstration of this style is available at
-[https://cyclosm.github.io/cyclosm-cartocss-style/example.html](https://cyclosm.github.io/cyclosm-cartocss-style/example.html).
-The tile server is provided by
-[OpenStreetMap-France](https://www.openstreetmap.fr), many thanks to them!
 
 ## Getting started
 
@@ -74,11 +77,20 @@ Some getting started information for contributing is available in
 [`CONTRIBUTING.md`](CONTRIBUTING.md) file.
 
 
+## Changelog
+
+Changes to this theme are listed in the [`CHANGELOG.md`](CHANGELOG.md) file.
+Versions are tagged with Git tags and are available through Github releases
+feature.
+
+
 ## Licenses
 
 This style is based on the [Mapbox
 OSM-Bright](https://github.com/mapbox/osm-bright/commit/f1c8780cd7fe9d707fca693a82fdca38b7a98936)
-style, which is licensed under BSD-3-Clause license.
+style, which is licensed under BSD-3-Clause license. Everything (be it icons
+or code) not listed explicitly below should be consider as available under
+this license.
 
 The contours and elevation lines render is based on the very good work and
 code available from [OpenTopoMap](https://github.com/der-stefan/OpenTopoMap).

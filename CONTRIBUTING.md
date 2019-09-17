@@ -74,6 +74,8 @@ to reflect your latest changes when submitting a pull request.
 Please also run `scripts/generate_taginfo.py` and commit the resulting
 `taginfo.json` file before submitting a pull request.
 
+Finally, please list your main modifications in the `CHANGELOG.md` file.
+
 ### Useful scripts
 
 When submitting a pull request, please check that the size of the generated
