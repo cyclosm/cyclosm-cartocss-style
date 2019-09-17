@@ -5,7 +5,7 @@ Contributing
 
 If you are able to help on specific points of the design and may not be
 familiar with CartoCSS or may not be able to reproduce the [development
-toolchain](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/INSTALL.md),
+toolchain](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/docs/INSTALL.md),
 you are still very much welcome to contribute and give feedback!
 
 We are currently lacking expertise on (among many subjects) icon designs and
@@ -108,13 +108,13 @@ querying the database.
 The easiest way to get a local render and start developping the style is
 probably using [Kosmtik](https://github.com/kosmtik/kosmtik).
 
-First, you should follow the [INSTALL.md](INSTALL.md) guide to set up a
+First, you should follow the [`docs/INSTALL.md`](docs/INSTALL.md) guide to set up a
 [PostgreSQL database with OSM
-data](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/INSTALL.md#openstreetmap-data),
+data](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/docs/INSTALL.md#openstreetmap-data),
 [install the required
-fonts](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/INSTALL.md#fonts) and
+fonts](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/docs/INSTALL.md#fonts) and
 [build the required
-elevation files](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/INSTALL.md#elevation-data).
+elevation files](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/docs/INSTALL.md#elevation-data).
 
 _Note:_ If you are working with mainland France, you can use prebuilt
 hillshades and extracted elevation lines, ready to be imported in your
@@ -148,7 +148,7 @@ to have a live render at `http://localhost:6789` with auto-reload when you
 edit this style.
 
 _Note_: You can use a
-[`localconfig.json`](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/INSTALL.md#kosmtik)
+[`localconfig.json`](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/docs/INSTALL.md#kosmtik)
 file at the root of this repository to use custom PostgreSQL credentials.
 
 #### Faster rebuild with Magnacarto
