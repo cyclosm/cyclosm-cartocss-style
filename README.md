@@ -59,13 +59,13 @@ The tile server is provided by
 
 ## Getting started
 
-Getting started instructions are available in the [`INSTALL.md`](INSTALL.md) file.
+Getting started instructions are available in the [`doc/INSTALL.md`](doc/INSTALL.md) file.
 
 
 ## Printing
 
 Instructions for printing maps with a CyclOSM render are available in
-the [`PRINT.md`](PRINT.md) file.
+the [`doc/PRINT.md`](doc/PRINT.md) file.
 
 
 ## Contributing
