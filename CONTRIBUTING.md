@@ -75,7 +75,7 @@ When opening a Pull Request, please include one or more screenshots
 illustrating the changes made, for easier and faster review. Please include
 the location where the screenshots were taken for easier reproducibility.
 
-Please consider updating the `legend.html` file in the root of this repository
+Please consider updating the `legend.html` file in the `gh-pages` branch
 to reflect your latest changes when submitting a pull request.
 
 Please also run `scripts/generate_taginfo.py` and commit the resulting
