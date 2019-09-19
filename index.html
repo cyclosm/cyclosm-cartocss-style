@@ -9,7 +9,15 @@
         <meta property=og:title content="CyclOSM">
         <meta property=og:description content="A bicycle-oriented map for every cyclist, based on OpenStreetMap data.">
         <meta property=og:url content="https://cyclosm.org/">
+        <meta property=og:image content="./images/social_media.png">
+
+        <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16.png">
+        <link rel="icon" type="image/png" sizes="228x228" href="./images/favicon-228.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32.png">
+        <link rel="shortcut icon" href="./images/favicon.ico">
+
         <title>CyclOSM: OpenStreetMap-based bicycle map</title>
+
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/Control.Geocoder.css">
         <link rel="stylesheet" href="css/easy-button.css">
@@ -17,10 +25,23 @@
         <link rel="stylesheet" href="css/fa-all.min.css">
         <link rel="stylesheet" href="css/tingle.min.css">
         <style type="text/css">
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+                src: url('/webfonts/roboto-v20-latin-regular.eot'); /* IE9 Compat Modes */
+                src: local('Roboto'), local('Roboto-Regular'),
+                url('/webfonts/roboto-v20-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                url('/webfonts/roboto-v20-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+                url('/webfonts/roboto-v20-latin-regular.woff') format('woff'), /* Modern Browsers */
+                url('/webfonts/roboto-v20-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+                url('/webfonts/roboto-v20-latin-regular.svg#Roboto') format('svg'); /* Legacy iOS */
+            }
+
             html {
                 min-height: 100%;
                 position: relative;
-                font-family: sans-serif;
+                font-family: Roboto, sans-serif;
             }
 
             body {
@@ -45,6 +66,15 @@
 
             .tingle-modal {
                 z-index: 2000;
+                color: #2e4369;
+            }
+
+            .tingle-modal a, .tingle-modal a:visited {
+                color: #2e4369;
+            }
+
+            .tingle-modal__close {
+                background-color: #2e4369;
             }
 
             .center {
@@ -94,7 +124,7 @@
                     closeMethods: ['overlay', 'button', 'escape'],
                     closeLabel: "Close",
                 });
-                modal.setContent('<h1 class="center">CyclOSM: OpenStreetMap-based bicycle map</h1><p><a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> is a bicycle-oriented map built on top of <a href="https://www.openstreetmap.org/">OpenStreetMap</a> data. It aims at providing a beautiful and practical map for cyclists, no matter their cycling habits or abilities.</p><p>In urban areas, it renders the main different types of cycle tracks and lanes, on each side of the road, for helping you draw your bike to work route. It also features essential POIs as well as bicycle parking spots or spots shared with motorbikes, specific infrastructure (elevators / ramps), road speeds or surfaces to avoid streets with pavings, bumpers and bike boxes, etc.</p><p>The same map also lets you visualize main bicycle touring routes as well as essential POIs when touring (emergency services, shelters, tourism, shops).</p><p>A detailed legend is available <a href="legend.html" target="_blank">here</a>.</p><h2 class="center">Let\'s start exploring the map!</h2><p class="footnote">CyclOSM is built on open-source and free software. The source code is available at <a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> and we welcome <a href="https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/CONTRIBUTING.md">contributions</a>!. The tile server hosting this demonstration is provided by <a href="https://www.openstreetmap.fr">OpenStreetMap-France</a>, many thanks to them for their support!</p><p class="footnote">Note that this information screen will only be shown once. In the future, you can show it again at anytime by clicking the information icon on the map.</p>');
+                modal.setContent('<h1 class="center">CyclOSM: OpenStreetMap-based bicycle map</h1><p><a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> is a bicycle-oriented map built on top of <a href="https://www.openstreetmap.org/">OpenStreetMap</a> data. It aims at providing a beautiful and practical map for cyclists, no matter their cycling habits or abilities.</p><p>In urban areas, it renders the main different types of cycle tracks and lanes, on each side of the road, for helping you draw your bike to work route. It also features essential POIs as well as bicycle parking spots or spots shared with motorbikes, specific infrastructure (elevators / ramps), road speeds or surfaces to avoid streets with pavings, bumpers and bike boxes, etc.</p><p>The same map also lets you visualize main bicycle touring routes as well as essential POIs when touring (emergency services, shelters, tourism, shops).</p><p>A detailed legend is available <a href="legend.html" target="_blank">here</a>.</p><p class="center"><img title="CyclOSM" alt="CyclOSM logo" style="height: 150px;" src="images/logo.png"/></p><h2 class="center">Let\'s start exploring the map!</h2><p class="footnote">CyclOSM is built on open-source and free software. The source code is available at <a href="https://github.com/cyclosm/cyclosm-cartocss-style/">CyclOSM</a> and we welcome <a href="https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/CONTRIBUTING.md">contributions</a>!. The tile server hosting this demonstration is provided by <a href="https://www.openstreetmap.fr">OpenStreetMap-France</a>, many thanks to them for their support!</p><p class="footnote">Note that this information screen will only be shown once. In the future, you can show it again at anytime by clicking the information icon on the map.</p>');
                 if (shouldShowModalOnStartup()) {
                     modal.open();
 
