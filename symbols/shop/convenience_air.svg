@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   width="14"
+   height="14"
+   viewBox="0 0 14 14"
+   id="svg2"
+   version="1.1">
+  <metadata
+     id="metadata24">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs22" />
+  <rect
+     style="fill:none;stroke:none;visibility:hidden"
+     id="canvas"
+     y="0"
+     x="0"
+     height="14"
+     width="14" />
+  <g
+     id="hbars"
+     transform="matrix(0.71910101,0,0,0.71910101,0.19970163,1.1948915)">
+    <rect
+       x="1"
+       y="6"
+       width="11"
+       height="0.5"
+       id="rect5" />
+    <rect
+       x="2"
+       y="8"
+       width="9.5"
+       height="0.5"
+       id="rect7" />
+  </g>
+  <g
+     id="vbars"
+     transform="matrix(0.71910101,0,0,0.71910101,0.19970163,1.1948915)">
+    <rect
+       x="3"
+       y="4.5"
+       width="0.5"
+       height="5.5"
+       id="rect10" />
+    <rect
+       x="5"
+       y="4.5"
+       width="0.5"
+       height="5.5"
+       id="rect12" />
+    <rect
+       x="7.5"
+       y="4.5"
+       width="0.5"
+       height="5.5"
+       id="rect14" />
+    <rect
+       x="9.5"
+       y="4.5"
+       width="0.5"
+       height="5.5"
+       id="rect16" />
+  </g>
+  <path
+     style="stroke-width:0.71910101"
+     id="handle"
+     d="M 4.4423975,4.0712955 5.8805996,1.9139925 A 0.36399938,0.36399938 0 0 1 6.5493635,2.2016329 L 5.3053188,4.0712955 Z" />
+  <path
+     id="body"
+     d="M 0.19970163,4.0712955 H 9.5480147 l -1.438202,5.033707 H 1.6379036 Z M 1.0985779,4.7903965 H 8.6491384 L 7.5704869,8.3859015 H 2.1772294 Z"
+     style="fill-rule:evenodd;stroke-width:0.71910101" />
+  <g
+     transform="matrix(0.497416,0,0,0.497416,7.6205923,7.1020759)"
+     id="g4767">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.96117997;stroke-linecap:round;stroke-opacity:1"
+       d="M 2.6341,12.848 H 6.6732"
+       id="path4741" />
+    <rect
+       x="3.3138001"
+       y="3.7993"
+       width="2.6798"
+       height="9.3210001"
+       rx="0.79680997"
+       ry="0.79680997"
+       style="color:#000000;clip-rule:evenodd;isolation:auto;mix-blend-mode:normal;solid-color:#000000;fill:#000000;fill-rule:evenodd;color-rendering:auto;image-rendering:auto;shape-rendering:auto;stroke:none;stroke-opacity:1;fill-opacity:1"
+       id="rect4743" />
+    <path
+       d="M 4.6537,3.9546 V 1.1583"
+       style="color:#000000;isolation:auto;mix-blend-mode:normal;solid-color:#000000;fill:none;stroke:#000000;stroke-width:0.96117997;stroke-linecap:round;color-rendering:auto;image-rendering:auto;shape-rendering:auto;stroke-opacity:1"
+       id="path4745" />
+    <path
+       d="M 2.6767,1.1195 H 6.6306"
+       style="color:#000000;isolation:auto;mix-blend-mode:normal;solid-color:#000000;fill:none;stroke:#000000;stroke-width:0.87879997;stroke-linecap:round;color-rendering:auto;image-rendering:auto;shape-rendering:auto;stroke-opacity:1"
+       id="path4747" />
+    <path
+       d="m 5.4226,10.441 c 0,0 0.52178,-2.0322 2.7188,-1.5654 2.197,0.46686 3.268,-0.54925 3.268,-0.54925"
+       style="color:#000000;isolation:auto;mix-blend-mode:normal;solid-color:#000000;fill:none;stroke:#000000;stroke-width:0.87879997;stroke-linecap:round;color-rendering:auto;image-rendering:auto;shape-rendering:auto;stroke-opacity:1"
+       id="path4749" />
+    <path
+       d="M 9.7616,8.6563 11.272,7.88735"
+       style="color:#000000;isolation:auto;mix-blend-mode:normal;solid-color:#000000;fill:none;stroke:#000000;stroke-width:0.87879997;stroke-linecap:round;color-rendering:auto;image-rendering:auto;shape-rendering:auto;stroke-opacity:1"
+       id="path4751" />
+  </g>
+</svg>
