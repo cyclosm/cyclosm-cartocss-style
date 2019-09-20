@@ -207,7 +207,10 @@
                 // Set up geolocation plugin
                 L.control.locate().addTo(map);
 
-                // Set up help / legend buttons
+                // Set up edit / help / legend buttons
+                L.easyButton('fa-edit', function(btn, map) {
+                    window.open('https://www.openstreetmap.org/edit' + window.location.hash, '_blank');
+                }).addTo(map);
                 L.easyButton('fa-question', function(btn, map) {
                     window.open('legend.html', '_blank');
                 }).addTo(map);
