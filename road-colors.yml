@@ -53,7 +53,7 @@ mss:
   mixed-cycle:
     fill: '#0080ff'
   footway:
-    fill: '#007200'
+    fill: '#4f874f'
   steps:
     fill: '#003e00'
     case: '@land'
@@ -61,7 +61,7 @@ mss:
     fill: '#00767c'
     nobicycle: '#949400'
   bridleway:
-    fill: '#873100'
+    fill: '#835d4b'
   rail:
     line: '#999999'
   icn:

@@ -4,10 +4,10 @@
 /*                                                                       */
 /*   ./scripts/generate_road_colors.py | tee road-colors-generated.mss   */
 /*                                                                       */
-@bridleway-fill: #873100;
+@bridleway-fill: #835d4b;
 @cycle-case: @land;
 @cycle-fill: #0000ff;
-@footway-fill: #007200;
+@footway-fill: #4f874f;
 @icn-overlay: #ff00ff;
 @icn-shield-fill: #f6f6f6;
 @lcn-overlay: #0000ff;
