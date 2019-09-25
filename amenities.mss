@@ -37,14 +37,14 @@
 }
 
 #oriented-highway-amenities {
-  [feature='crossing'][zoom >= 17] {
+  [feature='crossing'][zoom >= 18] {
     marker-ignore-placement: true;
     marker-file: url('symbols/osmfr/crossing.svg');
     marker-transform: 'rotate([angle]) scale(0.9)';
     marker-fill: @transportation-icon;
   }
 
-  [feature = 'traffic_calming'][zoom >= 17] {
+  [feature = 'traffic_calming'][zoom >= 18] {
     marker-file: url('symbols/amenity/traffic_calming.svg');
     marker-fill: @man-made-icon;
     marker-placement: interior;
