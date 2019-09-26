@@ -4,10 +4,10 @@
 /*                                                                       */
 /*   ./scripts/generate_road_colors.py | tee road-colors-generated.mss   */
 /*                                                                       */
-@bridleway-fill: #873100;
+@bridleway-fill: #835d4b;
 @cycle-case: @land;
 @cycle-fill: #0000ff;
-@footway-fill: #007200;
+@footway-fill: #4f874f;
 @icn-overlay: #ff00ff;
 @icn-shield-fill: #f6f6f6;
 @lcn-overlay: #0000ff;
@@ -39,12 +39,12 @@
 @speed20-fill: #21ffcc;
 @speed32-fill: #bbffff;
 @speedWalk-fill: #41ffa0;
-@standard-case: #949494;
+@standard-case: #999;
 @standard-fill: #f6f6f6;
 @standard-line: #f6f6f6;
 @steps-case: @land;
 @steps-fill: #003e00;
-@tertiary-case: #7e7e7e;
+@tertiary-case: #777;
 @tertiary-fill: #f6f6f6;
 @tertiary-line: #f6f6f6;
 @tertiary-shield-fill: #3b3b3b;

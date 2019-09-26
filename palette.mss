@@ -31,13 +31,13 @@
 
 /* The lighten() calls below compensate for the extra opacity from the hillshades. */
 @land:              #eee5dc;
-@grass:             #9dbc79;
-@meadow:            @grass;
+@grass:             #c2debd;
+@meadow:            #e2eecb;
 @park:              #c2debd;
 @cemetery:          #D6DED2;
 @wooded:            #95bd84;
 @heath:             #b2c068;
-@farmland:          #edd9c2;
+@farmland:          #fbf0e3;
 @water:             #8ecbeb;
 @religious:         #ded4b2;
 @military:          #f55;
@@ -120,11 +120,11 @@
 @ferry-route-text: @ferry-route;
 
 /* Also used for other small places: hamlets, suburbs, localities */
-@village_text:      #555;
+@village_text:      #444;
 @village_halo:      @place_halo;
 
-@placenames: #222;
-@placenames-light: #555;
+@placenames: #111;
+@placenames-light: #444;
 
 @standard-halo-radius: 1;
 @standard-halo-fill: rgba(255,255,255,0.6);

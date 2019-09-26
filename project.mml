@@ -1257,7 +1257,7 @@ Layer:
         GROUP BY osm_id, feature
       ) AS data
   properties:
-    minzoom: 17
+    minzoom: 18
 - id: amenities-poly
   <<: *extents
   Datasource:
