@@ -522,6 +522,10 @@ Layer:
             WHEN bicycle IN ('designated') THEN 'yes'
             ELSE NULL
           END AS designated,
+          CASE
+            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
+            ELSE 'no'
+          END AS oneway_bicycle,
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
@@ -635,6 +639,10 @@ Layer:
             WHEN bicycle IN ('designated') THEN 'yes'
             ELSE NULL
           END AS designated,
+          CASE
+            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
+            ELSE 'no'
+          END AS oneway_bicycle,
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
@@ -790,6 +798,10 @@ Layer:
             WHEN bicycle IN ('designated') THEN 'yes'
             ELSE NULL
           END AS designated,
+          CASE
+            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
+            ELSE 'no'
+          END AS oneway_bicycle,
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
@@ -1999,8 +2011,7 @@ Layer:
             ELSE 'no'
           END AS oneway,
           CASE
-            WHEN tags->'oneway:bicycle'='no' THEN 'no'
-            WHEN tags->'oneway:bicycle'='yes' THEN 'yes'
+            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
             WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:both' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')

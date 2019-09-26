@@ -1232,7 +1232,8 @@ come in as well.
     [type='footway'][designated='yes'],
     [type='bridleway'][designated='yes'] {
       line-width: @rdz11_cycle;
-      [oneway='no'] { line-width: @rdz11_cycle*1.5; }
+      [oneway='no'][oneway_bicycle='no']
+      { line-width: @rdz11_cycle*1.5; }
     }
   }
   [zoom=12] {
@@ -1263,7 +1264,8 @@ come in as well.
     [type='footway'][designated='yes'],
     [type='bridleway'][designated='yes'] {
       line-width: @rdz12_cycle;
-      [oneway='no'] { line-width: @rdz12_cycle*1.5; }
+      [oneway='no'][oneway_bicycle='no']
+      { line-width: @rdz12_cycle*1.5; }
     }
   }
   [zoom=13] {
@@ -1296,7 +1298,8 @@ come in as well.
     [type='footway'][designated='yes'],
     [type='bridleway'][designated='yes'] {
       line-width: @rdz13_cycle;
-      [oneway='no'] { line-width: @rdz13_cycle*1.5; }
+      [oneway='no'][oneway_bicycle='no']
+      { line-width: @rdz13_cycle*1.5; }
     }
   }
   [zoom=14] {
@@ -1329,7 +1332,8 @@ come in as well.
     [type='footway'][designated='yes'],
     [type='bridleway'][designated='yes'] {
       line-width: @rdz14_cycle;
-      [oneway='no'] { line-width: @rdz14_cycle*1.5; }
+      [oneway='no'][oneway_bicycle='no']
+      { line-width: @rdz14_cycle*1.5; }
     }
   }
   [zoom=15] {
@@ -1362,7 +1366,8 @@ come in as well.
     [type='footway'][designated='yes'],
     [type='bridleway'][designated='yes'] {
       line-width: @rdz15_cycle;
-      [oneway='no'] { line-width: @rdz15_cycle*1.5; }
+      [oneway='no'][oneway_bicycle='no']
+      { line-width: @rdz15_cycle*1.5; }
     }
   }
   [zoom=16] {
@@ -1395,7 +1400,8 @@ come in as well.
     [type='footway'][designated='yes'],
     [type='bridleway'][designated='yes'] {
       line-width: @rdz16_cycle;
-      [oneway='no'] { line-width: @rdz16_cycle*1.5; }
+      [oneway='no'][oneway_bicycle='no']
+      { line-width: @rdz16_cycle*1.5; }
     }
   }
   [zoom=17] {
@@ -1428,7 +1434,8 @@ come in as well.
     [type='footway'][designated='yes'],
     [type='bridleway'][designated='yes'] {
       line-width: @rdz17_cycle;
-      [oneway='no'] { line-width: @rdz17_cycle*1.5; }
+      [oneway='no'][oneway_bicycle='no']
+      { line-width: @rdz17_cycle*1.5; }
     }
   }
   [zoom>=18] {
@@ -1461,7 +1468,8 @@ come in as well.
     [type='footway'][designated='yes'],
     [type='bridleway'][designated='yes'] {
       line-width: @rdz18_cycle;
-      [oneway='no'] { line-width: @rdz18_cycle*1.5; }
+      [oneway='no'][oneway_bicycle='no']
+      { line-width: @rdz18_cycle*1.5; }
     }
   }
 }
@@ -1550,7 +1558,8 @@ come in as well.
         [type='footway'][designated='yes'],
         [type='bridleway'][designated='yes'] {
           line-width: @rdz15_cycle;
-          [oneway='no'] { line-width: @rdz15_cycle*1.5; }
+          [oneway='no'][oneway_bicycle='no']
+          { line-width: @rdz15_cycle*1.5; }
         }
       }
       [zoom>=16] {
@@ -1579,7 +1588,8 @@ come in as well.
         [type='footway'][designated='yes'],
         [type='bridleway'][designated='yes'] {
           line-width: @rdz16_cycle;
-          [oneway='no'] { line-width: @rdz16_cycle*1.5; }
+          [oneway='no'][oneway_bicycle='no']
+          { line-width: @rdz16_cycle*1.5; }
         }
       }
       [zoom>=17] {
@@ -1608,7 +1618,8 @@ come in as well.
         [type='footway'][designated='yes'],
         [type='bridleway'][designated='yes'] {
           line-width: @rdz17_cycle;
-          [oneway='no'] { line-width: @rdz17_cycle*1.5; }
+          [oneway='no'][oneway_bicycle='no']
+          { line-width: @rdz17_cycle*1.5; }
         }
       }
       [zoom>=18] {
@@ -1637,7 +1648,8 @@ come in as well.
         [type='footway'][designated='yes'],
         [type='bridleway'][designated='yes'] {
           line-width: @rdz18_cycle;
-          [oneway='no'] { line-width: @rdz18_cycle*1.5; }
+          [oneway='no'][oneway_bicycle='no']
+          { line-width: @rdz18_cycle*1.5; }
         }
       }
     }
@@ -1704,7 +1716,8 @@ come in as well.
         [type='footway'][designated='yes'],
         [type='bridleway'][designated='yes'] {
           line-width: @rdz15_cycle;
-          [oneway='no'] { line-width: @rdz15_cycle*1.5; }
+          [oneway='no'][oneway_bicycle='no']
+          { line-width: @rdz15_cycle*1.5; }
         }
       }
       [zoom>=16] {
@@ -1733,7 +1746,8 @@ come in as well.
         [type='footway'][designated='yes'],
         [type='bridleway'][designated='yes'] {
           line-width: @rdz16_cycle;
-          [oneway='no'] { line-width: @rdz16_cycle*1.5; }
+          [oneway='no'][oneway_bicycle='no']
+          { line-width: @rdz16_cycle*1.5; }
         }
       }
       [zoom>=17] {
@@ -1762,7 +1776,8 @@ come in as well.
         [type='footway'][designated='yes'],
         [type='bridleway'][designated='yes'] {
           line-width: @rdz17_cycle;
-          [oneway='no'] { line-width: @rdz17_cycle*1.5; }
+          [oneway='no'][oneway_bicycle='no']
+          { line-width: @rdz17_cycle*1.5; }
         }
       }
       [zoom>=18] {
@@ -1791,7 +1806,8 @@ come in as well.
         [type='footway'][designated='yes'],
         [type='bridleway'][designated='yes'] {
           line-width: @rdz18_cycle;
-          [oneway='no'] { line-width: @rdz18_cycle*1.5; }
+          [oneway='no'][oneway_bicycle='no']
+          { line-width: @rdz18_cycle*1.5; }
         }
       }
     }

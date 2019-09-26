@@ -536,7 +536,8 @@
      [oneway != 'yes'][oneway_bicycle = 'yes'] {
        marker-fill: #00f;
      }
-     [highway='cycleway'] {
+     [highway='cycleway'],
+     [highway='path'] {
        marker-fill: #ddf;
      }
      marker-file: url(symbols/oneway.svg);
@@ -549,7 +550,7 @@
      }
   }
   [oneway = 'yes'][oneway_bicycle = 'no'],
-  [oneway='-1'][oneway_bicycle = 'no'] {
+  [oneway = '-1'][oneway_bicycle = 'no'] {
      bike/marker-placement:line;
      bike/marker-max-error: 0.5;
      bike/marker-spacing: 100;
