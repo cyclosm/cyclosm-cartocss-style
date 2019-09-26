@@ -12,7 +12,7 @@
 @icn-shield-fill: #f6f6f6;
 @lcn-overlay: #0000ff;
 @lcn-shield-fill: #f6f6f6;
-@mixed-cycle-fill: #0080ff;
+@mixed-cycle-fill: #0050ff;
 @motorway-trunk-case: #f6f6f6;
 @motorway-trunk-fill: #c0ccc4;
 @motorway-trunk-line: #f6f6f6;

@@ -518,6 +518,10 @@ Layer:
             WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
             ELSE NULL
           END AS can_bicycle,
+          CASE
+            WHEN bicycle IN ('designated') THEN 'yes'
+            ELSE NULL
+          END AS designated,
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
@@ -627,6 +631,10 @@ Layer:
             WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
             ELSE NULL
           END AS can_bicycle,
+          CASE
+            WHEN bicycle IN ('designated') THEN 'yes'
+            ELSE NULL
+          END AS designated,
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
@@ -778,6 +786,10 @@ Layer:
             WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
             ELSE NULL
           END AS can_bicycle,
+          CASE
+            WHEN bicycle IN ('designated') THEN 'yes'
+            ELSE NULL
+          END AS designated,
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,

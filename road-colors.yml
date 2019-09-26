@@ -51,7 +51,7 @@ mss:
     fill: '#0000ff'
     case: '@land'
   mixed-cycle:
-    fill: '#0080ff'
+    fill: '#0050ff'
   footway:
     fill: '#4f874f'
   steps:
