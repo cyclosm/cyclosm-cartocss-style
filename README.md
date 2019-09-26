@@ -111,3 +111,11 @@ style and are licensed under CC0 public domain.
 
 The icons in `symbols/osmandapp` are taken from the
 [OsmAnd app resources](https://github.com/osmandapp/OsmAnd-resources).
+
+
+## Links
+
+* http://www.cyclosm.org, official website.
+* http://www.cyclosm.org/legend.html, full detailed key.
+* https://wiki.openstreetmap.org/wiki/CyclOSM, wiki page on the OSM wiki.
+* A list of the tags considered by CyclOSM is available in [Taginfo JSON format](https://wiki.openstreetmap.org/wiki/Taginfo/Projects) in [`taginfo.json`](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/taginfo.json).
