@@ -337,10 +337,14 @@ Layer:
             ELSE 'no'
           END AS intermittent
         FROM planet_osm_polygon
-        WHERE ("natural" IN ('water', 'pond')
-          OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
-          OR landuse in ('basin', 'reservoir'))
+        WHERE
+          (
+            "natural" IN ('water', 'pond')
+            OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
+            OR landuse in ('basin', 'reservoir')
+          )
           AND way_area > 0.1*!pixel_width!::real*!pixel_height!::real
+          AND (tunnel IS NULL OR tunnel = 'no')
       ) AS data
   geometry: polygon
   properties:
@@ -360,10 +364,14 @@ Layer:
             ELSE 'no'
           END AS intermittent
         FROM planet_osm_polygon
-        WHERE ("natural" IN ('water', 'pond')
-          OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
-          OR landuse in ('basin', 'reservoir'))
+        WHERE
+          (
+            "natural" IN ('water', 'pond')
+            OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
+            OR landuse in ('basin', 'reservoir')
+          )
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
+          AND (tunnel IS NULL OR tunnel = 'no')
       ) AS data
   geometry: polygon
   properties:
@@ -383,9 +391,13 @@ Layer:
               ELSE 'no'
             END AS intermittent
         FROM planet_osm_polygon
-        WHERE "natural" IN ('water', 'pond')
-          OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
-          OR landuse in ('basin', 'reservoir')
+        WHERE
+          (
+            "natural" IN ('water', 'pond')
+            OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
+            OR landuse in ('basin', 'reservoir')
+          )
+          AND (tunnel IS NULL OR tunnel = 'no')
       ) AS data
   geometry: polygon
   properties:
