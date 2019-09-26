@@ -44,7 +44,7 @@
 
 @nature_reserve:    #05620e;
 
-@building:          #cfcfcf;
+@building:          #e4dfdb;
 @hospital:          #e0e0e0;
 @school:            #e0e0e0;
 @sports:            #e0e0e0;

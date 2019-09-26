@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Lighter farmland color, better distinction between meadows and wood colors.
 * Higher contrast for names and minor roads.
 * Slightly fade footway and bridleway
+* Buildings were semi-transparent, resulting in greenish buildings in wooden
+    areas. This is fixed.
 
 
 ## v0.1

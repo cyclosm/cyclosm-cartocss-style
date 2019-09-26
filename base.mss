@@ -116,8 +116,7 @@
 
 /* ---- BUILDINGS ---- */
 #buildings[zoom>=16] {
-  polygon-fill:@building;
-  opacity: 0.5;
+  polygon-fill: @building;
 }
 // At the highest zoom levels, render buildings in fancy pseudo-3D.
 // Ordering polygons by their Y-position is necessary for this effect
