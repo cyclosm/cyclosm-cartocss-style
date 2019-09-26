@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Slightly fade footway and bridleway
 * Buildings were semi-transparent, resulting in greenish buildings in wooden
     areas. This is fixed.
+* No longer render tunnel waterways.
 
 
 ## v0.1
