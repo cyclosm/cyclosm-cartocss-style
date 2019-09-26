@@ -129,6 +129,8 @@
         <script src="js/leaflet.restoreview.js"></script>
         <script src="js/tingle.min.js"></script>
         <script type="text/javascript">
+            var VERSION = 'v0.1';  // TODO: Bump when pushing new version in production
+
             function storageAvailable(type) {
                 try {
                     var storage = window[type],
@@ -199,6 +201,7 @@
                 var map = new L.Map('map', {
                     zoomControl: true, layers: [cyclosm]
                 });
+                map.attributionControl.setPrefix('<a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> | <a href="https://github.com/cyclosm/cyclosm-cartocss-style/releases" title="CyclOSM - Open Bicycle render">CyclOSM</a> ' + VERSION);
                 if (!map.restoreView()) {
                     // Default view on Amsterdam
                     map.setView([52.3727598, 4.8936041], 12);
