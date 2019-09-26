@@ -214,6 +214,9 @@
                 // Set up geolocation plugin
                 L.control.locate().addTo(map);
 
+                // Add a scale
+                L.control.scale().addTo(map);
+
                 // Set up edit / help / legend buttons
                 L.easyButton('fa-edit', function(btn, map) {
                     window.open('https://www.openstreetmap.org/edit' + window.location.hash, '_blank');
