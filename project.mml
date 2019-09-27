@@ -867,19 +867,6 @@ Layer:
   geometry: line
   properties:
     status: off
-- id: bicycle_routes_labels
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    table: |-
-      (
-        SELECT way, route, tags->'network'AS type, ref, 1 as height, char_length(ref) AS width
-        FROM planet_osm_line
-        WHERE (route='bicycle' OR route='mtb') AND ref IS NOT NULL
-      ) AS data
-  geometry: linestring
-  properties:
-    minzoom: 8
 - id: power-minorline
   geometry: linestring
   <<: *extents
@@ -1180,6 +1167,19 @@ Layer:
       ) AS ferry_routes_text
   properties:
     minzoom: 13
+- id: bicycle_routes_labels
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT way, route, tags->'network'AS type, ref, 1 as height, char_length(ref) AS width
+        FROM planet_osm_line
+        WHERE (route='bicycle' OR route='mtb') AND ref IS NOT NULL
+      ) AS data
+  geometry: linestring
+  properties:
+    minzoom: 8
 - id: train_stations
   <<: *extents
   Datasource:

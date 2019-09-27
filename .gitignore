@@ -1,5 +1,5 @@
 data
-localconfig.json
+localconfig*.json
 mapnik.xml
 *.pyc
 package.json

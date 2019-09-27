@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Buildings were semi-transparent, resulting in greenish buildings in wooden
     areas. This is fixed.
 * No longer render tunnel waterways.
+* Render bicycle routes labels above ferry routes labels.
 
 
 ## v0.1
