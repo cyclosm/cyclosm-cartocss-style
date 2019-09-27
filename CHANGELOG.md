@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     areas. This is fixed.
 * No longer render tunnel waterways.
 * Render bicycle routes labels above ferry routes labels.
+* Fix incorrect rendering of some area labels (was appearing at one of the
+    area point).
 
 
 ## v0.1

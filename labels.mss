@@ -27,6 +27,7 @@
     text-wrap-width: 30;
     text-fill: #888;
     text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
     // Specific style overrides for different types of areas:
     [type='forest'],
     [type='wood'],
