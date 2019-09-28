@@ -2046,9 +2046,12 @@ Layer:
         USING (highway)
         WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary',
           'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'cycleway', 'path')
-          AND (name IS NOT NULL
+        AND (
+          name IS NOT NULL
           OR oneway IN ('yes', '-1')
-          OR junction IN ('roundabout'))
+          OR tags->'oneway:bicycle' IN ('yes', '-1')
+          OR junction IN ('roundabout')
+        )
         ORDER BY
           z_order DESC, -- put important roads first
           CASE WHEN layer~E'^\\d+$' THEN layer::integer ELSE 0 END, -- put top layered roads first
