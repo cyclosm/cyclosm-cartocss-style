@@ -523,6 +523,10 @@ Layer:
             ELSE NULL
           END AS designated,
           CASE
+            WHEN tags->'segregated' IN ('yes') THEN 'yes'
+            ELSE 'no'
+          END AS segregated,
+          CASE
             WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
             ELSE 'no'
           END AS oneway_bicycle,
@@ -639,6 +643,10 @@ Layer:
             WHEN bicycle IN ('designated') THEN 'yes'
             ELSE NULL
           END AS designated,
+          CASE
+            WHEN tags->'segregated' IN ('yes') THEN 'yes'
+            ELSE 'no'
+          END AS segregated,
           CASE
             WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
             ELSE 'no'
@@ -798,6 +806,10 @@ Layer:
             WHEN bicycle IN ('designated') THEN 'yes'
             ELSE NULL
           END AS designated,
+          CASE
+            WHEN tags->'segregated' IN ('yes') THEN 'yes'
+            ELSE 'no'
+          END AS segregated,
           CASE
             WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
             ELSE 'no'

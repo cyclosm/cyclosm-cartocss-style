@@ -1135,6 +1135,9 @@ come in as well.
   [type='footway'][designated='yes'],
   [type='bridleway'][designated='yes'] {
     line-color: @mixed-cycle-fill;
+    [segregated='yes'] {
+      line-color: @cycle-fill;
+    }
   }
   [type='path'][can_bicycle='no'] {
     line-color: @path-nobicycle;
@@ -1514,9 +1517,6 @@ come in as well.
       [type='track'] {
         line-color: @track-light1;
       }
-      [type='cycleway'] {
-        line-color: lighten(@cycle-fill, @surfaceLighter1);
-      }
       [type='bridleway'] {
         line-color: lighten(@bridleway-fill, @surfaceLighter1);
       }
@@ -1527,9 +1527,20 @@ come in as well.
       [type='footway'][can_bicycle='yes'],
       [type='bridleway'][can_bicycle='yes'] {
         line-color: lighten(@path-fill,@surfaceLighter1);
+        [segregated='yes'] {
+          line-color: lighten(@cycle-fill, @surfaceLighter1);
+        }
       }
       [type='path'][can_bicycle='no'] {
         line-color: lighten(@path-nobicycle,@surfaceLighter1);
+      }
+      [type='cycleway'] {
+        line-color: lighten(@cycle-fill, @surfaceLighter1);
+      }
+      [type='path'][designated='yes'],
+      [type='footway'][designated='yes'],
+      [type='bridleway'][designated='yes'] {
+        line-color: lighten(@mixed-cycle-fill, @surfaceLighter1);
       }
 
       [zoom>=15] {
