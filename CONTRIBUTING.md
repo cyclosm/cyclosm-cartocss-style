@@ -31,8 +31,8 @@ through emails.
 ## Demo website contribution
 
 The source code for the demo website living at
-[https://cyclosm.org/](https://cyclosm.org/) is available in the `gh-pages`
-branch.
+[https://cyclosm.org/](https://cyclosm.org/) is available in [this
+repository](https://github.com/cyclosm/cyclosm-website).
 
 
 ## Issues
@@ -75,8 +75,9 @@ When opening a Pull Request, please include one or more screenshots
 illustrating the changes made, for easier and faster review. Please include
 the location where the screenshots were taken for easier reproducibility.
 
-Please consider updating the `legend.html` file in the `gh-pages` branch
-to reflect your latest changes when submitting a pull request.
+Please consider updating the `legend.html` file in [this
+repository](https://github.com/cyclosm/cyclosm-website) to reflect your latest
+changes when submitting a pull request.
 
 Please also run `scripts/generate_taginfo.py` and commit the resulting
 `taginfo.json` file before submitting a pull request.
