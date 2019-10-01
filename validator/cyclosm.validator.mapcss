@@ -1,0 +1,65 @@
+/**
+ * Here are a few MapCSS validation rules for common mistakes we found while
+ * working on the CyclOSM render.
+ *
+ * See also:
+ *      - https://github.com/osm-fr/osmose-backend/blob/master/plugins/Bicycle.validator.mapcss
+ *      - https://josm.openstreetmap.de/browser/josm/trunk/data/validator/
+ */
+
+/*
+ * Highway=path suggestions
+ */
+way[highway=footway][bicycle=designated] {
+    throwWarning: tr("{0} together with {1}", "{0.tag}", "{1.tag}");
+    group: tr("suspicious tag combination");
+    suggestAlternative: "highway=path";
+
+    assertMatch: "way highway=footway bicycle=designated";
+    assertNoMatch: "way highway=footway";
+    assertNoMatch: "way highway=footway bicycle=yes";
+}
+
+way[highway=cycleway][foot=designated] {
+    throwWarning: tr("{0} together with {1}", "{0.tag}", "{1.tag}");
+    group: tr("suspicious tag combination");
+    suggestAlternative: "highway=path";
+
+    assertMatch: "way highway=cycleway foot=designated";
+    assertNoMatch: "way highway=cycleway";
+    assertNoMatch: "way highway=cycleway foot=yes";
+}
+
+way[highway=bridleway][bicycle=designated] {
+    throwWarning: tr("{0} together with {1}", "{0.tag}", "{1.tag}");
+    group: tr("suspicious tag combination");
+    suggestAlternative: "highway=path";
+
+    assertMatch: "way highway=cycleway foot=designated";
+    assertNoMatch: "way highway=cycleway";
+    assertNoMatch: "way highway=cycleway foot=yes";
+}
+
+
+/*
+ * Two-ways for cars, oneway for bikes
+ */
+way[oneway][oneway != 'yes'][oneway:bicycle = 'yes'] {
+    throwWarning: tr("{0} together with {1}", "{0.tag}","{1.tag}");
+    group: tr("suspicious tag combination");
+
+    assertMatch: "way oneway=no oneway:bicycle=yes";
+    assertMatch: "way oneway=-1 oneway:bicycle=yes";
+    assertNoMatch: "way oneway:bicycle=yes";
+    assertNoMatch: "way oneway=yes oneway:bicycle=yes";
+}
+
+way[oneway][oneway != '-1'][oneway:bicycle = '-1'] {
+    throwWarning: tr("{0} together with {1}", "{0.tag}","{1.tag}");
+    group: tr("suspicious tag combination");
+
+    assertMatch: "way oneway=no oneway:bicycle=-1";
+    assertMatch: "way oneway=yes oneway:bicycle=-1";
+    assertNoMatch: "way oneway:bicycle=yes";
+    assertNoMatch: "way oneway=-1 oneway:bicycle=-1";
+}
