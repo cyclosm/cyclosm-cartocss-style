@@ -1773,13 +1773,13 @@ come in as well.
     [zoom>=14] {
       line-width: 0.6;
     }
-    [zoomW=15] {
+    [zoom>=15] {
       line-width: 0.8;
     }
-    [zoomW=16] {
+    [zoom>=16] {
       line-width: 1;
     }
-    [zoomW=17] {
+    [zoom>=17] {
       line-width: 1;
     }
     [zoom>=18] {
