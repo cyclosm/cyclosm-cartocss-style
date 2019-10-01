@@ -586,7 +586,9 @@ come in as well.
 #roads_high::outline_right[zoom>=11][has_right_cycleway=1],
 #roads_high::outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'],
 #tunnel::outline_right[zoom>=11][has_right_cycleway=1],
-#bridge::outline_right[zoom>=11][has_right_cycleway=1] {
+#tunnel::outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'],
+#bridge::outline_right[zoom>=11][has_right_cycleway=1],
+#bridge::outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'] {
   /* -- colors & styles -- */
   [cycleway_right_render='track'] {
     line-color: @cycle_track_case;
