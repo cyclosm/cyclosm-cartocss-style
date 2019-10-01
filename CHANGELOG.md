@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     `cycleway` and if there is `segregated=yes`, then as a `cycleway` with a
     footway border.
 * Fix for missing oneway arrow on `highway=path` with a `oneway:bicycle=yes`
+* Footways/pedestrian/tracks/paths are rendered on top of major highways,
+    see https://github.com/cyclosm/cyclosm-cartocss-style/issues/154.
 
 
 ## v0.1
