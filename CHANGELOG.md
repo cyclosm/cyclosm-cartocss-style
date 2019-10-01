@@ -19,7 +19,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix incorrect rendering of some area labels (was appearing at one of the
     area point).
 * Now rendering `highway=path` with `bicycle=designated` almost as a
-    `cycleway` and if there is `segregated=yes`, then as a `cycleway`.
+    `cycleway` and if there is `segregated=yes`, then as a `cycleway` with a
+    footway border.
 * Fix for missing oneway arrow on `highway=path` with a `oneway:bicycle=yes`
 
 
