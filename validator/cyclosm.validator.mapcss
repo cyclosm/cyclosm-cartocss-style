@@ -44,8 +44,8 @@ way[highway=bridleway][bicycle=designated] {
 /*
  * Two-ways for cars, oneway for bikes
  */
-way[oneway][oneway != 'yes'][oneway:bicycle = 'yes'] {
-    throwWarning: tr("{0} together with {1}", "{0.tag}","{1.tag}");
+way[oneway][oneway!=yes][oneway:bicycle=yes] {
+    throwWarning: tr("{0} together with {1}", "{0.tag}", "{2.tag}");
     group: tr("suspicious tag combination");
 
     assertMatch: "way oneway=no oneway:bicycle=yes";
@@ -54,8 +54,8 @@ way[oneway][oneway != 'yes'][oneway:bicycle = 'yes'] {
     assertNoMatch: "way oneway=yes oneway:bicycle=yes";
 }
 
-way[oneway][oneway != '-1'][oneway:bicycle = '-1'] {
-    throwWarning: tr("{0} together with {1}", "{0.tag}","{1.tag}");
+way[oneway][oneway!=-1][oneway:bicycle=-1] {
+    throwWarning: tr("{0} together with {1}", "{0.tag}", "{2.tag}");
     group: tr("suspicious tag combination");
 
     assertMatch: "way oneway=no oneway:bicycle=-1";

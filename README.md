@@ -86,6 +86,13 @@ Versions are tagged with Git tags and are available through Github releases
 feature.
 
 
+## MapCSS vdalidators
+
+We also offer some MapCSS checkers for bicycle tags which can be used with
+[JOSM](https://josm.openstreetmap.de/wiki/Help/Preferences/Validator) for
+instance in the [`validator`](validator) folder of this repository.
+
+
 ## Licenses
 
 This style is based on the [Mapbox
