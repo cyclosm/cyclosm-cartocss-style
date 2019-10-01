@@ -534,11 +534,13 @@
      marker-max-error: 0.5;
      marker-spacing: 100;
      marker-fill: #777777;
-     [oneway != 'yes'][oneway_bicycle = 'yes'] {
-       marker-fill: #00f;
-     }
-     [highway='cycleway'] {
+     [highway='cycleway'],
+     [highway='path'] {
        marker-fill: #ddf;
+     }
+     /* Weird case where the road is oneway for only the bicycles, blue arrow. */
+     [oneway != 'yes'][oneway_bicycle = 'yes'][highway!='path'][highway!='cycleway'] {
+       marker-fill: #00f;
      }
      marker-file: url(symbols/oneway.svg);
      [oneway='-1'] {
@@ -550,7 +552,7 @@
      }
   }
   [oneway = 'yes'][oneway_bicycle = 'no'],
-  [oneway='-1'][oneway_bicycle = 'no'] {
+  [oneway = '-1'][oneway_bicycle = 'no'] {
      bike/marker-placement:line;
      bike/marker-max-error: 0.5;
      bike/marker-spacing: 100;

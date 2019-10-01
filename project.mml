@@ -518,6 +518,18 @@ Layer:
             WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
             ELSE NULL
           END AS can_bicycle,
+          CASE
+            WHEN bicycle IN ('designated') THEN 'yes'
+            ELSE NULL
+          END AS designated,
+          CASE
+            WHEN tags->'segregated' IN ('yes') THEN 'yes'
+            ELSE 'no'
+          END AS segregated,
+          CASE
+            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
+            ELSE 'no'
+          END AS oneway_bicycle,
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
@@ -627,6 +639,18 @@ Layer:
             WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
             ELSE NULL
           END AS can_bicycle,
+          CASE
+            WHEN bicycle IN ('designated') THEN 'yes'
+            ELSE NULL
+          END AS designated,
+          CASE
+            WHEN tags->'segregated' IN ('yes') THEN 'yes'
+            ELSE 'no'
+          END AS segregated,
+          CASE
+            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
+            ELSE 'no'
+          END AS oneway_bicycle,
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
@@ -778,6 +802,18 @@ Layer:
             WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
             ELSE NULL
           END AS can_bicycle,
+          CASE
+            WHEN bicycle IN ('designated') THEN 'yes'
+            ELSE NULL
+          END AS designated,
+          CASE
+            WHEN tags->'segregated' IN ('yes') THEN 'yes'
+            ELSE 'no'
+          END AS segregated,
+          CASE
+            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
+            ELSE 'no'
+          END AS oneway_bicycle,
           tags->'ramp:stroller' AS ramp_stroller,
           tags->'ramp:bicycle' AS ramp_cycle,
           tags->'ramp:wheelchair' AS ramp_wheelchair,
@@ -1987,8 +2023,7 @@ Layer:
             ELSE 'no'
           END AS oneway,
           CASE
-            WHEN tags->'oneway:bicycle'='no' THEN 'no'
-            WHEN tags->'oneway:bicycle'='yes' THEN 'yes'
+            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
             WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:both' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
@@ -2023,9 +2058,12 @@ Layer:
         USING (highway)
         WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary',
           'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'cycleway', 'path')
-          AND (name IS NOT NULL
+        AND (
+          name IS NOT NULL
           OR oneway IN ('yes', '-1')
-          OR junction IN ('roundabout'))
+          OR tags->'oneway:bicycle' IN ('yes', '-1')
+          OR junction IN ('roundabout')
+        )
         ORDER BY
           z_order DESC, -- put important roads first
           CASE WHEN layer~E'^\\d+$' THEN layer::integer ELSE 0 END, -- put top layered roads first
