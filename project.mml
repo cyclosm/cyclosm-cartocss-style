@@ -514,20 +514,16 @@ Layer:
             ELSE 0
           END AS has_right_cycleway,
           CASE
-            WHEN bicycle IN ('yes', 'designated') THEN 'yes'
+            WHEN bicycle IN ('yes', 'designated') THEN bicycle
             WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
             ELSE NULL
           END AS can_bicycle,
-          CASE
-            WHEN bicycle IN ('designated') THEN 'yes'
-            ELSE NULL
-          END AS designated,
           CASE
             WHEN tags->'segregated' IN ('yes') THEN 'yes'
             ELSE 'no'
           END AS segregated,
           CASE
-            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
+            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN tags->'oneway:bicycle'
             ELSE 'no'
           END AS oneway_bicycle,
           tags->'ramp:stroller' AS ramp_stroller,
@@ -635,20 +631,16 @@ Layer:
             ELSE 0
           END AS has_right_cycleway,
           CASE
-            WHEN bicycle IN ('yes', 'designated') THEN 'yes'
+            WHEN bicycle IN ('yes', 'designated') THEN bicycle
             WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
             ELSE NULL
           END AS can_bicycle,
-          CASE
-            WHEN bicycle IN ('designated') THEN 'yes'
-            ELSE NULL
-          END AS designated,
           CASE
             WHEN tags->'segregated' IN ('yes') THEN 'yes'
             ELSE 'no'
           END AS segregated,
           CASE
-            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
+            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN tags->'oneway:bicycle'
             ELSE 'no'
           END AS oneway_bicycle,
           tags->'ramp:stroller' AS ramp_stroller,
@@ -798,20 +790,16 @@ Layer:
             ELSE 0
           END AS has_right_cycleway,
           CASE
-            WHEN bicycle IN ('yes', 'designated') THEN 'yes'
+            WHEN bicycle IN ('yes', 'designated') THEN bicycle
             WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
             ELSE NULL
           END AS can_bicycle,
-          CASE
-            WHEN bicycle IN ('designated') THEN 'yes'
-            ELSE NULL
-          END AS designated,
           CASE
             WHEN tags->'segregated' IN ('yes') THEN 'yes'
             ELSE 'no'
           END AS segregated,
           CASE
-            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
+            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN tags->'oneway:bicycle'
             ELSE 'no'
           END AS oneway_bicycle,
           tags->'ramp:stroller' AS ramp_stroller,
@@ -2023,7 +2011,7 @@ Layer:
             ELSE 'no'
           END AS oneway,
           CASE
-            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN 'yes'
+            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN tags->'oneway_bicycle'
             WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:both' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')

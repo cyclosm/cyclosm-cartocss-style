@@ -525,11 +525,9 @@
 /* ONE-WAY ARROWS
 /* ================================================================== */
 #roads-text-name[highway != 'construction'][zoom>=15] {
-  [oneway = 'yes'][oneway_bicycle = null],
-  [oneway = '-1'][oneway_bicycle = null],
-  [oneway = 'yes'][oneway_bicycle = 'yes'],
-  [oneway = '-1'][oneway_bicycle = 'yes'],
-  [oneway = 'no'][oneway_bicycle = 'yes'] {
+  // One way road for general traffic, NO countraflow for bikes
+  [oneway = 'yes'][oneway_bicycle != 'no'],
+  [oneway = '-1'][oneway_bicycle != 'no'] {
      marker-placement:line;
      marker-max-error: 0.5;
      marker-spacing: 100;
@@ -547,6 +545,7 @@
         marker-spacing: 80;
      }
   }
+  // One way road for general traffic, WITH countraflow for bikes
   [oneway = 'yes'][oneway_bicycle = 'no'],
   [oneway = '-1'][oneway_bicycle = 'no'] {
      bike/marker-placement:line;
