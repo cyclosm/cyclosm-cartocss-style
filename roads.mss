@@ -954,6 +954,8 @@ come in as well.
     line-join: round;
   }
   [type='cycleway'],
+  [type='footway'][can_bicycle='yes'],
+  [type='bridleway'][can_bicycle='yes'],
   [type='path'][can_bicycle='yes'],
   [type='path'][can_bicycle='designated'] {
     line-color: @land;
@@ -1088,8 +1090,12 @@ come in as well.
   [type='footway'] {
     line-color: @footway-fill;
   }
-  [type='path'] {
+  [type='path'],
+  [type='footway'][can_bicycle='yes'],
+  [type='bridleway'][can_bicycle='yes'] {
       line-color: @path-fill;
+  }
+  [type='path'] {
       [can_bicycle='designated'] {
           line-color: @mixed-cycle-fill;
           [segregated='yes'] {
