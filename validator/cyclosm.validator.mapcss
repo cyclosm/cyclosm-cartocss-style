@@ -35,9 +35,9 @@ way[highway=bridleway][bicycle=designated] {
     group: tr("suspicious tag combination");
     suggestAlternative: "highway=path";
 
-    assertMatch: "way highway=cycleway foot=designated";
-    assertNoMatch: "way highway=cycleway";
-    assertNoMatch: "way highway=cycleway foot=yes";
+    assertMatch: "way highway=bridleway bicycle=designated";
+    assertNoMatch: "way highway=bridleway";
+    assertNoMatch: "way highway=bridleway bicycle=yes";
 }
 
 
