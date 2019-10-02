@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## v0.2
+
 * Draw crossings and traffic calming only from Z18 (was Z17 before).
 * Lighter farmland color, better distinction between meadows and wood colors.
 * Higher contrast for names and minor roads.
