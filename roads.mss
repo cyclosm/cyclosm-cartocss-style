@@ -1165,6 +1165,10 @@ come in as well.
     {
       line-color: @speedWalk-fill;
     }
+    /* Without that block the next cyclestreet block is not taken into account, why!?? */
+    [cyclestreet='yes'] {
+      line-color: @mixed-cycle-fill;
+    }
   }
 
   [cyclestreet='yes'] {
