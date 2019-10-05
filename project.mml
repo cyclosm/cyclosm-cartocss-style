@@ -485,37 +485,37 @@ Layer:
           CASE
             WHEN tags->'cycleway:left' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
           END AS cycleway_left_render,
           CASE
             WHEN tags->'cycleway:right' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
           END AS cycleway_right_render,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
             ELSE 0
           END AS has_left_cycleway,
           CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
             ELSE 0
           END AS has_right_cycleway,
           CASE
@@ -607,37 +607,37 @@ Layer:
           CASE
             WHEN tags->'cycleway:left' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
           END AS cycleway_left_render,
           CASE
             WHEN tags->'cycleway:right' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
           END AS cycleway_right_render,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
             ELSE 0
           END AS has_left_cycleway,
           CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
             ELSE 0
           END AS has_right_cycleway,
           CASE
@@ -772,37 +772,37 @@ Layer:
           CASE
             WHEN tags->'cycleway:left' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
           END AS cycleway_left_render,
           CASE
             WHEN tags->'cycleway:right' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
           END AS cycleway_right_render,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
             ELSE 0
           END AS has_left_cycleway,
           CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
             ELSE 0
           END AS has_right_cycleway,
           CASE
