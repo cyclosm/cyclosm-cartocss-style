@@ -773,6 +773,9 @@
       text-placements: "S,N,E,W,NE,SE,NW,SW";
       text-dy: 6;
       text-dx: 6;
+      [access != ''][access != 'permissive'][access != 'yes'] {
+        text-opacity: 0.33;
+      }
     }
   }
 
