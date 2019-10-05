@@ -167,7 +167,7 @@
 @bicycle_parking_fill: 	#0000ff;
 @motorcycle_parking_line:  #fff;
 @secured_motorcycle_parking_line: @secured_bicycle_parking_line;
-@motorcycle_parking_fill:  #ff0000;
+@motorcycle_parking_fill:  #0050ff;
 
 @natural_volcano: #980000;
 
