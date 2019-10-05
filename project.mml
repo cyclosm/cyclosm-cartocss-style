@@ -471,8 +471,13 @@ Layer:
             WHEN tags->'maxspeed'='walk' THEN 5
             ELSE NULL
           END AS maxspeed_kmh,
-          bicycle, tags->'motor_vehicle' AS motor_vehicle,
-          tags->'cyclestreet' AS cyclestreet,
+          bicycle,
+          tags->'motor_vehicle' AS motor_vehicle,
+          CASE
+            WHEN tags->'cyclestreet' IN ('yes') THEN 'yes'
+            WHEN tags->'bicycle_road' IN ('yes') THEN 'yes'
+            ELSE 'no'
+          END AS cyclestreet,
           CASE
             WHEN oneway IN ('yes', '-1') THEN oneway
             ELSE 'no'
@@ -588,8 +593,13 @@ Layer:
             WHEN tags->'maxspeed'='walk' THEN 5
             ELSE NULL
           END AS maxspeed_kmh,
-          bicycle, tags->'motor_vehicle' AS motor_vehicle,
-          tags->'cyclestreet' AS cyclestreet,
+          bicycle,
+          tags->'motor_vehicle' AS motor_vehicle,
+          CASE
+            WHEN tags->'cyclestreet' IN ('yes') THEN 'yes'
+            WHEN tags->'bicycle_road' IN ('yes') THEN 'yes'
+            ELSE 'no'
+          END AS cyclestreet,
           CASE
             WHEN oneway IN ('yes', '-1') THEN oneway
             ELSE 'no'
@@ -748,8 +758,13 @@ Layer:
             WHEN tags->'maxspeed'='walk' THEN 5
             ELSE NULL
           END AS maxspeed_kmh,
-          bicycle, tags->'motor_vehicle' AS motor_vehicle,
-          tags->'cyclestreet' AS cyclestreet,
+          bicycle,
+          tags->'motor_vehicle' AS motor_vehicle,
+          CASE
+            WHEN tags->'cyclestreet' IN ('yes') THEN 'yes'
+            WHEN tags->'bicycle_road' IN ('yes') THEN 'yes'
+            ELSE 'no'
+          END AS cyclestreet,
           CASE
             WHEN oneway IN ('yes', '-1') THEN oneway
             ELSE 'no'
