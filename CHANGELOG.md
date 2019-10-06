@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix cyclestreets not rendered in blue if they had a maxspeed below 30 (bad
     priority of cyclestreet vs maxspeed).
 * Handles `cyclestreet` as well as `bicycle_road` the same way.
+* Render `cycleway=shared_lane` in the same way as a shared busway. Both are
+    third-quality cycle infrastructure.
 
 
 ## v0.2
