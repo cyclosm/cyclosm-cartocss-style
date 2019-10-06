@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     drawn with the correct opacity.
 * Fix cyclestreets not rendered in blue if they had a maxspeed below 30 (bad
     priority of cyclestreet vs maxspeed).
+* Handles `cyclestreet` as well as `bicycle_road` the same way.
 
 
 ## v0.2
