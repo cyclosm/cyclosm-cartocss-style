@@ -1112,17 +1112,20 @@ come in as well.
     line-color: @steps-fill;
   }
 
-  /* low maxspeed roads are bike friendly */
-  [maxspeed_kmh < 33] {
-      line-color: @speed32-fill;
-  }
-  [maxspeed_kmh < 21] {
-      line-color: @speed20-fill;
-  }
-  [maxspeed_kmh < 10],
-  [access='no'][bicycle!=null][bicycle!='no'],
-  [motor_vehicle='no'][bicycle!='no'] {
-      line-color: @speedWalk-fill;
+  /* Maxspeed bike friendliness only applies to a limited set of highways */
+  [type != 'trunk_link'][type != 'motorway_link'][type != 'motorway_trunk'][type != 'path'][type != 'cycleway'][type != 'track'][type != 'railway'][cyclestreet != 'yes'] {
+      /* low maxspeed roads are bike friendly */
+      [maxspeed_kmh < 33] {
+          line-color: @speed32-fill;
+      }
+      [maxspeed_kmh < 21] {
+          line-color: @speed20-fill;
+      }
+      [maxspeed_kmh < 10],
+      [access='no'][bicycle!=null][bicycle!='no'],
+      [motor_vehicle='no'][bicycle!='no'] {
+          line-color: @speedWalk-fill;
+      }
   }
 
   /* cycle streets / bicycle roads are bike friendly */
