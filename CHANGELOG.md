@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     (and avoid using red which was too visible).
 * Fix a bug with the text of a bicycle parking with limited access not being
     drawn with the correct opacity.
+* Fix cyclestreets not rendered in blue if they had a maxspeed below 30 (bad
+    priority of cyclestreet vs maxspeed).
 
 
 ## v0.2

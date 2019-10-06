@@ -1112,63 +1112,33 @@ come in as well.
     line-color: @steps-fill;
   }
 
-  [type='service'],
-  [type='track'],
-  [type='tertiary'],
-  [type='living_street'],
-  [type='road'],
-  [type='unclassified'],
-  [type='residential'],
-  [type='tertiary_link'],
-  [type='secondary_link'],
-  [type='primary_link'],
-  [type='trunk_link'],
-  [type='motorway_link'],
-  [type='primary'],
-  [type='secondary'],
-  [type='motorway_trunk'] {
-    line-cap: round;
-    line-join: round;
+  /* low maxspeed roads are bike friendly */
+  [maxspeed_kmh < 33] {
+      line-color: @speed32-fill;
   }
+  [maxspeed_kmh < 21] {
+      line-color: @speed20-fill;
+  }
+  [maxspeed_kmh < 10],
+  [access='no'][bicycle!=null][bicycle!='no'],
+  [motor_vehicle='no'][bicycle!='no'] {
+      line-color: @speedWalk-fill;
+  }
+
+  /* cycle streets / bicycle roads are bike friendly */
+  [cyclestreet='yes'] {
+      line-color: @mixed-cycle-fill;
+  }
+
+  line-cap: round;
+  line-join: round;
+
   [type='cycleway'],
   [type='pedestrian'],
   [type='bridleway'],
   [type='footway'],
   [type='path'] {
     line-join: round;
-  }
-
-  /* low maxspeed roads are bike friendly */
-  [type='pedestrian'],
-  [type='living_street'],
-  [type='service'],
-  [type='tertiary'],
-  [type='road'],
-  [type='unclassified'],
-  [type='residential'],
-  [type='tertiary_link'],
-  [type='secondary_link'],
-  [type='secondary'],
-  [type='primary_link'],
-  [type='primary'] {
-    [maxspeed_kmh<33]
-    {
-      line-color: @speed32-fill;
-    }
-    [maxspeed_kmh<21]
-    {
-      line-color: @speed20-fill;
-    }
-    [maxspeed_kmh<10],
-    [access='no'][bicycle!=null][bicycle!='no'],
-    [motor_vehicle='no'][bicycle!='no']
-    {
-      line-color: @speedWalk-fill;
-    }
-  }
-
-  [cyclestreet='yes'] {
-    line-color: @mixed-cycle-fill;
   }
 
   /* -- widths -- */
