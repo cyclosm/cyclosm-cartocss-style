@@ -1886,15 +1886,7 @@ come in as well.
 #bicycle_routes_ncn[zoom >= 5],
 #bicycle_routes_rcn[zoom >= 7],
 #bicycle_routes_lcn[zoom >= 9] {
-  opacity: 0.75;
-
-  [zoom >= 10] {
-    opacity: 0.6;
-  }
-
-  [zoom >= 12] {
-    opacity: 0.3;
-  }
+  opacity: 0.3;
 
   [type='icn'] {
     line-color: @icn-overlay;
