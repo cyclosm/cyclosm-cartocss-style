@@ -1463,6 +1463,7 @@ Layer:
             'historic_' || historic,
             'military_'|| military,
             'highway_'|| highway,
+            'highway_'|| CASE WHEN tags->'ford'='yes' OR tags->'ford'='stepping_stones' THEN 'ford' ELSE NULL END,
             'power_' || power
           ) AS feature,
           CASE
@@ -1541,6 +1542,7 @@ Layer:
           OR highway IN ('elevator', 'traffic_signals')
           OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND tags->'generator:source'='wind')
+          OR tags->'ford' IS NOT NULL
         ORDER BY
             CASE
                 -- Emergency first
@@ -1751,6 +1753,7 @@ Layer:
               'historic_' || historic,
               'military_'|| military,
               'highway_'|| highway,
+              'highway_'|| CASE WHEN tags->'ford'='yes' OR tags->'ford'='stepping_stones' THEN 'ford' ELSE NULL END,
               'power_' || power
             ) AS feature,
             CASE
@@ -1829,6 +1832,7 @@ Layer:
             OR highway IN ('elevator', 'traffic_signals')
             OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
             OR (power = 'generator' AND tags->'generator:source'='wind')
+            OR tags->'ford' IS NOT NULL
           ORDER BY
             CASE
                 -- Emergency first
