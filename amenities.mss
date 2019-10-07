@@ -565,9 +565,14 @@
     marker-clip: false;
   }
 
-  [feature = 'shop_sports'][zoom >= 14],
   [feature = 'shop_bicycle'][zoom >= 14] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_11.svg');
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'shop_sports'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/shop/sports.svg');
     marker-placement: interior;
     marker-clip: false;
   }
@@ -797,15 +802,15 @@
     }
   }
 
-  [feature = 'shop_sports'][zoom >= 16],
   [feature = 'shop_bicycle'][zoom >= 16],
+  [feature = 'shop_sports'][zoom >= 18],
   [feature = 'shop_bakery'][zoom >= 18],
   [feature = 'shop_convenience'][zoom >= 18],
   [feature = 'shop_convenience;gas'][zoom >= 18],
   [feature = 'shop_greengrocer'][zoom >= 18],
   [feature = 'shop_pastry'][zoom >= 18],
   [feature = 'shop_beverages'][zoom >= 18] {
-		[way_pixels > 3000][zoom >= 17],
+    [way_pixels > 3000][zoom >= 17],
     [zoom >= 18] {
       text-name: "[name]";
       text-size: @standard-font-size;

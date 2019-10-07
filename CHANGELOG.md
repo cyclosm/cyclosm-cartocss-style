@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Ignore `tunnel=culvert` waterways, #204.
 * Render `amenity=bank` and `amenity=atm` at high zoom levels (Z18 / Z19). #149
 * Add an icon for fords, see #147.
+* Render `shop=sports` even if no bicycle specific tags on it, see #163.
 
 
 ## v0.2
