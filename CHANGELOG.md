@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add an icon for fords, see #147.
 * Render `shop=sports` even if no bicycle specific tags on it, see #163.
 * Fix a bug leading to `oneway:bicycle=no` not being rendered sometimes.
+* Fix correct overloading of surface and smoothness (`surface=sett` +
+    `smoothness=horrible` for instance).
 
 
 ## v0.2
