@@ -286,7 +286,7 @@ Layer:
         FROM planet_osm_line
         WHERE
           waterway IN ('river', 'canal')
-          AND tunnel IS NULL OR tunnel = 'no'
+          AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: linestring
   properties:
@@ -302,7 +302,7 @@ Layer:
         FROM planet_osm_line
         WHERE
           waterway IN ('river', 'canal', 'stream')
-          AND tunnel IS NULL OR tunnel = 'no'
+          AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: linestring
   properties:
@@ -318,7 +318,7 @@ Layer:
         FROM planet_osm_line
         WHERE
           waterway IN ('river', 'canal', 'stream', 'ditch', 'drain')
-          AND tunnel IS NULL OR tunnel = 'no'
+          AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: linestring
   properties:
@@ -344,7 +344,7 @@ Layer:
             OR landuse in ('basin', 'reservoir')
           )
           AND way_area > 0.1*!pixel_width!::real*!pixel_height!::real
-          AND (tunnel IS NULL OR tunnel = 'no')
+          AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: polygon
   properties:
@@ -371,7 +371,7 @@ Layer:
             OR landuse in ('basin', 'reservoir')
           )
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          AND (tunnel IS NULL OR tunnel = 'no')
+          AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: polygon
   properties:
@@ -397,7 +397,7 @@ Layer:
             OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
             OR landuse in ('basin', 'reservoir')
           )
-          AND (tunnel IS NULL OR tunnel = 'no')
+          AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: polygon
   properties:
