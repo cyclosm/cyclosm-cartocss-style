@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render `cycleway=shared_lane` in the same way as a shared busway. Both are
     third-quality cycle infrastructure.
 * Ignore `tunnel=culvert` waterways, #204.
+* Render `amenity=bank` and `amenity=atm` at high zoom levels (Z18 / Z19). #149
 
 
 ## v0.2

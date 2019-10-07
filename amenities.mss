@@ -748,6 +748,18 @@
   [feature = 'healthcare_hospital'][zoom >= 15] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/hospital_11.svg');
   }
+
+  [feature = 'amenity_bank'][zoom >= 18] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/bank.svg');
+    marker-fill: @public-service;
+    marker-clip: false;
+  }
+  [feature = 'amenity_atm'][zoom >= 19] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/atm.svg');
+    marker-fill: @amenity-brown;
+    marker-clip: false;
+  }
+
 }
 
 #amenities-points-text,
