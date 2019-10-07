@@ -2027,7 +2027,7 @@ Layer:
             ELSE 'no'
           END AS oneway,
           CASE
-            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN tags->'oneway_bicycle'
+            WHEN tags->'oneway:bicycle' IS NOT NULL THEN tags->'oneway:bicycle'
             WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:both' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
