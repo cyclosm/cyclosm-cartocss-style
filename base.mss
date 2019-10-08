@@ -19,7 +19,12 @@
 #landuse_gen0[zoom>3][zoom<=9],
 #landuse_gen1[zoom>9][zoom<=12],
 #landuse[zoom>=13] {
-  [type='landuse_cemetery']      { polygon-fill: @cemetery; }
+  [type='landuse_cemetery'] {
+    polygon-fill: @cemetery;
+    [zoom >= 13] {
+      polygon-pattern-file: url('symbols/openstreetmap-carto/grave_yard_generic.svg');
+    }
+  }
   [type='amenity_college']       { polygon-fill: @school; }
   [type='landuse_commercial']    { polygon-fill: @industrial; }
   [type='leisure_common']        { polygon-fill: @park; }
@@ -36,6 +41,21 @@
   [type='amenity_hospital']      { polygon-fill: @hospital; }
   [type='landuse_industrial']    { polygon-fill: @industrial; }
   [type='landuse_meadow']        { polygon-fill: @meadow; }
+  [type='landuse_vineyard'] {
+    polygon-fill: @meadow;
+    [zoom >= 13] {
+      polygon-pattern-file: url('symbols/openstreetmap-carto/vineyard.png');
+      polygon-pattern-alignment: global;
+    }
+  }
+  [type='landuse_orchard'] {
+    polygon-fill: @meadow;
+    [zoom >= 13] {
+      polygon-pattern-file: url('symbols/openstreetmap-carto/orchard.png');
+      polygon-pattern-alignment: global;
+    }
+  }
+
   [type='landuse_farmland']      { polygon-fill: @farmland; }
   [type='leisure_park']          { polygon-fill: @park; }
   [type='amenity_parking']       { polygon-fill: @parking; }

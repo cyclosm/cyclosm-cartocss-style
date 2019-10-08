@@ -77,7 +77,7 @@ Layer:
           way,
           way_area AS area,
           COALESCE(
-            CASE WHEN landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'religious', 'residential') THEN ('landuse_' || landuse) ELSE NULL END,
+            CASE WHEN landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'vineyard', 'orchard', 'religious', 'residential') THEN ('landuse_' || landuse) ELSE NULL END,
             CASE WHEN "natural" IN ('grassland', 'heath', 'wood') THEN ('natural_' || "natural") ELSE NULL END,
             CASE WHEN leisure IN ('common', 'golf_course', 'garden', 'park', 'pitch', 'sports_center', 'stadium', 'track') THEN ('leisure_' || leisure) ELSE NULL END,
             CASE WHEN amenity IN ('college', 'hospital', 'parking', 'school', 'university') THEN ('amenity' || amenity) ELSE NULL END,
@@ -85,7 +85,7 @@ Layer:
           ) AS type
           FROM planet_osm_polygon
           WHERE (
-            landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'religious', 'residential')
+            landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'vineyard', 'orchard', 'religious', 'residential')
             OR "natural" IN ('grassland', 'heath', 'wood')
             OR leisure IN ('common', 'golf_course', 'garden', 'park', 'pitch', 'sports_center', 'stadium', 'track')
             OR amenity IN ('college', 'hospital', 'parking', 'school', 'university')
@@ -109,7 +109,7 @@ Layer:
           way,
           way_area AS area,
           COALESCE(
-            CASE WHEN landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'religious', 'residential') THEN ('landuse_' || landuse) ELSE NULL END,
+            CASE WHEN landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'vineyard', 'orchard', 'religious', 'residential') THEN ('landuse_' || landuse) ELSE NULL END,
             CASE WHEN "natural" IN ('grassland', 'heath', 'wood') THEN ('natural_' || "natural") ELSE NULL END,
             CASE WHEN leisure IN ('common', 'golf_course', 'garden', 'park', 'pitch', 'sports_center', 'stadium', 'track') THEN ('leisure_' || leisure) ELSE NULL END,
             CASE WHEN amenity IN ('college', 'hospital', 'parking', 'school', 'university') THEN ('amenity' || amenity) ELSE NULL END,
@@ -117,7 +117,7 @@ Layer:
           ) AS type
         FROM planet_osm_polygon
         WHERE (
-          landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'religious', 'residential')
+          landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'vineyard', 'orchard', 'religious', 'residential')
           OR "natural" IN ('grassland', 'heath', 'wood')
           OR leisure IN ('common', 'golf_course', 'garden', 'park', 'pitch', 'sports_center', 'stadium', 'track')
           OR amenity IN ('college', 'hospital', 'parking', 'school', 'university')
@@ -149,7 +149,7 @@ Layer:
             CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN 'landuse_industrial' ELSE NULL END
           ) AS type
         FROM planet_osm_polygon
-        WHERE landuse IN ('cemetery', 'commercial', 'farmland', 'forest', 'grass', 'industrial', 'meadow', 'military', 'residential', 'religious')
+        WHERE landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'vineyard', 'orchard', 'military', 'residential', 'religious')
           OR leisure IN ('common', 'garden', 'golf_course', 'park', 'pitch', 'sports_centre', 'stadium', 'track')
           OR "natural" IN ('grassland', 'heath', 'wood')
           OR highway IN ('pedestrian')
