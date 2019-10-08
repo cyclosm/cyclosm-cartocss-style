@@ -8,6 +8,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Use a slightly lighter blue color for shared bicycle/motorcycle parkings
+    (and avoid using red which was too visible).
+* Fix a bug with the text of a bicycle parking with limited access not being
+    drawn with the correct opacity.
+* Fix cyclestreets not rendered in blue if they had a maxspeed below 30 (bad
+    priority of cyclestreet vs maxspeed).
+* Handles `cyclestreet` as well as `bicycle_road` the same way.
+* Render `cycleway=shared_lane` in the same way as a shared busway. Both are
+    third-quality cycle infrastructure.
+* Ignore `tunnel=culvert` waterways, #204.
+* Render `amenity=bank` and `amenity=atm` at high zoom levels (Z18 / Z19). #149
+* Add an icon for fords, see #147.
+* Render `shop=sports` even if no bicycle specific tags on it, see #163.
+* Fix a bug leading to `oneway:bicycle=no` not being rendered sometimes.
+* Fix correct overloading of surface and smoothness (`surface=sett` +
+    `smoothness=horrible` for instance).
+* Render `amenity=place_of_worship`, see #164.
+
 
 ## v0.2
 

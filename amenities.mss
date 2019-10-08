@@ -117,6 +117,12 @@
     marker-clip: false;
   }
 
+  [feature = 'highway_ford'][zoom >= 16] {
+    marker-file: url('symbols/openstreetmap-carto/highway/ford.svg');
+    marker-fill: @transportation-icon;
+    marker-clip: false;
+  }
+
   [feature = 'tourism_caravan_site'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/tourism/caravan_park.svg');
     marker-placement: interior;
@@ -466,6 +472,19 @@
     }
   }
 
+  [feature = 'amenity_place_of_worship'][zoom >= 16][way_pixels > 3000],
+  [feature = 'amenity_place_of_worship'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-fill: #000033;
+    text-dy: 12;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+  }
+
   [feature = 'aeroway_helipad'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/helipad.16.svg');
     marker-placement: interior;
@@ -559,9 +578,14 @@
     marker-clip: false;
   }
 
-  [feature = 'shop_sports'][zoom >= 14],
   [feature = 'shop_bicycle'][zoom >= 14] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_11.svg');
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'shop_sports'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/shop/sports.svg');
     marker-placement: interior;
     marker-clip: false;
   }
@@ -748,6 +772,51 @@
   [feature = 'healthcare_hospital'][zoom >= 15] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/hospital_11.svg');
   }
+
+  [feature = 'amenity_place_of_worship'][zoom >= 16] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/place_of_worship.svg');
+    marker-fill: @religious-icon;
+    marker-clip: false;
+    [religion = 'christian'] {
+      marker-file: url('symbols/openstreetmap-carto/religion/christian.svg');
+      [denomination = 'jehovahs_witness']{
+        marker-file: url('symbols/openstreetmap-carto/amenity/place_of_worship.svg');
+      }
+    }
+    [religion = 'muslim'] {
+      marker-file: url('symbols/openstreetmap-carto/religion/muslim.svg');
+    }
+    [religion = 'sikh'] {
+      marker-file: url('symbols/openstreetmap-carto/religion/sikhist.svg');
+    }
+    [religion = 'jewish'] {
+      marker-file: url('symbols/openstreetmap-carto/religion/jewish.svg');
+    }
+    [religion = 'hindu'] {
+      marker-file: url('symbols/openstreetmap-carto/religion/hinduist.svg');
+    }
+    [religion = 'buddhist'] {
+      marker-file: url('symbols/openstreetmap-carto/religion/buddhist.svg');
+    }
+    [religion = 'shinto'] {
+      marker-file: url('symbols/openstreetmap-carto/religion/shintoist.svg');
+    }
+    [religion = 'taoist'] {
+      marker-file: url('symbols/openstreetmap-carto/religion/taoist.svg');
+    }
+  }
+
+  [feature = 'amenity_bank'][zoom >= 18] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/bank.svg');
+    marker-fill: @public-service;
+    marker-clip: false;
+  }
+  [feature = 'amenity_atm'][zoom >= 19] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/atm.svg');
+    marker-fill: @amenity-brown;
+    marker-clip: false;
+  }
+
 }
 
 #amenities-points-text,
@@ -773,18 +842,21 @@
       text-placements: "S,N,E,W,NE,SE,NW,SW";
       text-dy: 6;
       text-dx: 6;
+      [access != ''][access != 'permissive'][access != 'yes'] {
+        text-opacity: 0.33;
+      }
     }
   }
 
-  [feature = 'shop_sports'][zoom >= 16],
   [feature = 'shop_bicycle'][zoom >= 16],
+  [feature = 'shop_sports'][zoom >= 18],
   [feature = 'shop_bakery'][zoom >= 18],
   [feature = 'shop_convenience'][zoom >= 18],
   [feature = 'shop_convenience;gas'][zoom >= 18],
   [feature = 'shop_greengrocer'][zoom >= 18],
   [feature = 'shop_pastry'][zoom >= 18],
   [feature = 'shop_beverages'][zoom >= 18] {
-		[way_pixels > 3000][zoom >= 17],
+    [way_pixels > 3000][zoom >= 17],
     [zoom >= 18] {
       text-name: "[name]";
       text-size: @standard-font-size;
@@ -799,35 +871,35 @@
 		}
 	}
 
-	[feature = 'shop_supermarket'] {
-		[zoom >= 16] {
-			text-name: "[name]";
-			text-size: @standard-font-size;
-			text-wrap-width: @standard-wrap-width;
-			text-line-spacing: @standard-line-spacing-size;
-			text-dy: 12;
-			text-fill: @shop-text;
-			text-face-name: @standard-font;
-			text-halo-radius: @standard-halo-radius;
-			text-halo-fill: rgba(255, 255, 255, 0.6);
-			text-placement: interior;
-		}
-	}
+  [feature = 'shop_supermarket'] {
+    [zoom >= 16] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-dy: 12;
+      text-fill: @shop-text;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: rgba(255, 255, 255, 0.6);
+      text-placement: interior;
+    }
+  }
 
   [feature = 'amenity_pharmacy'] {
-		[zoom >= 17] {
-			text-name: "[name]";
-			text-size: @standard-font-size;
-			text-wrap-width: @standard-wrap-width;
-			text-line-spacing: @standard-line-spacing-size;
-			text-dy: 12;
-			text-fill: @health-color;
-			text-face-name: @standard-font;
-			text-halo-radius: @standard-halo-radius;
-			text-halo-fill: @standard-halo-fill;
-			text-placement: interior;
-		}
-	}
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-dy: 12;
+      text-fill: @health-color;
+      text-face-name: @standard-font;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
+    }
+  }
 
   [feature = 'amenity_internet_cafe'][zoom >= 18],
   [feature = 'amenity_bar'][zoom >= 18],

@@ -286,7 +286,7 @@ Layer:
         FROM planet_osm_line
         WHERE
           waterway IN ('river', 'canal')
-          AND tunnel IS NULL OR tunnel = 'no'
+          AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: linestring
   properties:
@@ -302,7 +302,7 @@ Layer:
         FROM planet_osm_line
         WHERE
           waterway IN ('river', 'canal', 'stream')
-          AND tunnel IS NULL OR tunnel = 'no'
+          AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: linestring
   properties:
@@ -318,7 +318,7 @@ Layer:
         FROM planet_osm_line
         WHERE
           waterway IN ('river', 'canal', 'stream', 'ditch', 'drain')
-          AND tunnel IS NULL OR tunnel = 'no'
+          AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: linestring
   properties:
@@ -344,7 +344,7 @@ Layer:
             OR landuse in ('basin', 'reservoir')
           )
           AND way_area > 0.1*!pixel_width!::real*!pixel_height!::real
-          AND (tunnel IS NULL OR tunnel = 'no')
+          AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: polygon
   properties:
@@ -371,7 +371,7 @@ Layer:
             OR landuse in ('basin', 'reservoir')
           )
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          AND (tunnel IS NULL OR tunnel = 'no')
+          AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: polygon
   properties:
@@ -397,7 +397,7 @@ Layer:
             OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
             OR landuse in ('basin', 'reservoir')
           )
-          AND (tunnel IS NULL OR tunnel = 'no')
+          AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: polygon
   properties:
@@ -485,37 +485,37 @@ Layer:
           CASE
             WHEN tags->'cycleway:left' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
           END AS cycleway_left_render,
           CASE
             WHEN tags->'cycleway:right' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
           END AS cycleway_right_render,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
             ELSE 0
           END AS has_left_cycleway,
           CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
             ELSE 0
           END AS has_right_cycleway,
           CASE
@@ -536,12 +536,14 @@ Layer:
           tags->'ramp:wheelchair' AS ramp_wheelchair,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
-            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
-              OR tracktype IN ('grade2', 'grade3')
-              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
+            -- From worse to best to ensure correct overloading
+            -- (think surface=sett + smoothness=horrible)
             WHEN surface IN ('bad', 'gravel', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
               OR tracktype IN ('grade4', 'grade5')
               OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
+            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
+              OR tracktype IN ('grade2', 'grade3')
+              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
             ELSE NULL
           END AS surface_type
         FROM planet_osm_line
@@ -607,37 +609,37 @@ Layer:
           CASE
             WHEN tags->'cycleway:left' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
           END AS cycleway_left_render,
           CASE
             WHEN tags->'cycleway:right' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
           END AS cycleway_right_render,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
             ELSE 0
           END AS has_left_cycleway,
           CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
             ELSE 0
           END AS has_right_cycleway,
           CASE
@@ -658,12 +660,14 @@ Layer:
           tags->'ramp:wheelchair' AS ramp_wheelchair,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
-            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
-              OR tracktype IN ('grade2', 'grade3')
-              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
+            -- From worse to best to ensure correct overloading
+            -- (think surface=sett + smoothness=horrible)
             WHEN surface IN ('bad', 'gravel', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
               OR tracktype IN ('grade4', 'grade5')
               OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
+            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
+              OR tracktype IN ('grade2', 'grade3')
+              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
             ELSE NULL
           END AS surface_type,
           CASE
@@ -772,37 +776,37 @@ Layer:
           CASE
             WHEN tags->'cycleway:left' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
           END AS cycleway_left_render,
           CASE
             WHEN tags->'cycleway:right' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
-            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder') THEN 'busway'
+            WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
           END AS cycleway_right_render,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
             ELSE 0
           END AS has_left_cycleway,
           CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder') THEN 1
+            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
+            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
             ELSE 0
           END AS has_right_cycleway,
           CASE
@@ -823,12 +827,14 @@ Layer:
           tags->'ramp:wheelchair' AS ramp_wheelchair,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
-            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
-              OR tracktype IN ('grade2', 'grade3')
-              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
+            -- From worse to best to ensure correct overloading
+            -- (think surface=sett + smoothness=horrible)
             WHEN surface IN ('bad', 'gravel', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
               OR tracktype IN ('grade4', 'grade5')
               OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
+            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
+              OR tracktype IN ('grade2', 'grade3')
+              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
             ELSE NULL
           END AS surface_type
         FROM planet_osm_line
@@ -1337,7 +1343,7 @@ Layer:
             'aeroway_' || aeroway,
             'tourism_' || tourism,
             'amenity_' || CASE WHEN amenity != 'fuel' THEN amenity ELSE NULL END,
-            'shop_' || shop,
+            'shop_' || CASE WHEN tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes' THEN 'bicycle' ELSE shop END,
             'emergency_' || CASE WHEN tags->'emergency' IS NOT NULL then tags->'emergency' ELSE NULL END,
             'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
             'leisure_' || leisure,
@@ -1353,6 +1359,8 @@ Layer:
             WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
             ELSE NULL
           END AS capacity,
+          religion,
+          tags->'denomination' AS denomination,
           tags->'compressed_air' AS compressed_air,
           tags->'car_wash' as car_wash,
           tags->'drinking_water' AS drinking_water,
@@ -1391,13 +1399,12 @@ Layer:
         WHERE aeroway IN ('helipad', 'aerodrome')
           OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
               'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
+          OR amenity IN ('atm', 'bank', 'bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
           OR tags->'compressed_air'='yes'
           OR tags->'car_wash'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
-          OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
-          OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
+          OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
           OR leisure='picnic_table'
           OR (
             man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
@@ -1453,7 +1460,7 @@ Layer:
             'aeroway_' || aeroway,
             'tourism_' || tourism,
             'amenity_' || CASE WHEN amenity != 'fuel' THEN amenity ELSE NULL END,
-            'shop_' || shop,
+            'shop_' || CASE WHEN tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes' THEN 'bicycle' ELSE shop END,
             'emergency_' || CASE WHEN tags->'emergency' IS NOT NULL then tags->'emergency' ELSE NULL END,
             'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
             'leisure_' || leisure,
@@ -1463,12 +1470,15 @@ Layer:
             'historic_' || historic,
             'military_'|| military,
             'highway_'|| highway,
+            'highway_'|| CASE WHEN tags->'ford'='yes' OR tags->'ford'='stepping_stones' THEN 'ford' ELSE NULL END,
             'power_' || power
           ) AS feature,
           CASE
             WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
             ELSE NULL
           END AS capacity,
+          religion,
+          tags->'denomination' AS denomination,
           tags->'compressed_air' AS compressed_air,
           tags->'car_wash' as car_wash,
           tags->'drinking_water' AS drinking_water,
@@ -1521,13 +1531,12 @@ Layer:
         WHERE aeroway IN ('helipad', 'aerodrome')
           OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
               'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-          OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
+          OR amenity IN ('atm', 'bank', 'bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
           OR tags->'compressed_air'='yes'
           OR tags->'car_wash'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
-          OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
-          OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
+          OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
           OR leisure='picnic_table'
           OR (
             man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo')
@@ -1541,6 +1550,7 @@ Layer:
           OR highway IN ('elevator', 'traffic_signals')
           OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND tags->'generator:source'='wind')
+          OR tags->'ford' IS NOT NULL
         ORDER BY
             CASE
                 -- Emergency first
@@ -1609,7 +1619,7 @@ Layer:
               'aeroway_' || aeroway,
               'tourism_' || tourism,
               'amenity_' || CASE WHEN amenity != 'fuel' THEN amenity ELSE NULL END,
-              'shop_' || shop,
+              'shop_' || CASE WHEN tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes' THEN 'bicycle' ELSE shop END,
               'emergency_' || CASE WHEN tags->'emergency' IS NOT NULL then tags->'emergency' ELSE NULL END,
               'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
               'leisure_' || leisure,
@@ -1625,6 +1635,8 @@ Layer:
               WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
               ELSE NULL
             END AS capacity,
+            religion,
+            tags->'denomination' AS denomination,
             tags->'compressed_air' AS compressed_air,
             tags->'car_wash' as car_wash,
             tags->'drinking_water' AS drinking_water,
@@ -1663,12 +1675,11 @@ Layer:
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
                 'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
+            OR amenity IN ('atm', 'bank', 'bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
             OR tags->'compressed_air'='yes'
             OR tags->'car_wash'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
-            OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
-            OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
+            OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
             OR (
@@ -1741,7 +1752,7 @@ Layer:
               'aeroway_' || aeroway,
               'tourism_' || tourism,
               'amenity_' || CASE WHEN amenity != 'fuel' THEN amenity ELSE NULL END,
-              'shop_' || shop,
+              'shop_' || CASE WHEN tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes' THEN 'bicycle' ELSE shop END,
               'emergency_' || CASE WHEN tags->'emergency' IS NOT NULL then tags->'emergency' ELSE NULL END,
               'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
               'leisure_' || leisure,
@@ -1751,12 +1762,15 @@ Layer:
               'historic_' || historic,
               'military_'|| military,
               'highway_'|| highway,
+              'highway_'|| CASE WHEN tags->'ford'='yes' OR tags->'ford'='stepping_stones' THEN 'ford' ELSE NULL END,
               'power_' || power
             ) AS feature,
             CASE
               WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
               ELSE NULL
             END AS capacity,
+            religion,
+            tags->'denomination' AS denomination,
             tags->'compressed_air' AS compressed_air,
             tags->'car_wash' as car_wash,
             tags->'drinking_water' AS drinking_water,
@@ -1809,12 +1823,11 @@ Layer:
           WHERE aeroway IN ('helipad', 'aerodrome')
             OR tourism IN ('artwork', 'alpine_hut', 'camp_site', 'caravan_site', 'chalet', 'wilderness_hut', 'guest_house', 'apartment', 'hostel',
                 'hotel', 'motel', 'information', 'museum', 'viewpoint', 'picnic_site', 'gallery')
-            OR amenity IN ('bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
+            OR amenity IN ('atm', 'bank', 'bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
             OR tags->'compressed_air'='yes'
             OR tags->'car_wash'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
-            OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry')
-            OR (shop='sports' AND (tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' OR tags->'service:bicycle:pump'='yes' OR tags->'service:bicycle:diy'='yes'))
+            OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
             OR (
@@ -1829,6 +1842,7 @@ Layer:
             OR highway IN ('elevator', 'traffic_signals')
             OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
             OR (power = 'generator' AND tags->'generator:source'='wind')
+            OR tags->'ford' IS NOT NULL
           ORDER BY
             CASE
                 -- Emergency first
@@ -2027,7 +2041,7 @@ Layer:
             ELSE 'no'
           END AS oneway,
           CASE
-            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN tags->'oneway_bicycle'
+            WHEN tags->'oneway:bicycle' IS NOT NULL THEN tags->'oneway:bicycle'
             WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:both' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
@@ -2110,7 +2124,7 @@ Layer:
           tags->'addr:unit' AS addr_unit,
           way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
         FROM planet_osm_polygon
-        WHERE (
+        WHERE way && !bbox! AND (
           ("addr:housenumber" IS NOT NULL)
           OR ("addr:housename" IS NOT NULL)
           OR (tags->'addr:unit' IS NOT NULL)
@@ -2124,10 +2138,11 @@ Layer:
           tags->'addr:unit' AS addr_unit,
           NULL AS way_pixels
         FROM planet_osm_point
-        WHERE
+        WHERE way && !bbox! AND (
           ("addr:housenumber" IS NOT NULL)
           OR ("addr:housename" IS NOT NULL)
           OR (tags->'addr:unit' IS NOT NULL)
+        )
         ORDER BY way_pixels DESC NULLS LAST
       ) AS addresses
   properties:
