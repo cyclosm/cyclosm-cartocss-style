@@ -160,44 +160,14 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 13
-#- id: hillshade5000
-#  <<: *extents
-#  Datasource:
-#    type: gdal
-#    file: dem/hillshade-5000.tif
-#    format: tiff
-#  geometry: raster
-#  properties:
-#    maxzoom: 4
-#- id: hillshade1000
-#  <<: *extents
-#  Datasource:
-#    type: gdal
-#    file: dem/hillshade-1000.tif
-#    format: tiff
-#  geometry: raster
-#  properties:
-#    minzoom: 5
-#    maxzoom: 7
-#- id: hillshade500
-#  <<: *extents
-#  Datasource:
-#    type: gdal
-#    file: dem/hillshade-500.tif
-#    format: tiff
-#  geometry: raster
-#  properties:
-#    minzoom: 8
-#    maxzoom: 8
-#- id: hillshade90
-#  <<: *extents
-#  Datasource:
-#    type: gdal
-#    file: dem/hillshade-90.tif
-#    format: tiff
-#  geometry: raster
-#  properties:
-#    minzoom: 9
+- id: hillshade
+  <<: *extents84
+  Datasource:
+    type: gdal
+    file: dem/shade.vrt
+  geometry: raster
+  properties:
+    status: off
 - id: buildings
   <<: *extents
   Datasource:

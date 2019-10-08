@@ -119,17 +119,23 @@
   [type='natural_wood']          { polygon-fill: @wooded; }
 }
 
-#hillshade5000, #hillshade1000, #hillshade500 {
-  raster-opacity: 0.9;
+#hillshade[zoom>=4] {
   raster-scaling: bilinear;
   raster-comp-op: multiply;
-}
+  raster-opacity: 0.85;
 
-#hillshade90 {
-  raster-opacity: 0.75;
-//  raster-scaling: lanczos; //To be used for max quality.
-  raster-scaling: bilinear;
-  raster-comp-op: multiply;
+  [zoom >= 5] {
+    raster-opacity: 0.65;
+  }
+  [zoom >= 7] {
+    raster-opacity: 0.55;
+  }
+  [zoom >= 14] {
+    raster-opacity: 0.45;
+  }
+  [zoom >= 16] {
+    raster-opacity: 0.35;
+  }
 }
 
 #protected-areas[zoom >=7 ] {
