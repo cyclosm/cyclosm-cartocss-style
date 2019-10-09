@@ -1133,8 +1133,24 @@ come in as well.
       line-color: @mixed-cycle-fill;
   }
 
-  line-cap: round;
-  line-join: round;
+  [type='service'],
+  [type='track'],
+  [type='tertiary'],
+  [type='living_street'],
+  [type='road'],
+  [type='unclassified'],
+  [type='residential'],
+  [type='tertiary_link'],
+  [type='secondary_link'],
+  [type='primary_link'],
+  [type='trunk_link'],
+  [type='motorway_link'],
+  [type='primary'],
+  [type='secondary'],
+  [type='motorway_trunk'] {
+    line-cap: round;
+    line-join: round;
+  }
 
   [type='cycleway'],
   [type='pedestrian'],
