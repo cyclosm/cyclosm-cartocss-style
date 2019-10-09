@@ -720,34 +720,54 @@
   }
 
   [feature = 'amenity_bicycle_parking'][zoom >= 16] {
-    marker-line-width: 1;
-    marker-line-color: @bicycle_parking_line;
-    marker-fill: @bicycle_parking_fill;
-    marker-width: 7;
+    marker-file: url('symbols/amenity/bicycle_parking.svg');
+    marker-width: 8;
+
+    [covered = 'yes'] {
+      marker-file: url('symbols/amenity/bicycle_parking_covered.svg');
+    }
+
     [supervised = 'yes'],
     [bicycle_parking = 'shed'],
     [bicycle_parking = 'lockers'],
     [bicycle_parking = 'building'] {
-      marker-fill: @secured_bicycle_parking_line;
-      marker-line-color: @bicycle_parking_fill;
+      marker-file: url('symbols/amenity/bicycle_parking_secured.svg');
+
+      [covered='yes'],
+      [bicycle_parking = 'shed'],
+      [bicycle_parking = 'lockers'],
+      [bicycle_parking = 'building'] {
+        marker-file: url('symbols/amenity/bicycle_parking_secured_covered.svg');
+      }
     }
+
     [access != ''][access != 'permissive'][access != 'yes'] {
       marker-opacity: 0.33;
     }
   }
 
   [feature = 'amenity_motorcycle_parking'][zoom >= 16] {
-    marker-line-width: 1;
-    marker-line-color: @motorcycle_parking_line;
-    marker-fill: @motorcycle_parking_fill;
-    marker-width: 7;
+    marker-file: url('symbols/amenity/motorcycle_parking.svg');
+    marker-width: 8;
+
+    [covered = 'yes'] {
+      marker-file: url('symbols/amenity/motorcycle_parking_covered.svg');
+    }
+
     [supervised = 'yes'],
     [bicycle_parking = 'shed'],
     [bicycle_parking = 'lockers'],
     [bicycle_parking = 'building'] {
-      marker-fill: @secured_motorcycle_parking_line;
-      marker-line-color: @motorcycle_parking_fill;
+      marker-file: url('symbols/amenity/motorcycle_parking_secured.svg');
+
+      [covered='yes'],
+      [bicycle_parking = 'shed'],
+      [bicycle_parking = 'lockers'],
+      [bicycle_parking = 'building'] {
+        marker-file: url('symbols/amenity/motorcycle_parking_secured_covered.svg');
+      }
     }
+
     [access != ''][access != 'permissive'][access != 'yes'] {
       marker-opacity: 0.33;
     }

@@ -25,6 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix correct overloading of surface and smoothness (`surface=sett` +
     `smoothness=horrible` for instance).
 * Render `amenity=place_of_worship`, see #164.
+* Render more landuse like `vineyrad` or `orchard`. Rework the cemetery
+    render.
+* Distinguish covered bicycle/motorcycle parkings, #166.
 
 
 ## v0.2
