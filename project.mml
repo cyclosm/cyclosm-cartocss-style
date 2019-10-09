@@ -577,6 +577,7 @@ Layer:
           COALESCE(
             CASE
               WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
+              WHEN highway = 'raceway' THEN 'track'  -- render raceways as tracks
               WHEN highway != 'bus_guideway' THEN highway
               ELSE NULL
             END,

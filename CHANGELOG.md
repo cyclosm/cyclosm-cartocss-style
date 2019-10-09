@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render more landuse like `vineyrad` or `orchard`. Rework the cemetery
     render.
 * Distinguish covered bicycle/motorcycle parkings, #166.
+* Render `highway=raceway`, see #191.
 
 
 ## v0.2
