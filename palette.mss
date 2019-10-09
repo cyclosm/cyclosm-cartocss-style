@@ -41,6 +41,7 @@
 @water:             #8ecbeb;
 @religious:         #ded4b2;
 @military:          #f55;
+@quarry:            #c5c3c3;
 
 @nature_reserve:    #05620e;
 
