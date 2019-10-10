@@ -765,6 +765,52 @@ come in as well.
         line-width: @rdz18_path; line-offset: @rdz18_path/2 + @rdz18_cycle*1.5/2;
       }
     }
+
+    [cycleway_right_render='lane'][cycleway_right_oneway='yes'],
+    [cycleway_right_render='lane'][cycleway_right_oneway='-1'],
+    [cycleway_right_render='busway'][cycleway_right_oneway='yes'],
+    [cycleway_right_render='busway'][cycleway_right_oneway='-1'] {
+        line-width: 0;
+    }
+  }
+}
+
+#roads_high::outline_right[zoom>=18][has_right_cycleway=1],
+#tunnel::outline_right[zoom>=18][has_right_cycleway=1],
+#bridge::outline_right[zoom>=18][has_right_cycleway=1] {
+  [cycleway_right_render='lane'][cycleway_right_oneway='yes'],
+  [cycleway_right_render='lane'][cycleway_right_oneway='-1'],
+  [cycleway_right_render='busway'][cycleway_right_oneway='yes'],
+  [cycleway_right_render='busway'][cycleway_right_oneway='-1'] {
+    [cycleway_right_render='lane'] {
+      line-pattern-file: url('symbols/oriented-cycleways/oriented-cyclelane-right.svg');
+      [cycleway_right_oneway='-1'] {
+        line-pattern-file: url('symbols/oriented-cycleways/oriented-cyclelane-opposite-right.svg');
+      }
+    }
+    [cycleway_right_render='busway'] {
+      line-pattern-file: url('symbols/oriented-cycleways/oriented-busway-right.svg');
+      [cycleway_right_oneway='-1'] {
+        line-pattern-file: url('symbols/oriented-cycleways/oriented-busway-opposite-right.svg');
+      }
+    }
+
+    [type='motorway_trunk']     { line-pattern-offset: 0.5 * @rdz18_motorway_trunk + 0.5 * @rdz18_cycle; }
+    [type='primary']     { line-pattern-offset: 0.5 * @rdz18_primary + 0.5 * @rdz18_cycle; }
+    [type='secondary']     { line-pattern-offset: 0.5 * @rdz18_secondary + 0.5 * @rdz18_cycle; }
+    [type='tertiary']    { line-pattern-offset: 0.5 * @rdz18_tertiary + 0.5 * @rdz18_cycle; }
+    [type='living_street']    { line-pattern-offset: 0.5 * @rdz18_living_street + 0.5 * @rdz18_cycle; }
+    [type='road']    { line-pattern-offset: 0.5 * @rdz18_road + 0.5 * @rdz18_cycle; }
+    [type='unclassified']    { line-pattern-offset: 0.5 * @rdz18_unclassified + 0.5 * @rdz18_cycle; }
+    [type='residential']    { line-pattern-offset: 0.5 * @rdz18_residential + 0.5 * @rdz18_cycle; }
+    [type='tertiary_link']    { line-pattern-offset: 0.5 * @rdz18_tertiary_link + 0.5 * @rdz18_cycle; }
+    [type='secondary_link']    { line-pattern-offset: 0.5 * @rdz18_secondary_link + 0.5 * @rdz18_cycle; }
+    [type='primary_link']    { line-pattern-offset: 0.5 * @rdz18_primary_link + 0.5 * @rdz18_cycle; }
+    [type='trunk_link']    { line-pattern-offset: 0.5 * @rdz18_trunk_link + 0.5 * @rdz18_cycle; }
+    [type='motorway_link']    { line-pattern-offset: 0.5 * @rdz18_motorway_link + 0.5 * @rdz18_cycle; }
+    [type='service']      { line-pattern-offset: 0.5 * @rdz18_service + 0.5 * @rdz18_cycle; }
+    [type='track']      { line-pattern-offset: 0.5 * @rdz18_track + 0.5 * @rdz18_cycle; }
+    [type='pedestrian']   { line-pattern-offset: 0.5 * @rdz18_pedestrian + 0.5 * @rdz18_cycle; }
   }
 }
 
@@ -935,8 +981,55 @@ come in as well.
     [type='service']      { line-width: @rdz18_service; line-offset: -1 * @rdz18_cycle; }
     [type='track']      { line-width: @rdz18_track; line-offset: -1 * @rdz18_cycle; }
     [type='pedestrian']   { line-width: @rdz18_pedestrian; line-offset: -1 * @rdz18_cycle; }
+
+    [cycleway_left_render='lane'][cycleway_left_oneway='yes'],
+    [cycleway_left_render='lane'][cycleway_left_oneway='-1'],
+    [cycleway_left_render='busway'][cycleway_left_oneway='yes'],
+    [cycleway_left_render='busway'][cycleway_left_oneway='-1'] {
+        line-width: 0;
+    }
   }
 }
+
+#roads_high::outline_left[zoom>=18][has_left_cycleway=1],
+#tunnel::outline_left[zoom>=18][has_left_cycleway=1],
+#bridge::outline_left[zoom>=18][has_left_cycleway=1] {
+  [cycleway_left_render='lane'][cycleway_left_oneway='yes'],
+  [cycleway_left_render='lane'][cycleway_left_oneway='-1'],
+  [cycleway_left_render='busway'][cycleway_left_oneway='yes'],
+  [cycleway_left_render='busway'][cycleway_left_oneway='-1'] {
+    [cycleway_left_render='lane'] {
+      line-pattern-file: url('symbols/oriented-cycleways/oriented-cyclelane-left.svg');
+      [cycleway_left_oneway='-1'] {
+        line-pattern-file: url('symbols/oriented-cycleways/oriented-cyclelane-opposite-left.svg');
+      }
+    }
+    [cycleway_left_render='busway'] {
+      line-pattern-file: url('symbols/oriented-cycleways/oriented-busway-left.svg');
+      [cycleway_left_oneway='-1'] {
+        line-pattern-file: url('symbols/oriented-cycleways/oriented-busway-opposite-left.svg');
+      }
+    }
+
+    [type='motorway_trunk']     { line-pattern-offset: -0.5 * @rdz18_motorway_trunk - 0.5 * @rdz18_cycle; }
+    [type='primary']     { line-pattern-offset: -0.5 * @rdz18_primary - 0.5 * @rdz18_cycle; }
+    [type='secondary']     { line-pattern-offset: -0.5 * @rdz18_secondary - 0.5 * @rdz18_cycle; }
+    [type='tertiary']    { line-pattern-offset: -0.5 * @rdz18_tertiary - 0.5 * @rdz18_cycle; }
+    [type='living_street']    { line-pattern-offset: -0.5 * @rdz18_living_street - 0.5 * @rdz18_cycle; }
+    [type='road']    { line-pattern-offset: -0.5 * @rdz18_road - 0.5 * @rdz18_cycle; }
+    [type='unclassified']    { line-pattern-offset: -0.5 * @rdz18_unclassified - 0.5 * @rdz18_cycle; }
+    [type='residential']    { line-pattern-offset: -0.5 * @rdz18_residential - 0.5 * @rdz18_cycle; }
+    [type='tertiary_link']    { line-pattern-offset: -0.5 * @rdz18_tertiary_link - 0.5 * @rdz18_cycle; }
+    [type='secondary_link']    { line-pattern-offset: -0.5 * @rdz18_secondary_link - 0.5 * @rdz18_cycle; }
+    [type='primary_link']    { line-pattern-offset: -0.5 * @rdz18_primary_link - 0.5 * @rdz18_cycle; }
+    [type='trunk_link']    { line-pattern-offset: -0.5 * @rdz18_trunk_link - 0.5 * @rdz18_cycle; }
+    [type='motorway_link']    { line-pattern-offset: -0.5 * @rdz18_motorway_link - 0.5 * @rdz18_cycle; }
+    [type='service']      { line-pattern-offset: -0.5 * @rdz18_service - 0.5 * @rdz18_cycle; }
+    [type='track']      { line-pattern-offset: -0.5 * @rdz18_track - 0.5 * @rdz18_cycle; }
+    [type='pedestrian']   { line-pattern-offset: -0.5 * @rdz18_pedestrian - 0.5 * @rdz18_cycle; }
+  }
+}
+
 
 /* ---- Bridge fill for dashed lines -------------------------------- */
 #tunnel::line[zoom>=14],

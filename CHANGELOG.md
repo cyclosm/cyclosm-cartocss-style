@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Rework cycle routes render, fix opacity and emphasize them at low zooms. See #160, #182, #201.
 * Take into account overloading of access tags to better decide whether a
     road is shared with motor vehicles or not. See #210.
+* Render oriented cycleways (`cycleway:left|right:oneway`). See #119.
 
 
 ## v0.2
