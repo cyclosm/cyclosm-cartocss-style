@@ -1901,12 +1901,25 @@ come in as well.
 /* BICYCLE ROUTES
 /* ================================================================== */
 
-#bicycle_routes_icn[zoom >= 2],
-#bicycle_routes_ncn[zoom >= 5],
-#bicycle_routes_rcn[zoom >= 7],
-#bicycle_routes_lcn[zoom >= 9] {
-  opacity: 0.3;
+#bicycle_routes_gen0,
+#bicycle_routes_gen1,
+#bicycle_routes_gen2 {
+  opacity: 0.75;
+}
 
+#bicycle_routes_bicycle_gen3 {
+  opacity: 0.25;
+}
+
+#bicycle_routes_mtb_gen3 {
+  opacity: 0.5;
+}
+
+#bicycle_routes_gen0[zoom >= 2],
+#bicycle_routes_gen1[zoom >= 5],
+#bicycle_routes_gen2[zoom >= 8],
+#bicycle_routes_bicycle_gen3[zoom >= 11],
+#bicycle_routes_mtb_gen3[zoom >= 11] {
   [type='icn'] {
     line-color: @icn-overlay;
   }

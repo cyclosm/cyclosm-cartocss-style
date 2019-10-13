@@ -847,7 +847,7 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 11
-- id: bicycle_routes_icn
+- id: bicycle_routes_gen0
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -862,7 +862,8 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 2
-- id: bicycle_routes_ncn
+    maxzoom: 4
+- id: bicycle_routes_gen1
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -871,13 +872,17 @@ Layer:
         SELECT way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
-          AND tags->'network'='ncn'
-        ORDER BY z_order
+          AND tags->'network' IN ('icn', 'ncn')
+        ORDER BY CASE
+          WHEN tags->'network' = 'icn' THEN 0
+          WHEN tags->'network' = 'ncn' THEN 1
+        END DESC
       ) AS data
   geometry: linestring
   properties:
     minzoom: 5
-- id: bicycle_routes_rcn
+    maxzoom: 7
+- id: bicycle_routes_gen2
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -886,13 +891,17 @@ Layer:
         SELECT way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
-          AND tags->'network'='rcn'
-        ORDER BY z_order
+          AND tags->'network' IN ('icn', 'ncn', 'rcn')
+        ORDER BY CASE
+          WHEN tags->'network' = 'icn' THEN 0
+          WHEN tags->'network' = 'ncn' THEN 1
+        END DESC
       ) AS data
   geometry: linestring
   properties:
-    minzoom: 7
-- id: bicycle_routes_lcn
+    minzoom: 8
+    maxzoom: 10
+- id: bicycle_routes_bicycle_gen3
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -900,13 +909,34 @@ Layer:
       (
         SELECT way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
-        WHERE (route='bicycle' OR route='mtb')
-          AND tags->'network'='lcn'
-        ORDER BY z_order
+        WHERE route='bicycle'
+          AND tags->'network' IN ('icn', 'ncn', 'rcn', 'lcn')
+        ORDER BY CASE
+          WHEN tags->'network' = 'icn' THEN 0
+          WHEN tags->'network' = 'ncn' THEN 1
+        END DESC
       ) AS data
   geometry: linestring
   properties:
-    minzoom: 9
+    minzoom: 11
+- id: bicycle_routes_mtb_gen3
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT way, route, tags->'network' AS type, tags->'state' AS state
+        FROM planet_osm_line
+        WHERE route='mtb'
+          AND tags->'network' IN ('icn', 'ncn', 'rcn', 'lcn')
+        ORDER BY CASE
+          WHEN tags->'network' = 'icn' THEN 0
+          WHEN tags->'network' = 'ncn' THEN 1
+        END DESC
+      ) AS data
+  geometry: linestring
+  properties:
+    minzoom: 11
 - id: route
   <<: *extents84
   Datasource:
