@@ -2,7 +2,5 @@ language: node_js
 node_js: 11
 install:
   - yarn add carto
-  - wget "https://download.omniscale.de/magnacarto/rel/dev-20180115-39b3cd9/magnacarto-dev-20180115-39b3cd9-linux-amd64.tar.gz" && tar zxvf magnacarto-dev-20180115-39b3cd9-linux-amd64.tar.gz
 script:
   - time ./node_modules/.bin/carto -b project.mml > /dev/null
-  - time ./magnacarto-dev-20180115-39b3cd9-linux-amd64/magnacarto -mml project.mml > /dev/null
