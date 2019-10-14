@@ -548,7 +548,7 @@
   // One way road for general traffic, WITH countraflow for bikes
   [oneway = 'yes'][oneway_bicycle = 'no'],
   [oneway = '-1'][oneway_bicycle = 'no'] {
-     bike/marker-placement:line;
+     bike/marker-placement: line;
      bike/marker-max-error: 0.5;
      bike/marker-spacing: 100;
      bike/marker-file: url(symbols/oneway-cycle.svg);
