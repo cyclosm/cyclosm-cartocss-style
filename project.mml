@@ -472,7 +472,15 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           bicycle,
-          tags->'motor_vehicle' AS motor_vehicle,
+          CASE
+            WHEN (
+              tags->'psv' != 'no' OR tags->'motorcar' != 'no' OR tags->'bus' != 'no'
+              OR tags->'motor_vehicle' != 'no'
+              OR tags->'vehicle' != 'no'
+              OR access != 'no' OR access IS NULL
+              ) THEN 'yes'
+            ELSE 'no'
+          END AS motor_vehicle,
           CASE
             WHEN tags->'cyclestreet' IN ('yes') THEN 'yes'
             WHEN tags->'bicycle_road' IN ('yes') THEN 'yes'
@@ -597,7 +605,15 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           bicycle,
-          tags->'motor_vehicle' AS motor_vehicle,
+          CASE
+            WHEN (
+              tags->'psv' != 'no' OR tags->'motorcar' != 'no' OR tags->'bus' != 'no'
+              OR tags->'motor_vehicle' != 'no'
+              OR tags->'vehicle' != 'no'
+              OR access != 'no' OR access IS NULL
+              ) THEN 'yes'
+            ELSE 'no'
+          END AS motor_vehicle,
           CASE
             WHEN tags->'cyclestreet' IN ('yes') THEN 'yes'
             WHEN tags->'bicycle_road' IN ('yes') THEN 'yes'
@@ -766,7 +782,15 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           bicycle,
-          tags->'motor_vehicle' AS motor_vehicle,
+          CASE
+            WHEN (
+              tags->'psv' != 'no' OR tags->'motorcar' != 'no' OR tags->'bus' != 'no'
+              OR tags->'motor_vehicle' != 'no'
+              OR tags->'vehicle' != 'no'
+              OR access != 'no' OR access IS NULL
+              ) THEN 'yes'
+            ELSE 'no'
+          END AS motor_vehicle,
           CASE
             WHEN tags->'cyclestreet' IN ('yes') THEN 'yes'
             WHEN tags->'bicycle_road' IN ('yes') THEN 'yes'
