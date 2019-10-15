@@ -45,6 +45,11 @@ osm2pgsql:
 osm2pgsql -c -G --hstore -d osm ~/path/to/data.osm.pbf
 ```
 
+_Note_: Be careful if you use a Lua script with `osm2pgsql` as it might
+drop nodes with no tags except the `hstore` tags column (typically, a
+`cycleway=asl` node).
+
+
 ## Shapefiles
 
 This style requires some preprocessed shapefiles for some features. They are
