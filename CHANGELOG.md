@@ -38,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     well. See #119.
 * Add some casing on bridges to clarify which linear ways (footways,
     cycleways, bridleways and paths) are on top of which other. See #137.
+* Render wood and forest tree types. See #92.
 
 
 ## v0.2

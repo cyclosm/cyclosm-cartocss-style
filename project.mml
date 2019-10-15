@@ -2249,12 +2249,14 @@ Layer:
       (
         SELECT
           way,
-          COALESCE(leisure, landuse, military) AS type,
+          COALESCE(leisure, military, CASE WHEN landuse = 'forest' THEN 'wood' ELSE NULL END, "natural", landuse) AS type,
+          tags->'leaf_type' AS leaf_type,
           way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
         FROM planet_osm_polygon
         WHERE
-          (landuse = 'military' OR military = 'danger_area')
+          (landuse = 'military' OR military = 'danger_area' OR "natural" = 'wood' OR landuse = 'forest')
           AND building IS NULL
+          AND way_area > 1*!pixel_width!::real*!pixel_height!::real
         ORDER BY way_area DESC
       ) AS data
   geometry: polygon
