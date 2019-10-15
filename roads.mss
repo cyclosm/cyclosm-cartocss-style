@@ -353,6 +353,7 @@ come in as well.
 @rdz17_pedestrian_outline: 3;
 @rdz17_steps_outline: 1;
 @rdz17_railway_outline: 2;
+@rdz17_line_bridge_outline: 1;  // cycleway, footway, bridleway, path on bridges
 
 /* -- Zoom 18 -- */
 @rdz18_motorway_trunk: 23;
@@ -396,6 +397,7 @@ come in as well.
 @rdz18_pedestrian_outline: 6;
 @rdz18_steps_outline: 1;
 @rdz18_railway_outline: 3;
+@rdz18_line_bridge_outline: 1;  // cycleway, footway, bridleway, path on bridges
 
 
 /* ---- Casing ----------------------------------------------- */
@@ -570,6 +572,48 @@ come in as well.
     [type='motorway_link']    { line-width: @rdz18_motorway_link + (2 * @rdz18_motorway_link_outline); }
     [type='service']      { line-width: @rdz18_service + (2 * @rdz18_service_outline); }
     [type='pedestrian']   { line-width: @rdz18_pedestrian + (2 * @rdz18_pedestrian_outline); }
+  }
+}
+
+#bridge::outline {
+  [zoom>=17] {
+    [type='bridleway']   { line-color: @land; line-width: @rdz17_bridleway + (2 * @rdz17_line_bridge_outline); }
+    [type='footway']   { line-color: @land; line-width: @rdz17_footway + (2 * @rdz17_line_bridge_outline); }
+
+    [type='path'],
+    [type='footway'][can_bicycle='yes'],
+    [type='bridleway'][can_bicycle='yes'] {
+      line-color: @land;
+      line-width: @rdz17_path + (2 * @rdz17_line_bridge_outline);
+    }
+    [type='cycleway'],
+    [type='path'][can_bicycle='designated'] {
+      line-color: @land;
+      line-width: @rdz17_cycle + (2 * @rdz17_line_bridge_outline);
+      [oneway='no'][oneway_bicycle='no'] {
+        line-width: @rdz17_cycle*1.5 + (2 * @rdz17_line_bridge_outline);
+      }
+    }
+  }
+
+  [zoom >= 18] {
+    [type='bridleway']   { line-color: @land; line-width: @rdz18_bridleway + (2 * @rdz18_line_bridge_outline); }
+    [type='footway']   { line-color: @land; line-width: @rdz18_footway + (2 * @rdz18_line_bridge_outline); }
+
+    [type='path'],
+    [type='footway'][can_bicycle='yes'],
+    [type='bridleway'][can_bicycle='yes'] {
+      line-color: @land;
+      line-width: @rdz18_path + (2 * @rdz18_line_bridge_outline);
+    }
+    [type='cycleway'],
+    [type='path'][can_bicycle='designated'] {
+      line-color: @land;
+      line-width: @rdz18_cycle + (2 * @rdz18_line_bridge_outline);
+      [oneway='no'][oneway_bicycle='no'] {
+        line-width: @rdz18_cycle*1.5 + (2 * @rdz18_line_bridge_outline);
+      }
+    }
   }
 }
 
