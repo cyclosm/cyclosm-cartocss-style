@@ -47,6 +47,7 @@ Stylesheet:
 - ferry-routes.mss
 - power.mss
 - gpx.mss
+- legend.mss
 
 Layer:
 - id: land-low
@@ -485,23 +486,11 @@ Layer:
             ELSE NULL
           END AS cycleway_right_render,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            ELSE 0
-          END AS has_left_cycleway,
-          CASE
             WHEN tags->'cycleway:left:oneway' IS NOT NULL THEN tags->'cycleway:left:oneway'
             WHEN tags->'cycleway:left' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
             WHEN tags->'cycleway' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
             ELSE NULL
           END AS cycleway_left_oneway,
-          CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            ELSE 0
-          END AS has_right_cycleway,
           CASE
             WHEN tags->'cycleway:right:oneway' IS NOT NULL THEN tags->'cycleway:right:oneway'
             WHEN tags->'cycleway:right' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
@@ -630,23 +619,11 @@ Layer:
             ELSE NULL
           END AS cycleway_right_render,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            ELSE 0
-          END AS has_left_cycleway,
-          CASE
             WHEN tags->'cycleway:left:oneway' IS NOT NULL THEN tags->'cycleway:left:oneway'
             WHEN tags->'cycleway:left' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
             WHEN tags->'cycleway' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
             ELSE NULL
           END AS cycleway_left_oneway,
-          CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            ELSE 0
-          END AS has_right_cycleway,
           CASE
             WHEN tags->'cycleway:right:oneway' IS NOT NULL THEN tags->'cycleway:right:oneway'
             WHEN tags->'cycleway:right' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
@@ -819,23 +796,11 @@ Layer:
             ELSE NULL
           END AS cycleway_right_render,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            ELSE 0
-          END AS has_left_cycleway,
-          CASE
             WHEN tags->'cycleway:left:oneway' IS NOT NULL THEN tags->'cycleway:left:oneway'
             WHEN tags->'cycleway:left' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
             WHEN tags->'cycleway' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
             ELSE NULL
           END AS cycleway_left_oneway,
-          CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            ELSE 0
-          END AS has_right_cycleway,
           CASE
             WHEN tags->'cycleway:right:oneway' IS NOT NULL THEN tags->'cycleway:right:oneway'
             WHEN tags->'cycleway:right' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
@@ -2232,3 +2197,18 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 7
+- id: legend-icons
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          tags->'icon' AS icon
+        FROM planet_osm_point
+        WHERE tags->'icon' IS NOT NULL
+      ) AS data
+  geometry: polygon
+  properties:
+    status: off
