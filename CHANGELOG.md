@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## v0.3
+
 * Use a slightly lighter blue color for shared bicycle/motorcycle parkings
     (and avoid using red which was too visible).
 * Fix a bug with the text of a bicycle parking with limited access not being
