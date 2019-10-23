@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Some roads with `motor_vehicle=no` were no longer in cyan due to a logical
     error, this is now fixed. See #222.
+* Better rendering of cycleways on bridges, to avoid them being drawn below
+    the associated highway.
 
 ## v0.3
 

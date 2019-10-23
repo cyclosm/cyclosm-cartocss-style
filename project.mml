@@ -834,10 +834,15 @@ Layer:
               OR tracktype IN ('grade2', 'grade3')
               OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
             ELSE NULL
-          END AS surface_type
+          END AS surface_type,
+          CASE
+            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+39 ELSE 39 END
+            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+38 ELSE 38 END
+            ELSE z_order
+          END AS z_order
         FROM planet_osm_line
         WHERE bridge NOT IN ('', '0', 'no')
-        ORDER BY layer ASC
+        ORDER BY z_order ASC
       ) AS data
   geometry: linestring
   properties:
