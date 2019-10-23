@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Some roads with `motor_vehicle=no` were no longer in cyan due to a logical
+    error, this is now fixed. See #222.
+
 ## v0.3
 
 * Use a slightly lighter blue color for shared bicycle/motorcycle parkings

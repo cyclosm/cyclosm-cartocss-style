@@ -448,8 +448,8 @@ Layer:
               tags->'psv' != 'no' OR tags->'motorcar' != 'no' OR tags->'bus' != 'no'
               OR tags->'motor_vehicle' != 'no'
               OR tags->'vehicle' != 'no'
-              OR access != 'no' OR access IS NULL
               ) THEN 'yes'
+            WHEN tags->'psv' IS NULL AND tags->'motorcar' IS NULL AND tags->'bus' IS NULL AND tags->'motor_vehicle' IS NULL AND tags->'vehicle' IS NULL AND (access != 'no' OR access IS NULL) THEN 'yes'
             ELSE 'no'
           END AS motor_vehicle,
           CASE
@@ -581,8 +581,8 @@ Layer:
               tags->'psv' != 'no' OR tags->'motorcar' != 'no' OR tags->'bus' != 'no'
               OR tags->'motor_vehicle' != 'no'
               OR tags->'vehicle' != 'no'
-              OR access != 'no' OR access IS NULL
               ) THEN 'yes'
+            WHEN tags->'psv' IS NULL AND tags->'motorcar' IS NULL AND tags->'bus' IS NULL AND tags->'motor_vehicle' IS NULL AND tags->'vehicle' IS NULL AND (access != 'no' OR access IS NULL) THEN 'yes'
             ELSE 'no'
           END AS motor_vehicle,
           CASE
@@ -758,8 +758,8 @@ Layer:
               tags->'psv' != 'no' OR tags->'motorcar' != 'no' OR tags->'bus' != 'no'
               OR tags->'motor_vehicle' != 'no'
               OR tags->'vehicle' != 'no'
-              OR access != 'no' OR access IS NULL
               ) THEN 'yes'
+            WHEN tags->'psv' IS NULL AND tags->'motorcar' IS NULL AND tags->'bus' IS NULL AND tags->'motor_vehicle' IS NULL AND tags->'vehicle' IS NULL AND (access != 'no' OR access IS NULL) THEN 'yes'
             ELSE 'no'
           END AS motor_vehicle,
           CASE
