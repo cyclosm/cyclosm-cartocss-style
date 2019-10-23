@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 13.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 14948)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="Layer_1"
+   xml:space="preserve"
+   viewBox="-0.258 -0.548 10 9.9999999"
+   version="1.1"
+   y="0px"
+   x="0px"
+   sodipodi:docname="parking.svg"
+   width="10"
+   height="10"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"><defs
+   id="defs150" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1596"
+   inkscape:window-height="861"
+   id="namedview148"
+   showgrid="false"
+   inkscape:zoom="15.282623"
+   inkscape:cx="3.0726399"
+   inkscape:cy="14.036318"
+   inkscape:window-x="0"
+   inkscape:window-y="37"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Layer_1" />
+<g
+   id="g143"
+   transform="matrix(0.08055312,0,0,0.08055312,-0.30284052,-0.47120531)">
+	<path
+   style="fill:#231f20"
+   d="m 109.63,122.89 c 8.148,0 14.766,-6.617 14.766,-14.773 V 14.095 c 0,-8.156 -6.617,-14.75 -14.766,-14.75 H 15.617 c -8.156,0 -14.758,6.594 -14.758,14.75 v 94.016 c 0,8.156 6.602,14.773 14.758,14.773 h 94.013 z"
+   id="path137"
+   inkscape:connector-curvature="0" />
+	<path
+   style="fill:#231f20"
+   d="M 15.617,1.84 C 8.859,1.84 3.359,7.332 3.359,14.098 v 94.016 c 0,6.766 5.5,12.258 12.258,12.258 h 94.016 c 6.758,0 12.25,-5.492 12.25,-12.258 V 14.102 c 0,-6.766 -5.492,-12.258 -12.25,-12.258 H 15.62 Z"
+   id="path139"
+   inkscape:connector-curvature="0" />
+	<path
+   style="fill:#ffffff"
+   d="m 71.32,59.363 c 7.008,0 12.695,-5.695 12.695,-12.695 0,-7.031 -5.688,-12.719 -12.695,-12.719 L 52.593,33.918 v 25.445 z m -0.265,-41.07 c 15.867,0 28.711,12.844 28.711,28.688 0,15.875 -12.844,28.711 -28.711,28.711 L 52.594,75.669 v 27.25 H 36.055 V 18.292 h 35 z"
+   id="path141"
+   inkscape:connector-curvature="0" />
+</g>
+<metadata
+   id="metadata145"><rdf:RDF><cc:Work><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><cc:license
+         rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" /><dc:publisher><cc:Agent
+           rdf:about="http://openclipart.org/"><dc:title>Openclipart</dc:title></cc:Agent></dc:publisher><dc:title>NPS map pictographs part 3</dc:title><dc:date>2008-01-21T15:29:29</dc:date><dc:description>Third set of 4 sets of map pictographs for U.S. national park maps. PD US Government - National Park Service, U.S. Dept. of the Interior\n\nrest of sets:\nhttp://openclipart.org/media/files/johnny_automatic/6741\nhttp://openclipart.org/media/files/johnny_automatic/6754\nhttp://openclipart.org/media/files/johnny_automatic/6765</dc:description><dc:source>https://openclipart.org/detail/11346/nps-map-pictographs-part-3-by-johnny_automatic-11346</dc:source><dc:creator><cc:Agent><dc:title>johnny_automatic</dc:title></cc:Agent></dc:creator><dc:subject><rdf:Bag><rdf:li>cartography</rdf:li><rdf:li>externalsource</rdf:li><rdf:li>map</rdf:li><rdf:li>park</rdf:li><rdf:li>pictograph</rdf:li><rdf:li>sign</rdf:li><rdf:li>symbol</rdf:li></rdf:Bag></dc:subject></cc:Work><cc:License
+       rdf:about="http://creativecommons.org/publicdomain/zero/1.0/"><cc:permits
+         rdf:resource="http://creativecommons.org/ns#Reproduction" /><cc:permits
+         rdf:resource="http://creativecommons.org/ns#Distribution" /><cc:permits
+         rdf:resource="http://creativecommons.org/ns#DerivativeWorks" /></cc:License></rdf:RDF></metadata></svg>
