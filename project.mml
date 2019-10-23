@@ -2204,6 +2204,7 @@ Layer:
   properties:
     minzoom: 7
 - id: legend-icons
+  class: legend
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -2211,10 +2212,27 @@ Layer:
       (
         SELECT
           way,
-          tags->'icon' AS icon
+          tags->'icon' AS icon,
+          tags->'label' AS label
         FROM planet_osm_point
         WHERE tags->'icon' IS NOT NULL
       ) AS data
-  geometry: polygon
+  geometry: point
+  properties:
+    status: off
+- id: legend-labels
+  class: legend
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          tags->'label' AS label
+        FROM planet_osm_point
+        WHERE tags->'label' IS NOT NULL AND tags->'icon' IS NULL
+      ) AS data
+  geometry: point
   properties:
     status: off

@@ -159,7 +159,7 @@ def main():
                                 encoding='utf-8',
                                 xml_declaration=True,
                                 pretty_print=True
-                            )
+                            ).decode('utf-8')
                         )
                 except IOError:
                     print('Could not save file %s.' % filename)
