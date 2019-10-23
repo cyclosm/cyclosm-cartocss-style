@@ -896,6 +896,7 @@ Layer:
         ORDER BY CASE
           WHEN tags->'network' = 'icn' THEN 0
           WHEN tags->'network' = 'ncn' THEN 1
+          WHEN tags->'network' = 'rcn' THEN 2
         END DESC
       ) AS data
   geometry: linestring
@@ -915,6 +916,8 @@ Layer:
         ORDER BY CASE
           WHEN tags->'network' = 'icn' THEN 0
           WHEN tags->'network' = 'ncn' THEN 1
+          WHEN tags->'network' = 'rcn' THEN 2
+          WHEN tags->'network' = 'lcn' THEN 3
         END DESC
       ) AS data
   geometry: linestring
@@ -933,6 +936,8 @@ Layer:
         ORDER BY CASE
           WHEN tags->'network' = 'icn' THEN 0
           WHEN tags->'network' = 'ncn' THEN 1
+          WHEN tags->'network' = 'rcn' THEN 2
+          WHEN tags->'network' = 'lcn' THEN 3
         END DESC
       ) AS data
   geometry: linestring

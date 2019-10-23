@@ -13,7 +13,6 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: point;
-    text-placements: E;
     text-dx: 20;
 }
 
@@ -24,6 +23,5 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
     text-placement: point;
-    text-placements: S;
     text-dy: 20;
 }
