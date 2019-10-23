@@ -75,7 +75,7 @@ Layer:
     table: |-
       (
         SELECT
-          way,
+          ST_Snaptogrid(way, !pixel_width! / 4) AS way,
           way_area AS area,
           COALESCE(
             CASE WHEN landuse IS NOT NULL THEN ('landuse_' || landuse) ELSE NULL END,
@@ -253,7 +253,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, waterway AS type
+        SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way, waterway AS type
         FROM planet_osm_line
         WHERE
           waterway IN ('river', 'canal')
@@ -683,7 +683,7 @@ Layer:
     table: |-
       (
         SELECT
-          way,
+          ST_Snaptogrid(way, !pixel_width! / 4) AS way,
           CASE
             WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
             ELSE highway
@@ -701,7 +701,8 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-          SELECT way, 'motorway_trunk' AS type, bridge, tunnel
+          SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way,
+          'motorway_trunk' AS type, bridge, tunnel
           FROM planet_osm_roads
           WHERE highway IN ('motorway', 'trunk')
       ) AS data
@@ -853,7 +854,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, route, tags->'network' AS type, tags->'state' AS state
+        SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network'='icn'
@@ -869,7 +870,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, route, tags->'network' AS type, tags->'state' AS state
+        SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network' IN ('icn', 'ncn')
@@ -888,7 +889,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, route, tags->'network' AS type, tags->'state' AS state
+        SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network' IN ('icn', 'ncn', 'rcn')
