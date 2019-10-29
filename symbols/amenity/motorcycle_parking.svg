@@ -1,37 +1,86 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   id="svg955"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="64"
+   height="64"
+   viewBox="0 -64 64 64"
    version="1.1"
-   viewBox="0 0 10.466667 10.466667"
-   height="39.559055"
-   width="39.559055">
+   id="svg8"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="motorcycle_parking.svg">
   <defs
-     id="defs949" />
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.235124"
+     inkscape:cx="52.33502"
+     inkscape:cy="-64.523576"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="768"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:pagecheckerboard="true"
+     units="px"
+     showguides="false"
+     viewbox-x="192"
+     scale-x="1"
+     viewbox-y="-64">
+    <inkscape:grid
+       type="xygrid"
+       id="grid851"
+       empspacing="16"
+       dotted="false" />
+    <inkscape:grid
+       type="xygrid"
+       id="grid900"
+       spacingx="64"
+       spacingy="64"
+       color="#000062"
+       opacity="0.1254902"
+       empcolor="#0d0029"
+       empopacity="0.25098039"
+       empspacing="1"
+       dotted="false" />
+  </sodipodi:namedview>
   <metadata
-     id="metadata952">
+     id="metadata5">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(5.4599138,-32.740917)"
-     id="layer1">
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-327.13332)">
     <circle
-       r="3.96875"
-       cy="37.974251"
-       cx="-0.22658047"
+       style="opacity:1;fill:#0050ff;fill-opacity:1;stroke:#ffffff;stroke-width:6.72635841;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;image-rendering:auto"
        id="path815-6"
-       style="opacity:1;fill:#0050ff;fill-opacity:1;stroke:#ffffff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+       cx="32.418415"
+       cy="296.26431"
+       r="15.703079" />
   </g>
 </svg>
