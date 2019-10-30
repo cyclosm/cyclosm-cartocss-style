@@ -25,17 +25,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.470248"
-     inkscape:cx="72.19785"
-     inkscape:cy="47.72358"
+     inkscape:zoom="2.4622888"
+     inkscape:cx="56.084792"
+     inkscape:cy="66.158321"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:window-width="1366"
-     inkscape:window-height="768"
+     inkscape:window-height="719"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:pagecheckerboard="true"
      units="px"
      showguides="false"
@@ -77,7 +77,7 @@
      transform="translate(0,-327.13332)">
     <g
        id="g5326"
-       transform="matrix(3.9566814,0,0,3.9566814,-219.61604,-32.810014)">
+       transform="matrix(3.9566814,0,0,3.9566814,-219.75963,-31.931068)">
       <g
          style="fill:none;fill-opacity:1;stroke:#020202;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          transform="translate(-0.13363476,-1.9810173)"
@@ -105,7 +105,7 @@
       </g>
       <g
          id="g5317"
-         transform="translate(0,-1.1714514)">
+         transform="translate(-0.03628983,-1.1714514)">
         <circle
            style="opacity:1;fill:#0000ff;fill-opacity:1;stroke:#ffffff;stroke-width:1.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            id="path815-3-5"
@@ -114,5 +114,8 @@
            r="3.96875" />
       </g>
     </g>
+    <g
+       id="g5326-5-9"
+       transform="matrix(3.9566814,0,0,3.9566814,-91.80973,-95.981592)" />
   </g>
 </svg>

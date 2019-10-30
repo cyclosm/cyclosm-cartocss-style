@@ -25,21 +25,21 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.470248"
-     inkscape:cx="77.572124"
-     inkscape:cy="11.289991"
+     inkscape:zoom="2.4622888"
+     inkscape:cx="46.74389"
+     inkscape:cy="23.921196"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:window-width="1366"
-     inkscape:window-height="768"
+     inkscape:window-height="719"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:pagecheckerboard="true"
      units="px"
      showguides="false"
-     viewbox-x="192"
+     viewbox-x="64"
      scale-x="1"
      viewbox-y="-64">
     <inkscape:grid
@@ -77,39 +77,48 @@
      id="layer1"
      transform="translate(0,-327.13332)">
     <g
-       id="g5314"
-       transform="matrix(3.9566814,0,0,3.9566814,-358.32419,-96.251821)">
-      <circle
-         r="3.96875"
-         cy="99.351318"
-         cx="114.85907"
-         id="path815-6-3"
-         style="opacity:1;fill:#0050ff;fill-opacity:1;stroke:#ffffff;stroke-width:1.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+       id="g5326-6"
+       transform="matrix(3.9566814,0,0,3.9566814,-219.77763,-95.970362)"
+       style="fill:#0060ff;fill-opacity:1">
       <g
-         style="fill:none;fill-opacity:1;stroke:#0050ff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         transform="translate(34.878656,-1.9810173)"
-         id="g919">
+         style="fill:#0060ff;fill-opacity:1;stroke:#0060ff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         transform="translate(-0.13363476,-1.9810173)"
+         id="g878-1">
         <g
-           style="fill:none;fill-opacity:1;stroke:#0050ff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           style="fill:#0060ff;fill-opacity:1;stroke:#0060ff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
            transform="translate(0.18143118)"
-           id="g917">
+           id="g882-8">
           <g
-             style="stroke:#0050ff;stroke-opacity:1"
+             style="fill:#0060ff;fill-opacity:1;stroke:#0060ff;stroke-opacity:1"
              transform="translate(0.41969682,-0.37797619)"
-             id="g915">
+             id="g886-7">
             <path
-               style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#0050ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               style="fill:#0060ff;fill-opacity:1;fill-rule:evenodd;stroke:#0060ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
                d="m 75.370006,97.216028 4.493705,-2.594444"
-               id="path911"
+               id="path868-9"
                inkscape:connector-curvature="0" />
             <path
                inkscape:connector-curvature="0"
-               id="path913"
+               id="path874-2"
                d="m 78.894859,94.638288 4.493707,2.59444"
-               style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#0050ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+               style="fill:#0060ff;fill-opacity:1;fill-rule:evenodd;stroke:#0060ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
           </g>
         </g>
       </g>
+      <g
+         id="g5317-0"
+         transform="translate(-0.03628983,-1.1714514)"
+         style="fill:#0060ff;fill-opacity:1">
+        <circle
+           style="opacity:1;fill:#0060ff;fill-opacity:1;stroke:#ffffff;stroke-width:1.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           id="path815-3-5-23"
+           cx="79.846779"
+           cy="100.53709"
+           r="3.96875" />
+      </g>
     </g>
+    <g
+       id="g5326-5-9"
+       transform="matrix(3.9566814,0,0,3.9566814,-91.80973,-95.981592)" />
   </g>
 </svg>
