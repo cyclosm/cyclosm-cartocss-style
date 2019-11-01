@@ -1386,7 +1386,8 @@ come in as well.
   [type='bridleway'] {
     line-color: @bridleway-fill;
   }
-  [type='footway'] {
+  [type='footway'],
+  [type='steps'] {
     line-color: @footway-fill;
   }
   [type='path'],
@@ -1404,9 +1405,6 @@ come in as well.
       [can_bicycle='no'] {
           line-color: @path-nobicycle;
       }
-  }
-  [type='steps'] {
-    line-color: @steps-fill;
   }
 
   /* Maxspeed bike friendliness only applies to a limited set of highways */
