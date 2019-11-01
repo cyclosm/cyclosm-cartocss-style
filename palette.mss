@@ -145,8 +145,8 @@
 @shield-size-z18: 12;
 @shield-line-spacing-z18: -1.80;
 
-@major-highway-text-repeat-distance: 50;
-@minor-highway-text-repeat-distance: 10;
+@major-highway-text-repeat-distance: 300;
+@minor-highway-text-repeat-distance: 150;
 
 @contours-halo-fill: rgba(0, 0, 0, 0.3);
 @contours-font-size: 8;

@@ -129,155 +129,95 @@
   [highway = 'motorway_trunk'][zoom >= 10],
   [highway = 'primary'][zoom >= 11],
   [highway = 'secondary'][zoom >= 12] {
-    shield-name: "[refs]";
-    shield-size: @shield-size;
-    shield-line-spacing: @shield-line-spacing;
-    shield-placement: line;
-    shield-spacing: @shield-spacing;
-    shield-repeat-distance: @shield-repeat-distance;
-    shield-margin: @shield-margin;
-    shield-face-name: @sans;
-    shield-clip: @shield-clip;
-
-    [highway = 'motorway_trunk'] {
-      shield-fill: @motorway-trunk-shield-fill;
-      shield-file: url("symbols/shields/motorway-trunk_[width]x[height].svg");
-    }
-
-    [highway = 'primary'] {
-      shield-fill: @primary-shield-fill;
-      shield-file: url("symbols/shields/primary_[width]x[height].svg");
-    }
-
-    [highway = 'secondary'] {
-      shield-fill: @secondary-shield-fill;
-      shield-file: url("symbols/shields/secondary_[width]x[height].svg");
-    }
+      text-name: "[refs]";
+      text-size: 7;
+      text-fill: @road_text;
+      text-spacing: 600;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @sans;
+      text-repeat-distance: @major-highway-text-repeat-distance;
+      text-halo-radius: @standard-halo-radius;
   }
 }
 
 #roads-text-ref {
-  [highway = 'motorway_trunk'],
+  [highway = 'motorway'],
+  [highway = 'trunk'],
   [highway = 'primary'],
   [highway = 'secondary'],
   [highway = 'tertiary'] {
     [zoom >= 13] {
-      shield-name: "[refs]";
-      shield-size: @shield-size;
-      shield-line-spacing: @shield-line-spacing;
-
-      [zoom >= 16] {
-        shield-size: @shield-size-z16;
-        shield-line-spacing: @shield-line-spacing-z16;
-      }
-      [zoom >= 18] {
-        shield-size: @shield-size-z18;
-        shield-line-spacing: @shield-line-spacing-z18;
-      }
-
-      shield-placement: line;
-      shield-spacing: @shield-spacing;
-      shield-repeat-distance: @shield-repeat-distance;
-      shield-margin: @shield-margin;
-      shield-face-name: @sans;
-      shield-clip: @shield-clip;
-
-      [highway = 'motorway_trunk'] {
-        shield-fill: @motorway-trunk-shield-fill;
-        shield-file: url("symbols/shields/motorway-trunk_[width]x[height].svg");
-
-        [zoom >= 16] {
-          shield-file: url("symbols/shields/motorway-trunk_[width]x[height]_z16.svg");
-        }
-        [zoom >= 18] {
-          shield-file: url("symbols/shields/motorway-trunk_[width]x[height]_z18.svg");
-        }
-      }
-      [highway = 'primary'] {
-        shield-fill: @primary-shield-fill;
-        shield-file: url("symbols/shields/primary_[width]x[height].svg");
-
-        [zoom >= 16] {
-          shield-file: url("symbols/shields/primary_[width]x[height]_z16.svg");
-        }
-        [zoom >= 18] {
-          shield-file: url("symbols/shields/primary_[width]x[height]_z18.svg");
-        }
-      }
-      [highway = 'secondary'] {
-        shield-fill: @secondary-shield-fill;
-        shield-file: url("symbols/shields/secondary_[width]x[height].svg");
-
-        [zoom >= 16] {
-          shield-file: url("symbols/shields/secondary_[width]x[height]_z16.svg");
-        }
-        [zoom >= 18] {
-          shield-file: url("symbols/shields/secondary_[width]x[height]_z18.svg");
-        }
-      }
-      [highway = 'tertiary'] {
-        shield-fill: @tertiary-shield-fill;
-        shield-file: url("symbols/shields/tertiary_[width]x[height].svg");
-
-        [zoom >= 16] {
-          shield-file: url("symbols/shields/tertiary_[width]x[height]_z16.svg");
-        }
-        [zoom >= 18] {
-          shield-file: url("symbols/shields/tertiary_[width]x[height]_z18.svg");
-        }
-      }
-    }
-  }
-
-  [highway = 'unclassified'],
-  [highway = 'residential'] {
-    [zoom >= 15] {
       text-name: "[refs]";
       text-size: 8;
-
-      [zoom >= 16] {
-        text-size: 9;
-      }
-      [zoom >= 18] {
-        text-size: 10;
-      }
-
       text-fill: @road_text;
-      text-face-name: @sans;
+      text-spacing: 300;
+      text-clip: false;
       text-placement: line;
-      text-repeat-distance: @major-highway-text-repeat-distance;
-      text-halo-radius: 2;
-      text-halo-fill: @road_halo;
-      text-spacing: 760;
-      text-clip: false;
-    }
-  }
-
-  [highway = 'track'] {
-    [zoom >= 15] {
-      text-name: "[refs]";
-      text-size: 8;
-      text-dy: 5;
-
-      [zoom >= 16] {
-        text-size: 9;
-        text-dy: 7;
-      }
-      [zoom >= 17] {
-        text-size: 11;
-        text-dy: 9;
-      }
-
-      text-clip: false;
-      text-fill: #222;
       text-face-name: @sans;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: @road_halo;
-      text-margin: 10;
-      text-placement: line;
-      text-spacing: 760;
       text-repeat-distance: @major-highway-text-repeat-distance;
-      text-vertical-alignment: middle;
+    }
+    [zoom >= 14] {
+      text-size: 9;
+    }
+    [zoom >= 15] {
+      text-size: 10;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+    [zoom >= 19] {
+      text-size: 12;
+    }
+  }
+
+  [highway = 'residential'],
+  [highway = 'unclassified'],
+  [highway = 'service'],
+  [highway = 'road'] {
+    [zoom >= 16] {
+      text-name: "[refs]";
+      text-size: 9;
+      text-fill: @road_text;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @road_halo;
+      text-face-name: @sans;
+      text-repeat-distance: @minor-highway-text-repeat-distance;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+      text-spacing: 400;
+    }
+    [zoom >= 19] {
+      text-size: 12;
+      text-spacing: 400;
+    }
+  }
+
+  [highway = 'living_street'],
+  [highway = 'pedestrian'] {
+    [zoom >= 16] {
+      text-name: "[refs]";
+      text-size: 9;
+      text-fill: @road_text;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @road_halo;
+      text-face-name: @sans;
+      text-repeat-distance: @minor-highway-text-repeat-distance;
+    }
+    [zoom >= 17] {
+      text-size: 11;
+    }
+    [zoom >= 19] {
+      text-size: 12;
     }
   }
 }
