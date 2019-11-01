@@ -712,7 +712,7 @@
     }
   }
 
-  [feature = 'highway_traffic_signals'][zoom >= 17] {
+  [feature = 'highway_traffic_signals'][zoom >= 18] {
     marker-file: url('symbols/openstreetmap-carto/highway/traffic_light.13.svg');
     marker-fill: #545454;
     marker-placement: interior;
