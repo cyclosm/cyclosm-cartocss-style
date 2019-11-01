@@ -241,7 +241,7 @@ come in as well.
 @rdz15_living_street: 1.5;
 @rdz15_service: 2;
 @rdz15_track: 2;
-@rdz15_pedestrian: 1.5;
+@rdz15_pedestrian: 1;
 @rdz15_bridleway: 0.5;
 @rdz15_path: 1.25;
 @rdz15_footway: 0.5;
@@ -327,7 +327,7 @@ come in as well.
 @rdz17_living_street: 7.5;
 @rdz17_service: 6;
 @rdz17_track: 4;
-@rdz17_pedestrian: 5;
+@rdz17_pedestrian: 3;
 @rdz17_bridleway: 1;
 @rdz17_path: 2;
 @rdz17_footway: 1.5;
@@ -371,7 +371,7 @@ come in as well.
 @rdz18_living_street: 11;
 @rdz18_service: 10;
 @rdz18_track: 7;
-@rdz18_pedestrian: 8;
+@rdz18_pedestrian: 4;
 @rdz18_bridleway: 1.5;
 @rdz18_path: 2.5;
 @rdz18_footway: 2;
@@ -394,7 +394,7 @@ come in as well.
 @rdz18_road_outline: 1.75;
 @rdz18_living_street_outline: 3;
 @rdz18_service_outline: 1.75;
-@rdz18_pedestrian_outline: 6;
+@rdz18_pedestrian_outline: 4;
 @rdz18_steps_outline: 1;
 @rdz18_railway_outline: 3;
 @rdz18_line_bridge_outline: 1;  // cycleway, footway, bridleway, path on bridges
