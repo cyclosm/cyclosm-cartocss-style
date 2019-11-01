@@ -225,10 +225,7 @@
 #roads-text-name {
   [highway = 'motorway'],
   [highway = 'trunk'],
-  [highway = 'primary'],
-  [highway = 'construction'][construction = 'motorway'],
-  [highway = 'construction'][construction = 'trunk'],
-  [highway = 'construction'][construction = 'primary'] {
+  [highway = 'primary'] {
     [zoom >= 13] {
       text-name: "[name]";
       text-size: 8;
@@ -240,9 +237,7 @@
       text-repeat-distance: @major-highway-text-repeat-distance;
       [tunnel = 'no'] {
         text-halo-radius: @standard-halo-radius;
-        [highway = 'motorway'] { text-halo-fill: @road_halo; }
-        [highway = 'trunk'] { text-halo-fill: @road_halo; }
-        [highway = 'primary'] { text-halo-fill: @road_halo; }
+        text-halo-fill: @road_halo;
       }
     }
     [zoom >= 14] {
@@ -258,8 +253,7 @@
       text-size: 12;
     }
   }
-  [highway = 'secondary'],
-  [highway = 'construction'][construction = 'secondary'] {
+  [highway = 'secondary'] {
     [zoom >= 14] {
       text-name: "[name]";
       text-size: 9;
@@ -282,8 +276,7 @@
       text-size: 12;
     }
   }
-  [highway = 'tertiary'],
-  [highway = 'construction'][construction = 'tertiary'] {
+  [highway = 'tertiary'] {
     [zoom >= 14] {
       text-name: "[name]";
       text-size: 9;
@@ -303,34 +296,9 @@
       text-size: 12;
     }
   }
-  [highway = 'construction'][construction = null][zoom >= 16] {
-    text-name: "[name]";
-    text-size: 9;
-    text-fill: @road_text;
-    text-spacing: 300;
-    text-clip: false;
-    text-placement: line;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @road_halo;
-    text-face-name: @sans;
-    text-repeat-distance: @major-highway-text-repeat-distance;
-
-    [zoom >= 17] {
-      text-size: 11;
-      text-spacing: 400;
-    }
-    [zoom >= 19] {
-      text-size: 12;
-      text-spacing: 400;
-    }
-  }
   [highway = 'residential'],
   [highway = 'unclassified'],
-  [highway = 'road'],
-  [highway = 'construction'][construction = null],
-  [highway = 'construction'][construction = 'residential'],
-  [highway = 'construction'][construction = 'unclassified'],
-  [highway = 'construction'][construction = 'road'] {
+  [highway = 'road'] {
     [zoom >= 16] {
       text-name: "[name]";
       text-size: 9;
@@ -354,10 +322,7 @@
     }
   }
 
-  [highway = 'raceway'],
-  [highway = 'service'],
-  [highway = 'construction'][construction = 'raceway'],
-  [highway = 'construction'][construction = 'service'][zoom >= 17] {
+  [highway = 'service'] {
     [zoom >= 16] {
       text-name: "[name]";
       text-size: 9;
@@ -377,9 +342,7 @@
   }
 
   [highway = 'living_street'],
-  [highway = 'pedestrian'],
-  [highway = 'construction'][construction = 'living_street'][zoom >= 16],
-  [highway = 'construction'][construction = 'pedestrian'][zoom >= 16] {
+  [highway = 'pedestrian'] {
     [zoom >= 16] {
       text-name: "[name]";
       text-size: 9;
@@ -388,11 +351,7 @@
       text-clip: false;
       text-placement: line;
       text-halo-radius: @standard-halo-radius;
-      [highway = 'living_street'] {
-        text-halo-fill: @road_halo;
-        text-repeat-distance: @major-highway-text-repeat-distance;
-      }
-      [highway = 'pedestrian'] { text-halo-fill: @road_halo; }
+      text-halo-fill: @road_halo;
       text-face-name: @sans;
       text-repeat-distance: @minor-highway-text-repeat-distance;
     }
@@ -406,8 +365,7 @@
 }
 
 #paths-text-name {
-  [highway = 'track'],
-  [highway = 'construction'][construction = 'track'][zoom >= 16] {
+  [highway = 'track'] {
     [zoom >= 16] {
       text-name: "[name]";
       text-fill: #222;
@@ -432,12 +390,7 @@
   [highway = 'footway'],
   [highway = 'cycleway'],
   [highway = 'path'],
-  [highway = 'steps'],
-  [highway = 'construction'][construction = 'bridleway'],
-  [highway = 'construction'][construction = 'footway'],
-  [highway = 'construction'][construction = 'cycleway'],
-  [highway = 'construction'][construction = 'path'],
-  [highway = 'construction'][construction = 'steps'] {
+  [highway = 'steps'] {
     [zoom >= 16] {
       text-name: "[name]";
       text-fill: #222;
@@ -451,7 +404,6 @@
       text-vertical-alignment: middle;
       text-dy: 7;
       text-repeat-distance: @major-highway-text-repeat-distance;
-      [highway = 'steps'] { text-repeat-distance: @minor-highway-text-repeat-distance; }
     }
     [zoom >= 17] {
       text-size: 11;
