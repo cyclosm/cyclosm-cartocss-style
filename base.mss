@@ -190,11 +190,11 @@
 // so we use a separate layer that does this for us.
 // Not mandatory but brings a good visualization of the building's perimeter
 // that might be off due to hill shading.
-#buildings[zoom>=17][type != 'hedge'] {
+#buildings[zoom>=18][type != 'hedge'] {
   building-fill:@building;
   building-height:1.25;
 }
-#buildings[zoom>=17][type = 'hedge'] {
+#buildings[zoom>=18][type = 'hedge'] {
   building-fill:@wooded;
   building-height:1.25;
 }
