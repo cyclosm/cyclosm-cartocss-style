@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="39.559055"
+   height="55.223637"
+   viewBox="0 0 10.466667 14.611254"
+   version="1.1"
+   id="svg955"
+   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   sodipodi:docname="bicycle_parking_secured_covered.svg">
+  <defs
+     id="defs949" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="17.931934"
+     inkscape:cy="39.302691"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="1"
+     fit-margin-left="1"
+     fit-margin-right="1"
+     fit-margin-bottom="1"
+     units="px"
+     inkscape:window-width="796"
+     inkscape:window-height="861"
+     inkscape:window-x="800"
+     inkscape:window-y="37"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata952">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(5.3005319,-35.000553)">
+    <g
+       transform="translate(-97.317786,-56.131429)"
+       id="g5334">
+      <circle
+         r="3.96875"
+         cy="100.5099"
+         cx="97.250587"
+         id="path815-7"
+         style="opacity:1;fill:#edd502;fill-opacity:1;stroke:#0000ff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+      <g
+         id="g909"
+         transform="translate(17.270174,-1.9810173)"
+         style="fill:none;fill-opacity:1;stroke:#020202;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+        <g
+           id="g907"
+           transform="translate(0.18143118)"
+           style="fill:none;fill-opacity:1;stroke:#020202;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+          <g
+             id="g905"
+             transform="translate(0.41969682,-0.37797619)"
+             style="stroke:#0000ff;stroke-opacity:1">
+            <path
+               inkscape:connector-curvature="0"
+               id="path901"
+               d="m 75.370006,97.216028 4.493705,-2.594444"
+               style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            <path
+               style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+               d="m 78.894859,94.638288 4.493707,2.59444"
+               id="path903"
+               inkscape:connector-curvature="0" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

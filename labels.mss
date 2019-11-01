@@ -548,7 +548,7 @@
   // One way road for general traffic, WITH countraflow for bikes
   [oneway = 'yes'][oneway_bicycle = 'no'],
   [oneway = '-1'][oneway_bicycle = 'no'] {
-     bike/marker-placement:line;
+     bike/marker-placement: line;
      bike/marker-max-error: 0.5;
      bike/marker-spacing: 100;
      bike/marker-file: url(symbols/oneway-cycle.svg);
@@ -615,9 +615,9 @@
 /* BICYCLE ROUTES
 /* ================================================================== */
 
-#bicycle_routes_labels[type='icn'][zoom >= 9][width <= 8],
-#bicycle_routes_labels[type='ncn'][zoom >= 10][width <= 8],
-#bicycle_routes_labels[type='rcn'][zoom >= 11][width <= 8],
+#bicycle_routes_labels[type='icn'][zoom >= 8][width <= 8],
+#bicycle_routes_labels[type='ncn'][zoom >= 8][width <= 8],
+#bicycle_routes_labels[type='rcn'][zoom >= 10][width <= 8],
 #bicycle_routes_labels[type='lcn'][zoom >= 12][width <= 8] {
   shield-name: "[ref]";
   shield-size: @shield-size;

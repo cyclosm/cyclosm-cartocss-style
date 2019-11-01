@@ -45,6 +45,11 @@ osm2pgsql:
 osm2pgsql -c -G --hstore -d osm ~/path/to/data.osm.pbf
 ```
 
+_Note_: Be careful if you use a Lua script with `osm2pgsql` as it might
+drop nodes with no tags except the `hstore` tags column (typically, a
+`cycleway=asl` node).
+
+
 ## Shapefiles
 
 This style requires some preprocessed shapefiles for some features. They are
@@ -141,68 +146,48 @@ We will be running everything from now on in the `dem` folder.
 
 ### Download some elevation data
 
-NASA provides elevation data from the [Shuttle Radar Topography Mission (SRTM)](https://dds.cr.usgs.gov/srtm/version2_1/). The easiest way to download the data is probably to use [viewfinderpanoramas.org](http://www.viewfinderpanoramas.org/Coverage%20map%20viewfinderpanoramas_org3.htm). Download all the required tiles for the area you want covered and put them in the `dem` folder at the root of this repository.
+NASA provides elevation data from the [Shuttle Radar Topography Mission (SRTM)](https://wiki.openstreetmap.org/wiki/SRTM). Files from SRTMv3 can be downloaded from [the NASA EarthData website](https://search.earthdata.nasa.gov/search/granules?p=C204582034-LPDAAC_ECS&q=srtm) after creating an account. To easily download all the required tiles for the area you want covered, you can use `phyghtmap` (here downloading for the entire world):
+
+```
+phyghtmap --download-only --srtm=3 --srtm-version=3 --earthexplorer-user=<NASA-USERNAME> --earthexplorer-password=<NASA-PASSWORD> --hgtdir=./dem/hgt -a -180:-85.05112877980659:180:85.05112877980659
+```
 
 ### Create hillshades
 
-First, let us fill the voids in the HGT data and convert to TIFF files:
+You can now reproject it into WGS84 projection, using:
 
 ```
-cd dem
-# Unzip downloaded files
-for zipfile in *.zip; do unzip $zipfile; done
-rm *.zip
-# Convert all HGT files to TIF
-for hgtfile in */*.hgt; do gdal_fillnodata.py $hgtfile $hgtfile.tif && rm $hgtfile; done
+gdalwarp -s_srs EPSG:4269 -t_srs "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs" -r bilinear <IN.tif> <PROJ.tif>
 ```
 
-Then, let us merge `.tif`s into one large `.tif`.
+You can now create semi-transparent hillshades using the ramp provided in
+`dem/shade.ramp` and GDAL:
 
 ```
-gdal_merge.py -n 32767 -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -o raw.tif */*.hgt.tif
+gdaldem hillshade -co compress=lzw -compute_edges <PROJ.tif> <HILLSHADE.tif>
+gdaldem color-relief <HILLSHADE.tif> -alpha shade.ramp <SEMI-TRANSPARENT-HILLSHADE.tif>
 ```
 
-The `raw.tif` is the full resolution DEM. This data will be passed through
-gdal to create the contours and hillshades. We should now reproject it into
-Mercator projection, interpolate and shrink:
+And build a VRT file for your semi-transparent hillshades
 
 ```
-gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs "+proj=merc +ellps=sphere +R=6378137 +a=6378137 +units=m" -r bilinear -tr 5000 5000 raw.tif warp-5000.tif
-gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs "+proj=merc +ellps=sphere +R=6378137 +a=6378137 +units=m" -r bilinear -tr 1000 1000 raw.tif warp-1000.tif
-gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs "+proj=merc +ellps=sphere +R=6378137 +a=6378137 +units=m" -r bilinear -tr 500 500 raw.tif warp-500.tif
-gdalwarp -co BIGTIFF=YES -co TILED=YES -co COMPRESS=LZW -co PREDICTOR=2 -t_srs "+proj=merc +ellps=sphere +R=6378137 +a=6378137 +units=m" -r bilinear -tr 90 90 raw.tif warp-90.tif
-# raw.tif is no longer needed
-rm raw.tif
+gdalbuildvrt dem/shade.vrt <SEMI-TRANSPARENT-HILLSHADE.tif>
 ```
 
-Note the `gdalwarp` arguments:
-
-* `-co BIGTIFF=YES`: if output > 4 GB
-* `-co TILED=YES`: intern tiles
-* `-co COMPRESS=LZW -co PREDICTOR=2`: lossless compression with prediction
-* `-t_srs "+proj=merc +ellps=sphere +R=6378137 +a=6378137 +units=m"`: convert into Mercator
-* `-r cubicspline`: interpolation for `tr < 90 m`, bilinear for `tr > 90 m`
-* `-tr 30 30`: desired resolution in meters
-
-We can now create hillshades for different zoom levels:
+Note that hillshades are disabled by default in the style. You can enable them
+by using a block such as the following one in Kosmtik `localconfig.json` (see
+below for more details):
 
 ```
-gdaldem hillshade -z 7 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges -combined warp-5000.tif hillshade-5000.tif
-gdaldem hillshade -z 7 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges -combined warp-1000.tif hillshade-1000.tif
-gdaldem hillshade -z 4 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges -combined warp-500.tif hillshade-500.tif
-gdaldem hillshade -z 4 -co compress=lzw -co predictor=2 -co bigtiff=yes -compute_edges -combined warp-90.tif hillshade-90.tif
-```
-
-_Note_: `gdaldem` and `gdalwarp` have problems compressing huge files while
-generation. You can compress those afterwards by using `gdal_translate -co
-compress=…`
-
-Finally, we can clean the now useless files:
-
-```
-rm warp-*.tif
-# Delete all the extracted folders, no longer needed
-find . ! -path . -type d | xargs rm -r
+  {
+    "where": "Layer",
+    "if": {
+      "id": "hillshade"
+    },
+    "then": {
+      "properties.status": "on"
+    }
+  }
 ```
 
 

@@ -1,0 +1,40 @@
+[
+  {
+    "where": "Layer",
+    "if": {
+      "Datasource.type": "postgis"
+    },
+    "then": {
+      "Datasource.password": "gis",
+      "Datasource.user": "gis",
+      "Datasource.host": "localhost"
+    }
+  },
+  {
+    "where": "Layer",
+    "if": {
+      "Datasource.dbname": "osm"
+    },
+    "then": {
+      "Datasource.dbname": "fakegis"
+    }
+  },
+  {
+    "where": "Layer",
+    "if": {
+      "id": "hillshade"
+    },
+    "then": {
+      "properties.status": "off"
+    }
+  },
+  {
+    "where": "Layer",
+    "if": {
+      "class": "legend"
+    },
+    "then": {
+      "properties.status": "on"
+    }
+  }
+]

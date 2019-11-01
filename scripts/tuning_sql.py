@@ -52,11 +52,13 @@ req = ''
 layers = 0
 
 table = prettytable.PrettyTable()
-table.field_names = ['Time (ms)', '#lines fetched from db', 'Layer', '#fields fetched']
+table.field_names = ['Time (ms)', '#lines fetched', 'Layer', '#fields fetched',
+                     'Size (text format, in kB)']
 table_rows = []
 for l in yml['Layer']:
     if (
             ('status' not in l or l['status'])
+            and ('properties' not in l or 'status' not in l['properties'] or l['properties']['status'])
             and ('properties' not in l or 'minzoom' not in l['properties'] or args.zoom >= l['properties']['minzoom'])
             and ('properties' not in l or 'maxzoom' not in l['properties'] or args.zoom <= l['properties']['maxzoom'])
             and ('zoom_min' not in l or args.zoom >= l['zoom_min'])
@@ -73,7 +75,7 @@ for l in yml['Layer']:
             sql = sql.replace('!pixel_width!', str(pixel_width))
             sql = sql.replace('!pixel_height!', str(pixel_width))
             sql = sql.replace('!scale_denominator!', str(scale))
-            sql = "SELECT * FROM " + sql + " where way && "+bbox
+            sql = "SELECT data.*, octet_length(data.*::text) FROM (SELECT * FROM " + sql + " where way && " + bbox + ") AS data"
 
             print('Layer %s:' % l['id'])
             print(''.join('=' for _ in 'Layer %s:' % l['id']))
@@ -85,7 +87,13 @@ for l in yml['Layer']:
                 rows = db.fetchall()
                 duration = int((time.time()-start)*1000)
                 print('Duration: %sms\n' % duration)
-                table_rows.append([duration, db.rowcount, l['id'], len(rows[0]) if rows else 0])
+                table_rows.append([
+                    duration,
+                    db.rowcount,
+                    l['id'],
+                    len(rows[0]) if rows else 0,
+                    sum([x[-1] for x in rows]) // 1000
+                ])
                 temps = temps + time.time()-start
                 if time.time()-start > req_max:
                     req = sql
@@ -94,7 +102,7 @@ for l in yml['Layer']:
             except Exception as e:
                 print(str(e))
                 pg.rollback()
-                table_rows.append(['?', '?', l['id'], '?'])
+                table_rows.append(['?', '?', l['id'], '?', '?'])
                 continue
 
 table_rows = sorted(table_rows, key=lambda x: x[0] if x[0] != '?' else 0, reverse=True)

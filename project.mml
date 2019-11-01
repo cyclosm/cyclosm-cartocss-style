@@ -47,6 +47,7 @@ Stylesheet:
 - ferry-routes.mss
 - power.mss
 - gpx.mss
+- legend.mss
 
 Layer:
 - id: land-low
@@ -74,18 +75,18 @@ Layer:
     table: |-
       (
         SELECT
-          way,
+          ST_Snaptogrid(way, !pixel_width! / 4) AS way,
           way_area AS area,
           COALESCE(
-            CASE WHEN landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'vineyard', 'orchard', 'religious', 'residential') THEN ('landuse_' || landuse) ELSE NULL END,
-            CASE WHEN "natural" IN ('grassland', 'heath', 'wood') THEN ('natural_' || "natural") ELSE NULL END,
-            CASE WHEN leisure IN ('common', 'golf_course', 'garden', 'park', 'pitch', 'sports_center', 'stadium', 'track') THEN ('leisure_' || leisure) ELSE NULL END,
-            CASE WHEN amenity IN ('college', 'hospital', 'parking', 'school', 'university') THEN ('amenity' || amenity) ELSE NULL END,
+            CASE WHEN landuse IS NOT NULL THEN ('landuse_' || landuse) ELSE NULL END,
+            CASE WHEN "natural" IS NOT NULL THEN ('natural_' || "natural") ELSE NULL END,
+            CASE WHEN leisure IS NOT NULL THEN ('leisure_' || leisure) ELSE NULL END,
+            CASE WHEN amenity IS NOT NULL THEN ('amenity' || amenity) ELSE NULL END,
             CASE WHEN highway IN ('pedestrian') THEN ('highway_' || highway) ELSE NULL END
           ) AS type
           FROM planet_osm_polygon
           WHERE (
-            landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'vineyard', 'orchard', 'religious', 'residential')
+            landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'vineyard', 'orchard', 'religious', 'residential', 'retail', 'village_green')
             OR "natural" IN ('grassland', 'heath', 'wood')
             OR leisure IN ('common', 'golf_course', 'garden', 'park', 'pitch', 'sports_center', 'stadium', 'track')
             OR amenity IN ('college', 'hospital', 'parking', 'school', 'university')
@@ -109,18 +110,18 @@ Layer:
           way,
           way_area AS area,
           COALESCE(
-            CASE WHEN landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'vineyard', 'orchard', 'religious', 'residential') THEN ('landuse_' || landuse) ELSE NULL END,
-            CASE WHEN "natural" IN ('grassland', 'heath', 'wood') THEN ('natural_' || "natural") ELSE NULL END,
-            CASE WHEN leisure IN ('common', 'golf_course', 'garden', 'park', 'pitch', 'sports_center', 'stadium', 'track') THEN ('leisure_' || leisure) ELSE NULL END,
-            CASE WHEN amenity IN ('college', 'hospital', 'parking', 'school', 'university') THEN ('amenity' || amenity) ELSE NULL END,
-            CASE WHEN highway IN ('pedestrian') THEN ('highway_' || highway) ELSE NULL END
+            CASE WHEN landuse IS NOT NULL THEN ('landuse_' || landuse) ELSE NULL END,
+            CASE WHEN "natural" IS NOT NULL THEN ('natural_' || "natural") ELSE NULL END,
+            CASE WHEN leisure IS NOT NULL THEN ('leisure_' || leisure) ELSE NULL END,
+            CASE WHEN amenity IS NOT NULL THEN ('amenity' || amenity) ELSE NULL END,
+            CASE WHEN highway IS NOT NULL THEN ('highway_' || highway) ELSE NULL END
           ) AS type
         FROM planet_osm_polygon
         WHERE (
-          landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'vineyard', 'orchard', 'religious', 'residential')
+          landuse IN ('allotments', 'brownfield', 'cemetery', 'commercial', 'construction', 'forest', 'grass', 'greenhouse_horticulture', 'industrial', 'landfill', 'meadow', 'farmland', 'vineyard', 'orchard', 'plant_nursery', 'quarry', 'religious', 'residential', 'retail', 'village_green')
           OR "natural" IN ('grassland', 'heath', 'wood')
           OR leisure IN ('common', 'golf_course', 'garden', 'park', 'pitch', 'sports_center', 'stadium', 'track')
-          OR amenity IN ('college', 'hospital', 'parking', 'school', 'university')
+          OR amenity IN ('college', 'grave_yard', 'hospital', 'parking', 'school', 'university')
           OR highway IN ('pedestrian')
         )
         AND way_area > 1*!pixel_width!::real*!pixel_height!::real
@@ -149,55 +150,25 @@ Layer:
             CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN 'landuse_industrial' ELSE NULL END
           ) AS type
         FROM planet_osm_polygon
-        WHERE landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'vineyard', 'orchard', 'military', 'residential', 'religious')
+        WHERE landuse IN ('allotments', 'brownfield', 'cemetery', 'commercial', 'construction', 'forest', 'grass', 'greenhouse_horticulture', 'industrial', 'landfill', 'meadow', 'farmland', 'vineyard', 'orchard', 'plant_nursery', 'quarry', 'religious', 'residential', 'retail', 'village_green')
           OR leisure IN ('common', 'garden', 'golf_course', 'park', 'pitch', 'sports_centre', 'stadium', 'track')
           OR "natural" IN ('grassland', 'heath', 'wood')
           OR highway IN ('pedestrian')
-          OR amenity IN ('college', 'hospital', 'parking', 'school', 'university')
+          OR amenity IN ('college', 'grave_yard', 'hospital', 'parking', 'school', 'university')
           OR man_made IN ('works', 'wastewater_plant', 'water_works')
         ORDER BY way_area DESC
       ) AS data
   geometry: polygon
   properties:
     minzoom: 13
-#- id: hillshade5000
-#  <<: *extents
-#  Datasource:
-#    type: gdal
-#    file: dem/hillshade-5000.tif
-#    format: tiff
-#  geometry: raster
-#  properties:
-#    maxzoom: 4
-#- id: hillshade1000
-#  <<: *extents
-#  Datasource:
-#    type: gdal
-#    file: dem/hillshade-1000.tif
-#    format: tiff
-#  geometry: raster
-#  properties:
-#    minzoom: 5
-#    maxzoom: 7
-#- id: hillshade500
-#  <<: *extents
-#  Datasource:
-#    type: gdal
-#    file: dem/hillshade-500.tif
-#    format: tiff
-#  geometry: raster
-#  properties:
-#    minzoom: 8
-#    maxzoom: 8
-#- id: hillshade90
-#  <<: *extents
-#  Datasource:
-#    type: gdal
-#    file: dem/hillshade-90.tif
-#    format: tiff
-#  geometry: raster
-#  properties:
-#    minzoom: 9
+- id: hillshade
+  <<: *extents84
+  Datasource:
+    type: gdal
+    file: dem/shade.vrt
+  geometry: raster
+  properties:
+    status: off
 - id: buildings
   <<: *extents
   Datasource:
@@ -282,7 +253,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, waterway AS type
+        SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way, waterway AS type
         FROM planet_osm_line
         WHERE
           waterway IN ('river', 'canal')
@@ -472,7 +443,15 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           bicycle,
-          tags->'motor_vehicle' AS motor_vehicle,
+          CASE
+            WHEN (
+              tags->'psv' != 'no' OR tags->'motorcar' != 'no' OR tags->'bus' != 'no'
+              OR tags->'motor_vehicle' != 'no'
+              OR tags->'vehicle' != 'no'
+              ) THEN 'yes'
+            WHEN tags->'psv' IS NULL AND tags->'motorcar' IS NULL AND tags->'bus' IS NULL AND tags->'motor_vehicle' IS NULL AND tags->'vehicle' IS NULL AND (access != 'no' OR access IS NULL) THEN 'yes'
+            ELSE 'no'
+          END AS motor_vehicle,
           CASE
             WHEN tags->'cyclestreet' IN ('yes') THEN 'yes'
             WHEN tags->'bicycle_road' IN ('yes') THEN 'yes'
@@ -507,17 +486,17 @@ Layer:
             ELSE NULL
           END AS cycleway_right_render,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            ELSE 0
-          END AS has_left_cycleway,
+            WHEN tags->'cycleway:left:oneway' IS NOT NULL THEN tags->'cycleway:left:oneway'
+            WHEN tags->'cycleway:left' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
+            WHEN tags->'cycleway' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
+            ELSE NULL
+          END AS cycleway_left_oneway,
           CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            ELSE 0
-          END AS has_right_cycleway,
+            WHEN tags->'cycleway:right:oneway' IS NOT NULL THEN tags->'cycleway:right:oneway'
+            WHEN tags->'cycleway:right' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
+            WHEN tags->'cycleway' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
+            ELSE NULL
+          END AS cycleway_right_oneway,
           CASE
             WHEN bicycle IN ('yes', 'designated') THEN bicycle
             WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
@@ -577,6 +556,7 @@ Layer:
           COALESCE(
             CASE
               WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
+              WHEN highway = 'raceway' THEN 'track'  -- render raceways as tracks
               WHEN highway != 'bus_guideway' THEN highway
               ELSE NULL
             END,
@@ -596,7 +576,15 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           bicycle,
-          tags->'motor_vehicle' AS motor_vehicle,
+          CASE
+            WHEN (
+              tags->'psv' != 'no' OR tags->'motorcar' != 'no' OR tags->'bus' != 'no'
+              OR tags->'motor_vehicle' != 'no'
+              OR tags->'vehicle' != 'no'
+              ) THEN 'yes'
+            WHEN tags->'psv' IS NULL AND tags->'motorcar' IS NULL AND tags->'bus' IS NULL AND tags->'motor_vehicle' IS NULL AND tags->'vehicle' IS NULL AND (access != 'no' OR access IS NULL) THEN 'yes'
+            ELSE 'no'
+          END AS motor_vehicle,
           CASE
             WHEN tags->'cyclestreet' IN ('yes') THEN 'yes'
             WHEN tags->'bicycle_road' IN ('yes') THEN 'yes'
@@ -631,17 +619,17 @@ Layer:
             ELSE NULL
           END AS cycleway_right_render,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            ELSE 0
-          END AS has_left_cycleway,
+            WHEN tags->'cycleway:left:oneway' IS NOT NULL THEN tags->'cycleway:left:oneway'
+            WHEN tags->'cycleway:left' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
+            WHEN tags->'cycleway' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
+            ELSE NULL
+          END AS cycleway_left_oneway,
           CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            ELSE 0
-          END AS has_right_cycleway,
+            WHEN tags->'cycleway:right:oneway' IS NOT NULL THEN tags->'cycleway:right:oneway'
+            WHEN tags->'cycleway:right' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
+            WHEN tags->'cycleway' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
+            ELSE NULL
+          END AS cycleway_right_oneway,
           CASE
             WHEN bicycle IN ('yes', 'designated') THEN bicycle
             WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
@@ -664,10 +652,12 @@ Layer:
             -- (think surface=sett + smoothness=horrible)
             WHEN surface IN ('bad', 'gravel', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
               OR tracktype IN ('grade4', 'grade5')
-              OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
-            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
+              OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable')
+              THEN 'mtb'
+            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
               OR tracktype IN ('grade2', 'grade3')
-              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
+              OR tags->'smoothness' IN ('intermediate')
+              THEN 'cyclocross'
             ELSE NULL
           END AS surface_type,
           CASE
@@ -693,7 +683,7 @@ Layer:
     table: |-
       (
         SELECT
-          way,
+          ST_Snaptogrid(way, !pixel_width! / 4) AS way,
           CASE
             WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
             ELSE highway
@@ -711,7 +701,8 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-          SELECT way, 'motorway_trunk' AS type, bridge, tunnel
+          SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way,
+          'motorway_trunk' AS type, bridge, tunnel
           FROM planet_osm_roads
           WHERE highway IN ('motorway', 'trunk')
       ) AS data
@@ -763,7 +754,15 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           bicycle,
-          tags->'motor_vehicle' AS motor_vehicle,
+          CASE
+            WHEN (
+              tags->'psv' != 'no' OR tags->'motorcar' != 'no' OR tags->'bus' != 'no'
+              OR tags->'motor_vehicle' != 'no'
+              OR tags->'vehicle' != 'no'
+              ) THEN 'yes'
+            WHEN tags->'psv' IS NULL AND tags->'motorcar' IS NULL AND tags->'bus' IS NULL AND tags->'motor_vehicle' IS NULL AND tags->'vehicle' IS NULL AND (access != 'no' OR access IS NULL) THEN 'yes'
+            ELSE 'no'
+          END AS motor_vehicle,
           CASE
             WHEN tags->'cyclestreet' IN ('yes') THEN 'yes'
             WHEN tags->'bicycle_road' IN ('yes') THEN 'yes'
@@ -798,17 +797,17 @@ Layer:
             ELSE NULL
           END AS cycleway_right_render,
           CASE
-            WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            ELSE 0
-          END AS has_left_cycleway,
+            WHEN tags->'cycleway:left:oneway' IS NOT NULL THEN tags->'cycleway:left:oneway'
+            WHEN tags->'cycleway:left' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
+            WHEN tags->'cycleway' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
+            ELSE NULL
+          END AS cycleway_left_oneway,
           CASE
-            WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            WHEN tags->'cycleway' IN ('lane', 'opposite_lane', 'track', 'opposite_track', 'share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 1
-            ELSE 0
-          END AS has_right_cycleway,
+            WHEN tags->'cycleway:right:oneway' IS NOT NULL THEN tags->'cycleway:right:oneway'
+            WHEN tags->'cycleway:right' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
+            WHEN tags->'cycleway' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
+            ELSE NULL
+          END AS cycleway_right_oneway,
           CASE
             WHEN bicycle IN ('yes', 'designated') THEN bicycle
             WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
@@ -836,21 +835,26 @@ Layer:
               OR tracktype IN ('grade2', 'grade3')
               OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
             ELSE NULL
-          END AS surface_type
+          END AS surface_type,
+          CASE
+            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+39 ELSE 39 END
+            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+38 ELSE 38 END
+            ELSE z_order
+          END AS z_order
         FROM planet_osm_line
         WHERE bridge NOT IN ('', '0', 'no')
-        ORDER BY layer ASC
+        ORDER BY z_order ASC
       ) AS data
   geometry: linestring
   properties:
     minzoom: 11
-- id: bicycle_routes_icn
+- id: bicycle_routes_gen0
   <<: *extents
   Datasource:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, route, tags->'network' AS type, tags->'state' AS state
+        SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network'='icn'
@@ -859,22 +863,47 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 2
-- id: bicycle_routes_ncn
+    maxzoom: 4
+- id: bicycle_routes_gen1
   <<: *extents
   Datasource:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, route, tags->'network' AS type, tags->'state' AS state
+        SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
-          AND tags->'network'='ncn'
-        ORDER BY z_order
+          AND tags->'network' IN ('icn', 'ncn')
+        ORDER BY CASE
+          WHEN tags->'network' = 'icn' THEN 0
+          WHEN tags->'network' = 'ncn' THEN 1
+        END DESC
       ) AS data
   geometry: linestring
   properties:
     minzoom: 5
-- id: bicycle_routes_rcn
+    maxzoom: 7
+- id: bicycle_routes_gen2
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way, route, tags->'network' AS type, tags->'state' AS state
+        FROM planet_osm_line
+        WHERE (route='bicycle' OR route='mtb')
+          AND tags->'network' IN ('icn', 'ncn', 'rcn')
+        ORDER BY CASE
+          WHEN tags->'network' = 'icn' THEN 0
+          WHEN tags->'network' = 'ncn' THEN 1
+          WHEN tags->'network' = 'rcn' THEN 2
+        END DESC
+      ) AS data
+  geometry: linestring
+  properties:
+    minzoom: 8
+    maxzoom: 10
+- id: bicycle_routes_bicycle_gen3
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -882,14 +911,19 @@ Layer:
       (
         SELECT way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
-        WHERE (route='bicycle' OR route='mtb')
-          AND tags->'network'='rcn'
-        ORDER BY z_order
+        WHERE route='bicycle'
+          AND tags->'network' IN ('icn', 'ncn', 'rcn', 'lcn')
+        ORDER BY CASE
+          WHEN tags->'network' = 'icn' THEN 0
+          WHEN tags->'network' = 'ncn' THEN 1
+          WHEN tags->'network' = 'rcn' THEN 2
+          WHEN tags->'network' = 'lcn' THEN 3
+        END DESC
       ) AS data
   geometry: linestring
   properties:
-    minzoom: 7
-- id: bicycle_routes_lcn
+    minzoom: 11
+- id: bicycle_routes_mtb_gen3
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -897,13 +931,18 @@ Layer:
       (
         SELECT way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
-        WHERE (route='bicycle' OR route='mtb')
-          AND tags->'network'='lcn'
-        ORDER BY z_order
+        WHERE route='mtb'
+          AND tags->'network' IN ('icn', 'ncn', 'rcn', 'lcn')
+        ORDER BY CASE
+          WHEN tags->'network' = 'icn' THEN 0
+          WHEN tags->'network' = 'ncn' THEN 1
+          WHEN tags->'network' = 'rcn' THEN 2
+          WHEN tags->'network' = 'lcn' THEN 3
+        END DESC
       ) AS data
   geometry: linestring
   properties:
-    minzoom: 9
+    minzoom: 11
 - id: route
   <<: *extents84
   Datasource:
@@ -2156,14 +2195,49 @@ Layer:
       (
         SELECT
           way,
-          COALESCE(leisure, landuse, military) AS type,
+          COALESCE(leisure, military, CASE WHEN landuse = 'forest' THEN 'wood' ELSE NULL END, "natural", landuse) AS type,
+          tags->'leaf_type' AS leaf_type,
           way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
         FROM planet_osm_polygon
         WHERE
-          (landuse = 'military' OR military = 'danger_area')
+          (landuse = 'military' OR military = 'danger_area' OR "natural" = 'wood' OR landuse = 'forest')
           AND building IS NULL
+          AND way_area > 1*!pixel_width!::real*!pixel_height!::real
         ORDER BY way_area DESC
       ) AS data
   geometry: polygon
   properties:
     minzoom: 7
+- id: legend-icons
+  class: legend
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          tags->'icon' AS icon,
+          tags->'label' AS label
+        FROM planet_osm_point
+        WHERE tags->'icon' IS NOT NULL
+      ) AS data
+  geometry: point
+  properties:
+    status: off
+- id: legend-labels
+  class: legend
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          tags->'label' AS label
+        FROM planet_osm_point
+        WHERE tags->'label' IS NOT NULL AND tags->'icon' IS NULL
+      ) AS data
+  geometry: point
+  properties:
+    status: off

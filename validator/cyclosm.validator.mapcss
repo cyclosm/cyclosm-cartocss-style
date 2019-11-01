@@ -63,3 +63,37 @@ way[oneway][oneway!=-1][oneway:bicycle=-1] {
     assertNoMatch: "way oneway:bicycle=yes";
     assertNoMatch: "way oneway=-1 oneway:bicycle=-1";
 }
+
+
+/*
+ * Potential error in bicycle parking access
+ */
+node[bicycle_parking=shed][access=customers] {
+    throwWarning: tr("{0} together with {1}", "{0.tag}", "{2.tag}");
+    group: tr("suspicious tag combination");
+    suggestAlternative: "Do you mean access=private?";
+
+    assertMatch: "node bicycle_parking=shed access=customers";
+    assertNoMatch: "node bicycle_parking=shed access=private";
+    assertNoMatch: "node bicycle_parking=shed";
+}
+
+node[bicycle_parking=building][access=customers] {
+    throwWarning: tr("{0} together with {1}", "{0.tag}", "{2.tag}");
+    group: tr("suspicious tag combination");
+    suggestAlternative: "Do you mean access=private?";
+
+    assertMatch: "node bicycle_parking=building access=customers";
+    assertNoMatch: "node bicycle_parking=building access=private";
+    assertNoMatch: "node bicycle_parking=building";
+}
+
+node[bicycle_parking=lockers][access=customers] {
+    throwWarning: tr("{0} together with {1}", "{0.tag}", "{2.tag}");
+    group: tr("suspicious tag combination");
+    suggestAlternative: "Do you mean access=private?";
+
+    assertMatch: "node bicycle_parking=lockers access=customers";
+    assertNoMatch: "node bicycle_parking=lockers access=private";
+    assertNoMatch: "node bicycle_parking=lockers";
+}
