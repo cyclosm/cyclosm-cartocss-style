@@ -1304,7 +1304,7 @@ Layer:
       ) AS data
   geometry: point
   properties:
-    minzoom: 11
+    minzoom: 13
 - id: oriented-highway-amenities
   <<: *extents
   Datasource:

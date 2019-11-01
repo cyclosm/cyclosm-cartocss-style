@@ -569,6 +569,7 @@
   shield-face-name: @sans;
   shield-clip: @shield-clip;
   shield-file: url("symbols/shields/[type]_[width]x[height].svg");
+  shield-transform: "scale(0.75)";
   [route='bicycle'][type='icn'] {
     shield-fill: @icn-shield-fill;
   }
@@ -587,7 +588,7 @@
   }
 }
 
-#cycle-junction-nodes {
+#cycle-junction-nodes[zoom >= 13] {
   shield-name: "[ref]";
   shield-size: @shield-size;
   shield-face-name: @sans;
