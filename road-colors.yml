@@ -33,6 +33,7 @@ mss:
     line: '#f6f6f6'
     fill: '#f6f6f6'
     case: '#999'
+    nobicycle: '#c0ccc4'
   pedestrian:
     fill: '#41ffa0'
     case: '@land'
@@ -59,7 +60,6 @@ mss:
     case: '@land'
   path:
     fill: '#00767c'
-    nobicycle: '#949400'
   bridleway:
     fill: '#835d4b'
   rail:

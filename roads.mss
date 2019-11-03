@@ -1361,6 +1361,7 @@ come in as well.
 #bridge::inline[zoom>=11] {
   /* -- colors & styles -- */
   line-color: @standard-fill;
+
   [type='motorway_trunk'],
   [type='motorway_link'],
   [type='trunk_link'] {
@@ -1392,18 +1393,15 @@ come in as well.
   [type='path'],
   [type='footway'][can_bicycle='yes'],
   [type='bridleway'][can_bicycle='yes'] {
-      line-color: @path-fill;
+    line-color: @path-fill;
   }
   [type='path'] {
-      [can_bicycle='designated'] {
-          line-color: @mixed-cycle-fill;
-          [segregated='yes'] {
-              line-color: @cycle-fill;
-          }
+    [can_bicycle='designated'] {
+      line-color: @mixed-cycle-fill;
+      [segregated='yes'] {
+        line-color: @cycle-fill;
       }
-      [can_bicycle='no'] {
-          line-color: @path-nobicycle;
-      }
+    }
   }
   [type='steps'] {
     line-color: @steps-fill;
@@ -1422,11 +1420,19 @@ come in as well.
       [motor_vehicle='no'][bicycle!='no'] {
           line-color: @speedWalk-fill;
       }
+    [can_bicycle='no'] {
+      line-color: @standard-nobicycle;
+    }
   }
+
 
   /* cycle streets / bicycle roads are bike friendly */
   [cyclestreet='yes'] {
       line-color: @mixed-cycle-fill;
+  }
+
+  [can_bicycle='no'] {
+    line-color: @standard-nobicycle;
   }
 
   [type='service'],
@@ -1765,9 +1771,9 @@ come in as well.
       [type='bridleway'][can_bicycle='yes'] {
         line-color: lighten(@path-fill,@surfaceLighter1);
       }
-      [type='path'][can_bicycle='no'] {
-        line-color: lighten(@path-nobicycle,@surfaceLighter1);
-      }
+     /* [type='path'][can_bicycle='no'] {
+        line-color: lighten(@standard-nobicycle,@surfaceLighter1);
+      }*/
       [type='cycleway'] {
         line-color: lighten(@cycle-fill, @surfaceLighter1);
       }
@@ -1776,6 +1782,10 @@ come in as well.
         [segregated='yes'] {
           line-color: lighten(@cycle-fill, @surfaceLighter1);
         }
+      }
+
+      [can_bicycle='no'] {
+        line-color: lighten(@standard-nobicycle, @surfaceLighter1);
       }
 
       [zoom>=15] {
@@ -1926,10 +1936,10 @@ come in as well.
       [type='path'],
       [type='footway'][can_bicycle='yes'],
       [type='bridleway'][can_bicycle='yes'] {
-        line-color: lighten(@path-fill,@surfaceLighter2);
+        line-color: lighten(@path-fill, @surfaceLighter2);
       }
-      [type='path'][can_bicycle='no'] {
-        line-color: lighten(@path-nobicycle,@surfaceLighter2);
+      [can_bicycle='no'] {
+        line-color: lighten(@standard-nobicycle, @surfaceLighter2);
       }
 
       [zoom>=15] {

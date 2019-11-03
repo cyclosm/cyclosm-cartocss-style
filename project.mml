@@ -498,8 +498,8 @@ Layer:
             ELSE NULL
           END AS cycleway_right_oneway,
           CASE
-            WHEN bicycle IN ('yes', 'designated') THEN bicycle
-            WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
+            WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
           CASE
@@ -631,8 +631,8 @@ Layer:
             ELSE NULL
           END AS cycleway_right_oneway,
           CASE
-            WHEN bicycle IN ('yes', 'designated') THEN bicycle
-            WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
+            WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
           CASE
@@ -809,8 +809,8 @@ Layer:
             ELSE NULL
           END AS cycleway_right_oneway,
           CASE
-            WHEN bicycle IN ('yes', 'designated') THEN bicycle
-            WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
+            WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
           CASE
