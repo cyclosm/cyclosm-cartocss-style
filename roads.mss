@@ -1417,7 +1417,7 @@ come in as well.
           line-color: @speed20-fill;
       }
       [maxspeed_kmh < 10],
-      [motor_vehicle='no'][bicycle!='no'] {
+      [motor_vehicle='no'][can_bicycle!='no'] {
           line-color: @speedWalk-fill;
       }
     [can_bicycle='no'] {
