@@ -27,6 +27,16 @@ A realtime chat is available at
 You can also contact any [team member](https://github.com/orgs/cyclosm/people)
 through emails.
 
+##Follow main design principles
+Aim to be the main map for a cyclist:
+1. Bicycle first
+2. For every cyclist
+
+Main map for a cyclist in its every day life.
+Bicycle first : its a cycle map, so we prioritise cycling information.
+Multi bicycle usage (city to country, citybike, roadbike, trekking, gravel, mountain bike).
+It's a map to find its cycle way, bicycle road or low trafic road is the first thing that must be clear. Main cycle infrastructure must be seen at low zoom.
+Render to tag, with this map we help and promote cycling tagging.
 
 ## Demo website contribution
 
