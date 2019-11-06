@@ -241,7 +241,7 @@ come in as well.
 @rdz15_living_street: 1.5;
 @rdz15_service: 2;
 @rdz15_track: 2;
-@rdz15_pedestrian: 1.5;
+@rdz15_pedestrian: 1;
 @rdz15_bridleway: 0.5;
 @rdz15_path: 1.25;
 @rdz15_footway: 0.5;
@@ -327,7 +327,7 @@ come in as well.
 @rdz17_living_street: 7.5;
 @rdz17_service: 6;
 @rdz17_track: 4;
-@rdz17_pedestrian: 5;
+@rdz17_pedestrian: 3;
 @rdz17_bridleway: 1;
 @rdz17_path: 2;
 @rdz17_footway: 1.5;
@@ -371,7 +371,7 @@ come in as well.
 @rdz18_living_street: 11;
 @rdz18_service: 10;
 @rdz18_track: 7;
-@rdz18_pedestrian: 8;
+@rdz18_pedestrian: 4;
 @rdz18_bridleway: 1.5;
 @rdz18_path: 2.5;
 @rdz18_footway: 2;
@@ -394,7 +394,7 @@ come in as well.
 @rdz18_road_outline: 1.75;
 @rdz18_living_street_outline: 3;
 @rdz18_service_outline: 1.75;
-@rdz18_pedestrian_outline: 6;
+@rdz18_pedestrian_outline: 4;
 @rdz18_steps_outline: 1;
 @rdz18_railway_outline: 3;
 @rdz18_line_bridge_outline: 1;  // cycleway, footway, bridleway, path on bridges
@@ -1386,7 +1386,8 @@ come in as well.
   [type='bridleway'] {
     line-color: @bridleway-fill;
   }
-  [type='footway'] {
+  [type='footway'],
+  [type='steps'] {
     line-color: @footway-fill;
   }
   [type='path'],
@@ -1404,9 +1405,6 @@ come in as well.
       [can_bicycle='no'] {
           line-color: @path-nobicycle;
       }
-  }
-  [type='steps'] {
-    line-color: @steps-fill;
   }
 
   /* Maxspeed bike friendliness only applies to a limited set of highways */
@@ -1714,9 +1712,9 @@ come in as well.
   }
 }
 
-#roads_high::surface[zoom>=15],
-#tunnel::surface[zoom>=15],
-#bridge::surface[zoom>=15] {
+#roads_high::surface[zoom>=14],
+#tunnel::surface[zoom>=14],
+#bridge::surface[zoom>=14] {
   [type='primary'],
   [type='secondary'],
   [type='tertiary'],
@@ -1738,9 +1736,9 @@ come in as well.
 
     /* Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm). */
     [surface_type='cyclocross'] {
-      line-dasharray: 3,6;
+      line-dasharray: 6,12;
       [zoom>=16] {
-        line-dasharray: 6,12;
+        line-dasharray: 8,16;
       }
       [zoom>=17] {
         line-dasharray: 12,24;
@@ -1752,7 +1750,7 @@ come in as well.
       /* -- colors & styles -- */
       line-color: darken(@standard-fill, @surfaceDarker1); /* Darken since it's white. */
       [type='track'] {
-        line-color: @track-light1;
+        line-color: @track-light2;
       }
       [type='bridleway'] {
         line-color: lighten(@bridleway-fill, @surfaceLighter1);
@@ -1778,6 +1776,34 @@ come in as well.
         }
       }
 
+      [zoom>=14] {
+        [type='primary']     { line-width: @rdz14_primary; }
+        [type='secondary']     { line-width: @rdz14_secondary; }
+        [type='tertiary']    { line-width: @rdz14_tertiary; }
+        [type='living_street']    { line-width: @rdz14_living_street; }
+        [type='road']    { line-width: @rdz14_road; }
+        [type='unclassified']    { line-width: @rdz14_unclassified; }
+        [type='residential']    { line-width: @rdz14_residential; }
+        [type='tertiary_link']    { line-width: @rdz14_tertiary_link; }
+        [type='secondary_link']    { line-width: @rdz14_secondary_link; }
+        [type='primary_link']    { line-width: @rdz14_primary_link; }
+        [type='service']      { line-width: @rdz14_service; }
+        [type='track']      { line-width: @rdz14_track; }
+        [type='pedestrian']   { line-width: @rdz14_pedestrian; }
+        [type='bridleway']   { line-width: @rdz14_bridleway; }
+        [type='footway']   { line-width: @rdz14_footway; }
+        [type='path'],
+        [type='footway'][can_bicycle='yes'],
+        [type='bridleway'][can_bicycle='yes'] {
+          line-width: @rdz14_path;
+        }
+        [type='cycleway'],
+        [type='path'][can_bicycle='designated'] {
+          line-width: @rdz14_cycle;
+          [oneway='no'][oneway_bicycle='no']
+          { line-width: @rdz14_cycle*1.5; }
+        }
+      }
       [zoom>=15] {
         [type='primary']     { line-width: @rdz15_primary; }
         [type='secondary']     { line-width: @rdz15_secondary; }
@@ -1898,15 +1924,15 @@ come in as well.
 
     /* Bad surface ok for mountain bike (>40mm tyres). */
     [surface_type='mtb'] {
-      line-dasharray: 8,3,8,8;
+      line-dasharray: 16,8,4;
       [zoom>=16] {
-        line-dasharray: 16,6,16,16;
+        line-dasharray: 24,12,6;
       }
       [zoom>=17] {
-        line-dasharray: 32,12,32,32;
+        line-dasharray: 36,18,9;
       }
       [zoom>=18] {
-        line-dasharray: 64,24,64,64;
+        line-dasharray: 72,36,18;
       }
 
       /* -- colors & styles -- */
@@ -1932,6 +1958,34 @@ come in as well.
         line-color: lighten(@path-nobicycle,@surfaceLighter2);
       }
 
+      [zoom>=14] {
+        [type='primary']     { line-width: @rdz14_primary; }
+        [type='secondary']     { line-width: @rdz14_secondary; }
+        [type='tertiary']    { line-width: @rdz14_tertiary; }
+        [type='living_street']    { line-width: @rdz14_living_street; }
+        [type='road']    { line-width: @rdz14_road; }
+        [type='unclassified']    { line-width: @rdz14_unclassified; }
+        [type='residential']    { line-width: @rdz14_residential; }
+        [type='tertiary_link']    { line-width: @rdz14_tertiary_link; }
+        [type='secondary_link']    { line-width: @rdz14_secondary_link; }
+        [type='primary_link']    { line-width: @rdz14_primary_link; }
+        [type='service']      { line-width: @rdz14_service; }
+        [type='track']      { line-width: @rdz14_track; }
+        [type='pedestrian']   { line-width: @rdz14_pedestrian; }
+        [type='bridleway']   { line-width: @rdz14_bridleway; }
+        [type='footway']   { line-width: @rdz14_footway; }
+        [type='path'],
+        [type='footway'][can_bicycle='yes'],
+        [type='bridleway'][can_bicycle='yes'] {
+          line-width: @rdz14_path;
+        }
+        [type='cycleway'],
+        [type='path'][can_bicycle='designated'] {
+          line-width: @rdz14_cycle;
+          [oneway='no'][oneway_bicycle='no']
+          { line-width: @rdz14_cycle*1.5; }
+        }
+      }
       [zoom>=15] {
         [type='primary']     { line-width: @rdz15_primary; }
         [type='secondary']     { line-width: @rdz15_secondary; }
