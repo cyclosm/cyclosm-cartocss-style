@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     error, this is now fixed. See #222.
 * Better rendering of cycleways on bridges, to avoid them being drawn below
     the associated highway.
+* Make pedestrian streets smaller at high zoom.
+* Steps are now rendered the same color as footway.
+* Surface is shown from Z14, to have track surfaces at this zoom.
+* Traffic lights are now rendered from Z18 instead of Z17.
+* Buildings 3D effect is now rendered from Z18 instead of Z17.
 
 ## v0.3
 

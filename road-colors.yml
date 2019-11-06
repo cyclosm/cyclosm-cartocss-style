@@ -54,9 +54,6 @@ mss:
     fill: '#0050ff'
   footway:
     fill: '#4f874f'
-  steps:
-    fill: '#003e00'
-    case: '@land'
   path:
     fill: '#00767c'
     nobicycle: '#949400'
