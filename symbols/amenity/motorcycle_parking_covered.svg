@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.4622888"
-     inkscape:cx="46.74389"
-     inkscape:cy="23.921196"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="119.80095"
+     inkscape:cy="19.189072"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -39,7 +39,7 @@
      inkscape:pagecheckerboard="true"
      units="px"
      showguides="false"
-     viewbox-x="64"
+     viewbox-x="0"
      scale-x="1"
      viewbox-y="-64">
     <inkscape:grid
@@ -67,7 +67,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -77,48 +77,39 @@
      id="layer1"
      transform="translate(0,-327.13332)">
     <g
-       id="g5326-6"
-       transform="matrix(3.9566814,0,0,3.9566814,-219.77763,-95.970362)"
+       id="g5326-0"
+       transform="matrix(3.9566814,0,0,3.9566814,-219.4707,-94.88051)"
        style="fill:#0060ff;fill-opacity:1">
+      <path
+         style="fill:#0060ff;fill-opacity:1;stroke:none;stroke-width:0.25273705px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 75.329922,93.812306 1.002429,1.736257 3.50716,-2.02486 3.524979,2.035147 0.996406,-1.725824 -4.53175,-2.616407 z"
+         id="path876-93"
+         inkscape:connector-curvature="0" />
       <g
-         style="fill:#0060ff;fill-opacity:1;stroke:#0060ff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         style="fill:#0060ff;fill-opacity:1;stroke:#020202;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          transform="translate(-0.13363476,-1.9810173)"
-         id="g878-1">
+         id="g878-6">
         <g
-           style="fill:#0060ff;fill-opacity:1;stroke:#0060ff;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           style="fill:#0060ff;fill-opacity:1;stroke:#020202;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
            transform="translate(0.18143118)"
-           id="g882-8">
+           id="g882-0">
           <g
-             style="fill:#0060ff;fill-opacity:1;stroke:#0060ff;stroke-opacity:1"
+             style="fill:#0060ff;fill-opacity:1;stroke:#0000ff;stroke-opacity:1"
              transform="translate(0.41969682,-0.37797619)"
-             id="g886-7">
-            <path
-               style="fill:#0060ff;fill-opacity:1;fill-rule:evenodd;stroke:#0060ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-               d="m 75.370006,97.216028 4.493705,-2.594444"
-               id="path868-9"
-               inkscape:connector-curvature="0" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path874-2"
-               d="m 78.894859,94.638288 4.493707,2.59444"
-               style="fill:#0060ff;fill-opacity:1;fill-rule:evenodd;stroke:#0060ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-          </g>
+             id="g886-6" />
         </g>
       </g>
       <g
-         id="g5317-0"
+         id="g5317-2"
          transform="translate(-0.03628983,-1.1714514)"
          style="fill:#0060ff;fill-opacity:1">
         <circle
            style="opacity:1;fill:#0060ff;fill-opacity:1;stroke:#ffffff;stroke-width:1.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-           id="path815-3-5-23"
+           id="path815-3-5-6"
            cx="79.846779"
            cy="100.53709"
            r="3.96875" />
       </g>
     </g>
-    <g
-       id="g5326-5-9"
-       transform="matrix(3.9566814,0,0,3.9566814,-91.80973,-95.981592)" />
   </g>
 </svg>

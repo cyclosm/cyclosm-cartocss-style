@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.4622888"
-     inkscape:cx="56.084792"
-     inkscape:cy="66.158321"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="70.303474"
+     inkscape:cy="42.170042"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -66,7 +66,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -77,7 +77,12 @@
      transform="translate(0,-327.13332)">
     <g
        id="g5326"
-       transform="matrix(3.9566814,0,0,3.9566814,-219.75963,-31.931068)">
+       transform="matrix(3.9566814,0,0,3.9566814,-219.75963,-31.223962)">
+      <path
+         style="fill:#0000ff;fill-opacity:1;stroke:none;stroke-width:0.25273705px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 75.329922,93.812306 1.002429,1.736257 3.50716,-2.02486 3.524979,2.035147 0.996406,-1.725824 -4.53175,-2.616407 z"
+         id="path876"
+         inkscape:connector-curvature="0" />
       <g
          style="fill:none;fill-opacity:1;stroke:#020202;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
          transform="translate(-0.13363476,-1.9810173)"
@@ -89,18 +94,7 @@
           <g
              style="stroke:#0000ff;stroke-opacity:1"
              transform="translate(0.41969682,-0.37797619)"
-             id="g886">
-            <path
-               style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-               d="m 75.370006,97.216028 4.493705,-2.594444"
-               id="path868"
-               inkscape:connector-curvature="0" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path874"
-               d="m 78.894859,94.638288 4.493707,2.59444"
-               style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#0000ff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-          </g>
+             id="g886" />
         </g>
       </g>
       <g
@@ -114,8 +108,5 @@
            r="3.96875" />
       </g>
     </g>
-    <g
-       id="g5326-5-9"
-       transform="matrix(3.9566814,0,0,3.9566814,-91.80973,-95.981592)" />
   </g>
 </svg>
