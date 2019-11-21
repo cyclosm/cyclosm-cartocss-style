@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * `gravel` surface is now considered as ok for trekking bikes, see #242.
 * Fix an issue where non-latin characters might not be rendered for text
     in bold or italic fonts, see #241.
+* Render `man_made=water_tap` + `drinking_water=yes` as a drinking water
+    point, see #244.
 
 ## v0.3.1
 

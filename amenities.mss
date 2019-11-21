@@ -591,7 +591,8 @@
   }
 
   [feature = 'amenity_drinking_water'][zoom >= 16],
-  [feature = 'amenity_water_point']['drinking_water'='yes'][zoom >= 16] {
+  [feature = 'amenity_water_point']['drinking_water'='yes'][zoom >= 16],
+  [feature = 'man_made_water_tap']['drinking_water'='yes'][zoom >= 16] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/drinking_water_11.svg');
   }
   [feature = 'amenity_toilets'][zoom >= 16] {
