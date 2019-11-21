@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Fill in grey roads without bicycle access, see #236.
+* Rework secured bicycle parking icon, see #228.
+* More values for ramps in stairs taken into account, see #248.
+
 ## v0.3.1
 
 * Some roads with `motor_vehicle=no` were no longer in cyan due to a logical

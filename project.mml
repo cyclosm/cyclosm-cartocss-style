@@ -509,9 +509,12 @@ Layer:
             WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN tags->'oneway:bicycle'
             ELSE 'no'
           END AS oneway_bicycle,
-          tags->'ramp:stroller' AS ramp_stroller,
-          tags->'ramp:bicycle' AS ramp_cycle,
-          tags->'ramp:wheelchair' AS ramp_wheelchair,
+          COALESCE(
+            tags->'ramp:stroller',
+            tags->'ramp:bicycle',
+            tags->'ramp:wheelchair',
+            tags->'ramp:luggage'
+          ) AS has_ramp,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
             -- From worse to best to ensure correct overloading
@@ -641,9 +644,12 @@ Layer:
             WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN tags->'oneway:bicycle'
             ELSE 'no'
           END AS oneway_bicycle,
-          tags->'ramp:stroller' AS ramp_stroller,
-          tags->'ramp:bicycle' AS ramp_cycle,
-          tags->'ramp:wheelchair' AS ramp_wheelchair,
+          COALESCE(
+            tags->'ramp:stroller',
+            tags->'ramp:bicycle',
+            tags->'ramp:wheelchair',
+            tags->'ramp:luggage'
+          ) AS has_ramp,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
             -- From worse to best to ensure correct overloading
@@ -818,9 +824,12 @@ Layer:
             WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN tags->'oneway:bicycle'
             ELSE 'no'
           END AS oneway_bicycle,
-          tags->'ramp:stroller' AS ramp_stroller,
-          tags->'ramp:bicycle' AS ramp_cycle,
-          tags->'ramp:wheelchair' AS ramp_wheelchair,
+          COALESCE(
+            tags->'ramp:stroller',
+            tags->'ramp:bicycle',
+            tags->'ramp:wheelchair',
+            tags->'ramp:luggage'
+          ) AS has_ramp,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
             -- From worse to best to ensure correct overloading
