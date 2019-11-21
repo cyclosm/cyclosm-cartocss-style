@@ -22,7 +22,6 @@
 @ncn-overlay: #aa00ff;
 @ncn-shield-fill: #f6f6f6;
 @path-fill: #00767c;
-@path-nobicycle: #949400;
 @pedestrian-case: @land;
 @pedestrian-fill: #41ffa0;
 @primary-case: #d8b267;
@@ -42,6 +41,7 @@
 @standard-case: #999;
 @standard-fill: #f6f6f6;
 @standard-line: #f6f6f6;
+@standard-nobicycle: #c0ccc4;
 @steps-case: @land;
 @steps-fill: #003e00;
 @tertiary-case: #777;

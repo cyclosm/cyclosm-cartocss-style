@@ -442,7 +442,6 @@ Layer:
             WHEN tags->'maxspeed'='walk' THEN 5
             ELSE NULL
           END AS maxspeed_kmh,
-          bicycle,
           CASE
             WHEN (
               tags->'psv' != 'no' OR tags->'motorcar' != 'no' OR tags->'bus' != 'no'
@@ -498,8 +497,8 @@ Layer:
             ELSE NULL
           END AS cycleway_right_oneway,
           CASE
-            WHEN bicycle IN ('yes', 'designated') THEN bicycle
-            WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
+            WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
           CASE
@@ -575,7 +574,6 @@ Layer:
             WHEN tags->'maxspeed'='walk' THEN 5
             ELSE NULL
           END AS maxspeed_kmh,
-          bicycle,
           CASE
             WHEN (
               tags->'psv' != 'no' OR tags->'motorcar' != 'no' OR tags->'bus' != 'no'
@@ -631,8 +629,8 @@ Layer:
             ELSE NULL
           END AS cycleway_right_oneway,
           CASE
-            WHEN bicycle IN ('yes', 'designated') THEN bicycle
-            WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
+            WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
           CASE
@@ -753,7 +751,6 @@ Layer:
             WHEN tags->'maxspeed'='walk' THEN 5
             ELSE NULL
           END AS maxspeed_kmh,
-          bicycle,
           CASE
             WHEN (
               tags->'psv' != 'no' OR tags->'motorcar' != 'no' OR tags->'bus' != 'no'
@@ -809,8 +806,8 @@ Layer:
             ELSE NULL
           END AS cycleway_right_oneway,
           CASE
-            WHEN bicycle IN ('yes', 'designated') THEN bicycle
-            WHEN access='no' AND (bicycle IS NULL OR bicycle='no') THEN 'no'
+            WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
           CASE
