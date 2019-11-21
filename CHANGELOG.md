@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     in bold or italic fonts, see #241.
 * Render `man_made=water_tap` + `drinking_water=yes` as a drinking water
     point, see #244.
+* Bugfix: fix missing oneway arrow on dedicated cycleway / path / footway,
+    see #231.
 
 ## v0.3.1
 

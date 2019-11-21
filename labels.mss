@@ -527,7 +527,13 @@
 #roads-text-name[highway != 'construction'][zoom>=15] {
   // One way road for general traffic, NO countraflow for bikes
   [oneway = 'yes'][oneway_bicycle != 'no'],
-  [oneway = '-1'][oneway_bicycle != 'no'] {
+  [oneway = '-1'][oneway_bicycle != 'no'],
+  [highway='path'][oneway_bicycle = 'yes'],
+  [highway='path'][oneway_bicycle = '-1'],
+  [highway='cycleway'][oneway_bicycle = 'yes'],
+  [highway='cycleway'][oneway_bicycle = '-1'],
+  [highway='footway'][oneway_bicycle = 'yes'],
+  [highway='footway'][oneway_bicycle = '-1'] {
      marker-placement:line;
      marker-max-error: 0.5;
      marker-spacing: 100;
