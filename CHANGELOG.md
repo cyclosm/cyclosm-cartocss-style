@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Rework secured bicycle parking icon, see #228.
 * More values for ramps in stairs taken into account, see #248.
 * `gravel` surface is now considered as ok for trekking bikes, see #242.
+* Fix an issue where non-latin characters might not be rendered for text
+    in bold or italic fonts, see #241.
 
 ## v0.3.1
 

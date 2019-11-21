@@ -181,8 +181,8 @@ regular text and can be used for emphasis. Fallback is a regular style.
 Italics are only available for the base font, not the other scripts.
 For a considerable number of labels this style will make no difference to the regular style.
 */
-@sans_italic: "Noto Sans Italic";
+@sans_italic: "Noto Sans Italic", @sans; // @sans for non-latin characters
 
-@sans_bold_italic: "Noto Sans Bold Italic";
+@sans_bold_italic: "Noto Sans Bold Italic", @sans; // @sans for non-latin characters
 
 @standard-font: @sans;
