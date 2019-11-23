@@ -172,6 +172,7 @@
 
 @natural_volcano: #980000;
 
+@bicycle-amenity: #00213f;
 @marina-text: #576ddf;
 @nobike-transportation-icon: #444444;
 @transportation-icon: #0092da;

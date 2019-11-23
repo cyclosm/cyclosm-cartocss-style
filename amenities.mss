@@ -187,7 +187,7 @@
 
   [feature = 'amenity_bicycle_repair_station'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/amenity/bicycle_repair_station.svg');
-    marker-fill: @amenity-brown;
+    marker-fill:  @bicycle-amenity;
     marker-placement: interior;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
@@ -583,6 +583,7 @@
     marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_11.svg');
     marker-placement: interior;
     marker-clip: false;
+    marker-fill: @bicycle-amenity;
   }
 
   [feature = 'shop_sports'][zoom >= 17] {
@@ -890,8 +891,9 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255, 255, 255, 0.6);
       text-placement: interior;
-		}
-	}
+      [feature = 'shop_bicycle'] { text-fill: @bicycle-amenity; }
+    }
+  }
 
   [feature = 'shop_supermarket'] {
     [zoom >= 16] {
