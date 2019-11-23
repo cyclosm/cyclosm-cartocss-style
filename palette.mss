@@ -186,7 +186,7 @@
 @memorials: @amenity-brown;
 @man-made-icon: #666666;
 @culture: @amenity-brown;
-@health-color: #BF0000;
+@health-color: #444444;
 @religious-icon: #000000;
 @shop-icon: #ac39ac;
 @public-service: @amenity-brown;
