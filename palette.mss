@@ -180,10 +180,11 @@
 @trainstation-icon: #555;
 @trainstation-text: #555;
 @man-made-icon: #666666;
-@accommodation-icon: #0092da;
+@accommodation-icon: #004b00;
 @accommodation-text: @accommodation-icon;
 @gastronomy-icon: #C77400;
 @gastronomy-text: darken(@gastronomy-icon, 5%);
+@amenity-water: #007ae2;
 @shop-text: #939;
 @amenity-brown: #734a08;
 @memorials: @amenity-brown;
