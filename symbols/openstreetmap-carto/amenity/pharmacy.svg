@@ -1,20 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
-<svg
-   xmlns="http://www.w3.org/2000/svg"
-   version="1.1"
-   width="14"
-   height="14"
-   viewBox="0 0 14 14">
-  <rect
-     width="14"
-     height="14"
-     x="0"
-     y="0"
-     id="canvas"
-     style="fill:none;stroke:none;visibility:hidden" />
-  <path
-     d="m 4,4 -2,2 0,8 10,0 0,-8 -2,-2.0000003 z m 2,2 2,0 0,2 2,0 0,2 -2,0 0,2 -2,0 0,-2 -2,0 0,-2 2,0 z M 4,0 4,3 10,3 10,0 z"
-     id="pharmacy" />
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+  <rect width="14" height="14" x="0" y="0" id="canvas" style="fill:none;stroke:none;visibility:hidden"/>
+  <path d="M 4.204 4.204 L 2.34 6.068 L 2.34 13.524 L 11.66 13.524 L 11.66 6.068 L 9.796 4.204 Z M 6.068 6.068 L 7.932 6.068 L 7.932 7.932 L 9.796 7.932 L 9.796 9.796 L 7.932 9.796 L 7.932 11.66 L 6.068 11.66 L 6.068 9.796 L 4.204 9.796 L 4.204 7.932 L 6.068 7.932 Z M 4.204 0.476 L 4.204 3.272 L 9.796 3.272 L 9.796 0.476 Z" id="pharmacy" style=""/>
 </svg>

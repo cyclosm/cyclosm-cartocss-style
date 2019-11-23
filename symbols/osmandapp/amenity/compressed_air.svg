@@ -1,14 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    version="1.1"
-    width="14"
-    height="14"
-    viewBox="0 0 14 14">
-  <path d="m2.6341 12.848h4.0391" fill="none" stroke="#444" stroke-linecap="round" stroke-width=".96118"/>
-  <rect x="3.3138" y="3.7993" width="2.6798" height="9.321" rx=".79681" ry=".79681" clip-rule="evenodd" color="#000000" color-rendering="auto" fill="#444" fill-rule="evenodd" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="isolation:auto;mix-blend-mode:normal"/>
-  <path d="m4.6537 3.9546v-2.7963" color="#000000" color-rendering="auto" fill="none" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stroke="#444" stroke-linecap="round" stroke-width=".96118" style="isolation:auto;mix-blend-mode:normal"/>
-  <path d="m2.6767 1.1195h3.9539" color="#000000" color-rendering="auto" fill="none" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stroke="#444" stroke-linecap="round" stroke-width=".8788" style="isolation:auto;mix-blend-mode:normal"/>
-  <path d="m5.4226 10.441s0.52178-2.0322 2.7188-1.5654c2.197 0.46686 3.268-0.54925 3.268-0.54925" color="#000000" color-rendering="auto" fill="none" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stroke="#444" stroke-linecap="round" stroke-width=".8788" style="isolation:auto;mix-blend-mode:normal"/>
-  <path d="m9.7616 8.6563 1.5104-0.76895" color="#000000" color-rendering="auto" fill="none" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stroke="#444" stroke-linecap="round" stroke-width=".8788" style="isolation:auto;mix-blend-mode:normal"/>
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 2.177 13.445 L 6.637 13.445" fill="none" stroke="#444" stroke-linecap="round" stroke-width=".96118" style=""/>
+  <rect x="2.927" y="3.453" width="2.959" height="10.293" rx="0.797" ry="0.797" clip-rule="evenodd" color="#000000" color-rendering="auto" fill="#444" fill-rule="evenodd" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="isolation: auto; mix-blend-mode: normal;"/>
+  <path d="M 4.407 3.625 L 4.407 0.537" color="#000000" color-rendering="auto" fill="none" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stroke="#444" stroke-linecap="round" stroke-width=".96118" style="isolation: auto; mix-blend-mode: normal;"/>
+  <path d="M 2.224 0.494 L 6.59 0.494" color="#000000" color-rendering="auto" fill="none" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stroke="#444" stroke-linecap="round" stroke-width=".8788" style="isolation: auto; mix-blend-mode: normal;"/>
+  <path d="M 5.256 10.787 C 5.256 10.787 5.832 8.543 8.258 9.059 C 10.684 9.574 11.867 8.452 11.867 8.452" color="#000000" color-rendering="auto" fill="none" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stroke="#444" stroke-linecap="round" stroke-width=".8788" style="isolation: auto; mix-blend-mode: normal;"/>
+  <path d="M 10.047 8.816 L 11.715 7.967" color="#000000" color-rendering="auto" fill="none" image-rendering="auto" shape-rendering="auto" solid-color="#000000" stroke="#444" stroke-linecap="round" stroke-width=".8788" style="isolation: auto; mix-blend-mode: normal;"/>
 </svg>
