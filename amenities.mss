@@ -579,6 +579,7 @@
   }
 
   [feature = 'shop_bicycle'][zoom >= 14] {
+    [zoom <=15] { marker-transform: "scale(0.66)"; }
     marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_11.svg');
     marker-placement: interior;
     marker-clip: false;
