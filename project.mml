@@ -533,7 +533,8 @@ Layer:
             ELSE NULL
           END AS surface_type
         FROM planet_osm_line
-        WHERE (tunnel NOT IN ('', '0', 'no') OR covered NOT IN ('', '0', 'no')) AND railway IS NULL
+        WHERE (tunnel NOT IN ('', '0', 'no') OR covered NOT IN ('', '0', 'no'))
+              AND (railway IS NULL OR railway IS NOT NULL AND highway IS NOT NULL)
         ORDER BY layer ASC
       ) AS data
   geometry: linestring
