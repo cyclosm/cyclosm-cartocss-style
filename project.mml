@@ -517,14 +517,19 @@ Layer:
           ) AS has_ramp,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
-            -- From worse to best to ensure correct overloading
-            -- (think surface=sett + smoothness=horrible)
+            -- From best tag to less precise quality surface tag (smoothness > track > surface).
+            WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
+              THEN 'mtb'
+            WHEN tags->'smoothness' IN ('bad', 'very_bad')
+              THEN 'cyclocross'
+            WHEN tracktype IN ('grade4', 'grade5')
+              THEN 'mtb'
+            WHEN tracktype IN ('grade2', 'grade3')
+              THEN 'cyclocross'
             WHEN surface IN ('bad', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
-              OR tracktype IN ('grade4', 'grade5')
-              OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
-            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
-              OR tracktype IN ('grade2', 'grade3')
-              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
+              THEN 'mtb'
+            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
+              THEN 'cyclocross'
             ELSE NULL
           END AS surface_type
         FROM planet_osm_line
@@ -652,15 +657,18 @@ Layer:
           ) AS has_ramp,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
-            -- From worse to best to ensure correct overloading
-            -- (think surface=sett + smoothness=horrible)
+            -- From best tag to less precise quality surface tag (smoothness > track > surface).
+            WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
+              THEN 'mtb'
+            WHEN tags->'smoothness' IN ('bad', 'very_bad')
+              THEN 'cyclocross'
+            WHEN tracktype IN ('grade4', 'grade5')
+              THEN 'mtb'
+            WHEN tracktype IN ('grade2', 'grade3')
+              THEN 'cyclocross'
             WHEN surface IN ('bad', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
-              OR tracktype IN ('grade4', 'grade5')
-              OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable')
               THEN 'mtb'
             WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
-              OR tracktype IN ('grade2', 'grade3')
-              OR tags->'smoothness' IN ('intermediate')
               THEN 'cyclocross'
             ELSE NULL
           END AS surface_type,
@@ -832,14 +840,19 @@ Layer:
           ) AS has_ramp,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
-            -- From worse to best to ensure correct overloading
-            -- (think surface=sett + smoothness=horrible)
+            -- From best tag to less precise quality surface tag (smoothness > track > surface).
+            WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
+              THEN 'mtb'
+            WHEN tags->'smoothness' IN ('bad', 'very_bad')
+              THEN 'cyclocross'
+            WHEN tracktype IN ('grade4', 'grade5')
+              THEN 'mtb'
+            WHEN tracktype IN ('grade2', 'grade3')
+              THEN 'cyclocross'
             WHEN surface IN ('bad', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
-              OR tracktype IN ('grade4', 'grade5')
-              OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
-            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
-              OR tracktype IN ('grade2', 'grade3')
-              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
+              THEN 'mtb'
+            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
+              THEN 'cyclocross'
             ELSE NULL
           END AS surface_type,
           CASE
