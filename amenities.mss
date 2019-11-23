@@ -337,7 +337,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_police'][zoom >= 15] {
+  [feature = 'amenity_police'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/amenity/police.svg');
     marker-fill: @public-service;
     marker-placement: interior;
