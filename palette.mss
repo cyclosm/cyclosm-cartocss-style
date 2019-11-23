@@ -73,7 +73,7 @@
  *         inner fill (inline).
  */
 
-@pedestrian_area_fill:   #def2e8;
+@pedestrian_area_fill:   #dce3e0;
 
 @cycle_lane_case:   #0000ff;
 @cycle_track_case:  #0000ff;
