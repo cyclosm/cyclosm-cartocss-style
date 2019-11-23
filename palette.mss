@@ -173,6 +173,7 @@
 @natural_volcano: #980000;
 
 @bicycle-amenity: #006ac3;
+@bicycle-rental: #ac39ac;
 @marina-text: #576ddf;
 @nobike-transportation-icon: #444444;
 @transportation-icon: #0092da;
@@ -182,17 +183,17 @@
 @man-made-icon: #666666;
 @accommodation-icon: #004b00;
 @accommodation-text: @accommodation-icon;
-@gastronomy-icon: #C77400;
+@gastronomy-icon: #a27834;
 @gastronomy-text: darken(@gastronomy-icon, 5%);
 @amenity-water: #007ae2;
-@shop-text: #939;
 @amenity-brown: #734a08;
 @memorials: @amenity-brown;
 @man-made-icon: #666666;
 @culture: @amenity-brown;
 @health-color: #444444;
 @religious-icon: #000000;
-@shop-icon: #ac39ac;
+@shop-icon: #bd5400;
+@shop-text: darken(@shop-icon, 5%);
 @public-service: @amenity-brown;
 @leisure-green: darken(@park, 60%);
 @airtransport: #8461C4;

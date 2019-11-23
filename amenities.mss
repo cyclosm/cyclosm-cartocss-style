@@ -699,7 +699,7 @@
 
   [feature = 'amenity_bicycle_rental'][zoom >= 16] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_rental_11.svg');
-    marker-fill: @transportation-icon;
+    marker-fill: @bicycle-rental;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -956,13 +956,13 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @transportation-text;
+    text-fill: @bicycle-rental;
     text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
 		text-placement: interior;
-	}
+  }
 
   [feature = 'amenity_police'][zoom >= 17],
   [feature = 'amenity_post_office'][zoom >= 17] {
@@ -976,7 +976,7 @@
 		text-halo-radius: @standard-halo-radius;
 		text-halo-fill: @standard-halo-fill;
 		text-placement: interior;
-	}
+  }
 
   [feature = 'amenity_hospital'][zoom >= 16],
   [feature = 'healthcare_clinic'][zoom >= 16],
