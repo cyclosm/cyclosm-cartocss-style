@@ -1461,7 +1461,7 @@ Layer:
           OR amenity IN ('atm', 'bank', 'bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
           OR tags->'compressed_air'='yes'
           OR tags->'car_wash'='yes'
-          OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
+          OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
           OR leisure='picnic_table'
@@ -1486,7 +1486,10 @@ Layer:
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets', 'water_point') THEN 10
                 WHEN tags->'compressed_air'='yes' THEN 11
                 -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
+                WHEN shop IN ('bicycle', 'sports') THEN 30
+                WHEN amenity IN ('bicycle_rental') Then 31
+                WHEN amenity IN ('bicycle_parking')
+                     OR (amenity='motorcycle_parking' AND ( bicycle='yes' OR bicycle='designated')) THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
@@ -1594,7 +1597,7 @@ Layer:
           OR amenity IN ('atm', 'bank', 'bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
           OR tags->'compressed_air'='yes'
           OR tags->'car_wash'='yes'
-          OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
+          OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
           OR leisure='picnic_table'
@@ -1620,7 +1623,10 @@ Layer:
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets', 'water_point') THEN 10
                 WHEN tags->'compressed_air'='yes' THEN 11
                 -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
+                WHEN shop IN ('bicycle', 'sports') THEN 30
+                WHEN amenity IN ('bicycle_rental') Then 31
+                WHEN amenity IN ('bicycle_parking')
+                     OR (amenity='motorcycle_parking' AND ( bicycle='yes' OR bicycle='designated')) THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
@@ -1739,7 +1745,7 @@ Layer:
             OR amenity IN ('atm', 'bank', 'bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
             OR tags->'compressed_air'='yes'
             OR tags->'car_wash'='yes'
-            OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
+            OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
             OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
@@ -1764,7 +1770,10 @@ Layer:
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets', 'water_point') THEN 10
                 WHEN tags->'compressed_air'='yes' THEN 11
                 -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
+                WHEN shop IN ('bicycle', 'sports') THEN 30
+                WHEN amenity IN ('bicycle_rental') Then 31
+                WHEN amenity IN ('bicycle_parking')
+                     OR (amenity='motorcycle_parking' AND ( bicycle='yes' OR bicycle='designated')) THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
@@ -1888,7 +1897,7 @@ Layer:
             OR amenity IN ('atm', 'bank', 'bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
             OR tags->'compressed_air'='yes'
             OR tags->'car_wash'='yes'
-            OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
+            OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
             OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
@@ -1914,7 +1923,10 @@ Layer:
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets', 'water_point') THEN 10
                 WHEN tags->'compressed_air'='yes' THEN 11
                 -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
+                WHEN shop IN ('bicycle', 'sports') THEN 30
+                WHEN amenity IN ('bicycle_rental') Then 31
+                WHEN amenity IN ('bicycle_parking')
+                     OR (amenity='motorcycle_parking' AND ( bicycle='yes' OR bicycle='designated')) THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience

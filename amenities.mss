@@ -55,7 +55,7 @@
   [feature = 'cycleway_asl'][zoom >= 18] {
     marker-width: 9;
     marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_asl_11.svg');
-    marker-fill: @transportation-icon;
+    marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
     marker-transform: 'rotate([angle])';
@@ -590,6 +590,7 @@
     marker-file: url('symbols/openstreetmap-carto/shop/sports.svg');
     marker-placement: interior;
     marker-clip: false;
+    marker-fill: @amenity-common;
   }
 
   [feature = 'amenity_drinking_water'][zoom >= 16],
@@ -702,6 +703,7 @@
     marker-fill: @bicycle-rental;
     marker-placement: interior;
     marker-clip: false;
+    marker-max-error: 0.4;
   }
 
   [feature = 'highway_elevator'][zoom >= 18] {
