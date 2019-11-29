@@ -139,7 +139,7 @@
 
   [feature = 'amenity_public_bath'][zoom >= 17] {
     marker-file: url('symbols/openstreetmap-carto/amenity/public_bath.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -200,7 +200,7 @@
 	[feature = 'shop_gas'][compressed_air != 'yes'][car_wash = 'yes'][zoom >= 16],
 	[feature = 'shop_convenience;gas'][compressed_air != 'yes'][car_wash = 'yes'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/amenity/car_wash.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-placement: interior;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
@@ -216,7 +216,7 @@
     marker-file: url('symbols/openstreetmap-carto/shop/art.svg');
     marker-placement: interior;
     marker-clip: false;
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
   }
 
   [feature = 'tourism_hostel'][zoom >= 17] {
@@ -254,7 +254,7 @@
     }
     [information = 'office'] {
       marker-file: url('symbols/openstreetmap-carto/tourism/office.svg');
-      marker-fill: @amenity-brown;
+      marker-fill: @amenity-common;
     }
     [information = 'map'],
     [information = 'tactile_map'],
@@ -271,7 +271,7 @@
 
   [feature = 'amenity_shower'][zoom >= 18] {
     marker-file: url('symbols/openstreetmap-carto/amenity/shower.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-placement: interior;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
@@ -346,14 +346,14 @@
 
   [feature = 'amenity_post_box'][zoom >= 18] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/post_box_11.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'emergency_phone'][zoom >= 19] {
     marker-file: url('symbols/openstreetmap-carto/amenity/emergency_phone.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -361,7 +361,7 @@
   [feature = 'tourism_viewpoint'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/tourism/viewpoint.svg');
     marker-placement: interior;
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-clip: false;
   }
 
@@ -692,7 +692,7 @@
 
   [feature = 'amenity_internet_cafe'][zoom >= 17] {
     marker-file: url('symbols/openstreetmap-carto/amenity/internet_cafe.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -838,7 +838,7 @@
   }
   [feature = 'amenity_atm'][zoom >= 19] {
     marker-file: url('symbols/openstreetmap-carto/amenity/atm.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-clip: false;
   }
 
@@ -1073,7 +1073,7 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(black, 30%);
-    [information = 'office'] { text-fill: @amenity-brown; }
+    [information = 'office'] { text-fill: @amenity-common; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;

@@ -172,8 +172,8 @@
 
 @natural_volcano: #980000;
 
-@bicycle-amenity: #006ac3;
-@bicycle-rental: #ac39ac;
+@bicycle-amenity: #ac39ac;
+@bicycle-rental: #006ac3;
 @marina-text: #576ddf;
 @nobike-transportation-icon: #444444;
 @transportation-icon: #0092da;
@@ -183,20 +183,20 @@
 @man-made-icon: #666666;
 @accommodation-icon: #004b00;
 @accommodation-text: @accommodation-icon;
-@gastronomy-icon: #a27834;
+@gastronomy-icon: #666;
 @gastronomy-text: darken(@gastronomy-icon, 5%);
-@amenity-water: #007ae2;
-@amenity-brown: #734a08;
-@memorials: @amenity-brown;
-@man-made-icon: #666666;
-@culture: @amenity-brown;
-@health-color: #444444;
-@religious-icon: #000000;
-@shop-icon: #bd5400;
+@shop-icon: #666;
 @shop-text: darken(@shop-icon, 5%);
-@public-service: @amenity-brown;
+@amenity-water: #007ae2;
+@amenity-common: #666;
+@memorials: @amenity-common;
+@man-made-icon: #666;
+@culture: @amenity-common;
+@health-color: #444;
+@religious-icon: #333;
+@public-service: @amenity-common;
 @leisure-green: darken(@park, 60%);
-@airtransport: #8461C4;
+@airtransport: @amenity-common;
 @landform-color: #d08f55;
 
 /* ****************************************************************** */
