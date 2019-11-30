@@ -73,7 +73,7 @@
  *         inner fill (inline).
  */
 
-@pedestrian_area_fill:   #def2e8;
+@pedestrian_area_fill:   #dce3e0;
 
 @cycle_lane_case:   #0000ff;
 @cycle_track_case:  #0000ff;
@@ -172,26 +172,31 @@
 
 @natural_volcano: #980000;
 
+@bicycle-amenity: #ac39ac;
+@bicycle-rental: #006ac3;
 @marina-text: #576ddf;
 @nobike-transportation-icon: #444444;
 @transportation-icon: #0092da;
 @transportation-text: #0066ff;
+@trainstation-icon: #555;
+@trainstation-text: #555;
 @man-made-icon: #666666;
-@accommodation-icon: @transportation-icon;
+@accommodation-icon: #004b00;
 @accommodation-text: @accommodation-icon;
-@gastronomy-icon: #C77400;
+@gastronomy-icon: #666;
 @gastronomy-text: darken(@gastronomy-icon, 5%);
-@shop-text: #939;
-@amenity-brown: #734a08;
-@memorials: @amenity-brown;
-@man-made-icon: #666666;
-@culture: @amenity-brown;
-@health-color: #BF0000;
-@religious-icon: #000000;
-@shop-icon: #ac39ac;
-@public-service: @amenity-brown;
+@shop-icon: #666;
+@shop-text: darken(@shop-icon, 5%);
+@amenity-water: #007ae2;
+@amenity-common: #666;
+@memorials: @amenity-common;
+@man-made-icon: #666;
+@culture: @amenity-common;
+@health-color: #444;
+@religious-icon: #333;
+@public-service: @amenity-common;
 @leisure-green: darken(@park, 60%);
-@airtransport: #8461C4;
+@airtransport: @amenity-common;
 @landform-color: #d08f55;
 
 /* ****************************************************************** */

@@ -55,7 +55,7 @@
   [feature = 'cycleway_asl'][zoom >= 18] {
     marker-width: 9;
     marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_asl_11.svg');
-    marker-fill: @transportation-icon;
+    marker-fill: @man-made-icon;
     marker-placement: interior;
     marker-clip: false;
     marker-transform: 'rotate([angle])';
@@ -64,11 +64,11 @@
 
 #amenities-points,
 #amenities-poly {
-  [feature = 'amenity_compressed_air'][zoom >= 16],
-	[feature = 'amenity_fuel'][compressed_air = 'yes'][zoom >= 16],
-	[feature = 'shop_gas'][compressed_air = 'yes'][zoom >= 16] {
+  [feature = 'amenity_compressed_air'][zoom >= 15],
+  [feature = 'amenity_fuel'][compressed_air = 'yes'][zoom >= 16],
+  [feature = 'shop_gas'][compressed_air = 'yes'][zoom >= 16] {
     marker-file: url('symbols/osmandapp/amenity/compressed_air.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @bicycle-amenity;
     marker-placement: interior;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
@@ -110,7 +110,7 @@
     marker-placement: interior;
   }
 
-  [feature = 'tourism_camp_site'][zoom >= 16] {
+  [feature = 'tourism_camp_site'][zoom >= 14] {
     marker-file: url('symbols/openstreetmap-carto/tourism/camping.svg');
     marker-fill: @accommodation-icon;
     marker-placement: interior;
@@ -123,14 +123,14 @@
     marker-clip: false;
   }
 
-  [feature = 'tourism_caravan_site'][zoom >= 16] {
+  [feature = 'tourism_caravan_site'][zoom >= 14] {
     marker-file: url('symbols/openstreetmap-carto/tourism/caravan_park.svg');
     marker-placement: interior;
     marker-clip: false;
     marker-fill: @accommodation-icon;
   }
 
-  [feature = 'tourism_chalet'][zoom >= 17] {
+  [feature = 'tourism_chalet'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/tourism/chalet.svg');
     marker-fill: @accommodation-icon;
     marker-placement: interior;
@@ -139,7 +139,7 @@
 
   [feature = 'amenity_public_bath'][zoom >= 17] {
     marker-file: url('symbols/openstreetmap-carto/amenity/public_bath.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -185,9 +185,9 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_bicycle_repair_station'][zoom >= 16] {
+  [feature = 'amenity_bicycle_repair_station'][zoom >= 15] {
     marker-file: url('symbols/openstreetmap-carto/amenity/bicycle_repair_station.svg');
-    marker-fill: @amenity-brown;
+    marker-fill:  @bicycle-amenity;
     marker-placement: interior;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
@@ -200,7 +200,7 @@
 	[feature = 'shop_gas'][compressed_air != 'yes'][car_wash = 'yes'][zoom >= 16],
 	[feature = 'shop_convenience;gas'][compressed_air != 'yes'][car_wash = 'yes'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/amenity/car_wash.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-placement: interior;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
@@ -216,7 +216,7 @@
     marker-file: url('symbols/openstreetmap-carto/shop/art.svg');
     marker-placement: interior;
     marker-clip: false;
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
   }
 
   [feature = 'tourism_hostel'][zoom >= 17] {
@@ -254,7 +254,7 @@
     }
     [information = 'office'] {
       marker-file: url('symbols/openstreetmap-carto/tourism/office.svg');
-      marker-fill: @amenity-brown;
+      marker-fill: @amenity-common;
     }
     [information = 'map'],
     [information = 'tactile_map'],
@@ -271,7 +271,7 @@
 
   [feature = 'amenity_shower'][zoom >= 18] {
     marker-file: url('symbols/openstreetmap-carto/amenity/shower.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-placement: interior;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
@@ -337,7 +337,7 @@
     marker-clip: false;
   }
 
-  [feature = 'amenity_police'][zoom >= 15] {
+  [feature = 'amenity_police'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/amenity/police.svg');
     marker-fill: @public-service;
     marker-placement: interior;
@@ -346,14 +346,14 @@
 
   [feature = 'amenity_post_box'][zoom >= 18] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/post_box_11.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'emergency_phone'][zoom >= 19] {
     marker-file: url('symbols/openstreetmap-carto/amenity/emergency_phone.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-placement: interior;
     marker-clip: false;
   }
@@ -361,7 +361,7 @@
   [feature = 'tourism_viewpoint'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/tourism/viewpoint.svg');
     marker-placement: interior;
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-clip: false;
   }
 
@@ -579,24 +579,29 @@
   }
 
   [feature = 'shop_bicycle'][zoom >= 14] {
+    [zoom <=15] { marker-transform: "scale(0.66)"; }
     marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_11.svg');
     marker-placement: interior;
     marker-clip: false;
+    marker-fill: @bicycle-amenity;
   }
 
   [feature = 'shop_sports'][zoom >= 17] {
     marker-file: url('symbols/openstreetmap-carto/shop/sports.svg');
     marker-placement: interior;
     marker-clip: false;
+    marker-fill: @amenity-common;
   }
 
   [feature = 'amenity_drinking_water'][zoom >= 16],
   [feature = 'amenity_water_point']['drinking_water'='yes'][zoom >= 16],
   [feature = 'man_made_water_tap']['drinking_water'='yes'][zoom >= 16] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/drinking_water_11.svg');
+    marker-fill: @amenity-water;
   }
   [feature = 'amenity_toilets'][zoom >= 16] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/toilets_11.svg');
+    marker-fill: @amenity-water;
   }
 
   [feature = 'shop_supermarket'][zoom >= 16] {
@@ -688,16 +693,17 @@
 
   [feature = 'amenity_internet_cafe'][zoom >= 17] {
     marker-file: url('symbols/openstreetmap-carto/amenity/internet_cafe.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-placement: interior;
     marker-clip: false;
   }
 
   [feature = 'amenity_bicycle_rental'][zoom >= 16] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_rental_11.svg');
-    marker-fill: @transportation-icon;
+    marker-fill: @bicycle-rental;
     marker-placement: interior;
     marker-clip: false;
+    marker-max-error: 0.4;
   }
 
   [feature = 'highway_elevator'][zoom >= 18] {
@@ -834,7 +840,7 @@
   }
   [feature = 'amenity_atm'][zoom >= 19] {
     marker-file: url('symbols/openstreetmap-carto/amenity/atm.svg');
-    marker-fill: @amenity-brown;
+    marker-fill: @amenity-common;
     marker-clip: false;
   }
 
@@ -889,8 +895,9 @@
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255, 255, 255, 0.6);
       text-placement: interior;
-		}
-	}
+      [feature = 'shop_bicycle'] { text-fill: @bicycle-amenity; }
+    }
+  }
 
   [feature = 'shop_supermarket'] {
     [zoom >= 16] {
@@ -951,13 +958,13 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: @transportation-text;
+    text-fill: @bicycle-rental;
     text-dy: 10;
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;
 		text-placement: interior;
-	}
+  }
 
   [feature = 'amenity_police'][zoom >= 17],
   [feature = 'amenity_post_office'][zoom >= 17] {
@@ -971,7 +978,7 @@
 		text-halo-radius: @standard-halo-radius;
 		text-halo-fill: @standard-halo-fill;
 		text-placement: interior;
-	}
+  }
 
   [feature = 'amenity_hospital'][zoom >= 16],
   [feature = 'healthcare_clinic'][zoom >= 16],
@@ -1068,7 +1075,7 @@
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
     text-fill: darken(black, 30%);
-    [information = 'office'] { text-fill: @amenity-brown; }
+    [information = 'office'] { text-fill: @amenity-common; }
     text-face-name: @standard-font;
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: @standard-halo-fill;

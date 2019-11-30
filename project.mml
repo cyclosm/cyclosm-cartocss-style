@@ -517,18 +517,24 @@ Layer:
           ) AS has_ramp,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
-            -- From worse to best to ensure correct overloading
-            -- (think surface=sett + smoothness=horrible)
+            -- From best tag to less precise quality surface tag (smoothness > track > surface).
+            WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
+              THEN 'mtb'
+            WHEN tags->'smoothness' IN ('bad', 'very_bad')
+              THEN 'cyclocross'
+            WHEN tracktype IN ('grade4', 'grade5')
+              THEN 'mtb'
+            WHEN tracktype IN ('grade2', 'grade3')
+              THEN 'cyclocross'
             WHEN surface IN ('bad', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
-              OR tracktype IN ('grade4', 'grade5')
-              OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
-            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
-              OR tracktype IN ('grade2', 'grade3')
-              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
+              THEN 'mtb'
+            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
+              THEN 'cyclocross'
             ELSE NULL
           END AS surface_type
         FROM planet_osm_line
-        WHERE (tunnel NOT IN ('', '0', 'no') OR covered NOT IN ('', '0', 'no')) AND railway IS NULL
+        WHERE (tunnel NOT IN ('', '0', 'no') OR covered NOT IN ('', '0', 'no'))
+              AND (railway IS NULL OR railway IS NOT NULL AND highway IS NOT NULL)
         ORDER BY layer ASC
       ) AS data
   geometry: linestring
@@ -652,15 +658,18 @@ Layer:
           ) AS has_ramp,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
-            -- From worse to best to ensure correct overloading
-            -- (think surface=sett + smoothness=horrible)
+            -- From best tag to less precise quality surface tag (smoothness > track > surface).
+            WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
+              THEN 'mtb'
+            WHEN tags->'smoothness' IN ('bad', 'very_bad')
+              THEN 'cyclocross'
+            WHEN tracktype IN ('grade4', 'grade5')
+              THEN 'mtb'
+            WHEN tracktype IN ('grade2', 'grade3')
+              THEN 'cyclocross'
             WHEN surface IN ('bad', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
-              OR tracktype IN ('grade4', 'grade5')
-              OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable')
               THEN 'mtb'
             WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
-              OR tracktype IN ('grade2', 'grade3')
-              OR tags->'smoothness' IN ('intermediate')
               THEN 'cyclocross'
             ELSE NULL
           END AS surface_type,
@@ -832,14 +841,19 @@ Layer:
           ) AS has_ramp,
           surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
-            -- From worse to best to ensure correct overloading
-            -- (think surface=sett + smoothness=horrible)
+            -- From best tag to less precise quality surface tag (smoothness > track > surface).
+            WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
+              THEN 'mtb'
+            WHEN tags->'smoothness' IN ('bad', 'very_bad')
+              THEN 'cyclocross'
+            WHEN tracktype IN ('grade4', 'grade5')
+              THEN 'mtb'
+            WHEN tracktype IN ('grade2', 'grade3')
+              THEN 'cyclocross'
             WHEN surface IN ('bad', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
-              OR tracktype IN ('grade4', 'grade5')
-              OR tags->'smoothness' IN ('very_bad', 'horrible', 'very_horrible', 'impassable') THEN 'mtb'
-            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
-              OR tracktype IN ('grade2', 'grade3')
-              OR tags->'smoothness' IN ('intermediate') THEN 'cyclocross'
+              THEN 'mtb'
+            WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
+              THEN 'cyclocross'
             ELSE NULL
           END AS surface_type,
           CASE
@@ -1447,7 +1461,7 @@ Layer:
           OR amenity IN ('atm', 'bank', 'bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
           OR tags->'compressed_air'='yes'
           OR tags->'car_wash'='yes'
-          OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
+          OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
           OR leisure='picnic_table'
@@ -1472,7 +1486,10 @@ Layer:
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets', 'water_point') THEN 10
                 WHEN tags->'compressed_air'='yes' THEN 11
                 -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
+                WHEN shop IN ('bicycle', 'sports') THEN 30
+                WHEN amenity IN ('bicycle_rental') Then 31
+                WHEN amenity IN ('bicycle_parking')
+                     OR (amenity='motorcycle_parking' AND ( bicycle='yes' OR bicycle='designated')) THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
@@ -1580,7 +1597,7 @@ Layer:
           OR amenity IN ('atm', 'bank', 'bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
           OR tags->'compressed_air'='yes'
           OR tags->'car_wash'='yes'
-          OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
+          OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
           OR leisure='picnic_table'
@@ -1606,7 +1623,10 @@ Layer:
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets', 'water_point') THEN 10
                 WHEN tags->'compressed_air'='yes' THEN 11
                 -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
+                WHEN shop IN ('bicycle', 'sports') THEN 30
+                WHEN amenity IN ('bicycle_rental') Then 31
+                WHEN amenity IN ('bicycle_parking')
+                     OR (amenity='motorcycle_parking' AND ( bicycle='yes' OR bicycle='designated')) THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
@@ -1725,7 +1745,7 @@ Layer:
             OR amenity IN ('atm', 'bank', 'bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
             OR tags->'compressed_air'='yes'
             OR tags->'car_wash'='yes'
-            OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
+            OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
             OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
@@ -1750,7 +1770,10 @@ Layer:
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets', 'water_point') THEN 10
                 WHEN tags->'compressed_air'='yes' THEN 11
                 -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
+                WHEN shop IN ('bicycle', 'sports') THEN 30
+                WHEN amenity IN ('bicycle_rental') Then 31
+                WHEN amenity IN ('bicycle_parking')
+                     OR (amenity='motorcycle_parking' AND ( bicycle='yes' OR bicycle='designated')) THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
@@ -1874,7 +1897,7 @@ Layer:
             OR amenity IN ('atm', 'bank', 'bar', 'bicycle_rental', 'bicycle_parking', 'bicycle_repair_station', 'biergarten', 'cafe', 'car_wash', 'compressed_air', 'drinking_water', 'fast_food', 'ferry_terminal', 'food_court', 'fountain', 'hospital', 'ice_cream', 'internet_cafe', 'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath', 'restaurant', 'shelter', 'shower', 'toilets', 'water_point')
             OR tags->'compressed_air'='yes'
             OR tags->'car_wash'='yes'
-            OR (amenity='motorcycle_parking' AND (bicycle IS NULL OR bicycle='yes' OR bicycle='designated'))
+            OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
             OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
@@ -1900,7 +1923,10 @@ Layer:
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets', 'water_point') THEN 10
                 WHEN tags->'compressed_air'='yes' THEN 11
                 -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') OR amenity IN ('bicycle_rental') THEN 30
+                WHEN shop IN ('bicycle', 'sports') THEN 30
+                WHEN amenity IN ('bicycle_rental') Then 31
+                WHEN amenity IN ('bicycle_parking')
+                     OR (amenity='motorcycle_parking' AND ( bicycle='yes' OR bicycle='designated')) THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience

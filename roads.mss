@@ -1332,7 +1332,7 @@ come in as well.
 #tunnel::steps_ramp_left[zoom>=15],
 #bridge::steps_ramp_left[zoom>=15] {
   [type='steps'] {
-    [has_ramp!='no'] {
+    [has_ramp!='no'][has_ramp!=null] {
       line-color: @cycle-fill;
       [zoom>=15] {
         line-width: @rdz15_steps_outline*2;

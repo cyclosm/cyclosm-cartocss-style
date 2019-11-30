@@ -573,7 +573,7 @@
 
 #train_stations[zoom >= 12]{
   marker-file: url('symbols/openstreetmap-carto/square.svg');
-  marker-fill: @transportation-icon;
+  marker-fill: @trainstation-icon;
   marker-placement: interior;
   marker-clip: false;
   // Train station
@@ -585,7 +585,7 @@
       text-size: 1.1 * @standard-font-size;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-fill: @transportation-text;
+      text-fill: @trainstation-text;
       text-dy: 10;
       text-face-name: @sans_bold;
       text-halo-radius: @standard-halo-radius;
@@ -606,7 +606,7 @@
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
       text-line-spacing: @standard-line-spacing-size;
-      text-fill: @transportation-text;
+      text-fill: @trainstation-text;
       text-dy: 10;
       text-face-name: @sans_bold;
       text-halo-radius: @standard-halo-radius;
