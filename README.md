@@ -15,7 +15,11 @@ practical cycling map!
 
 A demonstration of this style is available at [https://cyclosm.org](https://cyclosm.org).
 
-The tile server url is `https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png`
+The tile server url is
+`https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png`. Tiles can
+be reused under the general OpenStreetMap [tile usage
+policy](https://operations.osmfoundation.org/policies/tiles/).
+
 The map is available by default in the following smartphone applications:
 - [OSMAnd](https://osmand.net/)
 - [OpenMultiMaps](https://framagit.org/tom79/openmaps)

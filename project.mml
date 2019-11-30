@@ -1489,7 +1489,7 @@ Layer:
                 WHEN shop IN ('bicycle', 'sports') THEN 30
                 WHEN amenity IN ('bicycle_rental') Then 31
                 WHEN amenity IN ('bicycle_parking')
-                     OR (amenity='motorcycle_parking' AND ( bicycle='yes' OR bicycle='designated')) THEN 32
+                     OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated')) THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
@@ -1626,7 +1626,7 @@ Layer:
                 WHEN shop IN ('bicycle', 'sports') THEN 30
                 WHEN amenity IN ('bicycle_rental') Then 31
                 WHEN amenity IN ('bicycle_parking')
-                     OR (amenity='motorcycle_parking' AND ( bicycle='yes' OR bicycle='designated')) THEN 32
+                     OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated')) THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
@@ -1773,7 +1773,7 @@ Layer:
                 WHEN shop IN ('bicycle', 'sports') THEN 30
                 WHEN amenity IN ('bicycle_rental') Then 31
                 WHEN amenity IN ('bicycle_parking')
-                     OR (amenity='motorcycle_parking' AND ( bicycle='yes' OR bicycle='designated')) THEN 32
+                     OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated')) THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience
@@ -1926,7 +1926,7 @@ Layer:
                 WHEN shop IN ('bicycle', 'sports') THEN 30
                 WHEN amenity IN ('bicycle_rental') Then 31
                 WHEN amenity IN ('bicycle_parking')
-                     OR (amenity='motorcycle_parking' AND ( bicycle='yes' OR bicycle='designated')) THEN 32
+                     OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated')) THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
                 -- Convenience

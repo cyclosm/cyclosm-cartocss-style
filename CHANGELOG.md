@@ -18,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     point, see #244.
 * Bugfix: fix missing oneway arrow on dedicated cycleway / path / footway,
     see #231.
+* Rework some icons, change color to emphasize bicycle POIs (see #169, #207
+    and #185).
+* Pedestrian areas are now rendered in gray.
+* Fix quality surface tag overloading: smoothness > tracktype > surface
+    (see #243).
+* Render cycleways in tunnel, see #234.
 
 ## v0.3.1
 

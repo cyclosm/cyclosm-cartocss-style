@@ -187,7 +187,7 @@
 
   [feature = 'amenity_bicycle_repair_station'][zoom >= 15] {
     marker-file: url('symbols/openstreetmap-carto/amenity/bicycle_repair_station.svg');
-    marker-fill:  @bicycle-amenity;
+    marker-fill: @bicycle-amenity;
     marker-placement: interior;
     marker-clip: false;
     [access != ''][access != 'permissive'][access != 'yes'] {
