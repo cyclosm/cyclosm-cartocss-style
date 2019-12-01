@@ -26,6 +26,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render cycleways in tunnel, see #234.
 * Fix `z_order` value for bridges, ensure cycleways are always on top of
     the main road on bridges. See #192.
+* Building heights (pseudo 3D effect) was badly computed in mod_tile. Moving
+    away from this algorithm and simply rendering them as polygons with
+    contours now, see #212.
 
 ## v0.3.1
 

@@ -191,12 +191,14 @@
 // Not mandatory but brings a good visualization of the building's perimeter
 // that might be off due to hill shading.
 #buildings[zoom>=18][type != 'hedge'] {
-  building-fill:@building;
-  building-height:1.25;
+  polygon-fill:@building;
+  line-color: #b6b2af;
+  line-width: 0.75;
 }
 #buildings[zoom>=18][type = 'hedge'] {
-  building-fill:@wooded;
-  building-height:1.25;
+  polygon-fill:@wooded;
+  line-color: #b6b2af;
+  line-width: 0.75;
 }
 
 /* ================================================================== */
