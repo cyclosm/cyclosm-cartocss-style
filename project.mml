@@ -1367,7 +1367,7 @@ Layer:
       ) AS data
   geometry: point
   properties:
-    minzoom: 11
+    minzoom: 13
 - id: oriented-highway-amenities
   <<: *extents
   Datasource:
@@ -2155,7 +2155,6 @@ Layer:
             ELSE highway
           END AS highway,
           CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
-          construction,
           name,
           CASE
             WHEN oneway IN ('yes', '-1') THEN oneway
@@ -2184,20 +2183,16 @@ Layer:
           ('road', 330),
           ('living_street', 320),
           ('pedestrian', 310),
-          ('raceway', 300),
           ('motorway_link', 240),
           ('trunk_link', 230),
           ('primary_link', 220),
           ('secondary_link', 210),
           ('tertiary_link', 200),
-          ('service', 150),
-          ('cycleway', 140),
-          ('path', 130),
-          ('construction', 10)
+          ('service', 150)
         ) AS ordertable (highway, prio)
         USING (highway)
         WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary',
-          'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'cycleway', 'path')
+          'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'living_street')
         AND (
           name IS NOT NULL
           OR oneway IN ('yes', '-1')
@@ -2224,10 +2219,9 @@ Layer:
         SELECT
           way,
           highway,
-          construction,
           name
         FROM planet_osm_line
-        WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps', 'construction')
+        WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps')
           AND name IS NOT NULL
       ) AS data
   properties:
