@@ -195,6 +195,13 @@
     }
   }
 
+  [feature = 'man_made_monitoring_station'][zoom >= 18] {
+    marker-file: url('symbols/amenity/bicycle_monitoring_station.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'amenity_car_wash'][zoom >= 16],
 	[feature = 'amenity_fuel'][compressed_air != 'yes'][car_wash = 'yes'][zoom >= 16],
 	[feature = 'shop_gas'][compressed_air != 'yes'][car_wash = 'yes'][zoom >= 16],

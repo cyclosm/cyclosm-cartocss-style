@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Building heights (pseudo 3D effect) was badly computed in mod_tile. Moving
     away from this algorithm and simply rendering them as polygons with
     contours now, see #212.
+* Render `man_made=monitoring_station` + `monitoring:bicycle=yes`, see #246.
 
 ## v0.3.1
 
