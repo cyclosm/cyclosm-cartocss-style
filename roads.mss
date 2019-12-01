@@ -7,6 +7,9 @@ and trunks. */
 
 #roads_low[zoom>=5][zoom<=8] {
   line-color: @motorway-trunk-line;
+  [bicycle='yes'] {
+    line-color: @motorway-trunk-cycle-fill;
+  }
 
   [zoom >= 5] {
     line-width: 0.4;
@@ -30,6 +33,9 @@ as well. */
   [type='motorway_link'],
   [type='trunk_link'] {
     line-color: @motorway-trunk-line;
+    [bicycle='yes'] {
+      line-color: @motorway-trunk-cycle-fill;
+    }
   }
   [type='primary'] { line-color: @primary-line; }
   [type='secondary'] { line-color: @secondary-line; }
@@ -1364,6 +1370,9 @@ come in as well.
   [type='motorway_link'],
   [type='trunk_link'] {
     line-color: @motorway-trunk-fill;
+    [can_bicycle='yes'] {
+      line-color: @motorway-trunk-cycle-fill;
+    }
   }
   [type='primary'],
   [type='primary_link'] {

@@ -13,22 +13,20 @@ mss:
     line: '#f6f6f6'
     fill: '#c0ccc4'
     case: '#f6f6f6'
-    shield-fill: '#620728'
+  motorway-trunk-cycle:
+    fill: '#f4c3c3'
   primary:
     line: '#f4dfc3'
     fill: '#f4dfc3'
     case: '#d8b267'
-    shield-fill: '#4c2e00'
   secondary:
     line: '#f6f8d2'
     fill: '#f6f8d2'
     case: '#b1bb5d'
-    shield-fill: '#323b00'
   tertiary:
     line: '#f6f6f6'
     fill: '#f6f6f6'
     case: '#777'
-    shield-fill: '#3b3b3b'
   standard:
     line: '#f6f6f6'
     fill: '#f6f6f6'
