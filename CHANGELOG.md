@@ -24,6 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix quality surface tag overloading: smoothness > tracktype > surface
     (see #243).
 * Render cycleways in tunnel, see #234.
+* Fix `z_order` value for bridges, ensure cycleways are always on top of
+    the main road on bridges. See #192.
 
 ## v0.3.1
 
