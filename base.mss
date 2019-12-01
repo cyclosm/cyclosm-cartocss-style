@@ -152,9 +152,9 @@
   [zoom>=12] { line-width: 2.0; }
 }
 
-#landuse-overlay[type = 'military'][zoom >= 8][way_pixels > 900],
-#landuse-overlay[type = 'military'][zoom >= 13],
-#landuse-overlay[type = 'danger_area'][zoom >= 9] {
+#military-overlay[type = 'military'][zoom >= 8][way_pixels > 900],
+#military-overlay[type = 'military'][zoom >= 13],
+#military-overlay[type = 'danger_area'][zoom >= 9] {
   polygon-pattern-file: url('symbols/openstreetmap-carto/military_red_hatch.png');
   polygon-pattern-alignment: global;
   line-color: @military;
@@ -171,7 +171,7 @@
   }
 }
 
-#landuse-overlay::wood[type = 'wood'][zoom >= 13] {
+#landuse-overlay[type = 'wood'][zoom >= 13] {
   polygon-pattern-file: url('symbols/openstreetmap-carto/leaftype_unknown.svg'); // Lch(55,30,135)
   [leaf_type = "broadleaved"] { polygon-pattern-file: url('symbols/openstreetmap-carto/leaftype_broadleaved.svg'); }
   [leaf_type = "needleleaved"] { polygon-pattern-file: url('symbols/openstreetmap-carto/leaftype_needleleaved.svg'); }

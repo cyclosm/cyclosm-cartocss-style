@@ -161,6 +161,27 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 13
+- id: landuse-overlay
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          COALESCE(CASE WHEN landuse = 'forest' THEN 'wood' ELSE NULL END, "natural", landuse) AS type,
+          tags->'leaf_type' AS leaf_type,
+          way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
+        FROM planet_osm_polygon
+        WHERE
+          ("natural" = 'wood' OR landuse = 'forest')
+          AND building IS NULL
+          AND way_area > 1*!pixel_width!::real*!pixel_height!::real
+        ORDER BY way_area DESC
+      ) AS data
+  geometry: polygon
+  properties:
+    minzoom: 7
 - id: hillshade
   <<: *extents84
   Datasource:
@@ -2227,7 +2248,7 @@ Layer:
   properties:
     cache-features: true
     minzoom: 18
-- id: landuse-overlay
+- id: military-overlay
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -2235,12 +2256,11 @@ Layer:
       (
         SELECT
           way,
-          COALESCE(leisure, military, CASE WHEN landuse = 'forest' THEN 'wood' ELSE NULL END, "natural", landuse) AS type,
-          tags->'leaf_type' AS leaf_type,
+          COALESCE(military, landuse) AS type,
           way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
         FROM planet_osm_polygon
         WHERE
-          (landuse = 'military' OR military = 'danger_area' OR "natural" = 'wood' OR landuse = 'forest')
+          (landuse = 'military' OR military = 'danger_area')
           AND building IS NULL
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
         ORDER BY way_area DESC
