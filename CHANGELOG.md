@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     contours now, see #212.
 * Render `man_made=monitoring_station` + `monitoring:bicycle=yes`, see #246.
 * Fix forest tree icons being rendered on top of buildings. See #223.
+* Render `aerialway`. See #256.
 
 ## v0.3.1
 

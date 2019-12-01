@@ -39,6 +39,7 @@ Stylesheet:
 - road-colors-generated.mss
 - fonts.mss
 - base.mss
+- aerialways.mss
 - roads.mss
 - amenities.mss
 - labels.mss
@@ -757,6 +758,27 @@ Layer:
   geometry: point
   properties:
     minzoom: 14
+- id: aerialways
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          aerialway,
+          name,
+          CASE
+            WHEN tags->'aerialway:bicycle' IN ('yes', 'summer') THEN 'yes'
+            WHEN aerialway IN ('cablecar', 'gondola', 'mixed_lift') AND (tags->'aeriwaly:bicycle' IS NULL OR tags->'aerialway:bicycle' != 'no') THEN 'yes'
+            ELSE 'no'
+          END AS bicycle
+        FROM planet_osm_line
+        WHERE aerialway IS NOT NULL
+      ) AS data
+    properties:
+      minzoom: 12
 - id: bridge
   <<: *extents
   Datasource:
