@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Render `highway=trunk` as bikeable by default, fix #258.
+
 ## v0.3.2
 
 * Fill in grey roads without bicycle access, see #236.

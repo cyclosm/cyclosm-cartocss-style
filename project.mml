@@ -444,7 +444,6 @@ Layer:
           way,
           COALESCE(
             CASE
-              WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
               WHEN highway != 'bus_guideway' THEN highway
               ELSE NULL
             END,
@@ -520,7 +519,7 @@ Layer:
           END AS cycleway_right_oneway,
           CASE
             WHEN bicycle IS NOT NULL THEN bicycle
-            WHEN access IS NOT NULL THEN access
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
           CASE
@@ -585,7 +584,6 @@ Layer:
           way,
           COALESCE(
             CASE
-              WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
               WHEN highway = 'raceway' THEN 'track'  -- render raceways as tracks
               WHEN highway != 'bus_guideway' THEN highway
               ELSE NULL
@@ -719,10 +717,7 @@ Layer:
       (
         SELECT
           ST_Snaptogrid(way, !pixel_width! / 4) AS way,
-          CASE
-            WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
-            ELSE highway
-          END AS type,
+          highway AS type,
           bicycle
         FROM planet_osm_roads
         WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'motorway_link', 'trunk_link')
@@ -739,7 +734,7 @@ Layer:
       (
           SELECT
             ST_Snaptogrid(way, !pixel_width! / 4) AS way,
-            'motorway_trunk' AS type,
+            highway AS type,
             bridge,
             tunnel,
             bicycle
@@ -794,7 +789,6 @@ Layer:
           way,
           COALESCE(
             CASE
-              WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
               WHEN highway != 'bus_guideway' THEN highway
               ELSE NULL
             END,
@@ -870,7 +864,7 @@ Layer:
           END AS cycleway_right_oneway,
           CASE
             WHEN bicycle IS NOT NULL THEN bicycle
-            WHEN access IS NOT NULL THEN access
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
           CASE
