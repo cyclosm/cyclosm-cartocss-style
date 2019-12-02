@@ -416,7 +416,8 @@
 /* ================================================================== */
 /* ONE-WAY ARROWS
 /* ================================================================== */
-#roads-text-name[highway != 'construction'][zoom>=15] {
+#roads-text-name[highway != 'construction'][zoom>=15],
+#paths-text-name[highway != 'construction'][zoom>=15] {
   // One way road for general traffic, NO countraflow for bikes
   [oneway = 'yes'][oneway_bicycle != 'no'],
   [oneway = '-1'][oneway_bicycle != 'no'],

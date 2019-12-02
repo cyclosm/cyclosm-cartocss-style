@@ -2162,6 +2162,7 @@ Layer:
           END AS oneway,
           CASE
             WHEN tags->'oneway:bicycle' IS NOT NULL THEN tags->'oneway:bicycle'
+            WHEN highway='cycleway' AND oneway IS NOT NULL THEN oneway
             WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:both' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
@@ -2218,10 +2219,18 @@ Layer:
         SELECT
           way,
           highway,
-          name
+          name,
+          CASE
+            WHEN oneway IN ('yes', '-1') THEN oneway
+            ELSE 'no'
+          END AS oneway,
+          CASE
+            WHEN tags->'oneway:bicycle' IS NOT NULL THEN tags->'oneway:bicycle'
+            WHEN highway='cycleway' AND oneway IS NOT NULL THEN oneway
+            ELSE 'no'
+          END AS oneway_bicycle
         FROM planet_osm_line
         WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps')
-          AND name IS NOT NULL
       ) AS data
   properties:
     minzoom: 15
