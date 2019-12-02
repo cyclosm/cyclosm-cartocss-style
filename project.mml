@@ -771,7 +771,7 @@ Layer:
           name,
           CASE
             WHEN tags->'aerialway:bicycle' IN ('yes', 'summer') THEN 'yes'
-            WHEN aerialway IN ('cablecar', 'gondola', 'mixed_lift') AND (tags->'aeriwaly:bicycle' IS NULL OR tags->'aerialway:bicycle' != 'no') THEN 'yes'
+            WHEN aerialway IN ('cablecar', 'gondola', 'mixed_lift') AND (tags->'aerialway:bicycle' IS NULL OR tags->'aerialway:bicycle' != 'no') THEN 'yes'
             ELSE 'no'
           END AS bicycle
         FROM planet_osm_line
