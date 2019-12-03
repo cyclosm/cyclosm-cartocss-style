@@ -96,6 +96,12 @@
       dash/line-color: black;
       dash/line-dasharray: 1,30;
       dash/line-clip: false;
+
+      [bicycle='yes'] {
+        line/line-color: @cycle-fill;
+        dash/line-color: darken(@cycle-fill, 25%);
+      }
+
       [zoom >= 17] {
         text-name: "[name]";
         text-fill: #666666;
