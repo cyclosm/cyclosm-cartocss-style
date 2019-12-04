@@ -185,21 +185,13 @@
 #buildings[zoom>=16] {
   polygon-fill: @building;
 }
-// At the highest zoom levels, render buildings in fancy pseudo-3D.
-// Ordering polygons by their Y-position is necessary for this effect
-// so we use a separate layer that does this for us.
-// Not mandatory but brings a good visualization of the building's perimeter
-// that might be off due to hill shading.
-#buildings[zoom>=18][type != 'hedge'] {
+/* Render perimeter of buildings in high zooms */
+#buildings[zoom>=18] {
   polygon-fill:@building;
   line-color: #b6b2af;
   line-width: 0.75;
 }
-#buildings[zoom>=18][type = 'hedge'] {
-  polygon-fill:@wooded;
-  line-color: #b6b2af;
-  line-width: 0.75;
-}
+
 
 /* ================================================================== */
 /* WATER AREAS
