@@ -184,14 +184,13 @@
 /* ---- BUILDINGS ---- */
 #buildings[zoom>=16] {
   polygon-fill: @building;
-}
-/* Render perimeter of buildings in high zooms */
-#buildings[zoom>=18] {
-  polygon-fill:@building;
-  line-color: #b6b2af;
-  line-width: 0.75;
-}
 
+  /* Render perimeter of buildings in high zooms */
+  [zoom>=18] {
+    line-color: #b6b2af;
+    line-width: 0.75;
+  }
+}
 
 /* ================================================================== */
 /* WATER AREAS
