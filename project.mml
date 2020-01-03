@@ -1335,7 +1335,7 @@ Layer:
       (
         SELECT way, railway AS type, name, tags->'station' AS station, z_order
         FROM planet_osm_point
-        WHERE railway = 'station'
+        WHERE railway = 'station' OR railway = 'halt'
         ORDER BY z_order NULLS LAST
       ) AS data
   geometry: point
