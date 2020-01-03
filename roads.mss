@@ -1783,7 +1783,10 @@ come in as well.
 
     /* Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm). */
     [surface_type='cyclocross'] {
-      line-dasharray: 6,12;
+      line-dasharray: 4,8;
+      [zoom>=15] {
+        line-dasharray: 6,12;
+      }
       [zoom>=16] {
         line-dasharray: 8,16;
       }
@@ -1972,15 +1975,18 @@ come in as well.
 
     /* Bad surface ok for mountain bike (>40mm tyres). */
     [surface_type='mtb'] {
-      line-dasharray: 16,8,4;
+      line-dasharray: 10,5;
+      [zoom>=15] {
+        line-dasharray: 14,7;
+      }
       [zoom>=16] {
-        line-dasharray: 24,12,6;
+        line-dasharray: 20,10;
       }
       [zoom>=17] {
-        line-dasharray: 36,18,9;
+        line-dasharray: 32,16;
       }
       [zoom>=18] {
-        line-dasharray: 72,36,18;
+        line-dasharray: 64,32;
       }
 
       /* -- colors & styles -- */
