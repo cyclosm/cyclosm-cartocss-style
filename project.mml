@@ -720,7 +720,7 @@ Layer:
           highway AS type,
           bicycle
         FROM planet_osm_roads
-        WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'motorway_link', 'trunk_link')
+        WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'secondary', 'tertiary')
       ) AS data
   geometry: linestring
   properties:
