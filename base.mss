@@ -59,6 +59,15 @@
   [type='natural_dune'] {
     polygon-fill: @sand;
   }
+  [type='natural_bare_rock'][zoom >= 5] {
+    polygon-fill: @bare_ground;
+    polygon-pattern-file: url('symbols/openstreetmap-carto/rock_overlay.png');
+  }
+  [type='natural_scree'][zoom >= 5],
+  [type='natural_shingle'][zoom >= 5] {
+    polygon-fill: @bare_ground;
+    polygon-pattern-file: url('symbols/openstreetmap-carto/scree_overlay.png');
+  }
 
   [type='natural_heath']         { polygon-fill: @heath; }
   [type='amenity_hospital']      { polygon-fill: @hospital; }
