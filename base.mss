@@ -36,7 +36,6 @@
     polygon-fill: @industrial;
   }
 
-  [type='leisure_allotments'],
   [type='leisure_garden'],
   [type='landuse_grass'],
   [type='natural_grassland'] {
@@ -48,6 +47,17 @@
   [type='landuse_construction'],
   [type='landuse_industrial'] {
     polygon-fill: @industrial;
+  }
+
+  [type='natural_wetland'][zoom >= 5] {
+    polygon-fill: @grass;
+    polygon-pattern-file: url('symbols/openstreetmap-carto/wetland.png');
+    polygon-pattern-alignment: global;
+  }
+  [type='natural_sand'],
+  [type='natural_beach'],
+  [type='natural_dune'] {
+    polygon-fill: @sand;
   }
 
   [type='natural_heath']         { polygon-fill: @heath; }
@@ -67,6 +77,13 @@
     polygon-fill: @meadow;
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/openstreetmap-carto/orchard.png');
+      polygon-pattern-alignment: global;
+    }
+  }
+  [type='landuse_allotments'] {
+    polygon-fill: @grass;
+    [zoom >= 13] {
+      polygon-pattern-file: url('symbols/openstreetmap-carto/allotments.png');
       polygon-pattern-alignment: global;
     }
   }
