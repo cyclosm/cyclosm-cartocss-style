@@ -1065,7 +1065,7 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: #8a4508;
+    text-fill: @amenity-common;
     [feature = 'natural_volcano'] { text-fill: #b10000; }
     text-dy: 7;
     [feature = 'tourism_viewpoint'] { text-dy: 11; }
