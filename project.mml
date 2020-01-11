@@ -98,7 +98,6 @@ Layer:
       ) AS data
   geometry: polygon
   properties:
-    cache-features: true
     minzoom: 4
     maxzoom: 9
 - id: landuse_gen1
@@ -1061,7 +1060,6 @@ Layer:
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
       ) AS protected_areas
   properties:
-    cache-features: true
     minzoom: 7
 - id: trees
   geometry: polygon
