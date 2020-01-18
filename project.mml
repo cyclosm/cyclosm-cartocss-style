@@ -2278,7 +2278,8 @@ Layer:
       (
         SELECT
           way,
-          COALESCE(military, landuse) AS type,
+          landuse,
+          military,
           way_area/NULLIF(!pixel_width!::real*!pixel_height!::real,0) AS way_pixels
         FROM planet_osm_polygon
         WHERE
