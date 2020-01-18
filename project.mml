@@ -94,11 +94,11 @@ Layer:
             OR highway IN ('pedestrian')
           )
           AND way_area > 0.1*!pixel_width!::real*!pixel_height!::real
+          AND way && !bbox!
           ORDER BY way_area DESC
       ) AS data
   geometry: polygon
   properties:
-    cache-features: true
     minzoom: 4
     maxzoom: 9
 - id: landuse_gen1
@@ -280,6 +280,7 @@ Layer:
         WHERE
           waterway IN ('river', 'canal')
           AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
+          AND way && !bbox!
       ) AS data
   geometry: linestring
   properties:
@@ -721,6 +722,7 @@ Layer:
           bicycle
         FROM planet_osm_roads
         WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'secondary', 'tertiary')
+          AND way && !bbox!
       ) AS data
   geometry: linestring
   properties:
@@ -740,6 +742,7 @@ Layer:
             bicycle
           FROM planet_osm_roads
           WHERE highway IN ('motorway', 'trunk')
+            AND way && !bbox!
       ) AS data
   geometry: linestring
   properties:
@@ -777,8 +780,8 @@ Layer:
         FROM planet_osm_line
         WHERE aerialway IS NOT NULL
       ) AS data
-    properties:
-      minzoom: 12
+  properties:
+    minzoom: 12
 - id: bridge
   <<: *extents
   Datasource:
@@ -920,6 +923,7 @@ Layer:
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network'='icn'
+          AND way && !bbox!
         ORDER BY z_order
       ) AS data
   geometry: linestring
@@ -936,6 +940,7 @@ Layer:
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network' IN ('icn', 'ncn')
+          AND way && !bbox!
         ORDER BY CASE
           WHEN tags->'network' = 'icn' THEN 0
           WHEN tags->'network' = 'ncn' THEN 1
@@ -955,6 +960,7 @@ Layer:
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network' IN ('icn', 'ncn', 'rcn')
+          AND way && !bbox!
         ORDER BY CASE
           WHEN tags->'network' = 'icn' THEN 0
           WHEN tags->'network' = 'ncn' THEN 1
@@ -1061,7 +1067,6 @@ Layer:
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
       ) AS protected_areas
   properties:
-    cache-features: true
     minzoom: 7
 - id: trees
   geometry: polygon
