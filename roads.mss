@@ -1458,7 +1458,8 @@ come in as well.
       [motor_vehicle='no'][can_bicycle!='no'] {
           line-color: @speedWalk-fill;
       }
-    [can_bicycle='no'] {
+    [can_bicycle='no'],
+    [can_bicycle='private'] {
       line-color: @standard-nobicycle;
     }
   }
@@ -1469,7 +1470,8 @@ come in as well.
       line-color: @mixed-cycle-fill;
   }
 
-  [can_bicycle='no'] {
+  [can_bicycle='no'],
+  [can_bicycle='private'] {
     line-color: @standard-nobicycle;
   }
 
@@ -1823,7 +1825,8 @@ come in as well.
         }
       }
 
-      [can_bicycle='no'] {
+      [can_bicycle='no'],
+      [can_bicycle='private'] {
         line-color: lighten(@standard-nobicycle, @surfaceLighter1);
       }
 
@@ -2008,7 +2011,8 @@ come in as well.
       [type='bridleway'][can_bicycle='yes'] {
         line-color: lighten(@path-fill, @surfaceLighter2);
       }
-      [can_bicycle='no'] {
+      [can_bicycle='no'],
+      [can_bicycle='private'] {
         line-color: lighten(@standard-nobicycle, @surfaceLighter2);
       }
 
