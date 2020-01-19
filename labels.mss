@@ -550,8 +550,12 @@
 #cycle-junction-nodes[zoom >= 13] {
   shield-name: "[ref]";
   shield-size: @shield-size;
+  shield-allow-overlap: true;
   shield-face-name: @sans;
   shield-file: url("symbols/shields/[network]-junction_1x1.svg");
+  [zoom >= 13][zoom <= 15] {
+    shield-transform: "scale(1.5)";
+  }
   [zoom >= 16] {
     shield-size: @shield-size-z16;
     shield-file: url("symbols/shields/[network]-junction_1x1_z16.svg");
