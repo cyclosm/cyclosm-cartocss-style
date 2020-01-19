@@ -79,6 +79,8 @@
 @cycle_track_case:  #0000ff;
 @cycle_busway_case: #0000ff;
 
+@bridge_case: #333;
+
 @aeroway:           #ddd;
 
 @surfaceDarker1: 10%;

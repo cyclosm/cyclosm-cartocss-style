@@ -603,6 +603,22 @@ come in as well.
 }
 
 #bridge::outline {
+  [zoom>=14] {
+    [type='motorway'],
+    [type='motorway_link'],
+    [type='trunk'],
+    [type='trunk_link'],
+    [type='primary'],
+    [type='primary_link'],
+    [type='secondary'],
+    [type='secondary_link'],
+    [type='tertiary'],
+    [type='tertiary_link'],
+    [type='unclassified'] {
+      line-color: @bridge_case;
+    }
+  }
+  
   [zoom>=17] {
     [type='bridleway']   { line-color: @land; line-width: @rdz17_bridleway + (2 * @rdz17_line_bridge_outline); }
     [type='footway']   { line-color: @land; line-width: @rdz17_footway + (2 * @rdz17_line_bridge_outline); }
