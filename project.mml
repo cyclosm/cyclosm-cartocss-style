@@ -954,6 +954,7 @@ Layer:
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network' IN ('icn', 'ncn', 'rcn')
+          AND NOT (tags->'network' = 'rcn' AND tags->'network:type' = 'node_network')
         ORDER BY CASE
           WHEN tags->'network' = 'icn' THEN 0
           WHEN tags->'network' = 'ncn' THEN 1
@@ -1318,9 +1319,11 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, route, tags->'network'AS type, ref, 1 as height, char_length(ref) AS width
+        SELECT way, route, tags->'network' AS type, ref, 1 as height, char_length(ref) AS width
         FROM planet_osm_line
-        WHERE (route='bicycle' OR route='mtb') AND ref IS NOT NULL
+        WHERE (route = 'bicycle' OR route = 'mtb')
+          AND ref IS NOT NULL
+          AND NOT (tags->'network' = 'rcn' AND tags->'network:type' = 'node_network')
       ) AS data
   geometry: linestring
   properties:
