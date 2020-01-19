@@ -94,6 +94,7 @@ Layer:
             OR highway IN ('pedestrian')
           )
           AND way_area > 0.1*!pixel_width!::real*!pixel_height!::real
+          AND way && !bbox!
           ORDER BY way_area DESC
       ) AS data
   geometry: polygon
@@ -279,6 +280,7 @@ Layer:
         WHERE
           waterway IN ('river', 'canal')
           AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
+          AND way && !bbox!
       ) AS data
   geometry: linestring
   properties:
@@ -720,6 +722,7 @@ Layer:
           bicycle
         FROM planet_osm_roads
         WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'motorway_link', 'trunk_link')
+          AND way && !bbox!
       ) AS data
   geometry: linestring
   properties:
@@ -739,6 +742,7 @@ Layer:
             bicycle
           FROM planet_osm_roads
           WHERE highway IN ('motorway', 'trunk')
+            AND way && !bbox!
       ) AS data
   geometry: linestring
   properties:
@@ -919,6 +923,7 @@ Layer:
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network'='icn'
+          AND way && !bbox!
         ORDER BY z_order
       ) AS data
   geometry: linestring
@@ -935,6 +940,7 @@ Layer:
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network' IN ('icn', 'ncn')
+          AND way && !bbox!
         ORDER BY CASE
           WHEN tags->'network' = 'icn' THEN 0
           WHEN tags->'network' = 'ncn' THEN 1
@@ -955,6 +961,7 @@ Layer:
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network' IN ('icn', 'ncn', 'rcn')
           AND NOT (tags->'network' = 'rcn' AND tags->'network:type' = 'node_network')
+          AND way && !bbox!
         ORDER BY CASE
           WHEN tags->'network' = 'icn' THEN 0
           WHEN tags->'network' = 'ncn' THEN 1
