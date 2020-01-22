@@ -520,6 +520,7 @@ Layer:
           END AS cycleway_right_oneway,
           CASE
             WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
@@ -660,6 +661,7 @@ Layer:
           END AS cycleway_right_oneway,
           CASE
             WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
@@ -867,6 +869,7 @@ Layer:
           END AS cycleway_right_oneway,
           CASE
             WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
