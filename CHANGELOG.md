@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Give bridges for large roads a border to emphasize the roads overlaps.
 * Fix a bug with incorrect two-ways arrows being shown on `highway=footway`.
     See #289.
+* Tourism viewpoint labels where still labeled in brown. Fixed, see #263.
 
 ## v0.3.2
 
