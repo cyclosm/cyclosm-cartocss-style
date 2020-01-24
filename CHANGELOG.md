@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix a bug with incorrect two-ways arrows being shown on `highway=footway`.
     See #289.
 * Tourism viewpoint labels where still labeled in brown. Fixed, see #263.
+* Fix cycleways being hidden by primary roads along a tunnel. See #278.
 
 ## v0.3.2
 
