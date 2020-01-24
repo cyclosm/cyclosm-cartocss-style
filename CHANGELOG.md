@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Hide regional cycling network (part of a node network) at zooms 8 to 10.
     This improves a lot the current render in the Netherlands.
 * Give bridges for large roads a border to emphasize the roads overlaps.
+* Fix a bug with incorrect two-ways arrows being shown on `highway=footway`.
+    See #289.
 
 ## v0.3.2
 
