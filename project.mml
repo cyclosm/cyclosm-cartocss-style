@@ -2234,7 +2234,7 @@ Layer:
           END AS oneway,
           CASE
             WHEN tags->'oneway:bicycle' IS NOT NULL THEN tags->'oneway:bicycle'
-            WHEN highway='cycleway' AND oneway IS NOT NULL THEN oneway
+            WHEN oneway IS NOT NULL THEN oneway
             ELSE 'no'
           END AS oneway_bicycle
         FROM planet_osm_line
