@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Render `highway=trunk` as bikeable by default, fix #258.
 * Fix some missing oneway arrows on cycleways and paths. See #257.
+* Fix a bug with `æerialway` layer, rendering it at all zoom levels.
+* Fix some SQL queries to ensure the geographic index can be fully used and
+    restore performances.
+* Fix a bug where `military` areas where not visible when combined with
+    `landuse`.
+* Hide regional cycling network (part of a node network) at zooms 8 to 10.
+    This improves a lot the current render in the Netherlands.
+* Give bridges for large roads a border to emphasize the roads overlaps.
 
 ## v0.3.2
 
