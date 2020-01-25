@@ -23,10 +23,12 @@ policy](https://operations.osmfoundation.org/policies/tiles/).
 The map is available by default in the following smartphone applications:
 - [OSMAnd](https://osmand.net/)
 - [OpenMultiMaps](https://framagit.org/tom79/openmaps)
+- [All-In-One Offline Maps](https://www.offline-maps.net) and [AlpineQuest Rando GPS](https://alpinequest.net)
 
 The tile server is provided by
 [OpenStreetMap-France](https://www.openstreetmap.fr), many thanks to them for
 the support!
+It is available at https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png under a [fairuse tile policy](https://operations.osmfoundation.org/policies/tiles/).
 
 ## Philosophy
 
