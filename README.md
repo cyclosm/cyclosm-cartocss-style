@@ -28,7 +28,6 @@ The map is available by default in the following smartphone applications:
 The tile server is provided by
 [OpenStreetMap-France](https://www.openstreetmap.fr), many thanks to them for
 the support!
-It is available at https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png under a [fairuse tile policy](https://operations.osmfoundation.org/policies/tiles/).
 
 ## Philosophy
 
