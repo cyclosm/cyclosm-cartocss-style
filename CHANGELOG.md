@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## v0.3.3
+
 * Render `highway=trunk` as bikeable by default, fix #258.
 * Fix some missing oneway arrows on cycleways and paths. See #257.
 * Fix a bug with `æerialway` layer, rendering it at all zoom levels.
