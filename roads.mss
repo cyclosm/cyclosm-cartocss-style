@@ -39,34 +39,48 @@ as well. */
 #roads_med[zoom >= 9] {
   [type='motorway'],
   [type='motorway_link'] {
-    line-color: @motorway-trunk-line;
-    [bicycle='yes'] {
+    line-color: @motorway-trunk-fill;
+    [can_bicycle='yes'] {
       line-color: @motorway-trunk-cycle-fill;
     }
   }
   [type='trunk'],
   [type='trunk_link'] {
       line-color: @motorway-trunk-cycle-fill;
-      [bicycle='no'] {
+      [can_bicycle='no'] {
         line-color: @motorway-trunk-fill;
       }
   }
-  [type='primary'] { line-color: @primary-line; }
-  [type='secondary'] { line-color: @secondary-line; }
-  [type='tertiary'] { line-color: @standard-line; }
-  [type='motorway'],
-  [type='trunk'] {
-    line-width: 1.4;
+  [type='primary'] {
+    line-color: @primary-case;
   }
-  [type='primary'],[type='secondary'],
-  [type='motorway_link'],[type='trunk_link'] { line-width: 0.6; }
+  [type='secondary'],
+  [type='tertiary'] {
+    line-color: @standard-case;
+  }
+
+  [type='motorway'],
+  [type='trunk'],
+  [type='primary'],
+  [type='motorway_link'],
+  [type='trunk_link'] {
+    line-width: 1;
+  }
+  [type='secondary'],
+  [type='tertiary']
+  {
+    line-width: 0.6;
+  }
   [zoom >= 10] {
     [type='motorway'],
-    [type='trunk'] {
-      line-width: 1.8;
+    [type='trunk'],
+    [type='primary'],
+    [type='motorway_link'],
+    [type='trunk_link'],
+    [type='secondary'],
+    [type='tertiary'] {
+      line-width: 1;
     }
-    [type='primary'],[type='secondary'],
-    [type='motorway_link'],[type='trunk_link'] { line-width: 0.8; }
   }
 }
 
@@ -1468,7 +1482,8 @@ come in as well.
       [motor_vehicle='no'][can_bicycle!='no'] {
           line-color: @speedWalk-fill;
       }
-    [can_bicycle='no'] {
+    [can_bicycle='no'],
+    [can_bicycle='private'] {
       line-color: @standard-nobicycle;
     }
   }
@@ -1479,7 +1494,8 @@ come in as well.
       line-color: @mixed-cycle-fill;
   }
 
-  [can_bicycle='no'] {
+  [can_bicycle='no'],
+  [can_bicycle='private'] {
     line-color: @standard-nobicycle;
   }
 
@@ -1793,7 +1809,10 @@ come in as well.
 
     /* Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm). */
     [surface_type='cyclocross'] {
-      line-dasharray: 6,12;
+      line-dasharray: 4,8;
+      [zoom>=15] {
+        line-dasharray: 6,12;
+      }
       [zoom>=16] {
         line-dasharray: 8,16;
       }
@@ -1830,7 +1849,8 @@ come in as well.
         }
       }
 
-      [can_bicycle='no'] {
+      [can_bicycle='no'],
+      [can_bicycle='private'] {
         line-color: lighten(@standard-nobicycle, @surfaceLighter1);
       }
 
@@ -1982,15 +2002,18 @@ come in as well.
 
     /* Bad surface ok for mountain bike (>40mm tyres). */
     [surface_type='mtb'] {
-      line-dasharray: 16,8,4;
+      line-dasharray: 10,5;
+      [zoom>=15] {
+        line-dasharray: 14,7;
+      }
       [zoom>=16] {
-        line-dasharray: 24,12,6;
+        line-dasharray: 20,10;
       }
       [zoom>=17] {
-        line-dasharray: 36,18,9;
+        line-dasharray: 32,16;
       }
       [zoom>=18] {
-        line-dasharray: 72,36,18;
+        line-dasharray: 64,32;
       }
 
       /* -- colors & styles -- */
@@ -2012,7 +2035,8 @@ come in as well.
       [type='bridleway'][can_bicycle='yes'] {
         line-color: lighten(@path-fill, @surfaceLighter2);
       }
-      [can_bicycle='no'] {
+      [can_bicycle='no'],
+      [can_bicycle='private'] {
         line-color: lighten(@standard-nobicycle, @surfaceLighter2);
       }
 

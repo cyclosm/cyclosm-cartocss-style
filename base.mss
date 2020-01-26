@@ -36,7 +36,6 @@
     polygon-fill: @industrial;
   }
 
-  [type='leisure_allotments'],
   [type='leisure_garden'],
   [type='landuse_grass'],
   [type='natural_grassland'] {
@@ -48,6 +47,26 @@
   [type='landuse_construction'],
   [type='landuse_industrial'] {
     polygon-fill: @industrial;
+  }
+
+  [type='natural_wetland'][zoom >= 5] {
+    polygon-fill: @grass;
+    polygon-pattern-file: url('symbols/openstreetmap-carto/wetland.png');
+    polygon-pattern-alignment: global;
+  }
+  [type='natural_sand'],
+  [type='natural_beach'],
+  [type='natural_dune'] {
+    polygon-fill: @sand;
+  }
+  [type='natural_bare_rock'][zoom >= 5] {
+    polygon-fill: @bare_ground;
+    polygon-pattern-file: url('symbols/openstreetmap-carto/rock_overlay.png');
+  }
+  [type='natural_scree'][zoom >= 5],
+  [type='natural_shingle'][zoom >= 5] {
+    polygon-fill: @bare_ground;
+    polygon-pattern-file: url('symbols/openstreetmap-carto/scree_overlay.png');
   }
 
   [type='natural_heath']         { polygon-fill: @heath; }
@@ -67,6 +86,13 @@
     polygon-fill: @meadow;
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/openstreetmap-carto/orchard.png');
+      polygon-pattern-alignment: global;
+    }
+  }
+  [type='landuse_allotments'] {
+    polygon-fill: @grass;
+    [zoom >= 13] {
+      polygon-pattern-file: url('symbols/openstreetmap-carto/allotments.png');
       polygon-pattern-alignment: global;
     }
   }
@@ -183,21 +209,12 @@
 /* ---- BUILDINGS ---- */
 #buildings[zoom>=16] {
   polygon-fill: @building;
-}
-// At the highest zoom levels, render buildings in fancy pseudo-3D.
-// Ordering polygons by their Y-position is necessary for this effect
-// so we use a separate layer that does this for us.
-// Not mandatory but brings a good visualization of the building's perimeter
-// that might be off due to hill shading.
-#buildings[zoom>=18][type != 'hedge'] {
-  polygon-fill:@building;
-  line-color: #b6b2af;
-  line-width: 0.75;
-}
-#buildings[zoom>=18][type = 'hedge'] {
-  polygon-fill:@wooded;
-  line-color: #b6b2af;
-  line-width: 0.75;
+
+  /* Render perimeter of buildings in high zooms */
+  [zoom>=18] {
+    line-color: #b6b2af;
+    line-width: 0.75;
+  }
 }
 
 /* ================================================================== */

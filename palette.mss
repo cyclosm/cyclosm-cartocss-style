@@ -42,6 +42,8 @@
 @religious:         #ded4b2;
 @military:          #f55;
 @quarry:            #c5c3c3;
+@sand:              #f5e9c6;
+@bare_ground:       #eee5dc;
 
 @nature_reserve:    #05620e;
 

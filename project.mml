@@ -88,7 +88,7 @@ Layer:
           FROM planet_osm_polygon
           WHERE (
             landuse IN ('cemetery', 'commercial', 'forest', 'grass', 'industrial', 'meadow', 'farmland', 'vineyard', 'orchard', 'religious', 'residential', 'retail', 'village_green')
-            OR "natural" IN ('grassland', 'heath', 'wood')
+            OR "natural" IN ('grassland', 'heath', 'wood', 'wetland', 'sand', 'beach', 'dune', 'bare_rock', 'shingle', 'scree')
             OR leisure IN ('common', 'golf_course', 'garden', 'park', 'pitch', 'sports_center', 'stadium', 'track')
             OR amenity IN ('college', 'hospital', 'parking', 'school', 'university')
             OR highway IN ('pedestrian')
@@ -120,7 +120,7 @@ Layer:
         FROM planet_osm_polygon
         WHERE (
           landuse IN ('allotments', 'brownfield', 'cemetery', 'commercial', 'construction', 'forest', 'grass', 'greenhouse_horticulture', 'industrial', 'landfill', 'meadow', 'farmland', 'vineyard', 'orchard', 'plant_nursery', 'quarry', 'religious', 'residential', 'retail', 'village_green')
-          OR "natural" IN ('grassland', 'heath', 'wood')
+          OR "natural" IN ('grassland', 'heath', 'wood', 'wetland', 'sand', 'beach', 'dune', 'bare_rock', 'shingle', 'scree')
           OR leisure IN ('common', 'golf_course', 'garden', 'park', 'pitch', 'sports_center', 'stadium', 'track')
           OR amenity IN ('college', 'grave_yard', 'hospital', 'parking', 'school', 'university')
           OR highway IN ('pedestrian')
@@ -153,7 +153,7 @@ Layer:
         FROM planet_osm_polygon
         WHERE landuse IN ('allotments', 'brownfield', 'cemetery', 'commercial', 'construction', 'forest', 'grass', 'greenhouse_horticulture', 'industrial', 'landfill', 'meadow', 'farmland', 'vineyard', 'orchard', 'plant_nursery', 'quarry', 'religious', 'residential', 'retail', 'village_green')
           OR leisure IN ('common', 'garden', 'golf_course', 'park', 'pitch', 'sports_centre', 'stadium', 'track')
-          OR "natural" IN ('grassland', 'heath', 'wood')
+          OR "natural" IN ('grassland', 'heath', 'wood', 'wetland', 'sand', 'beach', 'dune', 'bare_rock', 'shingle', 'scree')
           OR highway IN ('pedestrian')
           OR amenity IN ('college', 'grave_yard', 'hospital', 'parking', 'school', 'university')
           OR man_made IN ('works', 'wastewater_plant', 'water_works')
@@ -520,6 +520,8 @@ Layer:
           END AS cycleway_right_oneway,
           CASE
             WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN tags->'motorroad' IN ('yes') THEN 'no'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
@@ -665,6 +667,8 @@ Layer:
           END AS cycleway_right_oneway,
           CASE
             WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN tags->'motorroad' IN ('yes') THEN 'no'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
@@ -724,9 +728,15 @@ Layer:
         SELECT
           ST_Snaptogrid(way, !pixel_width! / 4) AS way,
           highway AS type,
-          bicycle
+          CASE
+            WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN tags->'motorroad' IN ('yes') THEN 'no'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
+            ELSE NULL
+          END AS can_bicycle
         FROM planet_osm_roads
-        WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'motorway_link', 'trunk_link')
+        WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'secondary')
           AND way && !bbox!
       ) AS data
   geometry: linestring
@@ -872,6 +882,8 @@ Layer:
           END AS cycleway_right_oneway,
           CASE
             WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN tags->'motorroad' IN ('yes') THEN 'no'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
@@ -1348,7 +1360,7 @@ Layer:
       (
         SELECT way, railway AS type, name, tags->'station' AS station, z_order
         FROM planet_osm_point
-        WHERE railway = 'station'
+        WHERE railway = 'station' OR railway = 'halt'
         ORDER BY z_order NULLS LAST
       ) AS data
   geometry: point
