@@ -723,9 +723,15 @@ Layer:
         SELECT
           ST_Snaptogrid(way, !pixel_width! / 4) AS way,
           highway AS type,
-          bicycle
+          CASE
+            WHEN bicycle IS NOT NULL THEN bicycle
+            WHEN tags->'motorroad' IN ('yes') THEN 'no'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
+            ELSE NULL
+          END AS can_bicycle
         FROM planet_osm_roads
-        WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'secondary', 'tertiary')
+        WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'secondary')
           AND way && !bbox!
       ) AS data
   geometry: linestring

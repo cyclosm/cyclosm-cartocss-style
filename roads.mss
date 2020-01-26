@@ -38,10 +38,18 @@ as well. */
 
 #roads_med[zoom >= 9] {
   [type='motorway'],
-  [type='motorway_link'],
+  [type='motorway_link'] {
+    line-color: @motorway-trunk-fill;
+    [can_bicycle='yes'] {
+      line-color: @motorway-trunk-cycle-fill;
+    }
+  }
   [type='trunk'],
   [type='trunk_link'] {
-      line-color: @motorway-trunk-fill;
+      line-color: @motorway-trunk-cycle-fill;
+      [can_bicycle='no'] {
+        line-color: @motorway-trunk-fill;
+      }
   }
   [type='primary'] {
     line-color: @primary-case;
