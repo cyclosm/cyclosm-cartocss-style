@@ -22,6 +22,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     See #289.
 * Tourism viewpoint labels where still labeled in brown. Fixed, see #263.
 * Fix cycleways being hidden by primary roads along a tunnel. See #278.
+* Render subway station from z14 instead of Z12, to avoid too much
+    stations in large cities. Fix #262.
+* Render halt train station, fix #272.
+* Draw roads at Z9 / Z10 with better contrast with the background. Fix #255.
+* Simpler MTB quality surface scheme, which should be more readable.
+* Render new landuses: allotments, natural sand/beach/dune and wetland,
+    natural scree/shingle and bare_rock.
+* Render access/bicycle=private roads as not bikable (grey). Fix #259.
+* Improve bikability check for the render by taking into account `vehicle`
+    tag.
+* Draw motorroads as not cyclable, fix #291.
+
 
 ## v0.3.2
 
