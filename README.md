@@ -23,6 +23,7 @@ policy](https://operations.osmfoundation.org/policies/tiles/).
 The map is available by default in the following smartphone applications:
 - [OSMAnd](https://osmand.net/)
 - [OpenMultiMaps](https://framagit.org/tom79/openmaps)
+- [All-In-One Offline Maps](https://www.offline-maps.net) and [AlpineQuest Rando GPS](https://alpinequest.net)
 
 The tile server is provided by
 [OpenStreetMap-France](https://www.openstreetmap.fr), many thanks to them for
