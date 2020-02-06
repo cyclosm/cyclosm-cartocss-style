@@ -977,7 +977,7 @@ Layer:
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network' IN ('icn', 'ncn', 'rcn')
-          AND NOT (tags->'network' = 'rcn' AND tags->'network:type' = 'node_network')
+          AND (NOT (tags->'network' = 'rcn' AND tags->'network:type' = 'node_network'))
           AND way && !bbox!
         ORDER BY CASE
           WHEN tags->'network' = 'icn' THEN 0
@@ -1347,7 +1347,7 @@ Layer:
         FROM planet_osm_line
         WHERE (route = 'bicycle' OR route = 'mtb')
           AND ref IS NOT NULL
-          AND NOT (tags->'network' = 'rcn' AND tags->'network:type' = 'node_network')
+          AND (NOT (tags->'network' = 'rcn' AND tags->'network:type' = 'node_network'))
       ) AS data
   geometry: linestring
   properties:
