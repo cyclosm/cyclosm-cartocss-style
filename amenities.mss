@@ -195,6 +195,13 @@
     }
   }
 
+  [feature = 'amenity_charging_station'][zoom >= 15] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/charging_station.svg');
+    marker-fill: @bicycle-amenity;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'man_made_monitoring_station'][zoom >= 18] {
     marker-file: url('symbols/amenity/bicycle_monitoring_station.svg');
     marker-fill: @man-made-icon;
