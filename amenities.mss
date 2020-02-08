@@ -321,6 +321,41 @@
     marker-clip: false;
   }
 
+  [feature = 'amenity_cinema'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/cinema.svg');
+    marker-fill: @culture;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_theatre'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/theatre.svg');
+    marker-fill: @culture;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_bureau_de_change'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/bureau_de_change.svg');
+    marker-fill: @amenity-common;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_casino'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/casino.svg');
+    marker-fill: @culture;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_library'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/library.svg');
+    marker-fill: @culture;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'man_made_cross'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 17] {
     marker-file: url('symbols/openstreetmap-carto/man_made/cross.svg');
@@ -1004,19 +1039,26 @@
     text-dx: 12;
   }
 
+  [feature = 'tourism_information'][zoom >= 19],
+  [feature = 'tourism_information']["information"='office'][zoom >= 17],
   [feature = 'tourism_artwork'][zoom >= 19],
   [feature = 'tourism_gallery'][zoom >= 17],
-  [feature = 'historic_city_gate'][zoom >= 17],
   [feature = 'tourism_museum'][zoom >= 17],
-  [feature = 'man_made_cross'][zoom >= 18],
+  [feature = 'historic_city_gate'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 18],
   [feature = 'historic_monument'][zoom >= 17],
+  [feature = 'amenity_theatre'][zoom >= 17],
+  [feature = 'amenity_cinema'][zoom >= 17],
+  [feature = 'amenity_library'][zoom >= 17],
+  [feature = 'amenity_bureau_de_change'][zoom >= 17],
+  [feature = 'amenity_casino'][zoom >= 17],
+  [feature = 'man_made_cross'][zoom >= 18],
   [feature = 'man_made_lighthouse'][zoom >= 17] {
 		text-name: "[name]";
 		text-size: @standard-font-size;
 		text-wrap-width: @standard-wrap-width;
 		text-line-spacing: @standard-line-spacing-size;
-		text-fill: @memorials;
+		text-fill: @culture;
 		text-dy: 11;
 		text-face-name: @standard-font;
 		text-halo-radius: @standard-halo-radius;
@@ -1073,21 +1115,6 @@
     text-halo-radius: 1.4;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
-  }
-
-  [feature = 'tourism_information'][zoom >= 19],
-  [feature = 'tourism_information']["information"='office'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: @standard-font-size;
-    text-wrap-width: @standard-wrap-width;
-    text-line-spacing: @standard-line-spacing-size;
-    text-fill: darken(black, 30%);
-    [information = 'office'] { text-fill: @amenity-common; }
-    text-face-name: @standard-font;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
-    text-dy: 11;
   }
 
   [feature = 'waterway_waterfall'] {
