@@ -44,6 +44,7 @@
 @quarry:            #c5c3c3;
 @sand:              #f5e9c6;
 @bare_ground:       #eee5dc;
+@hedge:             #add19e;
 
 @nature_reserve:    #05620e;
 
