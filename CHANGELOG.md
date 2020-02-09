@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Render `amenity=charging_station` designed for bicycles. Fix #290.
+
 
 ## v0.3.3
 

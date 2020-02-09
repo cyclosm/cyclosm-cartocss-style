@@ -1529,7 +1529,7 @@ Layer:
           OR tags->'compressed_air'='yes'
           OR tags->'car_wash'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
-          OR (amenity='charging_station' AND bicycle='yes')
+          OR (amenity='charging_station' AND (bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
           OR leisure='picnic_table'
@@ -1667,7 +1667,7 @@ Layer:
           OR tags->'compressed_air'='yes'
           OR tags->'car_wash'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
-          OR (amenity='charging_station' AND bicycle='yes')
+          OR (amenity='charging_station' AND (bicycle='yes' OR bicycle='designated'))
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
           OR leisure='picnic_table'
@@ -1817,7 +1817,7 @@ Layer:
             OR tags->'compressed_air'='yes'
             OR tags->'car_wash'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
-            OR (amenity='charging_station' AND bicycle='yes')
+            OR (amenity='charging_station' AND (bicycle='yes' OR bicycle='designated'))
             OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
@@ -1971,7 +1971,7 @@ Layer:
             OR tags->'compressed_air'='yes'
             OR tags->'car_wash'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
-            OR (amenity='charging_station' AND bicycle='yes')
+            OR (amenity='charging_station' AND (bicycle='yes' OR bicycle='designated'))
             OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
