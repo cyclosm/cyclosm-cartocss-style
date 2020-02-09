@@ -500,7 +500,7 @@ come in as well.
     [type='living_street']    { line-width: @rdz12_living_street + (2 * @rdz12_living_street_outline); }
     [type='road']    { line-width: @rdz12_road + (2 * @rdz12_road_outline); }
     [type='unclassified']    { line-width: @rdz12_unclassified + (2 * @rdz12_unclassified_outline); }
-    [type='residential']    { line-width: @rdz11_residential + (2 * @rdz11_residential_outline); }
+    [type='residential']    { line-width: @rdz12_residential + (2 * @rdz12_residential_outline); }
     [type='tertiary_link']    { line-width: @rdz12_tertiary_link + (2 * @rdz12_tertiary_link_outline); }
     [type='secondary_link']    { line-width: @rdz12_secondary_link + (2 * @rdz12_secondary_link_outline); }
     [type='primary_link']    { line-width: @rdz12_primary_link + (2 * @rdz12_primary_link_outline); }
@@ -632,7 +632,7 @@ come in as well.
       line-color: @bridge_case;
     }
   }
-  
+
   [zoom>=17] {
     [type='bridleway']   { line-color: @land; line-width: @rdz17_bridleway + (2 * @rdz17_line_bridge_outline); }
     [type='footway']   { line-color: @land; line-width: @rdz17_footway + (2 * @rdz17_line_bridge_outline); }
