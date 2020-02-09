@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render `amenity=charging_station` designed for bicycles. Fix #290.
 * Fix an issue with handling of bicycle node networks, leading to some
     regional routes not being drawn in France. See #297.
+* Fix a typo leading to residential roads not being visible at zoom 12.
+    See #302.
 
 
 ## v0.3.3
