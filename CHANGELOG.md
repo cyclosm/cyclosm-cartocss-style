@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     regional routes not being drawn in France. See #297.
 * Fix a typo leading to residential roads not being visible at zoom 12.
     See #302.
+* Fix noisy cycle routes at low zoom levels by using `ST_Simplify` with lower
+    tolerance instead of `ST_SnapToGrid`. See #253.
 
 
 ## v0.3.3
