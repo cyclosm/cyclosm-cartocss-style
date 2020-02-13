@@ -936,7 +936,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way, route, tags->'network' AS type, tags->'state' AS state
+        SELECT ST_Simplify(way, !pixel_width!/4, TRUE) AS way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network'='icn'
@@ -953,7 +953,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way, route, tags->'network' AS type, tags->'state' AS state
+        SELECT ST_Simplify(way, !pixel_width!/4, TRUE) AS way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network' IN ('icn', 'ncn')
@@ -973,7 +973,7 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT ST_Snaptogrid(way, !pixel_width! / 4) AS way, route, tags->'network' AS type, tags->'state' AS state
+        SELECT ST_Simplify(way, !pixel_width!/4, TRUE) AS way, route, tags->'network' AS type, tags->'state' AS state
         FROM planet_osm_line
         WHERE (route='bicycle' OR route='mtb')
           AND tags->'network' IN ('icn', 'ncn', 'rcn')
