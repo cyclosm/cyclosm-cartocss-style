@@ -3,6 +3,7 @@
 # usage : test_zooms.sh [extension file name]
 # For testing don't use extension, it will generate images with xxx-test-$extension.png
 # For generating ref you can use "ref" as extenion.
+# mapnik.xml file must be present in ../.. (root folder)
 
 extension=test
 
