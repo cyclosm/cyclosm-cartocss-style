@@ -47,6 +47,7 @@ Stylesheet:
 - addressing.mss
 - ferry-routes.mss
 - power.mss
+- admin.mss
 - gpx.mss
 - legend.mss
 
@@ -930,6 +931,59 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 11
+- id: admin-low-zoom
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          admin_level
+        FROM planet_osm_roads
+        WHERE boundary = 'administrative'
+          AND admin_level IN ('0', '1', '2', '3', '4')
+          AND osm_id < 0
+        ORDER BY admin_level DESC
+      ) AS admin_low_zoom
+  properties:
+    minzoom: 4
+    maxzoom: 10
+- id: admin-mid-zoom
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          admin_level
+        FROM planet_osm_roads
+        WHERE boundary = 'administrative'
+          AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
+          AND osm_id < 0
+        ORDER BY admin_level DESC
+      ) AS admin_mid_zoom
+  properties:
+    minzoom: 11
+    maxzoom: 12
+- id: admin-high-zoom
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          admin_level
+        FROM planet_osm_roads
+        WHERE boundary = 'administrative'
+          AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+          AND osm_id < 0
+        ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
+      ) AS admin_high_zoom
+  properties:
+    minzoom: 13
 - id: bicycle_routes_gen0
   <<: *extents
   Datasource:
@@ -1373,6 +1427,26 @@ Layer:
           AND osm_id > 0
           AND name IS NOT NULL
       ) AS ferry_routes_text
+  properties:
+    minzoom: 13
+- id: admin-text
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          name,
+          admin_level,
+          way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
+        FROM planet_osm_polygon
+        WHERE boundary = 'administrative'
+          AND admin_level IN ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+          AND name IS NOT NULL
+          AND osm_id < 0
+        ORDER BY admin_level::integer ASC, way_area DESC
+      ) AS admin_text
   properties:
     minzoom: 13
 - id: bicycle_routes_labels
