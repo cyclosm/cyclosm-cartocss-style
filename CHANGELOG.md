@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     See #302.
 * Fix noisy cycle routes at low zoom levels by using `ST_Simplify` with lower
     tolerance instead of `ST_SnapToGrid`. See #253.
+* Render cinema, theatre, library, casino and change. See #300.
 
 
 ## v0.3.3
