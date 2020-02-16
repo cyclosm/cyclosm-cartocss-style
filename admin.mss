@@ -227,16 +227,26 @@ overlapping borders correctly.
   }
 }
 
-#protected-areas[zoom >= 7] {
-  line-color: darken(@wooded,25%);
-  line-opacity:  0.3;
-  line-dasharray: 1,1;
+#protected-areas::area[zoom <= 11] {
   polygon-fill: darken(@wooded,25%);
-  polygon-opacity: 0.1;
-  [zoom=7] { line-width: 0.4; }
-  [zoom=8] { line-width: 0.6; }
-  [zoom=9] { line-width: 0.8; }
-  [zoom=10] { line-width: 1.0; }
-  [zoom=11] { line-width: 1.5; }
-  [zoom>=12] { line-width: 2.0; }
+
+  opacity: 0.2;
+  comp-op: darken; /* In case of two area overlapping this avoid to have a darker area. */
+}
+
+#protected-areas::outline[zoom >= 7] {
+  background/line-color: lighten(@wooded,15%);
+  line-color: darken(@wooded,30%);
+  line-dasharray: 8,8;
+
+  [zoom=7] { line-width: 1.2;   background/line-width: 2.4; }
+  [zoom=8] { line-width: 1.4;   background/line-width: 2.8; }
+  [zoom=9] { line-width: 1.5;   background/line-width: 3.0; }
+  [zoom=10] { line-width: 1.6;   background/line-width: 3.2; }
+  [zoom=11] { line-width: 1.8;   background/line-width: 3.6; }
+  [zoom>=12] { line-width: 2.0;   background/line-width: 4.0;}
+  [zoom>=14] { line-width: 3.0;   background/line-width: 6.0;}
+
+  opacity: 0.5;
+  comp-op: darken; /* Fusion with admin bordes. */
 }
