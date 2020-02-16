@@ -237,7 +237,7 @@ overlapping borders correctly.
 #protected-areas::outline[zoom >= 7] {
   background/line-color: lighten(@wooded,15%);
   line-color: darken(@wooded,30%);
-  line-dasharray: 8,8;
+  line-dasharray: 6,6;
 
   [zoom=7] { line-width: 1.2;   background/line-width: 2.4; }
   [zoom=8] { line-width: 1.4;   background/line-width: 2.8; }
@@ -247,6 +247,22 @@ overlapping borders correctly.
   [zoom>=12] { line-width: 2.0;   background/line-width: 4.0;}
   [zoom>=14] { line-width: 3.0;   background/line-width: 6.0;}
 
-  opacity: 0.5;
+  opacity: 0.7;
   comp-op: darken; /* Fusion with admin bordes. */
+}
+
+#protected-areas-text[zoom >= 13][way_pixels > 192000] {
+  text-name: "[name]";
+  text-face-name: @standard-font;
+  text-fill: darken(@wooded,50%);
+  text-halo-radius: @standard-halo-radius;
+  text-halo-fill: @standard-halo-fill;
+  text-largest-bbox-only: false;
+  text-placement: line;
+  text-spacing: 750;
+  text-repeat-distance: 250;
+  text-margin: 10;
+  text-clip: true;
+  text-vertical-alignment: middle;
+  text-dy: -10;
 }
