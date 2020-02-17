@@ -1313,6 +1313,7 @@ Layer:
           COALESCE(
             landuse,
             leisure,
+            boundary,
             "natural",
             amenity,
             CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN 'industrial' ELSE NULL END
@@ -1325,7 +1326,9 @@ Layer:
           (landuse IN ('basin', 'cemetery', 'commercial', 'forest', 'grass', 'industrial', 'military')
             OR COALESCE(leisure, "natural") IS NOT NULL
             OR amenity IN ('embassy', 'library', 'townhall', 'university')
-            OR man_made IN ('works', 'wastewater_plant', 'water_works'))
+            OR man_made IN ('works', 'wastewater_plant', 'water_works')
+            OR boundary IN ('aboriginal_lands', 'national_park')
+            OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6','7','24','97','98','99')))
           AND way && !bbox! AND ST_IsValid(way)
       ) AS data
   geometry: point
