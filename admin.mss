@@ -230,7 +230,7 @@ overlapping borders correctly.
 #protected-areas::area[zoom <= 11] {
   polygon-fill: darken(@wooded,25%);
 
-  opacity: 0.2;
+  opacity: 0.15;
   comp-op: darken; /* In case of two area overlapping this avoid to have a darker area. */
 }
 
