@@ -125,6 +125,9 @@
 @ferry-route: #66f;
 @ferry-route-text: @ferry-route;
 
+@conditional-text: #ff6401;
+@conditional-cycle-text: #0000ff;
+
 /* Also used for other small places: hamlets, suburbs, localities */
 @village_text:      #444;
 @village_halo:      @place_halo;

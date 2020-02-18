@@ -2321,6 +2321,28 @@ Layer:
       ) AS data
   properties:
     minzoom: 15
+- id: roads-text-conditional
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          highway,
+          tags->'motor_vehicle:conditional' AS motor_vehicle_conditional,
+          tags->'vehicle:conditional' AS vehicle_conditional,
+          tags->'access:conditional' AS access_conditional,
+          tags->'bicycle:conditional' AS bicycle_conditional
+        FROM planet_osm_line
+        WHERE tags->'motor_vehicle:conditional' IS NOT NULL
+          OR tags->'vehicle:conditional' IS NOT NULL
+          OR tags->'access:conditional' IS NOT NULL
+          OR tags->'bicycle:conditional' IS NOT NULL
+      ) AS data
+  properties:
+    minzoom: 20
 - id: addresses
   geometry: point
   <<: *extents
