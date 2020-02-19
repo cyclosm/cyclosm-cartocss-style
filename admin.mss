@@ -219,7 +219,7 @@ overlapping borders correctly.
     text-largest-bbox-only: false;
     text-placement: line;
     text-spacing: 750;
-    text-repeat-distance: 250;
+    text-repeat-distance: 400;
     text-margin: 10;
     text-clip: true;
     text-vertical-alignment: middle;
