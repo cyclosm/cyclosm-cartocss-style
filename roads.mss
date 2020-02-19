@@ -1806,6 +1806,18 @@ come in as well.
   [type='path'],
   [type='cycleway'] {
     /* Don't draw something for good surface, ok for racing bikes (<=28mm tyres). */
+    [surface_type='unknown'] {
+      [type='track'],
+      [type='path'],
+      [type='footway'],
+      [type='cycleway'] {
+        line-dasharray: 1,8;
+        line-color: #f00;
+
+        line-width: 0.5;
+      }
+    }
+
 
     /* Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm). */
     [surface_type='cyclocross'] {
