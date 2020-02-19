@@ -2119,10 +2119,7 @@ Layer:
       (
         SELECT
           way,
-          CASE
-            WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
-            ELSE highway
-          END AS highway,
+          highway,
           height,
           width,
           refs
@@ -2176,10 +2173,7 @@ Layer:
       (
         SELECT
           way,
-          CASE
-            WHEN highway IN ('motorway', 'trunk') THEN 'motorway_trunk'
-            ELSE highway
-          END AS highway,
+          highway,
           height,
           width,
           refs
