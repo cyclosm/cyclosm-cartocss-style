@@ -129,18 +129,19 @@
 /* ================================================================== */
 
 #roads-text-ref-low-zoom[zoom < 13] {
-  [highway = 'motorway_trunk'][zoom >= 10],
+  [highway = 'motorway'][zoom >= 10],
+  [highway = 'trunk'][zoom >= 10],
   [highway = 'primary'][zoom >= 11],
   [highway = 'secondary'][zoom >= 12] {
-      text-name: "[refs]";
-      text-size: 7;
-      text-fill: @road_text;
-      text-spacing: 600;
-      text-clip: false;
-      text-placement: line;
-      text-face-name: @sans;
-      text-repeat-distance: @major-highway-text-repeat-distance;
-      text-halo-radius: @standard-halo-radius;
+    text-name: "[refs]";
+    text-size: 7;
+    text-fill: @road_text;
+    text-spacing: 600;
+    text-clip: false;
+    text-placement: line;
+    text-face-name: @sans;
+    text-repeat-distance: @major-highway-text-repeat-distance;
+    text-halo-radius: @standard-halo-radius;
   }
 }
 
