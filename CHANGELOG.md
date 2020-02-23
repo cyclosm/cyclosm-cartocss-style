@@ -21,6 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Properly render national parks. See #37.
 * Remove useless `ST_IsValid` check in some layers. See #316.
 * Fix ref not rendered for trunk and motorway. See #294.
+* Add conditional text along the way for
+    bicycle|vehicle|access|motor_vehicle:conditional. See #65.
 
 
 ## v0.3.3

@@ -370,7 +370,7 @@
 
 
 #roads-text-conditional[zoom >= 20] {
-  text-name: ""; /* Useless since it is voreloaded after, but it rise a warning. */
+  text-name: ""; /* Useless since it is overloaded after, but it rises a warning. */
   text-fill: @conditional-text;
   text-size: 9;
   text-halo-radius: @standard-halo-radius;
