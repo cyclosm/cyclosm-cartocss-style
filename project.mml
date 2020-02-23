@@ -47,6 +47,7 @@ Stylesheet:
 - addressing.mss
 - ferry-routes.mss
 - power.mss
+- admin.mss
 - gpx.mss
 - legend.mss
 
@@ -930,6 +931,59 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 11
+- id: admin-low-zoom
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          admin_level
+        FROM planet_osm_roads
+        WHERE boundary = 'administrative'
+          AND admin_level IN ('0', '1', '2', '3', '4')
+          AND osm_id < 0
+        ORDER BY admin_level DESC
+      ) AS admin_low_zoom
+  properties:
+    minzoom: 4
+    maxzoom: 10
+- id: admin-mid-zoom
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          admin_level
+        FROM planet_osm_roads
+        WHERE boundary = 'administrative'
+          AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
+          AND osm_id < 0
+        ORDER BY admin_level DESC
+      ) AS admin_mid_zoom
+  properties:
+    minzoom: 11
+    maxzoom: 12
+- id: admin-high-zoom
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          admin_level
+        FROM planet_osm_roads
+        WHERE boundary = 'administrative'
+          AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+          AND osm_id < 0
+        ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
+      ) AS admin_high_zoom
+  properties:
+    minzoom: 13
 - id: bicycle_routes_gen0
   <<: *extents
   Datasource:
@@ -1273,6 +1327,7 @@ Layer:
           COALESCE(
             landuse,
             leisure,
+            boundary,
             "natural",
             amenity,
             CASE WHEN man_made IN ('works', 'wastewater_plant', 'water_works') THEN 'industrial' ELSE NULL END
@@ -1285,7 +1340,9 @@ Layer:
           (landuse IN ('basin', 'cemetery', 'commercial', 'forest', 'grass', 'industrial', 'military')
             OR COALESCE(leisure, "natural") IS NOT NULL
             OR amenity IN ('embassy', 'library', 'townhall', 'university')
-            OR man_made IN ('works', 'wastewater_plant', 'water_works'))
+            OR man_made IN ('works', 'wastewater_plant', 'water_works')
+            OR boundary IN ('aboriginal_lands', 'national_park')
+            OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6','7','24','97','98','99')))
           AND way && !bbox! AND ST_IsValid(way)
       ) AS data
   geometry: point
@@ -1373,6 +1430,46 @@ Layer:
           AND osm_id > 0
           AND name IS NOT NULL
       ) AS ferry_routes_text
+  properties:
+    minzoom: 13
+- id: admin-text
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          name,
+          admin_level,
+          way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
+        FROM planet_osm_polygon
+        WHERE boundary = 'administrative'
+          AND admin_level IN ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+          AND name IS NOT NULL
+          AND osm_id < 0
+        ORDER BY admin_level::integer ASC, way_area DESC
+      ) AS admin_text
+  properties:
+    minzoom: 13
+- id: protected-areas-text
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          name,
+          boundary,
+          tags->'protect_class' AS protect_class,
+          way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
+        FROM planet_osm_polygon
+        WHERE (boundary IN ('aboriginal_lands', 'national_park')
+               OR leisure = 'nature_reserve'
+               OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6','7','24','97','98','99')))
+          AND name IS NOT NULL
+      ) AS protected_areas_text
   properties:
     minzoom: 13
 - id: bicycle_routes_labels

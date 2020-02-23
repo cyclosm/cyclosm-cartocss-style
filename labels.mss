@@ -60,6 +60,9 @@
       text-halo-fill: lighten(@water, 10%);
       text-face-name: @sans_italic;
     }
+    [type='national_park'],
+    [type='aboriginal_lands'],
+    [type='protected_area'],
     [type='nature_reserve'] {
       text-face-name: @sans_italic;
       text-fill: @nature_reserve;
