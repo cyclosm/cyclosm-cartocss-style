@@ -1416,55 +1416,100 @@ come in as well.
 #bridge::inline[zoom>=11] {
   /* -- colors & styles -- */
   line-color: @standard-fill;
+  [tunnel=1] {
+    line-color: lighten(@standard-fill, 10%);
+  }
 
   [type='motorway'],
   [type='motorway_link'] {
     line-color: @motorway-trunk-fill;
+    [tunnel=1] {
+      line-color: lighten(@motorway-trunk-fill, 10%);
+    }
     [can_bicycle='yes'] {
       line-color: @motorway-trunk-cycle-fill;
+      [tunnel=1] {
+        line-color: lighten(@motorway-trunk-cycle-fill, 10%);
+      }
     }
   }
   [type='trunk'],
   [type='trunk_link'] {
       line-color: @motorway-trunk-cycle-fill;
+      [tunnel=1] {
+        line-color: lighten(@motorway-trunk-cycle-fill, 10%);
+      }
       [can_bicycle='no'] {
         line-color: @motorway-trunk-fill;
+        [tunnel=1] {
+          line-color: lighten(@motorway-trunk-fill, 10%);
+        }
       }
   }
   [type='primary'],
   [type='primary_link'] {
     line-color: @primary-fill;
+    [tunnel=1] {
+      line-color: lighten(@primary-fill, 5%);
+    }
   }
   [type='secondary'],
   [type='secondary_link'] {
     line-color: @secondary-fill;
+    [tunnel=1] {
+      line-color: lighten(@secondary-fill, 5%);
+    }
   }
   [type='track'] {
     line-color: @track-fill;
+    [tunnel=1] {
+      line-color: lighten(@track-fill, 10%);
+    }
   }
   [type='cycleway'] {
     line-color: @cycle-fill;
+    [tunnel=1] {
+      line-color: lighten(@cycle-fill, 15%);
+    }
   }
   [type='pedestrian'] {
     line-color: @pedestrian-fill;
+    [tunnel=1] {
+      line-color: lighten(@pedestrian-fill, 10%);
+    }
   }
   [type='bridleway'] {
     line-color: @bridleway-fill;
+    [tunnel=1] {
+      line-color: lighten(@bridleway-fill, 10%);
+    }
   }
   [type='footway'],
   [type='steps'] {
     line-color: @footway-fill;
+    [tunnel=1] {
+      line-color: lighten(@footway-fill, 10%);
+    }
   }
   [type='path'],
   [type='footway'][can_bicycle='yes'],
   [type='bridleway'][can_bicycle='yes'] {
     line-color: @path-fill;
+    [tunnel=1] {
+      line-color: lighten(@path-fill, 10%);
+    }
   }
   [type='path'] {
     [can_bicycle='designated'] {
       line-color: @mixed-cycle-fill;
+      [tunnel=1] {
+        line-color: lighten(@mixed-cycle-fill, 10%);
+      }
       [segregated='yes'] {
         line-color: @cycle-fill;
+        [tunnel=1] {
+          line-color: lighten(@cycle-fill, 15%);
+        }
       }
     }
   }
@@ -1474,17 +1519,29 @@ come in as well.
       /* low maxspeed roads are bike friendly */
       [maxspeed_kmh < 33] {
           line-color: @speed32-fill;
+          [tunnel=1] {
+            line-color: lighten(@speed32-fill, 10%);
+          }
       }
       [maxspeed_kmh < 21] {
           line-color: @speed20-fill;
+          [tunnel=1] {
+            line-color: lighten(@speed20-fill, 10%);
+          }
       }
       [maxspeed_kmh < 10],
       [motor_vehicle='no'][can_bicycle!='no'] {
           line-color: @speedWalk-fill;
+          [tunnel=1] {
+            line-color: lighten(@speedWalk-fill, 10%);
+          }
       }
     [can_bicycle='no'],
     [can_bicycle='private'] {
       line-color: @standard-nobicycle;
+      [tunnel=1] {
+        line-color: lighten(@standard-nobicycle, 10%);
+      }
     }
   }
 
@@ -1492,11 +1549,17 @@ come in as well.
   /* cycle streets / bicycle roads are bike friendly */
   [cyclestreet='yes'] {
       line-color: @mixed-cycle-fill;
+      [tunnel=1] {
+        line-color: lighten(@mixed-cycle-fill, 10%);
+      }
   }
 
   [can_bicycle='no'],
   [can_bicycle='private'] {
     line-color: @standard-nobicycle;
+    [tunnel=1] {
+      line-color: lighten(@standard-nobicycle, 10%);
+    }
   }
 
   [type='service'],
@@ -1517,6 +1580,10 @@ come in as well.
   [type='trunk'] {
     line-cap: round;
     line-join: round;
+  }
+
+  [tunnel=1] {
+    line-cap: butt;
   }
 
   [type='cycleway'],
@@ -2252,26 +2319,6 @@ come in as well.
         line-width: @rdz18_railway;
       }
     }
-  }
-}
-
-
-#tunnel::inline[zoom>=11] {
-  line-cap: butt;
-
-  [type='motorway'],
-  [type='motorway_link'],
-  [type='trunk'],
-  [type='trunk_link'] {
-    line-color: lighten(@motorway-trunk-fill, 10%);
-  }
-  [type='primary'],
-  [type='primary_link'] {
-    line-color: lighten(@primary-fill, 5%);
-  }
-  [type='secondary'],
-  [type='secondary_link'] {
-    line-color: lighten(@secondary-fill, 5%);
   }
 }
 
