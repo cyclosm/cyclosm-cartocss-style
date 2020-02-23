@@ -368,6 +368,36 @@
   }
 }
 
+
+#roads-text-conditional[zoom >= 20] {
+  text-name: ""; /* Useless since it is voreloaded after, but it rise a warning. */
+  text-fill: @conditional-text;
+  text-size: 9;
+  text-halo-radius: @standard-halo-radius;
+  text-halo-fill: @road_halo;
+  text-spacing: 300;
+  text-clip: false;
+  text-placement: line;
+  text-face-name: @sans;
+  text-vertical-alignment: top;
+  text-dy: -12;
+  text-repeat-distance: @minor-highway-text-repeat-distance;
+
+  [motor_vehicle_conditional != null] {
+    text-name: "motor=" + [motor_vehicle_conditional];
+    text-fill: @conditional-cycle-text;
+  }
+  [access_conditional != null] {
+    text-name: "all=" + [access_conditional];
+  }
+  [vehicle_conditional != null] {
+    text-name: "vehicle=" + [vehicle_conditional];
+  }
+  [bicycle_conditional != null] {
+    text-name: "bicycle=" + [bicycle_conditional];
+  }
+}
+
 #paths-text-name {
   [highway = 'track'] {
     [zoom >= 16] {
