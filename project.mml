@@ -978,7 +978,7 @@ Layer:
           admin_level
         FROM planet_osm_roads
         WHERE boundary = 'administrative'
-          AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+          AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
           AND osm_id < 0
         ORDER BY admin_level::integer DESC -- With 10 as a valid value, we need to do a numeric ordering, not a text ordering
       ) AS admin_high_zoom
@@ -1442,7 +1442,7 @@ Layer:
           way_area/NULLIF(POW(!scale_denominator!*0.001*0.28,2),0) AS way_pixels
         FROM planet_osm_polygon
         WHERE boundary = 'administrative'
-          AND admin_level IN ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+          AND admin_level IN ('1', '2', '3', '4', '5', '6', '7', '8', '9')
           AND name IS NOT NULL
           AND osm_id < 0
         ORDER BY admin_level::integer ASC, way_area DESC
