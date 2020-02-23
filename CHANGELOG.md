@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix ferry route rendered over place labels in low zooms. See #313.
 * Render administrative boundaries. See #209.
 * Properly render national parks. See #37.
+* Remove useless `ST_IsValid` check in some layers. See #316.
 
 
 ## v0.3.3
