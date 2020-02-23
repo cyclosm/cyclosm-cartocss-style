@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix noisy cycle routes at low zoom levels by using `ST_Simplify` with lower
     tolerance instead of `ST_SnapToGrid`. See #253.
 * Render cinema, theatre, library, casino and change. See #300.
+* Fix ferry route rendered over place labels in low zooms. See #313.
+* Render administrative boundaries. See #209.
+* Properly render national parks. See #37.
 
 
 ## v0.3.3

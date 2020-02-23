@@ -1,6 +1,3 @@
-@admin-boundaries: #888;
-@state-boundaries: #444;
-
 @admin-simplify: 4;
 @admin-simplify-algorithm: visvalingam-whyatt;
 
