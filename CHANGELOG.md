@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render administrative boundaries. See #209.
 * Properly render national parks. See #37.
 * Remove useless `ST_IsValid` check in some layers. See #316.
+* Fix ref not rendered for trunk and motorway. See #294.
 
 
 ## v0.3.3
