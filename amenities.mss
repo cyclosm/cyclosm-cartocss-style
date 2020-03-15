@@ -949,7 +949,7 @@
   }
 
   [feature = 'shop_supermarket'] {
-    [zoom >= 16] {
+    [zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;

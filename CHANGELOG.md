@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Only display supermarket labels from Z17 (was from Z16). See #323.
+
 
 ## v0.3.4
 
