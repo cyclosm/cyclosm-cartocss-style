@@ -1577,21 +1577,18 @@ come in as well.
   [type='primary'],
   [type='secondary'],
   [type='motorway'],
-  [type='trunk'] {
+  [type='trunk'],
+  [type='cycleway'],
+  [type='pedestrian'],
+  [type='bridleway'],
+  [type='footway'],
+  [type='path'] {
     line-cap: round;
     line-join: round;
   }
 
   [tunnel=1] {
     line-cap: butt;
-  }
-
-  [type='cycleway'],
-  [type='pedestrian'],
-  [type='bridleway'],
-  [type='footway'],
-  [type='path'] {
-    line-join: round;
   }
 
   /* -- widths -- */
