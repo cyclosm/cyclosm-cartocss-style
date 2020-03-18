@@ -1375,7 +1375,7 @@ Layer:
           way
         FROM planet_osm_polygon
         WHERE name IS NOT NULL AND
-          (landuse IN ('basin', 'cemetery', 'commercial', 'forest', 'grass', 'industrial', 'military')
+          (landuse IN ('basin', 'cemetery', 'commercial', 'farmyard', 'forest', 'grass', 'industrial', 'military')
             OR COALESCE(leisure, "natural") IS NOT NULL
             OR amenity IN ('embassy', 'library', 'townhall', 'university')
             OR man_made IN ('works', 'wastewater_plant', 'water_works'))
