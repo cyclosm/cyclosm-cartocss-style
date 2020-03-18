@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add line-cap round for cycleway/path to avoid empty spaces. See #224.
 * Fix a bug with area label rendered below line barrier. See #321.
 * Render name of farmyards. See #264.
+* Render glaciers. See #229.
 
 
 ## v0.3.4

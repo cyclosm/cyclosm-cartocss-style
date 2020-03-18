@@ -39,6 +39,7 @@
 @heath:             #b2c068;
 @farmland:          #fbf0e3;
 @water:             #8ecbeb;
+@glacier:           #c8dfeb;
 @religious:         #ded4b2;
 @military:          #f55;
 @quarry:            #c5c3c3;

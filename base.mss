@@ -49,6 +49,9 @@
     polygon-fill: @industrial;
   }
 
+  [type='natural_glacier'][zoom >= 5] {
+    polygon-fill: @glacier;
+  }
   [type='natural_wetland'][zoom >= 5] {
     polygon-fill: @grass;
     polygon-pattern-file: url('symbols/openstreetmap-carto/wetland.png');
