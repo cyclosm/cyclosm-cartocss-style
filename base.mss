@@ -72,6 +72,12 @@
     polygon-pattern-file: url('symbols/openstreetmap-carto/scree_overlay.png');
   }
 
+  [type='natural_scrub'][zoom >= 5] {
+    polygon-fill: @scrub;
+    polygon-pattern-file: url('symbols/openstreetmap-carto/scrub.png');
+    polygon-pattern-alignment: global;
+  }
+
   [type='natural_heath']         { polygon-fill: @heath; }
   [type='amenity_hospital']      { polygon-fill: @hospital; }
   [type='landuse_meadow']        { polygon-fill: @meadow; }
