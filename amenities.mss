@@ -590,6 +590,11 @@
     marker-clip: false;
   }
 
+  [feature = 'natural_spring'][zoom >= 16] {
+    marker-file: url('symbols/openstreetmap-carto/spring.svg');
+    marker-clip: false;
+  }
+
   [feature = 'waterway_waterfall'] {
     [zoom >= 13][height > 20],
     [zoom >= 14][height > 10],

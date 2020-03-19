@@ -37,6 +37,7 @@
 @cemetery:          #D6DED2;
 @wooded:            #95bd84;
 @heath:             #b2c068;
+@scrub:             #c8d7ab;
 @farmland:          #fbf0e3;
 @water:             #8ecbeb;
 @glacier:           #c8dfeb;
