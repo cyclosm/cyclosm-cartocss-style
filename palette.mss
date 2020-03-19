@@ -40,7 +40,7 @@
 @scrub:             #c8d7ab;
 @farmland:          #fbf0e3;
 @water:             #8ecbeb;
-@glacier:           #c8dfeb;
+@glacier:           #ddecec;
 @religious:         #ded4b2;
 @military:          #f55;
 @quarry:            #c5c3c3;
