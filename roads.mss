@@ -151,7 +151,6 @@ come in as well.
 @rdz11_living_street_outline: 0.15;
 @rdz11_service_outline: 0.15;
 @rdz11_pedestrian_outline: 0.15;
-@rdz11_railway_outline: 0;
 
 /* -- Zoom 12 -- */
 @rdz12_motorway_trunk: 2;
@@ -189,7 +188,6 @@ come in as well.
 @rdz12_living_street_outline: 0.25;
 @rdz12_service_outline: 0.25;
 @rdz12_pedestrian_outline: 0.25;
-@rdz12_railway_outline: 0;
 
 /* -- Zoom 13 -- */
 @rdz13_motorway_trunk: 3;
@@ -231,7 +229,6 @@ come in as well.
 @rdz13_service_outline: 0.3;
 @rdz13_pedestrian_outline: 0.6;
 @rdz13_steps_outline: 0;
-@rdz13_railway_outline: 0;
 
 /* -- Zoom 14 -- */
 @rdz14_motorway_trunk: 4;
@@ -275,7 +272,6 @@ come in as well.
 @rdz14_service_outline: 0.5;
 @rdz14_pedestrian_outline: 1;
 @rdz14_steps_outline: 0;
-@rdz14_railway_outline: 0;
 
 /* -- Zoom 15 -- */
 @rdz15_motorway_trunk: 6;
@@ -318,7 +314,6 @@ come in as well.
 @rdz15_service_outline: 1;
 @rdz15_pedestrian_outline: 1;
 @rdz15_steps_outline: 1;
-@rdz15_railway_outline: 1;
 
 /* -- Zoom 16 -- */
 @rdz16_motorway_trunk: 10;
@@ -361,7 +356,6 @@ come in as well.
 @rdz16_service_outline: 1;
 @rdz16_pedestrian_outline: 2;
 @rdz16_steps_outline: 1;
-@rdz16_railway_outline: 1;
 
 /* -- Zoom 17 -- */
 @rdz17_motorway_trunk: 16;
@@ -404,7 +398,6 @@ come in as well.
 @rdz17_service_outline: 1;
 @rdz17_pedestrian_outline: 3;
 @rdz17_steps_outline: 1;
-@rdz17_railway_outline: 2;
 @rdz17_line_bridge_outline: 1;  // cycleway, footway, bridleway, path on bridges
 
 /* -- Zoom 18 -- */
@@ -448,7 +441,6 @@ come in as well.
 @rdz18_service_outline: 1.75;
 @rdz18_pedestrian_outline: 4;
 @rdz18_steps_outline: 1;
-@rdz18_railway_outline: 3;
 @rdz18_line_bridge_outline: 1;  // cycleway, footway, bridleway, path on bridges
 
 
