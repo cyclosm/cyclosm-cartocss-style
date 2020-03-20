@@ -26,7 +26,7 @@
 @pedestrian-fill: #41ffa0;
 @primary-case: #d8b267;
 @primary-fill: #f4dfc3;
-@rail-line: #999999;
+@rail-line: #888888;
 @rcn-overlay: #5500ff;
 @rcn-shield-fill: #f6f6f6;
 @secondary-case: #b1bb5d;

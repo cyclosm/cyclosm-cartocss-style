@@ -55,7 +55,7 @@ mss:
   bridleway:
     fill: '#835d4b'
   rail:
-    line: '#999999'
+    line: '#888888'
   icn:
     overlay: '#ff00ff'
     shield-fill: '#f6f6f6'
