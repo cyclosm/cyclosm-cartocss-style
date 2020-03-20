@@ -728,7 +728,13 @@ Layer:
       (
         SELECT
           ST_Snaptogrid(way, !pixel_width! / 4) AS way,
-          highway AS type,
+          COALESCE(
+            highway,
+            CASE
+              WHEN railway IN ('rail') THEN 'railway'
+              ELSE 'other'
+            END
+          ) AS type,
           CASE
             WHEN bicycle IS NOT NULL THEN bicycle
             WHEN tags->'motorroad' IN ('yes') THEN 'no'
@@ -737,8 +743,13 @@ Layer:
             ELSE NULL
           END AS can_bicycle
         FROM planet_osm_roads
-        WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'secondary')
+        WHERE (railway IN ('rail')
+            OR highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'secondary', 'railway'))
           AND way && !bbox!
+        ORDER BY CASE
+          WHEN railway IS NOT NULL THEN 0
+          WHEN highway IS NOT NULL THEN 1
+        END DESC
       ) AS data
   geometry: linestring
   properties:
@@ -752,13 +763,23 @@ Layer:
       (
           SELECT
             ST_Snaptogrid(way, !pixel_width! / 4) AS way,
-            highway AS type,
+            COALESCE(
+              highway,
+              CASE
+                WHEN railway IN ('rail') THEN 'railway'
+                ELSE 'other'
+              END
+            ) AS type,
             bridge,
             tunnel,
             bicycle
           FROM planet_osm_roads
-          WHERE highway IN ('motorway', 'trunk')
+          WHERE (railway IN ('rail') OR highway IN ('motorway', 'trunk'))
             AND way && !bbox!
+          ORDER BY CASE
+            WHEN railway IS NOT NULL THEN 0
+            WHEN highway IS NOT NULL THEN 1
+          END DESC
       ) AS data
   geometry: linestring
   properties:

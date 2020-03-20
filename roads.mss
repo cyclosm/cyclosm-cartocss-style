@@ -6,6 +6,10 @@
 and trunks. */
 
 #roads_low[zoom>=5][zoom<=8] {
+  [type='railway'] {
+    line-color: @rail-line;
+  }
+
   [type='motorway'] {
     line-color: @motorway-trunk-line;
     [bicycle='yes'] {
@@ -20,16 +24,16 @@ and trunks. */
   }
 
   [zoom >= 5] {
-    line-width: 0.4;
+    line-width: 0.3;
   }
   [zoom >= 6] {
-    line-width: 0.5;
+    line-width: 0.4;
   }
   [zoom >= 7] {
     line-width: 0.6;
   }
   [zoom >= 8] {
-    line-width: 1;
+    line-width: 0.8;
   }
 }
 
@@ -37,6 +41,12 @@ and trunks. */
 as well. */
 
 #roads_med[zoom >= 9] {
+
+  [type='railway'] {
+    line-width: 1;
+    line-color: @rail-line;
+  }
+
   [type='motorway'],
   [type='motorway_link'] {
     line-color: @motorway-trunk-fill;
@@ -71,6 +81,8 @@ as well. */
   {
     line-width: 0.6;
   }
+
+
   [zoom >= 10] {
     [type='motorway'],
     [type='trunk'],
@@ -122,7 +134,7 @@ come in as well.
 @rdz11_pedestrian: 0;
 @rdz11_path: 0.30;
 @rdz11_cycle: 0.5;
-@rdz11_railway: 0.4;
+@rdz11_railway: 0.5;
 /* Border width (one side of the road only) */
 @rdz11_motorway_trunk_outline: 1;
 @rdz11_primary_outline: 0.8;
@@ -160,7 +172,7 @@ come in as well.
 @rdz12_pedestrian: 0.5;
 @rdz12_path: 0.5;
 @rdz12_cycle: 1;
-@rdz12_railway: 0.6;
+@rdz12_railway: 0.5;
 /* Border width (one side of the road only) */
 @rdz12_motorway_trunk_outline: 1;
 @rdz12_primary_outline: 1;
@@ -201,7 +213,7 @@ come in as well.
 @rdz13_footway: 0.20;
 @rdz13_steps: 0.3;
 @rdz13_cycle: 1;
-@rdz13_railway: 0.8;
+@rdz13_railway: 0.5;
 /* Border width (one side of the road only) */
 @rdz13_motorway_trunk_outline: 1;
 @rdz13_primary_outline: 1;
@@ -243,7 +255,7 @@ come in as well.
 @rdz14_footway: 0.25;
 @rdz14_steps: 0.5;
 @rdz14_cycle: 2;
-@rdz14_railway: 1.0;
+@rdz14_railway: 0.6;
 @rdz14_turning_circle_marker: 1.1;
 /* Border width */
 /* Border width (one side of the road only) */
@@ -287,7 +299,7 @@ come in as well.
 @rdz15_footway: 0.5;
 @rdz15_steps: 0.8;
 @rdz15_cycle: 2;
-@rdz15_railway: 1.5;
+@rdz15_railway: 0.8;
 @rdz15_turning_circle_marker: 1.65;
 /* Border width (one side of the road only) */
 @rdz15_motorway_trunk_outline: 1.25;
@@ -330,7 +342,7 @@ come in as well.
 @rdz16_footway: 0.75;
 @rdz16_steps: 1.25;
 @rdz16_cycle: 2;
-@rdz16_railway: 2;
+@rdz16_railway: 1;
 @rdz16_turning_circle_marker: 6;
 /* Border width (one side of the road only) */
 @rdz16_motorway_trunk_outline: 1.25;
@@ -373,7 +385,7 @@ come in as well.
 @rdz17_footway: 1.5;
 @rdz17_steps: 3;
 @rdz17_cycle: 3;
-@rdz17_railway: 3;
+@rdz17_railway: 1;
 @rdz17_turning_circle_marker: 15;
 /* Border width (one side of the road only) */
 @rdz17_motorway_trunk_outline: 1.5;
@@ -417,7 +429,7 @@ come in as well.
 @rdz18_footway: 2;
 @rdz18_steps: 3.5;
 @rdz18_cycle: 4;
-@rdz18_railway: 4;
+@rdz18_railway: 1;
 @rdz18_turning_circle_marker: 21;
 /* Border width (one side of the road only) */
 @rdz18_motorway_trunk_outline: 2;
@@ -2255,28 +2267,28 @@ come in as well.
     line-color: @rail-line;
     /* -- widths -- */
     [zoom>=11] {
-       line-width: 0.3;
+      line-width: @rdz11_railway;
     }
     [zoom>=12] {
-      line-width: 0.3;
+      line-width: @rdz12_railway;
     }
     [zoom>=13] {
-      line-width: 0.4;
+      line-width: @rdz13_railway;
     }
     [zoom>=14] {
-      line-width: 0.6;
+      line-width: @rdz14_railway;
     }
     [zoom>=15] {
-      line-width: 0.8;
+      line-width: @rdz15_railway;
     }
     [zoom>=16] {
-      line-width: 1;
+      line-width: @rdz16_railway;
     }
     [zoom>=17] {
-      line-width: 1;
+      line-width: @rdz17_railway;
     }
     [zoom>=18] {
-      line-width: 1;
+      line-width: @rdz18_railway;
     }
   }
 }
@@ -2292,28 +2304,28 @@ come in as well.
       [zoom>=14] { line-dasharray: 1,8; }
 
       [zoom>=11] {
-        line-width: @rdz11_railway;
+        line-width: @rdz11_railway*3;
       }
       [zoom>=12] {
-        line-width: @rdz12_railway;
+        line-width: @rdz12_railway*3;
       }
       [zoom>=13] {
-        line-width: @rdz13_railway;
+        line-width: @rdz13_railway*3;
       }
       [zoom>=14] {
-        line-width: @rdz14_railway;
+        line-width: @rdz14_railway*3;
       }
       [zoom>=15] {
-        line-width: @rdz15_railway;
+        line-width: @rdz15_railway*3;
       }
       [zoom>=16] {
-        line-width: @rdz16_railway;
+        line-width: @rdz16_railway*3;
       }
       [zoom>=17] {
-        line-width: @rdz17_railway;
+        line-width: @rdz17_railway*3;
       }
       [zoom>=18] {
-        line-width: @rdz18_railway;
+        line-width: @rdz18_railway*3;
       }
     }
   }
