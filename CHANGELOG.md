@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix a bug with area label rendered below line barrier. See #321.
 * Render name of farmyards. See #264.
 * Render glaciers. See #229.
+* Fix a bug with some protected areas labels not rendered. See #329.
 
 
 ## v0.3.4
