@@ -446,7 +446,10 @@ Layer:
           way,
           COALESCE(
             CASE
-              WHEN highway != 'bus_guideway' THEN highway
+              WHEN highway='raceway' THEN 'track'  -- render raceways as tracks
+              WHEN highway='footway' AND (bicycle='yes' OR bicycle='designated') THEN 'path'
+              WHEN highway='bridleway' AND (bicycle='yes' OR bicycle='designated') THEN 'path'
+              WHEN highway!='bus_guideway' THEN highway
               ELSE NULL
             END,
             CASE
@@ -593,8 +596,10 @@ Layer:
           way,
           COALESCE(
             CASE
-              WHEN highway = 'raceway' THEN 'track'  -- render raceways as tracks
-              WHEN highway != 'bus_guideway' THEN highway
+              WHEN highway='raceway' THEN 'track'  -- render raceways as tracks
+              WHEN highway='footway' AND (bicycle='yes' OR bicycle='designated') THEN 'path'
+              WHEN highway='bridleway' AND (bicycle='yes' OR bicycle='designated') THEN 'path'
+              WHEN highway!='bus_guideway' THEN highway
               ELSE NULL
             END,
             CASE
@@ -829,7 +834,10 @@ Layer:
           way,
           COALESCE(
             CASE
-              WHEN highway != 'bus_guideway' THEN highway
+              WHEN highway='raceway' THEN 'track'  -- render raceways as tracks
+              WHEN highway='footway' AND (bicycle='yes' OR bicycle='designated') THEN 'path'
+              WHEN highway='bridleway' AND (bicycle='yes' OR bicycle='designated') THEN 'path'
+              WHEN highway!='bus_guideway' THEN highway
               ELSE NULL
             END,
             CASE
