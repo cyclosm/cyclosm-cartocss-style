@@ -460,7 +460,7 @@ Layer:
           0 AS bridge,
           access,
           layer,
-          1 as tunnel,
+          1 AS tunnel,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
             WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
@@ -566,7 +566,7 @@ Layer:
             ELSE z_order
           END AS z_order
         FROM planet_osm_line
-        WHERE (tunnel NOT IN ('', '0', 'no') OR covered NOT IN ('', '0', 'no'))
+        WHERE (tunnel NOT IN ('no') OR covered NOT IN ('no') OR tags->'indoor' NOT IN ('no'))
               AND (railway IS NULL OR railway IS NOT NULL AND highway IS NOT NULL)
         ORDER BY z_order ASC
       ) AS data
@@ -719,6 +719,7 @@ Layer:
           AND (tunnel IS NULL OR tunnel = 'no')
           AND (bridge IS NULL OR bridge = 'no')
           AND (covered IS NULL OR covered = 'no')
+          AND (tags->'indoor' IS NULL OR tags->'indoor' = 'no')
         ORDER BY z_order
       ) AS data
   geometry: linestring
@@ -954,7 +955,7 @@ Layer:
             ELSE z_order
           END AS z_order
         FROM planet_osm_line
-        WHERE bridge NOT IN ('', '0', 'no')
+        WHERE bridge NOT IN ('no')
         ORDER BY z_order ASC
       ) AS data
   geometry: linestring
