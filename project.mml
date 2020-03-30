@@ -1361,7 +1361,10 @@ Layer:
           way,
           place,
           leisure,
-          name
+          name,
+          CASE
+            WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER ELSE 0
+          END as population
         FROM planet_osm_point
         WHERE place IN ('village', 'hamlet')
            AND name IS NOT NULL
@@ -1384,7 +1387,7 @@ Layer:
       ) AS data
   properties:
     cache-features: true
-    minzoom: 12
+    minzoom: 10
 - id: area_label
   <<: *extents
   Datasource:
