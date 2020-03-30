@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render name of farmyards. See #264.
 * Render glaciers. See #229.
 * Fix a bug with some protected areas labels not rendered. See #329.
+* Render `highway=bridleway` + `bicycle=designated` as a shared path. See #215.
+* Render indoor paths in faded color. See #334.
 
 
 ## v0.3.4
