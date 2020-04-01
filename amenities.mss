@@ -195,6 +195,16 @@
     }
   }
 
+  [feature = 'amenity_vending_machine'][vending = 'bicycle_tube'][zoom >= 19] {
+    marker-file: url('symbols/amenity/bicycle_tube_vending.svg');
+    marker-fill: @bicycle-amenity;
+    marker-placement: interior;
+    marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
+  }
+
   [feature = 'amenity_charging_station'][zoom >= 15] {
     marker-file: url('symbols/openstreetmap-carto/amenity/charging_station.svg');
     marker-fill: @bicycle-amenity;
