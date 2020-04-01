@@ -1665,6 +1665,7 @@ Layer:
           tags->'generator:source' as "generator:source",
           tags->'supervised' as supervised,
           tags->'bicycle_parking' as bicycle_parking,
+          tags->'vending' as vending,
           tags->'automated' as automated,
           CASE
             WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN NULL
@@ -1700,6 +1701,7 @@ Layer:
           OR tags->'car_wash'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
           OR (amenity='charging_station' AND (bicycle='yes' OR bicycle='designated'))
+          OR (amenity='vending_machine' AND tags->'vending'='bicycle_tube')
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
           OR leisure='picnic_table'
@@ -1794,6 +1796,7 @@ Layer:
           tags->'generator:source' as "generator:source",
           tags->'supervised' as supervised,
           tags->'bicycle_parking' as bicycle_parking,
+          tags->'vending' as vending,
           tags->'automated' as automated,
           CASE
             WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
@@ -1843,6 +1846,7 @@ Layer:
           OR tags->'car_wash'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
           OR (amenity='charging_station' AND (bicycle='yes' OR bicycle='designated'))
+          OR (amenity='vending_machine' AND tags->'vending'='bicycle_tube')
           OR tags->'healthcare' IN ('clinic', 'hospital')
           OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
           OR leisure='picnic_table'
@@ -1963,6 +1967,7 @@ Layer:
             tags->'generator:source' as "generator:source",
             tags->'supervised' as supervised,
             tags->'bicycle_parking' as bicycle_parking,
+            tags->'vending' as vending,
             tags->'automated' as automated,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN NULL
@@ -1998,6 +2003,7 @@ Layer:
             OR tags->'car_wash'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
             OR (amenity='charging_station' AND (bicycle='yes' OR bicycle='designated'))
+            OR (amenity='vending_machine' AND tags->'vending'='bicycle_tube')
             OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
@@ -2108,6 +2114,7 @@ Layer:
             tags->'generator:source' as "generator:source",
             tags->'supervised' as supervised,
             tags->'bicycle_parking' as bicycle_parking,
+            tags->'vending' as vending,
             tags->'automated' as automated,
             CASE
               WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
@@ -2157,6 +2164,7 @@ Layer:
             OR tags->'car_wash'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
             OR (amenity='charging_station' AND (bicycle='yes' OR bicycle='designated'))
+            OR (amenity='vending_machine' AND tags->'vending'='bicycle_tube')
             OR shop IN ('bicycle', 'bakery', 'beverage', 'convenience', 'convenience;gas', 'greengrocer', 'supermarket', 'pastry', 'sports')
             OR tags->'healthcare' IN ('clinic', 'hospital')
             OR leisure='picnic_table'
