@@ -2211,9 +2211,7 @@ come in as well.
   [type='path'],
   [type='cycleway']
   {
-    //test mtb_scale
     line-color: #0000FF;
-    //line-color: #000000;
     line-dasharray: 1,5;
 
     [mtb_scale>=2] {
@@ -2227,8 +2225,10 @@ come in as well.
 
     [mtb_scale=null]
     {
-      line-color: #FFFFFF;
-      line-dasharray: 1,7;
+      [mtb_scale_imba>=0] {
+        line-color: #FFFFFF;
+        line-dasharray: 1,7;
+      }
 
       [mtb_scale_imba>=1] {
         line-color: #4e9b00;
