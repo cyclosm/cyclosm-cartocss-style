@@ -2201,7 +2201,8 @@ come in as well.
   }
 }
 
-#roads_high::mtbscale[mtb_scale>=1][zoom>=15]
+#roads_high::mtbscale[mtb_scale>=1][zoom>=15],
+#roads_high::mtbscale[mtb_scale_imba>=0][zoom>=15]
 {
   [type='service'],
   [type='track'],
@@ -2210,6 +2211,7 @@ come in as well.
   [type='path'],
   [type='cycleway']
   {
+    //test mtb_scale
     line-color: #0000FF;
     //line-color: #000000;
     line-dasharray: 1,5;
@@ -2221,6 +2223,29 @@ come in as well.
     [mtb_scale>=3] {
       line-color: #000000;
       line-dasharray: 1,1,1,1,1,5;
+    }
+
+    [mtb_scale=null]
+    {
+      line-color: #FFFFFF;
+      line-dasharray: 1,7;
+
+      [mtb_scale_imba>=1] {
+        line-color: #4e9b00;
+        line-dasharray: 1,7;
+      }
+      [mtb_scale_imba>=2] {
+        line-color: #2076ff;
+        line-dasharray: 1,7;
+      }
+      [mtb_scale_imba>=3] {
+        line-color: #000000;
+        line-dasharray: 1,7;
+      }
+      [mtb_scale_imba>=4] {
+        line-color: #000000;
+        line-dasharray: 1,1,1,7;
+      }
     }
 
     [zoom>=15] {
