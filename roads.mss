@@ -2201,6 +2201,43 @@ come in as well.
   }
 }
 
+#roads_high::mtbscale[mtb_scale>=1][zoom>=15]
+{
+  [type='service'],
+  [type='track'],
+  [type='bridleway'],
+  [type='footway'],
+  [type='path'],
+  [type='cycleway']
+  {
+    line-color: #0000FF;
+    //line-color: #000000;
+    line-dasharray: 1,5;
+
+    [mtb_scale>=2] {
+      line-color: #FF0000;
+      line-dasharray: 1,1,1,5;
+    }
+    [mtb_scale>=3] {
+      line-color: #000000;
+      line-dasharray: 1,1,1,1,1,5;
+    }
+
+    [zoom>=15] {
+      line-width: @rdz15_path*3;
+    }
+    [zoom>=16] {
+      line-width: @rdz16_path*3;
+    }
+    [zoom>=17] {
+      line-width: @rdz17_path*3;
+    }
+    [zoom>=18] {
+      line-width: @rdz18_path*3;
+    }
+  }
+}
+
 
 #roads_high::rail_line[zoom>=11],
 #bridge::rail_line[zoom>=11] {
