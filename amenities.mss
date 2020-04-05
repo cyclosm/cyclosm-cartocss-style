@@ -195,7 +195,7 @@
     }
   }
 
-  [feature = 'amenity_vending_machine'][vending = 'bicycle_tube'][zoom >= 19] {
+  [feature = 'amenity_vending_machine'][vending = 'bicycle_tube'][zoom >= 16] {
     marker-file: url('symbols/amenity/bicycle_tube_vending.svg');
     marker-fill: @bicycle-amenity;
     marker-placement: interior;
