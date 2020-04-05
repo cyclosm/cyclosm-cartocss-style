@@ -708,7 +708,7 @@ Layer:
             ELSE NULL
           END AS surface_type,
           CASE
-            WHEN tags->'mtb:scale'~E'^\\d+$' THEN (tags->'mtb:scale')::integer
+            WHEN tags->'mtb:scale'~E'^\\d+[+-]?$' THEN REPLACE(REPLACE(tags->'mtb:scale', '+', ''), '-', '')::integer
             ELSE NULL
           END AS mtb_scale,
           CASE
