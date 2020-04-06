@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render `highway=bridleway` + `bicycle=designated` as a shared path. See #215.
 * Render indoor paths in faded color. See #334.
 * Render inner tube vending machine. See #315.
+* Improve density of city names in countryside at Z10/Z11. See #195.
 
 
 ## v0.3.4

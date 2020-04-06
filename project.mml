@@ -1357,34 +1357,47 @@ Layer:
   Datasource:
     <<: *osm2pgsql
     table: |-
-      (SELECT
-          way,
-          place,
-          leisure,
-          name
-        FROM planet_osm_point
-        WHERE place IN ('village', 'hamlet')
-           AND name IS NOT NULL
-           AND NOT (capital IS NOT NULL AND capital='yes')
-           OR (place IN ('suburb', 'quarter', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
-               OR (place IN ('square')
-                   AND (leisure is NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
-           ) AND name IS NOT NULL
-        ORDER BY CASE
-            WHEN place = 'suburb' THEN 3
-            WHEN place = 'village' THEN 4
-            WHEN place = 'hamlet' THEN 5
-            WHEN place = 'quarter' THEN 6
-            WHEN place = 'neighbourhood' THEN 7
-            WHEN place = 'locality' THEN 8
-            WHEN place = 'isolated_dwelling' THEN 9
-            WHEN place = 'farm' THEN 10
-            WHEN place = 'square' THEN 11
-          END ASC, length(name) DESC, name
+      (
+        SELECT *, ROW_NUMBER() OVER () AS row_number
+        FROM (
+          SELECT
+            way,
+            place,
+            leisure,
+            name,
+            CASE
+              WHEN (population ~ '^[0-9]{1,8}$') THEN population::INTEGER ELSE 0
+            END as population
+          FROM planet_osm_point
+          WHERE way && !bbox! AND (
+            place IN ('village', 'hamlet')
+            AND name IS NOT NULL
+            AND NOT (capital IS NOT NULL AND capital='yes')
+            OR (place IN ('suburb', 'quarter', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
+                OR (place IN ('square')
+                    AND (leisure is NULL OR NOT leisure IN ('park', 'common', 'recreation_ground', 'garden')))
+            ) AND name IS NOT NULL
+          )
+          ORDER BY
+            population DESC,
+            CASE
+              WHEN place = 'suburb' THEN 3
+              WHEN place = 'village' THEN 4
+              WHEN place = 'hamlet' THEN 5
+              WHEN place = 'quarter' THEN 6
+              WHEN place = 'neighbourhood' THEN 7
+              WHEN place = 'locality' THEN 8
+              WHEN place = 'isolated_dwelling' THEN 9
+              WHEN place = 'farm' THEN 10
+              WHEN place = 'square' THEN 11
+            END ASC,
+            length(name) DESC,
+            name
+        ) AS data2
       ) AS data
   properties:
     cache-features: true
-    minzoom: 12
+    minzoom: 10
 - id: area_label
   <<: *extents
   Datasource:
