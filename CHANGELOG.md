@@ -12,10 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add line-cap round for cycleway/path to avoid empty spaces. See #224.
 * Fix a bug with area label rendered below line barrier. See #321.
 * Render name of farmyards. See #264.
-* Render glaciers. See #229.
+* Render glaciers, scrubs and spring. See #229, #327
 * Fix a bug with some protected areas labels not rendered. See #329.
-* Render `highway=bridleway` + `bicycle=designated` as a shared path. See #215.
+* Render `highway=bridleway|footway` + `bicycle=designated` as a shared path. See #215.
 * Render indoor paths in faded color. See #334.
+* Render railway at low zooms. See #317
 * Improve density of city names in countryside at Z10/Z11. See #195.
 
 
