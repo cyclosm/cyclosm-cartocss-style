@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render `highway=bridleway|footway` + `bicycle=designated` as a shared path. See #215.
 * Render indoor paths in faded color. See #334.
 * Render railway at low zooms. See #317
+* Improve density of city names in countryside at Z10/Z11. See #195.
 
 
 ## v0.3.4
