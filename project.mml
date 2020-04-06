@@ -543,7 +543,6 @@ Layer:
             tags->'ramp:wheelchair',
             tags->'ramp:luggage'
           ) AS has_ramp,
-          surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
             -- From best tag to less precise quality surface tag (smoothness > track > surface).
             WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
@@ -692,7 +691,6 @@ Layer:
             tags->'ramp:wheelchair',
             tags->'ramp:luggage'
           ) AS has_ramp,
-          surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
             -- From best tag to less precise quality surface tag (smoothness > track > surface).
             WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
@@ -709,6 +707,14 @@ Layer:
               THEN 'cyclocross'
             ELSE NULL
           END AS surface_type,
+          CASE
+            WHEN tags->'mtb:scale'~E'^\\d+[+-]?$' THEN REPLACE(REPLACE(tags->'mtb:scale', '+', ''), '-', '')::integer
+            ELSE NULL
+          END AS mtb_scale,
+          CASE
+            WHEN tags->'mtb:scale:imba'~E'^\\d+$' THEN (tags->'mtb:scale:imba')::integer
+            ELSE NULL
+          END AS mtb_scale_imba,
           CASE
             WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+39 ELSE 39 END
             WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+38 ELSE 38 END
@@ -932,7 +938,6 @@ Layer:
             tags->'ramp:wheelchair',
             tags->'ramp:luggage'
           ) AS has_ramp,
-          surface, tracktype, tags->'smoothness' AS smoothness,
           CASE
             -- From best tag to less precise quality surface tag (smoothness > track > surface).
             WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
