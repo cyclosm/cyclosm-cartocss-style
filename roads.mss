@@ -170,7 +170,7 @@ come in as well.
 @rdz12_track: 0.5;
 @rdz12_pedestrian: 0.5;
 @rdz12_path: 0.5;
-@rdz12_cycle: 1;
+@rdz12_cycle: 0.8;
 @rdz12_railway: 0.5;
 /* Border width (one side of the road only) */
 @rdz12_motorway_trunk_outline: 1;
