@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render railway at low zooms. See #317
 * Improve density of city names in countryside at Z10/Z11. See #195.
 * Render inner tube vending machine. See #315.
+* Darken administrative boundaries to make them easier to see. See #343.
 
 
 ## v0.3.4
