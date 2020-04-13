@@ -1,3 +1,10 @@
+#amenities-poly {
+  [feature = 'amenity_bicycle_parking'][zoom >= 16] {
+    polygon-fill: #eeeeee;
+    line-color: #8d8383;
+  }
+}
+
 #barriers[zoom>=17][zoom<=20] {
   [barrier = 'block'],
   [barrier = 'bollard'],
@@ -907,7 +914,6 @@
     marker-fill: @amenity-common;
     marker-clip: false;
   }
-
 }
 
 #amenities-points-text,
