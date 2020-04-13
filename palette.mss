@@ -66,7 +66,7 @@
 @power-line: #888;
 
 @admin-boundaries: #888;
-@state-boundaries: #444;
+@state-boundaries: #333;
 
 /* ================================================================== */
 /* ROAD COLORS

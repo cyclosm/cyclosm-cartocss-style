@@ -24,24 +24,24 @@ overlapping borders correctly.
       line-simplify-algorithm: @admin-simplify-algorithm;
     }
     [zoom >= 5] {
+      background/line-width: 1;
+      line-width: 1;
+    }
+    [zoom >= 6] {
       background/line-width: 1.2;
       line-width: 1.2;
     }
-    [zoom >= 6] {
+    [zoom >= 7] {
       background/line-width: 1.5;
       line-width: 1.5;
     }
-    [zoom >= 7] {
-      background/line-width: 1.8;
-      line-width: 1.8;
-    }
     [zoom >= 8] {
-      background/line-width: 2;
+      background/line-width: 1.8;
       line-width: 2;
     }
     [zoom >= 9] {
-      background/line-width: 3;
-      line-width: 3;
+      background/line-width: 2;
+      line-width: 2.5;
     }
   }
 
@@ -102,12 +102,12 @@ overlapping borders correctly.
       line-width: 1;
     }
     [zoom >= 10] {
-      background/line-width: 1.8;
-      line-width: 1.8;
+      background/line-width: 1.6;
+      line-width: 1.6;
     }
     [zoom >= 12] {
-      background/line-width: 2.5;
-      line-width: 2.5;
+      background/line-width: 2;
+      line-width: 2;
     }
   }
   /*
@@ -121,7 +121,7 @@ overlapping borders correctly.
   The SQL has `ORDER BY admin_level`, so the boundary with the lowest
   admin_level is rendered on top, and therefore the only visible boundary.
   */
-  opacity: 0.3;
+  opacity: 0.5;
   comp-op: darken;
 }
 
@@ -172,7 +172,7 @@ overlapping borders correctly.
       line-clip: false;
     }
   }
-  opacity: 0.3;
+  opacity: 0.5;
   comp-op: darken;
 }
 
@@ -194,7 +194,7 @@ overlapping borders correctly.
       line-clip: false;
     }
   }
-  opacity: 0.3;
+  opacity: 0.5;
   comp-op: darken;
 }
 
