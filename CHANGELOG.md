@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## v0.3.5
+
 * Only display supermarket labels from Z17 (was from Z16). See #323.
 * Add line-cap round for cycleway/path to avoid empty spaces. See #224.
 * Fix a bug with area label rendered below line barrier. See #321.
