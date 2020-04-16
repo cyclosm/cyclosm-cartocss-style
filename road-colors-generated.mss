@@ -8,7 +8,7 @@
 @cycle-fill: #0000ce;
 @mixed-cycle-fill: #0060ff;
 @path-fill: #008662;
-@footway-fill: #cab38a;
+@footway-fill: #b0a187;
 @bridleway-fill: #835d4b;
 @icn-overlay: #ff00ff;
 @icn-shield-fill: #f6f6f6;
@@ -23,7 +23,7 @@
 @ncn-overlay: #aa00ff;
 @ncn-shield-fill: #f6f6f6;
 @pedestrian-case: @land;
-@pedestrian-fill: #b0ffb0;
+@pedestrian-fill: @speedWalk-fill;
 @primary-case: #d8b267;
 @primary-fill: #f4dfc3;
 @rail-line: #888888;
@@ -31,9 +31,9 @@
 @rcn-shield-fill: #f6f6f6;
 @secondary-case: #b1bb5d;
 @secondary-fill: #f6f8d2;
-@speed32-fill: #8ce5ff;
-@speed20-fill: #66ffc7;
-@speedWalk-fill: #b0ffb0;
+@speed32-fill: #b8efff;
+@speed20-fill: #b8ffce;
+@speedWalk-fill: #ddf0c4;
 @standard-case: #999;
 @standard-fill: #f6f6f6;
 @standard-nobicycle: #c0ccc4;

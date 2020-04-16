@@ -1471,7 +1471,7 @@ come in as well.
   [type='steps'] {
     line-color: @footway-fill;
     [tunnel=1] {
-      line-color: lighten(@footway-fill, 30%);
+      line-color: lighten(@footway-fill, 20%);
     }
   }
   [type='path'] {
