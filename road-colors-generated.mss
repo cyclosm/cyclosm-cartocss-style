@@ -4,15 +4,16 @@
 /*                                                                       */
 /*   ./scripts/generate_road_colors.py | tee road-colors-generated.mss   */
 /*                                                                       */
-@bridleway-fill: #835d4b;
 @cycle-case: @land;
-@cycle-fill: #0000ff;
-@footway-fill: #4f874f;
+@cycle-fill: #0000ce;
+@mixed-cycle-fill: #0060ff;
+@path-fill: #008662;
+@footway-fill: #cab38a;
+@bridleway-fill: #835d4b;
 @icn-overlay: #ff00ff;
 @icn-shield-fill: #f6f6f6;
 @lcn-overlay: #0000ff;
 @lcn-shield-fill: #f6f6f6;
-@mixed-cycle-fill: #0050ff;
 @motorway-trunk-case: #f6f6f6;
 @motorway-trunk-cycle-fill: #f4c3c3;
 @motorway-trunk-fill: #c0ccc4;
@@ -21,9 +22,8 @@
 @mtb-shield-fill: #f6f6f6;
 @ncn-overlay: #aa00ff;
 @ncn-shield-fill: #f6f6f6;
-@path-fill: #00767c;
 @pedestrian-case: @land;
-@pedestrian-fill: #41ffa0;
+@pedestrian-fill: #b0ffb0;
 @primary-case: #d8b267;
 @primary-fill: #f4dfc3;
 @rail-line: #888888;
@@ -31,9 +31,9 @@
 @rcn-shield-fill: #f6f6f6;
 @secondary-case: #b1bb5d;
 @secondary-fill: #f6f8d2;
-@speed20-fill: #21ffcc;
-@speed32-fill: #bbffff;
-@speedWalk-fill: #41ffa0;
+@speed32-fill: #8ce5ff;
+@speed20-fill: #66ffc7;
+@speedWalk-fill: #b0ffb0;
 @standard-case: #999;
 @standard-fill: #f6f6f6;
 @standard-nobicycle: #c0ccc4;
