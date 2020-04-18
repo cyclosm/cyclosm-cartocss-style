@@ -1851,15 +1851,88 @@ come in as well.
   [type='path'],
   [type='cycleway'] {
     /* Don't draw something for good surface, ok for racing bikes (<=28mm tyres). */
+
+    /* Unknown surface quality */
     [surface_type='unknown'] {
       [type='track'],
       [type='path'],
       [type='footway'],
-      [type='cycleway'] {
+      [type='bridleway'] {
         line-dasharray: 1,8;
-        line-color: #f00;
+        line-width: 1;
 
-        line-width: 0.5;
+        /* -- colors & styles -- */
+        line-color: #fff;
+
+        [zoom>=14] {
+          [type='track']      { line-width: @rdz14_track; }
+          [type='bridleway']   { line-width: @rdz14_bridleway; }
+          [type='footway']   { line-width: @rdz14_footway; }
+          [type='path'] {
+            line-width: @rdz14_path;
+          }
+          [type='path'][can_bicycle='designated'] {
+            line-width: @rdz14_cycle;
+            [oneway='no'][oneway_bicycle='no']
+            { line-width: @rdz14_cycle*1.5; }
+          }
+        }
+        [zoom>=15] {
+          [type='track']      { line-width: @rdz15_track; }
+          [type='bridleway']   { line-width: @rdz15_bridleway; }
+          [type='footway']   { line-width: @rdz15_footway; }
+          [type='path'] {
+            line-width: @rdz15_path;
+          }
+          [type='path'][can_bicycle='designated'] {
+            line-width: @rdz15_cycle;
+            [oneway='no'][oneway_bicycle='no'] {
+                line-width: @rdz15_cycle*1.5;
+            }
+          }
+        }
+        [zoom>=16] {
+          [type='track']      { line-width: @rdz15_track; } //Special effect.
+          [type='bridleway']   { line-width: @rdz16_bridleway; }
+          [type='footway']   { line-width: @rdz16_footway; }
+          [type='path'] {
+            line-width: @rdz16_path;
+          }
+          [type='path'][can_bicycle='designated'] {
+            line-width: @rdz16_cycle;
+            [oneway='no'][oneway_bicycle='no'] {
+                line-width: @rdz16_cycle*1.5;
+            }
+          }
+        }
+        [zoom>=17] {
+          [type='track']      { line-width: @rdz16_track; } //Special effect.
+          [type='bridleway']   { line-width: @rdz17_bridleway; }
+          [type='footway']   { line-width: @rdz17_footway; }
+          [type='path'] {
+            line-width: @rdz17_path;
+          }
+          [type='path'][can_bicycle='designated'] {
+            line-width: @rdz17_cycle;
+            [oneway='no'][oneway_bicycle='no'] {
+                line-width: @rdz17_cycle*1.5;
+            }
+          }
+        }
+        [zoom>=18] {
+          [type='track']      { line-width: @rdz17_track; }  //Special effect.
+          [type='bridleway']   { line-width: @rdz18_bridleway; }
+          [type='footway']   { line-width: @rdz18_footway; }
+          [type='path'] {
+            line-width: @rdz18_path;
+          }
+          [type='path'][can_bicycle='designated'] {
+            line-width: @rdz18_cycle;
+            [oneway='no'][oneway_bicycle='no'] {
+                line-width: @rdz18_cycle*1.5;
+            }
+          }
+        }
       }
     }
 
@@ -1881,7 +1954,7 @@ come in as well.
       }
 
       /* -- colors & styles -- */
-      line-color: darken(@standard-fill, @surfaceDarker1); /* Darken since it's white. */
+      line-color: darken(@standard-fill, @surfaceDarker2); /* Darken since it's white. */
       [type='track'] {
         line-color: @track-light2;
       }
@@ -2062,7 +2135,7 @@ come in as well.
       }
 
       /* -- colors & styles -- */
-      line-color: darken(@standard-fill, @surfaceDarker2); /* Darken since its white. */
+      line-color: darken(@standard-fill, @surfaceDarker1); /* Darken since its white. */
       [type='track'] {
         line-color: @track-light2;
       }
