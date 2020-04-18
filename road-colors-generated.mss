@@ -31,9 +31,9 @@
 @secondary-case: #b1bb5d;
 @secondary-fill: #f6f8d2;
 @speed32-fill: #bbffff;
-@speed20-fill: #c1f0c1;
-@speedWalk-fill: #def0c4;
-@nomotor-fill: #8bff62;
+@speed20-fill: #bbffba;
+@speedWalk-fill: #ddffba;
+@nomotor-fill: #62ff96;
 @standard-case: #888;
 @standard-fill: #f6f6f6;
 @standard-nobicycle: #d4d4d4;

@@ -11,7 +11,7 @@ and trunks. */
   }
 
   [type='motorway'] {
-    line-color: @motorway-trunk-line;
+    line-color: @motorway-trunk-fill;
     [bicycle='yes'] {
       line-color: @motorway-trunk-cycle-fill;
     }
@@ -19,7 +19,7 @@ and trunks. */
   [type='trunk'] {
     line-color: @motorway-trunk-cycle-fill;
     [bicycle='no'] {
-      line-color: @motorway-trunk-line;
+      line-color: @motorway-trunk-fill;
     }
   }
 
@@ -1521,7 +1521,7 @@ come in as well.
         line-color: lighten(@speedWalk-fill, 10%);
       }
     }
-    [motor_vehicle='no'][can_bicycle!='no'] {
+    [motor_vehicle='no'][can_bicycle!='no'][type!='pedestrian'] {
         line-color: @nomotor-fill;
         [tunnel=1] {
           line-color: lighten(@nomotor-fill, 10%);
