@@ -8,6 +8,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## v0.3.5
+
+* Only display supermarket labels from Z17 (was from Z16). See #323.
+* Add line-cap round for cycleway/path to avoid empty spaces. See #224.
+* Fix a bug with area label rendered below line barrier. See #321.
+* Render name of farmyards. See #264.
+* Render glaciers, scrubs and spring. See #229, #327
+* Fix a bug with some protected areas labels not rendered. See #329.
+* Render `highway=bridleway|footway` + `bicycle=designated` as a shared path. See #215.
+* Render indoor paths in faded color. See #334.
+* Render `mtb:scale` and `mtb:scale:imba`. See #336.
+* Render railway at low zooms. See #317
+* Improve density of city names in countryside at Z10/Z11. See #195.
+* Render inner tube vending machine. See #315.
+* Darken administrative boundaries to make them easier to see. See #343.
+* Render bicycle parking areas. See #322.
+
+
+## v0.3.4
+
 * Render `amenity=charging_station` designed for bicycles. Fix #290.
 * Fix an issue with handling of bicycle node networks, leading to some
     regional routes not being drawn in France. See #297.
@@ -16,6 +37,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix noisy cycle routes at low zoom levels by using `ST_Simplify` with lower
     tolerance instead of `ST_SnapToGrid`. See #253.
 * Render cinema, theatre, library, casino and change. See #300.
+* Fix ferry route rendered over place labels in low zooms. See #313.
+* Render administrative boundaries. See #209.
+* Properly render national parks. See #37.
+* Remove useless `ST_IsValid` check in some layers. See #316.
+* Fix ref not rendered for trunk and motorway. See #294.
+* Add conditional text along the way for
+    bicycle|vehicle|access|motor_vehicle:conditional. See #65.
+* Lighten tunnel roads, including cycleways. See #298.
 
 
 ## v0.3.3

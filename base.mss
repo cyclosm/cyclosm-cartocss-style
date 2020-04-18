@@ -49,6 +49,9 @@
     polygon-fill: @industrial;
   }
 
+  [type='natural_glacier'][zoom >= 5] {
+    polygon-fill: @glacier;
+  }
   [type='natural_wetland'][zoom >= 5] {
     polygon-fill: @grass;
     polygon-pattern-file: url('symbols/openstreetmap-carto/wetland.png');
@@ -67,6 +70,12 @@
   [type='natural_shingle'][zoom >= 5] {
     polygon-fill: @bare_ground;
     polygon-pattern-file: url('symbols/openstreetmap-carto/scree_overlay.png');
+  }
+
+  [type='natural_scrub'][zoom >= 5] {
+    polygon-fill: @scrub;
+    polygon-pattern-file: url('symbols/openstreetmap-carto/scrub.png');
+    polygon-pattern-alignment: global;
   }
 
   [type='natural_heath']         { polygon-fill: @heath; }
@@ -162,20 +171,6 @@
   [zoom >= 16] {
     raster-opacity: 0.35;
   }
-}
-
-#protected-areas[zoom >= 7] {
-  line-color: darken(@wooded,25%);
-  line-opacity:  0.3;
-  line-dasharray: 1,1;
-  polygon-fill: darken(@wooded,25%);
-  polygon-opacity: 0.1;
-  [zoom=7] { line-width: 0.4; }
-  [zoom=8] { line-width: 0.6; }
-  [zoom=9] { line-width: 0.8; }
-  [zoom=10] { line-width: 1.0; }
-  [zoom=11] { line-width: 1.5; }
-  [zoom>=12] { line-width: 2.0; }
 }
 
 #military-overlay[landuse = 'military'][zoom >= 8][way_pixels > 900],

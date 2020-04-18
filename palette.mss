@@ -37,8 +37,10 @@
 @cemetery:          #D6DED2;
 @wooded:            #95bd84;
 @heath:             #b2c068;
+@scrub:             #c8d7ab;
 @farmland:          #fbf0e3;
 @water:             #8ecbeb;
+@glacier:           #ddecec;
 @religious:         #ded4b2;
 @military:          #f55;
 @quarry:            #c5c3c3;
@@ -62,6 +64,9 @@
 @parking:           #EEE;
 
 @power-line: #888;
+
+@admin-boundaries: #888;
+@state-boundaries: #333;
 
 /* ================================================================== */
 /* ROAD COLORS
@@ -124,6 +129,9 @@
 
 @ferry-route: #66f;
 @ferry-route-text: @ferry-route;
+
+@conditional-text: #ff2701;
+@conditional-cycle-text: #0000ff;
 
 /* Also used for other small places: hamlets, suburbs, localities */
 @village_text:      #444;

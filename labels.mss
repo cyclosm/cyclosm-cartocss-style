@@ -60,6 +60,9 @@
       text-halo-fill: lighten(@water, 10%);
       text-face-name: @sans_italic;
     }
+    [type='national_park'],
+    [type='aboriginal_lands'],
+    [type='protected_area'],
     [type='nature_reserve'] {
       text-face-name: @sans_italic;
       text-fill: @nature_reserve;
@@ -126,18 +129,19 @@
 /* ================================================================== */
 
 #roads-text-ref-low-zoom[zoom < 13] {
-  [highway = 'motorway_trunk'][zoom >= 10],
+  [highway = 'motorway'][zoom >= 10],
+  [highway = 'trunk'][zoom >= 10],
   [highway = 'primary'][zoom >= 11],
   [highway = 'secondary'][zoom >= 12] {
-      text-name: "[refs]";
-      text-size: 7;
-      text-fill: @road_text;
-      text-spacing: 600;
-      text-clip: false;
-      text-placement: line;
-      text-face-name: @sans;
-      text-repeat-distance: @major-highway-text-repeat-distance;
-      text-halo-radius: @standard-halo-radius;
+    text-name: "[refs]";
+    text-size: 7;
+    text-fill: @road_text;
+    text-spacing: 600;
+    text-clip: false;
+    text-placement: line;
+    text-face-name: @sans;
+    text-repeat-distance: @major-highway-text-repeat-distance;
+    text-halo-radius: @standard-halo-radius;
   }
 }
 
@@ -361,6 +365,36 @@
     [zoom >= 19] {
       text-size: 12;
     }
+  }
+}
+
+
+#roads-text-conditional[zoom >= 20] {
+  text-name: ""; /* Useless since it is overloaded after, but it rises a warning. */
+  text-fill: @conditional-text;
+  text-size: 9;
+  text-halo-radius: @standard-halo-radius;
+  text-halo-fill: @road_halo;
+  text-spacing: 300;
+  text-clip: false;
+  text-placement: line;
+  text-face-name: @sans;
+  text-vertical-alignment: top;
+  text-dy: -12;
+  text-repeat-distance: @minor-highway-text-repeat-distance;
+
+  [motor_vehicle_conditional != null] {
+    text-name: "motor=" + [motor_vehicle_conditional];
+    text-fill: @conditional-cycle-text;
+  }
+  [access_conditional != null] {
+    text-name: "all=" + [access_conditional];
+  }
+  [vehicle_conditional != null] {
+    text-name: "vehicle=" + [vehicle_conditional];
+  }
+  [bicycle_conditional != null] {
+    text-name: "bicycle=" + [bicycle_conditional];
   }
 }
 

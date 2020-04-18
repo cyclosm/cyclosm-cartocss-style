@@ -128,6 +128,9 @@ style and are licensed under CC0 public domain.
 The icons in `symbols/osmandapp` are taken from the
 [OsmAnd app resources](https://github.com/osmandapp/OsmAnd-resources).
 
+The inner tube bicycle icon is based on
+https://www.flaticon.com/free-icon/inner-tube_1575936.
+
 
 ## Links
 

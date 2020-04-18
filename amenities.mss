@@ -1,3 +1,10 @@
+#amenities-poly {
+  [feature = 'amenity_bicycle_parking'][zoom >= 16] {
+    polygon-fill: #eeeeee;
+    line-color: #8d8383;
+  }
+}
+
 #barriers[zoom>=17][zoom<=20] {
   [barrier = 'block'],
   [barrier = 'bollard'],
@@ -187,6 +194,16 @@
 
   [feature = 'amenity_bicycle_repair_station'][zoom >= 15] {
     marker-file: url('symbols/openstreetmap-carto/amenity/bicycle_repair_station.svg');
+    marker-fill: @bicycle-amenity;
+    marker-placement: interior;
+    marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
+  }
+
+  [feature = 'amenity_vending_machine'][vending = 'bicycle_tube'][zoom >= 16] {
+    marker-file: url('symbols/amenity/bicycle_tube_vending.svg');
     marker-fill: @bicycle-amenity;
     marker-placement: interior;
     marker-clip: false;
@@ -590,6 +607,11 @@
     marker-clip: false;
   }
 
+  [feature = 'natural_spring'][zoom >= 16] {
+    marker-file: url('symbols/openstreetmap-carto/spring.svg');
+    marker-clip: false;
+  }
+
   [feature = 'waterway_waterfall'] {
     [zoom >= 13][height > 20],
     [zoom >= 14][height > 10],
@@ -892,7 +914,6 @@
     marker-fill: @amenity-common;
     marker-clip: false;
   }
-
 }
 
 #amenities-points-text,
@@ -949,7 +970,7 @@
   }
 
   [feature = 'shop_supermarket'] {
-    [zoom >= 16] {
+    [zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
