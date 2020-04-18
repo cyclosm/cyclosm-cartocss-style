@@ -16,7 +16,6 @@
 @motorway-trunk-case: #f6f6f6;
 @motorway-trunk-cycle-fill: #f4c3c3;
 @motorway-trunk-fill: #d4d4d4;
-@motorway-trunk-line: #f6f6f6;
 @mtb-overlay: #d15000;
 @mtb-shield-fill: #f6f6f6;
 @ncn-overlay: #aa00ff;
