@@ -11,7 +11,7 @@ and trunks. */
   }
 
   [type='motorway'] {
-    line-color: @motorway-trunk-line;
+    line-color: @motorway-trunk-fill;
     [bicycle='yes'] {
       line-color: @motorway-trunk-cycle-fill;
     }
@@ -19,7 +19,7 @@ and trunks. */
   [type='trunk'] {
     line-color: @motorway-trunk-cycle-fill;
     [bicycle='no'] {
-      line-color: @motorway-trunk-line;
+      line-color: @motorway-trunk-fill;
     }
   }
 
@@ -374,7 +374,7 @@ come in as well.
 @rdz17_service: 6;
 @rdz17_track: 4;
 @rdz17_pedestrian: 3;
-@rdz17_bridleway: 1;
+@rdz17_bridleway: 1.5;
 @rdz17_path: 2;
 @rdz17_footway: 1.5;
 @rdz17_steps: 3;
@@ -417,7 +417,7 @@ come in as well.
 @rdz18_service: 10;
 @rdz18_track: 7;
 @rdz18_pedestrian: 4;
-@rdz18_bridleway: 1.5;
+@rdz18_bridleway: 2;
 @rdz18_path: 2.5;
 @rdz18_footway: 2;
 @rdz18_steps: 3.5;
@@ -451,10 +451,9 @@ come in as well.
 #tunnel::outline[zoom>=11],
 #bridge::outline[zoom>=11] {
   line-cap: round;
-
   line-join: round;
-
   line-color: @standard-case;
+
   [type='motorway'],
   [type='motorway_link'],
   [type='trunk'],
@@ -473,6 +472,10 @@ come in as well.
   [type='tertiary_link'],
   [type='unclassified'] {
     line-color: @tertiary-case;
+  }
+  [type='pedestrian'],
+  [type='living_street'] {
+    line-color: @pedestrian-case;
   }
 
   /* -- widths -- */
@@ -1471,7 +1474,7 @@ come in as well.
   [type='steps'] {
     line-color: @footway-fill;
     [tunnel=1] {
-      line-color: lighten(@footway-fill, 30%);
+      line-color: lighten(@footway-fill, 20%);
     }
   }
   [type='path'] {
@@ -1496,27 +1499,34 @@ come in as well.
   }
 
   /* Maxspeed bike friendliness only applies to a limited set of highways */
-  [type != 'trunk_link'][type != 'motorway_link'][type != 'motorway'][type != 'trunk'][type != 'path'][type != 'cycleway'][type != 'track'][type != 'railway'][cyclestreet != 'yes'] {
-      /* low maxspeed roads are bike friendly */
-      [maxspeed_kmh < 33] {
-          line-color: @speed32-fill;
-          [tunnel=1] {
-            line-color: lighten(@speed32-fill, 10%);
-          }
+  [type != 'trunk_link'][type != 'motorway_link'][type != 'motorway'][type != 'trunk']
+  [type != 'path'][type != 'cycleway'][type != 'footway'][type != 'bridleway']
+  [type != 'track'][type != 'railway'][cyclestreet != 'yes'] {
+    /* low maxspeed roads are bike friendly */
+    [maxspeed_kmh < 33] {
+        line-color: @speed32-fill;
+        [tunnel=1] {
+          line-color: lighten(@speed32-fill, 10%);
+        }
+    }
+    [maxspeed_kmh < 21] {
+        line-color: @speed20-fill;
+        [tunnel=1] {
+          line-color: lighten(@speed20-fill, 10%);
+        }
+    }
+    [maxspeed_kmh < 10] {
+      line-color: @speedWalk-fill;
+      [tunnel=1] {
+        line-color: lighten(@speedWalk-fill, 10%);
       }
-      [maxspeed_kmh < 21] {
-          line-color: @speed20-fill;
-          [tunnel=1] {
-            line-color: lighten(@speed20-fill, 10%);
-          }
-      }
-      [maxspeed_kmh < 10],
-      [motor_vehicle='no'][can_bicycle!='no'] {
-          line-color: @speedWalk-fill;
-          [tunnel=1] {
-            line-color: lighten(@speedWalk-fill, 10%);
-          }
-      }
+    }
+    [motor_vehicle='no'][can_bicycle!='no'][type!='pedestrian'] {
+        line-color: @nomotor-fill;
+        [tunnel=1] {
+          line-color: lighten(@nomotor-fill, 10%);
+        }
+    }
     [can_bicycle='no'],
     [can_bicycle='private'] {
       line-color: @standard-nobicycle;
