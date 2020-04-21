@@ -1512,7 +1512,7 @@ come in as well.
 
     [surface_type='unknown'][zoom >= 13] {
       line-cap: butt;
-      line-dasharray: 8,8;
+      line-dasharray: 8,1;
     }
 
     [surface_type='cyclocross'][zoom >= 12] {
