@@ -693,6 +693,8 @@ Layer:
           ) AS has_ramp,
           CASE
             -- From best tag to less precise quality surface tag (smoothness > track > surface).
+            WHEN tags->'smoothness' IS NULL AND tracktype IS NULL AND surface IS NULL
+              THEN 'unknown'
             WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
               THEN 'mtb'
             WHEN tags->'smoothness' IN ('bad', 'very_bad')
