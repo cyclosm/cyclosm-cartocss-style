@@ -1413,6 +1413,11 @@ come in as well.
       background/line-opacity: 0.4;
       background/line-color: #FFFFFF;
 
+      [type='cycleway'] {
+        background/line-color: darken(@cycle-fill, @surfaceLighter1);
+        background/line-opacity: 0.6;
+      }
+
       [zoom>=12] {
         [type='track']   { background/line-width: @rdz12_track; }
         [type='path'] {
@@ -1535,10 +1540,6 @@ come in as well.
       [zoom>=18] {
         line-dasharray: 40,16;
       }
-
-      [type='cycleway'] {
-        background/line-color: darken(@cycle-fill, @surfaceLighter1);
-      }
     }
 
     [surface_type='mtb'][zoom >= 12] {
@@ -1552,10 +1553,6 @@ come in as well.
       }
       [zoom>=18] {
         line-dasharray: 16,24;
-      }
-
-      [type='cycleway'] {
-        background/line-color: darken(@cycle-fill, @surfaceLighter2);
       }
     }
   }
