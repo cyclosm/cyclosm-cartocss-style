@@ -1651,7 +1651,7 @@ come in as well.
 
   /* Maxspeed bike friendliness only applies to a limited set of highways */
   [type != 'trunk_link'][type != 'motorway_link'][type != 'motorway'][type != 'trunk']
-  [type != 'path'][type != 'cycleway'][type != 'footway'][type != 'bridleway']
+  [type != 'path'][type != 'cycleway'][type != 'footway'][type != 'bridleway'][type != 'steps']
   [type != 'track'][type != 'railway'][cyclestreet != 'yes'] {
     /* low maxspeed roads are bike friendly */
     [maxspeed_kmh < 33] {
