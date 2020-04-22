@@ -1537,22 +1537,16 @@ come in as well.
       [zoom>=17] {
         line-dasharray: 20,8;
       }
-      [zoom>=18] {
-        line-dasharray: 40,16;
-      }
     }
 
     [surface_type='mtb'][zoom >= 12] {
       line-cap: butt;
-      line-dasharray: 2,3;
+      line-dasharray: 2,2;
       [zoom>=16] {
-        line-dasharray: 4,6;
+        line-dasharray: 4,4;
       }
       [zoom>=17] {
-        line-dasharray: 8,12;
-      }
-      [zoom>=18] {
-        line-dasharray: 16,24;
+        line-dasharray: 8,8;
       }
     }
   }
@@ -1751,23 +1745,16 @@ come in as well.
   [type='secondary_link'],
   [type='primary_link'],
   [type='service'],
-  [type='pedestrian']/*,
-  [type='cycleway']*/ {
+  [type='pedestrian'] {
     /* Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm). */
     [surface_type='cyclocross'] {
       surface/line-opacity: 0.6;
       surface/line-dasharray: 4,8;
-      [zoom>=15] {
+      [zoom>=16] {
         surface/line-dasharray: 6,12;
       }
-      [zoom>=16] {
-        surface/line-dasharray: 8,16;
-      }
       [zoom>=17] {
-        surface/line-dasharray: 12,24;
-      }
-      [zoom>=18] {
-        surface/line-dasharray: 24,48;
+        surface/line-dasharray: 8,16;
       }
 
       surface/line-color: darken(@standard-fill, @surfaceDarker2); /* Darken since it's white. */
@@ -1781,17 +1768,11 @@ come in as well.
     /* Bad surface ok for mountain bike (>40mm tyres). */
     [surface_type='mtb'] {
       surface/line-dasharray: 10,5;
-      [zoom>=15] {
+      [zoom>=16] {
         surface/line-dasharray: 14,7;
       }
-      [zoom>=16] {
-        surface/line-dasharray: 20,10;
-      }
       [zoom>=17] {
-        surface/line-dasharray: 32,16;
-      }
-      [zoom>=18] {
-        surface/line-dasharray: 64,32;
+        surface/line-dasharray: 20,10;
       }
 
       surface/line-color: darken(@standard-fill, @surfaceDarker1); /* Darken since its white. */
