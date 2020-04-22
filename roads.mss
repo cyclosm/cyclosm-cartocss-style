@@ -1404,7 +1404,8 @@ come in as well.
   [type='track'],
   [type='bridleway'],
   [type='footway'],
-  [type='path'] {
+  [type='path'],
+  [type='cycleway'] {
     [surface_type='unknown'][zoom >= 13],
     [surface_type='cyclocross'][zoom >= 12],
     [surface_type='mtb'][zoom >= 12] {
@@ -1417,6 +1418,7 @@ come in as well.
         [type='path'] {
           background/line-width: @rdz12_path;
         }
+        [type='cycleway'],
         [type='path'][can_bicycle='designated'] {
           background/line-width: @rdz12_cycle;
           [oneway='no'][oneway_bicycle='no'] {
@@ -1431,6 +1433,7 @@ come in as well.
         [type='path'] {
           background/line-width: @rdz13_path;
         }
+        [type='cycleway'],
         [type='path'][can_bicycle='designated'] {
           background/line-width: @rdz13_cycle;
           [oneway='no'][oneway_bicycle='no'] {
@@ -1445,6 +1448,7 @@ come in as well.
         [type='path'] {
           background/line-width: @rdz14_path;
         }
+        [type='cycleway'],
         [type='path'][can_bicycle='designated'] {
           background/line-width: @rdz14_cycle;
           [oneway='no'][oneway_bicycle='no'] {
@@ -1459,6 +1463,7 @@ come in as well.
         [type='path'] {
           background/line-width: @rdz15_path;
         }
+        [type='cycleway'],
         [type='path'][can_bicycle='designated'] {
           background/line-width: @rdz15_cycle;
           [oneway='no'][oneway_bicycle='no'] {
@@ -1473,6 +1478,7 @@ come in as well.
         [type='path'] {
           background/line-width: @rdz16_path;
         }
+        [type='cycleway'],
         [type='path'][can_bicycle='designated'] {
           background/line-width: @rdz16_cycle;
           [oneway='no'][oneway_bicycle='no'] {
@@ -1487,6 +1493,7 @@ come in as well.
         [type='path'] {
           background/line-width: @rdz17_path;
         }
+        [type='cycleway'],
         [type='path'][can_bicycle='designated'] {
           background/line-width: @rdz17_cycle;
           [oneway='no'][oneway_bicycle='no'] {
@@ -1501,6 +1508,7 @@ come in as well.
         [type='path'] {
           background/line-width: @rdz18_path;
         }
+        [type='cycleway'],
         [type='path'][can_bicycle='designated'] {
           background/line-width: @rdz18_cycle;
           [oneway='no'][oneway_bicycle='no'] {
@@ -1510,9 +1518,9 @@ come in as well.
       }
     }
 
-    [surface_type='unknown'][zoom >= 13] {
+    [surface_type='unknown'][type!='cycleway'][zoom >= 13] {
       line-cap: butt;
-      line-dasharray: 8,1;
+      line-dasharray: 10,1;
     }
 
     [surface_type='cyclocross'][zoom >= 12] {
@@ -1527,6 +1535,10 @@ come in as well.
       [zoom>=18] {
         line-dasharray: 40,16;
       }
+
+      [type='cycleway'] {
+        background/line-color: darken(@cycle-fill, @surfaceLighter1);
+      }
     }
 
     [surface_type='mtb'][zoom >= 12] {
@@ -1540,6 +1552,10 @@ come in as well.
       }
       [zoom>=18] {
         line-dasharray: 16,24;
+      }
+
+      [type='cycleway'] {
+        background/line-color: darken(@cycle-fill, @surfaceLighter2);
       }
     }
   }
@@ -1618,7 +1634,7 @@ come in as well.
   [type='steps'] {
     line-color: @footway-fill;
     [tunnel=1] {
-      line-color: lighten(@footway-fill, 20%);
+      line-color: @footway-tunnel-fill;
     }
   }
   [type='path'] {
@@ -1738,10 +1754,11 @@ come in as well.
   [type='secondary_link'],
   [type='primary_link'],
   [type='service'],
-  [type='pedestrian'],
-  [type='cycleway'] {
+  [type='pedestrian']/*,
+  [type='cycleway']*/ {
     /* Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm). */
     [surface_type='cyclocross'] {
+      surface/line-opacity: 0.6;
       surface/line-dasharray: 4,8;
       [zoom>=15] {
         surface/line-dasharray: 6,12;
@@ -1803,12 +1820,6 @@ come in as well.
         [type='primary_link']    { surface/line-width: @rdz14_primary_link; }
         [type='service']      { surface/line-width: @rdz14_service; }
         [type='pedestrian']   { surface/line-width: @rdz14_pedestrian; }
-        [type='cycleway'] {
-          surface/line-width: @rdz14_cycle;
-          [oneway='no'][oneway_bicycle='no'] {
-              surface/line-width: @rdz14_cycle*1.5;
-          }
-        }
       }
       [zoom>=15] {
         [type='primary']     { surface/line-width: @rdz15_primary; }
@@ -1823,12 +1834,6 @@ come in as well.
         [type='primary_link']    { surface/line-width: @rdz15_primary_link; }
         [type='service']      { surface/line-width: @rdz15_service; }
         [type='pedestrian']   { surface/line-width: @rdz15_pedestrian; }
-        [type='cycleway'] {
-          surface/line-width: @rdz15_cycle;
-          [oneway='no'][oneway_bicycle='no'] {
-              surface/line-width: @rdz15_cycle*1.5;
-          }
-        }
       }
       [zoom>=16] {
         [type='primary']     { surface/line-width: @rdz16_primary; }
@@ -1843,12 +1848,6 @@ come in as well.
         [type='primary_link']    { surface/line-width: @rdz16_primary_link; }
         [type='service']      { surface/line-width: @rdz16_service; }
         [type='pedestrian']   { surface/line-width: @rdz16_pedestrian; }
-        [type='cycleway'] {
-          surface/line-width: @rdz16_cycle;
-          [oneway='no'][oneway_bicycle='no'] {
-              surface/line-width: @rdz16_cycle*1.5;
-          }
-        }
       }
       [zoom>=17] {
         [type='primary']     { surface/line-width: @rdz17_primary; }
@@ -1863,12 +1862,6 @@ come in as well.
         [type='primary_link']    { surface/line-width: @rdz17_primary_link; }
         [type='service']      { surface/line-width: @rdz17_service; }
         [type='pedestrian']   { surface/line-width: @rdz17_pedestrian; }
-        [type='cycleway'] {
-          surface/line-width: @rdz17_cycle;
-          [oneway='no'][oneway_bicycle='no'] {
-              surface/line-width: @rdz17_cycle*1.5;
-          }
-        }
       }
       [zoom>=18] {
         [type='primary']     { surface/line-width: @rdz18_primary; }
@@ -1883,12 +1876,6 @@ come in as well.
         [type='primary_link']    { surface/line-width: @rdz18_primary_link; }
         [type='service']      { surface/line-width: @rdz18_service; }
         [type='pedestrian']   { surface/line-width: @rdz18_pedestrian; }
-        [type='cycleway'] {
-          surface/line-width: @rdz18_cycle;
-          [oneway='no'][oneway_bicycle='no'] {
-              surface/line-width: @rdz18_cycle*1.5;
-          }
-        }
       }
     }
   }
@@ -2184,7 +2171,7 @@ come in as well.
     }
   }
 }
-//#roads_high::mtbscale[mtb_scale_imba>=0][zoom>=15]
+
 #roads_high::mtbscale[mtb_scale=null][mtb_scale_imba>=0][zoom>=15]
 {
   [type='service'],

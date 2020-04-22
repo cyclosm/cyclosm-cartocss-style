@@ -6,9 +6,10 @@
 /*                                                                       */
 @cycle-fill: #0000ce;
 @mixed-cycle-fill: #0060ff;
-@path-fill: #008670;
-@footway-fill: #9d866c;
-@bridleway-fill: #812e28;
+@path-fill: #007360;
+@footway-fill: #7a5222;
+@footway-tunnel-fill: #dcbf9c;
+@bridleway-fill: #741e18;
 @icn-overlay: #ff00ff;
 @icn-shield-fill: #f6f6f6;
 @lcn-overlay: #0000ff;
