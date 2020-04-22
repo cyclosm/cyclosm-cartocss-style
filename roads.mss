@@ -1682,7 +1682,7 @@ come in as well.
     [can_bicycle='private'] {
       line-color: @standard-nobicycle;
       [tunnel=1] {
-        line-color: lighten(@standard-nobicycle, 10%);
+        line-color: lighten(@standard-nobicycle, 5%);
       }
     }
   }
@@ -1700,7 +1700,7 @@ come in as well.
   [can_bicycle='private'] {
     line-color: @standard-nobicycle;
     [tunnel=1] {
-      line-color: lighten(@standard-nobicycle, 10%);
+      line-color: lighten(@standard-nobicycle, 5%);
     }
   }
 

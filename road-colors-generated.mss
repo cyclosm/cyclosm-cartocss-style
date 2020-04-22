@@ -7,8 +7,8 @@
 @cycle-fill: #0000ce;
 @mixed-cycle-fill: #0060ff;
 @path-fill: #007360;
-@footway-fill: #7a5222;
-@footway-tunnel-fill: #dcbf9c;
+@footway-fill: #7a5b36;
+@footway-tunnel-fill: #dcc3a6;
 @bridleway-fill: #741e18;
 @icn-overlay: #ff00ff;
 @icn-shield-fill: #f6f6f6;
