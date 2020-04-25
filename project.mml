@@ -18,7 +18,7 @@ srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 
 
 # Various parts to be included later on
 _parts:
-  # Extents are used for tilemill, and don't actually make it to the generated XML
+  # Extents are used for tilemill, and dont actually make it to the generated XML
   extents: &extents
     extent: *world
     srs-name: "900913"
@@ -38,18 +38,18 @@ Stylesheet:
 - palette.mss
 - road-colors-generated.mss
 - fonts.mss
-- base.mss
-- aerialways.mss
+# - base.mss
+# - aerialways.mss
 - roads.mss
-- amenities.mss
+# - amenities.mss
 - labels.mss
-- placenames.mss
-- addressing.mss
-- ferry-routes.mss
-- power.mss
-- admin.mss
-- gpx.mss
-- legend.mss
+# - placenames.mss
+# - addressing.mss
+# - ferry-routes.mss
+# - power.mss
+# - admin.mss
+# - gpx.mss
+# - legend.mss
 
 Layer:
 - id: land-low

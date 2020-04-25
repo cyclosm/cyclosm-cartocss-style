@@ -8,7 +8,7 @@
 // =====================================================================
 // AREA LABELS
 // =====================================================================
-
+/*
 #highway_area_label,
 #area_label {
   // Bring in labels gradually as one zooms in, bases on polygon area
@@ -101,7 +101,7 @@
 /* ================================================================== */
 /* WATERWAY LABELS
 /* ================================================================== */
-
+/*
 #waterway_label[type='river'][zoom>=13],
 #waterway_label[type='canal'][zoom>=15],
 #waterway_label[type='stream'][zoom>=17] {
@@ -127,7 +127,7 @@
 /* ================================================================== */
 /* ROAD LABELS
 /* ================================================================== */
-
+/*
 #roads-text-ref-low-zoom[zoom < 13] {
   [highway = 'motorway'][zoom >= 10],
   [highway = 'trunk'][zoom >= 10],
@@ -370,7 +370,7 @@
 
 
 #roads-text-conditional[zoom >= 20] {
-  text-name: ""; /* Useless since it is overloaded after, but it rises a warning. */
+  text-name: ""; // Useless since it is overloaded after, but it rises a warning.
   text-fill: @conditional-text;
   text-size: 9;
   text-halo-radius: @standard-halo-radius;
@@ -497,7 +497,7 @@
 /* ================================================================== */
 /* TRAIN STATIONS
 /* ================================================================== */
-
+/*
 #train_stations[zoom >= 12]{
   marker-file: url('symbols/openstreetmap-carto/square.svg');
   marker-fill: @trainstation-icon;
@@ -551,7 +551,7 @@
 /* ================================================================== */
 /* BICYCLE ROUTES
 /* ================================================================== */
-
+/*
 #bicycle_routes_labels[type='icn'][zoom >= 8][width <= 8],
 #bicycle_routes_labels[type='ncn'][zoom >= 8][width <= 8],
 #bicycle_routes_labels[type='rcn'][zoom >= 10][width <= 8],
