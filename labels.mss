@@ -492,6 +492,35 @@
      }
   }
 }
+/* Render designated roads */
+#roads-text-name[highway != 'construction'][zoom>=15] {
+  [bicycle='designated'][oneway = 'yes'][oneway_bicycle != 'no'],
+  [bicycle='designated'][oneway = '-1'][oneway_bicycle != 'no'] {
+     designated/marker-placement: line;
+     designated/marker-max-error: 0.5;
+     designated/marker-spacing: 50;
+     designated/marker-fill: @cycle-fill;
+     designated/marker-file: url(symbols/oneway.svg);
+     [oneway='-1'] { bike/marker-file: url(symbols/oneway-reverse.svg); }
+     [zoom=15] {
+        bike/marker-transform: "scale(0.75)";
+        bike/marker-spacing: 40;
+     }
+  }
+  [bicycle='designated'][oneway = 'yes'][oneway_bicycle = 'no'],
+  [bicycle='designated'][oneway = '-1'][oneway_bicycle = 'no'],
+  [bicycle='designated'][oneway != 'yes'][oneway != '-1'][oneway_bicycle != 'yes'][oneway_bicycle != '-1'] {
+     designated/marker-placement: line;
+     designated/marker-max-error: 0.5;
+     designated/marker-spacing: 50;
+     designated/marker-fill: @cycle-fill;
+     designated/marker-file: url(symbols/oneway-cycle.svg);
+     [zoom=15] {
+        bike/marker-transform: "scale(0.75)";
+        bike/marker-spacing: 40;
+     }
+  }
+}
 
 
 /* ================================================================== */
