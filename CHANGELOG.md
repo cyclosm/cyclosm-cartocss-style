@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Add blue arrows on designated roads. See #304.
+
 
 ## v0.3.5
 
