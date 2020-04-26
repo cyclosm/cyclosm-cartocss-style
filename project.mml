@@ -36,7 +36,7 @@ _parts:
 
 Stylesheet:
 - palette.mss
-- road-colors-generated.mss
+- road-colors.mss
 - fonts.mss
 - base.mss
 - aerialways.mss

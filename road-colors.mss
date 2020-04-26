@@ -1,9 +1,3 @@
-/* This is generated code, do not change this file manually.             */
-/*                                                                       */
-/* To change these definitions, alter road-colors.yml and run:           */
-/*                                                                       */
-/*   ./scripts/generate_road_colors.py | tee road-colors-generated.mss   */
-/*                                                                       */
 @bridleway-fill: #835d4b;
 @cycle-case: @land;
 @cycle-fill: #0000ff;
