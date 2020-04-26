@@ -138,3 +138,8 @@ https://www.flaticon.com/free-icon/inner-tube_1575936.
 * http://www.cyclosm.org/legend.html, full detailed key.
 * https://wiki.openstreetmap.org/wiki/CyclOSM, wiki page on the OSM wiki.
 * A list of the tags considered by CyclOSM is available in [Taginfo JSON format](https://wiki.openstreetmap.org/wiki/Taginfo/Projects) in [`taginfo.json`](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/taginfo.json).
+
+
+## Related projects
+
+* An unofficial Docker image to deploy a CyclOSM tile server is available at https://github.com/mhajder/openstreetmap-tile-server-cyclosm.
