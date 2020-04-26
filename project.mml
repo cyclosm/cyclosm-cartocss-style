@@ -53,20 +53,20 @@ Stylesheet:
 
 Layer:
 - id: land-low
+  class: shp
   <<: *extents
   Datasource:
     file: http://osmdata.openstreetmap.de/download/simplified-land-polygons-complete-3857.zip
     type: shape
-  class: shp
   geometry: polygon
   properties:
     maxzoom: 9
 - id: land-high
+  class: shp
   <<: *extents
   Datasource:
     file: http://osmdata.openstreetmap.de/download/land-polygons-split-3857.zip
     type: shape
-  class: shp
   geometry: polygon
   properties:
     minzoom: 10
@@ -437,6 +437,7 @@ Layer:
   properties:
     minzoom: 10
 - id: tunnel
+  class: cyclosm-lite
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -586,6 +587,7 @@ Layer:
   properties:
     minzoom: 14
 - id: roads_high
+  class: cyclosm-lite
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -733,6 +735,7 @@ Layer:
     cache-features: true
     minzoom: 11
 - id: roads_med
+  class: cyclosm_lite
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -768,6 +771,7 @@ Layer:
     minzoom: 9
     maxzoom: 10
 - id: roads_low
+  class: cyclosm_lite
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -832,6 +836,7 @@ Layer:
   properties:
     minzoom: 12
 - id: bridge
+  class: cyclosm-lite
   <<: *extents
   Datasource:
     <<: *osm2pgsql
@@ -2375,6 +2380,7 @@ Layer:
   properties:
     minzoom: 13
 - id: roads-text-name
+  class: cyclosm-lite
   geometry: linestring
   <<: *extents
   Datasource:
@@ -2444,6 +2450,7 @@ Layer:
     cache-features: true
     minzoom: 13
 - id: paths-text-name
+  class: cyclosm-lite
   geometry: linestring
   <<: *extents
   Datasource:

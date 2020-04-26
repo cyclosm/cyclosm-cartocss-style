@@ -226,7 +226,7 @@
   }
 }
 
-#roads-text-name {
+#roads-text-name[is_lite != 1] {
   [highway = 'motorway'],
   [highway = 'trunk'],
   [highway = 'primary'] {
@@ -398,7 +398,7 @@
   }
 }
 
-#paths-text-name {
+#paths-text-name[is_lite != 1] {
   [highway = 'track'] {
     [zoom >= 16] {
       text-name: "[name]";
@@ -453,30 +453,32 @@
 #roads-text-name[highway != 'construction'][zoom>=15],
 #paths-text-name[highway != 'construction'][zoom>=15] {
   // One way road for general traffic, NO countraflow for bikes
-  [oneway = 'yes'][oneway_bicycle != 'no'],
-  [oneway = '-1'][oneway_bicycle != 'no'],
-  [highway='path'][oneway_bicycle = 'yes'],
-  [highway='path'][oneway_bicycle = '-1'],
-  [highway='cycleway'][oneway_bicycle = 'yes'],
-  [highway='cycleway'][oneway_bicycle = '-1'],
-  [highway='footway'][oneway_bicycle = 'yes'],
-  [highway='footway'][oneway_bicycle = '-1'] {
-     marker-placement:line;
-     marker-max-error: 0.5;
-     marker-spacing: 100;
-     marker-fill: #777777;
-     [highway='cycleway'],
-     [highway='path'] {
-       marker-fill: #ddf;
-     }
-     marker-file: url(symbols/oneway.svg);
-     [oneway='-1'] {
-       marker-file: url(symbols/oneway-reverse.svg);
-     }
-     [zoom=15] {
-        marker-transform: "scale(0.75)";
-        marker-spacing: 80;
-     }
+  [is_lite != 1] {
+    [oneway = 'yes'][oneway_bicycle != 'no'],
+    [oneway = '-1'][oneway_bicycle != 'no'],
+    [highway='path'][oneway_bicycle = 'yes'],
+    [highway='path'][oneway_bicycle = '-1'],
+    [highway='cycleway'][oneway_bicycle = 'yes'],
+    [highway='cycleway'][oneway_bicycle = '-1'],
+    [highway='footway'][oneway_bicycle = 'yes'],
+    [highway='footway'][oneway_bicycle = '-1'] {
+      marker-placement:line;
+      marker-max-error: 0.5;
+      marker-spacing: 100;
+      marker-fill: #777777;
+      [highway='cycleway'],
+      [highway='path'] {
+        marker-fill: #ddf;
+      }
+      marker-file: url(symbols/oneway.svg);
+      [oneway='-1'] {
+        marker-file: url(symbols/oneway-reverse.svg);
+      }
+      [zoom=15] {
+          marker-transform: "scale(0.75)";
+          marker-spacing: 80;
+      }
+    }
   }
   // One way road for general traffic, WITH countraflow for bikes
   [oneway = 'yes'][oneway_bicycle = 'no'],
