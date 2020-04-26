@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix missing wind turbines. See #267.
 * Fix incorrect overloading of amenities tags, leading to some amenities not
     being shown. See windmills in #267 for instance.
+* Render guidepost and map for cyclists. See #341.
 
 
 ## v0.3.5

@@ -1644,6 +1644,7 @@ Layer:
         SELECT
           access,
           bicycle,
+          tags->'mtb' AS mtb,
           covered,
           tags->'shelter' AS shelter,
           way,
@@ -1774,6 +1775,7 @@ Layer:
         SELECT
           access,
           bicycle,
+          tags->'mtb' AS mtb,
           covered,
           tags->'shelter' AS shelter,
           way,
@@ -1945,6 +1947,7 @@ Layer:
           SELECT
             access,
             bicycle,
+            tags->'mtb' AS mtb,
             covered,
             tags->'shelter' AS shelter,
             way,
@@ -2091,6 +2094,7 @@ Layer:
           SELECT
             access,
             bicycle,
+            tags->'mtb' AS mtb,
             covered,
             tags->'shelter' AS shelter,
             way,
