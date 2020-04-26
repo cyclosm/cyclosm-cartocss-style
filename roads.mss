@@ -1,9 +1,9 @@
-/* ==================================================================
-                    ROAD & RAIL LINES
-/* ================================================================== */
+// ==================================================================
+//                    ROAD & RAIL LINES
+// ==================================================================
 
-/* At lower zoomlevels, just show major automobile routes: motorways
-and trunks. */
+// At lower zoomlevels, just show major automobile routes: motorways
+// and trunks.
 
 #roads_low[zoom>=5][zoom<=8] {
   [type='railway'] {
@@ -37,8 +37,8 @@ and trunks. */
   }
 }
 
-/* At mid-level scales start to show primary and secondary routes
-as well. */
+// At mid-level scales start to show primary and secondary routes
+// as well.
 
 #roads_med[zoom >= 9] {
 
@@ -96,26 +96,26 @@ as well. */
   }
 }
 
-/* At higher levels the roads become more complex. We're now showing
-more than just automobile routes - railways, footways, and cycleways
-come in as well.
+// At higher levels the roads become more complex. We're now showing
+//more than just automobile routes - railways, footways, and cycleways
+//come in as well.
 
-/* ---------------------------------------------------------- */
-/* ---------------- Variables ------------------------------- */
-/* ---------------------------------------------------------- */
-/*
- * Road width variables that are used in road & bridge styles.
- *
- * Roads are drawn in two steps. First, a line if the width of the road + the
- * two borders is drawn and then a line of the width of the road is drawn on
- * top, to make a road with borders. Here, the width of the ways is the width
- * of the fill of the road and the border width is the width of a single
- * border, on one side (first line is drawn with a width of way with + 2 *
- * border_width).
- */
+// ----------------------------------------------------------
+// ---------------- Variables -------------------------------
+// ----------------------------------------------------------
+//
+// * Road width variables that are used in road & bridge styles.
+// *
+// * Roads are drawn in two steps. First, a line if the width of the road + the
+// * two borders is drawn and then a line of the width of the road is drawn on
+// * top, to make a road with borders. Here, the width of the ways is the width
+// * of the fill of the road and the border width is the width of a single
+// * border, on one side (first line is drawn with a width of way with + 2 *
+// * border_width).
 
-/* -- Zoom 11 -- */
-/* Width of ways */
+
+// -- Zoom 11 --
+// Width of ways
 @rdz11_motorway_trunk: 1.2;
 @rdz11_primary: 0.8;
 @rdz11_secondary: 0.8;
@@ -135,7 +135,7 @@ come in as well.
 @rdz11_path: 0.30;
 @rdz11_cycle: 0.5;
 @rdz11_railway: 0.5;
-/* Border width (one side of the road only) */
+// Border width (one side of the road only)
 @rdz11_motorway_trunk_outline: 1;
 @rdz11_primary_outline: 0.8;
 @rdz11_secondary_outline: 0.8;
@@ -152,7 +152,7 @@ come in as well.
 @rdz11_service_outline: 0.15;
 @rdz11_pedestrian_outline: 0.15;
 
-/* -- Zoom 12 -- */
+// -- Zoom 12 --
 @rdz12_motorway_trunk: 2;
 @rdz12_primary: 1.2;
 @rdz12_secondary: 1.2;
@@ -172,7 +172,7 @@ come in as well.
 @rdz12_path: 0.5;
 @rdz12_cycle: 0.8;
 @rdz12_railway: 0.5;
-/* Border width (one side of the road only) */
+// Border width (one side of the road only)
 @rdz12_motorway_trunk_outline: 1;
 @rdz12_primary_outline: 1;
 @rdz12_secondary_outline: 1;
@@ -189,7 +189,7 @@ come in as well.
 @rdz12_service_outline: 0.25;
 @rdz12_pedestrian_outline: 0.25;
 
-/* -- Zoom 13 -- */
+// -- Zoom 13 --
 @rdz13_motorway_trunk: 3;
 @rdz13_primary: 2;
 @rdz13_secondary: 2;
@@ -212,7 +212,7 @@ come in as well.
 @rdz13_steps: 0.3;
 @rdz13_cycle: 1;
 @rdz13_railway: 0.5;
-/* Border width (one side of the road only) */
+// Border width (one side of the road only)
 @rdz13_motorway_trunk_outline: 1;
 @rdz13_primary_outline: 1;
 @rdz13_secondary_outline: 1;
@@ -230,7 +230,7 @@ come in as well.
 @rdz13_pedestrian_outline: 0.6;
 @rdz13_steps_outline: 0;
 
-/* -- Zoom 14 -- */
+// -- Zoom 14 --
 @rdz14_motorway_trunk: 4;
 @rdz14_primary: 2.8;
 @rdz14_secondary: 2.8;
@@ -254,8 +254,8 @@ come in as well.
 @rdz14_cycle: 2;
 @rdz14_railway: 0.6;
 @rdz14_turning_circle_marker: 1.1;
-/* Border width */
-/* Border width (one side of the road only) */
+// Border width
+// Border width (one side of the road only)
 @rdz14_motorway_trunk_outline: 1;
 @rdz14_primary_outline: 1;
 @rdz14_secondary_outline: 1;
@@ -273,7 +273,7 @@ come in as well.
 @rdz14_pedestrian_outline: 1;
 @rdz14_steps_outline: 0;
 
-/* -- Zoom 15 -- */
+// -- Zoom 15 --
 @rdz15_motorway_trunk: 6;
 @rdz15_primary: 4;
 @rdz15_secondary: 4;
@@ -297,7 +297,7 @@ come in as well.
 @rdz15_cycle: 2;
 @rdz15_railway: 0.8;
 @rdz15_turning_circle_marker: 1.65;
-/* Border width (one side of the road only) */
+// Border width (one side of the road only)
 @rdz15_motorway_trunk_outline: 1.25;
 @rdz15_primary_outline: 1;
 @rdz15_secondary_outline: 1;
@@ -315,7 +315,7 @@ come in as well.
 @rdz15_pedestrian_outline: 1;
 @rdz15_steps_outline: 1;
 
-/* -- Zoom 16 -- */
+// -- Zoom 16 --
 @rdz16_motorway_trunk: 10;
 @rdz16_primary: 8;
 @rdz16_secondary: 8;
@@ -339,7 +339,7 @@ come in as well.
 @rdz16_cycle: 2;
 @rdz16_railway: 1;
 @rdz16_turning_circle_marker: 6;
-/* Border width (one side of the road only) */
+// Border width (one side of the road only)
 @rdz16_motorway_trunk_outline: 1.25;
 @rdz16_primary_outline: 1.25;
 @rdz16_secondary_outline: 1.25;
@@ -357,7 +357,7 @@ come in as well.
 @rdz16_pedestrian_outline: 2;
 @rdz16_steps_outline: 1;
 
-/* -- Zoom 17 -- */
+// -- Zoom 17 --
 @rdz17_motorway_trunk: 16;
 @rdz17_primary: 14;
 @rdz17_secondary: 14;
@@ -381,7 +381,7 @@ come in as well.
 @rdz17_cycle: 3;
 @rdz17_railway: 1;
 @rdz17_turning_circle_marker: 15;
-/* Border width (one side of the road only) */
+// Border width (one side of the road only)
 @rdz17_motorway_trunk_outline: 1.5;
 @rdz17_primary_outline: 1.25;
 @rdz17_secondary_outline: 1.25;
@@ -400,7 +400,7 @@ come in as well.
 @rdz17_steps_outline: 1;
 @rdz17_line_bridge_outline: 1;  // cycleway, footway, bridleway, path on bridges
 
-/* -- Zoom 18 -- */
+// -- Zoom 18 --
 @rdz18_motorway_trunk: 23;
 @rdz18_primary: 20;
 @rdz18_secondary: 20;
@@ -424,7 +424,7 @@ come in as well.
 @rdz18_cycle: 4;
 @rdz18_railway: 1;
 @rdz18_turning_circle_marker: 21;
-/* Border width (one side of the road only) */
+// Border width (one side of the road only)
 @rdz18_motorway_trunk_outline: 2;
 @rdz18_primary_outline: 2;
 @rdz18_secondary_outline: 2;
@@ -444,9 +444,9 @@ come in as well.
 @rdz18_line_bridge_outline: 1;  // cycleway, footway, bridleway, path on bridges
 
 
-/* ---- Casing ----------------------------------------------- */
+// ---- Casing -----------------------------------------------
 
-/* Line to draw both borders (left and right) */
+// Line to draw both borders (left and right)
 #roads_high::outline[zoom>=11],
 #tunnel::outline[zoom>=11],
 #bridge::outline[zoom>=11] {
@@ -478,7 +478,7 @@ come in as well.
     line-color: @pedestrian-case;
   }
 
-  /* -- widths -- */
+  // -- widths --
   line-width: 0;
   [zoom>=11] {
     [type='motorway'], [type='trunk']     { line-width: @rdz11_motorway_trunk + (2 * @rdz11_motorway_trunk_outline); }
@@ -494,7 +494,7 @@ come in as well.
     [type='primary_link']    { line-width: @rdz11_primary_link + (2 * @rdz11_primary_link_outline); }
     [type='trunk_link']    { line-width: @rdz11_trunk_link + (2 * @rdz11_trunk_link_outline); }
     [type='motorway_link']    { line-width: @rdz11_motorway_link + (2 * @rdz11_motorway_link_outline); }
-    /* No minor bridges yet */
+    // No minor bridges yet
     [type='service']      { line-width: @rdz11_service + (2 * @rdz11_service_outline); }
     // bridleway, footway are not shown at Z11
     [type='pedestrian']   { line-width: @rdz11_pedestrian + (2 * @rdz11_pedestrian_outline); }
@@ -513,7 +513,7 @@ come in as well.
     [type='primary_link']    { line-width: @rdz12_primary_link + (2 * @rdz12_primary_link_outline); }
     [type='trunk_link']    { line-width: @rdz12_trunk_link + (2 * @rdz12_trunk_link_outline); }
     [type='motorway_link']    { line-width: @rdz12_motorway_link + (2 * @rdz12_motorway_link_outline); }
-    /* No minor bridges yet */
+    // No minor bridges yet
     [type='service']      { line-width: @rdz12_service + (2 * @rdz12_service_outline); }
     [type='pedestrian']   { line-width: @rdz12_pedestrian + (2 * @rdz12_pedestrian_outline); }
   }
@@ -531,7 +531,7 @@ come in as well.
     [type='trunk_link']    { line-width: @rdz13_trunk_link + (2 * @rdz13_trunk_link_outline); }
     [type='motorway_link']    { line-width: @rdz13_motorway_link + (2 * @rdz13_motorway_link_outline); }
     [type='tertiary']   { line-width: @rdz13_tertiary + (2 * @rdz13_tertiary_outline); }
-    /* No minor bridges yet */
+    // No minor bridges yet
     [type='service']      { line-width: @rdz13_service + (2 * @rdz13_service_outline); }
     [type='pedestrian']   { line-width: @rdz13_pedestrian + (2 * @rdz13_pedestrian_outline); }
   }
@@ -549,7 +549,7 @@ come in as well.
     [type='primary_link']    { line-width: @rdz14_primary_link + (2 * @rdz14_primary_link_outline); }
     [type='trunk_link']    { line-width: @rdz14_trunk_link + (2 * @rdz14_trunk_link_outline); }
     [type='motorway_link']    { line-width: @rdz14_motorway_link + (2 * @rdz14_motorway_link_outline); }
-    /* No minor bridges yet */
+    // No minor bridges yet
     [type='service']      { line-width: @rdz14_service + (2 * @rdz14_service_outline); }
     [type='pedestrian']   { line-width: @rdz14_pedestrian + (2 * @rdz14_pedestrian_outline); }
   }
@@ -686,7 +686,7 @@ come in as well.
   line-dasharray: 3,3;
 }
 
-/* Eventually overload right border for cycleways */
+// Eventually overload right border for cycleways
 #roads_high::outline_right[zoom>=11][cycleway_right_render='track'],
 #roads_high::outline_right[zoom>=11][cycleway_right_render='lane'],
 #roads_high::outline_right[zoom>=11][cycleway_right_render='busway'],
@@ -699,7 +699,7 @@ come in as well.
 #bridge::outline_right[zoom>=11][cycleway_right_render='lane'],
 #bridge::outline_right[zoom>=11][cycleway_right_render='busway'],
 #bridge::outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'] {
-  /* -- colors & styles -- */
+  // -- colors & styles --
   line-cap: butt;
   [cycleway_right_render='track'] {
     line-color: @cycle_track_case;
@@ -716,7 +716,7 @@ come in as well.
     line-color: @path-fill;
   }
 
-  /* widths */
+  // widths
   line-width: 0;
   [zoom>=11] {
     line-offset: 1 * @rdz11_cycle;
@@ -1009,7 +1009,7 @@ come in as well.
 #bridge::outline_left[zoom>=11][cycleway_left_render='track'],
 #bridge::outline_left[zoom>=11][cycleway_left_render='lane'],
 #bridge::outline_left[zoom>=11][cycleway_left_render='busway'] {
-  /* -- colors & styles -- */
+  // -- colors & styles --
   line-cap: butt;
   [cycleway_left_render='track'] {
     line-color: @cycle_track_case;
@@ -1023,7 +1023,7 @@ come in as well.
     line-dasharray: 6,10;
   }
 
-  /* widths */
+  // widths
   line-width: 0;
   [zoom>=11] {
     line-offset: -1 * @rdz11_cycle;
@@ -1295,10 +1295,10 @@ come in as well.
 }
 
 
-/* ---- Bridge fill for dashed lines -------------------------------- */
+// ---- Bridge fill for dashed lines --------------------------------
 #tunnel::line[zoom>=14],
 #bridge::line[zoom>=14] {
-  /* -- colors & styles -- */
+  // -- colors & styles --
   [type='pedestrian'],
   [type='bridleway'],
   [type='footway'],
@@ -1309,11 +1309,11 @@ come in as well.
     line-width: 0;
     line-join: round;
   }
-  [type='railway'][tunnel=0] {
+  #bridge[type='railway'] {
     line-color: @land;
     line-join: round;
   }
-  /* -- widths -- */
+  // -- widths --
   [zoom>=14] {
     [type='pedestrian']   { line-width: @rdz14_pedestrian + @rdz14_pedestrian_outline; }
     [type='bridleway']   { line-width: @rdz14_bridleway; }
@@ -1551,21 +1551,21 @@ come in as well.
     }
   }
 
-  /* -- colors & styles -- */
+  // -- colors & styles --
   line-color: @standard-fill;
-  [tunnel=1] {
+  #tunnel {
     line-color: lighten(@standard-fill, 10%);
   }
 
   [type='motorway'],
   [type='motorway_link'] {
     line-color: @motorway-trunk-fill;
-    [tunnel=1] {
+    #tunnel {
       line-color: lighten(@motorway-trunk-fill, 10%);
     }
     [can_bicycle='yes'] {
       line-color: @motorway-trunk-cycle-fill;
-      [tunnel=1] {
+      #tunnel {
         line-color: lighten(@motorway-trunk-cycle-fill, 10%);
       }
     }
@@ -1573,12 +1573,12 @@ come in as well.
   [type='trunk'],
   [type='trunk_link'] {
       line-color: @motorway-trunk-cycle-fill;
-      [tunnel=1] {
+      #tunnel {
         line-color: lighten(@motorway-trunk-cycle-fill, 10%);
       }
       [can_bicycle='no'] {
         line-color: @motorway-trunk-fill;
-        [tunnel=1] {
+        #tunnel {
           line-color: lighten(@motorway-trunk-fill, 10%);
         }
       }
@@ -1586,112 +1586,112 @@ come in as well.
   [type='primary'],
   [type='primary_link'] {
     line-color: @primary-fill;
-    [tunnel=1] {
+    #tunnel {
       line-color: lighten(@primary-fill, 5%);
     }
   }
   [type='secondary'],
   [type='secondary_link'] {
     line-color: @secondary-fill;
-    [tunnel=1] {
+    #tunnel {
       line-color: lighten(@secondary-fill, 5%);
     }
   }
   [type='track'] {
     line-color: @track-fill;
-    [tunnel=1] {
+    #tunnel {
       line-color: lighten(@track-fill, 10%);
     }
   }
   [type='cycleway'] {
     line-color: @cycle-fill;
-    [tunnel=1] {
+    #tunnel {
       line-color: lighten(@cycle-fill, 15%);
     }
   }
   [type='pedestrian'] {
     line-color: @pedestrian-fill;
-    [tunnel=1] {
+    #tunnel {
       line-color: lighten(@pedestrian-fill, 10%);
     }
   }
   [type='bridleway'] {
     line-color: @bridleway-fill;
-    [tunnel=1] {
+    #tunnel {
       line-color: lighten(@bridleway-fill, 10%);
     }
   }
   [type='footway'],
   [type='steps'] {
     line-color: @footway-fill;
-    [tunnel=1] {
+    #tunnel {
       line-color: @footway-tunnel-fill;
     }
   }
   [type='path'] {
     line-color: @path-fill;
-    [tunnel=1] {
+    #tunnel {
       line-color: lighten(@path-fill, 10%);
     }
   }
   [type='path'] {
     [can_bicycle='designated'] {
       line-color: @mixed-cycle-fill;
-      [tunnel=1] {
+      #tunnel {
         line-color: lighten(@mixed-cycle-fill, 10%);
       }
       [segregated='yes'] {
         line-color: @cycle-fill;
-        [tunnel=1] {
+        #tunnel {
           line-color: lighten(@cycle-fill, 15%);
         }
       }
     }
   }
 
-  /* Maxspeed bike friendliness only applies to a limited set of highways */
+  // Maxspeed bike friendliness only applies to a limited set of highways
   [type != 'trunk_link'][type != 'motorway_link'][type != 'motorway'][type != 'trunk']
   [type != 'path'][type != 'cycleway'][type != 'footway'][type != 'bridleway'][type != 'steps']
   [type != 'track'][type != 'railway'][cyclestreet != 'yes'] {
-    /* low maxspeed roads are bike friendly */
+    // low maxspeed roads are bike friendly
     [maxspeed_kmh < 33] {
         line-color: @speed32-fill;
-        [tunnel=1] {
+        #tunnel {
           line-color: lighten(@speed32-fill, 10%);
         }
     }
     [maxspeed_kmh < 21] {
         line-color: @speed20-fill;
-        [tunnel=1] {
+        #tunnel {
           line-color: lighten(@speed20-fill, 10%);
         }
     }
     [maxspeed_kmh < 10] {
       line-color: @speedWalk-fill;
-      [tunnel=1] {
+      #tunnel {
         line-color: lighten(@speedWalk-fill, 10%);
       }
     }
     [motor_vehicle='no'][can_bicycle!='no'][type!='pedestrian'] {
         line-color: @nomotor-fill;
-        [tunnel=1] {
+        #tunnel {
           line-color: lighten(@nomotor-fill, 10%);
         }
     }
     [can_bicycle='no'],
     [can_bicycle='private'] {
       line-color: @standard-nobicycle;
-      [tunnel=1] {
+      #tunnel {
         line-color: lighten(@standard-nobicycle, 5%);
       }
     }
   }
 
 
-  /* cycle streets / bicycle roads are bike friendly */
+  // cycle streets / bicycle roads are bike friendly
   [cyclestreet='yes'] {
       line-color: @mixed-cycle-fill;
-      [tunnel=1] {
+      #tunnel {
         line-color: lighten(@mixed-cycle-fill, 10%);
       }
   }
@@ -1699,7 +1699,7 @@ come in as well.
   [can_bicycle='no'],
   [can_bicycle='private'] {
     line-color: @standard-nobicycle;
-    [tunnel=1] {
+    #tunnel {
       line-color: lighten(@standard-nobicycle, 5%);
     }
   }
@@ -1729,7 +1729,7 @@ come in as well.
     line-join: round;
   }
 
-  [tunnel=1] {
+  #tunnel {
     line-cap: butt;
   }
 
@@ -1746,7 +1746,7 @@ come in as well.
   [type='primary_link'],
   [type='service'],
   [type='pedestrian'] {
-    /* Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm). */
+    // Surface ok for treking/gravel/cyclocross/city bike (28mm < tyres <= 40mm).
     [surface_type='cyclocross'] {
       surface/line-opacity: 0.6;
       surface/line-dasharray: 4,8;
@@ -1757,7 +1757,7 @@ come in as well.
         surface/line-dasharray: 8,16;
       }
 
-      surface/line-color: darken(@standard-fill, @surfaceDarker2); /* Darken since it's white. */
+      surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
 
       [can_bicycle='no'],
       [can_bicycle='private'] {
@@ -1765,7 +1765,7 @@ come in as well.
       }
     }
 
-    /* Bad surface ok for mountain bike (>40mm tyres). */
+    // Bad surface ok for mountain bike (>40mm tyres).
     [surface_type='mtb'] {
       surface/line-dasharray: 10,5;
       [zoom>=16] {
@@ -1775,7 +1775,7 @@ come in as well.
         surface/line-dasharray: 20,10;
       }
 
-      surface/line-color: darken(@standard-fill, @surfaceDarker1); /* Darken since its white. */
+      surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
 
       [can_bicycle='no'],
       [can_bicycle='private'] {
@@ -1858,7 +1858,7 @@ come in as well.
     }
   }
 
-  /* -- widths -- */
+  // -- widths --
   line-width: 0;
   [zoom>=11] {
     [type='motorway'], [type='trunk']     { line-width: @rdz11_motorway_trunk; }
@@ -2201,7 +2201,7 @@ come in as well.
 #bridge::rail_line[zoom>=11] {
   [type='railway'] {
     line-color: @rail-line;
-    /* -- widths -- */
+    // -- widths --
     [zoom>=11] {
       line-width: @rdz11_railway;
     }
@@ -2233,42 +2233,40 @@ come in as well.
 #bridge::rail_line2[zoom>=11] {
   [type='railway'] {
     line-width: 0;
-    [tunnel=0] {
-      line-color: @rail-line;
-      line-dasharray: 1,4;
-      [type='subway'] { line-opacity: 0.67; }
-      [zoom>=14] { line-dasharray: 1,8; }
+    line-color: @rail-line;
+    line-dasharray: 1,4;
+    [type='subway'] { line-opacity: 0.67; }
+    [zoom>=14] { line-dasharray: 1,8; }
 
-      [zoom>=11] {
-        line-width: @rdz11_railway*3;
-      }
-      [zoom>=12] {
-        line-width: @rdz12_railway*3;
-      }
-      [zoom>=13] {
-        line-width: @rdz13_railway*3;
-      }
-      [zoom>=14] {
-        line-width: @rdz14_railway*3;
-      }
-      [zoom>=15] {
-        line-width: @rdz15_railway*3;
-      }
-      [zoom>=16] {
-        line-width: @rdz16_railway*3;
-      }
-      [zoom>=17] {
-        line-width: @rdz17_railway*3;
-      }
-      [zoom>=18] {
-        line-width: @rdz18_railway*3;
-      }
+    [zoom>=11] {
+      line-width: @rdz11_railway*3;
+    }
+    [zoom>=12] {
+      line-width: @rdz12_railway*3;
+    }
+    [zoom>=13] {
+      line-width: @rdz13_railway*3;
+    }
+    [zoom>=14] {
+      line-width: @rdz14_railway*3;
+    }
+    [zoom>=15] {
+      line-width: @rdz15_railway*3;
+    }
+    [zoom>=16] {
+      line-width: @rdz16_railway*3;
+    }
+    [zoom>=17] {
+      line-width: @rdz17_railway*3;
+    }
+    [zoom>=18] {
+      line-width: @rdz18_railway*3;
     }
   }
 }
 
 
-/* ---- Turning Circles --------------------------------------------- */
+// ---- Turning Circles ---------------------------------------------
 #turning_circle_case[zoom>=14] {
   marker-fill: @standard-fill;
   marker-line-color: @standard-case;
@@ -2290,9 +2288,9 @@ come in as well.
   [zoom>=18] { marker-width: @rdz18_turning_circle_marker; }
 }
 
-/* ================================================================== */
-/* AEROWAYS
-/* ================================================================== */
+// ==================================================================
+// AEROWAYS
+// ==================================================================
 
 #aeroway[zoom>9] {
   line-color: @aeroway;
@@ -2322,9 +2320,9 @@ come in as well.
   }
 }
 
-/* ================================================================== */
-/* BICYCLE ROUTES
-/* ================================================================== */
+// ==================================================================
+// BICYCLE ROUTES
+// ==================================================================
 
 #bicycle_routes_gen0,
 #bicycle_routes_gen1,
@@ -2345,20 +2343,27 @@ come in as well.
 #bicycle_routes_gen2[zoom >= 8],
 #bicycle_routes_bicycle_gen3[zoom >= 11],
 #bicycle_routes_mtb_gen3[zoom >= 11] {
-  [type='icn'] {
-    line-color: @icn-overlay;
+  #bicycle_routes_gen0,
+  #bicycle_routes_gen1,
+  #bicycle_routes_gen2,
+  #bicycle_routes_bicycle_gen3 {
+    [type='icn'] {
+      line-color: @icn-overlay;
+    }
+    [type='ncn'] {
+      line-color: @ncn-overlay;
+    }
+    [type='rcn'] {
+      line-color: @rcn-overlay;
+    }
+    [type='lcn'] {
+      line-color: @lcn-overlay;
+    }
   }
-  [type='ncn'] {
-    line-color: @ncn-overlay;
-  }
-  [type='rcn'] {
-    line-color: @rcn-overlay;
-  }
-  [type='lcn'] {
-    line-color: @lcn-overlay;
-  }
-  [route='mtb'] {
-    line-color: @mtb-overlay;
+  #bicycle_routes_mtb_gen3 {
+    [route='mtb'] {
+      line-color: @mtb-overlay;
+    }
   }
 
   [state='proposed'] {
@@ -2391,5 +2396,3 @@ come in as well.
     line-width: 14;
   }
 }
-
-/******************************************************************* */
