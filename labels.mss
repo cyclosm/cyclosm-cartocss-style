@@ -617,7 +617,6 @@
 #cycle-junction-nodes[zoom >= 13] {
   shield-name: "[ref]";
   shield-size: @shield-size;
-  shield-allow-overlap: true;
   shield-face-name: @sans;
   shield-file: url("symbols/shields/[network]-junction_1x1.svg");
   [zoom >= 13][zoom <= 15] {
