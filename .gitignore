@@ -9,3 +9,4 @@ package-lock.json
 dem/
 scripts/test/*.png
 scripts/test/*.txt
+tmp/
