@@ -283,7 +283,7 @@
     [information = 'guidepost'] {
       marker-file: url('symbols/openstreetmap-carto/tourism/guidepost.svg');
       [bicycle = 'yes'], [mtb = 'yes'] {
-        marker-fill: @bicycle-amenity;
+        marker-fill: @bicycle-rental;
       }
     }
     [information = 'office'] {
@@ -295,7 +295,7 @@
     [information = 'tactile_model'] {
       marker-file: url('symbols/openstreetmap-carto/tourism/map.svg');
       [bicycle = 'yes'], [mtb = 'yes'] {
-        marker-fill: @bicycle-amenity;
+        marker-fill: @bicycle-rental;
       }
     }
     [information = 'terminal'] {
