@@ -48,8 +48,8 @@ Stylesheet:
 - ferry-routes.mss
 - power.mss
 - admin.mss
-#- gpx.mss
-#- legend.mss
+- gpx.mss
+- legend.mss
 
 Layer:
 - id: land-low
