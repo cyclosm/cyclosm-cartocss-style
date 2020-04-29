@@ -39,17 +39,17 @@ Stylesheet:
 - road-colors-generated.mss
 - fonts.mss
 - base.mss
-- aerialways.mss
+#- aerialways.mss
 - roads.mss
 - amenities.mss
 - labels.mss
 - placenames.mss
 - addressing.mss
 - ferry-routes.mss
-- power.mss
+#- power.mss
 - admin.mss
-- gpx.mss
-- legend.mss
+#- gpx.mss
+#- legend.mss
 
 Layer:
 - id: land-low
@@ -829,6 +829,7 @@ Layer:
       ) AS data
   properties:
     minzoom: 12
+    status: off
 - id: bridge
   <<: *extents
   Datasource:
@@ -1032,6 +1033,7 @@ Layer:
   properties:
     minzoom: 2
     maxzoom: 4
+    status: off
 - id: bicycle_routes_gen1
   <<: *extents
   Datasource:
@@ -1052,6 +1054,7 @@ Layer:
   properties:
     minzoom: 5
     maxzoom: 7
+    status: off
 - id: bicycle_routes_gen2
   <<: *extents
   Datasource:
@@ -1074,6 +1077,7 @@ Layer:
   properties:
     minzoom: 8
     maxzoom: 10
+    status: off
 - id: bicycle_routes_bicycle_gen3
   <<: *extents
   Datasource:
@@ -1094,6 +1098,7 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 11
+    status: off
 - id: bicycle_routes_mtb_gen3
   <<: *extents
   Datasource:
@@ -1114,6 +1119,7 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 11
+    status: off
 - id: ferry-routes
   geometry: linestring
   <<: *extents
@@ -1150,6 +1156,7 @@ Layer:
       ) AS power_minorline
   properties:
     minzoom: 16
+    status: off
 - id: power-line
   geometry: linestring
   <<: *extents
@@ -1164,6 +1171,7 @@ Layer:
       ) AS power_line
   properties:
     minzoom: 14
+    status: off
 - id: protected-areas
   geometry: polygon
   <<: *extents
@@ -1206,6 +1214,7 @@ Layer:
   properties:
     cache-features: true
     minzoom: 16
+    status: off
 - id: barriers_line
   geometry: linestring
   <<: *extents
@@ -1531,6 +1540,7 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 8
+    status: off
 - id: train_stations
   <<: *extents
   Datasource:
@@ -1571,6 +1581,7 @@ Layer:
   geometry: point
   properties:
     minzoom: 13
+    status: off
 - id: oriented-highway-amenities
   <<: *extents
   Datasource:
@@ -1630,6 +1641,7 @@ Layer:
       ) AS data
   properties:
     minzoom: 18
+    status: off
 - id: amenities-poly
   <<: *extents
   Datasource:
@@ -2245,6 +2257,7 @@ Layer:
       ) AS power_towers
   properties:
     minzoom: 14
+    status: off
 - id: highway_area_label
   <<: *extents
   Datasource:

@@ -59,6 +59,7 @@
 @track:             @park * 0.96;
 
 @residential:       @land * 1.05;
+//@residential:       #f2ede9;
 @commercial:        @land * 0.97;
 @industrial:        @land * 0.96;
 @parking:           #EEE;

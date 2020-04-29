@@ -450,8 +450,8 @@
 /* ================================================================== */
 /* ONE-WAY ARROWS
 /* ================================================================== */
-#roads-text-name[highway != 'construction'][zoom>=15],
-#paths-text-name[highway != 'construction'][zoom>=15] {
+#roads-text-name[highway != 'construction'][zoom>=16],
+#paths-text-name[highway != 'construction'][zoom>=16] {
   // One way road for general traffic, NO countraflow for bikes
   [oneway = 'yes'][oneway_bicycle != 'no'],
   [oneway = '-1'][oneway_bicycle != 'no'],
@@ -551,7 +551,7 @@
 /* ================================================================== */
 /* BICYCLE ROUTES
 /* ================================================================== */
-
+/*
 #bicycle_routes_labels[type='icn'][zoom >= 8][width <= 8],
 #bicycle_routes_labels[type='ncn'][zoom >= 8][width <= 8],
 #bicycle_routes_labels[type='rcn'][zoom >= 10][width <= 8],
@@ -606,6 +606,4 @@
   [network='lcn'] {
     shield-fill: @lcn-shield-fill;
   }
-}
-
-/* ****************************************************************** */
+}*/
