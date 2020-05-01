@@ -686,16 +686,16 @@ come in as well.
 
 /* Eventually overload right border for cycleways */
 #roads_high::outline_right[zoom>=11][cycleway_right_render='track'],
-#roads_high::outline_right[zoom>=14][cycleway_right_render='lane'],
-#roads_high::outline_right[zoom>=14][cycleway_right_render='busway'],
+#roads_high::outline_right[zoom>=16][cycleway_right_render='lane'],
+#roads_high::outline_right[zoom>=16][cycleway_right_render='busway'],
 //#roads_high::outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'],
 #tunnel::outline_right[zoom>=11][cycleway_right_render='track'],
-#tunnel::outline_right[zoom>=14][cycleway_right_render='lane'],
-#tunnel::outline_right[zoom>=14][cycleway_right_render='busway'],
+#tunnel::outline_right[zoom>=16][cycleway_right_render='lane'],
+#tunnel::outline_right[zoom>=16][cycleway_right_render='busway'],
 //#tunnel::outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'],
 #bridge::outline_right[zoom>=11][cycleway_right_render='track'],
-#bridge::outline_right[zoom>=14][cycleway_right_render='lane'],
-#bridge::outline_right[zoom>=14][cycleway_right_render='busway'],
+#bridge::outline_right[zoom>=16][cycleway_right_render='lane'],
+#bridge::outline_right[zoom>=16][cycleway_right_render='busway'],
 //#bridge::outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes']
 {
   /* -- colors & styles -- */
@@ -722,7 +722,7 @@ come in as well.
     [cycleway_right_oneway='no'] {
       line-offset: 1.5 * @rdz11_cycle;
     }
-    
+
     line-width: @rdz11_cycle;
     [cycleway_left_oneway='no'] {
       line-width: -1.5 * @rdz11_cycle;
@@ -1036,14 +1036,14 @@ come in as well.
 */
 
 #roads_high::outline_left[zoom>=11][cycleway_left_render='track'],
-#roads_high::outline_left[zoom>=14][cycleway_left_render='lane'],
-#roads_high::outline_left[zoom>=14][cycleway_left_render='busway'],
+#roads_high::outline_left[zoom>=16][cycleway_left_render='lane'],
+#roads_high::outline_left[zoom>=16][cycleway_left_render='busway'],
 #tunnel::outline_left[zoom>=11][cycleway_left_render='track'],
-#tunnel::outline_left[zoom>=14][cycleway_left_render='lane'],
-#tunnel::outline_left[zoom>=14][cycleway_left_render='busway'],
+#tunnel::outline_left[zoom>=16][cycleway_left_render='lane'],
+#tunnel::outline_left[zoom>=16][cycleway_left_render='busway'],
 #bridge::outline_left[zoom>=11][cycleway_left_render='track'],
-#bridge::outline_left[zoom>=14][cycleway_left_render='lane'],
-#bridge::outline_left[zoom>=14][cycleway_left_render='busway'] {
+#bridge::outline_left[zoom>=16][cycleway_left_render='lane'],
+#bridge::outline_left[zoom>=16][cycleway_left_render='busway'] {
   /* -- colors & styles -- */
   line-cap: butt;
   [cycleway_left_render='track'] {
@@ -1480,7 +1480,7 @@ come in as well.
     line-color: lighten(@standard-fill, 10%);
   }
 
-  [type='motorway'],
+/*  [type='motorway'],
   [type='motorway_link'] {
     line-color: @motorway-trunk-fill;
     [tunnel=1] {
@@ -1525,14 +1525,14 @@ come in as well.
     [tunnel=1] {
       line-color: lighten(@track-fill, 10%);
     }
-  }
+  }*/
   [type='cycleway'] {
     line-color: @cycle-fill;
     [tunnel=1] {
       line-color: lighten(@cycle-fill, 15%);
     }
   }
-  [type='pedestrian'] {
+/*  [type='pedestrian'] {
     line-color: @pedestrian-fill;
     [tunnel=1] {
       line-color: lighten(@pedestrian-fill, 10%);
@@ -1556,7 +1556,7 @@ come in as well.
     [tunnel=1] {
       line-color: lighten(@path-fill, 10%);
     }
-  }
+  }*/
   [type='path'] {
     [can_bicycle='designated'] {
       line-color: @mixed-cycle-fill;
@@ -1620,7 +1620,7 @@ come in as well.
     }
   }*/
 
-  [type='service'],
+/*  [type='service'],
   [type='track'],
   [type='tertiary'],
   [type='living_street'],
@@ -1635,11 +1635,11 @@ come in as well.
   [type='primary'],
   [type='secondary'],
   [type='motorway'],
-  [type='trunk'],
+  [type='trunk'],*/
   [type='cycleway'],
-  [type='pedestrian'],
+/*  [type='pedestrian'],
   [type='bridleway'],
-  [type='footway'],
+  [type='footway'],*/
   [type='path'] {
     line-cap: round;
     line-join: round;

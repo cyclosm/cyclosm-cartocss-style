@@ -61,6 +61,7 @@ Layer:
   geometry: polygon
   properties:
     maxzoom: 9
+    status: off
 - id: land-high
   <<: *extents
   Datasource:
@@ -70,6 +71,7 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 10
+    status: off
 - id: landuse_gen0
   <<: *extents
   Datasource:
@@ -102,6 +104,7 @@ Layer:
   properties:
     minzoom: 4
     maxzoom: 9
+    status: off
 - id: landuse_gen1
   <<: *extents
   Datasource:
@@ -134,6 +137,7 @@ Layer:
     cache-features: true
     minzoom: 10
     maxzoom: 12
+    status: off
 - id: landuse
   <<: *extents
   Datasource:
@@ -163,6 +167,7 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 13
+    status: off
 - id: landuse-overlay
   <<: *extents
   Datasource:
@@ -184,6 +189,7 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 7
+    status: off
 - id: hillshade
   <<: *extents84
   Datasource:
@@ -206,6 +212,7 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 16
+    status: off
 #- id: contours100
 #  class: contours
 #  <<: *extents
@@ -287,6 +294,7 @@ Layer:
   properties:
     minzoom: 8
     maxzoom: 12
+    status: off
 - id: waterway_med
   <<: *extents
   Datasource:
@@ -303,6 +311,7 @@ Layer:
   properties:
     minzoom: 13
     maxzoom: 14
+    status: off
 - id: waterway_high
   <<: *extents
   Datasource:
@@ -318,6 +327,7 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 15
+    status: off
 - id: water_gen0
   <<: *extents
   Datasource:
@@ -345,6 +355,7 @@ Layer:
   properties:
     minzoom: 4
     maxzoom: 9
+    status: off
 - id: water_gen1
   <<: *extents
   Datasource:
@@ -372,6 +383,7 @@ Layer:
   properties:
     minzoom: 10
     maxzoom: 12
+    status: off
 - id: water
   <<: *extents
   Datasource:
@@ -397,6 +409,7 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 13
+    status: off
 - id: piers-poly
   geometry: polygon
   <<: *extents
@@ -410,6 +423,7 @@ Layer:
       ) AS piers_poly
   properties:
     minzoom: 12
+    status: off
 - id: piers-line
   geometry: linestring
   <<: *extents
@@ -423,6 +437,7 @@ Layer:
       ) AS piers_line
   properties:
     minzoom: 12
+    status: off
 - id: aeroway
   <<: *extents
   Datasource:
@@ -436,6 +451,7 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 10
+    status: off
 - id: tunnel
   <<: *extents
   Datasource:
@@ -585,6 +601,7 @@ Layer:
   geometry: point
   properties:
     minzoom: 14
+    status: off
 - id: roads_high
   <<: *extents
   Datasource:
@@ -767,6 +784,7 @@ Layer:
   properties:
     minzoom: 9
     maxzoom: 10
+    status: off
 - id: roads_low
   <<: *extents
   Datasource:
@@ -797,6 +815,7 @@ Layer:
   properties:
     minzoom: 5
     maxzoom: 8
+    status: off
 - id: turning_circle_fill
   <<: *extents
   Datasource:
@@ -810,6 +829,7 @@ Layer:
   geometry: point
   properties:
     minzoom: 14
+    status: off
 - id: aerialways
   geometry: linestring
   <<: *extents
@@ -831,6 +851,7 @@ Layer:
       ) AS data
   properties:
     minzoom: 12
+    status: off
 - id: bridge
   <<: *extents
   Datasource:
@@ -984,6 +1005,7 @@ Layer:
   properties:
     minzoom: 4
     maxzoom: 10
+    status: off
 - id: admin-mid-zoom
   geometry: linestring
   <<: *extents
@@ -1002,6 +1024,7 @@ Layer:
   properties:
     minzoom: 11
     maxzoom: 12
+    status: off
 - id: admin-high-zoom
   geometry: linestring
   <<: *extents
@@ -1019,6 +1042,7 @@ Layer:
       ) AS admin_high_zoom
   properties:
     minzoom: 13
+    status: off
 - id: bicycle_routes_gen0
   <<: *extents
   Datasource:
@@ -1036,6 +1060,7 @@ Layer:
   properties:
     minzoom: 2
     maxzoom: 4
+    status: off
 - id: bicycle_routes_gen1
   <<: *extents
   Datasource:
@@ -1056,6 +1081,7 @@ Layer:
   properties:
     minzoom: 5
     maxzoom: 7
+    status: off
 - id: bicycle_routes_gen2
   <<: *extents
   Datasource:
@@ -1078,6 +1104,7 @@ Layer:
   properties:
     minzoom: 8
     maxzoom: 10
+    status: off
 - id: bicycle_routes_bicycle_gen3
   <<: *extents
   Datasource:
@@ -1098,6 +1125,7 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 11
+    status: off
 - id: bicycle_routes_mtb_gen3
   <<: *extents
   Datasource:
@@ -1118,6 +1146,7 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 11
+    status: off
 - id: ferry-routes
   geometry: linestring
   <<: *extents
@@ -1132,6 +1161,7 @@ Layer:
       ) AS ferry_routes
   properties:
     minzoom: 8
+    status: off
 - id: route
   <<: *extents84
   Datasource:
@@ -1154,6 +1184,7 @@ Layer:
       ) AS power_minorline
   properties:
     minzoom: 16
+    status: off
 - id: power-line
   geometry: linestring
   <<: *extents
@@ -1168,6 +1199,7 @@ Layer:
       ) AS power_line
   properties:
     minzoom: 14
+    status: off
 - id: protected-areas
   geometry: polygon
   <<: *extents
@@ -1189,6 +1221,7 @@ Layer:
       ) AS protected_areas
   properties:
     minzoom: 7
+    status: off
 - id: trees
   geometry: polygon
   <<: *extents
@@ -1210,6 +1243,7 @@ Layer:
   properties:
     cache-features: true
     minzoom: 16
+    status: off
 - id: barriers_line
   geometry: linestring
   <<: *extents
@@ -1248,6 +1282,7 @@ Layer:
       ) AS line_barriers
   properties:
     minzoom: 15
+    status: off
 - id: country-names
   class: country
   geometry: point
@@ -1268,6 +1303,7 @@ Layer:
       ) AS data
   properties:
     minzoom: 2
+    status: off
 - id: capital-names
   geometry: point
   <<: *extents
@@ -1290,6 +1326,7 @@ Layer:
   properties:
     minzoom: 3
     maxzoom: 15
+    status: off
 - id: state-names
   class: state
   geometry: point
@@ -1311,6 +1348,7 @@ Layer:
       ) AS data
   properties:
     minzoom: 4
+    status: off
 - id: placenames-medium
   geometry: point
   <<: *extents
@@ -1356,6 +1394,7 @@ Layer:
     cache-features: true
     minzoom: 4
     maxzoom: 15
+    status: off
 - id: placenames-small
   geometry: point
   <<: *extents
@@ -1403,6 +1442,7 @@ Layer:
   properties:
     cache-features: true
     minzoom: 10
+    status: off
 - id: area_label
   <<: *extents
   Datasource:
@@ -1434,6 +1474,7 @@ Layer:
   geometry: point
   properties:
     minzoom: 10
+    status: off
 - id: waterway_label
   <<: *extents
   Datasource:
@@ -1450,6 +1491,7 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 13
+    status: off
 - id: cliffs
   <<: *extents
   Datasource:
@@ -1464,6 +1506,7 @@ Layer:
   properties:
     cache-features: true
     minzoom: 13
+    status: off
 - id: ferry-routes-text
   geometry: linestring
   <<: *extents
@@ -1480,6 +1523,7 @@ Layer:
       ) AS ferry_routes_text
   properties:
     minzoom: 13
+    status: off
 - id: admin-text
   geometry: linestring
   <<: *extents
@@ -1500,6 +1544,7 @@ Layer:
       ) AS admin_text
   properties:
     minzoom: 13
+    status: off
 - id: protected-areas-text
   geometry: linestring
   <<: *extents
@@ -1520,6 +1565,7 @@ Layer:
       ) AS protected_areas_text
   properties:
     minzoom: 13
+    status: off
 - id: bicycle_routes_labels
   <<: *extents
   Datasource:
@@ -1535,6 +1581,7 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 8
+    status: off
 - id: train_stations
   <<: *extents
   Datasource:
@@ -1549,6 +1596,7 @@ Layer:
   geometry: point
   properties:
     minzoom: 12
+    status: off
 - id: cycle-junction-nodes
   <<: *extents
   Datasource:
@@ -1575,6 +1623,7 @@ Layer:
   geometry: point
   properties:
     minzoom: 13
+    status: off
 - id: oriented-highway-amenities
   <<: *extents
   Datasource:
@@ -1634,6 +1683,7 @@ Layer:
       ) AS data
   properties:
     minzoom: 18
+    status: off
 - id: amenities-poly
   <<: *extents
   Datasource:
@@ -1764,6 +1814,7 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 10
+    status: off
 - id: amenities-points
   <<: *extents
   Datasource:
@@ -1911,6 +1962,7 @@ Layer:
   properties:
     cache-features: true
     minzoom: 10
+    status: off
 - id: barriers
   <<: *extents
   Datasource:
@@ -1925,6 +1977,7 @@ Layer:
   geometry: point
   properties:
     minzoom: 17
+    status: off
 - id: amenities-poly-text
   <<: *extents
   Datasource:
@@ -2067,6 +2120,7 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 13
+    status: off
 - id: amenities-points-text
   <<: *extents
   Datasource:
@@ -2229,6 +2283,7 @@ Layer:
   geometry: point
   properties:
     minzoom: 13
+    status: off
 - id: power-towers
   geometry: point
   <<: *extents
@@ -2249,6 +2304,7 @@ Layer:
       ) AS power_towers
   properties:
     minzoom: 14
+    status: off
 - id: highway_area_label
   <<: *extents
   Datasource:
@@ -2263,6 +2319,7 @@ Layer:
   geometry: point
   properties:
     minzoom: 10
+    status: off
 - id: roads-text-ref-low-zoom
   geometry: linestring
   <<: *extents
@@ -2317,6 +2374,7 @@ Layer:
   properties:
     minzoom: 10
     maxzoom: 12
+    status: off
 - id: roads-text-ref
   geometry: linestring
   <<: *extents
@@ -2374,6 +2432,7 @@ Layer:
       ) AS data
   properties:
     minzoom: 13
+    status: off
 - id: roads-text-name
   geometry: linestring
   <<: *extents
@@ -2490,6 +2549,7 @@ Layer:
       ) AS data
   properties:
     minzoom: 20
+    status: off
 - id: addresses
   geometry: point
   <<: *extents
@@ -2528,6 +2588,7 @@ Layer:
   properties:
     cache-features: true
     minzoom: 18
+    status: off
 - id: military-overlay
   <<: *extents
   Datasource:
@@ -2549,6 +2610,7 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 7
+    status: off
 - id: legend-icons
   class: legend
   <<: *extents
