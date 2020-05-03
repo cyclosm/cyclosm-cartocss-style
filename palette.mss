@@ -83,10 +83,6 @@
 
 @pedestrian_area_fill:   #dce3e0;
 
-@cycle_lane_case:   #0000ff;
-@cycle_track_case:  #0000ff;
-@cycle_busway_case: #0000ff;
-
 @bridge_case: #666;
 
 @aeroway:           #ddd;

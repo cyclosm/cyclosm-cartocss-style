@@ -6,7 +6,10 @@
 /*                                                                       */
 @bridleway-fill: #835d4b;
 @cycle-case: @land;
-@cycle-fill: #0000ca;
+@cycle-fill: #0000ca;//#F5EA62; //#ffd700;
+@cycle_lane_case:   #0000ca;
+@cycle_track_case:  #0000ca;
+@cycle_busway_case: #0000ca;
 @footway-fill: #4f874f;
 @icn-overlay: #ff00ff;
 @icn-shield-fill: #f6f6f6;
