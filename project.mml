@@ -18,7 +18,7 @@ srs: "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 
 
 # Various parts to be included later on
 _parts:
-  # Extents are used for tilemill, and don't actually make it to the generated XML
+  # Extents are used for tilemill, and dont actually make it to the generated XML
   extents: &extents
     extent: *world
     srs-name: "900913"
@@ -457,10 +457,8 @@ Layer:
               ELSE 'other'
             END
           ) AS type,
-          0 AS bridge,
           access,
           layer,
-          1 AS tunnel,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
             WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344
@@ -606,8 +604,6 @@ Layer:
               ELSE 'other'
             END
           ) AS type,
-          0 AS tunnel,
-          0 AS bridge,
           access,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
@@ -693,6 +689,8 @@ Layer:
           ) AS has_ramp,
           CASE
             -- From best tag to less precise quality surface tag (smoothness > track > surface).
+            WHEN tags->'smoothness' IS NULL AND tracktype IS NULL AND surface IS NULL
+              THEN 'unknown'
             WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
               THEN 'mtb'
             WHEN tags->'smoothness' IN ('bad', 'very_bad')
@@ -852,10 +850,8 @@ Layer:
               ELSE 'other'
             END
           ) AS type,
-          1 AS bridge,
           access,
           layer,
-          0 as tunnel,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
             WHEN tags->'maxspeed'~E'^\\d+ mph$' THEN REPLACE(tags->'maxspeed', ' mph', '')::integer * 1.609344

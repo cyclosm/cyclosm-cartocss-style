@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix incorrect overloading of amenities tags, leading to some amenities not
     being shown. See windmills in #267 for instance.
 * Render guidepost and map for cyclists. See #341.
+* Render unknown surface. See #345.
+* Rework blue / cyan / green colors. See #324.
+* Fix a bug with dashed road surface being drawn on top of side cycle track.
+    See #136.
 
 
 ## v0.3.5
