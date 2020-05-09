@@ -68,33 +68,6 @@
 @admin-boundaries: #888;
 @state-boundaries: #333;
 
-/* ================================================================== */
-/* ROAD COLORS
-/* ================================================================== */
-
-/* For each class of road there are three color variables:
- * - line: for lower zoomlevels when the road is represented by a
- *         single solid line.
- * - case: for higher zoomlevels, this color is for the road's
- *         casing (outline).
- * - fill: for higher zoomlevels, this color is for the road's
- *         inner fill (inline).
- */
-
-@pedestrian_area_fill:   #dce3e0;
-
-@cycle_lane_case:   #0000ff;
-@cycle_track_case:  #0000ff;
-@cycle_busway_case: #0000ff;
-
-@bridge_case: #666;
-
-@aeroway:           #ddd;
-
-@surfaceDarker1: 10%;
-@surfaceLighter1: 20%;
-@surfaceDarker2: 20%;
-@surfaceLighter2: 30%;
 
 /* ================================================================== */
 /* LABEL COLORS
@@ -131,7 +104,7 @@
 @ferry-route-text: @ferry-route;
 
 @conditional-text: #ff2701;
-@conditional-cycle-text: #0000ff;
+@conditional-cycle-text: #0000ce;
 
 /* Also used for other small places: hamlets, suburbs, localities */
 @village_text:      #444;
@@ -178,10 +151,10 @@
 /* ================================================================== */
 @bicycle_parking_line: 	#fff;
 @secured_bicycle_parking_line: #edd502;
-@bicycle_parking_fill: 	#0000ff;
+@bicycle_parking_fill: 	#0000ce;
 @motorcycle_parking_line:  #fff;
 @secured_motorcycle_parking_line: @secured_bicycle_parking_line;
-@motorcycle_parking_fill:  #0050ff;
+@motorcycle_parking_fill:  #0060ff;
 
 @natural_volcano: #980000;
 
