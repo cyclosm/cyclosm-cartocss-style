@@ -6,26 +6,18 @@
 // and trunks.
 
 #roads_low[zoom>=5][zoom<=8] {
+  line-color: @motorway-trunk-fill;
+
+  [type='motorway'][bicycle='yes'],
+  [type='trunk'][bicycle!='no']{
+    line-color: @motorway-trunk-cycle-fill;
+  }
+
   [type='railway'] {
     line-color: @rail-line;
   }
 
-  [type='motorway'] {
-    line-color: @motorway-trunk-fill;
-    [bicycle='yes'] {
-      line-color: @motorway-trunk-cycle-fill;
-    }
-  }
-  [type='trunk'] {
-    line-color: @motorway-trunk-cycle-fill;
-    [bicycle='no'] {
-      line-color: @motorway-trunk-fill;
-    }
-  }
-
-  [zoom >= 5] {
-    line-width: 0.3;
-  }
+  line-width: 0.3;
   [zoom >= 6] {
     line-width: 0.4;
   }
@@ -2395,4 +2387,4 @@
   [zoom >= 18] {
     line-width: 14;
   }
-}
+}/**/
