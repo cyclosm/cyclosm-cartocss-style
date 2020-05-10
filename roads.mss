@@ -33,61 +33,34 @@
 // as well.
 
 #roads_med[zoom >= 9] {
+  line-color: @motorway-trunk-fill;
 
-  [type='railway'] {
-    line-width: 1;
-    line-color: @rail-line;
-  }
-
-  [type='motorway'],
-  [type='motorway_link'] {
-    line-color: @motorway-trunk-fill;
-    [can_bicycle='yes'] {
-      line-color: @motorway-trunk-cycle-fill;
-    }
-  }
-  [type='trunk'],
-  [type='trunk_link'] {
-      line-color: @motorway-trunk-cycle-fill;
-      [can_bicycle='no'] {
-        line-color: @motorway-trunk-fill;
-      }
+  [type='motorway'][can_bicycle='yes'],
+  [type='trunk'][can_bicycle!='no'] {
+    line-color: @motorway-trunk-cycle-fill;
   }
   [type='primary'] {
     line-color: @primary-case;
   }
-  [type='secondary'],
-  [type='tertiary'] {
+  [type='secondary'] {
     line-color: @standard-case;
   }
 
-  [type='motorway'],
-  [type='trunk'],
-  [type='primary'],
-  [type='motorway_link'],
-  [type='trunk_link'] {
-    line-width: 1;
+  [type='railway'] {
+    line-color: @rail-line;
   }
-  [type='secondary'],
-  [type='tertiary']
+
+  line-width: 1;
+  [type='secondary']
   {
     line-width: 0.6;
-  }
 
-
-  [zoom >= 10] {
-    [type='motorway'],
-    [type='trunk'],
-    [type='primary'],
-    [type='motorway_link'],
-    [type='trunk_link'],
-    [type='secondary'],
-    [type='tertiary'] {
+    [zoom >= 10] {
       line-width: 1;
     }
   }
 }
-
+/*
 // At higher levels the roads become more complex. We're now showing
 //more than just automobile routes - railways, footways, and cycleways
 //come in as well.

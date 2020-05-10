@@ -748,13 +748,13 @@ Layer:
           CASE
             WHEN bicycle IS NOT NULL THEN bicycle
             WHEN tags->'motorroad' IN ('yes') THEN 'no'
-            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
-            WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
+            WHEN highway NOT IN ('motorway') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
+            WHEN highway NOT IN ('motorway') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle
         FROM planet_osm_roads
         WHERE (railway IN ('rail')
-            OR highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'secondary', 'railway'))
+            OR highway IN ('motorway', 'trunk', 'primary', 'secondary'))
           AND way && !bbox!
         ORDER BY CASE
           WHEN railway IS NOT NULL THEN 0
