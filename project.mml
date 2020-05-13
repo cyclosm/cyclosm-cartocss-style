@@ -536,8 +536,8 @@ Layer:
             ELSE 'no'
           END AS oneway_bicycle,
           COALESCE(
-            tags->'ramp:stroller',
             tags->'ramp:bicycle',
+            tags->'ramp:stroller',
             tags->'ramp:wheelchair',
             tags->'ramp:luggage'
           ) AS has_ramp,
@@ -682,8 +682,8 @@ Layer:
             ELSE 'no'
           END AS oneway_bicycle,
           COALESCE(
-            tags->'ramp:stroller',
             tags->'ramp:bicycle',
+            tags->'ramp:stroller',
             tags->'ramp:wheelchair',
             tags->'ramp:luggage'
           ) AS has_ramp,
@@ -929,8 +929,8 @@ Layer:
             ELSE 'no'
           END AS oneway_bicycle,
           COALESCE(
-            tags->'ramp:stroller',
             tags->'ramp:bicycle',
+            tags->'ramp:stroller',
             tags->'ramp:wheelchair',
             tags->'ramp:luggage'
           ) AS has_ramp,
