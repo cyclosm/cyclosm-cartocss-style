@@ -431,11 +431,11 @@ Layer:
       (
         SELECT way, aeroway AS type
         FROM planet_osm_line
-        WHERE aeroway IN ('apron', 'runway', 'taxiway')
+        WHERE aeroway IN ('runway', 'taxiway')
       ) AS data
   geometry: linestring
   properties:
-    minzoom: 10
+    minzoom: 11
 - id: tunnel
   <<: *extents
   Datasource:
