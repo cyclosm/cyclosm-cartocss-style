@@ -10,3 +10,5 @@ dem/
 scripts/test/*.png
 scripts/test/*.txt
 tmp/
+.kosmtik-config.yml
+.env
