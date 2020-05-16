@@ -18,7 +18,7 @@ You need sufficient disk space of _several Gigabytes_. Docker creates a disk ima
 If you are eager to get started here is an overview over the necessary steps.
 Read on below to get the details.
 
-* `git clone https://github.com/gravitystorm/openstreetmap-carto.git` to clone openstreetmap-carto repository into a directory on your host system
+* `git clone https://github.com/cyclosm/cyclosm-cartocss-style.git` to clone openstreetmap-carto repository into a directory on your host system
 * download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the openstreetmap-carto directory (for example some small area from [Geofabrik](https://download.geofabrik.de/))
 * If necessary, `sudo service postgresql stop` to make sure you don't have currently running a native PostgreSQL server which would conflict with Docker's PostgreSQL server.
 * `docker-compose up import` to import the data (only necessary the first time or when you change the data file)
@@ -77,3 +77,9 @@ Docker copies log files from the virtual machine into the host system, their [lo
 While installing software in the containers and populating the database, the disk image of the virtual machine grows in size, by Docker allocating more clusters. When the disk on the host system is full (only a few MB remaining), Docker can appear stuck. Watch the system log files of your host system for failed allocations.
 
 Docker stores its disk image by default in the home directories of the user. If you don't have enough space here, you can move it elsewhere. (E.g. macOS: Docker > Preferences > Disk).
+
+## Notes
+
+This guide is based on the
+[`openstreetmap-carto`](https://github.com/gravitystorm/openstreetmap-carto/blob/master/DOCKER.md)
+Docker guide.

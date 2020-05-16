@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - .:/openstreetmap-carto
+      - .:/cyclosm
     depends_on:
       - db
     ports:
@@ -30,7 +30,7 @@ services:
       context: .
       dockerfile: Dockerfile.import
     volumes:
-      - .:/openstreetmap-carto
+      - .:/cyclosm
     depends_on:
       - db
     environment:

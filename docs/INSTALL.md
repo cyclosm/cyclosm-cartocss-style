@@ -1,8 +1,7 @@
 Getting started
 ===============
 
-This document describes how to manually configure your system for running
-CyclOSM.
+This document describes how to manually configure your system for running CyclOSM. If you prefer quick, platform independent setup for a development environment, without the need to install and configure tools by hand, follow a Docker installation guide in [DOCKER.md](https://github.com/cyclosm/cyclosm-cartocss-style/blob/master/docs/DOCKER.md).
 
 ## Requirements
 
