@@ -522,9 +522,12 @@ Layer:
             ELSE NULL
           END AS cycleway_right_oneway,
           CASE
+            WHEN bicycle IN ('no', 'private') THEN 'no'
             WHEN bicycle IS NOT NULL THEN bicycle
             WHEN tags->'motorroad' IN ('yes') THEN 'no'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IN ('no', 'private') THEN 'no'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND access IN ('no', 'private') THEN 'no'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
@@ -669,9 +672,12 @@ Layer:
             ELSE NULL
           END AS cycleway_right_oneway,
           CASE
+            WHEN bicycle IN ('no', 'private') THEN 'no'
             WHEN bicycle IS NOT NULL THEN bicycle
             WHEN tags->'motorroad' IN ('yes') THEN 'no'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IN ('no', 'private') THEN 'no'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND access IN ('no', 'private') THEN 'no'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,
@@ -748,10 +754,13 @@ Layer:
             END
           ) AS type,
           CASE
+            WHEN bicycle IN ('no', 'private') THEN 'no'
             WHEN bicycle IS NOT NULL THEN bicycle
             WHEN tags->'motorroad' IN ('yes') THEN 'no'
-            WHEN highway NOT IN ('motorway') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
-            WHEN highway NOT IN ('motorway') AND access IS NOT NULL THEN access
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IN ('no', 'private') THEN 'no'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND access IN ('no', 'private') THEN 'no'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle
         FROM planet_osm_roads
@@ -917,9 +926,12 @@ Layer:
             ELSE NULL
           END AS cycleway_right_oneway,
           CASE
+            WHEN bicycle IN ('no', 'private') THEN 'no'
             WHEN bicycle IS NOT NULL THEN bicycle
             WHEN tags->'motorroad' IN ('yes') THEN 'no'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IN ('no', 'private') THEN 'no'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
+            WHEN highway NOT IN ('motorway', 'motorway_link') AND access IN ('no', 'private') THEN 'no'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND access IS NOT NULL THEN access
             ELSE NULL
           END AS can_bicycle,

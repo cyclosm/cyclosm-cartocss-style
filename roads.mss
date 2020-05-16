@@ -1374,8 +1374,7 @@
         line-color: @mixed-cycle-fill;
         #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
     }
-    [can_bicycle='no'],
-    [can_bicycle='private'] {
+    [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
@@ -1396,8 +1395,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
           }
         }
@@ -1408,8 +1406,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
           }
         }
@@ -1449,8 +1446,7 @@
         line-color: @mixed-cycle-fill;
         #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
     }
-    [can_bicycle='no'],
-    [can_bicycle='private'] {
+    [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
@@ -1471,8 +1467,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
           }
         }
@@ -1483,8 +1478,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
           }
         }
@@ -1526,8 +1520,7 @@
         line-color: @mixed-cycle-fill;
         #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
     }
-    [can_bicycle='no'],
-    [can_bicycle='private'] {
+    [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
@@ -1548,8 +1541,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
           }
         }
@@ -1560,8 +1552,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
           }
         }
@@ -1601,8 +1592,7 @@
         line-color: @mixed-cycle-fill;
         #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
     }
-    [can_bicycle='no'],
-    [can_bicycle='private'] {
+    [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
@@ -1623,8 +1613,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
           }
         }
@@ -1635,8 +1624,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
           }
         }
@@ -1677,8 +1665,7 @@
         line-color: @mixed-cycle-fill;
         #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
     }
-    [can_bicycle='no'],
-    [can_bicycle='private'] {
+    [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
@@ -1699,8 +1686,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
           }
         }
@@ -1711,8 +1697,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
           }
         }
@@ -1753,8 +1738,7 @@
         line-color: @mixed-cycle-fill;
         #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
     }
-    [can_bicycle='no'],
-    [can_bicycle='private'] {
+    [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
@@ -1775,8 +1759,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
           }
         }
@@ -1787,8 +1770,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
           }
         }
@@ -1830,8 +1812,7 @@
         line-color: @mixed-cycle-fill;
         #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
     }
-    [can_bicycle='no'],
-    [can_bicycle='private'] {
+    [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
@@ -1852,8 +1833,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
           }
         }
@@ -1864,8 +1844,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
           }
         }
@@ -1906,8 +1885,7 @@
         line-color: @mixed-cycle-fill;
         #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
     }
-    [can_bicycle='no'],
-    [can_bicycle='private'] {
+    [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
@@ -1928,8 +1906,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
           }
         }
@@ -1940,8 +1917,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
           }
         }
@@ -1982,8 +1958,7 @@
         line-color: @mixed-cycle-fill;
         #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
     }
-    [can_bicycle='no'],
-    [can_bicycle='private'] {
+    [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
@@ -2005,8 +1980,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
           }
         }
@@ -2017,8 +1991,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
           }
         }
@@ -2059,8 +2032,7 @@
         line-color: @mixed-cycle-fill;
         #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
     }
-    [can_bicycle='no'],
-    [can_bicycle='private'] {
+    [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
@@ -2081,8 +2053,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
           }
         }
@@ -2093,8 +2064,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
           }
         }
@@ -2133,8 +2103,7 @@
     //      line-color: lighten(@nomotor-fill, 10%);
     //    }
     //  }
-    /*  [can_bicycle='no'],
-      [can_bicycle='private'] {
+    /*  [can_bicycle='no'] {
         line-color: @standard-nobicycle;
         #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
       }*/
@@ -2142,8 +2111,7 @@
         line-color: @mixed-cycle-fill;
         #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
     }*/
-    [can_bicycle='no'],
-    [can_bicycle='private'] {
+    [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
@@ -2165,8 +2133,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
           }
         }
@@ -2178,8 +2145,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'],
-          [can_bicycle='private'] {
+          [can_bicycle='no'] {
             surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
           }
         }
@@ -2378,8 +2344,7 @@
     line-cap: round;
     line-join: round;
 
-    [can_bicycle='no'],
-    [can_bicycle='private'] {
+    [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel {
         line-color: lighten(@standard-nobicycle, 5%);
