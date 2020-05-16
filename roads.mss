@@ -1395,9 +1395,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1); }
         }
 
         [surface_type='mtb'] {
@@ -1406,9 +1404,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2); }
         }
       }
     }
@@ -1467,9 +1463,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1); }
         }
 
         [surface_type='mtb'] {
@@ -1478,9 +1472,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2); }
         }
       }
     }
@@ -1541,9 +1533,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1); }
         }
 
         [surface_type='mtb'] {
@@ -1552,9 +1542,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2); }
         }
       }
     }
@@ -1613,9 +1601,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1); }
         }
 
         [surface_type='mtb'] {
@@ -1624,9 +1610,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2); }
         }
       }
     }
@@ -1686,9 +1670,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1); }
         }
 
         [surface_type='mtb'] {
@@ -1697,9 +1679,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2); }
         }
       }
     }
@@ -1759,9 +1739,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1); }
         }
 
         [surface_type='mtb'] {
@@ -1770,9 +1748,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2); }
         }
       }
     }
@@ -1833,9 +1809,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1); }
         }
 
         [surface_type='mtb'] {
@@ -1906,9 +1880,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1); }
         }
 
         [surface_type='mtb'] {
@@ -1917,9 +1889,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2); }
         }
       }
     }
@@ -1980,9 +1950,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1); }
         }
 
         [surface_type='mtb'] {
@@ -1991,9 +1959,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2); }
         }
       }
     }
@@ -2053,9 +2019,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1); }
         }
 
         [surface_type='mtb'] {
@@ -2064,9 +2028,7 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2); }
         }
       }
     }
@@ -2133,9 +2095,7 @@
           [zoom>=17] { surface/line-dasharray: 8,16; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1); }
         }
 
         // Bad surface ok for mountain bike (>40mm tyres).
@@ -2145,20 +2105,13 @@
           [zoom>=17] { surface/line-dasharray: 20,10; }
 
           surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
-          [can_bicycle='no'] {
-            surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2);
-          }
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2); }
         }
       }
     }
   }
 
-  // surfaces on track and path
-  [type='track'],
-  [type='bridleway'],
-  [type='footway'],
-  [type='path'],
-  [type='cycleway'] {
+  [type='track'][zoom >= 11] {
     [surface_type='unknown'][zoom >= 13],
     [surface_type='cyclocross'][zoom >= 12],
     [surface_type='mtb'][zoom >= 12] {
@@ -2166,320 +2119,387 @@
       background/line-opacity: 0.4;
       background/line-color: #FFFFFF;
 
-      [type='cycleway'] {
-        background/line-color: darken(@cycle-fill, @surfaceLighter1);
-        background/line-opacity: 0.6;
-      }
+      background/line-width: @rdz12_track;
+      [zoom>=13] { background/line-width: @rdz13_track; }
+      [zoom>=14] { background/line-width: @rdz14_track; }
+      [zoom>=15] { background/line-width: @rdz15_track; }
+      [zoom>=16] { background/line-width: @rdz16_track; }
+      [zoom>=17] { background/line-width: @rdz17_track; }
+      [zoom>=18] { background/line-width: @rdz18_track; }
 
-      [zoom>=12] {
-        [type='track']   { background/line-width: @rdz12_track; }
-        [type='path'] {   background/line-width: @rdz12_path;  }
-        [type='cycleway'],
-        [type='path'][can_bicycle='designated'] {
-          background/line-width: @rdz12_cycle;
-          [oneway='no'][oneway_bicycle='no'] {
-              background/line-width: @rdz12_cycle*1.5;
-          }
-        }
-      }
-      [zoom>=13] {
-        [type='track']   { background/line-width: @rdz13_track; }
-        [type='bridleway']   { background/line-width: @rdz13_bridleway; }
-        [type='footway']   { background/line-width: @rdz13_footway; }
-        [type='path'] {   background/line-width: @rdz13_path;   }
-        [type='cycleway'],
-        [type='path'][can_bicycle='designated'] {
-          background/line-width: @rdz13_cycle;
-          [oneway='no'][oneway_bicycle='no'] {
-              background/line-width: @rdz13_cycle*1.5;
-          }
-        }
-      }
-      [zoom>=14] {
-        [type='track']   { background/line-width: @rdz14_track; }
-        [type='bridleway']   { background/line-width: @rdz14_bridleway; }
-        [type='footway']   { background/line-width: @rdz14_footway; }
-        [type='path'] {    background/line-width: @rdz14_path;    }
-        [type='cycleway'],
-        [type='path'][can_bicycle='designated'] {
-          background/line-width: @rdz14_cycle;
-          [oneway='no'][oneway_bicycle='no'] {
-              background/line-width: @rdz14_cycle*1.5;
-          }
-        }
-      }
-      [zoom>=15] {
-        [type='track']   { background/line-width: @rdz15_track; }
-        [type='bridleway']   { background/line-width: @rdz15_bridleway; }
-        [type='footway']   { background/line-width: @rdz15_footway; }
-        [type='path'] {     background/line-width: @rdz15_path;   }
-        [type='cycleway'],
-        [type='path'][can_bicycle='designated'] {
-          background/line-width: @rdz15_cycle;
-          [oneway='no'][oneway_bicycle='no'] {
-              background/line-width: @rdz15_cycle*1.5;
-          }
-        }
-      }
-      [zoom>=16] {
-        [type='track']   { background/line-width: @rdz16_track; }
-        [type='bridleway']   { background/line-width: @rdz16_bridleway; }
-        [type='footway']   { background/line-width: @rdz16_footway; }
-        [type='path'] {     background/line-width: @rdz16_path;   }
-        [type='cycleway'],
-        [type='path'][can_bicycle='designated'] {
-          background/line-width: @rdz16_cycle;
-          [oneway='no'][oneway_bicycle='no'] {
-              background/line-width: @rdz16_cycle*1.5;
-          }
-        }
-      }
-      [zoom>=17] {
-        [type='track']   { background/line-width: @rdz17_track; }
-        [type='bridleway']   { background/line-width: @rdz17_bridleway; }
-        [type='footway']   { background/line-width: @rdz17_footway; }
-        [type='path'] { background/line-width: @rdz17_path; }
-        [type='cycleway'],
-        [type='path'][can_bicycle='designated'] {
-          background/line-width: @rdz17_cycle;
-          [oneway='no'][oneway_bicycle='no'] {
-              background/line-width: @rdz17_cycle*1.5;
-          }
-        }
-      }
-      [zoom>=18] {
-        [type='track']   { background/line-width: @rdz18_track; }
-        [type='bridleway']   { background/line-width: @rdz18_bridleway; }
-        [type='footway']   { background/line-width: @rdz18_footway; }
-        [type='path'] { background/line-width: @rdz18_path; }
-        [type='cycleway'],
-        [type='path'][can_bicycle='designated'] {
-          background/line-width: @rdz18_cycle;
-          [oneway='no'][oneway_bicycle='no'] {
-              background/line-width: @rdz18_cycle*1.5;
-          }
-        }
-      }
-    }
-
-    [surface_type='unknown'][type!='cycleway'][zoom >= 13] {
       line-cap: butt;
-      line-dasharray: 10,1;
+      //[surface_type='unknown'] {
+        line-dasharray: 10,1;
+      //}
+      [surface_type='cyclocross'] {
+        line-dasharray: 5,2;
+        [zoom>=16] { line-dasharray: 10,4; }
+        [zoom>=17] { line-dasharray: 20,8; }
+      }
+      [surface_type='mtb'] {
+        line-dasharray: 2,2;
+        [zoom>=16] { line-dasharray: 4,4; }
+        [zoom>=17] { line-dasharray: 8,8; }
+      }
     }
 
-    [surface_type='cyclocross'][zoom >= 12] {
-      line-cap: butt;
-      line-dasharray: 5,2;
-      [zoom>=16] {
-        line-dasharray: 10,4;
-      }
-      [zoom>=17] {
-        line-dasharray: 20,8;
-      }
-    }
-
-    [surface_type='mtb'][zoom >= 12] {
-      line-cap: butt;
-      line-dasharray: 2,2;
-      [zoom>=16] {
-        line-dasharray: 4,4;
-      }
-      [zoom>=17] {
-        line-dasharray: 8,8;
-      }
-    }
-  }
-
-  // -- colors & styles --
-  [type='track'] {
-    line-color: @track-fill;
-    #tunnel {
-      line-color: lighten(@track-fill, 10%);
-    }
-  }
-  [type='cycleway'] {
-    line-color: @cycle-fill;
-    #tunnel {
-      line-color: lighten(@cycle-fill, 15%);
-    }
-  }
-  [type='bridleway'] {
-    line-color: @bridleway-fill;
-    #tunnel {
-      line-color: lighten(@bridleway-fill, 10%);
-    }
-  }
-  [type='footway'],
-  [type='steps'] {
-    line-color: @footway-fill;
-    #tunnel {
-      line-color: @footway-tunnel-fill;
-    }
-  }
-  [type='path'] {
-    line-color: @path-fill;
-    #tunnel {
-      line-color: lighten(@path-fill, 10%);
-    }
-
-    [can_bicycle='designated'] {
-      line-color: @mixed-cycle-fill;
-      #tunnel {
-        line-color: lighten(@mixed-cycle-fill, 10%);
-      }
-      [segregated='yes'] {
-        line-color: @cycle-fill;
-        #tunnel {
-          line-color: lighten(@cycle-fill, 15%);
-        }
-      }
-    }
-  }
-
-  [type='track'],
-  [type='cycleway'],
-  [type='bridleway'],
-  [type='footway'],
-  [type='path'] {
     line-cap: round;
     line-join: round;
+    line-color: @track-fill;
+    #tunnel { line-color: lighten(@track-fill, 10%); }
 
     [can_bicycle='no'] {
       line-color: @standard-nobicycle;
-      #tunnel {
-        line-color: lighten(@standard-nobicycle, 5%);
-      }
+      #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
+
+    line-width: @rdz11_track;
+    [zoom>=12] { line-width: @rdz12_track; }
+    [zoom>=13] { line-width: @rdz13_track; }
+    [zoom>=14] { line-width: @rdz14_track; }
+    [zoom>=15] { line-width: @rdz15_track; }
+    [zoom>=16] { line-width: @rdz16_track; }
+    [zoom>=17] { line-width: @rdz17_track; }
+    [zoom>=18] { line-width: @rdz18_track; }
   }
 
-  #tunnel {
-    line-cap: butt;
-  }
+  [type='bridleway'][zoom >= 13] {
+    [surface_type='unknown'],
+    [surface_type='cyclocross'],
+    [surface_type='mtb'] {
+      background/line-join: round;
+      background/line-opacity: 0.4;
+      background/line-color: #FFFFFF;
 
-  // -- widths --
-  line-width: 0;
-  [zoom>=11] {
-    [type='track']      { line-width: @rdz11_track; }
-    [type='path'] {
-      line-width: @rdz11_path;
-    }
-    [type='cycleway'],
-    [type='path'][can_bicycle='designated'] {
-      line-width: @rdz11_cycle;
-      [oneway='no'][oneway_bicycle='no'] {
-          line-width: @rdz11_cycle*1.5;
+      background/line-width: @rdz13_bridleway;
+      [zoom>=14] { background/line-width: @rdz14_bridleway; }
+      [zoom>=15] { background/line-width: @rdz15_bridleway; }
+      [zoom>=16] { background/line-width: @rdz16_bridleway; }
+      [zoom>=17] { background/line-width: @rdz17_bridleway; }
+      [zoom>=18] { background/line-width: @rdz18_bridleway; }
+
+      line-cap: butt;
+      //[surface_type='unknown'] {
+        line-dasharray: 10,1;
+      //}
+      [surface_type='cyclocross'] {
+        line-dasharray: 5,2;
+        [zoom>=16] { line-dasharray: 10,4; }
+        [zoom>=17] { line-dasharray: 20,8; }
+      }
+      [surface_type='mtb'] {
+        line-dasharray: 2,2;
+        [zoom>=16] { line-dasharray: 4,4; }
+        [zoom>=17] { line-dasharray: 8,8; }
       }
     }
-  }
-  [zoom>=12] {
-    [type='track']      { line-width: @rdz12_track; }
-    [type='path'] {
-      line-width: @rdz12_path;
+
+    line-cap: round;
+    line-join: round;
+    line-color: @bridleway-fill;
+    #tunnel { line-color: lighten(@bridleway-fill, 10%); }
+
+    [can_bicycle='no'] {
+      line-color: @standard-nobicycle;
+      #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }
-    [type='cycleway'],
-    [type='path'][can_bicycle='designated'] {
+
+    line-width: @rdz13_bridleway;
+    [zoom>=14] { line-width: @rdz14_bridleway; }
+    [zoom>=15] { line-width: @rdz15_bridleway; }
+    [zoom>=16] { line-width: @rdz16_bridleway; }
+    [zoom>=17] { line-width: @rdz17_bridleway; }
+    [zoom>=18] { line-width: @rdz18_bridleway; }
+  }
+
+  [type='footway'][zoom >= 13] {
+    [surface_type='unknown'],
+    [surface_type='cyclocross'],
+    [surface_type='mtb'] {
+      background/line-join: round;
+      background/line-opacity: 0.4;
+      background/line-color: #FFFFFF;
+
+      background/line-width: @rdz13_footway;
+      [zoom>=14] { background/line-width: @rdz14_footway; }
+      [zoom>=15] { background/line-width: @rdz15_footway; }
+      [zoom>=16] { background/line-width: @rdz16_footway; }
+      [zoom>=17] { background/line-width: @rdz17_footway; }
+      [zoom>=18] { background/line-width: @rdz18_footway; }
+
+      line-cap: butt;
+      //[surface_type='unknown'] {
+        line-dasharray: 10,1;
+      //}
+      [surface_type='cyclocross'] {
+        line-dasharray: 5,2;
+        [zoom>=16] { line-dasharray: 10,4; }
+        [zoom>=17] { line-dasharray: 20,8; }
+      }
+      [surface_type='mtb'] {
+        line-dasharray: 2,2;
+        [zoom>=16] { line-dasharray: 4,4; }
+        [zoom>=17] { line-dasharray: 8,8; }
+      }
+    }
+
+    line-cap: round;
+    line-join: round;
+    line-color: @footway-fill;
+    #tunnel { line-color: @footway-tunnel-fill; }
+
+    [can_bicycle='no'] {
+      line-color: @standard-nobicycle;
+      #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
+    }
+
+    line-width: @rdz13_footway;
+    [zoom>=14] { line-width: @rdz14_footway; }
+    [zoom>=15] { line-width: @rdz15_footway; }
+    [zoom>=16] { line-width: @rdz16_footway; }
+    [zoom>=17] { line-width: @rdz17_footway; }
+    [zoom>=18] { line-width: @rdz18_footway; }
+  }
+
+  [type='steps'][zoom >= 14] {
+    line-color: @footway-fill;
+    #tunnel { line-color: @footway-tunnel-fill; }
+
+    [can_bicycle='no'] {
+      line-color: @standard-nobicycle;
+      #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
+    }
+
+    line-width: @rdz14_steps;
+    line-dasharray: 0.5,0.5;
+    [zoom>=15] { line-width: @rdz15_steps; }
+    [zoom>=16] { line-width: @rdz16_steps; line-dasharray: 1.5,0.75; }
+    [zoom>=17] { line-width: @rdz17_steps; line-dasharray: 2,1; }
+    [zoom>=18] { line-width: @rdz18_steps; }
+  }
+
+  [type='cycleway'][zoom >= 11] {
+    [surface_type='cyclocross'][zoom >= 12],
+    [surface_type='mtb'][zoom >= 12] {
+      background/line-join: round;
+      background/line-opacity: 0.6;
+      background/line-color: darken(@cycle-fill, @surfaceLighter1);
+
+      background/line-width: @rdz12_cycle;
+      [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz12_cycle*1.5; }
+      [zoom>=13] {
+        background/line-width: @rdz13_cycle;
+        [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz13_cycle*1.5; }
+      }
+      [zoom>=14] {
+        background/line-width: @rdz14_cycle;
+        [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz14_cycle*1.5; }
+      }
+      [zoom>=15] {
+        background/line-width: @rdz15_cycle;
+        [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz15_cycle*1.5; }
+      }
+      [zoom>=16] {
+        background/line-width: @rdz16_cycle;
+        [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz16_cycle*1.5; }
+      }
+      [zoom>=17] {
+        background/line-width: @rdz17_cycle;
+        [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz17_cycle*1.5; }
+      }
+      [zoom>=18] {
+        background/line-width: @rdz18_cycle;
+        [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz18_cycle*1.5; }
+      }
+
+      // cyclocross
+      line-dasharray: 5,2;
+      [zoom>=16] { line-dasharray: 10,4; }
+      [zoom>=17] { line-dasharray: 20,8; }
+      [surface_type='mtb'] {
+        line-dasharray: 2,2;
+        [zoom>=16] { line-dasharray: 4,4; }
+        [zoom>=17] { line-dasharray: 8,8; }
+      }
+    }
+
+    line-cap: round;
+    line-join: round;
+    line-color: @cycle-fill;
+    #tunnel { line-color: lighten(@cycle-fill, 15%); }
+
+    [can_bicycle='no'] {
+      line-color: @standard-nobicycle;
+      #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
+    }
+
+    line-width: @rdz11_cycle;
+    [oneway='no'][oneway_bicycle='no'] { line-width: @rdz11_cycle*1.5; }
+    [zoom>=12] {
       line-width: @rdz12_cycle;
-      [oneway='no'][oneway_bicycle='no'] {
-          line-width: @rdz12_cycle*1.5;
-      }
+      [oneway='no'][oneway_bicycle='no'] { line-width: @rdz12_cycle*1.5; }
     }
-  }
-  [zoom>=13] {
-    [type='track']      { line-width: @rdz13_track; }
-    [type='bridleway']   { line-width: @rdz13_bridleway; }
-    [type='footway']   { line-width: @rdz13_footway; }
-    [type='path'] {
-      line-width: @rdz13_path;
-    }
-    [type='steps']        { line-width: @rdz13_steps;      line-dasharray: 0.5,0.5; }
-    [type='cycleway'],
-    [type='path'][can_bicycle='designated'] {
+    [zoom>=13] {
       line-width: @rdz13_cycle;
-      [oneway='no'][oneway_bicycle='no'] {
-        line-width: @rdz13_cycle*1.5;
-      }
+      [oneway='no'][oneway_bicycle='no'] { line-width: @rdz13_cycle*1.5; }
     }
-  }
-  [zoom>=14] {
-    [type='track']      { line-width: @rdz14_track; }
-    [type='bridleway']   { line-width: @rdz14_bridleway; }
-    [type='footway']   { line-width: @rdz14_footway; }
-    [type='path'] {
-      line-width: @rdz14_path;
-    }
-    [type='steps']        { line-width: @rdz14_steps;      line-dasharray: 0.5,0.5; }
-    [type='cycleway'],
-    [type='path'][can_bicycle='designated'] {
+    [zoom>=14] {
       line-width: @rdz14_cycle;
-      [oneway='no'][oneway_bicycle='no'] {
-          line-width: @rdz14_cycle*1.5;
-      }
+      [oneway='no'][oneway_bicycle='no'] { line-width: @rdz14_cycle*1.5; }
     }
-  }
-  [zoom>=15] {
-    [type='track']      { line-width: @rdz15_track; }
-    [type='bridleway']   { line-width: @rdz15_bridleway; }
-    [type='footway']   { line-width: @rdz15_footway; }
-    [type='path'] {
-      line-width: @rdz15_path;
-    }
-    [type='steps']        { line-width: @rdz15_steps;      line-dasharray: 0.5,0.5; }
-    [type='cycleway'],
-    [type='path'][can_bicycle='designated'] {
+    [zoom>=15] {
       line-width: @rdz15_cycle;
-      [oneway='no'][oneway_bicycle='no'] {
-          line-width: @rdz15_cycle*1.5;
-      }
+      [oneway='no'][oneway_bicycle='no'] { line-width: @rdz15_cycle*1.5; }
     }
-  }
-  [zoom>=16] {
-    [type='track']      { line-width: @rdz16_track; }
-    [type='bridleway']   { line-width: @rdz16_bridleway; }
-    [type='footway']   { line-width: @rdz16_footway; }
-    [type='path'] {
-      line-width: @rdz16_path;
-    }
-    [type='steps']        { line-width: @rdz16_steps;      line-dasharray: 1.5,0.75; }
-    [type='cycleway'],
-    [type='path'][can_bicycle='designated'] {
+    [zoom>=16] {
       line-width: @rdz16_cycle;
-      [oneway='no'][oneway_bicycle='no'] {
-          line-width: @rdz16_cycle*1.5;
-      }
+      [oneway='no'][oneway_bicycle='no'] { line-width: @rdz16_cycle*1.5; }
     }
-  }
-  [zoom>=17] {
-    [type='track']      { line-width: @rdz17_track; }
-    [type='bridleway']   { line-width: @rdz17_bridleway; }
-    [type='footway']   { line-width: @rdz17_footway; }
-    [type='path'] {
-      line-width: @rdz17_path;
-    }
-    [type='steps']        { line-width: @rdz17_steps;      line-dasharray: 2,1; }
-    [type='cycleway'],
-    [type='path'][can_bicycle='designated'] {
+    [zoom>=17] {
       line-width: @rdz17_cycle;
-      [oneway='no'][oneway_bicycle='no'] {
-          line-width: @rdz17_cycle*1.5;
-      }
+      [oneway='no'][oneway_bicycle='no'] { line-width: @rdz17_cycle*1.5; }
     }
-  }
-  [zoom>=18] {
-    [type='track']      { line-width: @rdz18_track; }
-    [type='bridleway']   { line-width: @rdz18_bridleway; }
-    [type='footway']   { line-width: @rdz18_footway; }
-    [type='path'] {
-      line-width: @rdz18_path;
-    }
-    [type='steps']        { line-width: @rdz18_steps;      line-dasharray: 2,1; }
-    [type='cycleway'],
-    [type='path'][can_bicycle='designated'] {
+    [zoom>=18] {
       line-width: @rdz18_cycle;
-      [oneway='no'][oneway_bicycle='no'] {
-          line-width: @rdz18_cycle*1.5;
-      }
+      [oneway='no'][oneway_bicycle='no'] { line-width: @rdz18_cycle*1.5; }
     }
   }
+
+  [type='path'][zoom >= 11]
+  {
+    [surface_type='unknown'][zoom >= 13],
+    [surface_type='cyclocross'][zoom >= 12],
+    [surface_type='mtb'][zoom >= 12] {
+      background/line-join: round;
+      background/line-opacity: 0.4;
+      background/line-color: #FFFFFF;
+
+      background/line-width: @rdz12_path;
+      [can_bicycle='designated'] {
+        background/line-width: @rdz12_cycle;
+        [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz12_cycle*1.5; }
+      }
+      [zoom>=13] {
+        background/line-width: @rdz13_path;
+        [can_bicycle='designated'] {
+          background/line-width: @rdz13_cycle;
+          [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz13_cycle*1.5; }
+        }
+      }
+      [zoom>=14] {
+        background/line-width: @rdz14_path;
+        [can_bicycle='designated'] {
+          background/line-width: @rdz14_cycle;
+          [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz14_cycle*1.5; }
+        }
+      }
+      [zoom>=15] {
+        background/line-width: @rdz15_path;
+        [can_bicycle='designated'] {
+          background/line-width: @rdz15_cycle;
+          [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz15_cycle*1.5; }
+        }
+      }
+      [zoom>=16] {
+        background/line-width: @rdz16_path;
+        [can_bicycle='designated'] {
+          background/line-width: @rdz16_cycle;
+          [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz16_cycle*1.5; }
+        }
+      }
+      [zoom>=17] {
+        background/line-width: @rdz17_path;
+        [can_bicycle='designated'] {
+          background/line-width: @rdz17_cycle;
+          [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz17_cycle*1.5; }
+        }
+      }
+      [zoom>=18] {
+        background/line-width: @rdz18_path;
+        [can_bicycle='designated'] {
+          background/line-width: @rdz18_cycle;
+          [oneway='no'][oneway_bicycle='no'] { background/line-width: @rdz18_cycle*1.5; }
+        }
+      }
+
+      line-cap: butt;
+      line-dasharray: 10,1;
+      [surface_type='cyclocross'][zoom >= 12] {
+        line-dasharray: 5,2;
+        [zoom>=16] { line-dasharray: 10,4; }
+        [zoom>=17] { line-dasharray: 20,8; }
+      }
+      [surface_type='mtb'][zoom >= 12] {
+        line-dasharray: 2,2;
+        [zoom>=16] { line-dasharray: 4,4; }
+        [zoom>=17] { line-dasharray: 8,8; }
+      }
+    }
+
+    line-cap: round;
+    line-join: round;
+    line-color: @path-fill;
+    #tunnel { line-color: lighten(@path-fill, 10%); }
+
+    [can_bicycle='designated'] {
+      line-color: @mixed-cycle-fill;
+      #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
+
+      [segregated='yes'] {
+        line-color: @cycle-fill;
+        #tunnel { line-color: lighten(@cycle-fill, 15%); }
+      }
+
+      line-width: @rdz11_cycle;
+      [oneway='no'][oneway_bicycle='no'] { line-width: @rdz11_cycle*1.5; }
+      [zoom>=12] {
+        line-width: @rdz12_cycle;
+        [oneway='no'][oneway_bicycle='no'] { line-width: @rdz12_cycle*1.5; }
+      }
+      [zoom>=13] {
+        line-width: @rdz13_cycle;
+        [oneway='no'][oneway_bicycle='no'] { line-width: @rdz13_cycle*1.5; }
+      }
+      [zoom>=14] {
+        line-width: @rdz14_cycle;
+        [oneway='no'][oneway_bicycle='no'] { line-width: @rdz14_cycle*1.5; }
+      }
+      [zoom>=15] {
+        line-width: @rdz15_cycle;
+        [oneway='no'][oneway_bicycle='no'] { line-width: @rdz15_cycle*1.5; }
+      }
+      [zoom>=16] {
+        line-width: @rdz16_cycle;
+        [oneway='no'][oneway_bicycle='no'] { line-width: @rdz16_cycle*1.5; }
+      }
+      [zoom>=17] {
+        line-width: @rdz17_cycle;
+        [oneway='no'][oneway_bicycle='no'] { line-width: @rdz17_cycle*1.5; }
+      }
+      [zoom>=18] {
+        line-width: @rdz18_cycle;
+        [oneway='no'][oneway_bicycle='no'] { line-width: @rdz18_cycle*1.5; }
+      }
+    }
+
+    [can_bicycle='no'] {
+      line-color: @standard-nobicycle;
+      #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
+    }
+
+    line-width: @rdz11_path;
+    [zoom>=12] { line-width: @rdz12_path; }
+    [zoom>=13] { line-width: @rdz13_path; }
+    [zoom>=14] { line-width: @rdz14_path; }
+    [zoom>=15] { line-width: @rdz15_path; }
+    [zoom>=16] { line-width: @rdz16_path; }
+    [zoom>=17] { line-width: @rdz17_path; }
+    [zoom>=18] { line-width: @rdz18_path; }
+  }
+
+  /*#tunnel {
+    line-cap: butt;
+  }*/
 }
 
 
