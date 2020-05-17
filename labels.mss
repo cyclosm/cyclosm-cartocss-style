@@ -1,7 +1,7 @@
 /* LABELS.MSS CONTENTS:
  * - Area labels
  * - Waterway labels
- * - Bycicle route labels
+ * - Bicycle route labels
  */
 
 /* Font sets are defined in palette.mss */
