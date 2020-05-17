@@ -36,7 +36,6 @@
     polygon-fill: @industrial;
   }
 
-  [type='leisure_allotments'],
   [type='leisure_garden'],
   [type='landuse_grass'],
   [type='natural_grassland'] {
@@ -48,6 +47,35 @@
   [type='landuse_construction'],
   [type='landuse_industrial'] {
     polygon-fill: @industrial;
+  }
+
+  [type='natural_glacier'][zoom >= 5] {
+    polygon-fill: @glacier;
+  }
+  [type='natural_wetland'][zoom >= 5] {
+    polygon-fill: @grass;
+    polygon-pattern-file: url('symbols/openstreetmap-carto/wetland.png');
+    polygon-pattern-alignment: global;
+  }
+  [type='natural_sand'],
+  [type='natural_beach'],
+  [type='natural_dune'] {
+    polygon-fill: @sand;
+  }
+  [type='natural_bare_rock'][zoom >= 5] {
+    polygon-fill: @bare_ground;
+    polygon-pattern-file: url('symbols/openstreetmap-carto/rock_overlay.png');
+  }
+  [type='natural_scree'][zoom >= 5],
+  [type='natural_shingle'][zoom >= 5] {
+    polygon-fill: @bare_ground;
+    polygon-pattern-file: url('symbols/openstreetmap-carto/scree_overlay.png');
+  }
+
+  [type='natural_scrub'][zoom >= 5] {
+    polygon-fill: @scrub;
+    polygon-pattern-file: url('symbols/openstreetmap-carto/scrub.png');
+    polygon-pattern-alignment: global;
   }
 
   [type='natural_heath']         { polygon-fill: @heath; }
@@ -67,6 +95,13 @@
     polygon-fill: @meadow;
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/openstreetmap-carto/orchard.png');
+      polygon-pattern-alignment: global;
+    }
+  }
+  [type='landuse_allotments'] {
+    polygon-fill: @grass;
+    [zoom >= 13] {
+      polygon-pattern-file: url('symbols/openstreetmap-carto/allotments.png');
       polygon-pattern-alignment: global;
     }
   }
@@ -138,32 +173,17 @@
   }
 }
 
-#protected-areas[zoom >=7 ] {
-  line-color: darken(@wooded,25%);
-  line-opacity:  0.3;
-  line-dasharray: 1,1;
-  polygon-fill: darken(@wooded,25%);
-  polygon-opacity: 0.1;
-  [zoom=7] { line-width: 0.4; }
-  [zoom=8] { line-width: 0.6; }
-  [zoom=9] { line-width: 0.8; }
-  [zoom=10] { line-width: 1.0; }
-  [zoom=11] { line-width: 1.5; }
-  [zoom>=12] { line-width: 2.0; }
-}
-
-#military-overlay[type = 'military'][zoom >= 8][way_pixels > 900],
-#military-overlay[type = 'military'][zoom >= 13],
-#military-overlay[type = 'danger_area'][zoom >= 9] {
-  polygon-pattern-file: url('symbols/openstreetmap-carto/military_red_hatch.png');
+#military-overlay[landuse = 'military'][zoom >= 8][way_pixels > 900],
+#military-overlay[landuse = 'military'][zoom >= 13],
+#military-overlay[military = 'danger_area'][zoom >= 9] {
+  polygon-pattern-file: url('symbols/openstreetmap-carto/danger_red_hatch.png');
   polygon-pattern-alignment: global;
   line-color: @military;
   line-opacity: 0.24;
   line-width: 1.0;
   line-offset: -0.5;
   [zoom >= 15] {
-    [type = 'danger_area'] {
-      polygon-pattern-file: url('symbols/openstreetmap-carto/danger_red_hatch.png');
+    [military = 'danger_area'] {
       line-opacity: 0.2;
     }
     line-width: 2;
@@ -184,21 +204,12 @@
 /* ---- BUILDINGS ---- */
 #buildings[zoom>=16] {
   polygon-fill: @building;
-}
-// At the highest zoom levels, render buildings in fancy pseudo-3D.
-// Ordering polygons by their Y-position is necessary for this effect
-// so we use a separate layer that does this for us.
-// Not mandatory but brings a good visualization of the building's perimeter
-// that might be off due to hill shading.
-#buildings[zoom>=18][type != 'hedge'] {
-  polygon-fill:@building;
-  line-color: #b6b2af;
-  line-width: 0.75;
-}
-#buildings[zoom>=18][type = 'hedge'] {
-  polygon-fill:@wooded;
-  line-color: #b6b2af;
-  line-width: 0.75;
+
+  /* Render perimeter of buildings in high zooms */
+  [zoom>=18] {
+    line-color: #b6b2af;
+    line-width: 0.75;
+  }
 }
 
 /* ================================================================== */
@@ -396,5 +407,50 @@ Map { background-color: @water; }
   }
   [man_made = 'embankment'][zoom >= 15]::man_made {
     line-pattern-file: url('symbols/openstreetmap-carto/embankment.svg');
+  }
+}
+
+#barriers_line {
+  [zoom >= 16] {
+    line-width: 0.4;
+    line-color: #444;
+  }
+  [feature = 'barrier_hedge'][zoom >= 16] {
+    line-width: 1.5;
+    line-color: @hedge;
+    [zoom >= 17] {
+      line-width: 2;
+    }
+    [zoom >= 18] {
+      line-width: 3;
+    }
+    [zoom >= 19] {
+      line-width: 4;
+    }
+    [zoom >= 20] {
+      line-width: 5;
+    }
+  }
+  [feature = 'historic_citywalls'],
+  [feature = 'barrier_city_wall'] {
+    [zoom >= 15] {
+      line-width: 1;
+      line-color: lighten(#444, 50%);
+    }
+    [zoom >= 16] {
+      line-width: 1.5;
+    }
+    [zoom >= 17] {
+      line-width: 2;
+    }
+    [zoom >= 18] {
+      line-width: 3;
+    }
+    [zoom >= 19] {
+      line-width: 4;
+    }
+    [zoom >= 20] {
+      line-width: 5;
+    }
   }
 }

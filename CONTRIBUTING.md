@@ -260,35 +260,24 @@ should edit style files. The `minzoom` / `maxzoom` properties in the
 it will not be displayed. Beware to update these properties to ensure data
 will be available if you edit the style.
 
-### How do I edit road colors or road shields?
+### How do I edit road shields?
 
-Road colors and shields are generated from `road-colors.yml` file using the
-`scripts/generate_road_colors.py` and `scripts/generate_shields.py` scripts.
+Road shields are generated from `road-shields.yml` file using the
+`scripts/generate_shields.py` script.
 
-To be able to use these scripts, you should install the dependencies listed in
+To be able to use this script, you should install the dependencies listed in
 `requirements.txt`. This can be done with `pip install -r
 scripts/requirements.txt`, ideally in a [virtual
 environment](https://docs.python-guide.org/dev/virtualenvs/).
 
-To edit road colors, you should edit them in the `road-colors.yml` file. Then,
-you can run
-
-```
-python scripts/generate_road_colors.py | tee road-colors-generated.mss
-```
-
-to regenerate the style file.
-
-
-To edit the shields colors, you should edit them in the `road-colors.yml`
+To edit the shields colors, you should edit them in the `road-shields.yml`
 file. Then, you can run
 
 ```
-python scripts/generate_road_colors.py | tee road-colors-generated.mss
 python scripts/generate_shields.py
 ```
 
-to regenerate the shields files and corresponding style sheets.
+to regenerate the shields files.
 
 
 ### What is the order in which info is drawn on the map?

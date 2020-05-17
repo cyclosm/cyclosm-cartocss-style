@@ -37,11 +37,16 @@
 @cemetery:          #D6DED2;
 @wooded:            #95bd84;
 @heath:             #b2c068;
+@scrub:             #c8d7ab;
 @farmland:          #fbf0e3;
 @water:             #8ecbeb;
+@glacier:           #ddecec;
 @religious:         #ded4b2;
 @military:          #f55;
 @quarry:            #c5c3c3;
+@sand:              #f5e9c6;
+@bare_ground:       #eee5dc;
+@hedge:             #add19e;
 
 @nature_reserve:    #05620e;
 
@@ -60,31 +65,9 @@
 
 @power-line: #888;
 
-/* ================================================================== */
-/* ROAD COLORS
-/* ================================================================== */
+@admin-boundaries: #888;
+@state-boundaries: #333;
 
-/* For each class of road there are three color variables:
- * - line: for lower zoomlevels when the road is represented by a
- *         single solid line.
- * - case: for higher zoomlevels, this color is for the road's
- *         casing (outline).
- * - fill: for higher zoomlevels, this color is for the road's
- *         inner fill (inline).
- */
-
-@pedestrian_area_fill:   #dce3e0;
-
-@cycle_lane_case:   #0000ff;
-@cycle_track_case:  #0000ff;
-@cycle_busway_case: #0000ff;
-
-@aeroway:           #ddd;
-
-@surfaceDarker1: 10%;
-@surfaceLighter1: 20%;
-@surfaceDarker2: 20%;
-@surfaceLighter2: 30%;
 
 /* ================================================================== */
 /* LABEL COLORS
@@ -119,6 +102,9 @@
 
 @ferry-route: #66f;
 @ferry-route-text: @ferry-route;
+
+@conditional-text: #ff2701;
+@conditional-cycle-text: #0000ce;
 
 /* Also used for other small places: hamlets, suburbs, localities */
 @village_text:      #444;
@@ -165,10 +151,10 @@
 /* ================================================================== */
 @bicycle_parking_line: 	#fff;
 @secured_bicycle_parking_line: #edd502;
-@bicycle_parking_fill: 	#0000ff;
+@bicycle_parking_fill: 	#0000ce;
 @motorcycle_parking_line:  #fff;
 @secured_motorcycle_parking_line: @secured_bicycle_parking_line;
-@motorcycle_parking_fill:  #0050ff;
+@motorcycle_parking_fill:  #0060ff;
 
 @natural_volcano: #980000;
 

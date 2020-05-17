@@ -1,226 +1,313 @@
 {
+    "data_format": 1,
     "project": {
-        "contact_name": "Lucas Verney (Phyks)", 
-        "contact_email": "phyks+cyclosm@phyks.me", 
-        "name": "CyclOSM mapnik style (bike-oriented mapnik style)", 
-        "project_url": "https://github.com/cyclosm/cyclosm-cartocss-style", 
-        "description": "This files contains all keys used for rendering in CyclOSM carto style."
-    }, 
-    "data_format": 1, 
+        "name": "CyclOSM mapnik style (bike-oriented mapnik style)",
+        "description": "This files contains all keys used for rendering in CyclOSM carto style.",
+        "project_url": "https://github.com/cyclosm/cyclosm-cartocss-style",
+        "contact_name": "Lucas Verney (Phyks)",
+        "contact_email": "phyks+cyclosm@phyks.me"
+    },
     "tags": [
         {
+            "key": "access:conditional"
+        },
+        {
             "key": "addr:unit"
-        }, 
+        },
         {
             "key": "admin_level"
-        }, 
+        },
+        {
+            "key": "aerialway"
+        },
+        {
+            "key": "aerialway:bicycle"
+        },
         {
             "key": "aeroway"
-        }, 
+        },
         {
             "key": "amenity"
-        }, 
+        },
         {
             "key": "artwork_type"
-        }, 
+        },
         {
             "key": "automated"
-        }, 
+        },
         {
             "key": "barrier"
-        }, 
+        },
+        {
+            "key": "basin"
+        },
         {
             "key": "bicycle"
-        }, 
+        },
+        {
+            "key": "bicycle:conditional"
+        },
         {
             "key": "bicycle_parking"
-        }, 
+        },
+        {
+            "key": "bicycle_road"
+        },
         {
             "key": "boundary"
-        }, 
-        {
-            "key": "bridge"
-        }, 
+        },
         {
             "key": "building"
-        }, 
+        },
+        {
+            "key": "bus"
+        },
         {
             "key": "capacity"
-        }, 
+        },
         {
             "key": "capital"
-        }, 
+        },
         {
             "key": "car_wash"
-        }, 
+        },
         {
             "key": "castle_type"
-        }, 
+        },
         {
             "key": "compressed_air"
-        }, 
-        {
-            "key": "construction"
-        }, 
+        },
         {
             "key": "cyclestreet"
-        }, 
+        },
         {
             "key": "cycleway"
-        }, 
+        },
         {
             "key": "cycleway:both"
-        }, 
+        },
         {
             "key": "cycleway:left"
-        }, 
+        },
+        {
+            "key": "cycleway:left:oneway"
+        },
         {
             "key": "cycleway:right"
-        }, 
+        },
+        {
+            "key": "cycleway:right:oneway"
+        },
+        {
+            "key": "denomination"
+        },
         {
             "key": "direction"
-        }, 
+        },
         {
             "key": "drinking_water"
-        }, 
-        {
-            "key": "ele"
-        }, 
+        },
         {
             "key": "emergency"
-        }, 
+        },
+        {
+            "key": "ford"
+        },
         {
             "key": "generator:source"
-        }, 
+        },
         {
             "key": "healthcare"
-        }, 
+        },
         {
             "key": "height"
-        }, 
+        },
         {
             "key": "highway"
-        }, 
+        },
+        {
+            "key": "historic"
+        },
         {
             "key": "iata"
-        }, 
+        },
         {
             "key": "icao"
-        }, 
+        },
         {
             "key": "icn_ref"
-        }, 
+        },
+        {
+            "key": "icon"
+        },
+        {
+            "key": "indoor"
+        },
         {
             "key": "information"
-        }, 
+        },
         {
-            "key": "junction"
-        }, 
+            "key": "intermittent"
+        },
+        {
+            "key": "label"
+        },
         {
             "key": "landuse"
-        }, 
+        },
         {
             "key": "lcn_ref"
-        }, 
+        },
+        {
+            "key": "leaf_type"
+        },
         {
             "key": "leisure"
-        }, 
+        },
         {
             "key": "location"
-        }, 
+        },
         {
             "key": "man_made"
-        }, 
+        },
         {
             "key": "maxspeed"
-        }, 
+        },
         {
             "key": "memorial"
-        }, 
+        },
+        {
+            "key": "military"
+        },
+        {
+            "key": "monitoring:bicycle"
+        },
         {
             "key": "motor_vehicle"
-        }, 
+        },
+        {
+            "key": "motor_vehicle:conditional"
+        },
+        {
+            "key": "motorcar"
+        },
+        {
+            "key": "motorroad"
+        },
+        {
+            "key": "mtb:scale"
+        },
+        {
+            "key": "mtb:scale:imba"
+        },
         {
             "key": "name"
-        }, 
+        },
         {
             "key": "ncn_ref"
-        }, 
+        },
         {
             "key": "network"
-        }, 
+        },
+        {
+            "key": "network:type"
+        },
         {
             "key": "oneway"
-        }, 
+        },
         {
             "key": "oneway:bicycle"
-        }, 
+        },
         {
             "key": "place"
-        }, 
+        },
         {
             "key": "population"
-        }, 
+        },
+        {
+            "key": "power"
+        },
+        {
+            "key": "protect_class"
+        },
+        {
+            "key": "psv"
+        },
         {
             "key": "railway"
-        }, 
+        },
         {
             "key": "ramp:bicycle"
-        }, 
+        },
+        {
+            "key": "ramp:luggage"
+        },
         {
             "key": "ramp:stroller"
-        }, 
+        },
         {
             "key": "ramp:wheelchair"
-        }, 
+        },
         {
             "key": "rcn_ref"
-        }, 
+        },
         {
             "key": "route"
-        }, 
+        },
+        {
+            "key": "seasonal"
+        },
+        {
+            "key": "segregated"
+        },
         {
             "key": "service:bicycle:diy"
-        }, 
+        },
         {
             "key": "service:bicycle:pump"
-        }, 
+        },
         {
             "key": "service:bicycle:rental"
-        }, 
+        },
         {
             "key": "service:bicycle:repair"
-        }, 
+        },
         {
             "key": "service:bicycle:retail"
-        }, 
+        },
         {
             "key": "shelter"
-        }, 
+        },
         {
             "key": "smoothness"
-        }, 
+        },
         {
             "key": "state"
-        }, 
+        },
         {
             "key": "station"
-        }, 
+        },
         {
             "key": "supervised"
-        }, 
-        {
-            "key": "tourism"
-        }, 
+        },
         {
             "key": "traffic_calming"
-        }, 
+        },
         {
             "key": "tunnel"
-        }, 
+        },
+        {
+            "key": "vehicle"
+        },
+        {
+            "key": "vehicle:conditional"
+        },
+        {
+            "key": "vending"
+        },
         {
             "key": "waterway"
-        }, 
+        },
         {
             "key": "width"
         }

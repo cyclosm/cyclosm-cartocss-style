@@ -1,0 +1,84 @@
+# This is the input for scripts/generate_shields.py
+# Colours used by the road shields script
+shield:
+  icn:
+    fill: '#ff00ff'
+    stroke_fill: '#ff00ff'
+    additional_sizes:
+      - base
+  ncn:
+    fill: '#aa00ff'
+    stroke_fill: '#aa00ff'
+    additional_sizes:
+      - base
+  rcn:
+    fill: '#5500ff'
+    stroke_fill: '#5500ff'
+    additional_sizes:
+      - base
+  lcn:
+    fill: '#0000ff'
+    stroke_fill: '#0000ff'
+    additional_sizes:
+      - base
+  mtb:
+    fill: '#d15000'
+    stroke_fill: '#ff6200'
+    additional_sizes:
+      - base
+  icn-junction:
+    fill: 'rgba(255, 0, 255, 0.5)'
+    stroke_fill: '#ff00ff'
+    rounded_corners: 500
+    max_height: 1
+    max_width: 1
+    shield_width: 12
+    shield_height: 12
+    additional_sizes:
+      - base
+      - z16
+    z16:
+      shield_width: 24
+      shield_height: 24
+  ncn-junction:
+    fill: 'rgba(170, 0, 255, 0.5)'
+    stroke_fill: '#aa00ff'
+    rounded_corners: 500
+    max_height: 1
+    max_width: 1
+    shield_width: 12
+    shield_height: 12
+    additional_sizes:
+      - base
+      - z16
+    z16:
+      shield_width: 24
+      shield_height: 24
+  rcn-junction:
+    fill: 'rgba(85, 0, 255, 0.5)'
+    stroke_fill: '#5500ff'
+    rounded_corners: 500
+    max_height: 1
+    max_width: 1
+    shield_width: 12
+    shield_height: 12
+    additional_sizes:
+      - base
+      - z16
+    z16:
+      shield_width: 24
+      shield_height: 24
+  lcn-junction:
+    fill: 'rgba(0, 0, 255, 0.5)'
+    stroke_fill: '#0000ff'
+    rounded_corners: 500
+    max_height: 1
+    max_width: 1
+    shield_width: 12
+    shield_height: 12
+    additional_sizes:
+      - base
+      - z16
+    z16:
+      shield_width: 24
+      shield_height: 24

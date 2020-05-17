@@ -1,3 +1,10 @@
+#amenities-poly {
+  [feature = 'amenity_bicycle_parking'][zoom >= 16] {
+    polygon-fill: #eeeeee;
+    line-color: #8d8383;
+  }
+}
+
 #barriers[zoom>=17][zoom<=20] {
   [barrier = 'block'],
   [barrier = 'bollard'],
@@ -195,6 +202,23 @@
     }
   }
 
+  [feature = 'amenity_vending_machine'][vending = 'bicycle_tube'][zoom >= 16] {
+    marker-file: url('symbols/amenity/bicycle_tube_vending.svg');
+    marker-fill: @bicycle-amenity;
+    marker-placement: interior;
+    marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
+  }
+
+  [feature = 'amenity_charging_station'][zoom >= 15] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/charging_station.svg');
+    marker-fill: @bicycle-amenity;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'man_made_monitoring_station'][zoom >= 18] {
     marker-file: url('symbols/amenity/bicycle_monitoring_station.svg');
     marker-fill: @man-made-icon;
@@ -258,6 +282,9 @@
     }
     [information = 'guidepost'] {
       marker-file: url('symbols/openstreetmap-carto/tourism/guidepost.svg');
+      [bicycle = 'yes'], [mtb = 'yes'] {
+        marker-fill: @bicycle-rental;
+      }
     }
     [information = 'office'] {
       marker-file: url('symbols/openstreetmap-carto/tourism/office.svg');
@@ -267,6 +294,9 @@
     [information = 'tactile_map'],
     [information = 'tactile_model'] {
       marker-file: url('symbols/openstreetmap-carto/tourism/map.svg');
+      [bicycle = 'yes'], [mtb = 'yes'] {
+        marker-fill: @bicycle-rental;
+      }
     }
     [information = 'terminal'] {
       marker-file: url('symbols/openstreetmap-carto/tourism/terminal.svg');
@@ -316,6 +346,41 @@
 
   [feature = 'tourism_museum'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/tourism/museum.svg');
+    marker-fill: @culture;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_cinema'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/cinema.svg');
+    marker-fill: @culture;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_theatre'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/theatre.svg');
+    marker-fill: @culture;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_bureau_de_change'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/bureau_de_change.svg');
+    marker-fill: @amenity-common;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_casino'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/casino.svg');
+    marker-fill: @culture;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'amenity_library'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/library.svg');
     marker-fill: @culture;
     marker-placement: interior;
     marker-clip: false;
@@ -545,6 +610,11 @@
   [feature = 'natural_cave_entrance'][zoom >= 15] {
     marker-file: url('symbols/openstreetmap-carto/natural/cave.svg');
     marker-placement: interior;
+    marker-clip: false;
+  }
+
+  [feature = 'natural_spring'][zoom >= 16] {
+    marker-file: url('symbols/openstreetmap-carto/spring.svg');
     marker-clip: false;
   }
 
@@ -850,7 +920,6 @@
     marker-fill: @amenity-common;
     marker-clip: false;
   }
-
 }
 
 #amenities-points-text,
@@ -907,7 +976,7 @@
   }
 
   [feature = 'shop_supermarket'] {
-    [zoom >= 16] {
+    [zoom >= 17] {
       text-name: "[name]";
       text-size: @standard-font-size;
       text-wrap-width: @standard-wrap-width;
@@ -1004,19 +1073,26 @@
     text-dx: 12;
   }
 
+  [feature = 'tourism_information'][zoom >= 19],
+  [feature = 'tourism_information']["information"='office'][zoom >= 17],
   [feature = 'tourism_artwork'][zoom >= 19],
   [feature = 'tourism_gallery'][zoom >= 17],
-  [feature = 'historic_city_gate'][zoom >= 17],
   [feature = 'tourism_museum'][zoom >= 17],
-  [feature = 'man_made_cross'][zoom >= 18],
+  [feature = 'historic_city_gate'][zoom >= 17],
   [feature = 'historic_wayside_cross'][zoom >= 18],
   [feature = 'historic_monument'][zoom >= 17],
+  [feature = 'amenity_theatre'][zoom >= 17],
+  [feature = 'amenity_cinema'][zoom >= 17],
+  [feature = 'amenity_library'][zoom >= 17],
+  [feature = 'amenity_bureau_de_change'][zoom >= 17],
+  [feature = 'amenity_casino'][zoom >= 17],
+  [feature = 'man_made_cross'][zoom >= 18],
   [feature = 'man_made_lighthouse'][zoom >= 17] {
 		text-name: "[name]";
 		text-size: @standard-font-size;
 		text-wrap-width: @standard-wrap-width;
 		text-line-spacing: @standard-line-spacing-size;
-		text-fill: @memorials;
+		text-fill: @culture;
 		text-dy: 11;
 		text-face-name: @standard-font;
 		text-halo-radius: @standard-halo-radius;
@@ -1065,29 +1141,14 @@
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
     text-line-spacing: @standard-line-spacing-size;
-    text-fill: #8a4508;
+    text-fill: @amenity-common;
     [feature = 'natural_volcano'] { text-fill: #b10000; }
     text-dy: 7;
-    [feature = 'tourism_viewpoint'] { text-dy: 11; }
+    [feature = 'tourism_viewpoint'] { text-dy: 11; text-fill: darken(@amenity-common, 5%); }
     text-face-name: @standard-font;
     text-halo-radius: 1.4;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
-  }
-
-  [feature = 'tourism_information'][zoom >= 19],
-  [feature = 'tourism_information']["information"='office'][zoom >= 17] {
-    text-name: "[name]";
-    text-size: @standard-font-size;
-    text-wrap-width: @standard-wrap-width;
-    text-line-spacing: @standard-line-spacing-size;
-    text-fill: darken(black, 30%);
-    [information = 'office'] { text-fill: @amenity-common; }
-    text-face-name: @standard-font;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @standard-halo-fill;
-    text-placement: interior;
-    text-dy: 11;
   }
 
   [feature = 'waterway_waterfall'] {

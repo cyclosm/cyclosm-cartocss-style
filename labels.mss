@@ -61,6 +61,9 @@
       text-halo-fill: lighten(@water, 10%);
       text-face-name: @sans_italic;
     }
+    [type='national_park'],
+    [type='aboriginal_lands'],
+    [type='protected_area'],
     [type='nature_reserve'] {
       text-face-name: @sans_italic;
       text-fill: @nature_reserve;
@@ -127,18 +130,19 @@
 /* ================================================================== */
 
 #roads-text-ref-low-zoom[zoom < 13] {
-  [highway = 'motorway_trunk'][zoom >= 10],
+  [highway = 'motorway'][zoom >= 10],
+  [highway = 'trunk'][zoom >= 10],
   [highway = 'primary'][zoom >= 11],
   [highway = 'secondary'][zoom >= 12] {
-      text-name: "[refs]";
-      text-size: 7;
-      text-fill: @road_text;
-      text-spacing: 600;
-      text-clip: false;
-      text-placement: line;
-      text-face-name: @sans;
-      text-repeat-distance: @major-highway-text-repeat-distance;
-      text-halo-radius: @standard-halo-radius;
+    text-name: "[refs]";
+    text-size: 7;
+    text-fill: @road_text;
+    text-spacing: 600;
+    text-clip: false;
+    text-placement: line;
+    text-face-name: @sans;
+    text-repeat-distance: @major-highway-text-repeat-distance;
+    text-halo-radius: @standard-halo-radius;
   }
 }
 
@@ -365,6 +369,36 @@
   }
 }
 
+
+#roads-text-conditional[zoom >= 20] {
+  text-name: ""; /* Useless since it is overloaded after, but it rises a warning. */
+  text-fill: @conditional-text;
+  text-size: 9;
+  text-halo-radius: @standard-halo-radius;
+  text-halo-fill: @road_halo;
+  text-spacing: 300;
+  text-clip: false;
+  text-placement: line;
+  text-face-name: @sans;
+  text-vertical-alignment: top;
+  text-dy: -12;
+  text-repeat-distance: @minor-highway-text-repeat-distance;
+
+  [motor_vehicle_conditional != null] {
+    text-name: "motor=" + [motor_vehicle_conditional];
+    text-fill: @conditional-cycle-text;
+  }
+  [access_conditional != null] {
+    text-name: "all=" + [access_conditional];
+  }
+  [vehicle_conditional != null] {
+    text-name: "vehicle=" + [vehicle_conditional];
+  }
+  [bicycle_conditional != null] {
+    text-name: "bicycle=" + [bicycle_conditional];
+  }
+}
+
 #paths-text-name {
   [highway = 'track'] {
     [zoom >= 16] {
@@ -459,6 +493,35 @@
      }
   }
 }
+/* Render designated roads */
+#roads-text-name[highway != 'construction'][zoom>=15] {
+  [bicycle='designated'][oneway = 'yes'][oneway_bicycle != 'no'],
+  [bicycle='designated'][oneway = '-1'][oneway_bicycle != 'no'] {
+     designated/marker-placement: line;
+     designated/marker-max-error: 0.5;
+     designated/marker-spacing: 50;
+     designated/marker-fill: @cycle-fill;
+     designated/marker-file: url(symbols/oneway.svg);
+     [oneway='-1'] { bike/marker-file: url(symbols/oneway-reverse.svg); }
+     [zoom=15] {
+        bike/marker-transform: "scale(0.75)";
+        bike/marker-spacing: 40;
+     }
+  }
+  [bicycle='designated'][oneway = 'yes'][oneway_bicycle = 'no'],
+  [bicycle='designated'][oneway = '-1'][oneway_bicycle = 'no'],
+  [bicycle='designated'][oneway != 'yes'][oneway != '-1'][oneway_bicycle != 'yes'][oneway_bicycle != '-1'] {
+     designated/marker-placement: line;
+     designated/marker-max-error: 0.5;
+     designated/marker-spacing: 50;
+     designated/marker-fill: @cycle-fill;
+     designated/marker-file: url(symbols/oneway-cycle.svg);
+     [zoom=15] {
+        bike/marker-transform: "scale(0.75)";
+        bike/marker-spacing: 40;
+     }
+  }
+}
 
 
 /* ================================================================== */
@@ -470,6 +533,7 @@
   marker-fill: @trainstation-icon;
   marker-placement: interior;
   marker-clip: false;
+
   // Train station
   [station=null] {
     marker-width: 6;
@@ -491,21 +555,24 @@
       text-size: 1.3 * @standard-font-size;
     }
   }
+
   // Subway / light rail
   [station!=null] {
-    marker-width: 3;
-    [zoom >= 16] {
-      marker-width: 6;
-      text-name: "[name]";
-      text-size: @standard-font-size;
-      text-wrap-width: @standard-wrap-width;
-      text-line-spacing: @standard-line-spacing-size;
-      text-fill: @trainstation-text;
-      text-dy: 10;
-      text-face-name: @sans_bold;
-      text-halo-radius: @standard-halo-radius;
-      text-halo-fill: @standard-halo-fill;
-      text-placement: interior;
+    [zoom >= 14] {
+      marker-width: 3;
+      [zoom >= 16] {
+        marker-width: 6;
+        text-name: "[name]";
+        text-size: @standard-font-size;
+        text-wrap-width: @standard-wrap-width;
+        text-line-spacing: @standard-line-spacing-size;
+        text-fill: @trainstation-text;
+        text-dy: 10;
+        text-face-name: @sans_bold;
+        text-halo-radius: @standard-halo-radius;
+        text-halo-fill: @standard-halo-fill;
+        text-placement: interior;
+      }
     }
   }
 }

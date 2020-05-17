@@ -8,8 +8,83 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Add blue arrows on designated roads. See #304.
+* Fix missing wind turbines. See #267.
+* Fix incorrect overloading of amenities tags, leading to some amenities not
+    being shown. See windmills in #267 for instance.
+* Render guidepost and map for cyclists. See #341.
+* Render unknown surface. See #345.
+* Rework blue / cyan / green colors. See #324.
+* Fix a bug with dashed road surface being drawn on top of side cycle track.
+    See #136.
+
+
+## v0.3.5
+
+* Only display supermarket labels from Z17 (was from Z16). See #323.
+* Add line-cap round for cycleway/path to avoid empty spaces. See #224.
+* Fix a bug with area label rendered below line barrier. See #321.
+* Render name of farmyards. See #264.
+* Render glaciers, scrubs and spring. See #229, #327
+* Fix a bug with some protected areas labels not rendered. See #329.
+* Render `highway=bridleway|footway` + `bicycle=designated` as a shared path. See #215.
+* Render indoor paths in faded color. See #334.
+* Render `mtb:scale` and `mtb:scale:imba`. See #336.
+* Render railway at low zooms. See #317
+* Improve density of city names in countryside at Z10/Z11. See #195.
+* Render inner tube vending machine. See #315.
+* Darken administrative boundaries to make them easier to see. See #343.
+* Render bicycle parking areas. See #322.
+
+
+## v0.3.4
+
+* Render `amenity=charging_station` designed for bicycles. Fix #290.
+* Fix an issue with handling of bicycle node networks, leading to some
+    regional routes not being drawn in France. See #297.
+* Fix a typo leading to residential roads not being visible at zoom 12.
+    See #302.
+* Fix noisy cycle routes at low zoom levels by using `ST_Simplify` with lower
+    tolerance instead of `ST_SnapToGrid`. See #253.
+* Render cinema, theatre, library, casino and change. See #300.
+* Fix ferry route rendered over place labels in low zooms. See #313.
+* Render administrative boundaries. See #209.
+* Properly render national parks. See #37.
+* Remove useless `ST_IsValid` check in some layers. See #316.
+* Fix ref not rendered for trunk and motorway. See #294.
+* Add conditional text along the way for
+    bicycle|vehicle|access|motor_vehicle:conditional. See #65.
+* Lighten tunnel roads, including cycleways. See #298.
+
+
+## v0.3.3
+
 * Render `highway=trunk` as bikeable by default, fix #258.
 * Fix some missing oneway arrows on cycleways and paths. See #257.
+* Fix a bug with `æerialway` layer, rendering it at all zoom levels.
+* Fix some SQL queries to ensure the geographic index can be fully used and
+    restore performances.
+* Fix a bug where `military` areas where not visible when combined with
+    `landuse`.
+* Hide regional cycling network (part of a node network) at zooms 8 to 10.
+    This improves a lot the current render in the Netherlands.
+* Give bridges for large roads a border to emphasize the roads overlaps.
+* Fix a bug with incorrect two-ways arrows being shown on `highway=footway`.
+    See #289.
+* Tourism viewpoint labels where still labeled in brown. Fixed, see #263.
+* Fix cycleways being hidden by primary roads along a tunnel. See #278.
+* Render subway station from z14 instead of Z12, to avoid too much
+    stations in large cities. Fix #262.
+* Render halt train station, fix #272.
+* Draw roads at Z9 / Z10 with better contrast with the background. Fix #255.
+* Simpler MTB quality surface scheme, which should be more readable.
+* Render new landuses: allotments, natural sand/beach/dune and wetland,
+    natural scree/shingle and bare_rock.
+* Render access/bicycle=private roads as not bikable (grey). Fix #259.
+* Improve bikability check for the render by taking into account `vehicle`
+    tag.
+* Draw motorroads as not cyclable, fix #291.
+
 
 ## v0.3.2
 
