@@ -1,8 +1,8 @@
-# Running OpenStreetMap Carto with Docker
+# Running CyclOSM with Docker
 
 [Docker](https://docker.com) is a virtualized environment running a [_Docker demon_](https://docs.docker.com/engine/docker-overview), in which you can run software without altering your host system permanently. The software components run in _containers_ that are easy to setup and tear down individually. The Docker demon can use operating-system-level virtualization (Linux, Windows) or a virtual machine (macOS, Windows).
 
-This allows to set up a development environment for OpenStreetMap Carto easily. Specifically, this environment consists of a
+This allows to set up a development environment for CyclOSM easily. Specifically, this environment consists of a
 PostgreSQL database to store the OpenStreetMap data and [Kosmtik](https://github.com/kosmtik/kosmtik) for previewing the style.
 
 ## Prerequisites
@@ -11,15 +11,15 @@ Docker is available for Linux, macOS and Windows. [Install](https://www.docker.c
 to be able to run Docker containers. You also need Docker Compose, which should be available once you installed
 Docker itself. Otherwise you need to [install Docker Compose manually](https://docs.docker.com/compose/install/).
 
-You need sufficient disk space of _several Gigabytes_. Docker creates a disk image for its virtual machine that holds the virtualised operating system and the containers. The format (Docker.raw, Docker.qcow2, \*.vhdx, etc.) depends on the host system. It can be a sparse file allocating large amounts of disk space, but still the physical size starts with 2-3 GB for the virtual OS and grows to 6-7 GB when filled with the containers needed for the database, Kosmtik, and a small OSM region. Further 1-2 GB are needed for shape files in the openstreetmap-carto/data repository.
+You need sufficient disk space of _several Gigabytes_. Docker creates a disk image for its virtual machine that holds the virtualised operating system and the containers. The format (Docker.raw, Docker.qcow2, \*.vhdx, etc.) depends on the host system. It can be a sparse file allocating large amounts of disk space, but still the physical size starts with 2-3 GB for the virtual OS and grows to 6-7 GB when filled with the containers needed for the database, Kosmtik, and a small OSM region. Further 1-2 GB are needed for shape files in the cyclosm/data repository.
 
 ## Quick start
 
 If you are eager to get started here is an overview over the necessary steps.
 Read on below to get the details.
 
-* `git clone https://github.com/cyclosm/cyclosm-cartocss-style.git` to clone openstreetmap-carto repository into a directory on your host system
-* download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the openstreetmap-carto directory (for example some small area from [Geofabrik](https://download.geofabrik.de/))
+* `git clone https://github.com/cyclosm/cyclosm-cartocss-style.git` to clone CyclOSM repository into a directory on your host system
+* download OpenStreetMap data in osm.pbf format to a file `data.osm.pbf` and place it within the CyclOSM directory (for example some small area from [Geofabrik](https://download.geofabrik.de/))
 * If necessary, `sudo service postgresql stop` to make sure you don't have currently running a native PostgreSQL server which would conflict with Docker's PostgreSQL server.
 * `docker-compose up import` to import the data (only necessary the first time or when you change the data file)
 * `docker-compose up kosmtik` to run the style preview application
@@ -29,15 +29,15 @@ Read on below to get the details.
 
 ## Repositories
 
-Instructions above will clone main OpenStreetMap Carto repository. To test your own changes you should [fork](https://help.github.com/articles/fork-a-repo/) gravitystorm/openstreetmap-carto repository and [clone your fork](https://help.github.com/articles/cloning-a-repository/).
+Instructions above will clone main CyclOSM repository. To test your own changes you should [fork](https://help.github.com/articles/fork-a-repo/) cyclosm/cyclosm-cartocss-style repository and [clone your fork](https://help.github.com/articles/cloning-a-repository/).
 
-This OpenStreetMap Carto repository needs to be a directory that is shared between your host system and the Docker virtual machine. Home directories are shared by default; if your repository is in another place you need to add this to the Docker sharing list (e.g. macOS: Docker Preferences > File Sharing; Windows: Docker Settings > Shared Drives).
+This CyclOSM repository needs to be a directory that is shared between your host system and the Docker virtual machine. Home directories are shared by default; if your repository is in another place you need to add this to the Docker sharing list (e.g. macOS: Docker Preferences > File Sharing; Windows: Docker Settings > Shared Drives).
 
 ## Importing data
 
-OpenStreetMap Carto needs a database populated with rendering data to work. You first need a data file to import.
+CyclOSM needs a database populated with rendering data to work. You first need a data file to import.
 It's probably easiest to grab an PBF of OSM data from [Geofabrik](https://download.geofabrik.de/).
-Once you have that file put it into the openstreetmap-carto directory and run `docker-compose up import` in the openstreetmap-carto directory.
+Once you have that file put it into the CyclOSM directory and run `docker-compose up import` in the CyclOSM directory.
 This starts the PostgreSQL container (downloads it if it not exists) and starts a container that runs [osm2pgsql](https://github.com/openstreetmap/osm2pgsql) to import the data. The container is built the first time you run that command if it not exists.
 At startup of the container the script `scripts/docker-startup.sh` is invoked which prepares the database and itself starts osm2pgsql for importing the data.
 
@@ -56,17 +56,17 @@ docker-compose up import
 
 Variables will be remembered in `.env` if you don't have that file, and values in the file will be applied unless you manually assign them.
 
-Depending on your machine and the size of the extract the import can take a while. When it is finished you should have the data necessary to render it with OpenStreetMap Carto.
+Depending on your machine and the size of the extract the import can take a while. When it is finished you should have the data necessary to render it with CyclOSM.
 
 ## Test rendering
 
-After you have the necessary data available you can start Kosmtik to produce a test rendering. For that you run `docker-compose up kosmtik` in the openstreetmap-carto directory. This starts a container with Kosmtik and also starts the PostgreSQL database container if it is not already running. The Kosmtik container is built the first time you run that command if it not exists.
+After you have the necessary data available you can start Kosmtik to produce a test rendering. For that you run `docker-compose up kosmtik` in the CyclOSM directory. This starts a container with Kosmtik and also starts the PostgreSQL database container if it is not already running. The Kosmtik container is built the first time you run that command if it not exists.
 At startup of the container the script `scripts/docker-startup.sh` is invoked which downloads necessary shapefiles with `scripts/get-shapefiles.py` (if they are not already present) and indexes them. It afterwards runs Kosmtik. If you have to customize anything, you can do so in the script. The Kosmtik config file can be found in `.kosmtik-config.yml`.
-If you want to have a [local configuration](https://github.com/kosmtik/kosmtik#local-config) for our `project.mml` you can place a `localconfig.js` or `localconfig.json` file into the openstreetmap-carto directory.
+If you want to have a [local configuration](https://github.com/kosmtik/kosmtik#local-config) for our `project.mml` you can place a `localconfig.js` or `localconfig.json` file into the CyclOSM directory.
 
 The shapefile data that is downloaded is owned by the user with UID 1000. If you have another default user id on your system, consider changing the line `USER 1000` in the file `Dockerfile`.
 
-After startup is complete you can browse to [http://localhost:6789](http://localhost:6789) to view the output of Kosmtik. By pressing Ctrl+C on the command line you can stop the container. The PostgreSQL database container is still running then (you can check with `docker ps`). If you want to stop the database container as well you can do so by running `docker-compose stop db` in the openstreetmap-carto directory.
+After startup is complete you can browse to [http://localhost:6789](http://localhost:6789) to view the output of Kosmtik. By pressing Ctrl+C on the command line you can stop the container. The PostgreSQL database container is still running then (you can check with `docker ps`). If you want to stop the database container as well you can do so by running `docker-compose stop db` in the CyclOSM directory.
 
 ## Troubleshooting
 
