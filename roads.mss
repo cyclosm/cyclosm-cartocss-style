@@ -2678,7 +2678,7 @@
 // AEROWAYS
 // ==================================================================
 
-#aeroway[zoom>11] {
+#aeroway[zoom>=11] {
   line-color: @aeroway;
   //[type='runway'] { //default for runway
     line-width: 2;
