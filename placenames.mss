@@ -182,7 +182,7 @@
       text-halo-fill: @city_halo;
       text-halo-radius: @standard-halo-radius * 1.5;
       text-placement-type: simple;
-      text-placements: "N,S,E,W,NW,NE,SE";
+      text-placements: "C,N,S,E,W,NW,NE,SE";
       text-dx: 25;
       text-dy: 20;
 
@@ -239,7 +239,7 @@
       text-line-spacing: -1.0; // -0.10 em
       text-margin: 7.0; // 0.7 em
       text-placement-type: simple;
-      text-placements: "N,S,E,W,NW,NE,SE";
+      text-placements: "C,N,S,E,W,NW,NE,SE";
       text-dx: 25;
       text-dy: 20;
       [zoom >= 9] {
@@ -283,7 +283,7 @@
       text-line-spacing: -0.8; // -0.08 em
       text-margin: 7; // 0.7 em
       text-placement-type: simple;
-      text-placements: "N,S,E,W,NW,NE,SE";
+      text-placements: "C,N,S,E,W,NW,NE,SE";
       text-dx: 25;
       text-dy: 20;
       [zoom >= 11] {
@@ -320,7 +320,7 @@
     text-line-spacing: -0.70; // -0.05 em
     text-margin: 9.8; // 0.7 em
     text-placement-type: simple;
-    text-placements: "N,S,E,W,NW,NE,SE";
+    text-placements: "C,N,S,E,W,NW,NE,SE";
     text-dx: 25;
     text-dy: 20;
     [zoom >= 16] {
@@ -347,7 +347,7 @@
       text-line-spacing: -0.50; // -0.05 em
       text-margin: 7.0; // 0.7 em
       text-placement-type: simple;
-      text-placements: "N,S,E,W,NW,NE,SE";
+      text-placements: "C,N,S,E,W,NW,NE,SE";
       text-dx: 25;
       text-dy: 20;
       [zoom >= 13] {
