@@ -1279,6 +1279,7 @@ Layer:
       ) AS data
   properties:
     minzoom: 2
+    maxzoom: 14
 - id: capital-names
   geometry: point
   <<: *extents
@@ -1322,6 +1323,7 @@ Layer:
       ) AS data
   properties:
     minzoom: 4
+    maxzoom: 10
 - id: placenames-medium
   geometry: point
   <<: *extents
