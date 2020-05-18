@@ -2081,7 +2081,7 @@ Layer:
       ) AS data
   geometry: polygon
   properties:
-    minzoom: 13
+    minzoom: 14
 - id: amenities-points-text
   <<: *extents
   Datasource:
