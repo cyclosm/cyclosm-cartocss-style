@@ -1259,6 +1259,32 @@ Layer:
       ) AS line_barriers
   properties:
     minzoom: 15
+- id: cycle-junction-nodes
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          COALESCE(tags->'icn_ref', tags->'ncn_ref', tags->'rcn_ref', tags->'lcn_ref') AS ref,
+          CASE
+            WHEN (tags->'icn_ref') IS NOT NULL THEN 'icn'
+            WHEN (tags->'ncn_ref') IS NOT NULL THEN 'ncn'
+            WHEN (tags->'rcn_ref') IS NOT NULL THEN 'rcn'
+            WHEN (tags->'lcn_ref') IS NOT NULL THEN 'lcn'
+          END AS network
+        FROM planet_osm_point
+        WHERE
+          (tags->'icn_ref') IS NOT NULL OR
+          (tags->'ncn_ref') IS NOT NULL OR
+          (tags->'rcn_ref') IS NOT NULL OR
+          (tags->'lcn_ref') IS NOT NULL
+        ORDER BY z_order NULLS LAST
+      ) AS data
+  geometry: point
+  properties:
+    minzoom: 13
 - id: country-names
   class: country
   geometry: point
@@ -1562,32 +1588,6 @@ Layer:
   geometry: point
   properties:
     minzoom: 12
-- id: cycle-junction-nodes
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    table: |-
-      (
-        SELECT
-          way,
-          COALESCE(tags->'icn_ref', tags->'ncn_ref', tags->'rcn_ref', tags->'lcn_ref') AS ref,
-          CASE
-            WHEN tags->'icn_ref' IS NOT NULL THEN 'icn'
-            WHEN tags->'ncn_ref' IS NOT NULL THEN 'ncn'
-            WHEN tags->'rcn_ref' IS NOT NULL THEN 'rcn'
-            WHEN tags->'lcn_ref' IS NOT NULL THEN 'lcn'
-          END AS network
-        FROM planet_osm_point
-        WHERE
-          tags->'icn_ref' IS NOT NULL OR
-          tags->'ncn_ref' IS NOT NULL OR
-          tags->'rcn_ref' IS NOT NULL OR
-          tags->'lcn_ref' IS NOT NULL
-        ORDER BY z_order NULLS LAST
-      ) AS data
-  geometry: point
-  properties:
-    minzoom: 13
 - id: oriented-highway-amenities
   <<: *extents
   Datasource:

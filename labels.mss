@@ -1,6 +1,7 @@
 /* LABELS.MSS CONTENTS:
- * - area labels
- * - waterway labels
+ * - Area labels
+ * - Waterway labels
+ * - Bicycle route labels
  */
 
 /* Font sets are defined in palette.mss */
@@ -619,6 +620,12 @@
   shield-size: @shield-size;
   shield-face-name: @sans;
   shield-file: url("symbols/shields/[network]-junction_1x1.svg");
+  [zoom = 13] {
+    shield-transform: "scale(1.5)";
+  }
+  [zoom >= 14][zoom <= 15] {
+    shield-transform: "scale(1.2)";
+  }
   [zoom >= 16] {
     shield-size: @shield-size-z16;
     shield-file: url("symbols/shields/[network]-junction_1x1_z16.svg");
