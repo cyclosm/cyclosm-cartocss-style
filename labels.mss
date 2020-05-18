@@ -529,13 +529,12 @@
 /* ================================================================== */
 
 #train_stations[zoom >= 12]{
-  marker-file: url('symbols/openstreetmap-carto/square.svg');
-  marker-fill: @trainstation-icon;
-  marker-placement: interior;
-  marker-clip: false;
-
   // Train station
   [station=null] {
+    marker-file: url('symbols/openstreetmap-carto/square.svg');
+    marker-fill: @trainstation-icon;
+    marker-placement: interior;
+    marker-clip: false;
     marker-width: 6;
 
     [zoom >= 14] {
@@ -557,22 +556,27 @@
   }
 
   // Subway / light rail
-  [station!=null] {
-    [zoom >= 14] {
-      marker-width: 3;
-      [zoom >= 16] {
-        marker-width: 6;
-        text-name: "[name]";
-        text-size: @standard-font-size;
-        text-wrap-width: @standard-wrap-width;
-        text-line-spacing: @standard-line-spacing-size;
-        text-fill: @trainstation-text;
-        text-dy: 10;
-        text-face-name: @sans_bold;
-        text-halo-radius: @standard-halo-radius;
-        text-halo-fill: @standard-halo-fill;
-        text-placement: interior;
-      }
+  [station!=null][zoom >= 15] {
+    marker-file: url('symbols/openstreetmap-carto/square.svg');
+    marker-fill: @trainstation-icon;
+    marker-placement: interior;
+    marker-clip: false;
+    marker-width: 3;
+
+    [zoom >= 16] {
+      marker-width: 6;
+    }
+    [zoom >= 17] {
+      text-name: "[name]";
+      text-size: @standard-font-size;
+      text-wrap-width: @standard-wrap-width;
+      text-line-spacing: @standard-line-spacing-size;
+      text-fill: @trainstation-text;
+      text-dy: 10;
+      text-face-name: @sans_bold;
+      text-halo-radius: @standard-halo-radius;
+      text-halo-fill: @standard-halo-fill;
+      text-placement: interior;
     }
   }
 }
