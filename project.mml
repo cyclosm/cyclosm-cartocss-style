@@ -2243,7 +2243,7 @@ Layer:
       ) AS data
   geometry: point
   properties:
-    minzoom: 13
+    minzoom: 14
 - id: power-towers
   geometry: point
   <<: *extents
