@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Rework blue / cyan / green colors. See #324.
 * Fix a bug with dashed road surface being drawn on top of side cycle track.
     See #136.
+* Only render `bicycle:conditional` tag on highways. See #371.
 
 
 ## v0.3.5
