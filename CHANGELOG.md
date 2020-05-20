@@ -18,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix a bug with dashed road surface being drawn on top of side cycle track.
     See #136.
 * Only render `bicycle:conditional` tag on highways. See #371.
+* Make sure cycle network nodes are drawn in many situations (overlaps).
+    See #287.
+* Whole rework of roads layers processing. Generation of Mapnik XML is now
+    much faster and resulting XML file is much smaller. See #364.
+* Only render bike stations and low priority POIs names from Z18 and above.
+    See #359.
 
 
 ## v0.3.5
