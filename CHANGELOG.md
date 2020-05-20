@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     See #359.
 * Only render cycle lanes / busways from Z12. See #354.
 * Do not render underground buildings.
+* Fix a render issue with labels and amenities. See #362.
 
 
 ## v0.3.5
