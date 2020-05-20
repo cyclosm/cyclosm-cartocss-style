@@ -205,7 +205,7 @@ Layer:
         WHERE building IS NOT NULL
           AND building != 'no'
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          AND tags->'location' != 'underground'
+          AND (tags->'location' IS NULL OR tags->'location' != 'underground')
         ORDER BY z_order ASC, way_area DESC
       ) AS data
   geometry: polygon
