@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     much faster and resulting XML file is much smaller. See #364.
 * Only render bike stations and low priority POIs names from Z18 and above.
     See #359.
+* Only render cycle lanes / busways from Z12. See #354.
 
 
 ## v0.3.5

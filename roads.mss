@@ -649,16 +649,16 @@
 
 // Eventually overload right border for cycleways
 #roads_high::outline_right[zoom>=11][cycleway_right_render='track'],
-#roads_high::outline_right[zoom>=11][cycleway_right_render='lane'],
-#roads_high::outline_right[zoom>=11][cycleway_right_render='busway'],
+#roads_high::outline_right[zoom>=12][cycleway_right_render='lane'],
+#roads_high::outline_right[zoom>=12][cycleway_right_render='busway'],
 #roads_high::outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'],
 #tunnel::outline_right[zoom>=11][cycleway_right_render='track'],
-#tunnel::outline_right[zoom>=11][cycleway_right_render='lane'],
-#tunnel::outline_right[zoom>=11][cycleway_right_render='busway'],
+#tunnel::outline_right[zoom>=12][cycleway_right_render='lane'],
+#tunnel::outline_right[zoom>=12][cycleway_right_render='busway'],
 #tunnel::outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'],
 #bridge::outline_right[zoom>=11][cycleway_right_render='track'],
-#bridge::outline_right[zoom>=11][cycleway_right_render='lane'],
-#bridge::outline_right[zoom>=11][cycleway_right_render='busway'],
+#bridge::outline_right[zoom>=12][cycleway_right_render='lane'],
+#bridge::outline_right[zoom>=12][cycleway_right_render='busway'],
 #bridge::outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'] {
   // -- colors & styles --
   line-cap: butt;
@@ -952,14 +952,14 @@
 
 
 #roads_high::outline_left[zoom>=11][cycleway_left_render='track'],
-#roads_high::outline_left[zoom>=11][cycleway_left_render='lane'],
-#roads_high::outline_left[zoom>=11][cycleway_left_render='busway'],
+#roads_high::outline_left[zoom>=12][cycleway_left_render='lane'],
+#roads_high::outline_left[zoom>=12][cycleway_left_render='busway'],
 #tunnel::outline_left[zoom>=11][cycleway_left_render='track'],
-#tunnel::outline_left[zoom>=11][cycleway_left_render='lane'],
-#tunnel::outline_left[zoom>=11][cycleway_left_render='busway'],
+#tunnel::outline_left[zoom>=12][cycleway_left_render='lane'],
+#tunnel::outline_left[zoom>=12][cycleway_left_render='busway'],
 #bridge::outline_left[zoom>=11][cycleway_left_render='track'],
-#bridge::outline_left[zoom>=11][cycleway_left_render='lane'],
-#bridge::outline_left[zoom>=11][cycleway_left_render='busway'] {
+#bridge::outline_left[zoom>=12][cycleway_left_render='lane'],
+#bridge::outline_left[zoom>=12][cycleway_left_render='busway'] {
   // -- colors & styles --
   line-cap: butt;
   [cycleway_left_render='track'] {
