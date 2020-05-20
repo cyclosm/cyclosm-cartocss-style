@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Only render bike stations and low priority POIs names from Z18 and above.
     See #359.
 * Only render cycle lanes / busways from Z12. See #354.
+* Do not render underground buildings.
 
 
 ## v0.3.5
