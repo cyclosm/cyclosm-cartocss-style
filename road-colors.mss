@@ -41,7 +41,6 @@
 @standard-fill: #f6f6f6;
 @standard-nobicycle: #d4d4d4;
 @tertiary-case: #777;
-@tertiary-fill: #f6f6f6;
 @pedestrian-case: #bbb;
 @pedestrian-fill: @speedWalk-fill;
 @pedestrian_area_fill:   #dce3e0;
