@@ -767,7 +767,6 @@
     marker-fill: @bicycle-rental;
     marker-placement: interior;
     marker-clip: false;
-    marker-max-error: 0.4;
   }
 
   [feature = 'highway_elevator'][zoom >= 18] {
