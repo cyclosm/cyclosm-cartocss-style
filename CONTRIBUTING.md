@@ -292,6 +292,16 @@ items in two layers, the layer appearing first in `project.mml` file will be
 rendered.
 
 
+### Running Kosmtik with a single layer
+
+You can use the `localconfig-only.js` local config for this, in the following
+way:
+
+```
+LOCALCONFIG_PATH=<your usual localconfig.json> ONLY_LAYER_ID=<comma separated list of layers to keep in Kosmtik> kosmtik serve project.mml --localconfig localconfig-only.js
+```
+
+
 ### How to prevent CartoCSS from emitting too much Mapnik rules?
 
 You can track the number of generated rules per layer in the exported Mapnik
