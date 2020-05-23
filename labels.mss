@@ -502,10 +502,10 @@
      designated/marker-spacing: 50;
      designated/marker-fill: @cycle-fill;
      designated/marker-file: url(symbols/oneway.svg);
-     [oneway='-1'] { bike/marker-file: url(symbols/oneway-reverse.svg); }
+     [oneway='-1'] { designated/marker-file: url(symbols/oneway-reverse.svg); }
      [zoom=15] {
-        bike/marker-transform: "scale(0.75)";
-        bike/marker-spacing: 40;
+        designated/marker-transform: "scale(0.75)";
+        designated/marker-spacing: 40;
      }
   }
   [bicycle='designated'][oneway = 'yes'][oneway_bicycle = 'no'],
@@ -517,8 +517,8 @@
      designated/marker-fill: @cycle-fill;
      designated/marker-file: url(symbols/oneway-cycle.svg);
      [zoom=15] {
-        bike/marker-transform: "scale(0.75)";
-        bike/marker-spacing: 40;
+        designated/marker-transform: "scale(0.75)";
+        designated/marker-spacing: 40;
      }
   }
 }
