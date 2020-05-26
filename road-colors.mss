@@ -44,7 +44,7 @@
 @pedestrian-case: #bbb;
 @pedestrian-fill: @speedWalk-fill;
 @pedestrian_area_fill:   #dce3e0;
-@speed32-fill: #bbffff;
+@speed32-fill: #aff1f1;
 @speed20-fill: #bbffba;
 @speedWalk-fill: #ddffba;
 @nomotor-fill: #62ff96;
