@@ -2759,17 +2759,17 @@
 
 #bicycle_routes_bicycle_gen3[zoom >= 11] {
   opacity: 0.25;
-  line-color: @icn-overlay;
+  line-color: @lcn-overlay;
+  [type='icn'] {
+    line-color: @icn-overlay;
+  }
   [type='ncn'] {
     line-color: @ncn-overlay;
   }
   [type='rcn'] {
     line-color: @rcn-overlay;
   }
-  [type='lcn'] {
-    line-color: @lcn-overlay;
-  }
-
+  
   [state='proposed'] {
     line-dasharray: 6,6;
   }
