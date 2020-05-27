@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Render bicycle routes without network tag as lcn. See #379.
+
+
 ## v0.3.6
 
 * Add blue arrows on designated roads. See #304.
