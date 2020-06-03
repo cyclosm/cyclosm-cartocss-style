@@ -232,7 +232,7 @@ You can use [`Kosmtik`](https://github.com/kosmtik/kosmtik) to develop on this
 style. You can use the `kosmtik-fetch-remote`
 [plugin](https://github.com/kosmtik/kosmtik#known-plugins) to handle
 downloading remote preprocessed shapefiles automatically. Information on
-setting up Kosmtik is available in the [`CONTRIBUTING.md`](CONTRIBUTING.md)
+setting up Kosmtik is available in the [`CONTRIBUTING.md`](../CONTRIBUTING.md)
 file.
 
 You can also use a
