@@ -1385,29 +1385,42 @@
 #tunnel::cycleway_right[zoom>=18][cycleway_right_render='track'][cycleway_right_oneway='-1'],
 #bridge::cycleway_right[zoom>=18][cycleway_right_render='track'][cycleway_right_oneway='yes'],
 #bridge::cycleway_right[zoom>=18][cycleway_right_render='track'][cycleway_right_oneway='-1'] {
-  marker-placement: line;
-  marker-max-error: 0.5;
-  marker-spacing: 100;
-  marker-file: url(symbols/oneway.svg);
-  [cycleway_right_oneway='-1'] {
-    marker-file: url(symbols/oneway-reverse.svg);
-  }
-  marker-fill: #ddf;
+  [type='motorway'],
+  [type='primary'],
+  [type='secondary'],
+  [type='tertiary'],
+  [type='living_street'],
+  [type='unclassified'],
+  [type='residential'],
+  [type='tertiary_link'],
+  [type='secondary_link'],
+  [type='primary_link'],
+  [type='motorway_link'],
+  [type='service'],
+  [type='pedestrian'] {
+    marker-placement: line;
+    marker-max-error: 0.5;
+    marker-spacing: 100;
+    marker-file: url(symbols/oneway.svg);
+    [cycleway_right_oneway='-1'] {
+      marker-file: url(symbols/oneway-reverse.svg);
+    }
+    marker-fill: #ddf;
 
-  [type='motorway']  { marker-transform: translate(0.5 * @rdz18_motorway_trunk + 0.5 * @rdz18_cycle, 0.5 * @rdz18_motorway_trunk + 0.5 * @rdz18_cycle); }
-  [type='primary']     { marker-transform: translate(0.5 * @rdz18_primary + 0.5 * @rdz18_cycle, 0.5 * @rdz18_primary + 0.5 * @rdz18_cycle); }
-  [type='secondary']     { marker-transform: translate(0.5 * @rdz18_secondary + 0.5 * @rdz18_cycle, 0.5 * @rdz18_secondary + 0.5 * @rdz18_cycle); }
-  [type='tertiary']    { marker-transform: translate(0.5 * @rdz18_tertiary + 0.5 * @rdz18_cycle, 0.5 * @rdz18_tertiary + 0.5 * @rdz18_cycle); }
-  [type='living_street']    { marker-transform: translate(0.5 * @rdz18_living_street + 0.5 * @rdz18_cycle, 0.5 * @rdz18_living_street + 0.5 * @rdz18_cycle); }
-  [type='unclassified']    { marker-transform: translate(0.5 * @rdz18_unclassified + 0.5 * @rdz18_cycle, 0.5 * @rdz18_unclassified + 0.5 * @rdz18_cycle); }
-  [type='residential']    { marker-transform: translate(0.5 * @rdz18_residential + 0.5 * @rdz18_cycle, 0.5 * @rdz18_residential + 0.5 * @rdz18_cycle); }
-  [type='tertiary_link']    { marker-transform: translate(0.5 * @rdz18_tertiary_link + 0.5 * @rdz18_cycle, 0.5 * @rdz18_tertiary_link + 0.5 * @rdz18_cycle); }
-  [type='secondary_link']    { marker-transform: translate(0.5 * @rdz18_secondary_link + 0.5 * @rdz18_cycle, 0.5 * @rdz18_secondary_link + 0.5 * @rdz18_cycle); }
-  [type='primary_link']    { marker-transform: translate(0.5 * @rdz18_primary_link + 0.5 * @rdz18_cycle, 0.5 * @rdz18_primary_link + 0.5 * @rdz18_cycle); }
-  [type='motorway_link']    { marker-transform: translate(0.5 * @rdz18_motorway_link + 0.5 * @rdz18_cycle, 0.5 * @rdz18_motorway_link + 0.5 * @rdz18_cycle); }
-  [type='service']      { marker-transform: translate(0.5 * @rdz18_service + 0.5 * @rdz18_cycle, 0.5 * @rdz18_service + 0.5 * @rdz18_cycle); }
-  [type='track']      { marker-transform: translate(0.5 * @rdz18_track + 0.5 * @rdz18_cycle, 0.5 * @rdz18_track + 0.5 * @rdz18_cycle); }
-  [type='pedestrian']   { marker-transform: translate(0.5 * @rdz18_pedestrian + 0.5 * @rdz18_cycle, 0.5 * @rdz18_pedestrian + 0.5 * @rdz18_cycle); }
+    [type='motorway']       { marker-transform: translate(0, 0.5 * @rdz18_motorway_trunk + 0.5 * @rdz18_cycle); }
+    [type='primary']        { marker-transform: translate(0, 0.5 * @rdz18_primary + 0.5 * @rdz18_cycle); }
+    [type='secondary']      { marker-transform: translate(0, 0.5 * @rdz18_secondary + 0.5 * @rdz18_cycle); }
+    [type='tertiary']       { marker-transform: translate(0, 0.5 * @rdz18_tertiary + 0.5 * @rdz18_cycle); }
+    [type='living_street']  { marker-transform: translate(0, 0.5 * @rdz18_living_street + 0.5 * @rdz18_cycle); }
+    [type='unclassified']   { marker-transform: translate(0, 0.5 * @rdz18_unclassified + 0.5 * @rdz18_cycle); }
+    [type='residential']    { marker-transform: translate(0, 0.5 * @rdz18_residential + 0.5 * @rdz18_cycle); }
+    [type='tertiary_link']  { marker-transform: translate(0, 0.5 * @rdz18_tertiary_link + 0.5 * @rdz18_cycle); }
+    [type='secondary_link'] { marker-transform: translate(0, 0.5 * @rdz18_secondary_link + 0.5 * @rdz18_cycle); }
+    [type='primary_link']   { marker-transform: translate(0, 0.5 * @rdz18_primary_link + 0.5 * @rdz18_cycle); }
+    [type='motorway_link']  { marker-transform: translate(0, 0.5 * @rdz18_motorway_link + 0.5 * @rdz18_cycle); }
+    [type='service']        { marker-transform: translate(0, 0.5 * @rdz18_service + 0.5 * @rdz18_cycle); }
+    [type='pedestrian']     { marker-transform: translate(0, 0.5 * @rdz18_pedestrian + 0.5 * @rdz18_cycle); }
+  }
 }
 
 
@@ -2041,29 +2054,42 @@
 #tunnel::cycleway_left[zoom>=18][cycleway_left_render='track'][cycleway_left_oneway='-1'],
 #bridge::cycleway_left[zoom>=18][cycleway_left_render='track'][cycleway_left_oneway='yes'],
 #bridge::cycleway_left[zoom>=18][cycleway_left_render='track'][cycleway_left_oneway='-1'] {
-  marker-placement: line;
-  marker-max-error: 0.5;
-  marker-spacing: 100;
-  marker-file: url(symbols/oneway.svg);
-  [cycleway_left_oneway='-1'] {
-    marker-file: url(symbols/oneway-reverse.svg);
-  }
-  marker-fill: #ddf;
+  [type='motorway'],
+  [type='primary'],
+  [type='secondary'],
+  [type='tertiary'],
+  [type='living_street'],
+  [type='unclassified'],
+  [type='residential'],
+  [type='tertiary_link'],
+  [type='secondary_link'],
+  [type='primary_link'],
+  [type='motorway_link'],
+  [type='service'],
+  [type='pedestrian'] {
+    marker-placement: line;
+    marker-max-error: 0.5;
+    marker-spacing: 100;
+    marker-file: url(symbols/oneway.svg);
+    [cycleway_left_oneway='-1'] {
+      marker-file: url(symbols/oneway-reverse.svg);
+    }
+    marker-fill: #ddf;
 
-  [type='motorway']   { marker-transform: translate(-0.5 * @rdz18_motorway_trunk - 0.5 * @rdz18_cycle, -0.5 * @rdz18_motorway_trunk - 0.5 * @rdz18_cycle); }
-  [type='primary']     { marker-transform: translate(-0.5 * @rdz18_primary - 0.5 * @rdz18_cycle, -0.5 * @rdz18_primary - 0.5 * @rdz18_cycle); }
-  [type='secondary']     { marker-transform: translate(-0.5 * @rdz18_secondary - 0.5 * @rdz18_cycle, -0.5 * @rdz18_secondary - 0.5 * @rdz18_cycle); }
-  [type='tertiary']    { marker-transform: translate(-0.5 * @rdz18_tertiary - 0.5 * @rdz18_cycle, -0.5 * @rdz18_tertiary - 0.5 * @rdz18_cycle); }
-  [type='living_street']    { marker-transform: translate(-0.5 * @rdz18_living_street - 0.5 * @rdz18_cycle, -0.5 * @rdz18_living_street - 0.5 * @rdz18_cycle); }
-  [type='unclassified']    { marker-transform: translate(-0.5 * @rdz18_unclassified - 0.5 * @rdz18_cycle, -0.5 * @rdz18_unclassified - 0.5 * @rdz18_cycle); }
-  [type='residential']    { marker-transform: translate(-0.5 * @rdz18_residential - 0.5 * @rdz18_cycle, -0.5 * @rdz18_residential - 0.5 * @rdz18_cycle); }
-  [type='tertiary_link']    { marker-transform: translate(-0.5 * @rdz18_tertiary_link - 0.5 * @rdz18_cycle, -0.5 * @rdz18_tertiary_link - 0.5 * @rdz18_cycle); }
-  [type='secondary_link']    { marker-transform: translate(-0.5 * @rdz18_secondary_link - 0.5 * @rdz18_cycle, -0.5 * @rdz18_secondary_link - 0.5 * @rdz18_cycle); }
-  [type='primary_link']    { marker-transform: translate(0.5 * @rdz18_primary_link - 0.5 * @rdz18_cycle, 0.5 * @rdz18_primary_link - 0.5 * @rdz18_cycle); }
-  [type='motorway_link']    { marker-transform: translate(-0.5 * @rdz18_motorway_link - 0.5 * @rdz18_cycle, -0.5 * @rdz18_motorway_link - 0.5 * @rdz18_cycle); }
-  [type='service']      { marker-transform: translate(-0.5 * @rdz18_service - 0.5 * @rdz18_cycle, -0.5 * @rdz18_service - 0.5 * @rdz18_cycle); }
-  [type='track']      { marker-transform: translate(-0.5 * @rdz18_track - 0.5 * @rdz18_cycle, -0.5 * @rdz18_track - 0.5 * @rdz18_cycle); }
-  [type='pedestrian']   { marker-transform: translate(-0.5 * @rdz18_pedestrian - 0.5 * @rdz18_cycle); }
+    [type='motorway']       { marker-transform: translate(0, -0.5 * @rdz18_motorway_trunk - 0.5 * @rdz18_cycle); }
+    [type='primary']        { marker-transform: translate(0, -0.5 * @rdz18_primary - 0.5 * @rdz18_cycle); }
+    [type='secondary']      { marker-transform: translate(0, -0.5 * @rdz18_secondary - 0.5 * @rdz18_cycle); }
+    [type='tertiary']       { marker-transform: translate(0, -0.5 * @rdz18_tertiary - 0.5 * @rdz18_cycle); }
+    [type='living_street']  { marker-transform: translate(0, -0.5 * @rdz18_living_street - 0.5 * @rdz18_cycle); }
+    [type='unclassified']   { marker-transform: translate(0, -0.5 * @rdz18_unclassified - 0.5 * @rdz18_cycle); }
+    [type='residential']    { marker-transform: translate(0, -0.5 * @rdz18_residential - 0.5 * @rdz18_cycle); }
+    [type='tertiary_link']  { marker-transform: translate(0, -0.5 * @rdz18_tertiary_link - 0.5 * @rdz18_cycle); }
+    [type='secondary_link'] { marker-transform: translate(0, -0.5 * @rdz18_secondary_link - 0.5 * @rdz18_cycle); }
+    [type='primary_link']   { marker-transform: translate(0, -0.5 * @rdz18_primary_link - 0.5 * @rdz18_cycle); }
+    [type='motorway_link']  { marker-transform: translate(0, -0.5 * @rdz18_motorway_link - 0.5 * @rdz18_cycle); }
+    [type='service']        { marker-transform: translate(0, -0.5 * @rdz18_service - 0.5 * @rdz18_cycle); }
+    [type='pedestrian']     { marker-transform: translate(0, -0.5 * @rdz18_pedestrian - 0.5 * @rdz18_cycle); }
+  }
 }
 
 #roads_high::steps_ramp_left[zoom >= 15],
@@ -3289,10 +3315,6 @@
     [zoom>=17] { line-width: @rdz17_path; }
     [zoom>=18] { line-width: @rdz18_path; }
   }
-
-  /*#tunnel {
-    line-cap: butt;
-  }*/
 }
 
 
