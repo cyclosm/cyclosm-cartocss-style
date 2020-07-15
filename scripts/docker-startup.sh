@@ -6,6 +6,7 @@
 # Testing if database is ready
 i=1
 MAXCOUNT=60
+DB_NAME=osm
 echo "Waiting for PostgreSQL to be running"
 while [ $i -le $MAXCOUNT ]
 do
@@ -18,9 +19,9 @@ test $i -gt $MAXCOUNT && echo "Timeout while waiting for PostgreSQL to be runnin
 case "$1" in
 import)
   # Creating default database
-  psql -c "SELECT 1 FROM pg_database WHERE datname = 'gis';" | grep -q 1 || createdb gis && \
-  psql -d gis -c 'CREATE EXTENSION IF NOT EXISTS postgis;' && \
-  psql -d gis -c 'CREATE EXTENSION IF NOT EXISTS hstore;' && \
+  psql -c "SELECT 1 FROM pg_database WHERE datname = '$DB_NAME';" | grep -q 1 || createdb $DB_NAME && \
+  psql -d $DB_NAME -c 'CREATE EXTENSION IF NOT EXISTS postgis;' && \
+  psql -d $DB_NAME -c 'CREATE EXTENSION IF NOT EXISTS hstore;' && \
 
   # Creating default import settings file editable by user and passing values for osm2pgsql
   if [ ! -e ".env" ]; then
@@ -39,12 +40,12 @@ EOF
   fi
 
   # Importing data to a database
-  osm2pgsql -c -G --hstore -d osm ~/path/to/data.osm.pbf
+  osm2pgsql -c -G --hstore -d $DB_NAME ~/path/to/data.osm.pbf
   osm2pgsql \
   --cache $OSM2PGSQL_CACHE \
   --number-processes $OSM2PGSQL_NUMPROC \
   --hstore \
-  --database gis \
+  --database $DB_NAME \
   --slim \
   -c \
   -G \
