@@ -195,7 +195,7 @@
 @rdz14_residential: 1;
 @rdz14_living_street: 1;
 @rdz14_service: 1;
-@rdz14_track: 1;
+@rdz14_track: 1.5;
 @rdz14_pedestrian: 1;
 @rdz14_bridleway: 0.25;
 @rdz14_path: 1;
