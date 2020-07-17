@@ -13,14 +13,15 @@
 #highway_area_label,
 #area_label {
   // Bring in labels gradually as one zooms in, bases on polygon area
-  [zoom>=10][area>102400000],
-  [zoom>=11][area>25600000],
-  [zoom>=13][area>1600000],
-  [zoom>=14][area>320000],
-  [zoom>=15][area>80000],
-  [zoom>=16][area>20000],
-  [zoom>=17][area>5000],
-  [zoom>=18][area>=0] {
+  [zoom=10][area>102400000],
+  [zoom=11][area>51200000],
+  [zoom=12][area>25600000],
+  [zoom=13][area>1280000][area<256000000],
+  [zoom=14][area>320000] [area<64000000],
+  [zoom=15][area>80000]  [area<16000000],
+  [zoom=16][area>20000]  [area<4000000],
+  [zoom=17][area>5000]   [area<100000],
+  [zoom>=18]             [area<25000] {
     text-name: "[name]";
     text-halo-radius: 1.5;
     text-face-name:@sans;
@@ -29,6 +30,7 @@
     text-fill: #888;
     text-halo-fill: @standard-halo-fill;
     text-placement: interior;
+
     // Specific style overrides for different types of areas:
     [type='forest'],
     [type='wood'],
@@ -72,29 +74,31 @@
       text-fill: @military * 0.6;
       text-face-name: @sans_italic;
     }
-  }
-  [zoom=15][area>1600000],
-  [zoom=16][area>80000],
-  [zoom=17][area>20000],
-  [zoom=18][area>5000] {
-    text-name: "[name]";
-    text-size: 13;
-    text-wrap-width: 60;
-    text-character-spacing: 1;
-    text-halo-radius: 2;
-  }
-  [zoom=16][area>1600000],
-  [zoom=17][area>80000],
-  [zoom=18][area>20000] {
-    text-size: 15;
-    text-character-spacing: 2;
-    text-wrap-width: 120;
-  }
-  [zoom>=17][area>1600000],
-  [zoom>=18][area>80000] {
-    text-size: 20;
-    text-character-spacing: 3;
-    text-wrap-width: 180;
+
+    // text size adjustement regarding area size:
+    [zoom=15][area>1600000],
+    [zoom=16][area>80000],
+    [zoom=17][area>20000],
+    [zoom=18][area>5000] {
+        text-name: "[name]";
+        text-size: 13;
+        text-wrap-width: 60;
+        text-character-spacing: 1;
+        text-halo-radius: 2;
+    }
+    [zoom=16][area>1600000],
+    [zoom=17][area>80000],
+    [zoom=18][area>20000] {
+        text-size: 15;
+        text-character-spacing: 2;
+        text-wrap-width: 120;
+    }
+    [zoom>=17][area>1600000],
+    [zoom>=18][area>80000] {
+        text-size: 20;
+        text-character-spacing: 3;
+        text-wrap-width: 180;
+    }
   }
 }
 
