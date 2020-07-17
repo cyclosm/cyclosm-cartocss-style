@@ -3133,6 +3133,7 @@
 
       // cyclocross
       line-dasharray: 5,2;
+      line-cap: butt;
       [zoom>=16] { line-dasharray: 10,4; }
       [zoom>=17] { line-dasharray: 20,8; }
       [surface_type='mtb'] {
