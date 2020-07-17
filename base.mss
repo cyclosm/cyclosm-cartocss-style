@@ -204,10 +204,17 @@
 /* ---- BUILDINGS ---- */
 #buildings[zoom>=16] {
   polygon-fill: @building;
+  
+  /* Thin contour of buildings in mid zooms important for gray background areas */
+  line-color: darken(@building,10);
+  line-width: 0.3;
+  [zoom=17] {
+    line-width: 0.5;
+  }
 
   /* Render perimeter of buildings in high zooms */
   [zoom>=18] {
-    line-color: #b6b2af;
+    line-color: darken(@building,20);
     line-width: 0.75;
   }
 }
