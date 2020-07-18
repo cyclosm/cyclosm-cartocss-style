@@ -545,6 +545,16 @@
     }
   }
 
+  [feature = 'amenity_bench'][zoom >= 19] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/bench.svg');
+    marker-fill: @man-made-icon;
+    marker-placement: interior;
+    marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
+  }
+
   [feature = 'aeroway_helipad'][zoom >= 16] {
     marker-file: url('symbols/openstreetmap-carto/helipad.16.svg');
     marker-placement: interior;
