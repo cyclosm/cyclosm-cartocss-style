@@ -23,7 +23,8 @@
   [type='landuse_cemetery'] {
     polygon-fill: @cemetery;
     [zoom >= 13] {
-      polygon-pattern-file: url('symbols/openstreetmap-carto/grave_yard_generic.svg');
+      polygon-pattern-file: url('symbols/openstreetmap-carto/grave_yard_generic_many.svg');
+      polygon-pattern-opacity: 0.15;
     }
   }
   [type='amenity_college']       { polygon-fill: @school; }
