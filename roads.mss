@@ -5,15 +5,11 @@
 // At lower zoomlevels, just show major automobile routes: motorways
 // and trunks.
 
-#roads_low[zoom>=5][zoom<=8] {
+#roads_low[type!='railway'][zoom>=5][zoom<=8] {
   line-color: @motorway-trunk-fill;
 
   [type='motorway'][bicycle='yes'] {
     line-color: @motorway-trunk-cycle-fill;
-  }
-
-  [type='railway'] {
-    line-color: @rail-line;
   }
 
   line-width: 0.3;
@@ -31,7 +27,7 @@
 // At mid-level scales start to show primary and secondary routes
 // as well.
 
-#roads_med[zoom >= 9] {
+#roads_med[type!='railway'][zoom >= 9][zoom<=10] {
   line-color: @motorway-trunk-fill;
 
   [type='motorway'][can_bicycle='yes'] {
@@ -44,10 +40,6 @@
     line-color: @standard-case;
   }
 
-  [type='railway'] {
-    line-color: @rail-line;
-  }
-
   line-width: 1;
   [type='secondary']
   {
@@ -57,6 +49,35 @@
       line-width: 1;
     }
   }
+}
+
+
+#roads_low[zoom=8],
+#roads_med[zoom>=9][zoom<=10] {
+    [type='railway']::rail_perpendicular {
+
+        /* background: to avoid weird pattern when many tracks are overlapping */
+        background/line-color: @land;
+        background/line-width: 3;
+
+        line-color: @rail-line;
+        line-cap: butt;
+        line-dasharray: 1,8;
+        line-width: 2;
+        [zoom >= 9] { line-width: 3; }
+    }
+}
+
+#roads_low[zoom>=5][zoom<=8],
+#roads_med[zoom>=9][zoom<=10] {
+    [type='railway']::rail_line {
+        line-color: @rail-line;
+        line-join: round;
+        line-width: 0.3;
+        [zoom >= 6] { line-width: 0.4; }
+        [zoom >= 7] { line-width: 0.6; }
+        [zoom >= 8] { line-width: 0.7; }
+    }
 }
 
 // At higher levels the roads become more complex. We're now showing
@@ -96,7 +117,7 @@
 @rdz11_track: 0.25;
 @rdz11_path: 0.30;
 @rdz11_cycle: 0.5;
-@rdz11_railway: 0.5;
+@rdz11_railway: 0.8;
 // Border width (one side of the road only)
 @rdz11_motorway_trunk_outline: 1;
 @rdz11_primary_outline: 0.8;
@@ -129,7 +150,7 @@
 @rdz12_pedestrian: 0.5;
 @rdz12_path: 0.5;
 @rdz12_cycle: 0.8;
-@rdz12_railway: 0.5;
+@rdz12_railway: 0.8;
 // Border width (one side of the road only)
 @rdz12_motorway_trunk_outline: 1;
 @rdz12_primary_outline: 1;
@@ -165,7 +186,7 @@
 @rdz13_footway: 0.20;
 @rdz13_steps: 0.3;
 @rdz13_cycle: 1;
-@rdz13_railway: 0.5;
+@rdz13_railway: 0.8;
 // Border width (one side of the road only)
 @rdz13_motorway_trunk_outline: 1;
 @rdz13_primary_outline: 1;
@@ -202,7 +223,7 @@
 @rdz14_footway: 0.25;
 @rdz14_steps: 0.5;
 @rdz14_cycle: 2;
-@rdz14_railway: 0.6;
+@rdz14_railway: 0.8;
 @rdz14_turning_circle_marker: 1.1;
 // Border width
 // Border width (one side of the road only)
@@ -241,7 +262,7 @@
 @rdz15_footway: 0.5;
 @rdz15_steps: 0.8;
 @rdz15_cycle: 2;
-@rdz15_railway: 0.8;
+@rdz15_railway: 1;
 @rdz15_turning_circle_marker: 1.65;
 // Border width (one side of the road only)
 @rdz15_motorway_trunk_outline: 1.25;
@@ -279,7 +300,7 @@
 @rdz16_footway: 0.75;
 @rdz16_steps: 1.25;
 @rdz16_cycle: 2;
-@rdz16_railway: 1;
+@rdz16_railway: 1.1;
 @rdz16_turning_circle_marker: 6;
 // Border width (one side of the road only)
 @rdz16_motorway_trunk_outline: 1.25;
@@ -317,7 +338,7 @@
 @rdz17_footway: 1.5;
 @rdz17_steps: 3;
 @rdz17_cycle: 3;
-@rdz17_railway: 1;
+@rdz17_railway: 1.1;
 @rdz17_turning_circle_marker: 15;
 // Border width (one side of the road only)
 @rdz17_motorway_trunk_outline: 1.5;
@@ -356,7 +377,7 @@
 @rdz18_footway: 2;
 @rdz18_steps: 3.5;
 @rdz18_cycle: 4;
-@rdz18_railway: 1;
+@rdz18_railway: 1.1;
 @rdz18_turning_circle_marker: 21;
 // Border width (one side of the road only)
 @rdz18_motorway_trunk_outline: 2;
@@ -3403,6 +3424,25 @@
   }
 }
 
+#roads_high[zoom>=11],
+#bridge[zoom>=11] {
+    [type='railway']::rail_perpendicular {
+
+        /* background: to avoid weird pattern when many tracks are overlapping */
+        [zoom<14] {
+            background/line-color: @land;
+            background/line-width: 3;
+        }
+
+        line-color: @rail-line;
+        line-cap: butt;
+        line-dasharray: 1,4;
+        [zoom>=14] { line-dasharray: 1,8; }
+        line-width: 3;
+        [zoom>=19] { line-width: 6; }
+    }
+}
+
 
 #roads_high::rail_line[zoom>=11],
 #bridge::rail_line[zoom>=11] {
@@ -3430,38 +3470,6 @@
     }
     [zoom>=18] {
       line-width: @rdz18_railway;
-    }
-  }
-}
-
-#roads_high::rail_line2[zoom>=11],
-#bridge::rail_line2[zoom>=11] {
-  [type='railway'] {
-    line-color: @rail-line;
-    line-dasharray: 1,4;
-    [zoom>=14] { line-dasharray: 1,8; }
-
-    line-width: @rdz11_railway*3;
-    [zoom>=12] {
-      line-width: @rdz12_railway*3;
-    }
-    [zoom>=13] {
-      line-width: @rdz13_railway*3;
-    }
-    [zoom>=14] {
-      line-width: @rdz14_railway*3;
-    }
-    [zoom>=15] {
-      line-width: @rdz15_railway*3;
-    }
-    [zoom>=16] {
-      line-width: @rdz16_railway*3;
-    }
-    [zoom>=17] {
-      line-width: @rdz17_railway*3;
-    }
-    [zoom>=18] {
-      line-width: @rdz18_railway*3;
     }
   }
 }
