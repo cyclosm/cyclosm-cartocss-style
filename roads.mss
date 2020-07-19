@@ -62,7 +62,7 @@
 
         line-color: @rail-line;
         line-cap: butt;
-        line-dasharray: 1,8;
+        line-dasharray: 0,4,1,4; /* start with space to avoid dense pattern on very short ways */
         line-width: 2;
         [zoom >= 9] { line-width: 3; }
     }
@@ -3436,8 +3436,11 @@
 
         line-color: @rail-line;
         line-cap: butt;
-        line-dasharray: 1,4;
-        [zoom>=14] { line-dasharray: 1,8; }
+
+        /* hatches: start with space to avoid dense pattern on very short ways */
+        line-dasharray: 0,2,1,2;
+        [zoom>=14] { line-dasharray: 0,4,1,4; }
+
         line-width: 3;
         [zoom>=19] { line-width: 6; }
     }
