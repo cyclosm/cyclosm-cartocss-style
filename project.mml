@@ -544,7 +544,8 @@ Layer:
             ELSE NULL
           END AS can_bicycle,
           CASE
-            WHEN tags->'segregated' IN ('yes') THEN 'yes'
+            WHEN tags->'segregated' = 'yes' AND (horse IN ('designated', 'yes') OR highway='bridleway' OR (highway='path' AND horse != 'no')) THEN 'horse'
+            WHEN tags->'segregated' = 'yes' THEN 'foot'
             ELSE 'no'
           END AS segregated,
           CASE
@@ -721,7 +722,8 @@ Layer:
             ELSE NULL
           END AS can_bicycle,
           CASE
-            WHEN tags->'segregated' IN ('yes') THEN 'yes'
+            WHEN tags->'segregated' = 'yes' AND (horse IN ('designated', 'yes') OR highway='bridleway' OR (highway='path' AND horse != 'no')) THEN 'horse'
+            WHEN tags->'segregated' = 'yes' THEN 'foot'
             ELSE 'no'
           END AS segregated,
           CASE
@@ -984,7 +986,8 @@ Layer:
             ELSE NULL
           END AS can_bicycle,
           CASE
-            WHEN tags->'segregated' IN ('yes') THEN 'yes'
+            WHEN tags->'segregated' = 'yes' AND (horse IN ('designated', 'yes') OR highway='bridleway' OR (highway='path' AND horse != 'no')) THEN 'horse'
+            WHEN tags->'segregated' = 'yes' THEN 'foot'
             ELSE 'no'
           END AS segregated,
           CASE

@@ -756,11 +756,12 @@
 }
 
 
-#roads_high::path_outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'],
-#tunnel::path_outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'],
-#bridge::path_outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'] {
+#roads_high::path_outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated!='no'],
+#tunnel::path_outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated!='no'],
+#bridge::path_outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated!='no'] {
   line-cap: butt;
-  line-color: @path-fill;
+  [segregated='foot'] { line-color: @footway-fill; }
+  [segregated='horse'] { line-color: @bridleway-fill; }
 
   line-width: @rdz17_path;
   line-offset: @rdz17_path/2 + @rdz17_cycle/2;
@@ -3301,7 +3302,7 @@
       line-color: @mixed-cycle-fill;
       #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
 
-      [segregated='yes'] {
+      [segregated!='no'] {
         line-color: @cycle-fill;
         #tunnel { line-color: lighten(@cycle-fill, 15%); }
       }
