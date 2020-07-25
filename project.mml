@@ -475,12 +475,12 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           CASE
-            WHEN (
-              tags->'psv' != 'no' OR motorcar != 'no' OR tags->'bus' != 'no'
-              OR tags->'motor_vehicle' != 'no'
-              OR tags->'vehicle' != 'no'
-              ) THEN 'yes'
-            WHEN tags->'psv' IS NULL AND motorcar IS NULL AND tags->'bus' IS NULL AND tags->'motor_vehicle' IS NULL AND tags->'vehicle' IS NULL AND (access != 'no' OR access IS NULL) THEN 'yes'
+            WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            -- goods and hgv are not technically children of motorcar, but the motorcar restriction is often intended to cover cars and all larger vehicles
+            WHEN COALESCE(tags->'goods', motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            WHEN COALESCE(tags->'hgv', motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            WHEN COALESCE(tags->'motorcycle', tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            -- TODO: style psv-only roads slightly differently
             ELSE 'no'
           END AS motor_vehicle,
           CASE
@@ -628,12 +628,12 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           CASE
-            WHEN (
-              tags->'psv' != 'no' OR motorcar != 'no' OR tags->'bus' != 'no'
-              OR tags->'motor_vehicle' != 'no'
-              OR tags->'vehicle' != 'no'
-              ) THEN 'yes'
-            WHEN tags->'psv' IS NULL AND motorcar IS NULL AND tags->'bus' IS NULL AND tags->'motor_vehicle' IS NULL AND tags->'vehicle' IS NULL AND (access != 'no' OR access IS NULL) THEN 'yes'
+            WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            -- goods and hgv are not technically children of motorcar, but the motorcar restriction is often intended to cover cars and all larger vehicles
+            WHEN COALESCE(tags->'goods', motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            WHEN COALESCE(tags->'hgv', motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            WHEN COALESCE(tags->'motorcycle', tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            -- TODO: style psv-only roads slightly differently
             ELSE 'no'
           END AS motor_vehicle,
           CASE
@@ -885,12 +885,12 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           CASE
-            WHEN (
-              tags->'psv' != 'no' OR motorcar != 'no' OR tags->'bus' != 'no'
-              OR tags->'motor_vehicle' != 'no'
-              OR tags->'vehicle' != 'no'
-              ) THEN 'yes'
-            WHEN tags->'psv' IS NULL AND motorcar IS NULL AND tags->'bus' IS NULL AND tags->'motor_vehicle' IS NULL AND tags->'vehicle' IS NULL AND (access != 'no' OR access IS NULL) THEN 'yes'
+            WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            -- goods and hgv are not technically children of motorcar, but the motorcar restriction is often intended to cover cars and all larger vehicles
+            WHEN COALESCE(tags->'goods', motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            WHEN COALESCE(tags->'hgv', motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            WHEN COALESCE(tags->'motorcycle', tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            -- TODO: style psv-only roads slightly differently
             ELSE 'no'
           END AS motor_vehicle,
           CASE
