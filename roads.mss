@@ -2117,18 +2117,19 @@
   }
 }
 /**/
-#leisure_track[zoom >= 11] {
-   line-cap: round;
-   line-join: round;
-   line-color: @track;
-
-   line-width: @rdz12_track;
-   [zoom>=13] { line-width: @rdz13_track; }
-   [zoom>=14] { line-width: @rdz14_track; }
-   [zoom>=15] { line-width: @rdz15_track; }
-   [zoom>=16] { line-width: @rdz16_track; }
-   [zoom>=17] { line-width: @rdz17_track; }
-   [zoom>=18] { line-width: @rdz18_track; }
+#leisure_track[zoom >= 15] {
+  [sport='cycling'],
+  [sport='bmx'] {
+    ::cycleway {
+      line-cap: round;
+      line-join: round;
+      line-color: @mixed-cycle-fill;
+      [zoom>=15] { line-width: 0.2 * @rdz15_cycle; }
+      [zoom>=16] { line-width: 0.4 * @rdz16_cycle; }
+      [zoom>=17] { line-width: 0.5 * @rdz17_cycle; }
+      [zoom>=18] { line-width: 0.6 * @rdz18_cycle; }
+    }
+  }
 }
 /**/
 #roads_high::inline[zoom>=11],
