@@ -2117,6 +2117,20 @@
   }
 }
 /**/
+#leisure_track[zoom >= 11] {
+   line-cap: round;
+   line-join: round;
+   line-color: @track;
+
+   line-width: @rdz12_track;
+   [zoom>=13] { line-width: @rdz13_track; }
+   [zoom>=14] { line-width: @rdz14_track; }
+   [zoom>=15] { line-width: @rdz15_track; }
+   [zoom>=16] { line-width: @rdz16_track; }
+   [zoom>=17] { line-width: @rdz17_track; }
+   [zoom>=18] { line-width: @rdz18_track; }
+}
+/**/
 #roads_high::inline[zoom>=11],
 #tunnel::inline[zoom>=11],
 #bridge::inline[zoom>=11] {

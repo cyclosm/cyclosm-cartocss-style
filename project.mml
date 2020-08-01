@@ -461,11 +461,6 @@ Layer:
               ELSE NULL
             END,
             CASE
-              WHEN leisure='track' AND sport='cycling' THEN 'cycleway'
-              WHEN leisure='track' THEN 'path'
-              ELSE NULL
-            END,
-            CASE
               WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
               ELSE NULL
             END
@@ -581,9 +576,7 @@ Layer:
           END AS z_order
         FROM planet_osm_line
         WHERE (tunnel NOT IN ('no') OR covered NOT IN ('no') OR tags->'indoor' NOT IN ('no'))
-              AND (railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram')
-                OR highway IS NOT NULL
-                OR leisure = 'track' )
+              AND (railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') OR highway IS NOT NULL)
         ORDER BY z_order ASC
       ) AS data
   geometry: linestring
@@ -602,6 +595,22 @@ Layer:
   geometry: point
   properties:
     minzoom: 14
+- id: leisure_track
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          sport
+        FROM planet_osm_line
+        WHERE leisure = 'track'
+      ) AS data
+  geometry: linestring
+  properties:
+    cache-features: true
+    minzoom: 11
 - id: roads_high
   <<: *extents
   Datasource:
@@ -619,11 +628,6 @@ Layer:
               WHEN highway='footway' AND (bicycle='yes' OR bicycle='designated') THEN 'path'
               WHEN highway='bridleway' AND (bicycle='yes' OR bicycle='designated') THEN 'path'
               WHEN highway!='bus_guideway' THEN highway
-              ELSE NULL
-            END,
-            CASE
-              WHEN leisure='track' AND sport='cycling' THEN 'cycleway'
-              WHEN leisure='track' THEN 'path'
               ELSE NULL
             END,
             CASE
@@ -750,9 +754,7 @@ Layer:
             ELSE z_order
           END AS z_order
         FROM planet_osm_line
-        WHERE (highway IS NOT NULL
-                OR railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram')
-                OR leisure = 'track' )
+        WHERE (highway IS NOT NULL OR railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram'))
           AND (tunnel IS NULL OR tunnel = 'no')
           AND (bridge IS NULL OR bridge = 'no')
           AND (covered IS NULL OR covered = 'no')
@@ -885,11 +887,6 @@ Layer:
               ELSE NULL
             END,
             CASE
-              WHEN leisure='track' AND sport='cycling' THEN 'cycleway'
-              WHEN leisure='track' THEN 'path'
-              ELSE NULL
-            END,
-            CASE
               WHEN railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') THEN 'railway'
               ELSE NULL
             END
@@ -1004,10 +1001,7 @@ Layer:
             ELSE z_order
           END AS z_order
         FROM planet_osm_line
-        WHERE bridge NOT IN ('no')
-          AND (railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram')
-                  OR highway IS NOT NULL
-                  OR leisure = 'track' )
+        WHERE bridge NOT IN ('no') AND (railway IN ('light_rail', 'subway', 'narrow_gauge', 'rail', 'tram') OR highway IS NOT NULL)
         ORDER BY z_order ASC
       ) AS data
   geometry: linestring
