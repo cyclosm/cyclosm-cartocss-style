@@ -1246,7 +1246,7 @@ Layer:
         FROM
           (SELECT way,
             ('barrier_' || (CASE WHEN barrier IN ('chain', 'city_wall', 'ditch', 'fence', 'guard_rail',
-                  'handrail', 'hedge', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,
+                  'handrail', 'hedge', 'jersey_barrier', 'retaining_wall', 'wall') THEN barrier ELSE NULL END)) AS barrier,
             ('historic_' || (CASE WHEN historic = 'citywalls' THEN historic ELSE NULL END)) AS historic
             FROM
               (SELECT
@@ -1266,7 +1266,7 @@ Layer:
                 WHERE way && !bbox!
               ) _
             WHERE barrier IN ('chain', 'city_wall', 'ditch', 'fence', 'guard_rail',
-                'handrail', 'hedge', 'retaining_wall', 'wall')
+                'handrail', 'hedge', 'jersey_barrier', 'retaining_wall', 'wall')
             OR historic = 'citywalls'
             AND (waterway IS NULL OR waterway NOT IN ('river', 'canal', 'stream', 'drain', 'ditch'))
         ) AS features
@@ -1947,7 +1947,7 @@ Layer:
       (
         SELECT barrier, way, z_order
         FROM planet_osm_point
-        WHERE barrier IN ('block', 'bollard', 'cattle_grid', 'chain', 'cycle_barrier', 'gate', 'kissing_gate', 'lift_gate', 'log', 'stile', 'swing_gate', 'turnstile')
+        WHERE barrier IN ('block', 'bollard', 'cattle_grid', 'chain', 'cycle_barrier', 'gate', 'jersey_barrier', 'kissing_gate', 'lift_gate', 'log', 'stile', 'swing_gate', 'turnstile')
         ORDER BY z_order NULLS LAST
       ) AS data
   geometry: point

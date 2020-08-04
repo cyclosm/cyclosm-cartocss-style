@@ -8,6 +8,7 @@
 #barriers[zoom>=17][zoom<=20] {
   [barrier = 'block'],
   [barrier = 'bollard'],
+  [barrier = 'jersey_barrier'],
   [barrier = 'log'] {
     marker-width: 3;
     marker-line-width: 0;
