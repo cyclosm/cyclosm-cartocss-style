@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix a bug making some shops not rendered. See #417.
 * Render `barrier=jersey_barrier` the same way as block (tagged as point or
     way). See #382.
+* Use a denser pattern for cemetaries.
+* Render `amenity=bench`. See #377.
+* Render cycleway surface quality rounded. See #400.
 
 
 ## v0.3.6
