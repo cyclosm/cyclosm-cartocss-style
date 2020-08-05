@@ -1720,15 +1720,16 @@ Layer:
           OR (power = 'generator' AND "generator:source"='wind')
         ORDER BY
             CASE
-                -- Emergency first
-                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 0
+                -- Bike amenities
+                WHEN shop IN ('bicycle', 'sports') THEN 0
+                WHEN amenity IN ('bicycle_rental') Then 10
+                -- Emergency
+                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 20
                 -- Other emergency-related amenities
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets',
-                  'water_point', 'charging_station') THEN 10
-                WHEN tags->'compressed_air'='yes' THEN 11
-                -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') THEN 30
-                WHEN amenity IN ('bicycle_rental') Then 31
+                  'water_point', 'charging_station') THEN 21
+                WHEN tags->'compressed_air'='yes' THEN 22
+                --- Parkings
                 WHEN amenity IN ('bicycle_parking', 'motorcycle_parking') THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
@@ -1866,15 +1867,16 @@ Layer:
           OR tags->'ford' IS NOT NULL
         ORDER BY
             CASE
-                -- Emergency first
-                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 0
+                -- Bike amenities
+                WHEN shop IN ('bicycle', 'sports') THEN 0
+                WHEN amenity IN ('bicycle_rental') Then 10
+                -- Emergency
+                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 20
                 -- Other emergency-related amenities
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets',
-                  'water_point', 'charging_station') THEN 10
-                WHEN tags->'compressed_air'='yes' THEN 11
-                -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') THEN 30
-                WHEN amenity IN ('bicycle_rental') Then 31
+                  'water_point', 'charging_station') THEN 21
+                WHEN tags->'compressed_air'='yes' THEN 22
+                --- Parkings
                 WHEN amenity IN ('bicycle_parking', 'motorcycle_parking') THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
@@ -2070,15 +2072,16 @@ Layer:
             OR (power = 'generator' AND "generator:source"='wind')
           ORDER BY
             CASE
-                -- Emergency first
-                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 0
+                -- Bike amenities
+                WHEN shop IN ('bicycle', 'sports') THEN 0
+                WHEN amenity IN ('bicycle_rental') Then 10
+                -- Emergency
+                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 20
                 -- Other emergency-related amenities
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets',
-                  'water_point', 'charging_station') THEN 10
-                WHEN tags->'compressed_air'='yes' THEN 11
-                -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') THEN 30
-                WHEN amenity IN ('bicycle_rental') Then 31
+                  'water_point', 'charging_station') THEN 21
+                WHEN tags->'compressed_air'='yes' THEN 22
+                --- Parkings
                 WHEN amenity IN ('bicycle_parking', 'motorcycle_parking') THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
@@ -2232,15 +2235,16 @@ Layer:
             OR tags->'ford' IS NOT NULL
           ORDER BY
             CASE
-                -- Emergency first
-                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 0
+                -- Bike amenities
+                WHEN shop IN ('bicycle', 'sports') THEN 0
+                WHEN amenity IN ('bicycle_rental') Then 10
+                -- Emergency
+                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'pharmacy') THEN 20
                 -- Other emergency-related amenities
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets',
-                  'water_point', 'charging_station') THEN 10
-                WHEN tags->'compressed_air'='yes' THEN 11
-                -- Bike amenities
-                WHEN shop IN ('bicycle', 'sports') THEN 30
-                WHEN amenity IN ('bicycle_rental') Then 31
+                  'water_point', 'charging_station') THEN 21
+                WHEN tags->'compressed_air'='yes' THEN 22
+                --- Parkings
                 WHEN amenity IN ('bicycle_parking', 'motorcycle_parking') THEN 32
                 -- Supermarkets
                 WHEN shop='supermarket' THEN 40
