@@ -803,6 +803,7 @@
   [feature = 'amenity_bicycle_parking'][zoom >= 16] {
     marker-file: url('symbols/amenity/bicycle_parking.svg');
     marker-width: 8;
+    marker-placement: interior;
 
     [covered = 'yes'] {
       marker-file: url('symbols/amenity/bicycle_parking_covered.svg');
@@ -830,6 +831,7 @@
   [feature = 'amenity_motorcycle_parking'][zoom >= 16] {
     marker-file: url('symbols/amenity/motorcycle_parking.svg');
     marker-width: 8;
+    marker-placement: interior;
 
     [covered = 'yes'] {
       marker-file: url('symbols/amenity/motorcycle_parking_covered.svg');
@@ -935,8 +937,7 @@
       text-face-name: @standard-font;
       text-halo-radius: @standard-halo-radius;
       text-halo-fill: rgba(255, 255, 255, 0.6);
-      /*text-dy: 6;
-      text-placement: interior;*/
+      text-placement: interior;
       text-placement-type: simple;
       text-placements: "S,N,E,W,NE,SE,NW,SW";
       text-dy: 6;

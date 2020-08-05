@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Use a denser pattern for cemetaries.
 * Render `amenity=bench`. See #377.
 * Render cycleway surface quality rounded. See #400.
+* Fix bicycle parking icon not being inside a not convex polygon. See #395.
 
 
 ## v0.3.6
