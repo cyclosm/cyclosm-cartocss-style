@@ -555,6 +555,8 @@ Layer:
           ) AS has_ramp,
           CASE
             -- From best tag to less precise quality surface tag (smoothness > track > surface).
+            WHEN tags->'smoothness' IS NULL AND tracktype IS NULL AND surface IS NULL
+              THEN 'unknown'
             WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
               THEN 'mtb'
             WHEN tags->'smoothness' IN ('bad', 'very_bad')
@@ -563,11 +565,13 @@ Layer:
               THEN 'mtb'
             WHEN tracktype IN ('grade2', 'grade3')
               THEN 'cyclocross'
-            WHEN surface IN ('bad', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
+            WHEN surface IN ('pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
               THEN 'mtb'
             WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
               THEN 'cyclocross'
-            ELSE NULL
+            WHEN surface IN ('paved', 'asphalt', 'concrete', 'paving_stones')
+              THEN 'road'
+            ELSE 'unknown'
           END AS surface_type,
           CASE
             WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer - 61 ELSE -61 END
@@ -718,11 +722,13 @@ Layer:
               THEN 'mtb'
             WHEN tracktype IN ('grade2', 'grade3')
               THEN 'cyclocross'
-            WHEN surface IN ('bad', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
+            WHEN surface IN ('pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
               THEN 'mtb'
             WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
               THEN 'cyclocross'
-            ELSE NULL
+            WHEN surface IN ('paved', 'asphalt', 'concrete', 'paving_stones')
+              THEN 'road'
+            ELSE 'unknown'
           END AS surface_type,
           CASE
             WHEN tags->'mtb:scale'~E'^\\d+[+-]?$' THEN REPLACE(REPLACE(tags->'mtb:scale', '+', ''), '-', '')::integer
@@ -965,6 +971,8 @@ Layer:
           ) AS has_ramp,
           CASE
             -- From best tag to less precise quality surface tag (smoothness > track > surface).
+            WHEN tags->'smoothness' IS NULL AND tracktype IS NULL AND surface IS NULL
+              THEN 'unknown'
             WHEN tags->'smoothness' IN ('horrible', 'very_horrible', 'impassable')
               THEN 'mtb'
             WHEN tags->'smoothness' IN ('bad', 'very_bad')
@@ -973,11 +981,13 @@ Layer:
               THEN 'mtb'
             WHEN tracktype IN ('grade2', 'grade3')
               THEN 'cyclocross'
-            WHEN surface IN ('bad', 'pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
+            WHEN surface IN ('pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
               THEN 'mtb'
             WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
               THEN 'cyclocross'
-            ELSE NULL
+            WHEN surface IN ('paved', 'asphalt', 'concrete', 'paving_stones')
+              THEN 'road'
+            ELSE 'unknown'
           END AS surface_type,
           CASE
             WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+139 ELSE 139 END
