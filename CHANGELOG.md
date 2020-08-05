@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix bicycle parking icon not being inside a not convex polygon. See #395.
 * Reorder POIs to avoid masking a bicycle-related icon behind a pharmacy icon.
     See #360.
+* Render `public_transport=platform` + `shelter=yes` as shelter. See #378.
 
 
 ## v0.3.6

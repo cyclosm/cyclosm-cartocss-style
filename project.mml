@@ -1716,7 +1716,7 @@ Layer:
           OR military IN ('bunker')
           OR tags->'emergency'='phone'
           OR highway IN ('elevator', 'traffic_signals')
-          OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
+          OR ((highway='bus_stop' OR public_transport='platform') AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND "generator:source"='wind')
         ORDER BY
             CASE
@@ -1862,7 +1862,7 @@ Layer:
           OR military IN ('bunker')
           OR tags->'emergency'='phone'
           OR highway IN ('elevator', 'traffic_signals')
-          OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
+          OR ((highway='bus_stop' OR public_transport='platform') AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND "generator:source"='wind')
           OR tags->'ford' IS NOT NULL
         ORDER BY
@@ -2068,7 +2068,7 @@ Layer:
             OR military IN ('bunker')
             OR tags->'emergency'='phone'
             OR highway IN ('elevator', 'traffic_signals')
-            OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
+            OR ((highway='bus_stop' OR public_transport='platform') AND (tags->'shelter'='yes' OR covered='yes'))
             OR (power = 'generator' AND "generator:source"='wind')
           ORDER BY
             CASE
@@ -2230,7 +2230,7 @@ Layer:
             OR military IN ('bunker')
             OR tags->'emergency'='phone'
             OR highway IN ('elevator', 'traffic_signals')
-            OR (highway='bus_stop' AND (tags->'shelter'='yes' OR covered='yes'))
+            OR ((highway='bus_stop' OR public_transport='platform') AND (tags->'shelter'='yes' OR covered='yes'))
             OR (power = 'generator' AND "generator:source"='wind')
             OR tags->'ford' IS NOT NULL
           ORDER BY
