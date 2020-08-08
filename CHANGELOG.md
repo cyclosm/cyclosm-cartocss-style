@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render `surface=unpaved` as unknown surface + minor fixes for surfaces.
     See #367.
 * Fix correct default access restrictions for `highway=pedestrian`. See #393.
+* Consider a way with `bicycle=dismount` is equivalent tagging to
+    `bicycle=no`.
 
 
 ## v0.3.6
