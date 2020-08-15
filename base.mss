@@ -127,6 +127,7 @@
   }
   [type='amenity_parking']       { polygon-fill: @parking; }
   [type='highway_pedestrian']    { polygon-fill: @pedestrian_area_fill; }
+  [type='highway_footway']       { polygon-fill: @footway_area_fill; }
   [type='landuse_religious']     { polygon-fill: @religious; }
   [type='leisure_pitch']         {
     polygon-fill: @sports;
