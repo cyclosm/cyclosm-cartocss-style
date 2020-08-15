@@ -3472,7 +3472,11 @@
 #turning_circle_case[zoom>=14] {
   marker-fill: @standard-fill;
   marker-line-color: @standard-case;
-  marker-line-width: 2;
+  marker-line-width: 2*@rdz14_residential_outline;
+  [zoom>=15] { marker-line-width: 2*@rdz15_residential_outline; }
+  [zoom>=16] { marker-line-width: 2*@rdz16_residential_outline; }
+  [zoom>=17] { marker-line-width: 2*@rdz17_residential_outline; }
+  [zoom>=18] { marker-line-width: 2*@rdz18_residential_outline; }
   marker-allow-overlap: true;
 }
 #turning_circle_fill[zoom>=14] {
