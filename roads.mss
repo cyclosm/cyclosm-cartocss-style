@@ -2884,15 +2884,14 @@
     //      line-color: lighten(@nomotor-fill, 10%);
     //    }
     //  }
-    /*  [can_bicycle='no'] {
-        line-color: @standard-nobicycle;
-        #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
-      }*/
-  /*  [cyclestreet='yes'] { // a pedestrian street should not be a cyclestreet
+    /*  [cyclestreet='yes'] { // a pedestrian street should not be a cyclestreet
         line-color: @mixed-cycle-fill;
         #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
     }*/
-    [can_bicycle='no'] {
+    // Default access for pedestrian is bicycle=dismount
+    // We need this order to ensure correct overloading of
+    // bicycle=yes|designated and speed inlines.
+    [can_bicycle=null], [can_bicycle='no'] {
       line-color: @standard-nobicycle;
       #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
     }

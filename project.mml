@@ -529,7 +529,7 @@ Layer:
             ELSE NULL
           END AS cycleway_right_oneway,
           CASE
-            WHEN bicycle IN ('no', 'private', 'use_sidepath') THEN 'no'
+            WHEN bicycle IN ('no', 'dismount', 'private', 'use_sidepath') THEN 'no'
             WHEN bicycle IS NOT NULL THEN bicycle
             WHEN tags->'motorroad' IN ('yes') THEN 'no'
             WHEN highway IN ('motorway', 'motorway_link') THEN 'no'
@@ -686,7 +686,7 @@ Layer:
             ELSE NULL
           END AS cycleway_right_oneway,
           CASE
-            WHEN bicycle IN ('no', 'private', 'use_sidepath') THEN 'no'
+            WHEN bicycle IN ('no', 'dismount', 'private', 'use_sidepath') THEN 'no'
             WHEN bicycle IS NOT NULL THEN bicycle
             WHEN tags->'motorroad' IN ('yes') THEN 'no'
             WHEN highway IN ('motorway', 'motorway_link') THEN 'no'
@@ -771,7 +771,7 @@ Layer:
             END
           ) AS type,
           CASE
-            WHEN bicycle IN ('no', 'private', 'use_sidepath') THEN 'no'
+            WHEN bicycle IN ('no', 'dismount', 'private', 'use_sidepath') THEN 'no'
             WHEN bicycle IS NOT NULL THEN bicycle
             WHEN tags->'motorroad' IN ('yes') THEN 'no'
             WHEN highway NOT IN ('motorway', 'motorway_link') AND tags->'vehicle' IN ('no', 'private') THEN 'no'
@@ -945,7 +945,7 @@ Layer:
             ELSE NULL
           END AS cycleway_right_oneway,
           CASE
-            WHEN bicycle IN ('no', 'private', 'use_sidepath') THEN 'no'
+            WHEN bicycle IN ('no', 'dismount', 'private', 'use_sidepath') THEN 'no'
             WHEN bicycle IS NOT NULL THEN bicycle
             WHEN tags->'motorroad' IN ('yes') THEN 'no'
             WHEN highway IN ('motorway', 'motorway_link') THEN 'no'
