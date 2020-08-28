@@ -1109,16 +1109,26 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, route, COALESCE(tags->'network', 'lcn') AS type, tags->'state' AS state
-        FROM planet_osm_line
-        WHERE route='bicycle'
-        ORDER BY CASE
-          WHEN tags->'network' = 'icn' THEN 0
-          WHEN tags->'network' = 'ncn' THEN 1
-          WHEN tags->'network' = 'rcn' THEN 2
-          WHEN tags->'network' = 'lcn' THEN 3
-          ELSE 4
-        END DESC
+        SELECT * FROM (
+          SELECT 
+            way,
+            COALESCE(tags->'network', 'lcn') AS type,
+            tags->'state' AS state,
+            CASE
+              WHEN tags->'network' = 'icn' THEN 0
+              WHEN tags->'network' = 'ncn' THEN 1
+              WHEN tags->'network' = 'rcn' THEN 2
+              WHEN tags->'network' = 'lcn' THEN 3
+              ELSE 4
+            END as priority
+          FROM planet_osm_line
+          WHERE route='bicycle'
+          UNION ALL
+          SELECT way, 'lcn' as type, NULL AS state, 4 as priority
+          FROM planet_osm_line
+          WHERE tags->'lcn' IS NOT NULL
+        ) as routes_from_relations_and_ways
+        ORDER BY priority DESC
       ) AS data
   geometry: linestring
   properties:
