@@ -475,12 +475,16 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           CASE
-            WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
-            -- goods and hgv are not technically children of motorcar, but the motorcar restriction is often intended to cover cars and all larger vehicles
-            WHEN COALESCE(tags->'goods', motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
-            WHEN COALESCE(tags->'hgv', motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
-            WHEN COALESCE(tags->'motorcycle', tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private') THEN 'yes'
+            -- goods and hgv don't need COALESCE chains, because the next step would be motorcar, which is checked above 
+            WHEN tags->'goods' NOT IN ('no', 'private') THEN 'yes'
+            WHEN tags->'hgv' NOT IN ('no', 'private') THEN 'yes'
+            -- moped and mofa are not checked, since most countries that have separate access controls for them treat them as quasi-bicycles
+            WHEN COALESCE(tags->'motorcycle', tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private') THEN 'yes'
             -- TODO: style psv-only roads slightly differently
+            -- bus only needs to have its COALESCE chain go up to psv, because the next step would be motorcar, which is checked above
+            WHEN COALESCE(tags->'bus', tags->'psv') NOT IN ('no', 'private') THEN 'psv'
+            WHEN tags->'taxi' NOT IN ('no', 'private') THEN 'psv'
             ELSE 'no'
           END AS motor_vehicle,
           CASE
@@ -628,12 +632,16 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           CASE
-            WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
-            -- goods and hgv are not technically children of motorcar, but the motorcar restriction is often intended to cover cars and all larger vehicles
-            WHEN COALESCE(tags->'goods', motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
-            WHEN COALESCE(tags->'hgv', motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
-            WHEN COALESCE(tags->'motorcycle', tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private') THEN 'yes'
+            -- goods and hgv don't need COALESCE chains, because the next step would be motorcar, which is checked above 
+            WHEN tags->'goods' NOT IN ('no', 'private') THEN 'yes'
+            WHEN tags->'hgv' NOT IN ('no', 'private') THEN 'yes'
+            -- moped and mofa are not checked, since most countries that have separate access controls for them treat them as quasi-bicycles
+            WHEN COALESCE(tags->'motorcycle', tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private') THEN 'yes'
             -- TODO: style psv-only roads slightly differently
+            -- bus only needs to have its COALESCE chain go up to psv, because the next step would be motorcar, which is checked above
+            WHEN COALESCE(tags->'bus', tags->'psv') NOT IN ('no', 'private') THEN 'psv'
+            WHEN tags->'taxi' NOT IN ('no', 'private') THEN 'psv'
             ELSE 'no'
           END AS motor_vehicle,
           CASE
@@ -885,12 +893,16 @@ Layer:
             ELSE NULL
           END AS maxspeed_kmh,
           CASE
-            WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
-            -- goods and hgv are not technically children of motorcar, but the motorcar restriction is often intended to cover cars and all larger vehicles
-            WHEN COALESCE(tags->'goods', motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
-            WHEN COALESCE(tags->'hgv', motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
-            WHEN COALESCE(tags->'motorcycle', tags->'motor_vehicle', tags->'vehicle', access, 'yes') != 'no' THEN 'yes'
+            WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private') THEN 'yes'
+            -- goods and hgv don't need COALESCE chains, because the next step would be motorcar, which is checked above 
+            WHEN tags->'goods' NOT IN ('no', 'private') THEN 'yes'
+            WHEN tags->'hgv' NOT IN ('no', 'private') THEN 'yes'
+            -- moped and mofa are not checked, since most countries that have separate access controls for them treat them as quasi-bicycles
+            WHEN COALESCE(tags->'motorcycle', tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private') THEN 'yes'
             -- TODO: style psv-only roads slightly differently
+            -- bus only needs to have its COALESCE chain go up to psv, because the next step would be motorcar, which is checked above
+            WHEN COALESCE(tags->'bus', tags->'psv') NOT IN ('no', 'private') THEN 'psv'
+            WHEN tags->'taxi' NOT IN ('no', 'private') THEN 'psv'
             ELSE 'no'
           END AS motor_vehicle,
           CASE
