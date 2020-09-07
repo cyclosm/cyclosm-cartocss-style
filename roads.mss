@@ -2123,7 +2123,7 @@
     ::cycleway {
       line-cap: round;
       line-join: round;
-      line-color: @mixed-cycle-fill;
+      line-color: @bicycle-amenity;
       [zoom>=15] { line-width: 0.2 * @rdz15_cycle; }
       [zoom>=16] { line-width: 0.4 * @rdz16_cycle; }
       [zoom>=17] { line-width: 0.5 * @rdz17_cycle; }
