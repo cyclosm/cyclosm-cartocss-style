@@ -18,6 +18,7 @@
 @path-fill: #007360;
 @footway-fill: #7a5b36;
 @footway-tunnel-fill: #dcc3a6;
+@footway_area_fill: #f3e5d0;
 @bridleway-fill: #741e18;
 @icn-overlay: #ff00ff;
 @icn-shield-fill: #f6f6f6;

@@ -155,7 +155,7 @@ Layer:
         WHERE landuse IN ('allotments', 'brownfield', 'cemetery', 'commercial', 'construction', 'forest', 'grass', 'greenhouse_horticulture', 'industrial', 'landfill', 'meadow', 'farmland', 'vineyard', 'orchard', 'plant_nursery', 'quarry', 'religious', 'residential', 'retail', 'village_green')
           OR leisure IN ('common', 'garden', 'golf_course', 'park', 'pitch', 'sports_centre', 'stadium', 'track')
           OR "natural" IN ('grassland', 'glacier', 'heath', 'scrub', 'wood', 'wetland', 'sand', 'beach', 'dune', 'bare_rock', 'shingle', 'scree')
-          OR highway IN ('pedestrian')
+          OR highway IN ('pedestrian', 'footway')
           OR amenity IN ('college', 'grave_yard', 'hospital', 'parking', 'school', 'university')
           OR man_made IN ('works', 'wastewater_plant', 'water_works')
         ORDER BY way_area DESC
