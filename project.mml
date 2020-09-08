@@ -603,6 +603,22 @@ Layer:
   geometry: point
   properties:
     minzoom: 14
+- id: leisure_track
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          sport
+        FROM planet_osm_line
+        WHERE leisure = 'track'
+      ) AS data
+  geometry: linestring
+  properties:
+    cache-features: true
+    minzoom: 11
 - id: roads_high
   <<: *extents
   Datasource:
