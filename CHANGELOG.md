@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render `public_transport=platform` + `shelter=yes` as shelter. See #378.
 * Render `surface=unpaved` as unknown surface + minor fixes for surfaces.
     See #367.
+* Render `leisure=track`. See #412.
 
 
 ## v0.3.6
