@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     See #367.
 * Render `leisure=track`. See #412.
 * Render footway areas with a brownish tone. See #370.
+* Render linear `highway=ford`. See #424.
 
 
 ## v0.3.6

@@ -476,7 +476,7 @@ Layer:
           END AS maxspeed_kmh,
           CASE
             WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private') THEN 'yes'
-            -- goods and hgv don't need COALESCE chains, because the next step would be motorcar, which is checked above 
+            -- goods and hgv don't need COALESCE chains, because the next step would be motorcar, which is checked above
             WHEN tags->'goods' NOT IN ('no', 'private') THEN 'yes'
             WHEN tags->'hgv' NOT IN ('no', 'private') THEN 'yes'
             -- moped and mofa are not checked, since most countries that have separate access controls for them treat them as quasi-bicycles
@@ -653,7 +653,7 @@ Layer:
           END AS maxspeed_kmh,
           CASE
             WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private') THEN 'yes'
-            -- goods and hgv don't need COALESCE chains, because the next step would be motorcar, which is checked above 
+            -- goods and hgv don't need COALESCE chains, because the next step would be motorcar, which is checked above
             WHEN tags->'goods' NOT IN ('no', 'private') THEN 'yes'
             WHEN tags->'hgv' NOT IN ('no', 'private') THEN 'yes'
             -- moped and mofa are not checked, since most countries that have separate access controls for them treat them as quasi-bicycles
@@ -916,7 +916,7 @@ Layer:
           END AS maxspeed_kmh,
           CASE
             WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private') THEN 'yes'
-            -- goods and hgv don't need COALESCE chains, because the next step would be motorcar, which is checked above 
+            -- goods and hgv don't need COALESCE chains, because the next step would be motorcar, which is checked above
             WHEN tags->'goods' NOT IN ('no', 'private') THEN 'yes'
             WHEN tags->'hgv' NOT IN ('no', 'private') THEN 'yes'
             -- moped and mofa are not checked, since most countries that have separate access controls for them treat them as quasi-bicycles
@@ -1932,6 +1932,25 @@ Layer:
   properties:
     cache-features: true
     minzoom: 10
+- id: amenities-line
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          COALESCE(
+            'highway_' || CASE WHEN tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones' THEN 'ford' END
+          ) AS feature
+        FROM planet_osm_line
+        -- The upcoming where clause is needed for performance only, as the CASE statements would end up doing the equivalent filtering
+        WHERE tags @> 'ford=>yes' OR tags @> 'ford=>stepping_stones'
+        ORDER BY CASE WHEN layer~E'^\\d+$' THEN layer::integer ELSE 0 END
+      ) AS data
+  geometry: linestring
+  properties:
+    minzoom: 16
 - id: area_label
   <<: *extents
   Datasource:
