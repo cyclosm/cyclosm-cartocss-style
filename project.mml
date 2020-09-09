@@ -1126,7 +1126,7 @@ Layer:
           UNION ALL
           SELECT way, 'lcn' as type, tags->'lcn' AS state, 4 as priority
           FROM planet_osm_line
-          WHERE tags->'lcn' IS NOT NULL
+          WHERE tags->'lcn' IS NOT NULL AND tags->'lcn' NOT IN ('no', 'none')
         ) as routes_from_relations_and_ways
         ORDER BY priority DESC
       ) AS data
