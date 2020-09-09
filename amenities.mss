@@ -125,12 +125,6 @@
     marker-clip: false;
   }
 
-  [feature = 'highway_ford'][zoom >= 16] {
-    marker-file: url('symbols/openstreetmap-carto/highway/ford.svg');
-    marker-fill: @transportation-icon;
-    marker-clip: false;
-  }
-
   [feature = 'tourism_caravan_site'][zoom >= 14] {
     marker-file: url('symbols/openstreetmap-carto/tourism/caravan_park.svg');
     marker-placement: interior;
@@ -917,6 +911,16 @@
   [feature = 'amenity_atm'][zoom >= 19] {
     marker-file: url('symbols/openstreetmap-carto/amenity/atm.svg');
     marker-fill: @amenity-common;
+    marker-clip: false;
+  }
+}
+
+#amenities-points,
+#amenities-poly,
+#amenities-line {
+  [feature = 'highway_ford'][zoom >= 16] {
+    marker-file: url('symbols/openstreetmap-carto/highway/ford.svg');
+    marker-fill: @transportation-icon;
     marker-clip: false;
   }
 }
