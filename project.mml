@@ -578,8 +578,8 @@ Layer:
             ELSE 'unknown'
           END AS surface_type,
           CASE
-            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer - 61 ELSE -61 END
-            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer - 62 ELSE -62 END
+            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer - 1 ELSE -1 END
+            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer - 2 ELSE -2 END
             ELSE z_order
           END AS z_order
         FROM planet_osm_line
@@ -763,8 +763,8 @@ Layer:
             ELSE NULL
           END AS mtb_scale_imba,
           CASE
-            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+39 ELSE 39 END
-            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+38 ELSE 38 END
+            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+99 ELSE 99 END
+            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+98 ELSE 98 END
             ELSE z_order
           END AS z_order
         FROM planet_osm_line
@@ -1018,8 +1018,8 @@ Layer:
             ELSE 'unknown'
           END AS surface_type,
           CASE
-            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+139 ELSE 139 END
-            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+138 ELSE 138 END
+            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+199 ELSE 199 END
+            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+198 ELSE 198 END
             ELSE z_order
           END AS z_order
         FROM planet_osm_line
