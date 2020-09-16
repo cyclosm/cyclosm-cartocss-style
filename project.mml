@@ -40,12 +40,12 @@ Stylesheet:
 - fonts.mss
 - base.mss
 - aerialways.mss
+- ferry-routes.mss
 - roads.mss
 - amenities.mss
 - labels.mss
 - placenames.mss
 - addressing.mss
-- ferry-routes.mss
 - power.mss
 - admin.mss
 - gpx.mss
@@ -1082,6 +1082,21 @@ Layer:
       ) AS admin_high_zoom
   properties:
     minzoom: 13
+- id: ferry-routes
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          bicycle
+        FROM planet_osm_line
+        WHERE route = 'ferry'
+          AND osm_id > 0
+      ) AS ferry_routes
+  properties:
+    minzoom: 8
 - id: bicycle_routes_gen0
   <<: *extents
   Datasource:
@@ -1181,20 +1196,6 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 11
-- id: ferry-routes
-  geometry: linestring
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    table: |-
-      (SELECT
-          way
-        FROM planet_osm_line
-        WHERE route = 'ferry'
-          AND osm_id > 0
-      ) AS ferry_routes
-  properties:
-    minzoom: 8
 - id: route
   <<: *extents84
   Datasource:
