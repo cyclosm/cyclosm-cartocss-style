@@ -192,25 +192,6 @@ Layer:
   geometry: raster
   properties:
     status: off
-- id: buildings
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    table: |-
-      (
-        SELECT
-          way,
-          building AS type
-        FROM planet_osm_polygon
-        WHERE building IS NOT NULL
-          AND building != 'no'
-          AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          AND (tags->'location' IS NULL OR tags->'location' != 'underground')
-        ORDER BY z_order ASC, way_area DESC
-      ) AS data
-  geometry: polygon
-  properties:
-    minzoom: 16
 #- id: contours100
 #  class: contours
 #  <<: *extents
@@ -402,6 +383,25 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 13
+- id: buildings
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          building AS type
+        FROM planet_osm_polygon
+        WHERE building IS NOT NULL
+          AND building != 'no'
+          AND way_area > 1*!pixel_width!::real*!pixel_height!::real
+          AND (tags->'location' IS NULL OR tags->'location' != 'underground')
+        ORDER BY z_order ASC, way_area DESC
+      ) AS data
+  geometry: polygon
+  properties:
+    minzoom: 16
 - id: piers-poly
   geometry: polygon
   <<: *extents
