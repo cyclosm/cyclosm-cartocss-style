@@ -12,6 +12,9 @@
       line-width: 0.8;
       line-dasharray: 6,6;
     }
+    [bicycle!=null][bicycle!='no'] {
+      line-color: @cycle-fill;
+    }
   }
 }
 
