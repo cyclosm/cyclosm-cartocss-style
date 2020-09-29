@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render footway areas with a brownish tone. See #370.
 * Render linear `highway=ford`. See #424.
 * Making ferry routes that can carry bikes more blue.
+* Render `lcn` routes tagged on ways directly (and not in a relation). See #430.
 
 
 ## v0.3.6
