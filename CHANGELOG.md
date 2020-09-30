@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render footway areas with a brownish tone. See #370.
 * Render linear `highway=ford`. See #424.
 * Making ferry routes that can carry bikes more blue.
+* Making minor service roads less visible. See #372.
 * Render `lcn` routes tagged on ways directly (and not in a relation). See #430.
 * Ensure cycleways are always on top of the `z_order` hierarchy, in particular
     with the bonus given to `railway` tags by osm2pgsql. See #432.

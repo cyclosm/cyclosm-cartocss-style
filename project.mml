@@ -578,6 +578,10 @@ Layer:
             ELSE 'unknown'
           END AS surface_type,
           CASE
+            WHEN service in ('parking_aisle', 'drive-through', 'driveway') THEN 'minor'
+            ELSE service
+          END AS service,
+          CASE
             WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer - 1 ELSE -1 END
             WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer - 2 ELSE -2 END
             ELSE z_order
@@ -754,6 +758,10 @@ Layer:
               THEN 'road'
             ELSE 'unknown'
           END AS surface_type,
+          CASE
+            WHEN service in ('parking_aisle', 'drive-through', 'driveway') THEN 'minor'
+            ELSE service
+          END AS service,
           CASE
             WHEN tags->'mtb:scale'~E'^\\d+[+-]?$' THEN REPLACE(REPLACE(tags->'mtb:scale', '+', ''), '-', '')::integer
             ELSE NULL
@@ -1017,6 +1025,10 @@ Layer:
               THEN 'road'
             ELSE 'unknown'
           END AS surface_type,
+          CASE
+            WHEN service in ('parking_aisle', 'drive-through', 'driveway') THEN 'minor'
+            ELSE service
+          END AS service,
           CASE
             WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+199 ELSE 199 END
             WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+198 ELSE 198 END
