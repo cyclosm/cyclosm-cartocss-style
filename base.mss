@@ -2,7 +2,8 @@
  * - Landuse & landcover
  * - Water areas
  * - Water ways
- * - Administrative Boundaries
+ * - Barriers
+ * - Buildings
  *
  */
 
@@ -250,16 +251,6 @@
   opacity: 0.4; // The entire layer has opacity to handle overlapping forests
 }
 
-/* ---- BUILDINGS ---- */
-#buildings[zoom>=16] {
-  polygon-fill: @building;
-
-  /* Render perimeter of buildings in high zooms */
-  [zoom>=18] {
-    line-color: #b6b2af;
-    line-width: 0.75;
-  }
-}
 
 /* ================================================================== */
 /* WATER AREAS
@@ -501,5 +492,16 @@ Map { background-color: @water; }
     [zoom >= 20] {
       line-width: 5;
     }
+  }
+}
+
+/* ---- BUILDINGS ---- */
+#buildings[zoom>=16] {
+  polygon-fill: @building;
+
+  /* Render perimeter of buildings in high zooms */
+  [zoom>=18] {
+    line-color: #b6b2af;
+    line-width: 0.75;
   }
 }

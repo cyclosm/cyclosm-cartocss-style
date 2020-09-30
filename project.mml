@@ -40,12 +40,12 @@ Stylesheet:
 - fonts.mss
 - base.mss
 - aerialways.mss
+- ferry-routes.mss
 - roads.mss
 - amenities.mss
 - labels.mss
 - placenames.mss
 - addressing.mss
-- ferry-routes.mss
 - power.mss
 - admin.mss
 - gpx.mss
@@ -192,25 +192,6 @@ Layer:
   geometry: raster
   properties:
     status: off
-- id: buildings
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    table: |-
-      (
-        SELECT
-          way,
-          building AS type
-        FROM planet_osm_polygon
-        WHERE building IS NOT NULL
-          AND building != 'no'
-          AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          AND (tags->'location' IS NULL OR tags->'location' != 'underground')
-        ORDER BY z_order ASC, way_area DESC
-      ) AS data
-  geometry: polygon
-  properties:
-    minzoom: 16
 #- id: contours100
 #  class: contours
 #  <<: *extents
@@ -402,6 +383,25 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 13
+- id: buildings
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          way,
+          building AS type
+        FROM planet_osm_polygon
+        WHERE building IS NOT NULL
+          AND building != 'no'
+          AND way_area > 1*!pixel_width!::real*!pixel_height!::real
+          AND (tags->'location' IS NULL OR tags->'location' != 'underground')
+        ORDER BY z_order ASC, way_area DESC
+      ) AS data
+  geometry: polygon
+  properties:
+    minzoom: 16
 - id: piers-poly
   geometry: polygon
   <<: *extents
@@ -578,8 +578,8 @@ Layer:
             ELSE 'unknown'
           END AS surface_type,
           CASE
-            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer - 61 ELSE -61 END
-            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer - 62 ELSE -62 END
+            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer - 1 ELSE -1 END
+            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer - 2 ELSE -2 END
             ELSE z_order
           END AS z_order
         FROM planet_osm_line
@@ -763,8 +763,8 @@ Layer:
             ELSE NULL
           END AS mtb_scale_imba,
           CASE
-            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+39 ELSE 39 END
-            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+38 ELSE 38 END
+            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+99 ELSE 99 END
+            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+98 ELSE 98 END
             ELSE z_order
           END AS z_order
         FROM planet_osm_line
@@ -1018,8 +1018,8 @@ Layer:
             ELSE 'unknown'
           END AS surface_type,
           CASE
-            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+139 ELSE 139 END
-            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+138 ELSE 138 END
+            WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+199 ELSE 199 END
+            WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+198 ELSE 198 END
             ELSE z_order
           END AS z_order
         FROM planet_osm_line
@@ -1082,6 +1082,21 @@ Layer:
       ) AS admin_high_zoom
   properties:
     minzoom: 13
+- id: ferry-routes
+  geometry: linestring
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (SELECT
+          way,
+          bicycle
+        FROM planet_osm_line
+        WHERE route = 'ferry'
+          AND osm_id > 0
+      ) AS ferry_routes
+  properties:
+    minzoom: 8
 - id: bicycle_routes_gen0
   <<: *extents
   Datasource:
@@ -1147,16 +1162,26 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, route, COALESCE(tags->'network', 'lcn') AS type, tags->'state' AS state
-        FROM planet_osm_line
-        WHERE route='bicycle'
-        ORDER BY CASE
-          WHEN tags->'network' = 'icn' THEN 0
-          WHEN tags->'network' = 'ncn' THEN 1
-          WHEN tags->'network' = 'rcn' THEN 2
-          WHEN tags->'network' = 'lcn' THEN 3
-          ELSE 4
-        END DESC
+        SELECT * FROM (
+          SELECT 
+            way,
+            COALESCE(tags->'network', 'lcn') AS type,
+            tags->'state' AS state,
+            CASE
+              WHEN tags->'network' = 'icn' THEN 0
+              WHEN tags->'network' = 'ncn' THEN 1
+              WHEN tags->'network' = 'rcn' THEN 2
+              WHEN tags->'network' = 'lcn' THEN 3
+              ELSE 4
+            END as priority
+          FROM planet_osm_line
+          WHERE route='bicycle'
+          UNION ALL
+          SELECT way, 'lcn' as type, tags->'lcn' AS state, 4 as priority
+          FROM planet_osm_line
+          WHERE tags->'lcn' IS NOT NULL AND tags->'lcn' NOT IN ('no', 'none')
+        ) as routes_from_relations_and_ways
+        ORDER BY priority DESC
       ) AS data
   geometry: linestring
   properties:
@@ -1181,20 +1206,6 @@ Layer:
   geometry: linestring
   properties:
     minzoom: 11
-- id: ferry-routes
-  geometry: linestring
-  <<: *extents
-  Datasource:
-    <<: *osm2pgsql
-    table: |-
-      (SELECT
-          way
-        FROM planet_osm_line
-        WHERE route = 'ferry'
-          AND osm_id > 0
-      ) AS ferry_routes
-  properties:
-    minzoom: 8
 - id: route
   <<: *extents84
   Datasource:
