@@ -49,7 +49,7 @@
 @speed20-fill: #bbffba;
 @speedWalk-fill: #ddffba;
 @nomotor-fill: #62ff96;
-@track-fill: #1b3b66;
+@track-fill: #114021;
 @track-light1: lighten(@track-fill, 30%);
 @track-light2: lighten(@track-fill, 50);
 

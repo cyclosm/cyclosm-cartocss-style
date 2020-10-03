@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render `lcn` routes tagged on ways directly (and not in a relation). See #430.
 * Ensure cycleways are always on top of the `z_order` hierarchy, in particular
     with the bonus given to `railway` tags by osm2pgsql. See #432.
+* Render `highway=track` as dark green, instead of dark blue.
 
 
 ## v0.3.6
