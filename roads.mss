@@ -5,6 +5,23 @@
 // At lower zoomlevels, just show major automobile routes: motorways
 // and trunks.
 
+
+#roads_low[zoom=8],
+#roads_med[zoom>=9][zoom<=10] {
+    [type='railway']::rail_perpendicular {
+
+        /* background: to avoid weird pattern when many tracks are overlapping */
+        background/line-color: @land;
+        background/line-width: 3;
+
+        line-color: @rail-line;
+        line-cap: butt;
+        line-dasharray: 0,4,1,4; /* start with space to avoid dense pattern on very short ways */
+        line-width: 2;
+        [zoom >= 9] { line-width: 3; }
+    }
+}
+
 #roads_low[zoom>=5][zoom<=8] {
   line-color: @motorway-trunk-fill;
 
@@ -31,7 +48,7 @@
 // At mid-level scales start to show primary and secondary routes
 // as well.
 
-#roads_med[zoom >= 9] {
+#roads_med[zoom >= 9][zoom<=10] {
   line-color: @motorway-trunk-fill;
 
   [type='motorway'][can_bicycle='yes'] {
@@ -375,6 +392,29 @@
 @rdz18_steps_outline: 1;
 @rdz18_line_bridge_outline: 1;  // cycleway, footway, bridleway, path on bridges
 
+// ---- Rail background with hatches -------------------------
+
+#roads_high[zoom>=11],
+#bridge[zoom>=11] {
+    [type='railway']::rail_perpendicular {
+
+        /* background: to avoid weird pattern when many tracks are overlapping */
+        [zoom<14] {
+            background/line-color: @land;
+            background/line-width: 3;
+        }
+
+        line-color: @rail-line;
+        line-cap: butt;
+
+        /* hatches: start with space to avoid dense pattern on very short ways */
+        line-dasharray: 0,2,1,2;
+        [zoom>=14] { line-dasharray: 0,4,1,4; }
+
+        line-width: 3;
+        [zoom>=19] { line-width: 6; }
+    }
+}
 
 // ---- Casing -----------------------------------------------
 
@@ -3446,38 +3486,6 @@
     }
     [zoom>=18] {
       line-width: @rdz18_railway;
-    }
-  }
-}
-
-#roads_high::rail_line2[zoom>=11],
-#bridge::rail_line2[zoom>=11] {
-  [type='railway'] {
-    line-color: @rail-line;
-    line-dasharray: 1,4;
-    [zoom>=14] { line-dasharray: 1,8; }
-
-    line-width: @rdz11_railway*3;
-    [zoom>=12] {
-      line-width: @rdz12_railway*3;
-    }
-    [zoom>=13] {
-      line-width: @rdz13_railway*3;
-    }
-    [zoom>=14] {
-      line-width: @rdz14_railway*3;
-    }
-    [zoom>=15] {
-      line-width: @rdz15_railway*3;
-    }
-    [zoom>=16] {
-      line-width: @rdz16_railway*3;
-    }
-    [zoom>=17] {
-      line-width: @rdz17_railway*3;
-    }
-    [zoom>=18] {
-      line-width: @rdz18_railway*3;
     }
   }
 }
