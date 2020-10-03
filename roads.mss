@@ -16,7 +16,7 @@
 
         line-color: @rail-line;
         line-cap: butt;
-        line-dasharray: 0,4,1,4; /* start with space to avoid dense pattern on very short ways */
+        line-dasharray: 0,2,1,2; /* start with space to avoid dense pattern on very short ways */
         line-width: 2;
         [zoom >= 9] { line-width: 3; }
     }
@@ -24,14 +24,6 @@
 
 #roads_low[zoom>=5][zoom<=8] {
   line-color: @motorway-trunk-fill;
-
-  [type='motorway'][bicycle='yes'] {
-    line-color: @motorway-trunk-cycle-fill;
-  }
-
-  [type='railway'] {
-    line-color: @rail-line;
-  }
 
   line-width: 0.3;
   [zoom >= 6] {
@@ -42,6 +34,17 @@
   }
   [zoom >= 8] {
     line-width: 0.8;
+  }
+
+  [type='motorway'][bicycle='yes'] {
+    line-color: @motorway-trunk-cycle-fill;
+  }
+
+  [type='railway'] {
+    line-color: @rail-line;
+    [zoom >= 8] {
+      line-width: 0.6;
+    }
   }
 }
 
