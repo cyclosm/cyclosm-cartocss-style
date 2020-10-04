@@ -114,13 +114,16 @@
             "key": "ford"
         },
         {
-            "key": "generator:source"
+            "key": "goods"
         },
         {
             "key": "healthcare"
         },
         {
             "key": "height"
+        },
+        {
+            "key": "hgv"
         },
         {
             "key": "highway"
@@ -156,6 +159,9 @@
             "key": "landuse"
         },
         {
+            "key": "lcn"
+        },
+        {
             "key": "lcn_ref"
         },
         {
@@ -189,10 +195,13 @@
             "key": "motor_vehicle:conditional"
         },
         {
-            "key": "motorcar"
+            "key": "motorcycle"
         },
         {
             "key": "motorroad"
+        },
+        {
+            "key": "mtb"
         },
         {
             "key": "mtb:scale"
@@ -282,6 +291,9 @@
             "key": "smoothness"
         },
         {
+            "key": "sport"
+        },
+        {
             "key": "state"
         },
         {
@@ -289,6 +301,9 @@
         },
         {
             "key": "supervised"
+        },
+        {
+            "key": "taxi"
         },
         {
             "key": "traffic_calming"

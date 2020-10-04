@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+
+## v0.3.7
+
 * Rework protected areas borders
 * Better railway rendering at low zooms (z8-10)
 * Render bicycle routes without network tag as lcn. See #379.
