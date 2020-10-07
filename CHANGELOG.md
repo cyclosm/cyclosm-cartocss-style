@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Fix an issue with routes with `state=proposed` not rendered. See #438.
+
 
 
 ## v0.3.7
