@@ -91,9 +91,9 @@
 @rdz11_living_street: 0;
 @rdz11_service: 0;
 @rdz11_pedestrian: 0;
-@rdz11_track: 0.25;
-@rdz11_path: 0.30;
-@rdz11_cycle: 0.5;
+@rdz11_track: 0.15;
+@rdz11_path: 0.15;
+@rdz11_cycle: 0.4;
 @rdz11_railway: 0.5;
 // Border width (one side of the road only)
 @rdz11_motorway_trunk_outline: 1;
@@ -102,10 +102,10 @@
 @rdz11_motorway_link_outline: 0.15;
 @rdz11_primary_link_outline: 0.15;
 @rdz11_secondary_link_outline: 0.15;
-@rdz11_tertiary_outline: 0.2;
+@rdz11_tertiary_outline: 0.4;
 @rdz11_tertiary_link_outline: 0.15;
-@rdz11_unclassified_outline: 0.2;
-@rdz11_residential_outline: 0.15;
+@rdz11_unclassified_outline: 0.35;
+@rdz11_residential_outline: 0.2;
 @rdz11_living_street_outline: 0.15;
 @rdz11_service_outline: 0.15;
 @rdz11_pedestrian_outline: 0.15;
@@ -126,7 +126,7 @@
 @rdz12_track: 0.5;
 @rdz12_pedestrian: 0.5;
 @rdz12_path: 0.5;
-@rdz12_cycle: 0.8;
+@rdz12_cycle: 0.7;
 @rdz12_railway: 0.5;
 // Border width (one side of the road only)
 @rdz12_motorway_trunk_outline: 1;
