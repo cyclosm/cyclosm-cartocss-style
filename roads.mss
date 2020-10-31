@@ -3542,8 +3542,12 @@
 #bicycle_routes_gen1[zoom >= 5] {
   opacity: 0.75;
   line-color: @icn-overlay;
+  line-width: 1;
+
   [type='ncn'] {
     line-color: @ncn-overlay;
+    [zoom >= 5] { line-width: 0.5; }
+    [zoom >= 7] { line-width: 1; }
   }
   [route='mtb'] {
     line-color: @mtb-overlay;
@@ -3552,11 +3556,9 @@
   [state='proposed'] {
     line-dasharray: 6,6;
   }
-
-  line-width: 1;
 }
 #bicycle_routes_gen2[zoom >= 8] {
-  opacity: 0.75;
+  opacity: 0.6;
   line-color: @icn-overlay;
   [type='ncn'] {
     line-color: @ncn-overlay;
@@ -3573,12 +3575,8 @@
   }
 
   line-width: 1;
-  [zoom >= 9] {
-    line-width: 2;
-  }
-  [zoom >= 10] {
-    line-width: 3;
-  }
+  [zoom >= 9] { line-width: 1.5; }
+  [zoom >= 10] { line-width: 2; }
 }
 
 #bicycle_routes_bicycle_gen3[zoom >= 11] {
