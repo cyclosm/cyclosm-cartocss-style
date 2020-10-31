@@ -6,51 +6,29 @@
 // and trunks.
 
 
-#roads_low[zoom=8],
-#roads_med[zoom>=9][zoom<=10] {
-    [type='railway']::rail_perpendicular {
+#roads_low[zoom>=7][zoom<=8][type='railway']::rail_perpendicular,
+#roads_med[zoom>=9][zoom<=10][type='railway']::rail_perpendicular {
+    /* background: to avoid weird pattern when many tracks are overlapping */
+    background/line-color: @land;
+    background/line-width: 3;
 
-        /* background: to avoid weird pattern when many tracks are overlapping */
-        background/line-color: @land;
-        background/line-width: 3;
+    line-color: @rail-line;
+    line-cap: butt;
+    line-dasharray: 0,2,1,2; /* start with space to avoid dense pattern on very short ways */
+    line-width: 2;
 
-        line-color: @rail-line;
-        line-cap: butt;
-        line-dasharray: 0,2,1,2; /* start with space to avoid dense pattern on very short ways */
-        line-width: 2;
-        [zoom >= 9] { line-width: 3; }
-    }
+    [zoom >= 9] { line-width: 3; }
 }
 
-#roads_low[zoom>=5][zoom<=8] {
-  line-color: @motorway-trunk-fill;
-
+#roads_low[zoom>=5][zoom<=8][type='railway'] {
   line-width: 0.3;
-  [zoom >= 6] {
-    line-width: 0.4;
-  }
-  [zoom >= 7] {
-    line-width: 0.6;
-  }
-  [zoom >= 8] {
-    line-width: 0.8;
-  }
+  line-color: @rail-line;
 
-  [type='motorway'][bicycle='yes'] {
-    line-color: @motorway-trunk-cycle-fill;
-  }
-
-  [type='railway'] {
-    line-color: @rail-line;
-    [zoom >= 8] {
-      line-width: 0.6;
-    }
-  }
+  [zoom >= 8] { line-width: 0.6; }
 }
 
 // At mid-level scales start to show primary and secondary routes
 // as well.
-
 #roads_med[zoom >= 9][zoom<=10] {
   line-color: @motorway-trunk-fill;
 
@@ -61,7 +39,7 @@
     line-color: @primary-case;
   }
   [type='secondary'] {
-    line-color: @standard-case;
+    line-color: @secondary-case;
   }
 
   [type='railway'] {
@@ -80,7 +58,7 @@
 }
 
 // At higher levels the roads become more complex. We're now showing
-//more than just automobile routes - railways, footways, and cycleways
+//more than just automobile and railway routes - footways, and cycleways
 //come in as well.
 
 // ----------------------------------------------------------
