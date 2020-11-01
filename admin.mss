@@ -80,6 +80,7 @@ overlapping borders correctly.
       line-color: @admin-boundaries;
       line-join: bevel;
       line-width: 0.3;
+      line-dasharray: 3,6;
       line-simplify: @admin-simplify;
       line-simplify-algorithm: @admin-simplify-algorithm;
       line-clip: false;
@@ -94,7 +95,6 @@ overlapping borders correctly.
     }
     [zoom >= 7] {
       background/line-width: 0.6;
-      line-dasharray: 3,6;
       line-width: 0.6;
     }
     [zoom >= 9] {
