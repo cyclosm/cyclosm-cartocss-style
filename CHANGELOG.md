@@ -9,7 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 * Fix an issue with routes with `state=proposed` not rendered. See #438.
-
+* Remove motorways at low zoom level. See #447.
+* Thinner cycle routes and easier to distinguish secondaries / railways at
+    medium zooms. See #447.
+* Make roads more visible at Z11. See #447.
+* Render `admin_level=4` (states / regions) with dash from z4 to avoid miximg
+    them up with railways. See #447.
 
 
 ## v0.3.7

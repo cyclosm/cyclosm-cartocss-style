@@ -6,51 +6,29 @@
 // and trunks.
 
 
-#roads_low[zoom=8],
-#roads_med[zoom>=9][zoom<=10] {
-    [type='railway']::rail_perpendicular {
+#roads_low[zoom>=7][zoom<=8][type='railway']::rail_perpendicular,
+#roads_med[zoom>=9][zoom<=10][type='railway']::rail_perpendicular {
+    /* background: to avoid weird pattern when many tracks are overlapping */
+    background/line-color: @land;
+    background/line-width: 3;
 
-        /* background: to avoid weird pattern when many tracks are overlapping */
-        background/line-color: @land;
-        background/line-width: 3;
+    line-color: @rail-line;
+    line-cap: butt;
+    line-dasharray: 0,2,1,2; /* start with space to avoid dense pattern on very short ways */
+    line-width: 2;
 
-        line-color: @rail-line;
-        line-cap: butt;
-        line-dasharray: 0,2,1,2; /* start with space to avoid dense pattern on very short ways */
-        line-width: 2;
-        [zoom >= 9] { line-width: 3; }
-    }
+    [zoom >= 9] { line-width: 3; }
 }
 
-#roads_low[zoom>=5][zoom<=8] {
-  line-color: @motorway-trunk-fill;
-
+#roads_low[zoom>=5][zoom<=8][type='railway'] {
   line-width: 0.3;
-  [zoom >= 6] {
-    line-width: 0.4;
-  }
-  [zoom >= 7] {
-    line-width: 0.6;
-  }
-  [zoom >= 8] {
-    line-width: 0.8;
-  }
+  line-color: @rail-line;
 
-  [type='motorway'][bicycle='yes'] {
-    line-color: @motorway-trunk-cycle-fill;
-  }
-
-  [type='railway'] {
-    line-color: @rail-line;
-    [zoom >= 8] {
-      line-width: 0.6;
-    }
-  }
+  [zoom >= 8] { line-width: 0.6; }
 }
 
 // At mid-level scales start to show primary and secondary routes
 // as well.
-
 #roads_med[zoom >= 9][zoom<=10] {
   line-color: @motorway-trunk-fill;
 
@@ -61,7 +39,7 @@
     line-color: @primary-case;
   }
   [type='secondary'] {
-    line-color: @standard-case;
+    line-color: @secondary-case;
   }
 
   [type='railway'] {
@@ -80,7 +58,7 @@
 }
 
 // At higher levels the roads become more complex. We're now showing
-//more than just automobile routes - railways, footways, and cycleways
+//more than just automobile and railway routes - footways, and cycleways
 //come in as well.
 
 // ----------------------------------------------------------
@@ -113,9 +91,9 @@
 @rdz11_living_street: 0;
 @rdz11_service: 0;
 @rdz11_pedestrian: 0;
-@rdz11_track: 0.25;
-@rdz11_path: 0.30;
-@rdz11_cycle: 0.5;
+@rdz11_track: 0.15;
+@rdz11_path: 0.15;
+@rdz11_cycle: 0.4;
 @rdz11_railway: 0.5;
 // Border width (one side of the road only)
 @rdz11_motorway_trunk_outline: 1;
@@ -124,10 +102,10 @@
 @rdz11_motorway_link_outline: 0.15;
 @rdz11_primary_link_outline: 0.15;
 @rdz11_secondary_link_outline: 0.15;
-@rdz11_tertiary_outline: 0.2;
+@rdz11_tertiary_outline: 0.4;
 @rdz11_tertiary_link_outline: 0.15;
-@rdz11_unclassified_outline: 0.2;
-@rdz11_residential_outline: 0.15;
+@rdz11_unclassified_outline: 0.35;
+@rdz11_residential_outline: 0.2;
 @rdz11_living_street_outline: 0.15;
 @rdz11_service_outline: 0.15;
 @rdz11_pedestrian_outline: 0.15;
@@ -148,7 +126,7 @@
 @rdz12_track: 0.5;
 @rdz12_pedestrian: 0.5;
 @rdz12_path: 0.5;
-@rdz12_cycle: 0.8;
+@rdz12_cycle: 0.7;
 @rdz12_railway: 0.5;
 // Border width (one side of the road only)
 @rdz12_motorway_trunk_outline: 1;
@@ -3564,8 +3542,12 @@
 #bicycle_routes_gen1[zoom >= 5] {
   opacity: 0.75;
   line-color: @icn-overlay;
+  line-width: 1;
+
   [type='ncn'] {
     line-color: @ncn-overlay;
+    [zoom >= 5] { line-width: 0.5; }
+    [zoom >= 7] { line-width: 1; }
   }
   [route='mtb'] {
     line-color: @mtb-overlay;
@@ -3574,11 +3556,9 @@
   [state='proposed'] {
     line-dasharray: 6,6;
   }
-
-  line-width: 1;
 }
 #bicycle_routes_gen2[zoom >= 8] {
-  opacity: 0.75;
+  opacity: 0.6;
   line-color: @icn-overlay;
   [type='ncn'] {
     line-color: @ncn-overlay;
@@ -3595,12 +3575,8 @@
   }
 
   line-width: 1;
-  [zoom >= 9] {
-    line-width: 2;
-  }
-  [zoom >= 10] {
-    line-width: 3;
-  }
+  [zoom >= 9] { line-width: 1.5; }
+  [zoom >= 10] { line-width: 2; }
 }
 
 #bicycle_routes_bicycle_gen3[zoom >= 11] {
