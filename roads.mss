@@ -760,7 +760,7 @@
 #tunnel::path_outline_right[zoom>=17][type='path'][can_bicycle!='no'][segregated!='no'],
 #bridge::path_outline_right[zoom>=17][type='path'][can_bicycle!='no'][segregated!='no'] {
   line-cap: butt;
-  [segregated='foot'] { line-color: @footway-fill; }
+  line-color: @footway-fill;
   [segregated='horse'] { line-color: @bridleway-fill; }
 
   line-width: @rdz17_path;
