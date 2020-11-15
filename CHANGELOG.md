@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render `admin_level=4` (states / regions) with dash from z4 to avoid miximg
     them up with railways. See #447.
 * Fix bicycle shop icon size at zooms 14-15.
+* Fix a bug in `highway=motorway_link` color, see #453.
 
 
 ## v0.3.7
