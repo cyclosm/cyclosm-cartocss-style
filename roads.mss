@@ -2181,7 +2181,7 @@
     line-join: round;
     line-color: @motorway-trunk-cycle-fill;
     #tunnel { line-color: lighten(@motorway-trunk-cycle-fill, 10%); }
-    [can_bicycle='yes'] {
+    [can_bicycle='no'] {
       line-color: @motorway-trunk-fill;
       #tunnel { line-color: lighten(@motorway-trunk-fill, 10%); }
     }
