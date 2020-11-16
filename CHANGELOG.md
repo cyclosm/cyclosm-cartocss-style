@@ -15,6 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Make roads more visible at Z11. See #447.
 * Render `admin_level=4` (states / regions) with dash from z4 to avoid miximg
     them up with railways. See #447.
+* Rework drinking water icon
+* Distinguish toilets with drinking water.
+* Distinguish access for toilets and drinking water.
 
 
 ## v0.3.7
