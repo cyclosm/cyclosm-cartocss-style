@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     them up with railways. See #447.
 * Fix bicycle shop icon size at zooms 14-15.
 * Fix a bug in `highway=motorway_link` color, see #453.
+* Rework drinking water icon
+* Distinguish toilets with drinking water.
+* Distinguish access for toilets and drinking water.
 
 
 ## v0.3.7

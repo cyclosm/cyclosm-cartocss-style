@@ -665,12 +665,20 @@
   [feature = 'amenity_drinking_water'][zoom >= 16],
   [feature = 'amenity_water_point']['drinking_water'='yes'][zoom >= 16],
   [feature = 'man_made_water_tap']['drinking_water'='yes'][zoom >= 16] {
-    marker-file: url('symbols/osm-bright-gl-style/amenities/drinking_water_11.svg');
+    marker-file: url('symbols/openstreetmap-carto/amenity/drinking_water_full.svg');
     marker-fill: @amenity-water;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
   [feature = 'amenity_toilets'][zoom >= 16] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/toilets_11.svg');
-    marker-fill: @amenity-water;
+    marker-fill: @health-color;
+    [drinking_water = 'yes'] { marker-fill: @amenity-water; }
+
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
   }
 
   [feature = 'shop_supermarket'][zoom >= 16] {

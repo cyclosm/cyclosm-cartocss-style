@@ -173,7 +173,7 @@
 @gastronomy-text: darken(@gastronomy-icon, 5%);
 @shop-icon: #666;
 @shop-text: darken(@shop-icon, 5%);
-@amenity-water: #007ae2;
+@amenity-water: #3b029a;
 @amenity-common: #666;
 @memorials: @amenity-common;
 @man-made-icon: #666;
