@@ -921,6 +921,33 @@
     marker-fill: @amenity-common;
     marker-clip: false;
   }
+
+  //Pump sub icon
+  [service_bicycle_pump = 'yes'][feature != 'amenity_compressed_air'][zoom >= 16],
+  [compressed_air= 'yes'][zoom >= 16] {
+    pump/marker-file: url('symbols/osmandapp/amenity/compressed_air.svg');
+    pump/marker-fill: @bicycle-amenity;
+    pump/marker-placement: interior;
+    pump/marker-clip: false;
+    pump/marker-ignore-placement: true;
+    pump/marker-allow-overlap: true;
+    pump/marker-width: 9;
+    pump/marker-height: 11;
+    pump/marker-geometry-transform: translate(14, 6);
+  }
+
+  //Do it yourself repair tools sub icon
+  [service_bicycle_diy = 'yes'][zoom >= 16] {
+    diy/marker-file: url('symbols/openstreetmap-carto/amenity/bicycle_repair_station.svg');
+    diy/marker-fill: @bicycle-amenity;
+    diy/marker-placement: interior;
+    diy/marker-clip: false;
+    diy/marker-ignore-placement: true;
+    diy/marker-allow-overlap: true;
+    diy/marker-width: 11;
+    diy/marker-height: 11;
+    diy/marker-geometry-transform: translate(-10, 6);
+  }
 }
 
 #amenities-points,

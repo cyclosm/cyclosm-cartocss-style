@@ -1163,7 +1163,7 @@ Layer:
     table: |-
       (
         SELECT * FROM (
-          SELECT 
+          SELECT
             way,
             COALESCE(tags->'network', 'lcn') AS type,
             tags->'state' AS state,
@@ -1702,6 +1702,8 @@ Layer:
           religion,
           tags->'denomination' AS denomination,
           tags->'compressed_air' AS compressed_air,
+          tags->'service:bicycle:pump' AS service_bicycle_pump,
+          tags->'service:bicycle:diy' AS service_bicycle_diy,
           tags->'car_wash' as car_wash,
           tags->'drinking_water' AS drinking_water,
           tags->'location' AS location,
@@ -1746,7 +1748,6 @@ Layer:
                          'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath',
                          'restaurant', 'shelter', 'shower', 'toilets', 'water_point', 'cinema', 'theatre',
                          'bureau_de_change', 'casino', 'library')
-          OR tags->'compressed_air'='yes'
           OR tags->'car_wash'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
           OR (amenity='charging_station' AND (bicycle='yes' OR bicycle='designated'))
@@ -1834,6 +1835,8 @@ Layer:
           religion,
           tags->'denomination' AS denomination,
           tags->'compressed_air' AS compressed_air,
+          tags->'service:bicycle:pump' AS service_bicycle_pump,
+          tags->'service:bicycle:diy' AS service_bicycle_diy,
           tags->'car_wash' as car_wash,
           tags->'drinking_water' AS drinking_water,
           tags->'location' AS location,
@@ -1892,7 +1895,6 @@ Layer:
                          'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath',
                          'restaurant', 'shelter', 'shower', 'toilets', 'water_point', 'cinema', 'theatre',
                          'bureau_de_change', 'casino', 'library')
-          OR tags->'compressed_air'='yes'
           OR tags->'car_wash'='yes'
           OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
           OR (amenity='charging_station' AND (bicycle='yes' OR bicycle='designated'))
@@ -2073,6 +2075,8 @@ Layer:
             religion,
             tags->'denomination' AS denomination,
             tags->'compressed_air' AS compressed_air,
+            tags->'service:bicycle:pump' AS service_bicycle_pump,
+            tags->'service:bicycle:diy' AS service_bicycle_diy,
             tags->'car_wash' as car_wash,
             tags->'drinking_water' AS drinking_water,
             tags->'location' AS location,
@@ -2117,7 +2121,6 @@ Layer:
                            'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath',
                            'restaurant', 'shelter', 'shower', 'toilets', 'water_point', 'cinema', 'theatre',
                            'bureau_de_change', 'casino', 'library')
-            OR tags->'compressed_air'='yes'
             OR tags->'car_wash'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
             OR (amenity='charging_station' AND (bicycle='yes' OR bicycle='designated'))
@@ -2221,6 +2224,8 @@ Layer:
             religion,
             tags->'denomination' AS denomination,
             tags->'compressed_air' AS compressed_air,
+            tags->'service:bicycle:pump' AS service_bicycle_pump,
+            tags->'service:bicycle:diy' AS service_bicycle_diy,
             tags->'car_wash' as car_wash,
             tags->'drinking_water' AS drinking_water,
             tags->'location' AS location,
@@ -2279,7 +2284,6 @@ Layer:
                            'pharmacy', 'place_of_worship', 'police', 'post_office', 'post_box', 'pub', 'public_bath',
                            'restaurant', 'shelter', 'shower', 'toilets', 'water_point', 'cinema', 'theatre',
                            'bureau_de_change', 'casino', 'library')
-            OR tags->'compressed_air'='yes'
             OR tags->'car_wash'='yes'
             OR (amenity='motorcycle_parking' AND (bicycle='yes' OR bicycle='designated'))
             OR (amenity='charging_station' AND (bicycle='yes' OR bicycle='designated'))
