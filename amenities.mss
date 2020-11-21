@@ -82,8 +82,8 @@
     }
   }
 
-  [feature = 'amenity_fuel'][zoom >= 16],
-  [feature = 'shop_gas'][zoom >= 16] {
+  [feature = 'amenity_fuel'][zoom >= 17],
+  [feature = 'shop_gas'][zoom >= 17] {
     marker-file: url('symbols/openstreetmap-carto/amenity/fuel.svg');
     marker-fill: @shop-icon;
     marker-placement: interior;
@@ -1011,6 +1011,8 @@
   [feature = 'shop_bakery'],
   [feature = 'shop_convenience'],
   [feature = 'shop_convenience;gas'],
+  [feature = 'shop_gas'],
+  [feature = 'amenity_fuel'],
   [feature = 'shop_greengrocer'],
   [feature = 'shop_pastry'],
   [feature = 'shop_beverages'] {
