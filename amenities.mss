@@ -1011,8 +1011,6 @@
   [feature = 'shop_bakery'],
   [feature = 'shop_convenience'],
   [feature = 'shop_convenience;gas'],
-  [feature = 'shop_gas'],
-  [feature = 'amenity_fuel'],
   [feature = 'shop_greengrocer'],
   [feature = 'shop_pastry'],
   [feature = 'shop_beverages'] {
