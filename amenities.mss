@@ -72,9 +72,7 @@
 
 #amenities-points,
 #amenities-poly {
-  [feature = 'amenity_compressed_air'][zoom >= 15],
-  [feature = 'amenity_fuel'][compressed_air = 'yes'][zoom >= 16],
-  [feature = 'shop_gas'][compressed_air = 'yes'][zoom >= 16] {
+  [feature = 'amenity_compressed_air'][zoom >= 15] {
     marker-file: url('symbols/osmandapp/amenity/compressed_air.svg');
     marker-fill: @bicycle-amenity;
     marker-placement: interior;
@@ -82,6 +80,14 @@
     [access != ''][access != 'permissive'][access != 'yes'] {
       marker-opacity: 0.33;
     }
+  }
+
+  [feature = 'amenity_fuel'][zoom >= 17],
+  [feature = 'shop_gas'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/fuel.svg');
+    marker-fill: @shop-icon;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'tourism_alpine_hut'][zoom >= 13],
@@ -754,9 +760,9 @@
     [feature = 'shop_convenience;gas'][zoom >= 16] {
       marker-file: url('symbols/openstreetmap-carto/shop/convenience.svg');
     }
-    [feature = 'shop_convenience;gas'][compressed_air = 'yes'][zoom >= 16] {
+    /*[feature = 'shop_convenience;gas'][compressed_air = 'yes'][zoom >= 16] {
       marker-file: url('symbols/shop/convenience_air.svg');
-    }
+    }*/
     [feature = 'shop_greengrocer'][zoom >= 16] {
       marker-file: url('symbols/openstreetmap-carto/shop/greengrocer.svg');
     }
@@ -920,6 +926,46 @@
     marker-file: url('symbols/openstreetmap-carto/amenity/atm.svg');
     marker-fill: @amenity-common;
     marker-clip: false;
+  }
+
+  //Pump sub icon
+  [service_bicycle_pump = 'yes'][feature != 'amenity_compressed_air'][zoom >= 16],
+  [compressed_air = 'yes'][zoom >= 16] {
+    pump/marker-file: url('symbols/osmandapp/amenity/compressed_air.svg');
+    pump/marker-fill: @bicycle-amenity;
+    pump/marker-placement: interior;
+    pump/marker-clip: false;
+    pump/marker-ignore-placement: true;
+    pump/marker-allow-overlap: true;
+    pump/marker-width: 9;
+    pump/marker-height: 11;
+    pump/marker-geometry-transform: translate(14, 6);
+  }
+
+  //Do it yourself repair tools sub icon
+  [service_bicycle_diy = 'yes'][zoom >= 16] {
+    diy/marker-file: url('symbols/openstreetmap-carto/amenity/bicycle_repair_station.svg');
+    diy/marker-fill: @bicycle-amenity;
+    diy/marker-placement: interior;
+    diy/marker-clip: false;
+    diy/marker-ignore-placement: true;
+    diy/marker-allow-overlap: true;
+    diy/marker-width: 11;
+    diy/marker-height: 11;
+    diy/marker-geometry-transform: translate(-10, 6);
+  }
+
+  //Bicycle retail, repair, rental sub icon
+  [service_bicycle_retail_repair_rental = 'yes'][feature != 'shop_bicycle'][zoom >= 16] {
+    bicyclererere/marker-file: url('symbols/osm-bright-gl-style/amenities/bicycle_11.svg');
+    bicyclererere/marker-placement: interior;
+    bicyclererere/marker-clip: false;
+    bicyclererere/marker-fill: @bicycle-amenity;
+    bicyclererere/marker-ignore-placement: true;
+    bicyclererere/marker-allow-overlap: true;
+    bicyclererere/marker-width: 11;
+    bicyclererere/marker-height: 11;
+    bicyclererere/marker-geometry-transform: translate(-14, -6);
   }
 }
 
