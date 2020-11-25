@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Distinguish toilets with drinking water.
 * Distinguish access for toilets and drinking water.
 * Add subicon at POI for bicycle services (pump, tool, rental/repair/retail).
+* Render islands names. See #456.
 
 
 ## v0.3.7
