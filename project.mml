@@ -1331,7 +1331,11 @@ Layer:
       (
         SELECT
           way,
-          COALESCE(tags->'icn_ref', tags->'ncn_ref', tags->'rcn_ref', tags->'lcn_ref') AS ref,
+          CONCAT(SUBSTR(
+            COALESCE(tags->'icn_ref', tags->'ncn_ref', tags->'rcn_ref', tags->'lcn_ref'),
+            0,
+            4
+          ), '.') AS ref,
           CASE
             WHEN (tags->'icn_ref') IS NOT NULL THEN 'icn'
             WHEN (tags->'ncn_ref') IS NOT NULL THEN 'ncn'
