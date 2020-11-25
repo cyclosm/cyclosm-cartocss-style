@@ -2619,16 +2619,23 @@ Layer:
         SELECT
           way,
           highway,
-          tags->'motor_vehicle:conditional' AS motor_vehicle_conditional,
-          tags->'vehicle:conditional' AS vehicle_conditional,
-          tags->'access:conditional' AS access_conditional,
-          tags->'bicycle:conditional' AS bicycle_conditional
+          TRIM(
+            LEADING ', ' FROM
+              CONCAT(
+                tags->'bicycle:conditional',
+                CASE WHEN tags->'motor_vehicle:conditional' IS NOT NULL THEN CONCAT(', motor=', tags->'motor_vehicle:conditional') ELSE NULL END,
+                CASE WHEN tags->'vehicle:conditional' IS NOT NULL THEN CONCAT(', vehicle=', tags->'vehicle:conditional') ELSE NULL END,
+                CASE WHEN tags->'access:conditional' IS NOT NULL THEN CONCAT(', all=', tags->'access:conditional') ELSE NULL END,
+                CASE WHEN tags->'flood_prone'='yes' THEN ', flood prone' ELSE NULL END
+              )
+          ) AS conditional
         FROM planet_osm_line
         WHERE highway IS NOT NULL AND (
           tags->'motor_vehicle:conditional' IS NOT NULL
           OR tags->'vehicle:conditional' IS NOT NULL
           OR tags->'access:conditional' IS NOT NULL
           OR tags->'bicycle:conditional' IS NOT NULL
+          OR tags->'flood_prone'='yes'
         )
       ) AS data
   properties:
