@@ -683,11 +683,13 @@ Layer:
           END AS oneway,
           CASE
             WHEN tags->'cycleway:left' IN ('track', 'opposite_track') THEN 'track'
+            WHEN tags->'sidewalk:left:bicycle' <> 'no' and tags->'sidewalk:left:segregated' = 'yes' then 'track'
             WHEN tags->'sidewalk:left:bicycle' = 'designated' then 'sidewalk_designated'
             WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane') THEN 'lane'
             WHEN tags->'sidewalk:left:bicycle' = 'yes' then 'sidewalk'
             WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
+            WHEN tags->'sidewalk:both:bicycle' <> 'no' and tags->'sidewalk:left:segregated' = 'yes' then 'track'
             WHEN tags->'sidewalk:both:bicycle' = 'designated' then 'sidewalk_designated'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
             WHEN tags->'sidewalk:both:bicycle' = 'yes' then 'sidewalk'
@@ -699,11 +701,13 @@ Layer:
           END AS cycleway_left_render,
           CASE
             WHEN tags->'cycleway:right' IN ('track', 'opposite_track') THEN 'track'
+            WHEN tags->'sidewalk:right:bicycle' <> 'no' and tags->'sidewalk:left:segregated' = 'yes' then 'track'
             WHEN tags->'sidewalk:right:bicycle' = 'designated' then 'sidewalk_designated'
             WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane') THEN 'lane'
             WHEN tags->'sidewalk:right:bicycle' = 'yes' then 'sidewalk'
             WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
+            WHEN tags->'sidewalk:both:bicycle' <> 'no' and tags->'sidewalk:left:segregated' = 'yes' then 'track'
             WHEN tags->'sidewalk:both:bicycle' = 'designated' then 'sidewalk_designated'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
             WHEN tags->'sidewalk:both:bicycle' = 'yes' then 'sidewalk'
