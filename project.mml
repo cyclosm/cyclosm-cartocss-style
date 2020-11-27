@@ -2632,16 +2632,22 @@ Layer:
                 CASE WHEN tags->'motor_vehicle:conditional' IS NOT NULL THEN CONCAT(', motor=', tags->'motor_vehicle:conditional') ELSE NULL END,
                 CASE WHEN tags->'vehicle:conditional' IS NOT NULL THEN CONCAT(', vehicle=', tags->'vehicle:conditional') ELSE NULL END,
                 CASE WHEN tags->'access:conditional' IS NOT NULL THEN CONCAT(', all=', tags->'access:conditional') ELSE NULL END,
+                CASE WHEN tags->'maxspeed' IS NOT NULL THEN CONCAT(', maxspeed=', tags->'maxspeed') ELSE NULL END,
                 CASE WHEN tags->'flood_prone'='yes' THEN ', flood prone' ELSE NULL END
               )
           ) AS conditional
         FROM planet_osm_line
-        WHERE highway IS NOT NULL AND (
-          tags->'motor_vehicle:conditional' IS NOT NULL
-          OR tags->'vehicle:conditional' IS NOT NULL
-          OR tags->'access:conditional' IS NOT NULL
-          OR tags->'bicycle:conditional' IS NOT NULL
-          OR tags->'flood_prone'='yes'
+        WHERE (
+          highway IS NOT NULL AND (
+            tags->'motor_vehicle:conditional' IS NOT NULL
+            OR tags->'vehicle:conditional' IS NOT NULL
+            OR tags->'access:conditional' IS NOT NULL
+            OR tags->'bicycle:conditional' IS NOT NULL
+            OR tags->'flood_prone'='yes'
+          )
+        ) OR (
+          highway IN ('path', 'cycleway', 'track')
+          AND tags->'maxspeed'~E'^\\d+$'
         )
       ) AS data
   properties:
