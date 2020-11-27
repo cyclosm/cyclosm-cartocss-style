@@ -639,11 +639,13 @@
     marker-clip: false;
   }
 
-  [feature = 'natural_saddle'][zoom >= 15] {
+  [feature = 'natural_saddle'][zoom >= 15],
+  [feature = 'mountain_pass'][zoom >= 15] {
     marker-file: url('symbols/openstreetmap-carto/natural/saddle.svg');
-    marker-fill: @landform-color;
     marker-placement: interior;
     marker-clip: false;
+    marker-fill: @man-made-icon;
+    [feature = 'natural_saddle']{ marker-fill: @landform-color; }
   }
 
   [feature = 'natural_cave_entrance'][zoom >= 15] {
@@ -1385,6 +1387,7 @@
   [feature = 'natural_peak'][zoom >= 14],
   [feature = 'natural_volcano'][zoom >= 14],
   [feature = 'natural_saddle'][zoom >= 15],
+  [feature = 'mountain_pass'][zoom >= 15],
   [feature = 'tourism_viewpoint'][zoom >= 16] {
     text-name: "[name]";
     text-size: @standard-font-size;
