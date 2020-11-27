@@ -2114,11 +2114,6 @@ Layer:
             religion,
             tags->'denomination' AS denomination,
             tags->'compressed_air' AS compressed_air,
-            tags->'service:bicycle:pump' AS service_bicycle_pump,
-            tags->'service:bicycle:diy' AS service_bicycle_diy,
-            CASE
-              WHEN tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' THEN 'yes' ELSE NULL
-            END AS service_bicycle_retail_repair_rental,
             tags->'car_wash' as car_wash,
             tags->'drinking_water' AS drinking_water,
             tags->'location' AS location,
@@ -2269,11 +2264,6 @@ Layer:
             religion,
             tags->'denomination' AS denomination,
             tags->'compressed_air' AS compressed_air,
-            tags->'service:bicycle:pump' AS service_bicycle_pump,
-            tags->'service:bicycle:diy' AS service_bicycle_diy,
-            CASE
-              WHEN tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' THEN 'yes' ELSE NULL
-            END AS service_bicycle_retail_repair_rental,
             tags->'car_wash' as car_wash,
             tags->'drinking_water' AS drinking_water,
             tags->'location' AS location,
