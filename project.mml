@@ -1712,6 +1712,7 @@ Layer:
             'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
             'leisure_' || CASE WHEN leisure='picnic_table' THEN leisure ELSE NULL END,
             'man_made_' || CASE WHEN man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo', 'water_tap', 'monitoring_station') THEN man_made ELSE NULL END,
+            CASE WHEN tags->'mountain_pass' = 'yes' THEN 'mountain_pass' ELSE NULL END,
             'natural_' || CASE WHEN "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance') THEN "natural" ELSE NULL END,
             'waterway_' || CASE WHEN waterway IN ('waterfall') THEN waterway ELSE NULL END,
             'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate') THEN historic ELSE NULL END,
@@ -1789,6 +1790,7 @@ Layer:
           OR man_made IN ('water_tap')
           OR man_made IN ('monitoring_station') AND tags->'monitoring:bicycle'='yes'
           OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
+          OR tags->'mountain_pass' = 'yes'
           OR waterway IN ('waterfall')
           OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
           OR military IN ('bunker')
@@ -1849,6 +1851,7 @@ Layer:
             'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
             'leisure_' || CASE WHEN leisure='picnic_table' THEN leisure ELSE NULL END,
             'man_made_' || CASE WHEN man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo', 'water_tap', 'monitoring_station') THEN man_made ELSE NULL END,
+            CASE WHEN tags->'mountain_pass' = 'yes' THEN 'mountain_pass' ELSE NULL END,
             'natural_' || CASE WHEN "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance') THEN "natural" ELSE NULL END,
             'waterway_' || CASE WHEN waterway IN ('waterfall') THEN waterway ELSE NULL END,
             'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate') THEN historic ELSE NULL END,
@@ -1883,7 +1886,8 @@ Layer:
           tags->'vending' as vending,
           tags->'automated' as automated,
           CASE
-            WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
+            WHEN "natural" IN ('peak', 'volcano', 'saddle')
+              OR tags->'mountain_pass' = 'yes' THEN
               CASE
                 WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
                 ELSE NULL
@@ -1900,6 +1904,7 @@ Layer:
             WHEN "natural" IN ('peak', 'volcano', 'saddle')
               OR tourism = 'alpine_hut' OR (tourism = 'information' AND tags->'information' = 'guidepost')
               OR amenity = 'shelter'
+              OR tags->'mountain_pass' = 'yes'
               THEN
               CASE
                 WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
@@ -1940,6 +1945,7 @@ Layer:
           OR man_made IN ('water_tap')
           OR man_made IN ('monitoring_station') AND tags->'monitoring:bicycle'='yes'
           OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
+          OR tags->'mountain_pass' = 'yes'
           OR waterway IN ('waterfall')
           OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
           OR military IN ('bunker')
@@ -2093,6 +2099,7 @@ Layer:
               'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
               'leisure_' || CASE WHEN leisure='picnic_table' THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo', 'water_tap', 'monitoring_station') THEN man_made ELSE NULL END,
+              CASE WHEN tags->'mountain_pass' = 'yes' THEN 'mountain_pass' ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance') THEN "natural" ELSE NULL END,
               'waterway_' || CASE WHEN waterway IN ('waterfall') THEN waterway ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate') THEN historic ELSE NULL END,
@@ -2107,11 +2114,6 @@ Layer:
             religion,
             tags->'denomination' AS denomination,
             tags->'compressed_air' AS compressed_air,
-            tags->'service:bicycle:pump' AS service_bicycle_pump,
-            tags->'service:bicycle:diy' AS service_bicycle_diy,
-            CASE
-              WHEN tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' THEN 'yes' ELSE NULL
-            END AS service_bicycle_retail_repair_rental,
             tags->'car_wash' as car_wash,
             tags->'drinking_water' AS drinking_water,
             tags->'location' AS location,
@@ -2170,6 +2172,7 @@ Layer:
             OR man_made IN ('water_tap')
             OR man_made IN ('monitoring_station') AND tags->'monitoring:bicycle'='yes'
             OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
+            OR tags->'mountain_pass' = 'yes'
             OR waterway IN ('waterfall')
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
             OR military IN ('bunker')
@@ -2246,6 +2249,7 @@ Layer:
               'healthcare_' || CASE WHEN tags->'healthcare' IN ('clinic', 'hospital') THEN tags->'healthcare' ELSE NULL END,
               'leisure_' || CASE WHEN leisure='picnic_table' THEN leisure ELSE NULL END,
               'man_made_' || CASE WHEN man_made IN ('mast', 'tower', 'water_tower', 'lighthouse', 'windmill', 'cross', 'obelisk', 'communications_tower', 'telescope', 'chimney', 'crane', 'storage_tank', 'silo', 'water_tap', 'monitoring_station') THEN man_made ELSE NULL END,
+              CASE WHEN tags->'mountain_pass' = 'yes' THEN 'mountain_pass' ELSE NULL END,
               'natural_' || CASE WHEN "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance') THEN "natural" ELSE NULL END,
               'waterway_' || CASE WHEN waterway IN ('waterfall') THEN waterway ELSE NULL END,
               'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate') THEN historic ELSE NULL END,
@@ -2260,11 +2264,6 @@ Layer:
             religion,
             tags->'denomination' AS denomination,
             tags->'compressed_air' AS compressed_air,
-            tags->'service:bicycle:pump' AS service_bicycle_pump,
-            tags->'service:bicycle:diy' AS service_bicycle_diy,
-            CASE
-              WHEN tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes' THEN 'yes' ELSE NULL
-            END AS service_bicycle_retail_repair_rental,
             tags->'car_wash' as car_wash,
             tags->'drinking_water' AS drinking_water,
             tags->'location' AS location,
@@ -2280,7 +2279,8 @@ Layer:
             tags->'vending' as vending,
             tags->'automated' as automated,
             CASE
-              WHEN "natural" IN ('peak', 'volcano', 'saddle') THEN
+              WHEN "natural" IN ('peak', 'volcano', 'saddle')
+                OR tags->'mountain_pass' = 'yes' THEN
                 CASE
                   WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
                   ELSE NULL
@@ -2297,6 +2297,7 @@ Layer:
               WHEN "natural" IN ('peak', 'volcano', 'saddle')
                 OR tourism = 'alpine_hut' OR (tourism = 'information' AND tags->'information' = 'guidepost')
                 OR amenity = 'shelter'
+                OR tags->'mountain_pass' = 'yes'
                 THEN
                 CASE
                   WHEN ele ~ '^-?\d{1,4}(\.\d+)?$' THEN ele::NUMERIC
@@ -2337,6 +2338,7 @@ Layer:
             OR man_made IN ('water_tap')
             OR man_made IN ('monitoring_station') AND tags->'monitoring:bicycle'='yes'
             OR "natural" IN ('peak', 'volcano', 'saddle', 'spring', 'cave_entrance')
+            OR tags->'mountain_pass' = 'yes'
             OR waterway IN ('waterfall')
             OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
             OR military IN ('bunker')

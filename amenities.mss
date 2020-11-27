@@ -625,25 +625,27 @@
     marker-fill: @man-made-icon;
   }
 
-  [feature = 'natural_peak'][zoom >= 11] {
+  [feature = 'natural_peak'][zoom >= 13] {
     marker-file: url('symbols/openstreetmap-carto/natural/peak.svg');
     marker-fill: @landform-color;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [feature = 'natural_volcano'][zoom >= 11] {
+  [feature = 'natural_volcano'][zoom >= 13] {
     marker-file: url('symbols/openstreetmap-carto/natural/peak.svg');
     marker-fill: @natural_volcano;
     marker-placement: interior;
     marker-clip: false;
   }
 
-  [feature = 'natural_saddle'][zoom >= 15] {
+  [feature = 'mountain_pass'][zoom >= 11],
+  [feature = 'natural_saddle'][zoom >= 13] {
     marker-file: url('symbols/openstreetmap-carto/natural/saddle.svg');
-    marker-fill: @landform-color;
     marker-placement: interior;
     marker-clip: false;
+    marker-fill: @man-made-icon;
+    [feature = 'natural_saddle']{ marker-fill: @landform-color; }
   }
 
   [feature = 'natural_cave_entrance'][zoom >= 15] {
@@ -1384,7 +1386,8 @@
 
   [feature = 'natural_peak'][zoom >= 14],
   [feature = 'natural_volcano'][zoom >= 14],
-  [feature = 'natural_saddle'][zoom >= 15],
+  [feature = 'natural_saddle'][zoom >= 14],
+  [feature = 'mountain_pass'][zoom >= 14],
   [feature = 'tourism_viewpoint'][zoom >= 16] {
     text-name: "[name]";
     text-size: @standard-font-size;

@@ -166,7 +166,6 @@
 @transportation-text: #0066ff;
 @trainstation-icon: #555;
 @trainstation-text: #555;
-@man-made-icon: #666666;
 @accommodation-icon: #004b00;
 @accommodation-text: @accommodation-icon;
 @gastronomy-icon: #666;
