@@ -2044,8 +2044,8 @@ Layer:
             ST_Intersection(
               ST_Union(h1.way, h2.way),
               ST_Difference(
-                ST_Buffer(ST_Intersection(h1.way, h2.way), 30),
-                ST_Buffer(ST_Intersection(h1.way, h2.way), 20)
+                ST_Buffer(ST_Intersection(h1.way, h2.way), 20),
+                ST_Buffer(ST_Intersection(h1.way, h2.way), 10)
               )
             )
           ) AS way,

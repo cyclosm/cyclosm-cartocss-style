@@ -1502,7 +1502,7 @@
 }
 
 #clpc[zoom >= 19] {
-    marker-width: 30;
+    marker-width: 20;
     marker-file: url('symbols/clpc/right.svg');
     [angle <= 45],
     [angle >= 135][angle <= 225] {
