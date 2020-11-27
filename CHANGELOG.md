@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render all available conditionals, concatenated.
 * Truncate cycle junction names. See #381.
 * Render mountain pass
+* Fix render of healthcare and doctors. See #348.
 
 
 ## v0.3.7

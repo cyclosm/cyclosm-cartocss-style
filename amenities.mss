@@ -1107,9 +1107,17 @@
   }
 
   [feature = 'amenity_hospital'][zoom >= 15],
+  [feature = 'amenity_clinic'][zoom >= 15],
   [feature = 'healthcare_clinic'][zoom >= 15],
   [feature = 'healthcare_hospital'][zoom >= 15] {
     marker-file: url('symbols/osm-bright-gl-style/amenities/hospital_11.svg');
+  }
+
+  [feature = 'amenity_doctors'][zoom >= 18] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/doctors.svg');
+    marker-fill: @health-color;
+    marker-placement: interior;
+    marker-clip: false;
   }
 
   [feature = 'amenity_place_of_worship'][zoom >= 16] {
@@ -1243,6 +1251,19 @@
     text-placement: interior;
   }
 
+  [feature = 'amenity_doctors'][zoom >= 19] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 12;
+    text-fill: @health-color;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @standard-halo-fill;
+    text-placement: interior;
+  }
+
   [feature = 'amenity_internet_cafe'][zoom >= 18],
   [feature = 'amenity_bar'][zoom >= 18],
   [feature = 'amenity_biergarten'][zoom >= 18],
@@ -1295,6 +1316,7 @@
   }
 
   [feature = 'amenity_hospital'][zoom >= 16],
+  [feature = 'amenity_clinic'][zoom >= 16],
   [feature = 'healthcare_clinic'][zoom >= 16],
   [feature = 'healthcare_hospital'][zoom >= 16] {
     text-name: "[name]";
