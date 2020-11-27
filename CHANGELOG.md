@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add subicon at POI for bicycle services (pump, tool, rental/repair/retail).
 * Render islands names. See #456.
 * Truncate cycle junction names. See #381.
+* Render mountain pass
 
 
 ## v0.3.7
