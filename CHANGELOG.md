@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render islands names. See #456.
 * Add flood prone text for `flood_prone=yes` highways. See #374.
 * Render all available conditionals, concatenated.
+* Truncate cycle junction names. See #381.
 
 
 ## v0.3.7
