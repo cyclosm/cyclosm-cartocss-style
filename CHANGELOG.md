@@ -28,7 +28,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render mountain pass
 * Fix render of healthcare and doctors. See #348.
 * Render maxspeed on shared path. See #266.
-* Render bicycle give way signs. See #420.
+* Render bicycle give way signs. See #420. **This one requires explicit
+    activation through localconfig.**
 * Render `sidewalk:{left,right,both}:bicycle` as shared cycle tracks.
     See #464.
 

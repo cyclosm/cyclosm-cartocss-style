@@ -279,6 +279,27 @@ which you can then use in [Tirex](https://github.com/openstreetmap/tirex),
 queue manager.
 
 
+## Rendering CLPC / bicycle give way relations
+
+If you want to render bicycle give way relations, you should ensure your
+osm2pgsql setup is building a `planet_osm_rels` table storing relations and
+this one stays available after initialization of the whole database.
+
+Then, you can enable the layer with a Kosmtik local config file such as:
+
+```json
+  {
+    "where": "Layer",
+    "if": {
+      "id": "clpc"
+    },
+    "then": {
+      "properties.status": "on"
+    }
+  }
+```
+
+
 ## Useful tweaks for production setup
 
 Here are a few useful tweaks for running CyclOSM in a production setup, such

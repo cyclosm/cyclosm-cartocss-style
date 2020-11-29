@@ -143,3 +143,6 @@ https://www.flaticon.com/free-icon/inner-tube_1575936.
 ## Related projects
 
 * An unofficial Docker image to deploy a CyclOSM tile server is available at https://github.com/mhajder/openstreetmap-tile-server-cyclosm.
+* A gravel-oriented fork from CxBerlin is available at https://github.com/cxberlin/gravel-cartocss-style
+* An high quality (especially DEM) tile server for Belgium is available from
+    Champs-Libres, see https://www.champs-libres.coop/blog/post/2020-09-17-cyclosm/.
