@@ -778,18 +778,24 @@
 
 // Eventually overload right border for cycleways
 #roads_high::outline_right[zoom>=11][cycleway_right_render='track'],
+#roads_high::outline_right[zoom>=11][cycleway_right_render='sidewalk'],
 #roads_high::outline_right[zoom>=12][cycleway_right_render='lane'],
 #roads_high::outline_right[zoom>=12][cycleway_right_render='busway'],
 #tunnel::outline_right[zoom>=11][cycleway_right_render='track'],
+#tunnel::outline_right[zoom>=11][cycleway_right_render='sidewalk'],
 #tunnel::outline_right[zoom>=12][cycleway_right_render='lane'],
 #tunnel::outline_right[zoom>=12][cycleway_right_render='busway'],
 #bridge::outline_right[zoom>=11][cycleway_right_render='track'],
+#bridge::outline_right[zoom>=11][cycleway_right_render='sidewalk'],
 #bridge::outline_right[zoom>=12][cycleway_right_render='lane'],
 #bridge::outline_right[zoom>=12][cycleway_right_render='busway'],
 {
   [type='motorway'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -841,6 +847,9 @@
   [type='motorway_link'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -887,6 +896,9 @@
   [type='primary'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -938,6 +950,9 @@
   [type='primary_link'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -984,6 +999,9 @@
   [type='secondary'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1035,6 +1053,9 @@
   [type='secondary_link'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1081,6 +1102,9 @@
   [type='tertiary'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1127,6 +1151,9 @@
   [type='tertiary_link'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1173,6 +1200,9 @@
   [type='unclassified'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1219,6 +1249,9 @@
   [type='residential'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1265,6 +1298,9 @@
   [type='living_street'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1311,6 +1347,9 @@
   [type='pedestrian'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1357,6 +1396,9 @@
   [type='service'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_right_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_right_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1447,18 +1489,24 @@
 
 // Eventually overload right border for cycleways
 #roads_high::outline_left[zoom>=11][cycleway_left_render='track'],
+#roads_high::outline_left[zoom>=11][cycleway_left_render='sidewalk'],
 #roads_high::outline_left[zoom>=12][cycleway_left_render='lane'],
 #roads_high::outline_left[zoom>=12][cycleway_left_render='busway'],
 #tunnel::outline_left[zoom>=11][cycleway_left_render='track'],
+#tunnel::outline_left[zoom>=11][cycleway_left_render='sidewalk'],
 #tunnel::outline_left[zoom>=12][cycleway_left_render='lane'],
 #tunnel::outline_left[zoom>=12][cycleway_left_render='busway'],
 #bridge::outline_left[zoom>=11][cycleway_left_render='track'],
+#bridge::outline_left[zoom>=11][cycleway_left_render='sidewalk'],
 #bridge::outline_left[zoom>=12][cycleway_left_render='lane'],
 #bridge::outline_left[zoom>=12][cycleway_left_render='busway'],
 {
   [type='motorway'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1510,6 +1558,9 @@
   [type='motorway_link'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1556,6 +1607,9 @@
   [type='primary'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1607,6 +1661,9 @@
   [type='primary_link'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1653,6 +1710,9 @@
   [type='secondary'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1704,6 +1764,9 @@
   [type='secondary_link'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1750,6 +1813,9 @@
   [type='tertiary'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1796,6 +1862,9 @@
   [type='tertiary_link'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1842,6 +1911,9 @@
   [type='unclassified'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1888,6 +1960,9 @@
   [type='residential'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1934,6 +2009,9 @@
   [type='living_street'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -1980,6 +2058,9 @@
   [type='pedestrian'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
@@ -2026,6 +2107,9 @@
   [type='service'] {
     line-cap: butt;
     line-color: @cycle_track_case;
+    [cycleway_left_render='sidewalk'] {
+      line-color: @path-fill;
+    }
     [cycleway_left_render='lane'] {
       line-dasharray: 6,3;
     }
