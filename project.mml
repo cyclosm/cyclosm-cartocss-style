@@ -2057,6 +2057,45 @@ Layer:
   geometry: point
   properties:
     minzoom: 10
+- id: clpc
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    table: |-
+      (
+        SELECT
+          ST_Centroid(
+            ST_Intersection(
+              ST_Union(h1.way, h2.way),
+              ST_Difference(
+                ST_Buffer(ST_Intersection(h1.way, h2.way), 20),
+                ST_Buffer(ST_Intersection(h1.way, h2.way), 10)
+              )
+            )
+          ) AS way,
+          CASE
+            WHEN members[array_position(members, CONCAT('w', h1.osm_id)) + 1] = 'from' THEN
+              cast(degrees(ST_Angle(h1.way, h2.way)) AS integer)
+            ELSE
+              cast(degrees(ST_Angle(h2.way, h1.way)) AS integer)
+          END AS angle
+        FROM
+            planet_osm_line h1
+            JOIN planet_osm_line h2 ON ST_Intersects(h1.way, h2.way)
+            JOIN planet_osm_rels r ON (
+                parts @> array[h1.osm_id, h2.osm_id]
+                AND r.tags @> array['type','restriction','restriction:bicycle','give_way']
+            )
+        WHERE
+            h1.way && !bbox!
+            AND h2.way && !bbox!
+            AND h1.highway IS NOT NULL
+            AND h2.highway IS NOT NULL
+            AND h1.osm_id > h2.osm_id
+      ) AS data
+  geometry: point
+  properties:
+    minzoom: 19
 - id: waterway_label
   <<: *extents
   Datasource:
