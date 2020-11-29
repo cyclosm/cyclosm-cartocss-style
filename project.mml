@@ -2096,6 +2096,7 @@ Layer:
   geometry: point
   properties:
     minzoom: 19
+    status: off
 - id: waterway_label
   <<: *extents
   Datasource:
