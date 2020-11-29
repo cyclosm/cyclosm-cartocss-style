@@ -1,0 +1,28 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install Kosmtik
+        run: |
+          git clone https://github.com/kosmtik/kosmtik
+          cd kosmtik
+          npm install
+          cd ..
+      - name: Benchmark CartoCSS
+        run: |
+          ./kosmtik/node_modules/.bin/carto -b project.mml -f mapnik.xml 2>&1 | grep -v Warning:
+      - name: Inspect Mapnik XML
+        run: |
+          pip install prettytable
+          ./kosmtik/node_modules/.bin/carto project.mml -f mapnik.xml
+          python scripts/inspect_mapnik_xml.py mapnik.xml
