@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Truncate cycle junction names. See #381.
 * Render mountain pass
 * Fix render of healthcare and doctors. See #348.
+* Render maxspeed on shared path. See #266.
 
 
 ## v0.3.7
