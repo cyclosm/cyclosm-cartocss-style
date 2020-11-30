@@ -50,6 +50,11 @@ _Note_: Be careful if you use a Lua script with `osm2pgsql` as it might
 drop nodes with no tags except the `hstore` tags column (typically, a
 `cycleway=asl` node).
 
+**Important**: If you plan on enabling CLPC / bicycle give way signs render
+(see below), make sure to include the `--slim` option in your `osm2pgsql`
+command, to ensure temporary tables are created in database and store the raw
+details about relations (especially table `planet_osm_rels`).
+
 
 ## Shapefiles
 
