@@ -104,7 +104,6 @@
 @ferry-route-text: @ferry-route;
 
 @conditional-text: #ff2701;
-@conditional-cycle-text: #0000ce;
 
 /* Also used for other small places: hamlets, suburbs, localities */
 @village_text:      #444;
@@ -121,8 +120,8 @@
 
 @shield-size: 10;
 @shield-line-spacing: -1.5;
-@shield-spacing: 760;
-@shield-repeat-distance: 400;
+@shield-spacing: 900;
+@shield-repeat-distance: 700;
 @shield-margin: 40;
 @shield-face-name: @sans;
 @shield-clip: false;
