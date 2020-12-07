@@ -700,7 +700,7 @@
     [zoom>=17] { line-width: @rdz17_pedestrian + (2 * @rdz17_pedestrian_outline); }
     [zoom>=18] { line-width: @rdz18_pedestrian + (2 * @rdz18_pedestrian_outline); }
   }
-  [type='service'] {
+  [type='service'][service!='minor'] {
     line-cap: round;
     line-join: round;
     #tunnel::outline,
@@ -720,6 +720,24 @@
     [zoom>=16] { line-width: @rdz16_service + (2 * @rdz16_service_outline); }
     [zoom>=17] { line-width: @rdz17_service + (2 * @rdz17_service_outline); }
     [zoom>=18] { line-width: @rdz18_service + (2 * @rdz18_service_outline); }
+  }
+  [type='service'][service='minor'][zoom>=15] {
+    line-cap: round;
+    line-join: round;
+    #tunnel::outline,
+    #bridge::outline {
+      line-cap: butt;
+    }
+    #tunnel::outline {
+      line-dasharray: 3,3;
+    }
+
+    line-color: @standard-case;
+
+    line-width: @rdz15_service*0.5 + @rdz15_service_outline;
+    [zoom>=16] { line-width: @rdz16_service*0.5 + @rdz16_service_outline; }
+    [zoom>=17] { line-width: @rdz17_service*0.5 + @rdz17_service_outline; }
+    [zoom>=18] { line-width: @rdz18_service*0.5 + @rdz18_service_outline; }
   }
 
   #bridge::outline {
@@ -2834,7 +2852,7 @@
     }
   }
 
-  [type='service'][zoom>=12] {
+  [type='service'][service!='minor'][zoom>=12] {
     line-cap: round;
     line-join: round;
     line-width: @rdz12_service;
@@ -2902,6 +2920,71 @@
         }
       }
     }
+  }
+  [type='service'][service='minor'][zoom>=15] {
+    line-cap: round;
+    line-join: round;
+    line-width: @rdz15_service*0.5;
+    [service='minor'][zoom>=16] { line-width: @rdz16_service*0.5; }
+    [service='minor'][zoom>=17] { line-width: @rdz17_service*0.5; }
+    [service='minor'][zoom>=18] { line-width: @rdz18_service*0.5; }
+
+    line-color: @standard-fill;
+    #tunnel { line-color: lighten(@standard-fill, 10%); }
+    [maxspeed_kmh < 33] {
+        line-color: @speed32-fill;
+        #tunnel { line-color: lighten(@speed32-fill, 10%); }
+    }
+    [maxspeed_kmh < 21] {
+        line-color: @speed20-fill;
+        #tunnel { line-color: lighten(@speed20-fill, 10%); }
+    }
+    [maxspeed_kmh < 10] {
+      line-color: @speedWalk-fill;
+      #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
+    }
+    [motor_vehicle='no'][can_bicycle!='no'] {
+        line-color: @nomotor-fill;
+        #tunnel { line-color: lighten(@nomotor-fill, 10%); }
+    }
+    [cyclestreet='yes'] {
+        line-color: @mixed-cycle-fill;
+        #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
+    }
+    [can_bicycle='no'] {
+      line-color: @standard-nobicycle;
+      #tunnel { line-color: lighten(@standard-nobicycle, 5%); }
+    }
+
+    //surface
+    //[zoom>=15] {
+      [surface_type='cyclocross'],
+      [surface_type='mtb'] {
+        surface/line-width: @rdz15_service*0.5;
+        [zoom>=16] { surface/line-width: @rdz16_service*0.5; }
+        [zoom>=17] { surface/line-width: @rdz17_service*0.5; }
+        [zoom>=18] { surface/line-width: @rdz18_service*0.5; }
+
+        [surface_type='cyclocross'] {
+          surface/line-opacity: 0.6;
+          surface/line-dasharray: 4,8;
+          [zoom>=16] { surface/line-dasharray: 6,12; }
+          [zoom>=17] { surface/line-dasharray: 8,16; }
+
+          surface/line-color: darken(@standard-fill, @surfaceDarker2); // Darken since it's white.
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter1); }
+        }
+
+        [surface_type='mtb'] {
+          surface/line-dasharray: 10,5;
+          [zoom>=16] { surface/line-dasharray: 14,7; }
+          [zoom>=17] { surface/line-dasharray: 20,10; }
+
+          surface/line-color: darken(@standard-fill, @surfaceDarker1); // Darken since its white.
+          [can_bicycle='no'] { surface/line-color: lighten(@standard-nobicycle, @surfaceLighter2); }
+        }
+      }
+    //}
   }
 
   [type='living_street'][zoom>=12] {

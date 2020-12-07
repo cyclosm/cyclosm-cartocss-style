@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render `sidewalk:{left,right,both}:bicycle` as shared cycle tracks.
     See #464.
 * Add cycle route name.
+* Render parking amenity and servie road parking aisle, drive-through, driveway smaller.
 
 
 ## v0.3.7

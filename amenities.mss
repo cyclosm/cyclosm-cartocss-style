@@ -1163,6 +1163,19 @@
     marker-fill: @amenity-common;
     marker-clip: false;
   }
+  [feature='amenity_parking'] {
+    #amenities-poly[zoom >= 16][area > 25000],
+    #amenities-poly[zoom >= 18][area > 250],
+    [zoom >= 19] {
+      marker-file: url('symbols/openstreetmap-carto/amenity/parking.svg');
+      marker-clip: false;
+      marker-fill: @amenity-common;
+      marker-placement: interior;
+      marker-width: 10;
+
+      [access != ''][access != 'permissive'][access != 'yes'] { marker-opacity: 0.33; }
+    }
+  }
 }
 
 #amenities-points,
