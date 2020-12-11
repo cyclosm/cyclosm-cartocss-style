@@ -1018,6 +1018,12 @@
       marker-file: url('symbols/amenity/bicycle_parking_covered.svg');
     }
 
+    [bicycle_parking = 'floor'],
+    [bicycle_parking = 'ground_slots'] {
+      marker-file: url('symbols/amenity/bicycle_parking_notlockable.svg');
+      marker-width: 8;
+    }
+
     [supervised = 'yes'],
     [bicycle_parking = 'shed'],
     [bicycle_parking = 'lockers'],
