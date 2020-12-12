@@ -170,6 +170,7 @@
 //linear leisure track
 #leisure_track[zoom >= 11] {
   ::area {
+    //Comp is used in order to avoid the outline being over leisure track area lines.
     comp-op: darken;
 
     outline/line-cap: round;
