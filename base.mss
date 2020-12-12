@@ -152,27 +152,38 @@
     polygon-fill: @track;
     line-width: 0.5;
     line-color: @track * 0.95;
+
+    [sport='cycling'][zoom >= 15],
+    [sport='bmx'][zoom >= 15] {
+      line-cap: round;
+      line-join: round;
+      line-color: @bicycle-amenity;
+      line-width: 0.2 * @rdz15_cycle;
+      [zoom>=16] { line-width: 0.4 * @rdz16_cycle; }
+      [zoom>=17] { line-width: 0.5 * @rdz17_cycle; }
+      [zoom>=18] { line-width: 0.6 * @rdz18_cycle; }
+    }
   }
   [type='amenity_university']    { polygon-fill: @school; }
   [type='natural_wood']          { polygon-fill: @wooded; }
 }
 
-/* Display linear leisure_track like an area. */
+//linear leisure track
 #leisure_track[zoom >= 11] {
-  ::area_ouline {
-    line-cap: round;
-    line-join: round;
-    line-color: @track * 0.95;
-    line-width: 1 + @rdz12_track;
-    [zoom>=13] { line-width: 1 + @rdz13_track; }
-    [zoom>=14] { line-width: 1 + @rdz14_track; }
-    [zoom>=15] { line-width: 1 + @rdz15_track; }
-    [zoom>=16] { line-width: 1 + @rdz16_track; }
-    [zoom>=17] { line-width: 1 + @rdz17_track; }
-    [zoom>=18] { line-width: 1 + @rdz18_track; }
-  }
-
   ::area {
+    comp-op: darken;
+
+    outline/line-cap: round;
+    outline/line-join: round;
+    outline/line-color: @track * 0.95;
+    outline/line-width: 1 + @rdz12_track;
+    [zoom>=13] { outline/line-width: 1 + @rdz13_track; }
+    [zoom>=14] { outline/line-width: 1 + @rdz14_track; }
+    [zoom>=15] { outline/line-width: 1 + @rdz15_track; }
+    [zoom>=16] { outline/line-width: 1 + @rdz16_track; }
+    [zoom>=17] { outline/line-width: 1 + @rdz17_track; }
+    [zoom>=18] { outline/line-width: 1 + @rdz18_track; }
+
     line-cap: round;
     line-join: round;
     line-color: @track;
@@ -185,24 +196,33 @@
     [zoom>=18] { line-width: @rdz18_track; }
   }
 
-  /* larger because will contain cycleway line */
-  [sport='cycling'],
-  [sport='bmx'] {
-    ::area_ouline {
-      [zoom>=15] { line-width: 1 + 4*@rdz15_cycle; }
-      [zoom>=16] { line-width: 1 + 4*@rdz16_cycle; }
-      [zoom>=17] { line-width: 1 + 4*@rdz17_cycle; }
-      [zoom>=18] { line-width: 1 + 4*@rdz18_cycle; }
-    }
-
+  // larger because will contain cycleway line
+  [sport='cycling'][zoom>=15],
+  [sport='bmx'][zoom>=15] {
     ::area {
-      [zoom>=15] { line-width: 4*@rdz15_cycle; }
+      outline/line-width: 1 + 4*@rdz15_cycle;
+      [zoom>=16] { outline/line-width: 1 + 4*@rdz16_cycle; }
+      [zoom>=17] { outline/line-width: 1 + 4*@rdz17_cycle; }
+      [zoom>=18] { outline/line-width: 1 + 4*@rdz18_cycle; }
+
+      line-width: 4*@rdz15_cycle;
       [zoom>=16] { line-width: 4*@rdz16_cycle; }
       [zoom>=17] { line-width: 4*@rdz17_cycle; }
       [zoom>=18] { line-width: 4*@rdz18_cycle; }
     }
+
+    ::cycleway {
+      line-cap: round;
+      line-join: round;
+      line-color: @bicycle-amenity;
+      line-width: 0.2 * @rdz15_cycle;
+      [zoom>=16] { line-width: 0.4 * @rdz16_cycle; }
+      [zoom>=17] { line-width: 0.5 * @rdz17_cycle; }
+      [zoom>=18] { line-width: 0.6 * @rdz18_cycle; }
+    }
   }
 }
+
 
 #hillshade[zoom>=4] {
   raster-scaling: bilinear;
