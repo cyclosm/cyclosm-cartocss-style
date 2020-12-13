@@ -1168,7 +1168,7 @@
     marker-fill: @amenity-common;
     marker-clip: false;
   }
-  [feature='amenity_parking'] {
+  [feature = 'amenity_parking'] {
     #amenities-poly[zoom >= 16][area > 25000],
     #amenities-poly[zoom >= 18][area > 250],
     [zoom >= 19] {
@@ -1180,6 +1180,11 @@
 
       [access != ''][access != 'permissive'][access != 'yes'] { marker-opacity: 0.33; }
     }
+  }
+  [feature = 'amenity_community_centre'][zoom >= 17] {
+    marker-file: url('symbols/openstreetmap-carto/amenity/community_centre.svg');
+    marker-fill: @amenity-common;
+    marker-clip: false;
   }
 }
 
@@ -1428,7 +1433,8 @@
   [feature = 'natural_volcano'][zoom >= 14],
   [feature = 'natural_saddle'][zoom >= 14],
   [feature = 'mountain_pass'][zoom >= 14],
-  [feature = 'tourism_viewpoint'][zoom >= 16] {
+  [feature = 'tourism_viewpoint'][zoom >= 16],
+  [feature = 'amenity_community_centre'][zoom >= 18] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
@@ -1436,7 +1442,8 @@
     text-fill: @amenity-common;
     [feature = 'natural_volcano'] { text-fill: #b10000; }
     text-dy: 7;
-    [feature = 'tourism_viewpoint'] { text-dy: 11; text-fill: darken(@amenity-common, 5%); }
+    [feature = 'tourism_viewpoint'] { text-dy: 12; }
+    [feature = 'amenity_community_centre'] { text-dy: 11; text-fill: darken(@amenity-common, 5%); }
     text-face-name: @standard-font;
     text-halo-radius: 1.4;
     text-halo-fill: @standard-halo-fill;
