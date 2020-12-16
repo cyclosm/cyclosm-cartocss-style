@@ -1465,6 +1465,30 @@
       text-placement: interior;
     }
   }
+
+  [feature = 'place_island'][zoom >= 14][way_pixels > 3000],
+  [feature = 'place_island'][zoom >= 16],
+  [feature = 'place_islet'][zoom >= 14][way_pixels > 3000],
+  [feature = 'place_islet'][zoom >= 17] {
+    text-name: "[name]";
+    text-fill: @placenames;
+    text-size: 10;
+    text-wrap-width: 30;
+    text-line-spacing: -1.5;
+    [way_pixels > 12000] {
+      text-size: 11;
+      text-wrap-width: 36;
+      text-line-spacing: -1.8;
+    }
+    [way_pixels > 48000] {
+      text-size: 13;
+      text-wrap-width: 45;
+      text-line-spacing: -2.25;
+    }
+    text-face-name: @sans_italic;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: @place_halo;
+  }
 }
 
 #trees [zoom >= 16] {
