@@ -1736,7 +1736,8 @@ Layer:
             'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate') THEN historic ELSE NULL END,
             'military_'|| CASE WHEN military IN ('bunker') THEN military ELSE NULL END,
             'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
-            'power_' || power
+            'power_' || power,
+            'xmas_' || CASE WHEN tags->'xmas:feature' IN ('tree', 'market') AND (EXTRACT(MONTH FROM CURRENT_DATE) = '12') AND (EXTRACT(DAY FROM CURRENT_DATE) >= '15') THEN tags->'xmas:feature' ELSE NULL END
           ) AS feature,
           CASE
             WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
@@ -1816,6 +1817,7 @@ Layer:
           OR highway IN ('elevator', 'traffic_signals')
           OR ((highway='bus_stop' OR public_transport='platform') AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND "generator:source"='wind')
+          OR tags->'xmas:feature' IN ('tree', 'market')
         ORDER BY
             CASE
                 -- Bike amenities
@@ -1875,7 +1877,8 @@ Layer:
             'historic_' || CASE WHEN historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate') THEN historic ELSE NULL END,
             'military_'|| CASE WHEN military IN ('bunker') THEN military ELSE NULL END,
             'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
-            'power_' || power
+            'power_' || power,
+            'xmas_' || CASE WHEN tags->'xmas:feature' IN ('tree', 'market') AND (EXTRACT(MONTH FROM CURRENT_DATE) = '12') AND (EXTRACT(DAY FROM CURRENT_DATE) >= '15') THEN tags->'xmas:feature' ELSE NULL END
           ) AS feature,
           CASE
             WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
@@ -1972,6 +1975,7 @@ Layer:
           OR ((highway='bus_stop' OR public_transport='platform') AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND "generator:source"='wind')
           OR tags->'ford' IS NOT NULL
+          OR tags->'xmas:feature' IN ('tree', 'market')
         ORDER BY
             CASE
                 -- Bike amenities
