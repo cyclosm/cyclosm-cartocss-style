@@ -1186,6 +1186,18 @@
     marker-fill: @amenity-common;
     marker-clip: false;
   }
+
+  //Only at the end of Decembre.
+  [feature = 'xmas_tree'][zoom >= 15] {
+    marker-file: url('symbols/amenity/xmas_tree.svg');
+    marker-fill: #146b3a;
+    marker-clip: false;
+  }
+  [feature = 'xmas_market'][zoom >= 15] {
+      marker-file: url('symbols/openstreetmap-carto/shop/marketplace.svg');
+      marker-fill: #bb2528;
+      marker-clip: false;
+    }
 }
 
 #amenities-points,
