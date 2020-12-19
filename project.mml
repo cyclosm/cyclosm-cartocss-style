@@ -1737,7 +1737,7 @@ Layer:
             'military_'|| CASE WHEN military IN ('bunker') THEN military ELSE NULL END,
             'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
             'power_' || power,
-            'xmas_' || CASE WHEN tags->'xmas:feature' IN ('tree', 'market') AND (EXTRACT(MONTH FROM CURRENT_DATE) = '12') AND (EXTRACT(DAY FROM CURRENT_DATE) >= '15') THEN tags->'xmas:feature' ELSE NULL END
+            'xmas_' || CASE WHEN tags->'xmas:feature' IN ('tree', 'market') AND (EXTRACT(MONTH FROM CURRENT_DATE) = '12') AND (EXTRACT(DAY FROM CURRENT_DATE) >= '1') THEN tags->'xmas:feature' ELSE NULL END
           ) AS feature,
           CASE
             WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
@@ -1878,7 +1878,7 @@ Layer:
             'military_'|| CASE WHEN military IN ('bunker') THEN military ELSE NULL END,
             'highway_'|| CASE WHEN highway IN ('bus_stop', 'elevator', 'traffic_signals') THEN highway ELSE NULL END,
             'power_' || power,
-            'xmas_' || CASE WHEN tags->'xmas:feature' IN ('tree', 'market') AND (EXTRACT(MONTH FROM CURRENT_DATE) = '12') AND (EXTRACT(DAY FROM CURRENT_DATE) >= '15') THEN tags->'xmas:feature' ELSE NULL END
+            'xmas_' || CASE WHEN tags->'xmas:feature' IN ('tree', 'market') AND (EXTRACT(MONTH FROM CURRENT_DATE) = '12') AND (EXTRACT(DAY FROM CURRENT_DATE) >= '1') THEN tags->'xmas:feature' ELSE NULL END
           ) AS feature,
           CASE
             WHEN tags->'capacity'~E'^\\d+$' THEN (tags->'capacity')::integer
