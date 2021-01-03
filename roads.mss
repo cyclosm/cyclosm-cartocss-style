@@ -74,6 +74,8 @@
 // * border, on one side (first line is drawn with a width of way with + 2 *
 // * border_width).
 
+@construction_opacity: 0.4;
+
 
 // -- Zoom 11 --
 // Width of ways
@@ -771,6 +773,10 @@
       }
     }
   }
+
+  [is_construction='yes'] {
+    line-opacity: @construction_opacity;
+  }
 }
 
 
@@ -791,6 +797,10 @@
     [oneway='no'][oneway_bicycle='no']{
       line-width: @rdz18_path; line-offset: @rdz18_path/2 + @rdz18_cycle*1.5/2;
     }
+  }
+
+  [is_construction='yes'] {
+    line-opacity: @construction_opacity;
   }
 }
 
@@ -1458,6 +1468,10 @@
       line-width: @rdz18_service;
     }
   }
+
+  [is_construction='yes'] {
+    line-opacity: @construction_opacity;
+  }
 }
 
 #roads_high::cycleway_right[zoom>=18][cycleway_right_render='track'][cycleway_right_oneway='yes'],
@@ -1501,6 +1515,10 @@
     [type='motorway_link']  { marker-transform: translate(0, 0.5 * @rdz18_motorway_link + 0.5 * @rdz18_cycle); }
     [type='service']        { marker-transform: translate(0, 0.5 * @rdz18_service + 0.5 * @rdz18_cycle); }
     [type='pedestrian']     { marker-transform: translate(0, 0.5 * @rdz18_pedestrian + 0.5 * @rdz18_cycle); }
+  }
+
+  [is_construction='yes'] {
+    line-opacity: @construction_opacity;
   }
 }
 
@@ -2169,6 +2187,10 @@
       line-width: @rdz18_service;
     }
   }
+
+  [is_construction='yes'] {
+    line-opacity: @construction_opacity;
+  }
 }
 
 #roads_high::cycleway_left[zoom>=18][cycleway_left_render='track'][cycleway_left_oneway='yes'],
@@ -2212,6 +2234,10 @@
     [type='motorway_link']  { marker-transform: translate(0, -0.5 * @rdz18_motorway_link - 0.5 * @rdz18_cycle); }
     [type='service']        { marker-transform: translate(0, -0.5 * @rdz18_service - 0.5 * @rdz18_cycle); }
     [type='pedestrian']     { marker-transform: translate(0, -0.5 * @rdz18_pedestrian - 0.5 * @rdz18_cycle); }
+  }
+
+  [is_construction='yes'] {
+    line-opacity: @construction_opacity;
   }
 }
 
@@ -3518,6 +3544,13 @@
     [zoom>=16] { line-width: @rdz16_path; }
     [zoom>=17] { line-width: @rdz17_path; }
     [zoom>=18] { line-width: @rdz18_path; }
+  }
+
+  [is_construction='yes'][zoom >= 11] {
+    line-opacity: @construction_opacity;
+    [type='track'], [type='bridleway'], [type='footway'], [type='cycleway'], [type='path'] {
+      background/line-opacity: @construction_opacity;
+    }
   }
 }
 
