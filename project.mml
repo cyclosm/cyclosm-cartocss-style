@@ -451,6 +451,7 @@ Layer:
           way,
           COALESCE(
             CASE
+              WHEN highway='construction' THEN construction
               WHEN highway='raceway' THEN 'track'  -- render raceways as tracks
               WHEN highway='road' THEN 'residential'  -- render "road" as residential
               WHEN highway='trunk' THEN 'motorway'  -- trunk as motorway, check can_bicycle if cyclable
@@ -466,6 +467,7 @@ Layer:
             END
           ) AS type,
           access,
+          CASE WHEN highway='construction' THEN 'yes' ELSE 'no' END AS is_construction,
           layer,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
@@ -641,6 +643,7 @@ Layer:
           way,
           COALESCE(
             CASE
+              WHEN highway='construction' THEN construction
               WHEN highway='raceway' THEN 'track'  -- render raceways as tracks
               WHEN highway='road' THEN 'residential'  -- render "road" as residential
               WHEN highway='trunk' THEN 'motorway'  -- trunk as motorway, check can_bicycle if cyclable
@@ -655,6 +658,7 @@ Layer:
               ELSE NULL
             END
           ) AS type,
+          CASE WHEN highway='construction' THEN 'yes' ELSE 'no' END AS is_construction,
           access,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
@@ -915,6 +919,7 @@ Layer:
           way,
           COALESCE(
             CASE
+              WHEN highway='construction' THEN construction
               WHEN highway='raceway' THEN 'track'  -- render raceways as tracks
               WHEN highway='road' THEN 'residential'  -- render "road" as residential
               WHEN highway='trunk' THEN 'motorway'  -- trunk as motorway, check can_bicycle if cyclable
@@ -930,6 +935,7 @@ Layer:
             END
           ) AS type,
           access,
+          CASE WHEN highway='construction' THEN 'yes' ELSE 'no' END AS is_construction,
           layer,
           CASE
             WHEN tags->'maxspeed'~E'^\\d+$' THEN (tags->'maxspeed')::integer
