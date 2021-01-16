@@ -17,7 +17,7 @@
   polygon-gamma: 0.75;
 }
 
-#landuse_gen0[zoom>3][zoom<=9],
+#landuse_gen0[zoom>1][zoom<=9],
 #landuse_gen1[zoom>9][zoom<=12],
 #landuse[zoom>=13] {
   [type='amenity_grave_yard'],
@@ -51,10 +51,10 @@
     polygon-fill: @industrial;
   }
 
-  [type='natural_glacier'][zoom >= 5] {
+  [type='natural_glacier'] {
     polygon-fill: @glacier;
   }
-  [type='natural_wetland'][zoom >= 5] {
+  [type='natural_wetland'] {
     polygon-fill: @grass;
     polygon-pattern-file: url('symbols/openstreetmap-carto/wetland.png');
     polygon-pattern-alignment: global;
@@ -64,17 +64,17 @@
   [type='natural_dune'] {
     polygon-fill: @sand;
   }
-  [type='natural_bare_rock'][zoom >= 5] {
+  [type='natural_bare_rock'] {
     polygon-fill: @bare_ground;
     polygon-pattern-file: url('symbols/openstreetmap-carto/rock_overlay.png');
   }
-  [type='natural_scree'][zoom >= 5],
-  [type='natural_shingle'][zoom >= 5] {
+  [type='natural_scree'],
+  [type='natural_shingle'] {
     polygon-fill: @bare_ground;
     polygon-pattern-file: url('symbols/openstreetmap-carto/scree_overlay.png');
   }
 
-  [type='natural_scrub'][zoom >= 5] {
+  [type='natural_scrub'] {
     polygon-fill: @scrub;
     polygon-pattern-file: url('symbols/openstreetmap-carto/scrub.png');
     polygon-pattern-alignment: global;
@@ -137,7 +137,6 @@
       line-width: 0.5;
       line-color: @pitch * 0.95;
     }
-
   }
   [type='landuse_residential']   { polygon-fill: @residential; }
   [type='amenity_school']        { polygon-fill: @school; }
@@ -204,7 +203,7 @@
   }
 }
 
-#hillshade[zoom>=4] {
+#hillshade[zoom>1] {
   raster-scaling: bilinear;
   raster-comp-op: multiply;
   raster-opacity: 0.85;
@@ -258,7 +257,7 @@
 
 Map { background-color: @water; }
 
-#water_gen0[zoom>3][zoom<=9],
+#water_gen0[zoom>1][zoom<=9],
 #water_gen1[zoom>9][zoom<=12],
 #water[zoom>12] {
   [intermittent = 'yes'] {
