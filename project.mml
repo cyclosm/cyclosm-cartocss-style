@@ -100,7 +100,7 @@ Layer:
       ) AS data
   geometry: polygon
   properties:
-    minzoom: 4
+    minzoom: 2
     maxzoom: 9
 - id: landuse_gen1
   <<: *extents
@@ -329,7 +329,7 @@ Layer:
       ) AS data
   geometry: polygon
   properties:
-    minzoom: 4
+    minzoom: 2
     maxzoom: 9
 - id: water_gen1
   <<: *extents
