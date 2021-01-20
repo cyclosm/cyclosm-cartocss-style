@@ -742,9 +742,9 @@
 
   #tunnel::outline {
     [zoom>=17] {
-      [type='bridleway'] { line-cap: butt; line-color: @bridge_case; line-width: @rdz17_bridleway + (2 * @rdz17_line_bridge_outline); }
-      [type='footway'] { line-cap: butt; line-color: @bridge_case; line-width: @rdz17_footway + (2 * @rdz17_line_bridge_outline); }
-      [type='path'] { line-cap: butt; line-color: @bridge_case; line-width: @rdz17_path + (2 * @rdz17_line_bridge_outline); }
+      [type='bridleway'] { line-dasharray: 3,3; line-cap: butt; line-color: @bridge_case; line-width: @rdz17_bridleway + (2 * @rdz17_line_bridge_outline); }
+      //[type='footway'] { line-dasharray: 3,3; line-cap: butt; line-color: @bridge_case; line-width: @rdz17_footway + (2 * @rdz17_line_bridge_outline); }
+      [type='path'] { line-dasharray: 3,3; line-cap: butt; line-color: @bridge_case; line-width: @rdz17_path + (2 * @rdz17_line_bridge_outline); }
       [type='cycleway'],
       [type='path'][can_bicycle='designated'] {
         line-dasharray: 3,3;
@@ -757,9 +757,9 @@
       }
 
       [zoom >= 18] {
-        [type='bridleway'] { line-cap: butt; line-color: @bridge_case; line-width: @rdz18_bridleway + (2 * @rdz18_line_bridge_outline); }
-        [type='footway'] { line-cap: butt; line-color: @bridge_case; line-width: @rdz18_footway + (2 * @rdz18_line_bridge_outline); }
-        [type='path'] { line-cap: butt; line-color: @bridge_case; line-width: @rdz18_path + (2 * @rdz18_line_bridge_outline); }
+        [type='bridleway'] { line-dasharray: 3,3; line-cap: butt; line-color: @bridge_case; line-width: @rdz18_bridleway + (2 * @rdz18_line_bridge_outline); }
+        //[type='footway'] { line-dasharray: 3,3; line-cap: butt; line-color: @bridge_case; line-width: @rdz18_footway + (2 * @rdz18_line_bridge_outline); }
+        [type='path'] { line-dasharray: 3,3; line-cap: butt; line-color: @bridge_case; line-width: @rdz18_path + (2 * @rdz18_line_bridge_outline); }
         [type='cycleway'],
         [type='path'][can_bicycle='designated'] {
           line-dasharray: 3,3;
@@ -773,7 +773,7 @@
       }
     }
   }
-  
+
   #bridge::outline {
     [zoom>=17] {
       [type='bridleway'] { line-cap: butt; line-color: @bridge_path_case; line-width: @rdz17_bridleway + (2 * @rdz17_line_bridge_outline); }
