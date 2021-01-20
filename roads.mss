@@ -371,7 +371,7 @@
 @rdz18_service_outline: 1.75;
 @rdz18_pedestrian_outline: 4;
 @rdz18_steps_outline: 1;
-@rdz18_line_bridge_outline: 1;  // cycleway, footway, bridleway, path on bridges
+@rdz18_line_bridge_outline: 1.5;  // cycleway, footway, bridleway, path on bridges
 
 // ---- Rail background with hatches -------------------------
 
@@ -740,15 +740,49 @@
     [zoom>=18] { line-width: @rdz18_service*0.5 + @rdz18_service_outline; }
   }
 
+  #tunnel::outline {
+    [zoom>=17] {
+      [type='bridleway'] { line-cap: butt; line-color: @bridge_case; line-width: @rdz17_bridleway + (2 * @rdz17_line_bridge_outline); }
+      [type='footway'] { line-cap: butt; line-color: @bridge_case; line-width: @rdz17_footway + (2 * @rdz17_line_bridge_outline); }
+      [type='path'] { line-cap: butt; line-color: @bridge_case; line-width: @rdz17_path + (2 * @rdz17_line_bridge_outline); }
+      [type='cycleway'],
+      [type='path'][can_bicycle='designated'] {
+        line-dasharray: 3,3;
+        line-cap: butt;
+        line-color: @bridge_case;
+        line-width: @rdz17_cycle + (2 * @rdz17_line_bridge_outline);
+        [oneway='no'][oneway_bicycle='no'] {
+          line-width: @rdz17_cycle*1.5 + (2 * @rdz17_line_bridge_outline);
+        }
+      }
+
+      [zoom >= 18] {
+        [type='bridleway'] { line-cap: butt; line-color: @bridge_case; line-width: @rdz18_bridleway + (2 * @rdz18_line_bridge_outline); }
+        [type='footway'] { line-cap: butt; line-color: @bridge_case; line-width: @rdz18_footway + (2 * @rdz18_line_bridge_outline); }
+        [type='path'] { line-cap: butt; line-color: @bridge_case; line-width: @rdz18_path + (2 * @rdz18_line_bridge_outline); }
+        [type='cycleway'],
+        [type='path'][can_bicycle='designated'] {
+          line-dasharray: 3,3;
+          line-cap: butt;
+          line-color: @bridge_case;
+          line-width: @rdz18_cycle + (2 * @rdz18_line_bridge_outline);
+          [oneway='no'][oneway_bicycle='no'] {
+            line-width: @rdz18_cycle*1.5 + (2 * @rdz18_line_bridge_outline);
+          }
+        }
+      }
+    }
+  }
+  
   #bridge::outline {
     [zoom>=17] {
-      [type='bridleway'] { line-cap: butt; line-color: @land; line-width: @rdz17_bridleway + (2 * @rdz17_line_bridge_outline); }
-      [type='footway'] { line-cap: butt; line-color: @land; line-width: @rdz17_footway + (2 * @rdz17_line_bridge_outline); }
-      [type='path'] { line-cap: butt; line-color: @land; line-width: @rdz17_path + (2 * @rdz17_line_bridge_outline); }
+      [type='bridleway'] { line-cap: butt; line-color: @bridge_path_case; line-width: @rdz17_bridleway + (2 * @rdz17_line_bridge_outline); }
+      [type='footway'] { line-cap: butt; line-color: @bridge_path_case; line-width: @rdz17_footway + (2 * @rdz17_line_bridge_outline); }
+      [type='path'] { line-cap: butt; line-color: @bridge_path_case; line-width: @rdz17_path + (2 * @rdz17_line_bridge_outline); }
       [type='cycleway'],
       [type='path'][can_bicycle='designated'] {
         line-cap: butt;
-        line-color: @land;
+        line-color: @bridge_path_case;
         line-width: @rdz17_cycle + (2 * @rdz17_line_bridge_outline);
         [oneway='no'][oneway_bicycle='no'] {
           line-width: @rdz17_cycle*1.5 + (2 * @rdz17_line_bridge_outline);
@@ -757,13 +791,13 @@
     }
 
     [zoom >= 18] {
-      [type='bridleway'] { line-cap: butt; line-color: @land; line-width: @rdz18_bridleway + (2 * @rdz18_line_bridge_outline); }
-      [type='footway'] { line-cap: butt; line-color: @land; line-width: @rdz18_footway + (2 * @rdz18_line_bridge_outline); }
-      [type='path'] { line-cap: butt; line-color: @land; line-width: @rdz18_path + (2 * @rdz18_line_bridge_outline); }
+      [type='bridleway'] { line-cap: butt; line-color: @bridge_path_case; line-width: @rdz18_bridleway + (2 * @rdz18_line_bridge_outline); }
+      [type='footway'] { line-cap: butt; line-color: @bridge_path_case; line-width: @rdz18_footway + (2 * @rdz18_line_bridge_outline); }
+      [type='path'] { line-cap: butt; line-color: @bridge_path_case; line-width: @rdz18_path + (2 * @rdz18_line_bridge_outline); }
       [type='cycleway'],
       [type='path'][can_bicycle='designated'] {
         line-cap: butt;
-        line-color: @land;
+        line-color: @bridge_path_case;
         line-width: @rdz18_cycle + (2 * @rdz18_line_bridge_outline);
         [oneway='no'][oneway_bicycle='no'] {
           line-width: @rdz18_cycle*1.5 + (2 * @rdz18_line_bridge_outline);
