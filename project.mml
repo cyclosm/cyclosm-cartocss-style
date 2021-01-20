@@ -573,10 +573,14 @@ Layer:
               THEN 'mtb'
             WHEN tags->'smoothness' IN ('bad', 'very_bad')
               THEN 'cyclocross'
+            WHEN tags->'smoothness' IN ('excellent', 'good', 'intermediate')
+              THEN 'road'
             WHEN tracktype IN ('grade4', 'grade5')
               THEN 'mtb'
             WHEN tracktype IN ('grade2', 'grade3')
               THEN 'cyclocross'
+            WHEN tracktype IN ('grade1')
+              THEN 'road'
             WHEN surface IN ('pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
               THEN 'mtb'
             WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
@@ -762,10 +766,14 @@ Layer:
               THEN 'mtb'
             WHEN tags->'smoothness' IN ('bad', 'very_bad')
               THEN 'cyclocross'
+            WHEN tags->'smoothness' IN ('excellent', 'good', 'intermediate')
+              THEN 'road'
             WHEN tracktype IN ('grade4', 'grade5')
               THEN 'mtb'
             WHEN tracktype IN ('grade2', 'grade3')
               THEN 'cyclocross'
+            WHEN tracktype IN ('grade1')
+              THEN 'road'
             WHEN surface IN ('pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
               THEN 'mtb'
             WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
@@ -1037,10 +1045,14 @@ Layer:
               THEN 'mtb'
             WHEN tags->'smoothness' IN ('bad', 'very_bad')
               THEN 'cyclocross'
+            WHEN tags->'smoothness' IN ('excellent', 'good', 'intermediate')
+              THEN 'road'
             WHEN tracktype IN ('grade4', 'grade5')
               THEN 'mtb'
             WHEN tracktype IN ('grade2', 'grade3')
               THEN 'cyclocross'
+            WHEN tracktype IN ('grade1')
+              THEN 'road'
             WHEN surface IN ('pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
               THEN 'mtb'
             WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
