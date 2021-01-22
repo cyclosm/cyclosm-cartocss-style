@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render more features at low zoom: land, water and hillshades at zoom 3 and 4. See #494.
 * Fix, render as road bike surface tracktype=grade1 and good smoothness.
 * Render dam #481.
+* Fix cycleway hidded by rail background #451.
 
 ## v0.4
 

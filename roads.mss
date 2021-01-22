@@ -378,13 +378,6 @@
 #roads_high[zoom>=11],
 #bridge[zoom>=11] {
     [type='railway']::rail_perpendicular {
-
-        /* background: to avoid weird pattern when many tracks are overlapping */
-        [zoom<14] {
-            background/line-color: @land;
-            background/line-width: 3;
-        }
-
         line-color: @rail-line;
         line-cap: butt;
 
