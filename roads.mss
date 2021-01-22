@@ -3383,7 +3383,7 @@
     line-cap: round;
     line-join: round;
     line-color: @cycle-fill;
-    #tunnel { line-color: lighten(@cycle-fill, 15%); }
+    #tunnel { line-color: lighten(@cycle-fill, 25%); }
 
     [can_bicycle='no'] {
       line-color: @standard-nobicycle;
@@ -3496,15 +3496,15 @@
     line-cap: round;
     line-join: round;
     line-color: @path-fill;
-    #tunnel { line-color: lighten(@path-fill, 10%); }
+    #tunnel { line-color: lighten(@path-fill, 15%); }
 
     [can_bicycle='designated'] {
       line-color: @mixed-cycle-fill;
-      #tunnel { line-color: lighten(@mixed-cycle-fill, 10%); }
+      #tunnel { line-color: lighten(@mixed-cycle-fill, 15%); }
 
       [segregated='yes'] {
         line-color: @cycle-fill;
-        #tunnel { line-color: lighten(@cycle-fill, 15%); }
+        #tunnel { line-color: lighten(@cycle-fill, 25%); }
       }
 
       line-width: @rdz11_cycle;
