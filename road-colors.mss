@@ -54,6 +54,7 @@
 @track-light2: lighten(@track-fill, 50);
 
 @bridge_case: #666;
+@bridge_path_case: @land;
 
 @aeroway: #ddd;
 
