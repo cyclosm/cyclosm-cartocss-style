@@ -9,7 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 * Render more features at low zoom: land, water and hillshades at zoom 3 and 4. See #494.
-* Add dashline outline on path like way tunnels.
+* Fix, render as road bike surface tracktype=grade1 and good smoothness.
+* Render dam #481.
+* Add dashline outline on path like way tunnels #492.
 
 ## v0.4
 
