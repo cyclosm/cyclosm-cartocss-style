@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix, render as road bike surface tracktype=grade1 and good smoothness.
 * Render dam #481.
 * Add dashline outline on path like way tunnels #492.
+* Fix cycleway hidded by rail background #451.
 
 ## v0.4
 
