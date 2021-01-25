@@ -1,5 +1,5 @@
 #amenities-poly {
-  [feature = 'amenity_bicycle_parking'][zoom >= 16] {
+  [feature = 'amenity_bicycle_parking'][location != 'underground'][zoom >= 16] {
     polygon-fill: #eeeeee;
     line-color: #8d8383;
   }
