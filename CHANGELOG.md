@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render dam #481.
 * Add dashline outline on path like way tunnels #492.
 * Fix cycleway hidded by rail background #451.
+* Fix ford on node not rendered #508.
 
 ## v0.4
 
