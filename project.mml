@@ -1638,7 +1638,7 @@ Layer:
         SELECT way, route, tags->'network' AS type, ref, name, 1 as height, char_length(ref) AS width
         FROM planet_osm_line
         WHERE (route = 'bicycle' OR route = 'mtb')
-          AND ref IS NOT NULL
+          AND (ref IS NOT NULL OR name IS NOT NULL)
           AND (NOT ((tags->'network') IS NOT NULL AND (tags->'network:type') IS NOT NULL AND (tags->'network' = 'rcn') AND tags->'network:type' = 'node_network'))
       ) AS data
   geometry: linestring

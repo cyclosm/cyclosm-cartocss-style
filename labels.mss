@@ -606,35 +606,37 @@
     shield-fill: @mtb-shield-fill;
     shield-file: url("symbols/shields/mtb_[width]x[height].svg");
   }
+}
 
-  //Route name label
-  [zoom >= 16]
-  {
-    text-size: 9;
-    text-halo-radius: @standard-halo-radius;
-    text-halo-fill: @road_halo;
-    text-spacing: 900;
-    text-clip: false;
-    text-placement: line;
-    text-face-name: @sans;
-    text-vertical-alignment: top;
-    text-dy: 12;
-    text-repeat-distance: 900;
-    text-name: "[name]";
+//Route name label
+#bicycle_routes_labels[type='icn'][zoom >= 16],
+#bicycle_routes_labels[type='ncn'][zoom >= 16],
+#bicycle_routes_labels[type='rcn'][zoom >= 16],
+#bicycle_routes_labels[type='lcn'][zoom >= 16] {
+  text-size: 9;
+  text-halo-radius: @standard-halo-radius;
+  text-halo-fill: @road_halo;
+  text-spacing: 900;
+  text-clip: false;
+  text-placement: line;
+  text-face-name: @sans;
+  text-vertical-alignment: top;
+  text-dy: 12;
+  text-repeat-distance: 900;
+  text-name: "[name]";
 
-    text-fill: darken(@icn-overlay, 25%);
-    [route='bicycle'][type='ncn'] {
-      text-fill: darken(@ncn-overlay, 25%);
-    }
-    [route='bicycle'][type='rcn'] {
-      text-fill: darken(@rcn-overlay, 25%);
-    }
-    [route='bicycle'][type='lcn'] {
-      text-fill: darken(@lcn-overlay, 25%);
-    }
-    [route='mtb'] {
-      text-fill: darken(@mtb-overlay, 25%);
-    }
+  text-fill: darken(@icn-overlay, 25%);
+  [route='bicycle'][type='ncn'] {
+    text-fill: darken(@ncn-overlay, 25%);
+  }
+  [route='bicycle'][type='rcn'] {
+    text-fill: darken(@rcn-overlay, 25%);
+  }
+  [route='bicycle'][type='lcn'] {
+    text-fill: darken(@lcn-overlay, 25%);
+  }
+  [route='mtb'] {
+    text-fill: darken(@mtb-overlay, 25%);
   }
 }
 
