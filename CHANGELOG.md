@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix cycleway hidded by rail background #451.
 * Fix cycleroute name not rendered if no ref #510.
 * Fix ford on node not rendered #508.
+* Use blue shared cycle path for bus/cycle lane #356.
 
 
 ## v0.4
