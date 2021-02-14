@@ -154,8 +154,7 @@
 
     [sport='cycling'][zoom >= 15],
     [sport='bmx'][zoom >= 15] {
-      polygon-fill: @bicycle-amenity;
-      polygon-opacity: 0.3;
+      polygon-fill: @bicycle-leisure-track-fill;
 
       line-cap: round;
       line-join: round;
@@ -208,6 +207,12 @@
       [zoom>=16] { outline/line-width: 1 + 4*@rdz16_cycle; }
       [zoom>=17] { outline/line-width: 1 + 4*@rdz17_cycle; }
       [zoom>=18] { outline/line-width: 1 + 4*@rdz18_cycle; }
+
+      line-color: @bicycle-leisure-track-fill;
+      line-width: 4*@rdz15_cycle;
+      [zoom>=16] { line-width: 4*@rdz16_cycle; }
+      [zoom>=17] { line-width: 4*@rdz17_cycle; }
+      [zoom>=18] { line-width: 4*@rdz18_cycle; }
     }
 
     ::cycleway {

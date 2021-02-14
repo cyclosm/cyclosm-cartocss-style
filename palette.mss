@@ -57,6 +57,7 @@
 @stadium:           @land * 0.97;
 @pitch:             @park * 0.97;
 @track:             @park * 0.96;
+@bicycle-leisure-track-fill: #bbaeb8;
 
 @residential:       @land * 1.05;
 @commercial:        @land * 0.97;
