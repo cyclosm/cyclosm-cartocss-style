@@ -714,7 +714,7 @@
     [zoom>=17] { line-width: @rdz17_service + (2 * @rdz17_service_outline); }
     [zoom>=18] { line-width: @rdz18_service + (2 * @rdz18_service_outline); }
   }
-  [type='service'][service='minor'][zoom>=15] {
+  [type='service'][service='minor'][zoom>=14] {
     line-cap: round;
     line-join: round;
     #tunnel::outline,
@@ -727,7 +727,8 @@
 
     line-color: @standard-case;
 
-    line-width: @rdz15_service*0.5 + @rdz15_service_outline;
+    line-width: @rdz14_service*0.5 + @rdz14_service_outline*0.5; //only the outline at z14
+    [zoom>=15] { line-width: @rdz15_service*0.5 + @rdz15_service_outline; }
     [zoom>=16] { line-width: @rdz16_service*0.5 + @rdz16_service_outline; }
     [zoom>=17] { line-width: @rdz17_service*0.5 + @rdz17_service_outline; }
     [zoom>=18] { line-width: @rdz18_service*0.5 + @rdz18_service_outline; }

@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix ford on node not rendered #508.
 * Use blue shared cycle path for bus/cycle lane #356.
 * Add bicycle leisure track for areas.
+* Render minor service road at zoom 14 #519.
 * Render living street with 20km/h color by default #238.
 
 
