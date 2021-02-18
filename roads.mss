@@ -3064,19 +3064,19 @@
     [zoom>=17] { line-width: @rdz17_living_street; }
     [zoom>=18] { line-width: @rdz18_living_street; }
 
-    line-color: @standard-fill;
-    #tunnel { line-color: lighten(@standard-fill, 10%); }
-    [maxspeed_kmh < 33] {
-        line-color: @speed32-fill;
-        #tunnel { line-color: lighten(@speed32-fill, 10%); }
-    }
-    [maxspeed_kmh < 21] {
-        line-color: @speed20-fill;
-        #tunnel { line-color: lighten(@speed20-fill, 10%); }
-    }
+    line-color: @speed20-fill;
+    #tunnel { line-color: lighten(@speed20-fill, 10%); }
     [maxspeed_kmh < 10] {
       line-color: @speedWalk-fill;
       #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
+    }
+    [maxspeed_kmh >= 21] {
+        line-color: @speed32-fill;
+        #tunnel { line-color: lighten(@speed32-fill, 10%); }
+    }
+    [maxspeed_kmh >= 33] {
+        line-color: @standard-fill;
+        #tunnel { line-color: lighten(@standard-fill, 10%); }
     }
     [motor_vehicle='no'][can_bicycle!='no'] {
         line-color: @nomotor-fill;
@@ -3135,17 +3135,17 @@
 
     line-color: @pedestrian-fill;
     #tunnel { line-color: lighten(@pedestrian-fill, 10%); }
-    [maxspeed_kmh < 33] {
+    [maxspeed_kmh >= 10] {
+      line-color: @speed20-fill;
+      #tunnel { line-color: lighten(@speed20-fill, 10%); }
+    }
+    [maxspeed_kmh >= 21] {
         line-color: @speed32-fill;
         #tunnel { line-color: lighten(@speed32-fill, 10%); }
     }
-    [maxspeed_kmh < 21] {
-        line-color: @speed20-fill;
-        #tunnel { line-color: lighten(@speed20-fill, 10%); }
-    }
-    [maxspeed_kmh < 10] {
-      line-color: @speedWalk-fill;
-      #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
+    [maxspeed_kmh >= 33] {
+        line-color: @standard-fill;
+        #tunnel { line-color: lighten(@standard-fill, 10%); }
     }
     //  [motor_vehicle='no'][can_bicycle!='no'][type!='pedestrian'] { //Keep pedestrian color even if motor is forbidden.
     //    line-color: @nomotor-fill;
