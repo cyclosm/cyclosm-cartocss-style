@@ -220,15 +220,40 @@ called something like
 We will load the contours into a database called `contours`.  If a `contours` database exists already, you will need to drop it and recreate it first.
 
 ```
-sudo -u postgres createdb contours
-sudo -u postgres psql contours -c 'CREATE EXTENSION postgis;'
+sudo -u postgres createdb data
+sudo -u postgres psql data -c 'CREATE EXTENSION postgis;'
 ```
 
 Load the data into the contours database:
 
 ```
-sudo -u postgres osm2pgsql --slim -d contours --cache 5000 --style ./contours.style ./*.osm.pbf
+sudo -u postgres osm2pgsql --slim -d data --cache 5000 --style ./contours.style ./*.osm.pbf
 rm ./*.osm.pbf
+```
+
+Note that due to historical reasons, we have specific requirements for the
+contours table, which is not exactly given by the output of `phyghtmap` /
+`osm2pgsql`.
+Therefore, you should probably update the `project.mml` and `base.mss` file or
+edit the generated table. Main differences are:
+* We are using a table named `contours` instead of `planet_osm_line`.
+* We are having a geometry field named `geometry` instead of `way` (this
+    appears both in the SQL query and in the `Datasource.geometry_field` field).
+
+Note that contours are disabled by default in the style. You can enable them
+by using a block such as the following one in Kosmtik `localconfig.json` (see
+below for more details):
+
+```
+  {
+    "where": "Layer",
+    "if": {
+      "class": "contours"
+    },
+    "then": {
+      "properties.status": "on"
+    }
+  }
 ```
 
 

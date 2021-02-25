@@ -195,70 +195,78 @@ Layer:
   geometry: raster
   properties:
     status: off
-#- id: contours100
-#  class: contours
-#  <<: *extents
-#  Datasource:
-#    <<: *osm2pgsql
-#    dbname: "contours"
-#    table: |-
-#      (
-#        SELECT
-#          way, ele
-#        FROM planet_osm_line
-#        WHERE ele IS NOT NULL AND ele % 100 = 0
-#      ) AS data
-#  geometry: line
-#  properties:
-#    minzoom: 11
-#- id: contours50
-#  class: contours
-#  <<: *extents
-#  Datasource:
-#    <<: *osm2pgsql
-#    dbname: "contours"
-#    table: |-
-#      (
-#        SELECT
-#          way, ele
-#        FROM planet_osm_line
-#        WHERE ele IS NOT NULL AND ele % 100 != 0 AND ele % 50 = 0
-#      ) AS data
-#  geometry: line
-#  properties:
-#    minzoom: 11
-#- id: contours20
-#  class: contours
-#  <<: *extents
-#  Datasource:
-#    <<: *osm2pgsql
-#    dbname: "contours"
-#    table: |-
-#      (
-#        SELECT
-#          way, ele
-#        FROM planet_osm_line
-#        WHERE ele IS NOT NULL AND ele % 100 != 0 AND ele % 20 = 0
-#      ) AS data
-#  geometry: line
-#  properties:
-#    minzoom: 12
-#- id: contours10
-#  class: contours
-#  <<: *extents
-#  Datasource:
-#    <<: *osm2pgsql
-#    dbname: "contours"
-#    table: |-
-#      (
-#        SELECT
-#          way, ele
-#        FROM planet_osm_line
-#        WHERE ele IS NOT NULL AND ele % 50 != 0 AND ele % 10 = 0
-#      ) AS data
-#  geometry: line
-#  properties:
-#    minzoom: 13
+- id: contours100
+  class: contours
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    dbname: "contours"
+    geometry_field: "geometry"
+    table: |-
+      (
+        SELECT
+          geometry, height
+        FROM contours
+        WHERE height IS NOT NULL AND MOD(height::numeric, 100) = 0
+      ) AS data
+  geometry: line
+  properties:
+    minzoom: 11
+    status: off
+- id: contours50
+  class: contours
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    dbname: "contours"
+    geometry_field: "geometry"
+    table: |-
+      (
+        SELECT
+          geometry, height
+        FROM contours
+        WHERE height IS NOT NULL AND MOD(height::numeric, 100) != 0 AND MOD(height::numeric, 50) = 0
+      ) AS data
+  geometry: line
+  properties:
+    minzoom: 11
+    status: off
+- id: contours20
+  class: contours
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    dbname: "contours"
+    geometry_field: "geometry"
+    table: |-
+      (
+        SELECT
+          geometry, height
+        FROM contours
+        WHERE height IS NOT NULL AND MOD(height::numeric, 100) != 0 AND MOD(height::numeric, 20) = 0
+      ) AS data
+  geometry: line
+  properties:
+    minzoom: 12
+    status: off
+- id: contours10
+  class: contours
+  <<: *extents
+  Datasource:
+    <<: *osm2pgsql
+    dbname: "contours"
+    geometry_field: "geometry"
+    table: |-
+      (
+        SELECT
+          geometry, height
+        FROM contours
+        WHERE height IS NOT NULL AND MOD(height::numeric, 50) != 0 AND MOD(height::numeric, 10) = 0
+      ) AS data
+  geometry: line
+  properties:
+    minzoom: 13
+    status: off
 - id: waterway_low
   <<: *extents
   Datasource:
