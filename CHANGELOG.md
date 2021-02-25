@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Add bicycle leisure track for areas.
 * Render minor service road at zoom 14 #519.
 * Render living street with 20km/h color by default #238.
+* Restore contours. Fix #157.
 
 
 ## v0.4
