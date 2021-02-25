@@ -413,7 +413,7 @@ Map { background-color: @water; }
       text-spacing: @contours-small-spacing;
       text-min-path-length: @contours-small-min-path-length;
       text-max-char-angle-delta: @contours-max-char-angle-delta;
-      text-name: "[ele]";
+      text-name: "[height]";
     }
   }
 
@@ -437,7 +437,7 @@ Map { background-color: @water; }
       text-spacing: @contours-spacing;
       text-min-path-length: @contours-min-path-length;
       text-max-char-angle-delta: @contours-max-char-angle-delta;
-      text-name: "[ele]";
+      text-name: "[height]";
     }
     [zoom >= 16] { line-width: 0.4; }
   }
@@ -455,7 +455,7 @@ Map { background-color: @water; }
       text-spacing: @contours-spacing;
       text-min-path-length: @contours-min-path-length;
       text-max-char-angle-delta: @contours-max-char-angle-delta;
-      text-name: "[ele]";
+      text-name: "[height]";
     }
   }
 }
