@@ -1565,12 +1565,12 @@
 #clpc[zoom >= 19] {
     marker-width: 20;
     marker-file: url('symbols/clpc/right.svg');
-    [angle <= 45],
-    [angle >= 135][angle <= 225] {
+
+    [from_to_angle <= 45],
+    [from_to_angle >= 135][from_to_angle <= 225] {
       marker-file: url('symbols/clpc/straight.svg');
-      marker-transform: 'translate(15, 15) rotate([angle])';
     }
-    [angle > 45][angle < 135] {
-      marker-transform: 'translate(-15, 0) rotate([angle])';
-    }
+
+    marker-transform: 'rotate([from_azimuth])';
+    marker-allow-overlap: true;
 }
