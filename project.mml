@@ -2087,21 +2087,36 @@ Layer:
     table: |-
       (
         SELECT
-          ST_Centroid(
-            ST_Intersection(
-              ST_Union(h1.way, h2.way),
-              ST_Difference(
-                ST_Buffer(ST_Intersection(h1.way, h2.way), 20),
-                ST_Buffer(ST_Intersection(h1.way, h2.way), 10)
+          CASE
+            WHEN members[array_position(members, CONCAT('w', h1.osm_id)) + 1] = 'from' THEN
+              ST_Intersection(
+                h1.way,
+                ST_Buffer(ST_Intersection(h1.way, h2.way), 20)
               )
-            )
-          ) AS way,
+            ELSE
+              ST_Intersection(
+                h2.way,
+                ST_Buffer(ST_Intersection(h1.way, h2.way), 20)
+              )
+          END AS way,
           CASE
             WHEN members[array_position(members, CONCAT('w', h1.osm_id)) + 1] = 'from' THEN
               cast(degrees(ST_Angle(h1.way, h2.way)) AS integer)
             ELSE
               cast(degrees(ST_Angle(h2.way, h1.way)) AS integer)
-          END AS angle
+          END AS from_to_angle,
+          CASE
+            WHEN members[array_position(members, CONCAT('w', h1.osm_id)) + 1] = 'from' THEN
+              cast(degrees(ST_Azimuth(
+                st_lineinterpolatepoint(h1.way, 0.8),
+                ST_Intersection(h1.way, h2.way)
+              )) AS integer)
+            ELSE
+              cast(degrees(ST_Azimuth(
+                st_lineinterpolatepoint(h2.way, 0.8),
+                ST_Intersection(h1.way, h2.way)
+              )) AS integer)
+          END AS from_azimuth
         FROM
             planet_osm_line h1
             JOIN planet_osm_line h2 ON ST_Intersects(h1.way, h2.way)
