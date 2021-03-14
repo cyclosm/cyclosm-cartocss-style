@@ -144,7 +144,7 @@ A regular style.
 A bold style is available for almost all scripts. Bold text is heavier than
 regular text and can be used for emphasis. Fallback is a regular style.
 */
-@sans_bold:     "Noto Sans Bold",
+@sans_bold:    "Noto Sans Bold",
                 "Noto Sans CJK JP Bold",
                 "Noto Sans Armenian Bold",
                 "Noto Sans Bengali UI Bold",
@@ -162,20 +162,20 @@ regular text and can be used for emphasis. Fallback is a regular style.
                 "Noto Sans Malayalam UI Bold",
                 "Noto Sans Myanmar UI Bold",
                 "Noto Sans Oriya UI Bold",
-                "Noto Sans Sinhala UI Bold",
-                "Noto Sans Sinhala Bold",
+                "Noto Sans Sinhala UI Bold", "Noto Sans Sinhala Bold",
                 "Noto Sans Symbols Bold",
                 "Noto Sans Tamil UI Bold",
                 "Noto Sans Telugu UI Bold",
                 "Noto Sans Thaana Bold",
                 "Noto Sans Thai UI Bold",
-                "Noto Sans Tibetan Bold",
 
-                "Noto Sans Arabic UI Bold",
+                "Noto Sans Arabic UI Bold", "Noto Naskh Arabic UI Bold",
 
-                "Noto Naskh Arabic UI Bold",
+                "Noto Serif Tibetan Bold", "Noto Sans Tibetan Bold",
 
-                "DejaVu Sans Bold";
+                "DejaVu Sans Bold",
+
+                @sans;
 
 /*
 Italics are only available for the base font, not the other scripts.
