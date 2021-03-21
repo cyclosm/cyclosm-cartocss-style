@@ -2706,7 +2706,7 @@ Layer:
         SELECT
           way,
           highway,
-          name,
+          COALESCE(name, tags->'mtb:name') AS name,
           CASE
             WHEN oneway IN ('yes', '-1') THEN oneway
             ELSE 'no'
