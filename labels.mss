@@ -74,6 +74,10 @@
       text-fill: @military * 0.6;
       text-face-name: @sans_italic;
     }
+    [type='retail'] {
+      text-fill: @shop-text;
+      text-face-name: @sans_italic;
+    }
 
     // text size adjustement regarding area size:
     [zoom=15][area>1600000],
