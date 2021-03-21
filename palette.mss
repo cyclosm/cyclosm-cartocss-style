@@ -60,7 +60,7 @@
 @bicycle-leisure-track-fill: #bbaeb8;
 
 @residential:       @land * 1.05;
-@commercial:        @land * 0.97;
+@commercial:        #efd0c4;
 @industrial:        @land * 0.96;
 @parking:           #EEE;
 
