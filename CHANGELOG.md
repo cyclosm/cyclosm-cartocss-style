@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Fix names not rendered in some alphabts. Fix #489.
 * Render `landuse=retail` and `shop=mall` names. Fix #526.
+* Render train stations when tagged on buildings (polygons). Fix #527.
 
 
 ## v0.5
