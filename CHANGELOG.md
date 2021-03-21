@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 * Fix names not rendered in some alphabts. Fix #489.
+* Render train stations when tagged on buildings (polygons). Fix #527.
 
 
 
