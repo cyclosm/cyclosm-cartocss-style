@@ -949,15 +949,15 @@
 
     // Drinking water refill sub icon
     [drinking_water_refill = 'yes'][zoom >= 16] {
-      drinking_water_refill/marker-file: url('symbols/nounproject/bottle.svg');
-      drinking_water_refill/marker-fill: @bicycle-amenity;
+      drinking_water_refill/marker-file: url('symbols/drinking_water_refill.svg');
+      drinking_water_refill/marker-fill: @amenity-water;
       drinking_water_refill/marker-placement: interior;
       drinking_water_refill/marker-clip: false;
       drinking_water_refill/marker-ignore-placement: true;
       drinking_water_refill/marker-allow-overlap: true;
-      drinking_water_refill/marker-height: 11;
-      drinking_water_refill/marker-width: 6;
-      drinking_water_refill/marker-geometry-transform: translate(11, 6);
+      drinking_water_refill/marker-height: 7;
+      drinking_water_refill/marker-width: 7;
+      drinking_water_refill/marker-geometry-transform: translate(10, 7);
     }
   }
 
