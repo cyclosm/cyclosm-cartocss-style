@@ -797,6 +797,13 @@
     }
   }
 
+  [feature = 'shop_doityourself'][zoom >= 16] {
+    marker-placement: interior;
+    marker-clip: false;
+    marker-file: url('symbols/openstreetmap-carto/shop/diy.svg');
+    marker-fill: @shop-icon;
+  }
+
   [feature = 'shop_supermarket'][zoom >= 16] {
     marker-placement: interior;
     marker-clip: false;
@@ -1261,6 +1268,19 @@
   }
 
   [feature = 'shop_supermarket'][zoom >= 18] {
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    text-dy: 12;
+    text-fill: @shop-text;
+    text-face-name: @standard-font;
+    text-halo-radius: @standard-halo-radius;
+    text-halo-fill: rgba(255, 255, 255, 0.6);
+    text-placement: interior;
+  }
+
+  [feature = 'shop_doityourself'][zoom >= 18] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
