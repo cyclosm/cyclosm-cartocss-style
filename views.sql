@@ -304,7 +304,7 @@ CREATE VIEW cyclosm_amenities_point AS
           OR waterway IN ('waterfall')
           OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
           OR military IN ('bunker')
-          OR tags->'emergency'='phone'
+          OR tags->'emergency' IN ('defibrillator', 'phone')
           OR highway IN ('elevator', 'traffic_signals')
           OR ((highway='bus_stop' OR public_transport='platform') AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND "generator:source"='wind')
@@ -317,7 +317,7 @@ CREATE VIEW cyclosm_amenities_point AS
                 WHEN shop IN ('bicycle', 'sports') THEN 0
                 WHEN amenity IN ('bicycle_rental') Then 10
                 -- Emergency
-                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'clinic', 'doctors', 'pharmacy') THEN 20
+                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency' IN ('defibrillator', 'phone') OR amenity IN ('hospital', 'clinic', 'doctors', 'pharmacy') THEN 20
                 -- Other emergency-related amenities
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets',
                   'water_point', 'charging_station') THEN 21
@@ -444,7 +444,7 @@ CREATE VIEW cyclosm_amenities_poly AS
           OR waterway IN ('waterfall')
           OR historic IN ('memorial', 'monument', 'archaeological_site', 'wayside_cross', 'fort', 'wayside_shrine', 'castle', 'manor', 'city_gate')
           OR military IN ('bunker')
-          OR tags->'emergency'='phone'
+          OR tags->'emergency' IN ('defibrillator', 'phone')
           OR highway IN ('elevator', 'traffic_signals')
           OR ((highway='bus_stop' OR public_transport='platform') AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND "generator:source"='wind')
@@ -456,7 +456,7 @@ CREATE VIEW cyclosm_amenities_poly AS
                 WHEN shop IN ('bicycle', 'sports') THEN 0
                 WHEN amenity IN ('bicycle_rental') Then 10
                 -- Emergency
-                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'='phone' OR amenity IN ('hospital', 'clinic', 'doctors', 'pharmacy') THEN 20
+                WHEN tags->'healthcare' IS NOT NULL OR tags->'emergency'IN ('defibrillator', 'phone') OR amenity IN ('hospital', 'clinic', 'doctors', 'pharmacy') THEN 20
                 -- Other emergency-related amenities
                 WHEN amenity IN ('bicycle_repair_station', 'compressed_air', 'drinking_water', 'police', 'toilets',
                   'water_point', 'charging_station') THEN 21
