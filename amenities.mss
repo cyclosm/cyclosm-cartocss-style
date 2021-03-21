@@ -800,8 +800,8 @@
   [feature = 'shop_supermarket'][zoom >= 16] {
     marker-placement: interior;
     marker-clip: false;
-		marker-fill: @shop-icon;
-		marker-file: url('symbols/openstreetmap-carto/shop/supermarket.svg');
+    marker-fill: @shop-icon;
+    marker-file: url('symbols/openstreetmap-carto/shop/supermarket.svg');
 
     //Pump sub icon
     [service_bicycle_pump = 'yes'][zoom >= 16],
@@ -862,24 +862,24 @@
     marker-placement: interior;
     marker-clip: false;
 
-		[feature = 'amenity_bar'],
-		[feature = 'amenity_biergarten'],
-		[feature = 'amenity_cafe'],
-		[feature = 'amenity_fast_food'],
-		[feature = 'amenity_food_court'],
-		[feature = 'amenity_ice_cream'],
-		[feature = 'amenity_pub'],
-		[feature = 'amenity_restaurant'] {
-			marker-fill: @gastronomy-icon;
-		}
-		[feature = 'shop_bakery'],
-		[feature = 'shop_convenience'],
-		[feature = 'shop_convenience;gas'],
-		[feature = 'shop_greengrocer'],
-		[feature = 'shop_pastry'],
-		[feature = 'shop_beverages'] {
-			marker-fill: @shop-icon;
-		}
+    [feature = 'amenity_bar'],
+    [feature = 'amenity_biergarten'],
+    [feature = 'amenity_cafe'],
+    [feature = 'amenity_fast_food'],
+    [feature = 'amenity_food_court'],
+    [feature = 'amenity_ice_cream'],
+    [feature = 'amenity_pub'],
+    [feature = 'amenity_restaurant'] {
+      marker-fill: @gastronomy-icon;
+    }
+    [feature = 'shop_bakery'],
+    [feature = 'shop_convenience'],
+    [feature = 'shop_convenience;gas'],
+    [feature = 'shop_greengrocer'],
+    [feature = 'shop_pastry'],
+    [feature = 'shop_beverages'] {
+      marker-fill: @shop-icon;
+    }
 
     [feature = 'amenity_bar'][zoom >= 16] {
       marker-file: url('symbols/openstreetmap-carto/amenity/bar.svg');
@@ -945,6 +945,19 @@
     }
     [feature = 'shop_beverages'][zoom >= 16] {
       marker-file: url('symbols/openstreetmap-carto/shop/beverages.svg');
+    }
+
+    // Drinking water refill sub icon
+    [drinking_water_refill = 'yes'][zoom >= 16] {
+      drinking_water_refill/marker-file: url('symbols/nounproject/bottle.svg');
+      drinking_water_refill/marker-fill: @bicycle-amenity;
+      drinking_water_refill/marker-placement: interior;
+      drinking_water_refill/marker-clip: false;
+      drinking_water_refill/marker-ignore-placement: true;
+      drinking_water_refill/marker-allow-overlap: true;
+      drinking_water_refill/marker-height: 11;
+      drinking_water_refill/marker-width: 6;
+      drinking_water_refill/marker-geometry-transform: translate(11, 6);
     }
   }
 

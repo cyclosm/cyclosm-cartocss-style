@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 * Fix names not rendered in some alphabts. Fix #489.
+* Add a bike bottle subicon for food amenities with
+    `drinking_water:refill=yes`. Fix #325.
 
 
 
