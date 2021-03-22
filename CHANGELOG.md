@@ -10,7 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Fix names not rendered in some alphabts. Fix #489.
 * Render `mtb:name` when no name is known and `mtb:name` is available. Fix #533.
-
+* Fix missing POIs: swimming pools, `shop=doityourself` and schools. Fix #64.
+* Render train stations when tagged on buildings (polygons). Fix #527.
 
 
 ## v0.5
