@@ -1661,10 +1661,40 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT way, railway AS type, name, tags->'station' AS station, z_order
-        FROM planet_osm_point
-        WHERE railway = 'station' OR railway = 'halt'
-        ORDER BY z_order NULLS LAST
+        SELECT
+          way,
+          type,
+          name,
+          station,
+          way_area
+        FROM
+        (
+          SELECT
+            ST_PointOnSurface(way) AS way,
+            name,
+            railway AS type,
+            tags->'station' AS station,
+            way_area
+          FROM planet_osm_polygon
+          WHERE way && !bbox! -- Not ST_PointOnSurface(way) because name might be NULL
+            AND way_area < 768000*POW(!scale_denominator!*0.001*0.28,2)
+          UNION ALL
+          SELECT
+            way,
+            name,
+            railway AS type,
+            tags->'station' AS station,
+            NULL AS way_area
+          FROM planet_osm_point
+          WHERE way && !bbox!
+        ) _
+        WHERE type IN ('station', 'halt')
+        ORDER BY
+          CASE type
+            WHEN 'station' THEN 1
+            ELSE 2
+          END,
+          way_area DESC NULLS LAST
       ) AS data
   geometry: point
   properties:
