@@ -140,7 +140,7 @@
   }
   [type='landuse_residential']   { polygon-fill: @residential; }
   [type='amenity_school']        { polygon-fill: @school; }
-  [type='leisure_sports_center'] {
+  [type='leisure_sports_centre'] {
     polygon-fill: @sports;
     [zoom >= 14] {
       polygon-fill: @stadium;
