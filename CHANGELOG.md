@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * Fix names not rendered in some alphabts. Fix #489.
 * Render train stations when tagged on buildings (polygons). Fix #527.
+* Use sharrows for `bicycle=designated` streets instead of regular arrow.
+    Fix #389.
 
 
 
