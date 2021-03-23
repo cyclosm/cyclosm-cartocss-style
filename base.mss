@@ -35,7 +35,7 @@
 
   [type='landuse_retail'],
   [type='landuse_commercial'] {
-    polygon-fill: @industrial;
+    polygon-fill: @commercial;
   }
 
   [type='leisure_garden'],
