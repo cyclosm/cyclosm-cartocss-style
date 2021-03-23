@@ -2093,6 +2093,7 @@ Layer:
           COALESCE(
             landuse,
             leisure,
+            CASE WHEN shop IN ('mall') THEN 'retail' ELSE NULL END,
             boundary,
             "natural",
             amenity,
@@ -2100,10 +2101,11 @@ Layer:
           ) AS type,
           name,
           way_area AS area,
-          way
+          ST_PointOnSurface(way) AS way
         FROM planet_osm_polygon
         WHERE name IS NOT NULL AND
-          (landuse IN ('basin', 'cemetery', 'commercial', 'farmyard', 'forest', 'grass', 'industrial', 'military')
+          (landuse IN ('basin', 'cemetery', 'commercial', 'farmyard', 'forest', 'grass', 'industrial', 'military', 'retail')
+            OR shop IN ('mall')
             OR (leisure IS NOT NULL AND (leisure != 'sport_centre' OR sport != 'swimming'))
             OR "natural" IS NOT NULL
             OR amenity IN ('embassy', 'library', 'school', 'townhall', 'university')
