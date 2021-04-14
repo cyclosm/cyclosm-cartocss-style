@@ -332,7 +332,7 @@ Layer:
         WHERE
           (
             "natural" IN ('water', 'pond')
-            OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
+            OR waterway IN ('basin', 'canal', 'dock', 'mill_pond', 'pond', 'riverbank', 'stream')
             OR landuse in ('basin', 'reservoir')
           )
           AND way_area > 0.1*!pixel_width!::real*!pixel_height!::real
@@ -359,7 +359,7 @@ Layer:
         WHERE
           (
             "natural" IN ('water', 'pond')
-            OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
+            OR waterway IN ('basin', 'canal', 'dock', 'mill_pond', 'pond', 'riverbank', 'stream')
             OR landuse in ('basin', 'reservoir')
           )
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
@@ -386,7 +386,7 @@ Layer:
         WHERE
           (
             "natural" IN ('water', 'pond')
-            OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
+            OR waterway IN ('basin', 'canal', 'dock', 'mill_pond', 'pond', 'riverbank', 'stream')
             OR landuse in ('basin', 'reservoir')
           )
           AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
