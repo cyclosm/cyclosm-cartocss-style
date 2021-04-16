@@ -22,5 +22,9 @@ style and are licensed under CC0 public domain.
 The icons in `symbols/osmandapp` are taken from the
 [OsmAnd app resources](https://github.com/osmandapp/OsmAnd-resources).
 
+The icons in `symbols/nounproject` are taken from [The Noun
+Project](https://thenounproject.com/) and are licensed under a CC BY-NC-ND 2.0
+license.
+
 The inner tube bicycle icon is based on
 https://www.flaticon.com/free-icon/inner-tube_1575936.

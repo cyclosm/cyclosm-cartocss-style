@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Render `landuse=retail` and `shop=mall` names. Fix #526.
 * Fix missing POIs: swimming pools, `shop=doityourself` and schools. Fix #64.
 * Render train stations when tagged on buildings (polygons). Fix #527.
+* Use sharrows for `bicycle=designated` streets instead of regular arrow.
+    Fix #389.
 
 
 ## v0.5
