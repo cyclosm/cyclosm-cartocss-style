@@ -27,6 +27,7 @@ CREATE VIEW cyclosm_ways AS
             WHEN tags->'maxspeed'='walk' THEN 5
             ELSE NULL
         END AS maxspeed_kmh,
+        bicycle,
         CASE
             WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private') THEN 'yes'
             -- goods and hgv don't need COALESCE chains, because the next step would be motorcar, which is checked above
@@ -47,6 +48,7 @@ CREATE VIEW cyclosm_ways AS
         END AS cyclestreet,
         CASE
             WHEN oneway IN ('yes', '-1') THEN oneway
+            WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
             ELSE 'no'
         END AS oneway,
         CASE
@@ -109,8 +111,14 @@ CREATE VIEW cyclosm_ways AS
             ELSE 'no'
         END AS segregated,
         CASE
-            WHEN tags->'oneway:bicycle' IN ('yes', '-1') THEN tags->'oneway:bicycle'
-            ELSE 'no'
+            WHEN tags->'oneway:bicycle' IS NOT NULL THEN tags->'oneway:bicycle'
+            WHEN highway='cycleway' AND oneway IS NOT NULL THEN oneway
+            WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
+              OR tags->'cycleway:both' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
+              OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
+              OR tags->'cycleway:right' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
+                THEN 'no'
+            ELSE NULL
         END AS oneway_bicycle,
         COALESCE(
             tags->'ramp:bicycle',
@@ -154,6 +162,8 @@ CREATE VIEW cyclosm_ways AS
             WHEN tags->'mtb:scale:imba'~E'^\\d+$' THEN (tags->'mtb:scale:imba')::integer
             ELSE NULL
         END AS mtb_scale_imba,
+        name,
+        osm_id,
         CASE
             WHEN highway='cycleway' OR (highway IN ('path', 'footway', 'pedestrian', 'bridleway') AND bicycle IN ('yes', 'designated')) THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+199 ELSE 199 END
             WHEN highway IN ('path', 'footway', 'pedestrian', 'bridleway') THEN CASE WHEN layer~E'^\\d+$' THEN 100*layer::integer+198 ELSE 198 END

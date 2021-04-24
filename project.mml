@@ -460,7 +460,28 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT *
+        SELECT
+            way,
+            type,
+            access,
+            maxspeed_kmh,
+            bicycle,
+            motor_vehicle,
+            cyclestreet,
+            oneway,
+            cycleway_left_render,
+            cycleway_right_render,
+            cycleway_left_oneway,
+            cycleway_right_oneway,
+            can_bicycle,
+            segregated,
+            oneway_bicycle,
+            has_ramp,
+            surface_type,
+            service,
+            mtb_scale,
+            mtb_scale_imba,
+            tunnel
         FROM cyclosm_ways
         WHERE tunnel NOT IN ('no')
       ) AS data
@@ -502,7 +523,27 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT *
+        SELECT
+            way,
+            type,
+            access,
+            maxspeed_kmh,
+            bicycle,
+            motor_vehicle,
+            cyclestreet,
+            oneway,
+            cycleway_left_render,
+            cycleway_right_render,
+            cycleway_left_oneway,
+            cycleway_right_oneway,
+            can_bicycle,
+            segregated,
+            oneway_bicycle,
+            has_ramp,
+            surface_type,
+            service,
+            mtb_scale,
+            mtb_scale_imba
         FROM cyclosm_ways
         WHERE (tunnel IS NULL OR tunnel = 'no')
           AND (bridge IS NULL OR bridge = 'no')
@@ -619,7 +660,28 @@ Layer:
     <<: *osm2pgsql
     table: |-
       (
-        SELECT *
+        SELECT
+            way,
+            type,
+            access,
+            maxspeed_kmh,
+            bicycle,
+            motor_vehicle,
+            cyclestreet,
+            oneway,
+            cycleway_left_render,
+            cycleway_right_render,
+            cycleway_left_oneway,
+            cycleway_right_oneway,
+            can_bicycle,
+            segregated,
+            oneway_bicycle,
+            has_ramp,
+            surface_type,
+            service,
+            mtb_scale,
+            mtb_scale_imba,
+            bridge
         FROM cyclosm_ways
         WHERE bridge NOT IN ('no')
       ) AS data
@@ -2211,28 +2273,15 @@ Layer:
         SELECT
           way,
           CASE
-            WHEN substr(highway, length(highway)-4, 5) = '_link' THEN substr(highway, 0, length(highway)-4)
-            ELSE highway
+            WHEN substr(type, length(type)-4, 5) = '_link' THEN substr(type, 0, length(type)-4)
+            ELSE type
           END AS highway,
-          CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
+          tunnel,
           name,
-          CASE
-            WHEN oneway IN ('yes', '-1') THEN oneway
-            WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
-            ELSE 'no'
-          END AS oneway,
-          CASE
-            WHEN tags->'oneway:bicycle' IS NOT NULL THEN tags->'oneway:bicycle'
-            WHEN highway='cycleway' AND oneway IS NOT NULL THEN oneway
-            WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
-              OR tags->'cycleway:both' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
-              OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
-              OR tags->'cycleway:right' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
-            THEN 'no'
-            ELSE NULL
-          END AS oneway_bicycle,
-          horse, bicycle
-        FROM planet_osm_line l
+          oneway,
+          oneway_bicycle,
+          bicycle
+        FROM cyclosm_ways l
         JOIN (VALUES -- this join is also putting a condition on what is selected. features not matching it do not make it into the results.
           ('motorway', 380),
           ('trunk', 370),
@@ -2250,15 +2299,14 @@ Layer:
           ('secondary_link', 210),
           ('tertiary_link', 200),
           ('service', 150)
-        ) AS ordertable (highway, prio)
-        USING (highway)
-        WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary',
+        ) AS ordertable (type, prio)
+        USING (type)
+        WHERE type IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary',
           'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'living_street')
-        AND (
+        AND ( -- There is a label to render
           name IS NOT NULL
           OR oneway IN ('yes', '-1')
-          OR tags->'oneway:bicycle' IN ('yes', '-1')
-          OR junction IN ('roundabout')
+          OR oneway_bicycle IN ('yes', '-1')
         )
         ORDER BY
           z_order DESC, -- put important roads first
