@@ -51,6 +51,10 @@ EOF
   -G \
   --drop \
   $OSM2PGSQL_DATAFILE
+
+  # Run cyclosm-specific sql script
+  psql --dbname=$DB_NAME --file=project.sql
+
   ;;
 
 kosmtik)
