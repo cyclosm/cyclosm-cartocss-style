@@ -850,8 +850,8 @@ Layer:
             ELSE NULL
           END AS can_bicycle
         FROM planet_osm_roads
-        WHERE (railway IN ('rail')
-            OR highway IN ('motorway', 'trunk', 'primary', 'secondary'))
+        WHERE (((railway IN ('rail') AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
+            OR highway IN ('motorway', 'trunk', 'primary', 'secondary')))
           AND way && !bbox!
         ORDER BY CASE
           WHEN railway IS NOT NULL THEN 0
@@ -881,7 +881,8 @@ Layer:
             tunnel,
             bicycle
           FROM planet_osm_roads
-          WHERE (railway IN ('rail') OR highway IN ('motorway', 'trunk'))
+          WHERE ((railway IN ('rail') AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
+              OR highway IN ('motorway', 'trunk'))
             AND way && !bbox!
           ORDER BY CASE
             WHEN railway IS NOT NULL THEN 0
