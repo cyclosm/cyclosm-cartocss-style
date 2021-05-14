@@ -2299,7 +2299,7 @@
 #tunnel::steps_ramp_left[zoom>=15],
 #bridge::steps_ramp_left[zoom>=15] {
   [type='steps'] {
-    [has_ramp!='no'][has_ramp!=null] {
+    [has_ramp!='no'][has_ramp!=null][has_ramp!='separate'] {
       line-color: @cycle-fill;
       line-width: @rdz15_steps_outline*2;
       line-offset: @rdz15_steps/2 + @rdz15_steps_outline;
