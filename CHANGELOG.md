@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix missing POIs: swimming pools, `shop=doityourself` and schools. Fix #64.
 * Render train stations when tagged on buildings (polygons). Fix #527.
 * Rendering bridge surface. Fix #551.
-* Remove ramp:xxx=separate. Fix #545.
+* Remove rendering ramp:xxx=separate. Fix #545.
 
 
 ## v0.5
