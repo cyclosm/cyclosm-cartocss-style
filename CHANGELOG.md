@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix missing POIs: swimming pools, `shop=doityourself` and schools. Fix #64.
 * Render train stations when tagged on buildings (polygons). Fix #527.
 * Rendering bridge surface. Fix #551.
+* Remove rendering of minor railway (spur, siding, yard) at low zooms, fade them for higher zooms. Fix #559.
 
 
 ## v0.5
