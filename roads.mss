@@ -378,8 +378,14 @@
 #roads_high[zoom>=11],
 #bridge[zoom>=11] {
     [type='railway']::rail_perpendicular {
-        line-color: @rail-line;
+      [service!='minor'],
+      [service='minor'][zoom>=13]
+      {
         line-cap: butt;
+        line-color: @rail-line;
+        [service='minor'] {
+          line-color: lighten(@rail-line, 25%);
+        }
 
         /* hatches: start with space to avoid dense pattern on very short ways */
         line-dasharray: 0,2,1,2;
@@ -387,6 +393,7 @@
 
         line-width: 3;
         [zoom>=19] { line-width: 6; }
+      }
     }
 }
 
@@ -3677,29 +3684,36 @@
 #roads_high::rail_line[zoom>=11],
 #bridge::rail_line[zoom>=11] {
   [type='railway'] {
-    line-color: @rail-line;
+    [service!='minor'],
+    [service='minor'][zoom>=13]
+    {
+      line-color: @rail-line;
+      [service='minor'] {
+        line-color: lighten(@rail-line, 25%);
+      }
 
-    line-width: @rdz11_railway;
-    [zoom>=12] {
-      line-width: @rdz12_railway;
-    }
-    [zoom>=13] {
-      line-width: @rdz13_railway;
-    }
-    [zoom>=14] {
-      line-width: @rdz14_railway;
-    }
-    [zoom>=15] {
-      line-width: @rdz15_railway;
-    }
-    [zoom>=16] {
-      line-width: @rdz16_railway;
-    }
-    [zoom>=17] {
-      line-width: @rdz17_railway;
-    }
-    [zoom>=18] {
-      line-width: @rdz18_railway;
+      line-width: @rdz11_railway;
+      [zoom>=12] {
+        line-width: @rdz12_railway;
+      }
+      [zoom>=13] {
+        line-width: @rdz13_railway;
+      }
+      [zoom>=14] {
+        line-width: @rdz14_railway;
+      }
+      [zoom>=15] {
+        line-width: @rdz15_railway;
+      }
+      [zoom>=16] {
+        line-width: @rdz16_railway;
+      }
+      [zoom>=17] {
+        line-width: @rdz17_railway;
+      }
+      [zoom>=18] {
+        line-width: @rdz18_railway;
+      }
     }
   }
 }
