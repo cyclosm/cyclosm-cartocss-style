@@ -809,22 +809,29 @@
 }
 
 
-#roads_high::path_outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'],
-#tunnel::path_outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'],
-#bridge::path_outline_right[zoom>=17][type='path'][can_bicycle='designated'][segregated='yes'] {
+#roads_high::path_outline_right[zoom>=17][type='path'][can_bicycle!='no'][segregated!='no'],
+#tunnel::path_outline_right[zoom>=17][type='path'][can_bicycle!='no'][segregated!='no'],
+#bridge::path_outline_right[zoom>=17][type='path'][can_bicycle!='no'][segregated!='no'] {
   line-cap: butt;
-  line-color: @path-fill;
+  line-color: @footway-fill;
+  [segregated='horse'] { line-color: @bridleway-fill; }
 
   line-width: @rdz17_path;
-  line-offset: @rdz17_path/2 + @rdz17_cycle/2;
-  [oneway='no'][oneway_bicycle='no'] {
-    line-width: @rdz17_path; line-offset: @rdz17_path/2 + @rdz17_cycle*1.5/2;
+  line-offset: @rdz17_path;
+  [can_bicycle='designated'] {
+    line-offset: @rdz17_path/2 + @rdz17_cycle/2;
+    [oneway='no'][oneway_bicycle='no'] {
+      line-width: @rdz17_path; line-offset: @rdz17_path/2 + @rdz17_cycle*1.5/2;
+    }
   }
   [zoom>=18] {
     line-width: @rdz18_path;
-    line-offset: @rdz18_path/2 + @rdz18_cycle/2;
-    [oneway='no'][oneway_bicycle='no']{
-      line-width: @rdz18_path; line-offset: @rdz18_path/2 + @rdz18_cycle*1.5/2;
+    line-offset: @rdz18_path;
+    [can_bicycle='designated'] {
+      line-offset: @rdz18_path/2 + @rdz18_cycle/2;
+      [oneway='no'][oneway_bicycle='no']{
+        line-width: @rdz18_path; line-offset: @rdz18_path/2 + @rdz18_cycle*1.5/2;
+      }
     }
   }
 }
@@ -3541,7 +3548,7 @@
       line-color: @mixed-cycle-fill;
       #tunnel { line-color: lighten(@mixed-cycle-fill, 15%); }
 
-      [segregated='yes'] {
+      [segregated!='no'] {
         line-color: @cycle-fill;
         #tunnel { line-color: lighten(@cycle-fill, 25%); }
       }
