@@ -332,7 +332,7 @@ Layer:
         WHERE
           (
             "natural" IN ('water', 'pond')
-            OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
+            OR waterway IN ('basin', 'canal', 'dock', 'mill_pond', 'pond', 'riverbank', 'stream')
             OR landuse in ('basin', 'reservoir')
           )
           AND way_area > 0.1*!pixel_width!::real*!pixel_height!::real
@@ -359,7 +359,7 @@ Layer:
         WHERE
           (
             "natural" IN ('water', 'pond')
-            OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
+            OR waterway IN ('basin', 'canal', 'dock', 'mill_pond', 'pond', 'riverbank', 'stream')
             OR landuse in ('basin', 'reservoir')
           )
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
@@ -386,7 +386,7 @@ Layer:
         WHERE
           (
             "natural" IN ('water', 'pond')
-            OR waterway IN ('basin', 'canal', 'mill_pond', 'pond', 'riverbank', 'stream')
+            OR waterway IN ('basin', 'canal', 'dock', 'mill_pond', 'pond', 'riverbank', 'stream')
             OR landuse in ('basin', 'reservoir')
           )
           AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
@@ -406,6 +406,7 @@ Layer:
           waterway
         FROM planet_osm_polygon
         WHERE ((building IS NOT NULL AND building != 'no')
+            OR (man_made='bridge')
             OR (waterway='dam'))
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
           AND (tags->'location' IS NULL OR tags->'location' != 'underground')
@@ -795,7 +796,7 @@ Layer:
             ELSE 'unknown'
           END AS surface_type,
           CASE
-            WHEN service in ('parking_aisle', 'drive-through', 'driveway') THEN 'minor'
+            WHEN service in ('parking_aisle', 'drive-through', 'driveway', 'spur', 'siding', 'yard') THEN 'minor'
             ELSE service
           END AS service,
           CASE
@@ -849,8 +850,8 @@ Layer:
             ELSE NULL
           END AS can_bicycle
         FROM planet_osm_roads
-        WHERE (railway IN ('rail')
-            OR highway IN ('motorway', 'trunk', 'primary', 'secondary'))
+        WHERE (((railway IN ('rail') AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
+            OR highway IN ('motorway', 'trunk', 'primary', 'secondary')))
           AND way && !bbox!
         ORDER BY CASE
           WHEN railway IS NOT NULL THEN 0
@@ -880,7 +881,8 @@ Layer:
             tunnel,
             bicycle
           FROM planet_osm_roads
-          WHERE (railway IN ('rail') OR highway IN ('motorway', 'trunk'))
+          WHERE ((railway IN ('rail') AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
+              OR highway IN ('motorway', 'trunk'))
             AND way && !bbox!
           ORDER BY CASE
             WHEN railway IS NOT NULL THEN 0
@@ -1074,7 +1076,7 @@ Layer:
             ELSE 'unknown'
           END AS surface_type,
           CASE
-            WHEN service in ('parking_aisle', 'drive-through', 'driveway') THEN 'minor'
+            WHEN service in ('parking_aisle', 'drive-through', 'driveway', 'spur', 'siding', 'yard') THEN 'minor'
             ELSE service
           END AS service,
           CASE
@@ -2091,6 +2093,7 @@ Layer:
           COALESCE(
             landuse,
             leisure,
+            CASE WHEN shop IN ('mall') THEN 'retail' ELSE NULL END,
             boundary,
             "natural",
             amenity,
@@ -2098,10 +2101,11 @@ Layer:
           ) AS type,
           name,
           way_area AS area,
-          way
+          ST_PointOnSurface(way) AS way
         FROM planet_osm_polygon
         WHERE name IS NOT NULL AND
-          (landuse IN ('basin', 'cemetery', 'commercial', 'farmyard', 'forest', 'grass', 'industrial', 'military')
+          (landuse IN ('basin', 'cemetery', 'commercial', 'farmyard', 'forest', 'grass', 'industrial', 'military', 'retail')
+            OR shop IN ('mall')
             OR (leisure IS NOT NULL AND (leisure != 'sport_centre' OR sport != 'swimming'))
             OR "natural" IS NOT NULL
             OR amenity IN ('embassy', 'library', 'school', 'townhall', 'university')

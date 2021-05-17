@@ -130,10 +130,12 @@ A regular style.
                 "Noto Sans Yi Regular",
 
                 "Noto Sans Arabic UI Regular",
+                "Noto Naskh Arabic UI Regular",
+
+                "Noto Serif Tibetan Regular",
+                "Noto Sans Tibetan Regular",
 
                 "Noto Emoji Regular",
-
-                "Noto Naskh Arabic UI Regular",
 
                 "DejaVu Sans Book",
 
