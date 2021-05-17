@@ -27,6 +27,10 @@ Read on below to get the details.
 * Ctrl+C to stop the style preview application
 * `docker-compose stop db` to stop the database container
 
+_Note:_ You might encounter permissions issues if the `cyclosm-cartocss-style`
+folder is not owned by the user with UID 1000. A quick workaround for this is
+to `chown 1000:1000 cyclosm-cartocss-style` after cloning it.
+
 ## Repositories
 
 Instructions above will clone main CyclOSM repository. To test your own changes you should [fork](https://help.github.com/articles/fork-a-repo/) cyclosm/cyclosm-cartocss-style repository and [clone your fork](https://help.github.com/articles/cloning-a-repository/).
