@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Rendering bridge surface. Fix #551.
 * Remove rendering ramp:xxx=separate. Fix #545.
 * Remove rendering of minor railway (spur, siding, yard) at low zooms, fade them for higher zooms. Fix #559.
+* Use SQL views for easier maintenance of the SQL codes. **BREAKING CHANGE**,
+    requires to run `psql -d osm --file=views.sql` manually to create the
+    required views.
 
 
 ## v0.5
