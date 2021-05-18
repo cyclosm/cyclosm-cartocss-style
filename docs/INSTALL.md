@@ -58,7 +58,7 @@ details about relations (especially table `planet_osm_rels`).
 Create sql views used by cyclosm style:
 
 ```
-psql -d osm --file=project.sql
+psql -d osm --file=views.sql
 ```
 
 ## Shapefiles
