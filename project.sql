@@ -151,7 +151,7 @@ CREATE VIEW cyclosm_ways AS
             ELSE 'unknown'
         END AS surface_type,
         CASE
-            WHEN service in ('parking_aisle', 'drive-through', 'driveway') THEN 'minor'
+            WHEN service in ('parking_aisle', 'drive-through', 'driveway', 'spur', 'siding', 'yard') THEN 'minor'
             ELSE service
         END AS service,
         CASE

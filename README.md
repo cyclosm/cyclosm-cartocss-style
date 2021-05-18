@@ -70,6 +70,9 @@ legend](https://www.cyclosm.org/legend.html).
 A list of the tags considered by this render is available in [Taginfo JSON
 format](https://wiki.openstreetmap.org/wiki/Taginfo/Projects) in [`taginfo.json`](taginfo.json).
 
+Some extra information about the way OSM tags are rendered is available in
+[the wiki](https://github.com/cyclosm/cyclosm-cartocss-style/wiki/Tag-to-Render).
+
 
 ## Getting started
 

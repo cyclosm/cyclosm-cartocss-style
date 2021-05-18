@@ -92,17 +92,17 @@ On Ubuntu 16.04 or Debian Testing you can download and install most of the
 required fonts
 
 ```
-sudo apt-get install fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono ttf-unifont
+sudo apt-get install fonts-dejavu-core fonts-noto fonts-noto-color-emoji fonts-noto-cjk fonts-noto-hinted fonts-noto-unhinted fonts-hanazono ttf-unifont
 ```
-
-Noto Emoji Regular can be downloaded [from the Noto Emoji
-repository](https://github.com/googlei18n/noto-emoji).
 
 It might be useful to have a more recent version of the fonts for [rare
 non-latin scripts](#non-latin-scripts). The current upstream font release has
 also some more scripts and style variants than in the Ubuntu package. It can be
 installed [from
 source](https://github.com/googlei18n/noto-fonts/blob/master/FAQ.md#where-are-the-fonts).
+
+You might want to install these fonts from `sid` to ensure having latest
+version.
 
 DejaVu is packaged as `fonts-dejavu-core`.
 
