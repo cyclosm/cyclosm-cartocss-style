@@ -55,6 +55,11 @@ drop nodes with no tags except the `hstore` tags column (typically, a
 command, to ensure temporary tables are created in database and store the raw
 details about relations (especially table `planet_osm_rels`).
 
+Create sql views used by cyclosm style:
+
+```
+psql -d osm --file=views.sql
+```
 
 ## Shapefiles
 
