@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Use SQL views for easier maintenance of the SQL codes. **BREAKING CHANGE**,
     requires to run `psql -d osm --file=views.sql` manually to create the
     required views.
+* Fix some missing `service:bicycle:*` icons. See #573.
 
 
 ## v0.5

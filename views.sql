@@ -310,6 +310,7 @@ CREATE VIEW cyclosm_amenities_point AS
           OR (power = 'generator' AND "generator:source"='wind')
           OR tags->'ford' IS NOT NULL
           OR tags->'xmas:feature' IN ('tree', 'market')
+          OR tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes'
         ORDER BY
             CASE
                 -- Bike amenities
@@ -448,6 +449,7 @@ CREATE VIEW cyclosm_amenities_poly AS
           OR ((highway='bus_stop' OR public_transport='platform') AND (tags->'shelter'='yes' OR covered='yes'))
           OR (power = 'generator' AND "generator:source"='wind')
           OR tags->'xmas:feature' IN ('tree', 'market')
+          OR tags->'service:bicycle:retail'='yes' OR tags->'service:bicycle:repair'='yes' OR tags->'service:bicycle:rental'='yes'
         ORDER BY
             CASE
                 -- Bike amenities
