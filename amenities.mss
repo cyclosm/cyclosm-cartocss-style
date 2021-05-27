@@ -465,6 +465,14 @@
     marker-clip: false;
   }
 
+  [feature = 'emergency_defibrillator'][zoom >= 19] {
+    marker-file: url('symbols/osmfr/aed2.svg');
+    marker-placement: interior;
+    marker-clip: false;
+    [access != ''][access != 'permissive'][access != 'yes'] {
+      marker-opacity: 0.33;
+    }
+  }
   [feature = 'emergency_phone'][zoom >= 19] {
     marker-file: url('symbols/openstreetmap-carto/amenity/emergency_phone.svg');
     marker-fill: @amenity-common;
