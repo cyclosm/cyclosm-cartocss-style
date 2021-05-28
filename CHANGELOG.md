@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     requires to run `psql -d osm --file=views.sql` manually to create the
     required views.
 * Fix some missing `service:bicycle:*` icons. See #573.
+* Render aerodrome icons at higher zoom levels. See #564.
 
 
 ## v0.5
