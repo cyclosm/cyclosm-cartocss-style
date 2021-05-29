@@ -611,8 +611,8 @@
     marker-fill: @airtransport;
   }
 
-  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 10][zoom < 14],
-  [feature = 'aeroway_aerodrome'][zoom >= 11][zoom < 14] {
+  [feature = 'aeroway_aerodrome']['access' != 'private']['icao' != null]['iata' != null][zoom >= 10],
+  [feature = 'aeroway_aerodrome'][zoom >= 11] {
     marker-file: url('symbols/openstreetmap-carto/aerodrome.12.svg');
     marker-placement: interior;
     marker-clip: false;
