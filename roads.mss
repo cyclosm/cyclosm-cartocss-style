@@ -3610,17 +3610,20 @@
     [mtb_scale=1] {
       line-dasharray: 1,1,1,8;
     }
-    [mtb_scale=2] {
+    [mtb_scale>=2] {
       line-color: #FF0000;
     }
     [mtb_scale>=3] {
       line-color: #000000; //one dash |
     }
-    [mtb_scale=4] {
+    [mtb_scale>=4] {
       line-dasharray: 1,1,1,8;// 2 ||
     }
-    [mtb_scale=5] {
+    [mtb_scale>=5] {
       line-dasharray: 1,1,1,1,1,8;// 3 |||
+    }
+    [mtb_scale>=6] {
+      line-dasharray: 1,1,1,1,1,1,1,8;// 4 |||
     }
 
     line-width: @rdz15_path*3;
