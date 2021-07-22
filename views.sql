@@ -8,6 +8,7 @@ CREATE VIEW cyclosm_ways AS
             WHEN highway='road' THEN 'residential'  -- render "road" as residential
             WHEN highway='trunk' THEN 'motorway'  -- trunk as motorway, check can_bicycle if cyclable
             WHEN highway='trunk_link' THEN 'motorway_link'  -- trunk as motorway
+            WHEN highway='busway' THEN 'service'  -- busway as service
             WHEN highway='footway' AND (bicycle='yes' OR bicycle='designated') THEN 'path'
             WHEN highway='bridleway' AND (bicycle='yes' OR bicycle='designated') THEN 'path'
             WHEN highway!='bus_guideway' THEN highway
@@ -99,7 +100,7 @@ CREATE VIEW cyclosm_ways AS
             WHEN bicycle IN ('no', 'private', 'use_sidepath') THEN 'no'
             WHEN bicycle IS NOT NULL THEN bicycle
             WHEN tags->'motorroad' IN ('yes') THEN 'no'
-            WHEN highway IN ('motorway', 'motorway_link') THEN 'no'
+            WHEN highway IN ('motorway', 'motorway_link', 'busway') THEN 'no'
             WHEN tags->'vehicle' IN ('no', 'private') THEN 'no'
             WHEN tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
             WHEN access IN ('no', 'private') THEN 'no'
