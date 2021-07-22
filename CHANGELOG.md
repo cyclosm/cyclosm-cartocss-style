@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Fix some missing `service:bicycle:*` icons. See #573.
 * Render aerodrome icons at higher zoom levels. See #564.
 * Ensure `mtb_scale=6` is rendered as such. See #583.
+* Render `highway=busway` as `highway=service`. See #557.
 
 
 ## v0.5
