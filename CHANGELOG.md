@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Track width at z14 was smaller than in other zoom levels. See #411.
+
 
 ## v0.6
 
