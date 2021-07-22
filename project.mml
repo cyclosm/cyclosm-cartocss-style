@@ -1338,7 +1338,7 @@ Layer:
                 p.tags->'direction' AS direction
               FROM planet_osm_point as p
               JOIN planet_osm_line h
-                ON (st_intersects(p.way,h.way) and h.highway is not null and h.highway not in ('footway','cycleway','path','pedestrian','steps','service'))
+                ON (st_intersects(p.way,h.way) and h.highway is not null and h.highway not in ('footway','cycleway','path','pedestrian','steps'))
               WHERE
                 (
                   (
