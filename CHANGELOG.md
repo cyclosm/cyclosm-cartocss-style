@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## v0.6
+
 * Fix names not rendered in some alphabts. Fix #489.
 * Render `mtb:name` when no name is known and `mtb:name` is available. Fix #533.
 * Render `landuse=retail` and `shop=mall` names. Fix #526.
