@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Track width at z14 was smaller than in other zoom levels. See #411.
 * Add a thin contour on buildings at mid zooms. See #411.
 * Ensure bicycle crossing are drawn at crossings with highway=service. See #503.
+* Handle `cycleway:left|right:oneway=-1` as aliases of
+    `cycleway:left|right=opposite_lane`. See #555.
 
 
 ## v0.6

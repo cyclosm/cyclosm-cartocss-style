@@ -118,6 +118,7 @@ CREATE VIEW cyclosm_ways AS
               OR tags->'cycleway:both' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:right' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
+              OR tags->'cycleway:left:oneway'='-1' OR tags->'cycleway:right:oneway'='-1'
                 THEN 'no'
             ELSE NULL
         END AS oneway_bicycle,
