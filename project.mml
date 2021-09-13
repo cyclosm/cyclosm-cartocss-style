@@ -487,6 +487,7 @@ Layer:
       ) AS data
   geometry: linestring
   properties:
+    cache-features: true
     minzoom: 11
 - id: turning_circle_case
   <<: *extents
@@ -619,6 +620,7 @@ Layer:
       ) AS data
   geometry: linestring
   properties:
+    cache-features: true
     minzoom: 5
     maxzoom: 8
 - id: turning_circle_fill
@@ -688,6 +690,7 @@ Layer:
       ) AS data
   geometry: linestring
   properties:
+    cache-features: true
     minzoom: 11
 - id: admin-low-zoom
   geometry: linestring
@@ -923,6 +926,7 @@ Layer:
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
       ) AS protected_areas
   properties:
+    cache-features: true
     minzoom: 7
 - id: trees
   geometry: polygon
@@ -1937,6 +1941,7 @@ Layer:
       ) AS data
   geometry: point
   properties:
+    cache-features: true
     status: off
 - id: legend-labels
   class: legend

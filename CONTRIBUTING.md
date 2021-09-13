@@ -1,6 +1,18 @@
 Contributing
 ============
 
+## Optimizations
+
+* See https://www.openstreetmap.org/user/cquest/diary/397547, `cache-features`
+    should be used on all layers having attachments.
+
+    They can be found using the following one-liner:
+
+```bash
+ack "::" *.mss | sed 's/::.*//' | sed 's/^.*.\.mss:[0-9]*://' | sed -e 's/^[[:space:]]*//' | sort | uniq
+```
+
+
 ## Design contributions
 
 If you are able to help on specific points of the design and may not be
