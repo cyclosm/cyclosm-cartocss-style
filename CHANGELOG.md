@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Agricultural / forestry roads are not allowed to bicycles. See https://discuss.graphhopper.com/t/bicycle-allowed-on-vehicle-delivery-or-vehicle-forestry/6983/3
 * Track width at z14 was smaller than in other zoom levels. See #411.
 * Add a thin contour on buildings at mid zooms. See #411.
 * Ensure bicycle crossing are drawn at crossings with highway=service. See #503.

@@ -101,7 +101,7 @@ CREATE VIEW cyclosm_ways AS
             WHEN bicycle IS NOT NULL THEN bicycle
             WHEN tags->'motorroad' IN ('yes') THEN 'no'
             WHEN highway IN ('motorway', 'motorway_link', 'busway') THEN 'no'
-            WHEN tags->'vehicle' IN ('no', 'private') THEN 'no'
+            WHEN tags->'vehicle' IN ('no', 'private', 'restricted', 'military', 'emergency', 'agricultural', 'forestry', 'delivery') THEN 'no'
             WHEN tags->'vehicle' IS NOT NULL THEN tags->'vehicle'
             WHEN access IN ('no', 'private') THEN 'no'
             WHEN access IS NOT NULL THEN access
