@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 * Ensure bicycle crossing are drawn at crossings with highway=service. See #503.
 * Handle `cycleway:left|right:oneway=-1` as aliases of
     `cycleway:left|right=opposite_lane`. See #555.
+* Cycleways and bicycle-designated pats with no oneway tag are now drawn like a 
+    cycleway/path with oneway=no tag. See #601
 
 
 ## v0.6
