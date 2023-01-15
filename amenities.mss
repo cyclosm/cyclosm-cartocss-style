@@ -21,7 +21,8 @@
   [barrier = 'chain'] {
     marker-file: url('symbols/openstreetmap-carto/barriers/gate.svg');
   }
-  [barrier = 'cycle_barrier'] {
+  [barrier = 'cycle_barrier'],
+  [barrier = 'motorcycle_barrier'] {
     marker-file: url('symbols/openstreetmap-carto/barriers/cycle_barrier.svg');
   }
   [barrier = 'gate'] {
