@@ -84,6 +84,7 @@
   [aerialway = 'j-bar'],
   [aerialway = 'platter'],
   [aerialway = 'rope_tow'],
+  [aerialway = 'magic_carpet'],
   [aerialway = 'zip_line'] {
     [zoom >= 12] {
       line/line-width: 1;
