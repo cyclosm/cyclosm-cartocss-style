@@ -30,12 +30,12 @@ CREATE VIEW cyclosm_ways AS
         END AS maxspeed_kmh,
         bicycle,
         CASE
-            WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private') THEN 'yes'
+            WHEN COALESCE(motorcar, tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private', 'destination', 'agricultural', 'forestry') THEN 'yes'
             -- goods and hgv don't need COALESCE chains, because the next step would be motorcar, which is checked above
             WHEN tags->'goods' NOT IN ('no', 'private') THEN 'yes'
             WHEN tags->'hgv' NOT IN ('no', 'private') THEN 'yes'
             -- moped and mofa are not checked, since most countries that have separate access controls for them treat them as quasi-bicycles
-            WHEN COALESCE(tags->'motorcycle', tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private') THEN 'yes'
+            WHEN COALESCE(tags->'motorcycle', tags->'motor_vehicle', tags->'vehicle', access, 'yes') NOT IN ('no', 'private', 'destination', 'agricultural', 'forestry') THEN 'yes'
             -- TODO: style psv-only roads slightly differently
             -- bus only needs to have its COALESCE chain go up to psv, because the next step would be motorcar, which is checked above
             WHEN COALESCE(tags->'bus', tags->'psv') NOT IN ('no', 'private') THEN 'psv'
