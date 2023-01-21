@@ -49,7 +49,7 @@ CREATE VIEW cyclosm_ways AS
         END AS cyclestreet,
         CASE
             WHEN oneway IN ('yes', '-1') THEN oneway
-            WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
+            WHEN junction IN ('roundabout') AND (oneway IS NULL OR oneway NOT IN ('no', 'reversible')) THEN 'yes'
             ELSE 'no'
         END AS oneway,
         CASE
@@ -113,14 +113,15 @@ CREATE VIEW cyclosm_ways AS
         END AS segregated,
         CASE
             WHEN tags->'oneway:bicycle' IS NOT NULL THEN tags->'oneway:bicycle'
-            WHEN highway='cycleway' AND oneway IS NOT NULL THEN oneway
             WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:both' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:left' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:right' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:left:oneway'='-1' OR tags->'cycleway:right:oneway'='-1'
                 THEN 'no'
-            ELSE NULL
+            WHEN oneway IN ('yes', '-1') THEN oneway
+            WHEN junction IN ('roundabout') AND (oneway IS NULL OR oneway NOT IN ('no', 'reversible')) THEN 'yes'
+            ELSE 'no'
         END AS oneway_bicycle,
         COALESCE(
             tags->'ramp:bicycle',
