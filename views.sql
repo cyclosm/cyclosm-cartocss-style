@@ -49,7 +49,7 @@ CREATE VIEW cyclosm_ways AS
         END AS cyclestreet,
         CASE
             WHEN oneway IN ('yes', '-1') THEN oneway
-            WHEN junction IN ('roundabout') AND (oneway IS NULL OR NOT oneway IN ('no', 'reversible')) THEN 'yes'
+            WHEN junction IN ('roundabout') AND (oneway IS NULL OR oneway NOT IN ('no', 'reversible')) THEN 'yes'
             ELSE 'no'
         END AS oneway,
         CASE
