@@ -347,7 +347,7 @@ database. On [https://cyclosm.org/](https://cyclosm.org/), we are currently
 using:
 
 * all the indexes defined in the [`osmfr-cartocss`
-    style](https://github.com/cquest/osmfr-cartocss/blob/master/additions.sql).
+    style](https://github.com/cquest/osmfr-cartocss/blob/9a7543eaee34fbb551e45550f3a14a7473639b17/create_index.sh).
 
 * an additional index for the bicycle routes:
 
