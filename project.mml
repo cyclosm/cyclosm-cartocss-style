@@ -84,7 +84,7 @@ Layer:
             CASE WHEN "natural" IS NOT NULL THEN ('natural_' || "natural") ELSE NULL END,
             CASE WHEN leisure IS NOT NULL THEN ('leisure_' || leisure) ELSE NULL END,
             CASE WHEN amenity IS NOT NULL THEN ('amenity_' || amenity) ELSE NULL END,
-            CASE WHEN highway IS NOT NULL THEN ('highway_' || highway) ELSE NULL END
+            CASE WHEN highway IN ('pedestrian') THEN ('highway_' || highway) ELSE NULL END
           ) AS type,
           sport
           FROM planet_osm_polygon
@@ -102,7 +102,7 @@ Layer:
   geometry: polygon
   properties:
     minzoom: 2
-    maxzoom: 8
+    maxzoom: 9
 - id: landuse_gen1
   <<: *extents
   Datasource:
@@ -129,13 +129,12 @@ Layer:
           OR highway IN ('pedestrian')
         )
         AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-        AND way && !bbox!
         ORDER BY way_area DESC
       ) AS data
   geometry: polygon
   properties:
     cache-features: true
-    minzoom: 9
+    minzoom: 10
     maxzoom: 12
 - id: landuse
   <<: *extents
@@ -183,7 +182,6 @@ Layer:
           ("natural" = 'wood' OR landuse = 'forest')
           AND building IS NULL
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          AND way && !bbox!
         ORDER BY way_area DESC
       ) AS data
   geometry: polygon
@@ -338,7 +336,6 @@ Layer:
             OR landuse in ('basin', 'reservoir')
           )
           AND way_area > 0.1*!pixel_width!::real*!pixel_height!::real
-          AND way && !bbox!
           AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: polygon
@@ -366,7 +363,6 @@ Layer:
             OR landuse in ('basin', 'reservoir')
           )
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          AND way && !bbox!
           AND (tunnel IS NULL OR tunnel NOT IN ('yes', 'culvert'))
       ) AS data
   geometry: polygon
@@ -928,7 +924,6 @@ Layer:
                 OR (boundary = 'protected_area' AND tags->'protect_class' IN ('1','1a','1b','2','3','4','5','6','7','24','97','98','99')))
           AND building IS NULL
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          AND way && !bbox!
       ) AS protected_areas
   properties:
     cache-features: true
@@ -1925,7 +1920,6 @@ Layer:
           (landuse = 'military' OR military = 'danger_area')
           AND building IS NULL
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
-          AND way && !bbox!
         ORDER BY way_area DESC
       ) AS data
   geometry: polygon

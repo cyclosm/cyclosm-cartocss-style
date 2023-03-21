@@ -17,8 +17,8 @@
   polygon-gamma: 0.75;
 }
 
-#landuse_gen0[zoom>1][zoom<=8],
-#landuse_gen1[zoom>8][zoom<=12],
+#landuse_gen0[zoom>1][zoom<=9],
+#landuse_gen1[zoom>9][zoom<=12],
 #landuse[zoom>=13] {
   [type='amenity_grave_yard'],
   [type='landuse_cemetery'] {
