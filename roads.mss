@@ -857,6 +857,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_left_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: 1 * @rdz11_cycle;
     [cycleway_right_oneway='no'] { line-offset: 1.5 * @rdz11_cycle; }
@@ -913,6 +916,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_left_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: 1 * @rdz12_cycle;
     [cycleway_right_oneway='no'] { line-offset: 1.5 * @rdz12_cycle; }
@@ -962,6 +968,9 @@
     }
     [cycleway_right_render='busway'] {
       line-dasharray: 6,10;
+      line-color: @mixed-cycle-fill;
+    }
+    [cycleway_right_segregated='no'] {
       line-color: @mixed-cycle-fill;
     }
 
@@ -1020,6 +1029,10 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_right_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
+
 
     line-offset: 1 * @rdz12_cycle;
     [cycleway_right_oneway='no'] { line-offset: 1.5 * @rdz12_cycle; }
@@ -1069,6 +1082,9 @@
     }
     [cycleway_right_render='busway'] {
       line-dasharray: 6,10;
+      line-color: @mixed-cycle-fill;
+    }
+    [cycleway_right_segregated='no'] {
       line-color: @mixed-cycle-fill;
     }
 
@@ -1127,6 +1143,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_right_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: 1 * @rdz12_cycle;
     [cycleway_right_oneway='no'] { line-offset: 1.5 * @rdz12_cycle; }
@@ -1176,6 +1195,9 @@
     }
     [cycleway_right_render='busway'] {
       line-dasharray: 6,10;
+      line-color: @mixed-cycle-fill;
+    }
+    [cycleway_right_segregated='no'] {
       line-color: @mixed-cycle-fill;
     }
 
@@ -1229,6 +1251,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_right_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: 1 * @rdz12_cycle;
     [cycleway_right_oneway='no'] { line-offset: 1.5 * @rdz12_cycle; }
@@ -1278,6 +1303,9 @@
     }
     [cycleway_right_render='busway'] {
       line-dasharray: 6,10;
+      line-color: @mixed-cycle-fill;
+    }
+    [cycleway_right_segregated='no'] {
       line-color: @mixed-cycle-fill;
     }
 
@@ -1331,6 +1359,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_right_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: 1 * @rdz12_cycle;
     [cycleway_right_oneway='no'] { line-offset: 1.5 * @rdz12_cycle; }
@@ -1380,6 +1411,9 @@
     }
     [cycleway_right_render='busway'] {
       line-dasharray: 6,10;
+      line-color: @mixed-cycle-fill;
+    }
+    [cycleway_right_segregated='no'] {
       line-color: @mixed-cycle-fill;
     }
 
@@ -1433,6 +1467,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_right_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: 1 * @rdz12_cycle;
     [cycleway_right_oneway='no'] { line-offset: 1.5 * @rdz12_cycle; }
@@ -1482,6 +1519,9 @@
     }
     [cycleway_right_render='busway'] {
       line-dasharray: 6,10;
+      line-color: @mixed-cycle-fill;
+    }
+    [cycleway_right_segregated='no'] {
       line-color: @mixed-cycle-fill;
     }
 
@@ -1594,6 +1634,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_left_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: -1 * @rdz11_cycle;
     [cycleway_left_oneway='no'] { line-offset: -1.5 * @rdz11_cycle; }
@@ -1650,6 +1693,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_left_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: -1 * @rdz12_cycle;
     [cycleway_left_oneway='no'] { line-offset: -1.5 * @rdz12_cycle; }
@@ -1699,6 +1745,9 @@
     }
     [cycleway_left_render='busway'] {
       line-dasharray: 6,10;
+      line-color: @mixed-cycle-fill;
+    }
+    [cycleway_left_segregated='no'] {
       line-color: @mixed-cycle-fill;
     }
 
@@ -1757,6 +1806,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_left_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: -1 * @rdz12_cycle;
     [cycleway_left_oneway='no'] { line-offset: -1.5 * @rdz12_cycle; }
@@ -1806,6 +1858,9 @@
     }
     [cycleway_left_render='busway'] {
       line-dasharray: 6,10;
+      line-color: @mixed-cycle-fill;
+    }
+    [cycleway_left_segregated='no'] {
       line-color: @mixed-cycle-fill;
     }
 
@@ -1864,6 +1919,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_left_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: -1 * @rdz12_cycle;
     [cycleway_left_oneway='no'] { line-offset: -1.5 * @rdz12_cycle; }
@@ -1913,6 +1971,9 @@
     }
     [cycleway_left_render='busway'] {
       line-dasharray: 6,10;
+      line-color: @mixed-cycle-fill;
+    }
+    [cycleway_left_segregated='no'] {
       line-color: @mixed-cycle-fill;
     }
 
@@ -1966,6 +2027,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_left_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: -1 * @rdz12_cycle;
     [cycleway_left_oneway='no'] { line-offset: -1.5 * @rdz12_cycle; }
@@ -2015,6 +2079,9 @@
     }
     [cycleway_left_render='busway'] {
       line-dasharray: 6,10;
+      line-color: @mixed-cycle-fill;
+    }
+    [cycleway_left_segregated='no'] {
       line-color: @mixed-cycle-fill;
     }
 
@@ -2068,6 +2135,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_left_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: -1 * @rdz12_cycle;
     [cycleway_left_oneway='no'] { line-offset: -1.5 * @rdz12_cycle; }
@@ -2117,6 +2187,9 @@
     }
     [cycleway_left_render='busway'] {
       line-dasharray: 6,10;
+      line-color: @mixed-cycle-fill;
+    }
+    [cycleway_left_segregated='no'] {
       line-color: @mixed-cycle-fill;
     }
 
@@ -2170,6 +2243,9 @@
       line-dasharray: 6,10;
       line-color: @mixed-cycle-fill;
     }
+    [cycleway_left_segregated='no'] {
+      line-color: @mixed-cycle-fill;
+    }
 
     line-offset: -1 * @rdz12_cycle;
     [cycleway_left_oneway='no'] { line-offset: -1.5 * @rdz12_cycle; }
@@ -2219,6 +2295,9 @@
     }
     [cycleway_left_render='busway'] {
       line-dasharray: 6,10;
+      line-color: @mixed-cycle-fill;
+    }
+    [cycleway_left_segregated='no'] {
       line-color: @mixed-cycle-fill;
     }
 

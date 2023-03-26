@@ -85,6 +85,18 @@ CREATE VIEW cyclosm_ways AS
             ELSE NULL
         END AS cycleway_right_render,
         CASE
+            WHEN tags->'cycleway:right:segregated' IS NOT NULL THEN tags->'cycleway:right:segregated'
+            WHEN tags->'cycleway:both:segregated' IS NOT NULL THEN tags->'cycleway:both:segregated'
+            WHEN tags->'cycleway:segregated' IS NOT NULL THEN tags->'cycleway:segregated'
+            ELSE NULL
+        END AS cycleway_right_segregated,
+        CASE
+            WHEN tags->'cycleway:left:segregated' IS NOT NULL THEN tags->'cycleway:left:segregated'
+            WHEN tags->'cycleway:both:segregated' IS NOT NULL THEN tags->'cycleway:both:segregated'
+            WHEN tags->'cycleway:segregated' IS NOT NULL THEN tags->'cycleway:segregated'
+            ELSE NULL
+        END AS cycleway_left_segregated,
+        CASE
             WHEN tags->'cycleway:left:oneway' IS NOT NULL THEN tags->'cycleway:left:oneway'
             WHEN tags->'cycleway:left' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
             WHEN tags->'cycleway' IN ('opposite_lane', 'opposite_track', 'opposite_share_busway') THEN '-1'
