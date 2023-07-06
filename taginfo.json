@@ -84,7 +84,13 @@
             "key": "cycleway"
         },
         {
+            "key": "cycleway:segregated"
+        },
+        {
             "key": "cycleway:both"
+        },
+        {
+            "key": "cycleway:both:segregated"
         },
         {
             "key": "cycleway:left"
@@ -93,10 +99,16 @@
             "key": "cycleway:left:oneway"
         },
         {
+            "key": "cycleway:left:segregated"
+        },
+        {
             "key": "cycleway:right"
         },
         {
             "key": "cycleway:right:oneway"
+        },
+        {
+            "key": "cycleway:right:segregated"
         },
         {
             "key": "denomination"
