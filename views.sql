@@ -53,32 +53,50 @@ CREATE VIEW cyclosm_ways AS
             ELSE 'no'
         END AS oneway,
         CASE
+            WHEN tags->'cycleway:left' IN ('track', 'opposite_track') 
+              AND COALESCE(tags->'cycleway:left:segregated',tags->'cycleway:both:segregated', tags->'cycleway:segregated') = 'no'
+              THEN 'shared_track'
             WHEN tags->'cycleway:left' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'sidewalk:left:bicycle' != 'no' AND tags->'sidewalk:left:segregated' = 'yes' THEN 'track'
             WHEN tags->'cycleway:left' IN ('lane', 'opposite_lane') THEN 'lane'
             WHEN tags->'sidewalk:left:bicycle' IN ('designated', 'yes') THEN 'sidewalk'
             WHEN tags->'cycleway:left' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('track', 'opposite_track') 
+              AND COALESCE(tags->'cycleway:left:segregated',tags->'cycleway:both:segregated', tags->'cycleway:segregated') = 'no'
+              THEN 'shared_track'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'sidewalk:both:bicycle' != 'no' AND tags->'sidewalk:left:segregated' = 'yes' THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
             WHEN tags->'sidewalk:both:bicycle' IN ('designated', 'yes') THEN 'sidewalk'
             WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
+            WHEN tags->'cycleway' IN ('track', 'opposite_track') 
+              AND COALESCE(tags->'cycleway:left:segregated',tags->'cycleway:both:segregated', tags->'cycleway:segregated') = 'no'
+              THEN 'shared_track'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
             WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
             ELSE NULL
         END AS cycleway_left_render,
         CASE
+            WHEN tags->'cycleway:right' IN ('track', 'opposite_track') 
+              AND COALESCE(tags->'cycleway:right:segregated',tags->'cycleway:both:segregated', tags->'cycleway:segregated') = 'no'
+              THEN 'shared_track'
             WHEN tags->'cycleway:right' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'sidewalk:right:bicycle' != 'no' AND tags->'sidewalk:left:segregated' = 'yes' THEN 'track'
             WHEN tags->'cycleway:right' IN ('lane', 'opposite_lane') THEN 'lane'
             WHEN tags->'sidewalk:right:bicycle' IN ('designated', 'yes') THEN 'sidewalk'
             WHEN tags->'cycleway:right' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
+            WHEN tags->'cycleway:both' IN ('track', 'opposite_track') 
+              AND COALESCE(tags->'cycleway:right:segregated',tags->'cycleway:both:segregated', tags->'cycleway:segregated') = 'no'
+              THEN 'shared_track'
             WHEN tags->'cycleway:both' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'sidewalk:both:bicycle' != 'no' AND tags->'sidewalk:left:segregated' = 'yes' THEN 'track'
             WHEN tags->'cycleway:both' IN ('lane', 'opposite_lane') THEN 'lane'
             WHEN tags->'sidewalk:both:bicycle' IN ('designated', 'yes') THEN 'sidewalk'
             WHEN tags->'cycleway:both' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
+            WHEN tags->'cycleway' IN ('track', 'opposite_track') 
+              AND COALESCE(tags->'cycleway:right:segregated',tags->'cycleway:both:segregated', tags->'cycleway:segregated') = 'no'
+              THEN 'shared_track'
             WHEN tags->'cycleway' IN ('track', 'opposite_track') THEN 'track'
             WHEN tags->'cycleway' IN ('lane', 'opposite_lane') THEN 'lane'
             WHEN tags->'cycleway' IN ('share_busway', 'opposite_share_busway', 'shoulder', 'shared_lane') THEN 'busway'
