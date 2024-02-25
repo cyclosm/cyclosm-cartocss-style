@@ -2493,7 +2493,7 @@
       line-color: @speedWalk-fill;
       #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
     }
-    [motor_vehicle='no'][can_bicycle!='no'] {
+    [motor_vehicle='no'][can_bicycle!='no'][cyclestreet='no'] {
         line-color: @nomotor-fill;
         #tunnel { line-color: lighten(@nomotor-fill, 10%); }
     }
@@ -2561,7 +2561,7 @@
       line-color: @speedWalk-fill;
       #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
     }
-    [motor_vehicle='no'][can_bicycle!='no'] {
+    [motor_vehicle='no'][can_bicycle!='no'][cyclestreet='no'] {
         line-color: @nomotor-fill;
         #tunnel { line-color: lighten(@nomotor-fill, 10%); }
     }
@@ -2631,7 +2631,7 @@
       line-color: @speedWalk-fill;
       #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
     }
-    [motor_vehicle='no'][can_bicycle!='no'] {
+    [motor_vehicle='no'][can_bicycle!='no'][cyclestreet='no'] {
         line-color: @nomotor-fill;
         #tunnel { line-color: lighten(@nomotor-fill, 10%); }
     }
@@ -2699,7 +2699,7 @@
       line-color: @speedWalk-fill;
       #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
     }
-    [motor_vehicle='no'][can_bicycle!='no'] {
+    [motor_vehicle='no'][can_bicycle!='no'][cyclestreet='no'] {
         line-color: @nomotor-fill;
         #tunnel { line-color: lighten(@nomotor-fill, 10%); }
     }
@@ -2768,7 +2768,7 @@
       line-color: @speedWalk-fill;
       #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
     }
-    [motor_vehicle='no'][can_bicycle!='no'] {
+    [motor_vehicle='no'][can_bicycle!='no'][cyclestreet='no'] {
         line-color: @nomotor-fill;
         #tunnel { line-color: lighten(@nomotor-fill, 10%); }
     }
@@ -2837,7 +2837,7 @@
       line-color: @speedWalk-fill;
       #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
     }
-    [motor_vehicle='no'][can_bicycle!='no'] {
+    [motor_vehicle='no'][can_bicycle!='no'][cyclestreet='no'] {
         line-color: @nomotor-fill;
         #tunnel { line-color: lighten(@nomotor-fill, 10%); }
     }
@@ -2907,7 +2907,7 @@
       line-color: @speedWalk-fill;
       #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
     }
-    [motor_vehicle='no'][can_bicycle!='no'] {
+    [motor_vehicle='no'][can_bicycle!='no'][cyclestreet='no'] {
         line-color: @nomotor-fill;
         #tunnel { line-color: lighten(@nomotor-fill, 10%); }
     }
@@ -2978,7 +2978,7 @@
       line-color: @speedWalk-fill;
       #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
     }
-    [motor_vehicle='no'][can_bicycle!='no'] {
+    [motor_vehicle='no'][can_bicycle!='no'][cyclestreet='no'] {
         line-color: @nomotor-fill;
         #tunnel { line-color: lighten(@nomotor-fill, 10%); }
     }
@@ -3047,7 +3047,7 @@
       line-color: @speedWalk-fill;
       #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
     }
-    [motor_vehicle='no'][can_bicycle!='no'] {
+    [motor_vehicle='no'][can_bicycle!='no'][cyclestreet='no'] {
         line-color: @nomotor-fill;
         #tunnel { line-color: lighten(@nomotor-fill, 10%); }
     }
@@ -3113,7 +3113,7 @@
       line-color: @speedWalk-fill;
       #tunnel { line-color: lighten(@speedWalk-fill, 10%); }
     }
-    [motor_vehicle='no'][can_bicycle!='no'] {
+    [motor_vehicle='no'][can_bicycle!='no'][cyclestreet='no'] {
         line-color: @nomotor-fill;
         #tunnel { line-color: lighten(@nomotor-fill, 10%); }
     }
@@ -3182,7 +3182,7 @@
         line-color: @standard-fill;
         #tunnel { line-color: lighten(@standard-fill, 10%); }
     }
-    [motor_vehicle='no'][can_bicycle!='no'] {
+    [motor_vehicle='no'][can_bicycle!='no'][cyclestreet='no'] {
         line-color: @nomotor-fill;
         #tunnel { line-color: lighten(@nomotor-fill, 10%); }
     }
