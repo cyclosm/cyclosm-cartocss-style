@@ -8,15 +8,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Prevent cyclestreets without cars from rendering as pedestrian streets. See #668.
+* Unnecessary ending dot on node_network labels. See #663.
+* Render `barrier=planter` as `barrier=bollard`. See #657.
+* Render bicycle=permissive as bicycle=yes. See #602.
+* Consider motor_vehicle=destination|agricultural|forestry as being no motor_vehicle ways. See #622.
+* Add fallback values for oneway_bicycle to views.sql. See #627.
+* Show cycleway without oneway tag as oneway=no
+* Add aerialway = magic_carpet.
+* Render unsegregated cycle track as light blue. See #652.
 * Render `barrier=motorcycle_barrier` as `barrier=cycle_barrier`. See #637.
 * Track width at z14 was smaller than in other zoom levels. See #411.
 * Add a thin contour on buildings at mid zooms. See #411.
 * Ensure bicycle crossing are drawn at crossings with highway=service. See #503.
 * Handle `cycleway:left|right:oneway=-1` as aliases of
     `cycleway:left|right=opposite_lane`. See #555.
-* Cycleways and bicycle-designated paths with no oneway tag are now drawn like a 
+* Cycleways and bicycle-designated paths with no oneway tag are now drawn like a
     cycleway/path with oneway=no tag. See #601
-* Cycle tracks on roads rendered in shared light blue when cycleway[:left/:right/:both]:segregrated=no is set.
+* Cycle tracks on roads rendered in shared light blue when
+    cycleway[:left/:right/:both]:segregrated=no is set.
 
 ## v0.6
 
