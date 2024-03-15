@@ -134,7 +134,7 @@
 @major-highway-text-repeat-distance: 300;
 @minor-highway-text-repeat-distance: 150;
 
-@contours-halo-fill: rgba(0, 0, 0, 0.3);
+@contours-halo-fill: rgba(255,255,255,0.5);
 @contours-font-size: 8;
 @contours-larger-font-size: 9;
 @contours-position-tolerance: 100;
@@ -143,8 +143,8 @@
 @contours-small-min-path-length: 200;
 @contours-min-path-length: 300;
 @contours-max-char-angle-delta: 10;
-@contours-fill: #ffa970;
-@contours-stroke: #c45700;
+@contours-fill: #997744;
+@contours-stroke: #DDBB00;
 
 /* ================================================================== */
 /* POIs COLORS
