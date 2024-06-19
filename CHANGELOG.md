@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## v0.7
+
 * Prevent cyclestreets without cars from rendering as pedestrian streets. See #668.
 * Unnecessary ending dot on node_network labels. See #663.
 * Render `barrier=planter` as `barrier=bollard`. See #657.
@@ -27,6 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     cycleway/path with oneway=no tag. See #601
 * Cycle tracks on roads rendered in shared light blue when
     cycleway[:left/:right/:both]:segregrated=no is set.
+* Various optimizations and performances tweaks.
+
 
 ## v0.6
 
