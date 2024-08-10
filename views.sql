@@ -5,7 +5,6 @@ CREATE VIEW cyclosm_ways AS
         COALESCE(
         CASE
             WHEN highway='raceway' THEN 'track'  -- render raceways as tracks
-            WHEN highway='road' THEN 'residential'  -- render "road" as residential
             WHEN highway='trunk' THEN 'motorway'  -- trunk as motorway, check can_bicycle if cyclable
             WHEN highway='trunk_link' THEN 'motorway_link'  -- trunk as motorway
             WHEN highway='busway' THEN 'service'  -- busway as service
