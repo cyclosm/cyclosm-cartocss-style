@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## v0.7.1
+
+* highway=road should not be rendered. See #686
+
+
 ## v0.7
 
 * Prevent cyclestreets without cars from rendering as pedestrian streets. See #668.
