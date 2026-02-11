@@ -1013,6 +1013,13 @@
     }
   }
 
+  [feature = 'amenity_bicycle_wash'][zoom >= 16] {
+    marker-file: url('symbols/amenity/bicycle_wash.svg');
+    marker-fill: @bicycle-amenity;
+    marker-placement: interior;
+    marker-clip: false;
+  }
+
   [feature = 'highway_elevator'][zoom >= 18] {
     [access = null],
     [access = 'yes'] {
