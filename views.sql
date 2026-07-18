@@ -162,7 +162,7 @@ CREATE VIEW cyclosm_ways AS
                 THEN 'cyclocross'
             WHEN tracktype IN ('grade1')
                 THEN 'road'
-            WHEN surface IN ('pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand')
+            WHEN surface IN ('pebblestone', 'dirt', 'earth', 'grass', 'grass_paver', 'gravel_turf', 'ground', 'mud', 'sand', 'laterite')
                 THEN 'mtb'
             WHEN surface IN ('concrete:lanes', 'concrete:plates', 'gravel', 'sett', 'unhewn_cobblestone', 'cobblestone', 'wood', 'compacted', 'fine_gravel', 'woodchips')
                 THEN 'cyclocross'

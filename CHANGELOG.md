@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Render surface=laterite as an unpaved surface. See #722.
+
 
 ## v0.7.1
 
