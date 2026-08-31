@@ -496,6 +496,18 @@
     marker-clip: false;
   }
 
+  [feature = 'man_made_communications_tower'][zoom >= 11] {
+    marker-file: url('symbols/openstreetmap-carto/man_made/mast_communications.svg');
+    text-name: "[name]";
+    text-size: @standard-font-size;
+    text-face-name: @standard-font;
+    text-wrap-width: @standard-wrap-width;
+    text-line-spacing: @standard-line-spacing-size;
+    # text-fill: darken(@man-made-icon, 20%);
+    # text-halo-radius: @standard-halo-radius;
+    # text-halo-fill: @standard-halo-fill;
+  }
+
   [feature = 'historic_memorial'][memorial = null][zoom >= 17],
   [feature = 'historic_memorial'][memorial != null][memorial != 'blue_plaque'][memorial != 'bust'][memorial != 'plaque'][memorial != 'stele'][memorial != 'stone'][zoom >= 17],
   [feature = 'historic_memorial'][memorial = 'statue'][zoom >= 17],
