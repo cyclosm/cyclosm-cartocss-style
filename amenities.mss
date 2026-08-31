@@ -821,7 +821,7 @@
     marker-fill: @amenity-water;
   }
 
-  [feature = 'shop_supermarket'][zoom >= 16] {
+  [feature = 'shop_supermarket'][zoom >= 11] {
     marker-placement: interior;
     marker-clip: false;
 		marker-fill: @shop-icon;
@@ -866,7 +866,7 @@
       bicyclererere/marker-height: 11;
       bicyclererere/marker-geometry-transform: translate(-14, -6);
     }
-	}
+	}}
 
   [feature = 'amenity_bar'][zoom >= 17],
   [feature = 'amenity_biergarten'][zoom >= 17],
@@ -930,7 +930,7 @@
     [feature = 'shop_bakery'][zoom >= 16] {
       marker-file: url('symbols/openstreetmap-carto/shop/bakery.svg');
     }
-    [feature = 'shop_convenience'][zoom >= 16],
+    [feature = 'shop_convenience'][zoom >= 11],
     [feature = 'shop_convenience;gas'][zoom >= 16] {
       marker-file: url('symbols/openstreetmap-carto/shop/convenience.svg');
 
@@ -1284,7 +1284,9 @@
     }
   }
 
-  [feature = 'shop_supermarket'][zoom >= 18] {
+  [feature = 'shop_convenience'],
+  [feature = 'shop_supermarket'] {
+  [zoom >= 11] {
     text-name: "[name]";
     text-size: @standard-font-size;
     text-wrap-width: @standard-wrap-width;
@@ -1295,7 +1297,7 @@
     text-halo-radius: @standard-halo-radius;
     text-halo-fill: rgba(255, 255, 255, 0.6);
     text-placement: interior;
-  }
+  }}
 
   [feature = 'leisure_sports_centre'][zoom >= 16] {
     text-name: "[name]";
