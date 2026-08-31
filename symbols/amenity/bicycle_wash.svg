@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <g id="svg8" sodipodi:docname="bicycle_parking_secured_covered.svg">
+    <sodipodi:namedview id="base" bordercolor="#666666" borderopacity="1.0" inkscape:current-layer="layer1" inkscape:cx="49.822537" inkscape:cy="57.781893" inkscape:document-units="px" inkscape:pagecheckerboard="true" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:window-height="719" inkscape:window-maximized="1" inkscape:window-width="1366" inkscape:window-x="0" inkscape:window-y="0" inkscape:zoom="2.8284271" pagecolor="#ffffff" scale-x="1" showgrid="true" showguides="false" units="px" viewbox-x="0" viewbox-y="0.1">
+      <inkscape:grid id="grid851" dotted="false" empspacing="16" type="xygrid"/>
+      <inkscape:grid id="grid900" color="#000062" dotted="false" empcolor="#0d0029" empopacity="0.25098039" empspacing="1" opacity="0.1254902" spacingx="64" spacingy="64" type="xygrid"/>
+    </sodipodi:namedview>
+    <path id="path4290-2" d="M22.9,9.1l-9.1,13.7h-4.6l9.1-13.7h4.6ZM41.1,9.1l9.1,13.7h4.6l-9.1-13.7h-4.6ZM29.7,9.1h4.6v13.7h-4.6v-13.7ZM27.4,0l-9.1,4.6h27.4L36.6,0h-9.1ZM36.6,24.7v4.6l4.6,2.7v4.6h-18.3v-4.6h2.3c4.6,0,4.6-4.6,0-4.6h-9.1c-4.6,0-4.6,4.6,0,4.6h2.3v4.6l-2.7,6.4h-.5c-5.9,0-10.5,4.6-10.5,10.5s4.6,10.5,10.5,10.5,10.5-4.6,10.5-10.5-.5-2.3-.5-3.2h6.9l10.1-9.1h0l1.4,3.2c-2.7,1.8-5,5.5-5,9.1,0,5.9,4.6,10.5,10.5,10.5s10.5-4.6,10.5-10.5-5-10.5-10.5-10.5h-.5l-2.7-6.4v-6.4l-9.1-5.5ZM21.9,41.1h14.2l-5.9,5.5h-6.9c-.9-.9-1.4-1.8-2.3-2.3l.9-3.2ZM15.1,48c3.2,0,5.5,2.3,5.5,5.5s-2.3,5.5-5.5,5.5-5.5-2.3-5.5-5.5,2.3-5.5,5.5-5.5ZM48.9,48c3.2,0,5.5,2.3,5.5,5.5s-2.3,5.5-5.5,5.5-5.5-2.3-5.5-5.5,2.3-5.5,5.5-5.5Z" style="fill: blue; fill-rule: evenodd;"/>
+  </g>
+</svg>
