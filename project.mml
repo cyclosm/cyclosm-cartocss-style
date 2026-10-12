@@ -406,6 +406,10 @@ Layer:
           waterway
         FROM planet_osm_polygon
         WHERE ((building IS NOT NULL AND building != 'no')
+            OR (tags->'construction:building' IS NOT NULL AND tags->'construction:building' != 'no')
+            OR (tags->'abandoned:building' IS NOT NULL AND tags->'abandoned:building' != 'no')
+            OR (tags->'disused:building' IS NOT NULL AND tags->'disused:building' != 'no')
+            OR (tags->'ruins:building' IS NOT NULL AND tags->'ruins:building' != 'no')
             OR (man_made='bridge')
             OR (waterway='dam'))
           AND way_area > 1*!pixel_width!::real*!pixel_height!::real
