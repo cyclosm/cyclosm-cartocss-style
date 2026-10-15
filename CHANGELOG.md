@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Use the right/both sidewalk segregation tags for the corresponding side render.
+
 * Render surface=laterite as an unpaved surface. See #722.
 
 
