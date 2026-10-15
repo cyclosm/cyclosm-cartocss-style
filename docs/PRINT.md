@@ -51,4 +51,4 @@ last command,
 * `--vars gpxRoute=/tmp/route.gpx` tells Mapnik to draw the `/tmp/route.gpx`
     GPX track on the map.
 
-You can also edit the [gpx.mss](gpx.mss) file to customize the render of the track.
+You can also edit the [gpx.mss](../gpx.mss) file to customize the render of the track.
