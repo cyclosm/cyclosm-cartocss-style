@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+* Restore hospital, college and graveyard polygon fills at zooms 10–12.
+
 * Render surface=laterite as an unpaved surface. See #722.
 
 
