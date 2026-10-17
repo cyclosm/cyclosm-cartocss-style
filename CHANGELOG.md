@@ -8,7 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-* Restore hospital, college and graveyard polygon fills at zooms 10–12.
+* Restore hospital, college and graveyard polygon fills at zooms 10–12. See #729.
+
+* Fix the printing guide's relative link to the GPX stylesheet.
 
 * Render surface=laterite as an unpaved surface. See #722.
 
