@@ -116,7 +116,7 @@ Layer:
             CASE WHEN landuse IS NOT NULL THEN ('landuse_' || landuse) ELSE NULL END,
             CASE WHEN "natural" IS NOT NULL THEN ('natural_' || "natural") ELSE NULL END,
             CASE WHEN leisure IS NOT NULL THEN ('leisure_' || leisure) ELSE NULL END,
-            CASE WHEN amenity IS NOT NULL THEN ('amenity' || amenity) ELSE NULL END,
+            CASE WHEN amenity IS NOT NULL THEN ('amenity_' || amenity) ELSE NULL END,
             CASE WHEN highway IS NOT NULL THEN ('highway_' || highway) ELSE NULL END
           ) AS type,
           sport
