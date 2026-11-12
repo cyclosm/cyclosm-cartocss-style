@@ -1,3 +1,5 @@
+# Missing elevation data must not become a dark overlay.
+nv 0 0 0 0
 0 0 0 0 220
 64 0 0 0 192
 128 0 0 0 140
