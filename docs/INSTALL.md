@@ -179,6 +179,20 @@ gdaldem hillshade -co compress=lzw -compute_edges <PROJ.tif> <HILLSHADE.tif>
 gdaldem color-relief <HILLSHADE.tif> -alpha shade.ramp <SEMI-TRANSPARENT-HILLSHADE.tif>
 ```
 
+Keep the hillshade raster's NoData metadata when preparing or resampling it.
+`gdaldem hillshade` uses zero for pixels without elevation data. The `nv`
+entry in `shade.ramp` makes those pixels transparent; a valid zero-valued
+shadow without NoData metadata still uses the normal colour ramp. If that
+metadata has been lost, the ramp cannot distinguish a missing zero sample
+from a valid zero sample.
+If you generated semi-transparent hillshades with an older ramp, regenerate
+them before rebuilding the VRT and affected rendered tiles.
+
+To run the synthetic regression tests, install the GDAL Python bindings, return
+to the repository root, and run
+`python3 -m unittest discover -s scripts/tests -p 'test_hillshade_nodata.py'`.
+No downloaded elevation data or OSM database is required.
+
 And build a VRT file for your semi-transparent hillshades
 
 ```
