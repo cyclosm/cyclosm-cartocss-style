@@ -815,16 +815,57 @@
   line-cap: butt;
   line-color: @path-fill;
 
+  // The footway is drawn on the right of the riding direction, unless
+  // traffic_mode:left=foot or traffic_mode:right=foot gives its side. As in
+  // https://wiki.openstreetmap.org/wiki/Proposal:Separation, left and right
+  // follow the riding direction on one-way paths and the drawn direction on
+  // two-way paths.
   line-width: @rdz17_path;
   line-offset: @rdz17_path/2 + @rdz17_cycle/2;
+  [oneway_bicycle='-1'] {
+    line-offset: -1 * (@rdz17_path/2 + @rdz17_cycle/2);
+  }
+  [footway_side='right'] {
+    line-offset: @rdz17_path/2 + @rdz17_cycle/2;
+  }
+  [footway_side='left'] {
+    line-offset: -1 * (@rdz17_path/2 + @rdz17_cycle/2);
+  }
+  [oneway_bicycle='-1'][footway_side='right'] {
+    line-offset: -1 * (@rdz17_path/2 + @rdz17_cycle/2);
+  }
+  [oneway_bicycle='-1'][footway_side='left'] {
+    line-offset: @rdz17_path/2 + @rdz17_cycle/2;
+  }
   [oneway='no'][oneway_bicycle='no'] {
     line-width: @rdz17_path; line-offset: @rdz17_path/2 + @rdz17_cycle*1.5/2;
+    [footway_side='left'] {
+      line-offset: -1 * (@rdz17_path/2 + @rdz17_cycle*1.5/2);
+    }
   }
   [zoom>=18] {
     line-width: @rdz18_path;
     line-offset: @rdz18_path/2 + @rdz18_cycle/2;
+    [oneway_bicycle='-1'] {
+      line-offset: -1 * (@rdz18_path/2 + @rdz18_cycle/2);
+    }
+    [footway_side='right'] {
+      line-offset: @rdz18_path/2 + @rdz18_cycle/2;
+    }
+    [footway_side='left'] {
+      line-offset: -1 * (@rdz18_path/2 + @rdz18_cycle/2);
+    }
+    [oneway_bicycle='-1'][footway_side='right'] {
+      line-offset: -1 * (@rdz18_path/2 + @rdz18_cycle/2);
+    }
+    [oneway_bicycle='-1'][footway_side='left'] {
+      line-offset: @rdz18_path/2 + @rdz18_cycle/2;
+    }
     [oneway='no'][oneway_bicycle='no']{
       line-width: @rdz18_path; line-offset: @rdz18_path/2 + @rdz18_cycle*1.5/2;
+      [footway_side='left'] {
+        line-offset: -1 * (@rdz18_path/2 + @rdz18_cycle*1.5/2);
+      }
     }
   }
 }

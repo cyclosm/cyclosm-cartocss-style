@@ -455,7 +455,9 @@
   [highway='cycleway'][oneway_bicycle = 'yes'],
   [highway='cycleway'][oneway_bicycle = '-1'],
   [highway='footway'][oneway_bicycle = 'yes'],
-  [highway='footway'][oneway_bicycle = '-1'] {
+  [highway='footway'][oneway_bicycle = '-1'],
+  [highway='track'][oneway_bicycle = 'yes'],
+  [highway='track'][oneway_bicycle = '-1'] {
      marker-placement:line;
      marker-max-error: 0.5;
      marker-spacing: 100;
@@ -465,8 +467,13 @@
        marker-fill: #ddf;
      }
      marker-file: url(symbols/oneway.svg);
-     [oneway='-1'] {
+     [oneway='-1'][oneway_bicycle!='yes'],
+     [oneway_bicycle='-1'] {
        marker-file: url(symbols/oneway-reverse.svg);
+       [highway='cycleway'],
+       [highway='path'] {
+         marker-fill: #ddf;
+       }
      }
      [zoom=15] {
         marker-transform: "scale(0.75)";
@@ -496,7 +503,8 @@
      designated/marker-spacing: 50;
      designated/marker-fill: @cycle-fill;
      designated/marker-file: url(symbols/oneway.svg);
-     [oneway='-1'] { designated/marker-file: url(symbols/oneway-reverse.svg); }
+     [oneway='-1'][oneway_bicycle!='yes'],
+     [oneway_bicycle='-1'] { designated/marker-file: url(symbols/oneway-reverse.svg); }
      [zoom=15] {
         designated/marker-transform: "scale(0.75)";
         designated/marker-spacing: 40;

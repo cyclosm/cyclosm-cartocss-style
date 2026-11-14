@@ -129,6 +129,11 @@ CREATE VIEW cyclosm_ways AS
             ELSE 'no'
         END AS segregated,
         CASE
+            WHEN tags->'traffic_mode:left' = 'foot' AND tags->'traffic_mode:right' IS DISTINCT FROM 'foot' THEN 'left'
+            WHEN tags->'traffic_mode:right' = 'foot' AND tags->'traffic_mode:left' IS DISTINCT FROM 'foot' THEN 'right'
+            ELSE NULL
+        END AS footway_side,
+        CASE
             WHEN tags->'oneway:bicycle' IS NOT NULL THEN tags->'oneway:bicycle'
             WHEN tags->'cycleway' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
               OR tags->'cycleway:both' IN ('opposite', 'opposite_lane', 'opposite_track', 'opposite_share_busway')
